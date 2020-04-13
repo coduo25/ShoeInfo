@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -89,6 +87,32 @@ public class MemberDAO {
 		return check;
 	}
 	
+	//회원 응모 정보 추가하는 함수
+	public void insertUserDrawInfo(MemberDrawDTO mddto){
+		int userDraw_num = 0;
+		int userDraw_count = 0;
+		try {
+			con = getConnection();
+			sql = "select Max(userDraw_num) from shoeinfo_memberdrawinfo";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				userDraw_num = rs.getInt(1) + 1;
+			}
+			sql = "insert into shoeinfo_memberdrawinfo values(?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userDraw_num);
+			pstmt.setString(2, mddto.getMember_id());
+			pstmt.setString(3, mddto.getModel_stylecode());
+			pstmt.setString(4, mddto.getBrand_id());
+			pstmt.setInt(5, userDraw_count + 1);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
 	
 
 	

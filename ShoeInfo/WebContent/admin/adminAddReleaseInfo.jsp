@@ -145,7 +145,7 @@
 									<option value="선착"> 선착 </option>
 									<option value="드로우"> 드로우(당첨후 결제) </option>
 									<option value="드로우(당첨전 선결제)"> 드로우(당첨전 선결제) </option>
-									<option value="드로우(드로우당첨자간 선착순 구매)"> 응모(드로우당첨자간 선착순 구매) </option>
+									<option value="드로우(드로우당첨자간 선착순 구매)"> 드로우(당첨자간 선착순 구매) </option>
 								</select>
 							</td>
 						</tr>

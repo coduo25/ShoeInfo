@@ -39,7 +39,7 @@ CREATE TABLE `shoeinfo_brand` (
 
 LOCK TABLES `shoeinfo_brand` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_brand` DISABLE KEYS */;
-INSERT INTO `shoeinfo_brand` VALUES ('대한민국','snkrs.png','snkrs 코리아','대한민국_snkrs'),('대한민국','atmos.png','아트모스','대한민국_아트모스'),('대한민국','kasina.png','카시나','대한민국_카시나'),('미국','extrabutter.png','extrabutter','미국_extrabutter'),('미국','snkrs.png','snkrs USA','미국_snkrs'),('일본','atmos.png','아트모스','일본_아트모스');
+INSERT INTO `shoeinfo_brand` VALUES ('대한민국','snkrs.png','snkrs 코리아','대한민국_snkrs'),('대한민국','atmos.png','아트모스','대한민국_아트모스'),('대한민국','kasina.png','카시나','대한민국_카시나'),('미국','extrabutter.png','extrabutter','미국_extrabutter'),('미국','snkrs.png','snkrs USA','미국_snkrs'),('일본','atmos.png','아트모스 도쿄','일본_아트모스 도쿄');
 /*!40000 ALTER TABLE `shoeinfo_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,6 +98,33 @@ INSERT INTO `shoeinfo_member` VALUES ('admin','1234','통합관리자','coduo25@
 UNLOCK TABLES;
 
 --
+-- Table structure for table `shoeinfo_memberdrawinfo`
+--
+
+DROP TABLE IF EXISTS `shoeinfo_memberdrawinfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shoeinfo_memberdrawinfo` (
+  `userDraw_num` int(11) NOT NULL,
+  `member_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `model_stylecode` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `brand_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `draw_count` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userDraw_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shoeinfo_memberdrawinfo`
+--
+
+LOCK TABLES `shoeinfo_memberdrawinfo` WRITE;
+/*!40000 ALTER TABLE `shoeinfo_memberdrawinfo` DISABLE KEYS */;
+INSERT INTO `shoeinfo_memberdrawinfo` VALUES (1,'coduo25','555088-500','대한민국_snkrs',1);
+/*!40000 ALTER TABLE `shoeinfo_memberdrawinfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `shoeinfo_offlineinfo`
 --
 
@@ -126,7 +153,7 @@ CREATE TABLE `shoeinfo_offlineinfo` (
 
 LOCK TABLES `shoeinfo_offlineinfo` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_offlineinfo` DISABLE KEYS */;
-INSERT INTO `shoeinfo_offlineinfo` VALUES (1,'555088-500','대한민국','대한민국_snkrs','홍대','','2020-04-18 10:00','2020-04-18 14:00','2020-04-18 18:00','스크래치','');
+INSERT INTO `shoeinfo_offlineinfo` VALUES (1,'555088-500','대한민국','대한민국_snkrs','홍대','','2020-04-18 10:00','2020-04-18 14:00','2020-04-18 18:00','스크래치',''),(2,'555088-500','대한민국','대한민국_snkrs','홍대','','2020-04-15 10:00','2020-04-18 14:00','2020-04-18 18:00','스크래치',''),(3,'555088-500','대한민국','대한민국_snkrs','홍대','','2020-04-14 10:00','2020-04-18 14:00','2020-04-18 18:00','스크래치',''),(4,'555088-500','대한민국','대한민국_snkrs','홍대','','2020-04-22 10:00','2020-04-18 14:00','2020-04-18 18:00','스크래치',''),(5,'555088-500','대한민국','대한민국_snkrs','홍대','','2020-04-08 10:00','2020-04-18 14:00','2020-04-18 18:00','스크래치','');
 /*!40000 ALTER TABLE `shoeinfo_offlineinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +187,7 @@ CREATE TABLE `shoeinfo_onlineinfo` (
 
 LOCK TABLES `shoeinfo_onlineinfo` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_onlineinfo` DISABLE KEYS */;
-INSERT INTO `shoeinfo_onlineinfo` VALUES (1,'555088-500','아시아','대한민국','대한민국_snkrs','https://www.nike.com/kr/ko_kr/','2020-04-18 10:00','2020-04-18 11:00','2020-04-18 13:00','드로우','-',NULL),(2,'555088-500','아시아','대한민국','대한민국_아트모스','http://www.atmos.co.kr','2020-04-09 10:00','2020-04-09 12:00','2020-04-09 13:00','드로우','-',NULL),(3,'555088-041','아메리카','미국','미국_snkrs','https://www.nike.com/','2020-05-09 09:00','2020-05-09 09:30',' ','드로우','직배불가(배대지추천)',NULL),(4,'555088-500','아시아','대한민국','대한민국_카시나','https://www.kasina.co.kr/','2020-04-18 10:00','2020-04-18 12:00','2020-04-18 18:00','드로우','-',NULL),(5,'555088-500','아시아','일본','일본_아트모스','https://www.atmos-tokyo.com/','2020-04-18 11:00','2020-04-18 11:30','2020-04-18 13:00','드로우','직배불가(배대지추천)',NULL),(6,'555088-500','아메리카','미국','미국_extrabutter','https://extrabutterny.com/collections/release-draws/products/air-jordan-mens-1-high-og-555088-500?variant=31797632008240','2020-04-11 09:00','2020-04-11 10:00','2020-04-11 14:00','드로우(드로우당첨자간 선착순 구매)','직배불가(배대지추천)',NULL),(7,'555088-500','아시아','대한민국','대한민국_카시나','https://www.kasina.co.kr/','2020-04-18 10:00','2020-04-18 12:00','2020-04-18 18:00','선착','-',NULL);
+INSERT INTO `shoeinfo_onlineinfo` VALUES (1,'555088-500','아시아','대한민국','대한민국_snkrs','https://www.nike.com/kr/ko_kr/','2020-04-18 10:00','2020-04-18 11:00','2020-04-18 13:00','드로우','-',NULL),(2,'555088-500','아시아','대한민국','대한민국_아트모스','http://www.atmos.co.kr','2020-04-09 10:00','2020-04-09 12:00','2020-04-09 13:00','드로우','-',NULL),(3,'555088-041','아메리카','미국','미국_snkrs','https://www.nike.com/','2020-05-09 09:00','2020-05-09 09:30',' ','드로우','직배불가(배대지추천)',NULL),(4,'555088-500','아시아','대한민국','대한민국_카시나','https://www.kasina.co.kr/','2020-04-18 10:00','2020-04-18 12:00','2020-04-18 18:00','드로우','-',NULL),(5,'555088-500','아시아','일본','일본_아트모스 도쿄','https://www.atmos-tokyo.com/','2020-04-18 11:00','2020-04-18 11:30','2020-04-18 13:00','드로우','직배불가(배대지추천)',NULL),(6,'555088-500','아메리카','미국','미국_extrabutter','https://extrabutterny.com/collections/release-draws/products/air-jordan-mens-1-high-og-555088-500?variant=31797632008240','2020-04-11 09:00','2020-04-11 10:00','2020-04-11 14:00','드로우(당첨자간 선착순 구매)','직배불가(배대지추천)',NULL),(7,'555088-500','아시아','대한민국','대한민국_카시나','https://www.kasina.co.kr/','2020-04-18 10:00','2020-04-18 12:00','2020-04-18 18:00','선착','-',NULL);
 /*!40000 ALTER TABLE `shoeinfo_onlineinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-13  0:55:55
+-- Dump completed on 2020-04-13 17:40:55

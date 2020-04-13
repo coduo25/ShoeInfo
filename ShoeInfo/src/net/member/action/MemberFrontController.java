@@ -97,6 +97,16 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		
+		//응모정보 저장하는 페이지 처리
+		else if(command.equals("/addUserDrawInfoAction.me")){
+			action = new addUserDrawInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 		
 		/************************************************************
