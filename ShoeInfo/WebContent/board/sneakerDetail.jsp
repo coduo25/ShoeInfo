@@ -9,6 +9,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,19 +138,24 @@
 							OfflineDTO ofdto_kr = (OfflineDTO) offLineList_kr.get(i);
 							BrandDTO bdto_kr = (BrandDTO) brandList_off_kr.get(i);
 							
-							Date original_Offline_start_time_date = original_format.parse(ofdto_kr.getOffline_start_time());
-							String new_Offline_start_time_date = new_format.format(original_Offline_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Offline_start_time = original_format.parse(ofdto_kr.getOffline_start_time());
+							Date original_Offline_end_time = original_format.parse(ofdto_kr.getOffline_end_time());
+							// 04/18 10:00
+							String new_Offline_start_time = new_format.format(original_Offline_start_time);
+							String new_Offline_end_time = new_format.format(original_Offline_end_time);
 							
-							Date original_Offline_end_time_date = original_format.parse(ofdto_kr.getOffline_end_time());
-							String new_Offline_end_time_date = new_format.format(original_Offline_end_time_date);
+							// 04/18/2020 10:00
+							String count_Offline_start_time = count_format.format(original_Offline_start_time);
 					%>
 					<tr>
 						<td> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=ofdto_kr.getOffline_location()%> <%=bdto_kr.getBrand_name()%> </a> </td>
-						<td> <span id="offline_start_time_date"> <%=new_Offline_start_time_date%> </span> ~ <%=new_Offline_end_time_date%> </td>
+						<td> <span id="offline_start_time"> <%=new_Offline_start_time%> </span> ~ <%=new_Offline_end_time%> </td>
 						
-						<span id="new_count_start_time_date" style="display:none;"> - </span>
-						<td id="final_new_count_start_time_date"> </td>
+						<span id="count_Offline_start_time<%=i%>" style="display:none;"> <%=count_Offline_start_time%> </span>
+						<td id="final_count_Offline_start_time<%=i%>"> </td>
 						
 						<td> <%=ofdto_kr.getOffline_method()%> </td>
 					</tr>
@@ -185,23 +191,25 @@
 							OnlineDTO odto_kr = (OnlineDTO) onlineList_kr.get(i);
 							BrandDTO bdto_kr = (BrandDTO) brandList_kr.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_kr.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_kr = original_format.parse(odto_kr.getOnline_start_time());
+							Date original_Online_end_time_kr = original_format.parse(odto_kr.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_kr = new_format.format(original_Online_start_time_kr);
+							String new_Online_end_time_kr = new_format.format(original_Online_end_time_kr);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_kr.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);
-							
-							//새로운 카운트 다운 값
-							String new_count_start_time_date = count_format.format(original_Online_start_time_date);
+							// 04/18/2020 10:00
+							String count_Online_start_time_kr = count_format.format(original_Online_start_time_kr);
 					%>
 					<tr>
 						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <span id="online_start_time_date"> <%=new_Online_start_time_date%> </span> ~ <%=new_Online_end_time_date%> </td>
+						<td> <span id="online_start_time_date"><%= new_Online_start_time_kr%></span> ~ <%=new_Online_end_time_kr%> </td>
 						
-						<span id="new_count_start_time_date" style="display:none;"> <%= new_count_start_time_date %> </span>
-						<td id="final_new_count_start_time_date"> </td>
+						<span id="count_Online_start_time_kr<%=i%>" style="display:none;"> <%=count_Online_start_time_kr%> </span>
+						<td id="final_count_Online_start_time_kr<%=i%>"> </td>
 						
 						<td> <%=odto_kr.getOnline_method()%> </td>
 						<%
@@ -249,18 +257,26 @@
 							OnlineDTO odto_asia = (OnlineDTO) onlineList_asia.get(i);
 							BrandDTO bdto_asia = (BrandDTO) brandList_asia.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_asia.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_asia = original_format.parse(odto_asia.getOnline_start_time());
+							Date original_Online_end_time_asia = original_format.parse(odto_asia.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_asia = new_format.format(original_Online_start_time_asia);
+							String new_Online_end_time_asia = new_format.format(original_Online_end_time_asia);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_asia.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);
+							// 04/18/2020 10:00
+							String count_Online_start_time_asia = count_format.format(original_Online_start_time_asia);
 					%>
 					<tr>
 						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <%=bdto_asia.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_asia.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_date%> ~ <%=new_Online_end_time_date%> </td>
-						<td> - </td>
+						<td> <%=new_Online_start_time_asia%> ~ <%=new_Online_end_time_asia%> </td>
+						
+						<span id="count_Online_start_time_asia<%=i%>" style="display:none;"> <%=count_Online_start_time_asia%> </span>
+						<td id="final_count_Online_start_time_asia<%=i%>"> </td>
+						
 						<td> <%=odto_asia.getOnline_method()%> / <%=odto_asia.getDelivery_method()%> </td>
 						<td> - </td>
 					</tr>
@@ -295,18 +311,26 @@
 							OnlineDTO odto_america = (OnlineDTO) onlineList_america.get(i);
 							BrandDTO bdto_america = (BrandDTO) brandList_america.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_america.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_america = original_format.parse(odto_america.getOnline_start_time());
+							Date original_Online_end_time_america = original_format.parse(odto_america.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_america = new_format.format(original_Online_start_time_america);
+							String new_Online_end_time_america = new_format.format(original_Online_end_time_america);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_america.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);
+							// 04/18/2020 10:00
+							String count_Online_start_time_america = count_format.format(original_Online_start_time_america);
 					%>
 					<tr>
 						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_america.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <%=bdto_america.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_america.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_date%> ~ <%=new_Online_end_time_date%> </td>
-						<td> - </td>
+						<td> <%=new_Online_start_time_america%> ~ <%=new_Online_end_time_america%> </td>
+						
+						<span id="count_Online_start_time_america<%=i%>" style="display:none;"> <%=count_Online_start_time_america%> </span>
+						<td id="final_count_Online_start_time_america<%=i%>"> </td>
+						
 						<td> <%=odto_america.getOnline_method()%> / <%=odto_america.getDelivery_method()%> </td>
 						<td> - </td>
 					</tr>
@@ -447,13 +471,52 @@
 			} 
 			
 			timer = setInterval(showRemaining, 1000); 
-		} 
-		// 2024년 4월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용한다. 
-		//countDownTimer('sample02', '04/01/2024 00:00 AM'); 
-		//countDownTimer('sample03', '04/01/2024'); // 2024년 4월 1일까지 
+		}
 		
-		//var count_span = document.getElementById("new_count_start_time_date").innerText;
-		//countDownTimer('final_new_count_start_time_date', count_span);	
+		//오프라인 한국 리스트
+		var offLineList_kr = [];
+		<c:forEach items="${offLineList_kr}" var="offLineList_kr">
+			offLineList_kr.push("${offLineList_kr}");
+		</c:forEach>
+		//offLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<offLineList_kr.length; i++) {		
+			var count_span = document.getElementById("count_Offline_start_time"+i).innerText;
+			countDownTimer('final_count_Offline_start_time'+i, count_span);
+		}
+		
+		//온라인 한국 리스트
+		var onLineList_kr = [];
+		<c:forEach items="${onlineList_kr}" var="onLineList_kr">
+			onLineList_kr.push("${onLineList_kr}");
+		</c:forEach>
+		//onLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_kr.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_kr"+i).innerText;
+			countDownTimer('final_count_Online_start_time_kr'+i, count_span);
+		}
+		
+		//온라인 아시아 리스트
+		var onLineList_asia = [];
+		<c:forEach items="${onlineList_asia}" var="onLineList_asia">
+			onLineList_asia.push("${onLineList_asia}");
+		</c:forEach>
+		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_asia.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_asia"+i).innerText;
+			countDownTimer('final_count_Online_start_time_asia'+i, count_span);
+		}
+		
+		//온라인 아메리카 리스트
+		var onLineList_america = [];
+		<c:forEach items="${onlineList_asia}" var="onLineList_asia">
+			onLineList_asia.push("${onLineList_asia}");
+		</c:forEach>
+		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_asia.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_asia"+i).innerText;
+			countDownTimer('final_count_Online_start_time_asia'+i, count_span);
+		}
+			
 	});
 
 </script>
