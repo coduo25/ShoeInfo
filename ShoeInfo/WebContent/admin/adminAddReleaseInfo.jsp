@@ -15,13 +15,13 @@
 <body>
 
 	<%
-		//응모 정보 추가하기 위한 브랜드 별 국가 리스트 가져오기
-		List<BrandDTO> countryList = (List<BrandDTO>) request.getAttribute("countryList");
+		//CountryDB로부터 모든 국가 리스트 가져오는 함수
+		List<CountryDTO> countryList_all = (List<CountryDTO>) request.getAttribute("countryList_all");
 	
-		//새로운 브랜드 추가하기 위한 모든 국가 리스트 가져오기
-		List<CountryDTO> countryAllList = (List<CountryDTO>) request.getAttribute("countryAllList");
-		
-		if( countryList == null || countryAllList == null){
+		//BrandDB로부터 브랜드별 국가 리스트 가져오는 함수
+		List<BrandDTO> countryList_bybrand = (List<BrandDTO>) request.getAttribute("countryList_bybrand");
+	
+		if(countryList_all == null || countryList_bybrand == null){
 			System.out.println("넘어온 리스트 값이 null입니다.");
 		}
 	%>
@@ -48,13 +48,12 @@
 								나라 선택
 								<select id="country_name" name="country_name">
 									<option value="default"> 나라를 선택해주세요 </option>
-									<% for(int i=0;i<countryList.size();i++) { BrandDTO bdto = countryList.get(i); %><option value="<%=bdto.getCountry_name()%>"> <%=bdto.getCountry_name()%> </option><%}%>
+									<% for(int i=0;i<countryList_bybrand.size();i++) { BrandDTO bdto = countryList_bybrand.get(i); %><option value="<%=bdto.getCountry_name()%>"> <%=bdto.getCountry_name()%> </option><%}%>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<td id="brand_name_offline"> 
-								
 							</td>
 						</tr>
 						<tr>
@@ -117,7 +116,7 @@
 								나라 선택
 								<select id="country_name" name="country_name">
 									<option value="default"> 나라를 선택해주세요 </option>
-									<% for(int i=0;i<countryList.size();i++) { BrandDTO bdto = countryList.get(i); %><option value="<%=bdto.getCountry_name()%>"> <%=bdto.getCountry_name()%> </option><%}%>
+									<% for(int i=0;i<countryList_bybrand.size();i++) { BrandDTO bdto = countryList_bybrand.get(i); %><option value="<%=bdto.getCountry_name()%>"> <%=bdto.getCountry_name()%> </option><%}%>
 								</select>
 							</td>
 						</tr>
@@ -189,8 +188,8 @@
 								<select name="country_name">
 									<option value="default"> 나라를 선택해주세요. </option>
 									<%
-										for(int i=0;i<countryAllList.size();i++) {
-											CountryDTO cdto = countryAllList.get(i);
+										for(int i=0;i<countryList_all.size();i++) {
+											CountryDTO cdto = countryList_all.get(i);
 									%>
 										<option value="<%=cdto.getCountry_name()%>"> <%=cdto.getCountry_name()%> </option>
 									<%
@@ -273,7 +272,7 @@
 			//나라 항목들을 모두 선택하게 되면 브랜드 항목들 불러오는 함수 호출
 			$.ajax({
 				type:'get',
-				url:'/ShoeGame/admin/searchBrandAjax.jsp',
+				url:'/ShoeInfo/admin/searchBrandAjax.jsp',
 				data:'country_name='+$("#country_name").val(),
 				dataType:"html",
 				success:function(data){

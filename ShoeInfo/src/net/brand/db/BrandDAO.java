@@ -26,7 +26,6 @@ public class BrandDAO {
 		con = ds.getConnection();
 		return con;
 	}
-	
 	// 자원 해제 
 	public void closeDB(){
 		try {
@@ -56,8 +55,8 @@ public class BrandDAO {
 		}
 	}
 	
-	//국가 리스트 찾아오는 함수
-	public List<BrandDTO> searchCountry() {
+	//브랜드별 국가리스트 가져오는 함수
+	public List<BrandDTO> searchCountryList_bybrand() {
 		List<BrandDTO> brandList = new ArrayList();
 		try {
 			con = getConnection();

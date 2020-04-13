@@ -25,7 +25,6 @@ public class CountryDAO {
 		con = ds.getConnection();
 		return con;
 	}
-	
 	// 자원 해제 
 	public void closeDB(){
 		try {
@@ -55,32 +54,8 @@ public class CountryDAO {
 		}
 	}
 	
-	//국가별 모든 정보 리스트 가져오는 함수
-	public List<CountryDTO> getCountryList(){
-		List<CountryDTO> countryList = new ArrayList();
-		try {
-			con = getConnection();
-			sql = "select * from shoeinfo_country";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				CountryDTO cdto = new CountryDTO();
-				cdto.setCountry_region(rs.getString("country_region"));
-				cdto.setCountry_code(rs.getString("country_code"));
-				cdto.setCountry_name(rs.getString("country_name"));
-				cdto.setCountry_flag(rs.getString("country_flag"));
-				countryList.add(cdto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		return countryList;
-	}
-	
 	//국가 리스트 가져오는 함수
-	public List<CountryDTO> getCountryAllList(){
+	public List<CountryDTO> countryList_all(){
 		List<CountryDTO> countryAllList = new ArrayList();
 		try {
 			con = getConnection();

@@ -25,21 +25,21 @@ public class searchBrandAction implements Action{
 			return forward;
 		}
 		
-		// ---------------------------------------------------------------------------------------------------------------------------
+		// -------------------------------------------------
 		// DB객체 만들기
 		
-		//모든 국가 리스트 가져오는 함수
+		//CountryDB로부터 모든 국가 리스트 가져오는 함수
 		CountryDAO cdao = new CountryDAO();
-		List<CountryDTO> countryAllList = (List<CountryDTO>) cdao.getCountryAllList();
+		List<CountryDTO> countryList_all = (List<CountryDTO>) cdao.countryList_all();
 		
-		//브랜드별 국가 리스트 가져오는 함수
+		//BrandDB로부터 브랜드별 국가 리스트 가져오는 함수
 		BrandDAO bdao = new BrandDAO();
-		List countryList = bdao.searchCountry();
+		List countryList_bybrand = bdao.searchCountryList_bybrand();
 		
-		request.setAttribute("countryAllList", countryAllList);
-		request.setAttribute("countryList", countryList);
+		request.setAttribute("countryList_all", countryList_all);
+		request.setAttribute("countryList_bybrand", countryList_bybrand);
 		
-		// ---------------------------------------------------------------------------------------------------------------------------
+		// ------------------------------------------------
 		// 3. 페이지이동
 		forward.setPath("admin/adminAddReleaseInfo.jsp");
 		forward.setRedirect(false);

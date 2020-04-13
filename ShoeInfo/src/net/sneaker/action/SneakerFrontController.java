@@ -26,20 +26,20 @@ public class SneakerFrontController extends HttpServlet{
 		 * 1. 가상 주소 계산
 		 *************************************************************/
 		String requestURI = request.getRequestURI();
-		System.out.println("URI: " + requestURI);
+		//System.out.println("URI: " + requestURI);
 		
 		String contextPath = request.getContextPath();
-		System.out.println("ContextPath(프로젝트명): " + contextPath);
+		//System.out.println("ContextPath(프로젝트명): " + contextPath);
 		
 		String command = requestURI.substring(contextPath.length());
-		System.out.println("command : " + command);
+		//System.out.println("command : " + command);
 		
-		System.out.println("-------페이지 주소 계산 완료-------------");
+		//System.out.println("-------페이지 주소 계산 완료-------------");
 		
 		/************************************************************
 		 * 2. 계산된 주소를 사용해서 페이지 형태구분(View/Model)
 		 *************************************************************/
-		System.out.println("-------페이지 구분 (view/model)-------------");
+		//System.out.println("-------페이지 구분 (view/model)-------------");
 		
 		Action action = null;
 		ActionForward forward = null;
@@ -66,14 +66,14 @@ public class SneakerFrontController extends HttpServlet{
 		/************************************************************
 		 * 3. 실제 페이지 이동 동작 (redirect/forward)
 		 *************************************************************/
-		System.out.println("-------페이지 이동(redirect-true/forward-false)-----------");
+		//System.out.println("-------페이지 이동(redirect-true/forward-false)-----------");
 		//페이지 이동정보가 있을때만 이동
 		if(forward != null) {
 			if(forward.isRedirect()) {
-				System.out.println("sendReirect() 이동: " + forward.getPath());
+				//System.out.println("sendReirect() 이동: " + forward.getPath());
 				response.sendRedirect(forward.getPath());
 			} else {
-				System.out.println("forward() 이동: " + forward.getPath());
+				//System.out.println("forward() 이동: " + forward.getPath());
 				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
 			}

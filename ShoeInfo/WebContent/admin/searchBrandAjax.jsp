@@ -22,7 +22,7 @@
 		
 		List brandNameList = (List) bdao.searchBrand(country_name);
 		
-		System.out.println("brandnameList: " + brandNameList);
+		//System.out.println("brandnameList: " + brandNameList);
 	%>
 		<select name="brand_name">
 			<option value="default"> 브랜드를 선택해주세요 </option>

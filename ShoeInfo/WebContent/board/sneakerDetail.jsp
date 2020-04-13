@@ -115,7 +115,7 @@
 				</tr>
 			</table>
 			<!-- 신발 온라인/오프라인 정보 -->
-			<div id="content_sneakerOnlineInfo">
+			<div id="content_sneakerInfo">
 				<!-- 오프라인 테이블 -->
 				<table id="sneakerOfflineInfo_table" border="0">
 						<h4> [오프라인 발매처]</h4>

@@ -28,7 +28,6 @@ public class OnlineDAO {
 		con = ds.getConnection();
 		return con;
 	}
-	
 	// 자원 해제 
 	public void closeDB(){
 		try {
@@ -211,8 +210,7 @@ public class OnlineDAO {
 		return vec;
 	}
 	
-	//america 지역 신발 온라인 정보 가져오는 함수(브랜드 정보 + 응모 정보)
-	public Vector getOnlineInfo_america(String model_stylecode) {
+	public Vector getOnlineInfo(String model_stylecode, String country_region) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -221,17 +219,15 @@ public class OnlineDAO {
 		PreparedStatement pstmt3 = null;
 		ResultSet rs3 = null;
 		
-		//아메리카 지역(america) 신발 온라인 정보 저장
-		//아메리카 지역(america) 브랜드 정보 저장
-		ArrayList onlineInfoList_america = new ArrayList();
-		ArrayList brandList_america = new ArrayList();
+		ArrayList onlineInfoList = new ArrayList();
+		ArrayList brandList = new ArrayList();
 		
-		try {	
+		try {
 			con = getConnection();
 			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, "아메리카");
+			pstmt.setString(2, country_region);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OnlineDTO odto = new OnlineDTO();
@@ -245,7 +241,7 @@ public class OnlineDAO {
 				odto.setOnline_result_time(rs.getString("online_result_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				onlineInfoList_america.add(odto);
+				onlineInfoList.add(odto);
 				
 				//아메리카 브랜드 정보 가져오기
 				sql = "select * from shoeinfo_brand where brand_id = ?";
@@ -267,11 +263,11 @@ public class OnlineDAO {
 					if(rs3.next()){
 						bdto.setCountry_flag(rs3.getString("country_flag"));
 					}
-					brandList_america.add(bdto);
+					brandList.add(bdto);
 				}
 			}
-			vec.add(onlineInfoList_america);
-			vec.add(brandList_america);
+			vec.add(onlineInfoList);
+			vec.add(brandList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -279,144 +275,4 @@ public class OnlineDAO {
 		}
 		return vec;
 	}
-	
-	//europe 지역 신발 온라인 정보 가져오는 함수(브랜드 정보 + 응모 정보)
-	public Vector getOnlineInfo_europe(String model_stylecode) {
-		Vector vec = new Vector();
-		
-		PreparedStatement pstmt2 = null;
-		ResultSet rs2 = null;
-		
-		PreparedStatement pstmt3 = null;
-		ResultSet rs3 = null;
-		
-		//유럽 지역(europe) 신발 온라인 정보 저장
-		//유럽 지역(europe) 브랜드 정보 저장
-		ArrayList onlineInfoList_europe = new ArrayList();
-		ArrayList brandList_europe = new ArrayList();
-		
-		try {	
-			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, "유럽");
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				OnlineDTO odto = new OnlineDTO();
-				odto.setModel_stylecode(rs.getString("model_stylecode"));
-				odto.setCountry_region(rs.getString("country_region"));
-				odto.setCountry_name(rs.getString("country_name"));
-				odto.setBrand_id(rs.getString("brand_id"));
-				odto.setOnline_link(rs.getString("online_link"));
-				odto.setOnline_start_time(rs.getString("online_start_time"));
-				odto.setOnline_end_time(rs.getString("online_end_time"));
-				odto.setOnline_result_time(rs.getString("online_result_time"));
-				odto.setOnline_method(rs.getString("online_method"));
-				odto.setDelivery_method(rs.getString("delivery_method"));
-				onlineInfoList_europe.add(odto);
-				
-				//아메리카 브랜드 정보 가져오기
-				sql = "select * from shoeinfo_brand where brand_id = ?";
-				pstmt2 = con.prepareStatement(sql);
-				pstmt2.setString(1, odto.getBrand_id());
-				rs2 = pstmt2.executeQuery();
-				if(rs2.next()){
-					//브랜드 정보 DB에 해당 브랜드가 저장되어있으면
-					BrandDTO bdto = new BrandDTO();
-					bdto.setCountry_name(rs2.getString("country_name"));
-					bdto.setBrand_logo(rs2.getString("brand_logo"));
-					bdto.setBrand_name(rs2.getString("brand_name"));
-					bdto.setBrand_id(rs2.getString("brand_id"));
-					
-					sql="select country_flag from shoeinfo_country where country_name = ?";
-					pstmt3 = con.prepareStatement(sql);
-					pstmt3.setString(1, bdto.getCountry_name());
-					rs3 = pstmt3.executeQuery();
-					if(rs3.next()){
-						bdto.setCountry_flag(rs3.getString("country_flag"));
-					}
-					brandList_europe.add(bdto);
-				}
-			}
-			vec.add(onlineInfoList_europe);
-			vec.add(brandList_europe);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		return vec;
-	}
-	
-	//기타 지역 신발 온라인 정보 가져오는 함수(브랜드 정보 + 응모 정보)
-	public Vector getOnlineInfo_etc(String model_stylecode) {
-		Vector vec = new Vector();
-		
-		PreparedStatement pstmt2 = null;
-		ResultSet rs2 = null;
-		
-		PreparedStatement pstmt3 = null;
-		ResultSet rs3 = null;
-		
-		//기타 지역(etc) 신발 온라인 정보 저장
-		//기타 지역(etc) 브랜드 정보 저장
-		ArrayList onlineInfoList_etc = new ArrayList();
-		ArrayList brandList_etc = new ArrayList();
-		
-		try {	
-			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, "기타");
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				OnlineDTO odto = new OnlineDTO();
-				odto.setModel_stylecode(rs.getString("model_stylecode"));
-				odto.setCountry_region(rs.getString("country_region"));
-				odto.setCountry_name(rs.getString("country_name"));
-				odto.setBrand_id(rs.getString("brand_id"));
-				odto.setOnline_link(rs.getString("online_link"));
-				odto.setOnline_start_time(rs.getString("online_start_time"));
-				odto.setOnline_end_time(rs.getString("online_end_time"));
-				odto.setOnline_result_time(rs.getString("online_result_time"));
-				odto.setOnline_method(rs.getString("online_method"));
-				odto.setDelivery_method(rs.getString("delivery_method"));
-				onlineInfoList_etc.add(odto);
-				
-				//아메리카 브랜드 정보 가져오기
-				sql = "select * from shoeinfo_brand where brand_id = ?";
-				pstmt2 = con.prepareStatement(sql);
-				pstmt2.setString(1, odto.getBrand_id());
-				rs2 = pstmt2.executeQuery();
-				if(rs2.next()){
-					//브랜드 정보 DB에 해당 브랜드가 저장되어있으면
-					BrandDTO bdto = new BrandDTO();
-					bdto.setCountry_name(rs2.getString("country_name"));
-					bdto.setBrand_logo(rs2.getString("brand_logo"));
-					bdto.setBrand_name(rs2.getString("brand_name"));
-					bdto.setBrand_id(rs2.getString("brand_id"));
-					
-					sql="select country_flag from shoeinfo_country where country_name = ?";
-					pstmt3 = con.prepareStatement(sql);
-					pstmt3.setString(1, bdto.getCountry_name());
-					rs3 = pstmt3.executeQuery();
-					if(rs3.next()){
-						bdto.setCountry_flag(rs3.getString("country_flag"));
-					}
-					brandList_etc.add(bdto);
-				}
-			}
-			vec.add(onlineInfoList_etc);
-			vec.add(brandList_etc);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		return vec;
-	}
-	
-	
 }

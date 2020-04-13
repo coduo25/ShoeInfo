@@ -27,7 +27,6 @@ public class SneakerDAO {
 		con = ds.getConnection();
 		return con;
 	}
-	
 	// 자원 해제 
 	public void closeDB(){
 		try {
@@ -36,6 +35,30 @@ public class SneakerDAO {
 			if(con !=null) con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	
+	//새로운 신발정보 추가하는 함수
+	public void insertSneaker(SneakerDTO sdto) {
+		try {
+			con = getConnection();
+			sql = "insert into shoeinfo_sneakerlibrary values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sdto.getBrand());
+			pstmt.setString(2, sdto.getSub_brand());
+			pstmt.setString(3, sdto.getBrand_index());
+			pstmt.setString(4, sdto.getImage());
+			pstmt.setString(5, sdto.getModel_stylecode());
+			pstmt.setString(6, sdto.getModel_name());
+			pstmt.setString(7, sdto.getModel_colorway());
+			pstmt.setInt(8, sdto.getPrice());
+			pstmt.setString(9, sdto.getRelease_date());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 	}
 	

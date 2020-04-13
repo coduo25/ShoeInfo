@@ -12,7 +12,7 @@
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body>	
 	<%
 		List<SneakerDTO> sneakerList1 = (List<SneakerDTO>) request.getAttribute("sneakerList1");
 		List<SneakerDTO> sneakerList2 = (List<SneakerDTO>) request.getAttribute("sneakerList2");
@@ -29,7 +29,7 @@
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		
-		SimpleDateFormat new_format = new SimpleDateFormat("MM/dd");
+		SimpleDateFormat new_format = new SimpleDateFormat("M/dd");
 	%>
 
 	<!-- Header -->
@@ -45,10 +45,8 @@
 		<!-- content -->
 		<div id="content_sneakerList">
 			<table id="sneaker_List" border = "0">
-				<tr>
-					<td colspan="6"> 4월 April.</td>
-				</tr>
-				<%    
+				<tr> <td colspan="6"> 4월 April.</td> </tr>
+				<%
 			        int size = sneakerList4.size();
 				    int col = 5;
 				    int row = (size / col) + (size%col>0? 1:0);

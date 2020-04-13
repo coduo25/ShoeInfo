@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 import net.brand.db.BrandDTO;
 import net.online.db.OnlineDTO;
 
-
 public class OfflineDAO {
 
 	Connection con = null;
@@ -30,7 +29,6 @@ public class OfflineDAO {
 		con = ds.getConnection();
 		return con;
 	}
-	
 	// 자원 해제 
 	public void closeDB(){
 		try {

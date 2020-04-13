@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import net.admin.db.AdminSneakerDAO;
+import net.sneaker.db.SneakerDAO;
 import net.sneaker.db.SneakerDTO;
 
 public class AddSneakerAction implements Action {
@@ -53,7 +53,7 @@ public class AddSneakerAction implements Action {
 		sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
 		sdto.setRelease_date(multi.getParameter("release_date"));
 		
-		AdminSneakerDAO asdao = new AdminSneakerDAO();
+		SneakerDAO asdao = new SneakerDAO();
 		asdao.insertSneaker(sdto);
 
 		// ---------------------------------------------------------------------------------------------------------------------------
