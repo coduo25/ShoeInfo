@@ -36,8 +36,8 @@ public class addUserDrawInfoAction implements Action{
 		mdao.insertUserDrawInfo(mddto);
 		
 		//페이지이동
-		forward.setPath("./SneakerDetail.go");
-		forward.setRedirect(false);
+		forward.setPath("./SneakerDetail.go?model_stylecode="+model_stylecode);
+		forward.setRedirect(true);
 		return forward;
 	}
 }

@@ -218,9 +218,10 @@
 						<%
 							if(odto_kr.getOnline_method().contains("드로우") && user != null){
 						%>
-							<td>
-								<a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"> <input type="button" value="응모하기"> </a> 
-							</td>
+							<input id="model_stylecode<%=i%>" type="hidden" value="<%=odto_kr.getModel_stylecode()%>">
+							<input id="brand_id<%=i%>" type="hidden" value="<%=odto_kr.getBrand_id() %>">
+							<input id="user<%=i%>" type="hidden" value="<%=user%>">
+							<td id="draw_status<%=i%>"> </td>
 						<%
 							}else if(odto_kr.getOnline_method().contains("드로우") && user == null){
 						%>
@@ -351,7 +352,7 @@
 				<br>
 				<br>
 				<table id="sneakerOnlineInfo_table" border="0">
-					<h4> [유럽 	지역 발매처] </h4>
+					<h4> [유럽 지역 발매처] </h4>
 					<tr>
 						<td style="width:50px;"> </td>
 						<td style="width:150px;"> </td>
@@ -477,22 +478,18 @@
 				var distDt = _vDate - now; 
 				if (distDt < 0) { 
 					clearInterval(timer); 
-					document.getElementById(id).textContent = '해당 응모가 종료 되었습니다!'; 
+					document.getElementById(id).textContent = '응모종료'; 
 					return; 
 				} 
-			
 				var days = Math.floor(distDt / _day); 
 				var hours = Math.floor((distDt % _day) / _hour); 
 				var minutes = Math.floor((distDt % _hour) / _minute); 
-				var seconds = Math.floor((distDt % _minute) / _second); 
-				
-				//document.getElementById(id).textContent = date.toLocaleString() + "까지 : "; 
+				var seconds = Math.floor((distDt % _minute) / _second); 		
 				document.getElementById(id).textContent = days + '일 '; 
 				document.getElementById(id).textContent += hours + '시간 '; 
 				document.getElementById(id).textContent += minutes + '분 '; 
 				document.getElementById(id).textContent += seconds + '초'; 
 			} 
-			
 			timer = setInterval(showRemaining, 1000); 
 		}
 		
@@ -561,8 +558,30 @@
 			var count_span = document.getElementById("count_Online_start_time_etc"+i).innerText;
 			countDownTimer('final_count_Online_start_time_etc'+i, count_span);
 		}
-			
+		
+		
+		for(var i=0; i<onLineList_kr.length;i++) {
+			var model_stylecode = $("#model_stylecode"+i).val();
+			var brand_id = $("#brand_id"+i).val();
+			var user = $("#user"+i).val();
+			alert(user);
+			$.ajax({
+				type:'get',
+				url:'/ShoeInfo/board/searchUserDrawInfo.jsp',
+				data:'model_stylecode='+model_stylecode +'&brand_id='+brand_id+'&user='+user,
+				dataType:"html",
+				success:function(data){
+					alert(i);
+					$("#draw_status"+i).html(data);
+				},error:function(request,status,error){
+					 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
+		}
+		
 	});
+	
+	
 
 </script>
 </html>

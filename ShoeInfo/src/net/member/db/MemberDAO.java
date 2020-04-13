@@ -99,19 +99,50 @@ public class MemberDAO {
 			if(rs.next()){
 				userDraw_num = rs.getInt(1) + 1;
 			}
+			sql = "select Max(draw_count) from shoeinfo_memberdrawinfo where member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mddto.getMember_id());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				userDraw_count = rs.getInt(1) + 1;
+			}
 			sql = "insert into shoeinfo_memberdrawinfo values(?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userDraw_num);
 			pstmt.setString(2, mddto.getMember_id());
 			pstmt.setString(3, mddto.getModel_stylecode());
 			pstmt.setString(4, mddto.getBrand_id());
-			pstmt.setInt(5, userDraw_count + 1);
+			pstmt.setInt(5, userDraw_count);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
+	}
+	
+	//사용자의 응모 정보가 있는지 없는지 체크하는 함수
+	public int searchDrawInfo(MemberDrawDTO mddto) {
+		int check = 0;
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_memberdrawinfo where member_id = ? AND model_stylecode = ? AND brand_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mddto.getMember_id());
+			pstmt.setString(2, mddto.getModel_stylecode());
+			pstmt.setString(3, mddto.getBrand_id());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				check = 1;
+			}else {
+				check = 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
 	}
 	
 
