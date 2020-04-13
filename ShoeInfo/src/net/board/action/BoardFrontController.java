@@ -54,7 +54,7 @@ public class BoardFrontController extends HttpServlet{
 		/************************************************************
 		 * 3. 실제 페이지 이동 동작 (redirect/forward)
 		 *************************************************************/
-		System.out.println("-------페이지 이동(redirect-true/forward-false)-----------");
+		//System.out.println("-------페이지 이동(redirect-true/forward-false)-----------");
 		//페이지 이동정보가 있을때만 이동
 		if(forward != null) {
 			if(forward.isRedirect()) {
