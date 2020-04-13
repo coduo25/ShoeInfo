@@ -24,8 +24,6 @@
 		
 		//신발 리스트 보여주는 페이지-메인페이지
 		response.sendRedirect("./SneakerList.go");
-		
-		
 	%>
 
 </body>
