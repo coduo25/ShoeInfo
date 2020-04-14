@@ -30,7 +30,7 @@
 		//로그인한 사용자가 체크
 		String user = (String) session.getAttribute("id");
 		
-		//사용자 응모 정보 리스트
+		//사용자 응모한 브랜드 리스트
 		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
 	
 		//신발 기본 정보 리스트
@@ -131,7 +131,7 @@
 						<h4> [오프라인 발매처]</h4>
 						<tr>
 							<td style="width:50px;"> </td>
-							<td style="width:180px;"> </td>
+							<td style="width:130px;"> </td>
 							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
@@ -188,7 +188,7 @@
 						<h4> [한국 온라인 발매처] </h4>
 						<tr>
 							<td style="width:50px;"> </td>
-							<td style="width:150px;"> </td>
+							<td style="width:100px;"> </td>
 							<td style="width:30px;"> </td>
 							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
@@ -227,17 +227,15 @@
 						<td id="final_count_Online_start_time_kr<%=i%>"> </td>
 						
 						<td> <%=odto_kr.getOnline_method()%> </td>
-						<div id="draw-status">
 						<%if(odto_kr.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_kr.getBrand_id())){%>
-							<td> 응모완료 </td>
+							<td id="draw-status_kr<%=i%>"> 응모완료 </td>
 						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null){%>
-							<td> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
+							<td id="draw-status_kr<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
 						<%}else if(odto_kr.getOnline_method().contains("드로우") && user == null){%>
-							<td> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
 						<%}else {%>
-							<td> - </td>
+							<td id="draw-status_kr<%=i%>"> - </td>
 						<%}%>
-						</div>
 					</tr>
 					<%
 							}
@@ -252,7 +250,7 @@
 					<h4> [아시아 지역 발매처] </h4>
 					<tr>
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
 						<td style="width:200px;"> 기간 </td>
 						<td style="width:200px;"> 남은시간 </td>
@@ -290,8 +288,17 @@
 						<span id="count_Online_start_time_asia<%=i%>" style="display:none;"> <%=count_Online_start_time_asia%> </span>
 						<td id="final_count_Online_start_time_asia<%=i%>"> </td>
 						
-						<td> <%=odto_asia.getOnline_method()%> / <%=odto_asia.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <span class="tooltip1"> <%=odto_asia.getOnline_method()%> <span class="tooltiptext1"> <%=odto_asia.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_asia.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_asia.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_asia.getBrand_id())){%>
+							<td id="draw-status_asia<%=i%>"> 응모완료 </td>
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_asia<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user == null){%>
+							<td id="draw-status_asia<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else {%>
+							<td id="draw-status_asia<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -306,7 +313,7 @@
 					<h4> [북미 지역 발매처] </h4>
 					<tr>
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
 						<td style="width:200px;"> 기간 </td>
 						<td style="width:200px;"> 남은시간 </td>
@@ -344,8 +351,17 @@
 						<span id="count_Online_start_time_america<%=i%>" style="display:none;"> <%=count_Online_start_time_america%> </span>
 						<td id="final_count_Online_start_time_america<%=i%>"> </td>
 						
-						<td> <%=odto_america.getOnline_method()%> / <%=odto_america.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <span class="tooltip1"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1"> <%=odto_america.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_america.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_america.getBrand_id())){%>
+							<td id="draw-status_america<%=i%>"> 응모완료 </td>
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_america<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user == null){%>
+							<td id="draw-status_america<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else {%>
+							<td id="draw-status_america<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -360,7 +376,7 @@
 					<h4> [유럽 지역 발매처] </h4>
 					<tr>
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
 						<td style="width:200px;"> 기간 </td>
 						<td style="width:200px;"> 남은시간 </td>
@@ -398,8 +414,17 @@
 						<span id="count_Online_start_time_europe<%=i%>" style="display:none;"> <%=count_Online_start_time_europe%> </span>
 						<td id="final_count_Online_start_time_europe<%=i%>"> </td>
 						
-						<td> <%=odto_europe.getOnline_method()%> / <%=odto_europe.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <span class="tooltip1"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1"> <%=odto_europe.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_europe.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_europe.getBrand_id())){%>
+							<td id="draw-status_europe<%=i%>"> 응모완료 </td>
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_europe<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user == null){%>
+							<td id="draw-status_europe<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else {%>
+							<td id="draw-status_europe<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -414,7 +439,7 @@
 					<h4> [기타 지역 발매처] </h4>
 					<tr>
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
 						<td style="width:200px;"> 기간 </td>
 						<td style="width:200px;"> 남은시간 </td>
@@ -452,8 +477,17 @@
 						<span id="count_Online_start_time_etc<%=i%>" style="display:none;"> <%=count_Online_start_time_etc%> </span>
 						<td id="final_count_Online_start_time_etc<%=i%>"> </td>
 						
-						<td> <%=odto_etc.getOnline_method()%> / <%=odto_etc.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <span class="tooltip1"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1"> <%=odto_etc.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_etc.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_etc.getBrand_id())){%>
+							<td id="draw-status_etc<%=i%>"> 응모완료 </td>
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_etc<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user == null){%>
+							<td id="draw-status_etc<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else {%>
+							<td id="draw-status_etc<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -470,7 +504,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-		const countDownTimer = function (id, date) { 
+		const countDownTimer = function (id, date, drawstatus_id) { 
 			var _vDate = new Date(date); // 전달 받은 일자 
 			var _second = 1000; 
 			var _minute = _second * 60; 
@@ -484,6 +518,7 @@
 				if (distDt < 0) { 
 					clearInterval(timer); 
 					document.getElementById(id).textContent = '응모종료'; 
+					document.getElementById(drawstatus_id).textContent = '-';
 					return; 
 				} 
 				var days = Math.floor(distDt / _day); 
@@ -517,7 +552,7 @@
 		//onLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_kr.length; i++) {		
 			var count_span = document.getElementById("count_Online_start_time_kr"+i).innerText;
-			countDownTimer('final_count_Online_start_time_kr'+i, count_span);
+			countDownTimer('final_count_Online_start_time_kr'+i, count_span, 'draw-status_kr'+i);
 		}
 		
 		//온라인 아시아 리스트
@@ -528,7 +563,7 @@
 		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_asia.length; i++) {		
 			var count_span = document.getElementById("count_Online_start_time_asia"+i).innerText;
-			countDownTimer('final_count_Online_start_time_asia'+i, count_span);
+			countDownTimer('final_count_Online_start_time_asia'+i, count_span, 'draw-status_asia'+i);
 		}
 		
 		//온라인 아메리카 리스트
@@ -539,7 +574,7 @@
 		//onLineList_america 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_america.length; i++) {		
 			var count_span = document.getElementById("count_Online_start_time_america"+i).innerText;
-			countDownTimer('final_count_Online_start_time_america'+i, count_span);
+			countDownTimer('final_count_Online_start_time_america'+i, count_span, 'draw-status_america'+i);
 		}
 		
 		//온라인 유럽 리스트
@@ -550,7 +585,7 @@
 		//onLineList_europe 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_europe.length; i++) {		
 			var count_span = document.getElementById("count_Online_start_time_europe"+i).innerText;
-			countDownTimer('final_count_Online_start_time_europe'+i, count_span);
+			countDownTimer('final_count_Online_start_time_europe'+i, count_span, 'draw-status_europe'+i);
 		}
 		
 		//온라인 기타지역 리스트
@@ -561,7 +596,7 @@
 		//onLineList_etc 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_etc.length; i++) {		
 			var count_span = document.getElementById("count_Online_start_time_etc"+i).innerText;
-			countDownTimer('final_count_Online_start_time_etc'+i, count_span);
+			countDownTimer('final_count_Online_start_time_etc'+i, count_span, 'draw-status_etc'+i);
 		}
 	});
 	

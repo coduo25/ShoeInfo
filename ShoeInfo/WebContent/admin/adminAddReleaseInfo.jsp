@@ -46,14 +46,14 @@
 							<td rowspan="2"> 브랜드* </td>
 							<td> 
 								나라 선택
-								<select id="country_name" name="country_name">
+								<select id="country_name_off" name="country_name">
 									<option value="default"> 나라를 선택해주세요 </option>
 									<% for(int i=0;i<countryList_bybrand.size();i++) { BrandDTO bdto = countryList_bybrand.get(i); %><option value="<%=bdto.getCountry_name()%>"> <%=bdto.getCountry_name()%> </option><%}%>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<td id="brand_name_offline"> 
+							<td id="brand_name_off"> 
 							</td>
 						</tr>
 						<tr>
@@ -84,7 +84,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 추가설명 </td>
+							<td> 특이사항 </td>
 							<td> <textarea name="description"></textarea>
 						</tr>
 						<tr>
@@ -114,14 +114,14 @@
 							<td rowspan="2"> 브랜드* </td>
 							<td> 
 								나라 선택
-								<select id="country_name" name="country_name">
+								<select id="country_name_on" name="country_name">
 									<option value="default"> 나라를 선택해주세요 </option>
 									<% for(int i=0;i<countryList_bybrand.size();i++) { BrandDTO bdto = countryList_bybrand.get(i); %><option value="<%=bdto.getCountry_name()%>"> <%=bdto.getCountry_name()%> </option><%}%>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<td id="brand_name_online"> 
+							<td id="brand_name_on"> 
 								
 							</td>
 						</tr>
@@ -143,9 +143,20 @@
 								<select name="online_method">
 									<option value="default"> 온라인 방식을 선택해주세요. </option>
 									<option value="선착"> 선착 </option>
-									<option value="드로우"> 드로우(당첨후 결제) </option>
-									<option value="드로우(당첨전 선결제)"> 드로우(당첨전 선결제) </option>
-									<option value="드로우(드로우당첨자간 선착순 구매)"> 드로우(당첨자간 선착순 구매) </option>
+									<option value="드로우"> 드로우 </option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td> 구매 방식 </td>
+							<td>
+								<select name="buy_method">
+									<option value="default"> 구매 방식을 선택해주세요. </option>
+									<option value="선착순 구매"> 선착순 구매 </option>
+									<option value="당첨 후 결제"> 당첨 후 결제 </option>
+									<option value="당첨전 선결제"> 당첨 전 선결제 </option>
+									<option value="당첨자간 선착순 구매"> 당첨자간 선착순 구매 </option> 
+									<option value="-"> - </optino>
 								</select>
 							</td>
 						</tr>
@@ -159,6 +170,10 @@
 									<option value="-"> - </option>
 								</select>
 							</td>
+						</tr>
+						<tr>
+							<td> 특이사항 </td>
+							<td> <textarea name="description"></textarea>
 						</tr>
 						<tr>
 							<td colspan="2"> 
@@ -268,16 +283,30 @@
 <script type="text/javascript">
 	//jquery 구문
 	$(document).ready(function(){
-		$('#country_name').change(function() {
-			//나라 항목들을 모두 선택하게 되면 브랜드 항목들 불러오는 함수 호출
+		//오프라인 나라 항목을 선택했을시 브랜드 호출하는 함수
+		$('#country_name_off').change(function() {
 			$.ajax({
 				type:'get',
 				url:'/ShoeInfo/admin/searchBrandAjax.jsp',
-				data:'country_name='+$("#country_name").val(),
+				data:'country_name='+$("#country_name_off").val(),
 				dataType:"html",
 				success:function(data){
-					$('#brand_name_offline').html(data);
-					$('#brand_name_online').html(data);
+					$('#brand_name_off').html(data);
+				},error:function(request,status,error){
+					 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
+	    });
+		
+		$('#country_name_on').change(function() {
+			//온라인 나라 항목을 선택했을시 브랜드 호출하는 함수
+			$.ajax({
+				type:'get',
+				url:'/ShoeInfo/admin/searchBrandAjax.jsp',
+				data:'country_name='+$("#country_name_on").val(),
+				dataType:"html",
+				success:function(data){
+					$('#brand_name_on').html(data);
 				},error:function(request,status,error){
 					 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 				}

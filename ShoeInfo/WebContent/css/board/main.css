@@ -45,6 +45,12 @@ body {font-size:1em; line-weight:1.4}
 #brandlogo_img {border: 1px solid #ECEBEB;}
 #country_flag_img {border: 1px solid #D9D9D9;}
 
+.tooltip1, .tooltip2 { position: relative; display: inline-block; border-bottom: 1px dotted black; }
+.tooltip1 .tooltiptext1 { visibility: hidden; width: 150px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: 20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; } 
+.tooltip2 .tooltiptext2 { visibility: hidden; width: 200px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: -20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; }
+.tooltip1 .tooltiptext1::after, .tooltip2 .tooltiptext2::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent; }
+.tooltip1:hover .tooltiptext1, .tooltip2:hover .tooltiptext2 { visibility: visible; opacity: 1; }
+
 
 
 

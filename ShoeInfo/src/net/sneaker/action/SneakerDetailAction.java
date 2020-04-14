@@ -29,6 +29,9 @@ public class SneakerDetailAction implements Action{
 		//넘어온 값 저장(model_stylecode)
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		
+		/******************************************************
+		 * 사용자 응모한 브랜드 리스트 만들기
+		 ******************************************************/
 		MemberDAO mdao = new MemberDAO();
 		ArrayList<String> userDrawBrandList = mdao.searchDrawBrandInfo(user, model_stylecode);
 		//request에 저장

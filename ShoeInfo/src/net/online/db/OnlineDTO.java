@@ -12,7 +12,9 @@ public class OnlineDTO {
 	private String online_end_time;
 	private String online_result_time;
 	private String online_method;
+	private String buy_method;
 	private String delivery_method;
+	private String description;
 	
 	public int getOnline_num() {
 		return online_num;
@@ -74,10 +76,22 @@ public class OnlineDTO {
 	public void setOnline_method(String online_method) {
 		this.online_method = online_method;
 	}
+	public String getBuy_method() {
+		return buy_method;
+	}
+	public void setBuy_method(String buy_method) {
+		this.buy_method = buy_method;
+	}
 	public String getDelivery_method() {
 		return delivery_method;
 	}
 	public void setDelivery_method(String delivery_method) {
 		this.delivery_method = delivery_method;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

@@ -51,7 +51,7 @@ public class OnlineDAO {
 			if(rs.next()){
 				online_num = rs.getInt(1) + 1;
 			}
-			sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, online_num);
 			pstmt.setString(2, odto.getModel_stylecode());
@@ -63,7 +63,9 @@ public class OnlineDAO {
 			pstmt.setString(8, odto.getOnline_end_time());
 			pstmt.setString(9, odto.getOnline_result_time());
 			pstmt.setString(10, odto.getOnline_method());
-			pstmt.setString(11, odto.getDelivery_method());
+			pstmt.setString(11, odto.getBuy_method());
+			pstmt.setString(12, odto.getDelivery_method());
+			pstmt.setString(13, odto.getDescription());	
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,7 +107,9 @@ public class OnlineDAO {
 				odto.setOnline_end_time(rs.getString("online_end_time"));
 				odto.setOnline_result_time(rs.getString("online_result_time"));
 				odto.setOnline_method(rs.getString("online_method"));
+				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
+				odto.setDescription(rs.getString("description"));
 				onlineInfoList_kr.add(odto);
 				
 				//한국 브랜드 정보 가져오기
@@ -174,7 +178,9 @@ public class OnlineDAO {
 				odto.setOnline_end_time(rs.getString("online_end_time"));
 				odto.setOnline_result_time(rs.getString("online_result_time"));
 				odto.setOnline_method(rs.getString("online_method"));
+				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
+				odto.setDescription(rs.getString("description"));
 				onlineInfoList_asia.add(odto);
 				
 				//아시아 브랜드 정보 가져오기
@@ -240,7 +246,9 @@ public class OnlineDAO {
 				odto.setOnline_end_time(rs.getString("online_end_time"));
 				odto.setOnline_result_time(rs.getString("online_result_time"));
 				odto.setOnline_method(rs.getString("online_method"));
+				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
+				odto.setDescription(rs.getString("description"));
 				onlineInfoList.add(odto);
 				
 				//아메리카 브랜드 정보 가져오기
