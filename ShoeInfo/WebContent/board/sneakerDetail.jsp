@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberDrawDTO"%>
 <%@page import="net.offline.db.OfflineDTO"%>
 <%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.util.Date"%>
@@ -28,9 +29,14 @@
 	<%
 		//로그인한 사용자가 체크
 		String user = (String) session.getAttribute("id");
+		
+		//사용자 응모 정보 리스트
+		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
 	
+		//신발 기본 정보 리스트
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
 	
+		//브랜드 정보 리스트
 		// ---------- 오프라인 정보 -----------
 		List<OfflineDTO> offLineList_kr = (List<OfflineDTO>) request.getAttribute("offLineList_kr");
 		List<BrandDTO> brandList_off_kr = (List<BrandDTO>) request.getAttribute("brandList_off_kr");
@@ -125,10 +131,11 @@
 						<h4> [오프라인 발매처]</h4>
 						<tr>
 							<td style="width:50px;"> </td>
-							<td style="width:150px;"> </td>
-							<td style="width:200px;"> 기간 </td>
+							<td style="width:180px;"> </td>
+							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
+							<td style="width:60px;"> 정보 </td>
 						</tr>
 					<%
 						if(offLineList_kr.isEmpty()){
@@ -161,6 +168,11 @@
 						<td id="final_count_Offline_start_time<%=i%>"> </td>
 						
 						<td> <%=ofdto_kr.getOffline_method()%> </td>
+						<% if(ofdto_kr.getOffline_link().equals("")) {%>
+							<td> - </td>
+						<%} else {%>
+							<td> <a href="<%=ofdto_kr.getOffline_link()%>">보기</a> </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -178,7 +190,7 @@
 							<td style="width:50px;"> </td>
 							<td style="width:150px;"> </td>
 							<td style="width:30px;"> </td>
-							<td style="width:200px;"> 기간 </td>
+							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
 							<td style="width:60px;"> 응모여부 </td>
@@ -215,24 +227,17 @@
 						<td id="final_count_Online_start_time_kr<%=i%>"> </td>
 						
 						<td> <%=odto_kr.getOnline_method()%> </td>
-						<%
-							if(odto_kr.getOnline_method().contains("드로우") && user != null){
-						%>
-							<input id="model_stylecode<%=i%>" type="hidden" value="<%=odto_kr.getModel_stylecode()%>">
-							<input id="brand_id<%=i%>" type="hidden" value="<%=odto_kr.getBrand_id() %>">
-							<input id="user<%=i%>" type="hidden" value="<%=user%>">
-							<td id="draw_status<%=i%>"> </td>
-						<%
-							}else if(odto_kr.getOnline_method().contains("드로우") && user == null){
-						%>
-							<td> 로그인을 해주세요. </td>
-						<%
-							}else {
-						%>
+						<div id="draw-status">
+						<%if(odto_kr.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_kr.getBrand_id())){%>
+							<td> 응모완료 </td>
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null){%>
+							<td> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user == null){%>
+							<td> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else {%>
 							<td> - </td>
-						<%
-							}
-						%>
+						<%}%>
+						</div>
 					</tr>
 					<%
 							}
@@ -298,7 +303,7 @@
 				<br>
 				<br>
 				<table id="sneakerOnlineInfo_table" border="0">
-					<h4> [아메리카 지역 발매처] </h4>
+					<h4> [북미 지역 발매처] </h4>
 					<tr>
 						<td style="width:50px;"> </td>
 						<td style="width:150px;"> </td>
@@ -558,27 +563,6 @@
 			var count_span = document.getElementById("count_Online_start_time_etc"+i).innerText;
 			countDownTimer('final_count_Online_start_time_etc'+i, count_span);
 		}
-		
-		
-		for(var i=0; i<onLineList_kr.length;i++) {
-			var model_stylecode = $("#model_stylecode"+i).val();
-			var brand_id = $("#brand_id"+i).val();
-			var user = $("#user"+i).val();
-			alert(user);
-			$.ajax({
-				type:'get',
-				url:'/ShoeInfo/board/searchUserDrawInfo.jsp',
-				data:'model_stylecode='+model_stylecode +'&brand_id='+brand_id+'&user='+user,
-				dataType:"html",
-				success:function(data){
-					alert(i);
-					$("#draw_status"+i).html(data);
-				},error:function(request,status,error){
-					 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-				}
-			});
-		}
-		
 	});
 	
 	

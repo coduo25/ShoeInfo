@@ -5,8 +5,11 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.brand.db.BrandDTO;
+import net.member.db.MemberDAO;
+import net.member.db.MemberDrawDTO;
 import net.offline.db.OfflineDAO;
 import net.offline.db.OfflineDTO;
 import net.online.db.OnlineDAO;
@@ -19,16 +22,24 @@ public class SneakerDetailAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		//아이디값 저장
+		HttpSession session = request.getSession();
+		String user = (String) session.getAttribute("id");
+		
 		//넘어온 값 저장(model_stylecode)
 		String model_stylecode = (String) request.getParameter("model_stylecode");
+		
+		MemberDAO mdao = new MemberDAO();
+		ArrayList<String> userDrawBrandList = mdao.searchDrawBrandInfo(user, model_stylecode);
+		//request에 저장
+		request.setAttribute("userDrawBrandList", userDrawBrandList);
 		
 		/******************************************************
 		 * 신발 기본 정보 리스트 만들기
 		 ******************************************************/
 		SneakerDAO sdao = new SneakerDAO();
 		SneakerDTO sdto = sdao.getSneakerDetail(model_stylecode);
-		
-		//DB에서 가져온 값 request영역에 저장
+		//request에 저장
 		request.setAttribute("sneakerDetail", sdto);
 		
 		/******************************************************

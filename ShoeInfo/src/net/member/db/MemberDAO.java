@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -121,28 +122,25 @@ public class MemberDAO {
 		}
 	}
 	
-	//사용자의 응모 정보가 있는지 없는지 체크하는 함수
-	public int searchDrawInfo(MemberDrawDTO mddto) {
-		int check = 0;
+	//사용자의 응모 정보 불러오는 함수
+	public ArrayList<String> searchDrawBrandInfo(String user, String model_stylecode) {
+		ArrayList<String> userDrawBrandList = new ArrayList();
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_memberdrawinfo where member_id = ? AND model_stylecode = ? AND brand_id = ?";
+			sql = "select distinct brand_id from shoeinfo_memberdrawinfo where member_id = ? AND model_stylecode = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mddto.getMember_id());
-			pstmt.setString(2, mddto.getModel_stylecode());
-			pstmt.setString(3, mddto.getBrand_id());
+			pstmt.setString(1, user);
+			pstmt.setString(2, model_stylecode);
 			rs = pstmt.executeQuery();
-			if(rs.next()){
-				check = 1;
-			}else {
-				check = 0;
+			while(rs.next()){
+				userDrawBrandList.add(rs.getString("brand_id"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		return check;
+		return userDrawBrandList;
 	}
 	
 
