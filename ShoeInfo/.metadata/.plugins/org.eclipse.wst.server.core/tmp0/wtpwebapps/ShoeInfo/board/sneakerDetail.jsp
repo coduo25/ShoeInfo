@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberDrawDTO"%>
 <%@page import="net.offline.db.OfflineDTO"%>
 <%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.util.Date"%>
@@ -9,6 +10,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +27,19 @@
 
 	<!-- Main Content -->
 	<%
+		//로그인한 사용자가 체크
+		String user = (String) session.getAttribute("id");
+		if(user == null){
+			user = "";
+		}
+		
+		//사용자 응모한 브랜드 리스트
+		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
+	
+		//신발 기본 정보 리스트
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
 	
+		//브랜드 정보 리스트
 		// ---------- 오프라인 정보 -----------
 		List<OfflineDTO> offLineList_kr = (List<OfflineDTO>) request.getAttribute("offLineList_kr");
 		List<BrandDTO> brandList_off_kr = (List<BrandDTO>) request.getAttribute("brandList_off_kr");
@@ -54,7 +67,7 @@
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
-		SimpleDateFormat new_format = new SimpleDateFormat("MM/dd HH:mm");
+		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 	%>
 	<div id="wrapper" class="container">
@@ -65,66 +78,52 @@
 		</div>
 		<!-- content -->
 		<div id="content_sneakerDetail">
-			<table id="sneaker_Detail" border="0">
-				<tr> 
-					<td colspan="3"> 
+			<!-- 신발 기본 정보 -->
+			<table id="sneaker_Detail">
+				<tr>
+					<td> 
 						<div class="sneaker_image"> 
 							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 						</div>
 					</td>
 					<td class="detail_table">
+						<%	//관리자 권한일때 제품 기본정보 수정하는 페이지로 가는 버튼
+							if(user.equals("admin")){
+						%>
+							<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
+						<%}%>
 						<!-- 신발 이름 -->
 						<div class="sneaker_name">
 							<span> <%=sdto.getModel_name() %></span>
 						</div>
-						<!-- colorway -->
-						<div class="sneaker_colorway">
-							<span> <%=sdto.getModel_colorway() %></span>
-						</div>
 						<!-- stylecode -->
-						<div class="sneaker_stylecode">
-							<span> <%=sdto.getModel_stylecode() %></span>
+						<div class="sneaker_option_info">
+							스타일코드 : <span> <%=sdto.getModel_stylecode() %></span>
 						</div>
 						<!-- price -->
-						<div class="sneaker_price">
-							<span> $<%=sdto.getPrice() %></span>
+						<div class="sneaker_option_info">
+							가격 : <span> $<%=sdto.getPrice() %></span>
 						</div>
 						<!-- relase_date -->
-						<div class="sneaker_release_date">
-							<span> <%=sdto.getRelease_date() %></span>
+						<div class="sneaker_option_info">
+							발매일(한국기준) : <span> <%=sdto.getRelease_date() %></span>
 						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td> 
-						<div class="sneaker_image2"> 
-							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
-						</div> 
-					</td>
-					<td> 
-						<div class="sneaker_image2"> 
-							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[1]%>">
-						</div> 
-					</td>
-					<td> 
-						<div class="sneaker_image2"> 
-							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[2]%>">
-						</div> 
 					</td>
 				</tr>
 			</table>
+			
 			<!-- 신발 온라인/오프라인 정보 -->
-			<div id="content_sneakerOnlineInfo">
+			<div id="content_sneakerInfo">
 				<!-- 오프라인 테이블 -->
-				<table id="sneakerOfflineInfo_table" border="0">
+				<table id="sneakerOfflineInfo_table">
 						<h4> [오프라인 발매처]</h4>
-						<tr>
+						<tr class="ta_release_info">
 							<td style="width:50px;"> </td>
-							<td style="width:150px;"> </td>
-							<td style="width:200px;"> 기간 </td>
+							<td style="width:130px;"> </td>
+							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
+							<td style="width:60px;"> 정보 </td>
 						</tr>
 					<%
 						if(offLineList_kr.isEmpty()){
@@ -137,21 +136,31 @@
 							OfflineDTO ofdto_kr = (OfflineDTO) offLineList_kr.get(i);
 							BrandDTO bdto_kr = (BrandDTO) brandList_off_kr.get(i);
 							
-							Date original_Offline_start_time_date = original_format.parse(ofdto_kr.getOffline_start_time());
-							String new_Offline_start_time_date = new_format.format(original_Offline_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Offline_start_time = original_format.parse(ofdto_kr.getOffline_start_time());
+							Date original_Offline_end_time = original_format.parse(ofdto_kr.getOffline_end_time());
+							// 04/18 10:00
+							String new_Offline_start_time = new_format.format(original_Offline_start_time);
+							String new_Offline_end_time = new_format.format(original_Offline_end_time);
 							
-							Date original_Offline_end_time_date = original_format.parse(ofdto_kr.getOffline_end_time());
-							String new_Offline_end_time_date = new_format.format(original_Offline_end_time_date);
+							// 04/18/2020 10:00
+							String count_Offline_start_time = count_format.format(original_Offline_start_time);
 					%>
 					<tr>
 						<td> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=ofdto_kr.getOffline_location()%> <%=bdto_kr.getBrand_name()%> </a> </td>
-						<td> <span id="offline_start_time_date"> <%=new_Offline_start_time_date%> </span> ~ <%=new_Offline_end_time_date%> </td>
+						<td> <span id="offline_start_time"> <%=new_Offline_start_time%> </span> ~ <%=new_Offline_end_time%> </td>
 						
-						<span id="new_count_start_time_date" style="display:none;"> - </span>
-						<td id="final_new_count_start_time_date"> </td>
+						<span id="count_Offline_start_time<%=i%>" style="display:none;"> <%=count_Offline_start_time%> </span>
+						<td id="final_count_Offline_start_time<%=i%>"> </td>
 						
 						<td> <%=ofdto_kr.getOffline_method()%> </td>
+						<% if(ofdto_kr.getOffline_link().equals("")) {%>
+							<td> - </td>
+						<%} else {%>
+							<td> <a href="<%=ofdto_kr.getOffline_link()%>">보기</a> </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -163,16 +172,16 @@
 				<br>
 				<br>
 				<!-- 온라인 테이블 -->
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 						<h4> [한국 온라인 발매처] </h4>
-						<tr>
+						<tr class="ta_release_info">
 							<td style="width:50px;"> </td>
-							<td style="width:150px;"> </td>
+							<td style="width:100px;"> </td>
 							<td style="width:30px;"> </td>
-							<td style="width:200px;"> 기간 </td>
+							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
-							<td style="width:60px;"> 응모여부 </td>
+							<td style="width:60px;"> 응모체크 </td>
 						</tr>
 					<%
 						if(onlineList_kr.isEmpty()){
@@ -185,38 +194,36 @@
 							OnlineDTO odto_kr = (OnlineDTO) onlineList_kr.get(i);
 							BrandDTO bdto_kr = (BrandDTO) brandList_kr.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_kr.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_kr = original_format.parse(odto_kr.getOnline_start_time());
+							Date original_Online_end_time_kr = original_format.parse(odto_kr.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_kr = new_format.format(original_Online_start_time_kr);
+							String new_Online_end_time_kr = new_format.format(original_Online_end_time_kr);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_kr.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);
-							
-							//새로운 카운트 다운 값
-							String new_count_start_time_date = count_format.format(original_Online_start_time_date);
+							// 04/18/2020 10:00
+							String count_Online_start_time_kr = count_format.format(original_Online_start_time_kr);
 					%>
 					<tr>
 						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <span id="online_start_time_date"> <%=new_Online_start_time_date%> </span> ~ <%=new_Online_end_time_date%> </td>
+						<td> <span id="online_start_time_date"><%= new_Online_start_time_kr%></span> ~ <%=new_Online_end_time_kr%> </td>
 						
-						<span id="new_count_start_time_date" style="display:none;"> <%= new_count_start_time_date %> </span>
-						<td id="final_new_count_start_time_date"> </td>
+						<span id="count_Online_start_time_kr<%=i%>" style="display:none;"> <%=count_Online_start_time_kr%> </span>
+						<td id="final_count_Online_start_time_kr<%=i%>"> </td>
 						
 						<td> <%=odto_kr.getOnline_method()%> </td>
-						<%
-							if(odto_kr.getOnline_method().contains("드로우")){
-						%>
-							<form action="" method="get">
-								<td> <input type="button" value="응모하기"> </td>
-							</form>
-						<%
-							}else{
-						%>
-							<td> - </td>
-						<%
-							}
-						%>
+						<%if(odto_kr.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_kr.getBrand_id())){%>
+							<td id="draw-status_kr<%=i%>"> 응모완료 </td>
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user.equals("")){%>
+							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_kr<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<%}else {%>
+							<td id="draw-status_kr<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -227,16 +234,16 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 					<h4> [아시아 지역 발매처] </h4>
-					<tr>
+					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;"> 기간 </td>
+						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_asia.isEmpty()){
@@ -249,20 +256,37 @@
 							OnlineDTO odto_asia = (OnlineDTO) onlineList_asia.get(i);
 							BrandDTO bdto_asia = (BrandDTO) brandList_asia.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_asia.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_asia = original_format.parse(odto_asia.getOnline_start_time());
+							Date original_Online_end_time_asia = original_format.parse(odto_asia.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_asia = new_format.format(original_Online_start_time_asia);
+							String new_Online_end_time_asia = new_format.format(original_Online_end_time_asia);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_asia.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);
+							// 04/18/2020 10:00
+							String count_Online_start_time_asia = count_format.format(original_Online_start_time_asia);
 					%>
 					<tr>
 						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <%=bdto_asia.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_asia.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_date%> ~ <%=new_Online_end_time_date%> </td>
-						<td> - </td>
-						<td> <%=odto_asia.getOnline_method()%> / <%=odto_asia.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <%=new_Online_start_time_asia%> ~ <%=new_Online_end_time_asia%> </td>
+						
+						<span id="count_Online_start_time_asia<%=i%>" style="display:none;"> <%=count_Online_start_time_asia%> </span>
+						<td id="final_count_Online_start_time_asia<%=i%>"> </td>
+						
+						<td> <span class="tooltip1"> <%=odto_asia.getOnline_method()%> <span class="tooltiptext1"> <%=odto_asia.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_asia.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_asia.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_asia.getBrand_id())){%>
+							<td id="draw-status_asia<%=i%>"> 응모완료 </td>
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user.equals("")){%>
+							<td id="draw-status_asia<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_asia<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<%}else {%>
+							<td id="draw-status_asia<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -273,16 +297,16 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
-					<h4> [아메리카 지역 발매처] </h4>
-					<tr>
+				<table id="sneakerOnlineInfo_table">
+					<h4> [북미 지역 발매처] </h4>
+					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;"> 기간 </td>
+						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_america.isEmpty()){
@@ -295,20 +319,37 @@
 							OnlineDTO odto_america = (OnlineDTO) onlineList_america.get(i);
 							BrandDTO bdto_america = (BrandDTO) brandList_america.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_america.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_america = original_format.parse(odto_america.getOnline_start_time());
+							Date original_Online_end_time_america = original_format.parse(odto_america.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_america = new_format.format(original_Online_start_time_america);
+							String new_Online_end_time_america = new_format.format(original_Online_end_time_america);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_america.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);
+							// 04/18/2020 10:00
+							String count_Online_start_time_america = count_format.format(original_Online_start_time_america);
 					%>
 					<tr>
 						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_america.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <%=bdto_america.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_america.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_date%> ~ <%=new_Online_end_time_date%> </td>
-						<td> - </td>
-						<td> <%=odto_america.getOnline_method()%> / <%=odto_america.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <%=new_Online_start_time_america%> ~ <%=new_Online_end_time_america%> </td>
+						
+						<span id="count_Online_start_time_america<%=i%>" style="display:none;"> <%=count_Online_start_time_america%> </span>
+						<td id="final_count_Online_start_time_america<%=i%>"> </td>
+						
+						<td> <span class="tooltip1"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1"> <%=odto_america.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_america.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_america.getBrand_id())){%>
+							<td id="draw-status_america<%=i%>"> 응모완료 </td>
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user.equals("")){%>
+							<td id="draw-status_america<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_america<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<%}else {%>
+							<td id="draw-status_america<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -319,16 +360,16 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
-					<h4> [유럽 	지역 발매처] </h4>
-					<tr>
+				<table id="sneakerOnlineInfo_table">
+					<h4> [유럽 지역 발매처] </h4>
+					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;"> 기간 </td>
+						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_europe.isEmpty()){
@@ -337,24 +378,41 @@
 							<td colspan="7"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
-						for(int j=0; j<onlineList_europe.size();j++){
-							OnlineDTO odto_europe = (OnlineDTO) onlineList_europe.get(j);
-							BrandDTO bdto_europe = (BrandDTO) brandList_europe.get(j);
+						for(int i=0; i<onlineList_europe.size();i++){
+							OnlineDTO odto_europe = (OnlineDTO) onlineList_europe.get(i);
+							BrandDTO bdto_europe = (BrandDTO) brandList_europe.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_europe.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_europe = original_format.parse(odto_europe.getOnline_start_time());
+							Date original_Online_end_time_europe = original_format.parse(odto_europe.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_europe = new_format.format(original_Online_start_time_europe);
+							String new_Online_end_time_europe = new_format.format(original_Online_end_time_europe);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_europe.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);
+							// 04/18/2020 10:00
+							String count_Online_start_time_europe = count_format.format(original_Online_start_time_europe);
 					%>
 					<tr>
 						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_europe.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <%=bdto_europe.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_europe.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_date%> ~ <%=new_Online_end_time_date%> </td>
-						<td> - </td>
-						<td> <%=odto_europe.getOnline_method()%> / <%=odto_europe.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <%=new_Online_start_time_europe%> ~ <%=new_Online_end_time_europe%> </td>
+						
+						<span id="count_Online_start_time_europe<%=i%>" style="display:none;"> <%=count_Online_start_time_europe%> </span>
+						<td id="final_count_Online_start_time_europe<%=i%>"> </td>
+						
+						<td> <span class="tooltip1"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1"> <%=odto_europe.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_europe.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_europe.getBrand_id())){%>
+							<td id="draw-status_europe<%=i%>"> 응모완료 </td>
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user.equals("")){%>
+							<td id="draw-status_europe<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_europe<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<%}else {%>
+							<td id="draw-status_europe<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -365,16 +423,16 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 					<h4> [기타 지역 발매처] </h4>
-					<tr>
+					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>
-						<td style="width:150px;"> </td>
+						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;"> 기간 </td>
+						<td style="width:200px;">  </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_etc.isEmpty()){
@@ -383,24 +441,41 @@
 							<td colspan="7"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
-						for(int j=0; j<onlineList_etc.size();j++){
-							OnlineDTO odto_etc = (OnlineDTO) onlineList_etc.get(j);
-							BrandDTO bdto_etc = (BrandDTO) brandList_etc.get(j);
+						for(int i=0; i<onlineList_etc.size();i++){
+							OnlineDTO odto_etc = (OnlineDTO) onlineList_etc.get(i);
+							BrandDTO bdto_etc = (BrandDTO) brandList_etc.get(i);
 							
-							Date original_Online_start_time_date = original_format.parse(odto_etc.getOnline_start_time());
-							String new_Online_start_time_date = new_format.format(original_Online_start_time_date);
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time_etc = original_format.parse(odto_etc.getOnline_start_time());
+							Date original_Online_end_time_etc = original_format.parse(odto_etc.getOnline_end_time());
+							// 04/18 10:00
+							String new_Online_start_time_etc = new_format.format(original_Online_start_time_etc);
+							String new_Online_end_time_etc = new_format.format(original_Online_end_time_etc);
 							
-							Date original_Online_end_time_date = original_format.parse(odto_etc.getOnline_end_time());
-							String new_Online_end_time_date = new_format.format(original_Online_end_time_date);	
+							// 04/18/2020 10:00
+							String count_Online_start_time_etc = count_format.format(original_Online_start_time_etc);
 					%>
 					<tr>
 						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_etc.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <%=bdto_etc.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_etc.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_date%> ~ <%=new_Online_end_time_date%> </td>
-						<td>  </td>
-						<td> <%=odto_etc.getOnline_method()%> / <%=odto_etc.getDelivery_method()%> </td>
-						<td> - </td>
+						<td> <%=new_Online_start_time_etc%> ~ <%=new_Online_end_time_etc%> </td>
+						
+						<span id="count_Online_start_time_etc<%=i%>" style="display:none;"> <%=count_Online_start_time_etc%> </span>
+						<td id="final_count_Online_start_time_etc<%=i%>"> </td>
+						
+						<td> <span class="tooltip1"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1"> <%=odto_etc.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span></span> </td>
+						
+						<%if(odto_etc.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_etc.getBrand_id())){%>
+							<td id="draw-status_etc<%=i%>"> 응모완료 </td>
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user.equals("")){%>
+							<td id="draw-status_etc<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_etc<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<%}else {%>
+							<td id="draw-status_etc<%=i%>"> - </td>
+						<%}%>
 					</tr>
 					<%
 							}
@@ -417,7 +492,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-		const countDownTimer = function (id, date) { 
+		const countDownTimer = function (id, date, drawstatus_id) { 
 			var _vDate = new Date(date); // 전달 받은 일자 
 			var _second = 1000; 
 			var _minute = _second * 60; 
@@ -430,31 +505,90 @@
 				var distDt = _vDate - now; 
 				if (distDt < 0) { 
 					clearInterval(timer); 
-					document.getElementById(id).textContent = '해당 응모가 종료 되었습니다!'; 
+					document.getElementById(id).textContent = '응모종료'; 
+					document.getElementById(drawstatus_id).textContent = '-';
 					return; 
 				} 
-			
 				var days = Math.floor(distDt / _day); 
 				var hours = Math.floor((distDt % _day) / _hour); 
 				var minutes = Math.floor((distDt % _hour) / _minute); 
-				var seconds = Math.floor((distDt % _minute) / _second); 
-				
-				//document.getElementById(id).textContent = date.toLocaleString() + "까지 : "; 
+				var seconds = Math.floor((distDt % _minute) / _second); 		
 				document.getElementById(id).textContent = days + '일 '; 
 				document.getElementById(id).textContent += hours + '시간 '; 
 				document.getElementById(id).textContent += minutes + '분 '; 
 				document.getElementById(id).textContent += seconds + '초'; 
 			} 
-			
 			timer = setInterval(showRemaining, 1000); 
-		} 
-		// 2024년 4월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용한다. 
-		//countDownTimer('sample02', '04/01/2024 00:00 AM'); 
-		//countDownTimer('sample03', '04/01/2024'); // 2024년 4월 1일까지 
+		}
 		
-		//var count_span = document.getElementById("new_count_start_time_date").innerText;
-		//countDownTimer('final_new_count_start_time_date', count_span);	
+		//오프라인 한국 리스트
+		var offLineList_kr = [];
+		<c:forEach items="${offLineList_kr}" var="offLineList_kr">
+			offLineList_kr.push("${offLineList_kr}");
+		</c:forEach>
+		//offLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<offLineList_kr.length; i++) {		
+			var count_span = document.getElementById("count_Offline_start_time"+i).innerText;
+			countDownTimer('final_count_Offline_start_time'+i, count_span);
+		}
+		
+		//온라인 한국 리스트
+		var onLineList_kr = [];
+		<c:forEach items="${onlineList_kr}" var="onLineList_kr">
+			onLineList_kr.push("${onLineList_kr}");
+		</c:forEach>
+		//onLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_kr.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_kr"+i).innerText;
+			countDownTimer('final_count_Online_start_time_kr'+i, count_span, 'draw-status_kr'+i);
+		}
+		
+		//온라인 아시아 리스트
+		var onLineList_asia = [];
+		<c:forEach items="${onlineList_asia}" var="onLineList_asia">
+			onLineList_asia.push("${onLineList_asia}");
+		</c:forEach>
+		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_asia.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_asia"+i).innerText;
+			countDownTimer('final_count_Online_start_time_asia'+i, count_span, 'draw-status_asia'+i);
+		}
+		
+		//온라인 아메리카 리스트
+		var onLineList_america = [];
+		<c:forEach items="${onlineList_america}" var="onLineList_america">
+			onLineList_america.push("${onLineList_america}");
+		</c:forEach>
+		//onLineList_america 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_america.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_america"+i).innerText;
+			countDownTimer('final_count_Online_start_time_america'+i, count_span, 'draw-status_america'+i);
+		}
+		
+		//온라인 유럽 리스트
+		var onLineList_europe = [];
+		<c:forEach items="${onlineList_europe}" var="onLineList_europe">
+			onLineList_europe.push("${onLineList_europe}");
+		</c:forEach>
+		//onLineList_europe 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_europe.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_europe"+i).innerText;
+			countDownTimer('final_count_Online_start_time_europe'+i, count_span, 'draw-status_europe'+i);
+		}
+		
+		//온라인 기타지역 리스트
+		var onLineList_etc = [];
+		<c:forEach items="${onlineList_etc}" var="onLineList_etc">
+			onLineList_etc.push("${onLineList_etc}");
+		</c:forEach>
+		//onLineList_etc 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
+		for(var i=0; i<onLineList_etc.length; i++) {		
+			var count_span = document.getElementById("count_Online_start_time_etc"+i).innerText;
+			countDownTimer('final_count_Online_start_time_etc'+i, count_span, 'draw-status_etc'+i);
+		}
 	});
+	
+	
 
 </script>
 </html>

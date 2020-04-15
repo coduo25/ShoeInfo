@@ -12,7 +12,7 @@
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body>	
 	<%
 		List<SneakerDTO> sneakerList1 = (List<SneakerDTO>) request.getAttribute("sneakerList1");
 		List<SneakerDTO> sneakerList2 = (List<SneakerDTO>) request.getAttribute("sneakerList2");
@@ -28,8 +28,7 @@
 		List<SneakerDTO> sneakerList12 = (List<SneakerDTO>) request.getAttribute("sneakerList12");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
-		
-		SimpleDateFormat new_format = new SimpleDateFormat("MM/dd");
+		SimpleDateFormat new_format = new SimpleDateFormat("M/d");
 	%>
 
 	<!-- Header -->
@@ -44,11 +43,9 @@
 		</div>
 		<!-- content -->
 		<div id="content_sneakerList">
-			<table id="sneaker_List" border = "0">
-				<tr>
-					<td colspan="6"> 4월 April.</td>
-				</tr>
-				<%    
+			<p id="month"> 4월 April. </p>
+			<table id="sneaker_List">
+				<%
 			        int size = sneakerList4.size();
 				    int col = 5;
 				    int row = (size / col) + (size%col>0? 1:0);
@@ -62,7 +59,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -83,10 +80,8 @@
 				%>
 			</table>
 			<!-- 5월 발매 테이블 -->
-			<table id="sneaker_List" border = "0">
-				<tr>
-					<td colspan="6"> 5월 April.</td>
-				</tr>
+			<p id="month"> 5월 May. </p>
+			<table id="sneaker_List">	
 				<%    
 			        size = sneakerList5.size();
 				    col = 5;
@@ -101,7 +96,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -122,10 +117,8 @@
 				%>
 			</table>
 			<!-- 6월 발매 테이블 -->
+			<p id="month"> 6월 June. </p>
 			<table id="sneaker_List" border = "0">
-				<tr>
-					<td colspan="6"> 6월 June.</td>
-				</tr>
 				<%    
 			        size = sneakerList6.size();
 				    col = 5;
@@ -140,7 +133,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -161,12 +154,10 @@
 				%>
 			</table>
 			<!-- 7월 발매 테이블 -->
-			<table id="sneaker_List" border = "0">
-				<tr>
-					<td colspan="6"> 7월 July.</td>
-				</tr>
+			<p id="month"> 7월 July. </p>
+			<table id="sneaker_List">
 				<%    
-			        size = sneakerList6.size();
+			        size = sneakerList7.size();
 				    col = 5;
 				    row = (size / col) + (size%col>0? 1:0);
 				    num = 0;
@@ -179,7 +170,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -200,10 +191,8 @@
 				%>
 			</table>
 			<!-- 8월 발매 테이블 -->
-			<table id="sneaker_List" border = "0">
-				<tr>
-					<td colspan="6"> 8월 August.</td>
-				</tr>
+			<p id="month"> 8월 August. </p>
+			<table id="sneaker_List">
 				<%    
 			        size = sneakerList8.size();
 				    col = 5;
@@ -218,7 +207,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>

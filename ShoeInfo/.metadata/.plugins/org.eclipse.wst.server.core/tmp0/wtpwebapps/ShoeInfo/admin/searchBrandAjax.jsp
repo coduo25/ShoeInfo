@@ -16,13 +16,11 @@
 	
 		//넘어온 값 저장하기
 		String country_name = request.getParameter("country_name");
-	
+		
 		//BrandDAO 객체 생성
 		BrandDAO bdao = new BrandDAO();
 		
 		List brandNameList = (List) bdao.searchBrand(country_name);
-		
-		System.out.println("brandnameList: " + brandNameList);
 	%>
 		<select name="brand_name">
 			<option value="default"> 브랜드를 선택해주세요 </option>
