@@ -67,7 +67,7 @@ public class SneakerDAO {
 		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_sneakerlibrary where release_date like ?";
+			sql = "select * from shoeinfo_sneakerlibrary where release_date like ? order by release_date";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, date);
 			rs = pstmt.executeQuery();
