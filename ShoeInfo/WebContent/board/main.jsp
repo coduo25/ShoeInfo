@@ -59,7 +59,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -96,7 +96,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -133,7 +133,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -170,7 +170,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
@@ -207,7 +207,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 							String new_release_date = new_format.format(original_release_date);
 					%>
-					<td colspan="2" style="padding: 15px;">
+					<td colspan="2">
 						<div class="shoelist_image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>

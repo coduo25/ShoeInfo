@@ -181,7 +181,7 @@
 							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
-							<td style="width:60px;"> 응모여부 </td>
+							<td style="width:60px;"> 응모체크 </td>
 						</tr>
 					<%
 						if(onlineList_kr.isEmpty()){
@@ -217,10 +217,10 @@
 						<td> <%=odto_kr.getOnline_method()%> </td>
 						<%if(odto_kr.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_kr.getBrand_id())){%>
 							<td id="draw-status_kr<%=i%>"> 응모완료 </td>
-						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_kr<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
-						<%}else if(odto_kr.getOnline_method().contains("드로우") && user == null){%>
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_kr<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
 						<%}else {%>
 							<td id="draw-status_kr<%=i%>"> - </td>
 						<%}%>
@@ -243,7 +243,7 @@
 						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_asia.isEmpty()){
@@ -280,10 +280,10 @@
 						
 						<%if(odto_asia.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_asia.getBrand_id())){%>
 							<td id="draw-status_asia<%=i%>"> 응모완료 </td>
-						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_asia<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
-						<%}else if(odto_asia.getOnline_method().contains("드로우") && user == null){%>
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_asia<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_asia<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
 						<%}else {%>
 							<td id="draw-status_asia<%=i%>"> - </td>
 						<%}%>
@@ -306,7 +306,7 @@
 						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_america.isEmpty()){
@@ -343,10 +343,10 @@
 						
 						<%if(odto_america.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_america.getBrand_id())){%>
 							<td id="draw-status_america<%=i%>"> 응모완료 </td>
-						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_america<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
-						<%}else if(odto_america.getOnline_method().contains("드로우") && user == null){%>
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_america<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_america<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
 						<%}else {%>
 							<td id="draw-status_america<%=i%>"> - </td>
 						<%}%>
@@ -369,7 +369,7 @@
 						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_europe.isEmpty()){
@@ -406,10 +406,10 @@
 						
 						<%if(odto_europe.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_europe.getBrand_id())){%>
 							<td id="draw-status_europe<%=i%>"> 응모완료 </td>
-						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_europe<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
-						<%}else if(odto_europe.getOnline_method().contains("드로우") && user == null){%>
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_europe<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_europe<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
 						<%}else {%>
 							<td id="draw-status_europe<%=i%>"> - </td>
 						<%}%>
@@ -432,7 +432,7 @@
 						<td style="width:200px;">  </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:60px;"> 응모체크 </td>
 					</tr>
 					<%
 						if(onlineList_etc.isEmpty()){
@@ -469,10 +469,10 @@
 						
 						<%if(odto_etc.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_etc.getBrand_id())){%>
 							<td id="draw-status_etc<%=i%>"> 응모완료 </td>
-						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_etc<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>"><input type="button" value="응모하기"></a></td>
-						<%}else if(odto_etc.getOnline_method().contains("드로우") && user == null){%>
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_etc<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인하기"> </a></td>
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null){%>
+							<td id="draw-status_etc<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
 						<%}else {%>
 							<td id="draw-status_etc<%=i%>"> - </td>
 						<%}%>

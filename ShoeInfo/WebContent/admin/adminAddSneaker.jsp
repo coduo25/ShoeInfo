@@ -37,14 +37,6 @@
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td> 제품 이미지 2 </td>
-						<td colspan="2"> <input type="file" name="file2"> </td>
-					</tr>
-					<tr>
-						<td> 제품 이미지 3 </td>
-						<td colspan="2"> <input type="file" name="file3"> </td>
-					</tr>
-					<tr>
 						<td> 제품 스타일 코드  </td>
 						<td colspan="2"> <input type="text" name="model_stylecode"> </td>
 					</tr>

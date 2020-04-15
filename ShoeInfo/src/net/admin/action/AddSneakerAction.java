@@ -45,7 +45,7 @@ public class AddSneakerAction implements Action {
 		sdto.setBrand(multi.getParameter("brand"));
 		sdto.setSub_brand(multi.getParameter("sub_brand"));
 		sdto.setBrand_index(multi.getParameter("brand_index"));
-		String image = multi.getFilesystemName("file1") + "," + multi.getFilesystemName("file2") + "," + multi.getFilesystemName("file3");
+		String image = multi.getFilesystemName("file1");
 		sdto.setImage(image);
 		sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
 		sdto.setModel_name(multi.getParameter("model_name"));
