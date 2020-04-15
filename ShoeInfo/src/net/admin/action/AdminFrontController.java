@@ -71,6 +71,25 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 		
+		//신발 정보 수정하는 페이지로 가기
+		else if(command.equals("/UpdateSneakerInfo.ad")) {
+			action = new UpdateSneaker();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//신발 정보 수정하는 페이지 처리
+		else if(command.equals("/UpdateSneakerInfoAction.ad")) {
+			action = new UpdateSneakerAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		// ---------------나라추가----------------------------
 		//새로운 나라 추가하는 페이지 처리
 		else if(command.equals("/AddCountryAction.ad")){

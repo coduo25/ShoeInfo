@@ -105,6 +105,9 @@ public class SneakerDAO {
 			if(rs.next()){
 				//신발이 있으면
 				sdto = new SneakerDTO();
+				sdto.setBrand(rs.getString("brand"));
+				sdto.setSub_brand(rs.getString("sub_brand"));
+				sdto.setBrand_index(rs.getString("brand_index"));
 				sdto.setImage(rs.getString("image"));
 				sdto.setModel_name(rs.getString("model_name"));
 				sdto.setModel_colorway(rs.getString("model_colorway"));
@@ -118,6 +121,29 @@ public class SneakerDAO {
 			closeDB();
 		}
 		return sdto;
+	}
+	
+	//신발 정보 수정하는 함수
+	public void updateSneakerInfo(SneakerDTO sdto) {
+		try {
+			con = getConnection();
+			sql = "update shoeinfo_sneakerlibrary set brand = ?, sub_brand = ?, brand_index = ?, image = ?, model_name = ?, model_colorway = ?, price = ?, release_date = ? where model_stylecode = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sdto.getBrand());
+			pstmt.setString(2, sdto.getSub_brand());
+			pstmt.setString(3, sdto.getBrand_index());
+			pstmt.setString(4, sdto.getImage());
+			pstmt.setString(5, sdto.getModel_name());
+			pstmt.setString(6, sdto.getModel_colorway());
+			pstmt.setInt(7, sdto.getPrice());
+			pstmt.setString(8, sdto.getRelease_date());
+			pstmt.setString(9, sdto.getModel_stylecode());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	}
 
 

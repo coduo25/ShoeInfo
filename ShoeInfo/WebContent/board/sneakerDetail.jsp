@@ -73,13 +73,13 @@
 	<div id="wrapper" class="container">
 		<!-- side bar -->
 		<div id="main-nav">
-			<a href="./SneakerList.go" class="menu-link"x`>런칭 캘린더</a>
+			<a href="./SneakerList.go" class="menu-link">런칭 캘린더</a>
 			<a href="" class="menu-link">발매 정보</a>
 		</div>
 		<!-- content -->
 		<div id="content_sneakerDetail">
 			<!-- 신발 기본 정보 -->
-			<table id="sneaker_Detail" border="0">
+			<table id="sneaker_Detail">
 				<tr>
 					<td> 
 						<div class="sneaker_image"> 
@@ -90,7 +90,7 @@
 						<%	//관리자 권한일때 제품 기본정보 수정하는 페이지로 가는 버튼
 							if(user.equals("admin")){
 						%>
-							<a href=""><input type="button" value="기본정보 수정하기" style="float: right;"></a>
+							<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
 						<%}%>
 						<!-- 신발 이름 -->
 						<div class="sneaker_name">
@@ -115,7 +115,7 @@
 			<!-- 신발 온라인/오프라인 정보 -->
 			<div id="content_sneakerInfo">
 				<!-- 오프라인 테이블 -->
-				<table id="sneakerOfflineInfo_table" border="0">
+				<table id="sneakerOfflineInfo_table">
 						<h4> [오프라인 발매처]</h4>
 						<tr class="ta_release_info">
 							<td style="width:50px;"> </td>
@@ -172,7 +172,7 @@
 				<br>
 				<br>
 				<!-- 온라인 테이블 -->
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 						<h4> [한국 온라인 발매처] </h4>
 						<tr class="ta_release_info">
 							<td style="width:50px;"> </td>
@@ -234,7 +234,7 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 					<h4> [아시아 지역 발매처] </h4>
 					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>
@@ -297,7 +297,7 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 					<h4> [북미 지역 발매처] </h4>
 					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>
@@ -360,7 +360,7 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 					<h4> [유럽 지역 발매처] </h4>
 					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>
@@ -423,7 +423,7 @@
 				<br>
 				<br>
 				<br>
-				<table id="sneakerOnlineInfo_table" border="0">
+				<table id="sneakerOnlineInfo_table">
 					<h4> [기타 지역 발매처] </h4>
 					<tr class="ta_release_info">
 						<td style="width:50px;"> </td>

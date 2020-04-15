@@ -23,7 +23,7 @@ body {font-size:1em; line-weight:1.4}
 /* 신발 리스트 페이지 */
 #content_sneakerList {margin-top: 20px; width: 75%; float: left; position: relative; z-index: 2;}
 #content_sneakerList table#sneaker_List, p{margin-left: 80px; margin-right: auto;}
-#month {width: 1000px; text-align:right; border-bottom: 1px solid #e6e6e6; font-size: 18px; font-weight: bold; padding:5px;}
+#month {width: 1000px; text-align:right; border-bottom: 1px solid #e6e6e6; font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: bold; padding:5px;}
 #sneaker_List tr td#month{text-align:right; border-bottom: 1px solid #c3c3c3; font-size: 18px; font-weight: bold;}
 .popup_date{background:#000000; opacity:0;}
 .shoelist_image:hover .popup_date {opacity:0.6; text-align:center; color: #fff; background-color:#000;}
