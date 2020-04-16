@@ -67,7 +67,7 @@
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
-		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
+		SimpleDateFormat new_format = new SimpleDateFormat("M/d a HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 	%>
 	<div id="wrapper" class="container">
@@ -181,7 +181,7 @@
 							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
-							<td style="width:60px;"> 응모체크 </td>
+							<td style="width:60px;"> 응모여부 </td>
 						</tr>
 					<%
 						if(onlineList_kr.isEmpty()){
@@ -203,17 +203,38 @@
 							String new_Online_end_time_kr = new_format.format(original_Online_end_time_kr);
 							
 							// 04/18/2020 10:00
-							String count_Online_start_time_kr = count_format.format(original_Online_start_time_kr);
+							String count_Online_end_time_kr = count_format.format(original_Online_end_time_kr);
+							
+							// 오늘 날짜
+							Date currentTime = new Date();
+							String current = original_format.format(currentTime);
+							Date today = original_format.parse(current);
+							
+							int compare_w_start_result_kr = today.compareTo(original_Online_start_time_kr);		//응모 시작하는 시간
+							int compare_w_end_result_kr = today.compareTo(original_Online_end_time_kr); 		//응모 끝나는 시간
 					%>
 					<tr>
 						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <span id="online_start_time_date"><%= new_Online_start_time_kr%></span> ~ <%=new_Online_end_time_kr%> </td>
+						<td> <%=new_Online_start_time_kr%> ~ 
+							<%if(odto_kr.getOnline_method().contains("선착")){%>
+							<span> </span> 
+							<%}else{%>
+								<%=new_Online_end_time_kr%>
+							<%}%>
+						</td>
 						
-						<span id="count_Online_start_time_kr<%=i%>" style="display:none;"> <%=count_Online_start_time_kr%> </span>
-						<td id="final_count_Online_start_time_kr<%=i%>"> </td>
-						
+						<span id="count_Online_end_time_kr<%=i%>" style="display:none;"> <%=count_Online_end_time_kr%> </span>
+						<td>
+							<%if(compare_w_start_result_kr == -1){%>
+							<span id="final_count_Online_end_time_kr<%=i%>"></span>
+							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1){%>
+							<span id="final_count_Online_end_time_kr<%=i%>"></span><span id="draw_count_result_ing">진행중 </span>
+							<%}else if(compare_w_end_result_kr == 1){%>
+							<span id="draw_count_result_after"> 응모종료 </span> <br>
+							<%}%>
+						</td>
 						<td> <%=odto_kr.getOnline_method()%> </td>
 						<%if(odto_kr.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_kr.getBrand_id())){%>
 							<td id="draw-status_kr<%=i%>"> 응모완료 </td>
@@ -243,7 +264,7 @@
 						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모체크 </td>
+						<td style="width:60px;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_asia.isEmpty()){
@@ -265,16 +286,38 @@
 							String new_Online_end_time_asia = new_format.format(original_Online_end_time_asia);
 							
 							// 04/18/2020 10:00
-							String count_Online_start_time_asia = count_format.format(original_Online_start_time_asia);
+							String count_Online_end_time_asia = count_format.format(original_Online_end_time_asia);
+							
+							// 오늘 날짜
+							Date currentTime = new Date();
+							String current = original_format.format(currentTime);
+							Date today = original_format.parse(current);
+							
+							int compare_w_start_result_asia = today.compareTo(original_Online_start_time_asia);		//응모 시작하는 시간
+							int compare_w_end_result_asia = today.compareTo(original_Online_end_time_asia); 		//응모 끝나는 시간
 					%>
 					<tr>
 						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <%=bdto_asia.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_asia.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_asia%> ~ <%=new_Online_end_time_asia%> </td>
+						<td> <%=new_Online_start_time_asia%> ~ 
+							<%if(odto_asia.getOnline_method().contains("선착")){%>
+							<span> </span> 
+							<%}else{%>
+								<%=new_Online_end_time_asia%>
+							<%}%>
+						</td>
 						
-						<span id="count_Online_start_time_asia<%=i%>" style="display:none;"> <%=count_Online_start_time_asia%> </span>
-						<td id="final_count_Online_start_time_asia<%=i%>"> </td>
+						<span id="count_Online_end_time_asia<%=i%>" style="display:none;"> <%=count_Online_end_time_asia%> </span>
+						<td>
+							<%if(compare_w_start_result_asia == -1){%>
+							<span id="final_count_Online_end_time_asia<%=i%>"></span>
+							<%}else if(compare_w_start_result_asia == 1 && compare_w_end_result_asia == -1){%>
+							<span id="final_count_Online_end_time_asia<%=i%>"></span><span id="draw_count_result_ing">진행중 </span>
+							<%}else if(compare_w_end_result_asia == 1){%>
+							<span id="draw_count_result_after"> 응모종료 </span> <br>
+							<%}%>
+						</td>
 						
 						<td> <span class="tooltip1"> <%=odto_asia.getOnline_method()%> <span class="tooltiptext1"> <%=odto_asia.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_asia.getDelivery_method()%></span></span> </td>
 						
@@ -306,7 +349,7 @@
 						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모체크 </td>
+						<td style="width:60px;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_america.isEmpty()){
@@ -328,17 +371,44 @@
 							String new_Online_end_time_america = new_format.format(original_Online_end_time_america);
 							
 							// 04/18/2020 10:00
-							String count_Online_start_time_america = count_format.format(original_Online_start_time_america);
+							String count_Online_end_time_america = count_format.format(original_Online_end_time_america);
+							
+							// 오늘 날짜
+							Date currentTime = new Date();
+							String current = original_format.format(currentTime);
+							Date today = original_format.parse(current);
+							
+							int compare_w_start_result_america = today.compareTo(original_Online_start_time_america);	//응모 시작하는 시간
+							int compare_w_end_result_america = today.compareTo(original_Online_end_time_america); 		//응모 끝나는 시간
 					%>
 					<tr>
 						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_america.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <%=bdto_america.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_america.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_america%> ~ <%=new_Online_end_time_america%> </td>
+						<td> <%=new_Online_start_time_america%> ~ 
+							<%if(odto_america.getOnline_method().contains("선착")){%>
+							<span> </span> 
+							<%}else{%>
+								<%=new_Online_end_time_america%>
+							<%}%>
+						</td>
 						
-						<span id="count_Online_start_time_america<%=i%>" style="display:none;"> <%=count_Online_start_time_america%> </span>
-						<td id="final_count_Online_start_time_america<%=i%>"> </td>
-						
+						<span id="count_Online_end_time_america<%=i%>" style="display:none;"> <%=count_Online_end_time_america%> </span>
+						<%if(odto_america.getOnline_method().contains("선착")){%>
+						<td>
+							<span> - </span>
+						</td>
+						<%}else if(odto_america.getOnline_method().contains("드로우")){%>
+						<td>
+							<%if(compare_w_start_result_america == -1){%>
+							<span id="final_count_Online_end_time_america<%=i%>"></span>
+							<%}else if(compare_w_start_result_america == 1 && compare_w_end_result_america == -1){%>
+							<span id="final_count_Online_end_time_america<%=i%>"></span><span id="draw_count_result_ing">진행중 </span>
+							<%}else if(compare_w_end_result_america == 1){%>
+							<span id="draw_count_result_after"> 응모종료 </span> <br>
+							<%}%>
+						</td>
+						<%}%>
 						<td> <span class="tooltip1"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1"> <%=odto_america.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span></span> </td>
 						
 						<%if(odto_america.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_america.getBrand_id())){%>
@@ -369,7 +439,7 @@
 						<td style="width:200px;"> </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모체크 </td>
+						<td style="width:60px;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_europe.isEmpty()){
@@ -391,16 +461,38 @@
 							String new_Online_end_time_europe = new_format.format(original_Online_end_time_europe);
 							
 							// 04/18/2020 10:00
-							String count_Online_start_time_europe = count_format.format(original_Online_start_time_europe);
+							String count_Online_end_time_europe = count_format.format(original_Online_end_time_europe);
+							
+							// 오늘 날짜
+							Date currentTime = new Date();
+							String current = original_format.format(currentTime);
+							Date today = original_format.parse(current);
+							
+							int compare_w_start_result_europe = today.compareTo(original_Online_start_time_europe);		//응모 시작하는 시간
+							int compare_w_end_result_europe = today.compareTo(original_Online_end_time_europe); 		//응모 끝나는 시간
 					%>
 					<tr>
 						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_europe.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <%=bdto_europe.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_europe.getCountry_flag()%>" width="22" height="15"> </td>
-						<td> <%=new_Online_start_time_europe%> ~ <%=new_Online_end_time_europe%> </td>
+						<td> <%=new_Online_start_time_europe%> ~ 
+							<%if(odto_europe.getOnline_method().contains("선착")){%>
+							<span> </span> 
+							<%}else{%>
+								<%=new_Online_end_time_europe%>
+							<%}%>
+						</td>
 						
-						<span id="count_Online_start_time_europe<%=i%>" style="display:none;"> <%=count_Online_start_time_europe%> </span>
-						<td id="final_count_Online_start_time_europe<%=i%>"> </td>
+						<span id="count_Online_end_time_europe<%=i%>" style="display:none;"> <%=count_Online_end_time_europe%> </span>
+						<td>
+							<%if(compare_w_start_result_europe == -1){%>
+							<span id="final_count_Online_end_time_europe<%=i%>"></span>
+							<%}else if(compare_w_start_result_europe == 1 && compare_w_end_result_europe == -1){%>
+							<span id="final_count_Online_end_time_europe<%=i%>"></span><span id="draw_count_result_ing">진행중 </span>
+							<%}else if(compare_w_end_result_europe == 1){%>
+							<span id="draw_count_result_after"> 응모종료 </span> <br>
+							<%}%>
+						</td>
 						
 						<td> <span class="tooltip1"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1"> <%=odto_europe.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span></span> </td>
 						
@@ -432,7 +524,7 @@
 						<td style="width:200px;">  </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모체크 </td>
+						<td style="width:60px;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_etc.isEmpty()){
@@ -454,7 +546,15 @@
 							String new_Online_end_time_etc = new_format.format(original_Online_end_time_etc);
 							
 							// 04/18/2020 10:00
-							String count_Online_start_time_etc = count_format.format(original_Online_start_time_etc);
+							String count_Online_end_time_etc = count_format.format(original_Online_start_time_etc);
+							
+							// 오늘 날짜
+							Date currentTime = new Date();
+							String current = original_format.format(currentTime);
+							Date today = original_format.parse(current);
+							
+							int compare_w_start_result_etc = today.compareTo(original_Online_start_time_etc);	//응모 시작하는 시간
+							int compare_w_end_result_etc = today.compareTo(original_Online_end_time_etc); 		//응모 끝나는 시간
 					%>
 					<tr>
 						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_etc.getBrand_logo()%>" width="50" height="50"> </a> </td>
@@ -462,8 +562,16 @@
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_etc.getCountry_flag()%>" width="22" height="15"> </td>
 						<td> <%=new_Online_start_time_etc%> ~ <%=new_Online_end_time_etc%> </td>
 						
-						<span id="count_Online_start_time_etc<%=i%>" style="display:none;"> <%=count_Online_start_time_etc%> </span>
-						<td id="final_count_Online_start_time_etc<%=i%>"> </td>
+						<span id="count_Online_end_time_etc<%=i%>" style="display:none;"> <%=count_Online_end_time_etc%> </span>
+						<td>
+							<%if(compare_w_start_result_etc == -1){%>
+							<span id="final_count_Online_end_time_etc<%=i%>"></span>
+							<%}else if(compare_w_start_result_etc == 1 && compare_w_end_result_etc == -1){%>
+							<span id="final_count_Online_end_time_etc<%=i%>"></span><span id="draw_count_result_ing">진행중 </span>
+							<%}else if(compare_w_end_result_etc == 1){%>
+							<span id="draw_count_result_after"> 응모종료 </span> <br>
+							<%}%>
+						</td>
 						
 						<td> <span class="tooltip1"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1"> <%=odto_etc.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span></span> </td>
 						
@@ -539,8 +647,8 @@
 		</c:forEach>
 		//onLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_kr.length; i++) {		
-			var count_span = document.getElementById("count_Online_start_time_kr"+i).innerText;
-			countDownTimer('final_count_Online_start_time_kr'+i, count_span, 'draw-status_kr'+i);
+			var count_span = document.getElementById("count_Online_end_time_kr"+i).innerText;
+			countDownTimer('final_count_Online_end_time_kr'+i, count_span, 'draw-status_kr'+i);
 		}
 		
 		//온라인 아시아 리스트
@@ -550,8 +658,8 @@
 		</c:forEach>
 		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_asia.length; i++) {		
-			var count_span = document.getElementById("count_Online_start_time_asia"+i).innerText;
-			countDownTimer('final_count_Online_start_time_asia'+i, count_span, 'draw-status_asia'+i);
+			var count_span = document.getElementById("count_Online_end_time_asia"+i).innerText;
+			countDownTimer('final_count_Online_end_time_asia'+i, count_span, 'draw-status_asia'+i);
 		}
 		
 		//온라인 아메리카 리스트
@@ -561,8 +669,8 @@
 		</c:forEach>
 		//onLineList_america 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_america.length; i++) {		
-			var count_span = document.getElementById("count_Online_start_time_america"+i).innerText;
-			countDownTimer('final_count_Online_start_time_america'+i, count_span, 'draw-status_america'+i);
+			var count_span = document.getElementById("count_Online_end_time_america"+i).innerText;
+			countDownTimer('final_count_Online_end_time_america'+i, count_span, 'draw-status_america'+i);
 		}
 		
 		//온라인 유럽 리스트
@@ -572,8 +680,8 @@
 		</c:forEach>
 		//onLineList_europe 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_europe.length; i++) {		
-			var count_span = document.getElementById("count_Online_start_time_europe"+i).innerText;
-			countDownTimer('final_count_Online_start_time_europe'+i, count_span, 'draw-status_europe'+i);
+			var count_span = document.getElementById("count_Online_end_time_europe"+i).innerText;
+			countDownTimer('final_count_Online_end_time_europe'+i, count_span, 'draw-status_europe'+i);
 		}
 		
 		//온라인 기타지역 리스트
@@ -583,8 +691,8 @@
 		</c:forEach>
 		//onLineList_etc 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_etc.length; i++) {		
-			var count_span = document.getElementById("count_Online_start_time_etc"+i).innerText;
-			countDownTimer('final_count_Online_start_time_etc'+i, count_span, 'draw-status_etc'+i);
+			var count_span = document.getElementById("count_Online_end_time_etc"+i).innerText;
+			countDownTimer('final_count_Online_end_time_etc'+i, count_span, 'draw-status_etc'+i);
 		}
 	});
 	

@@ -45,7 +45,7 @@ body {font-size:1em; line-weight:1.4}
 	.sneaker_image>img{ width:500px; height: 320px;}
 	.sneaker_image2>img{ width:100px; height: 100px;}
 	.sneaker_name {font-style:oblique; text-transform: uppercase; font-size:35px; font-family: 'Anton', sans-serif;}
-
+	
 	/* 신발 온라인, 오프라인 정보 */
 	#content_sneakerInfo {margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Noto Sans KR:400', sans-serif; font-size:0.9em;}
 	#content_sneakerInfo table{ width:928px; text-align:center;}
@@ -54,8 +54,11 @@ body {font-size:1em; line-weight:1.4}
 	/* 테이블 css */
 	#sneakerOfflineInfo_table tr.ta_release_info td, #sneakerOnlineInfo_table tr.ta_release_info td{border-bottom: 1px solid #e0e0e0;}
 	
-	#brandlogo_img {border: 1px solid #ECEBEB;}
+	#brandlogo_img {border: 1px solid #cacaca;}
 	#country_flag_img {border: 1px solid #D9D9D9;}
+	
+	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 6px; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; margin-left: 5px; padding: 0 2px; vertical-align: middle;}
+	#draw_count_result_after{color: black; text-align: center;}
 	
 	.tooltip1, .tooltip2 { position: relative; display: inline-block; border-bottom: 1px dotted black; }
 	.tooltip1 .tooltiptext1 { visibility: hidden; width: 150px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: 20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; } 
