@@ -39,10 +39,6 @@ public class AddOnlineInfoAction implements Action{
 		String online_date_end = request.getParameter("online_date_end");
 		String online_hour_end = request.getParameter("online_hour_end");
 		String online_end_time = online_date_end + " " + online_hour_end;
-		
-		String online_result_date = request.getParameter("online_result_date");
-		String online_result_hour = request.getParameter("online_result_hour");
-		String online_result_time = online_result_date + " " + online_result_hour;
 
 		String online_method = request.getParameter("online_method");
 		String buy_method = request.getParameter("buy_method");
@@ -68,7 +64,6 @@ public class AddOnlineInfoAction implements Action{
 		odto.setOnline_link(online_link);
 		odto.setOnline_start_time(online_start_time);
 		odto.setOnline_end_time(online_end_time);
-		odto.setOnline_result_time(online_result_time);
 		odto.setOnline_method(online_method);
 		odto.setBuy_method(buy_method);
 		odto.setDelivery_method(delivery_method);

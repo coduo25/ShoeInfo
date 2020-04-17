@@ -40,10 +40,6 @@ public class AddOfflineInfoAction implements Action{
 		String offline_date_end = request.getParameter("offline_date_end");
 		String offline_hour_end = request.getParameter("offline_hour_end");
 		String offline_end_time = offline_date_end + " " + offline_hour_end;
-		
-		String offline_result_date = request.getParameter("offline_result_date");
-		String offline_result_hour = request.getParameter("offline_result_hour");
-		String offline_result_time = offline_result_date + " " + offline_result_hour;
 
 		String offline_method = request.getParameter("offline_method");
 		String description = request.getParameter("description");
@@ -62,7 +58,6 @@ public class AddOfflineInfoAction implements Action{
 		odto.setOffline_link(offline_link);
 		odto.setOffline_start_time(offline_start_time);
 		odto.setOffline_end_time(offline_end_time);
-		odto.setOffline_result_time(offline_result_time);
 		odto.setOffline_method(offline_method);
 		odto.setDescription(description);
 		

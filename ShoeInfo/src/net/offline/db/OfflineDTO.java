@@ -10,7 +10,6 @@ public class OfflineDTO {
 	private String offline_link;
 	private String offline_start_time;
 	private String offline_end_time;
-	private String offline_result_time;
 	private String offline_method;
 	private String description;
 	
@@ -61,12 +60,6 @@ public class OfflineDTO {
 	}
 	public void setOffline_end_time(String offline_end_time) {
 		this.offline_end_time = offline_end_time;
-	}
-	public String getOffline_result_time() {
-		return offline_result_time;
-	}
-	public void setOffline_result_time(String offline_result_time) {
-		this.offline_result_time = offline_result_time;
 	}
 	public String getOffline_method() {
 		return offline_method;

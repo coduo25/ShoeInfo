@@ -52,7 +52,7 @@ public class OfflineDAO {
 			if(rs.next()){
 				offline_num = rs.getInt(1) + 1;
 			}
-			sql = "insert into shoeinfo_offlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_offlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, offline_num);
 			pstmt.setString(2, odto.getModel_stylecode());
@@ -62,9 +62,8 @@ public class OfflineDAO {
 			pstmt.setString(6, odto.getOffline_link());
 			pstmt.setString(7, odto.getOffline_start_time());
 			pstmt.setString(8, odto.getOffline_end_time());
-			pstmt.setString(9, odto.getOffline_result_time());
-			pstmt.setString(10, odto.getOffline_method());
-			pstmt.setString(11, odto.getDescription());
+			pstmt.setString(9, odto.getOffline_method());
+			pstmt.setString(10, odto.getDescription());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,7 +103,6 @@ public class OfflineDAO {
 				ofdto.setOffline_link(rs.getString("offline_link"));
 				ofdto.setOffline_start_time(rs.getString("offline_start_time"));
 				ofdto.setOffline_end_time(rs.getString("offline_end_time"));
-				ofdto.setOffline_result_time(rs.getString("offline_result_time"));
 				ofdto.setOffline_method(rs.getString("offline_method"));
 				ofdto.setDescription(rs.getString("description"));
 				offlineInfoList_kr.add(ofdto);

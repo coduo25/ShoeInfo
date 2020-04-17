@@ -39,7 +39,7 @@ CREATE TABLE `shoeinfo_brand` (
 
 LOCK TABLES `shoeinfo_brand` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_brand` DISABLE KEYS */;
-INSERT INTO `shoeinfo_brand` VALUES ('대한민국','JD Sports.png','JD Sports','대한민국_JD Sports'),('대한민국','snkrs.png','snkrs 코리아','대한민국_snkrs'),('대한민국','atmos.png','아트모스','대한민국_아트모스'),('대한민국','kasina.png','카시나','대한민국_카시나'),('대한민국','casestudy.png','케이스스터디','대한민국_케이스스터디'),('독일','bstn.png','bstn','독일_bstn'),('미국','18montrose.png','18montrose','미국_18montrose'),('미국','extrabutter.png','extrabutter','미국_extrabutter'),('미국','finishline.png','FINISHLINE','미국_FINISHLINE'),('미국','JD Sports.png','JD Sports','미국_JD Sports'),('미국','LIVESTOCK.png','LIVESTOCK','미국_LIVESTOCK'),('미국','shoepalace.png','ShoePalace','미국_ShoePalace'),('미국','snkrs.png','snkrs USA','미국_snkrs'),('미국','UNDEFEATED.png','UNDEFEATED','미국_UNDEFEATED'),('미국','XHIBITION.png','XHIBITION','미국_XHIBITION'),('일본','atmos.png','아트모스 도쿄','일본_아트모스 도쿄'),('중국','JD Sports.png','JD Sports','중국_JD Sports'),('캐나다','NRML.png','NRML','캐나다_NRML'),('프랑스','basket4ballers.png','basket4ballers','프랑스_basket4ballers');
+INSERT INTO `shoeinfo_brand` VALUES ('대한민국','HOOPCITY.png','HOOOPCITY','대한민국_HOOOPCITY'),('대한민국','JD Sports.png','JD Sports','대한민국_JD Sports'),('대한민국','snkrs.png','snkrs 코리아','대한민국_snkrs'),('대한민국','atmos.png','아트모스','대한민국_아트모스'),('대한민국','kasina.png','카시나','대한민국_카시나'),('대한민국','casestudy.png','케이스스터디','대한민국_케이스스터디'),('독일','bstn.png','bstn','독일_bstn'),('미국','18montrose.png','18montrose','미국_18montrose'),('미국','extrabutter.png','extrabutter','미국_extrabutter'),('미국','finishline.png','FINISHLINE','미국_FINISHLINE'),('미국','JD Sports.png','JD Sports','미국_JD Sports'),('미국','LIVESTOCK.png','LIVESTOCK','미국_LIVESTOCK'),('미국','shoepalace.png','ShoePalace','미국_ShoePalace'),('미국','snkrs.png','snkrs USA','미국_snkrs'),('미국','UNDEFEATED.png','UNDEFEATED','미국_UNDEFEATED'),('미국','XHIBITION.png','XHIBITION','미국_XHIBITION'),('일본','atmos.png','아트모스 도쿄','일본_아트모스 도쿄'),('중국','JD Sports.png','JD Sports','중국_JD Sports'),('캐나다','NRML.png','NRML','캐나다_NRML'),('프랑스','basket4ballers.png','basket4ballers','프랑스_basket4ballers');
 /*!40000 ALTER TABLE `shoeinfo_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `shoeinfo_memberdrawinfo` (
 
 LOCK TABLES `shoeinfo_memberdrawinfo` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_memberdrawinfo` DISABLE KEYS */;
-INSERT INTO `shoeinfo_memberdrawinfo` VALUES (1,'admin','555088-500','대한민국_snkrs',1),(2,'coduo25','555088-500','대한민국_snkrs',1),(3,'coduo25','555088-500','프랑스_basket4ballers',2),(4,'admin','555088-500','프랑스_basket4ballers',2);
+INSERT INTO `shoeinfo_memberdrawinfo` VALUES (1,'admin','555088-500','대한민국_snkrs',1),(2,'coduo25','555088-500','대한민국_snkrs',1),(3,'coduo25','555088-500','프랑스_basket4ballers',2),(4,'admin','555088-500','프랑스_basket4ballers',2),(5,'coduo25','555088-500','대한민국_카시나',3);
 /*!40000 ALTER TABLE `shoeinfo_memberdrawinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +140,6 @@ CREATE TABLE `shoeinfo_offlineinfo` (
   `offline_link` text COLLATE utf8_unicode_ci,
   `offline_start_time` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `offline_end_time` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `offline_result_time` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `offline_method` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`offline_num`)
@@ -172,7 +171,6 @@ CREATE TABLE `shoeinfo_onlineinfo` (
   `online_link` text COLLATE utf8_unicode_ci,
   `online_start_time` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `online_end_time` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `online_result_time` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `online_method` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `buy_method` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `delivery_method` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -187,7 +185,7 @@ CREATE TABLE `shoeinfo_onlineinfo` (
 
 LOCK TABLES `shoeinfo_onlineinfo` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_onlineinfo` DISABLE KEYS */;
-INSERT INTO `shoeinfo_onlineinfo` VALUES (1,'555088-500','아시아','대한민국','대한민국_snkrs','https://www.nike.com/kr/launch/t/men/fw/basketball/555088-500/mzqw37/air-jordan-1-retro-high-og','2020-04-18 10:00','2020-04-18 11:00','2020-04-18 12:00','드로우','당첨 후 결제','-',''),(2,'555088-500','유럽','프랑스','프랑스_basket4ballers','https://www.basket4ballers.com/fr/basket-sneakers/22296-air-jordan-1-retro-high-og-court-purple.html','2020-04-11 10:00','2020-04-16 19:00','2020-04-16 ','드로우','당첨 후 결제','직배불가(배대지추천)',''),(3,'555088-500','아메리카','미국','미국_FINISHLINE','https://www.finishline.com/store/product/mens-air-jordan-retro-1-high-og-basketball-shoes/prod1360195?styleId=555088&colorId=500&ranMID=37731&ranEAID=W9MhUk6cl28&ranSiteID=W9MhUk6cl28-22UBwzUF0cy1wYn.GinGZg&CMP=AFL-LS-affiliatechannel&sourceid=affiliate&utm_source=3168473&utm_medium=affiliate&utm_campaign=1&siteID=W9MhUk6cl28-22UBwzUF0cy1wYn.GinGZg','2020-04-15 23:00','2020-04-15 23:00','2020-04-15 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(4,'555088-500','아메리카','미국','미국_ShoePalace','https://www.shoepalace.com/product/jordan/555088-500/air-jordan-1-high-og-court-purple-mens-lifestyle-shoe-court-purple-white-black/','2020-04-11 23:00','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(5,'555088-500','아메리카','미국','미국_JD Sports','https://www.jdsports.com/store/product/mens-air-jordan-retro-1-high-og-basketball-shoes/prod1360195?styleId=555088&colorId=500','2020-04-11 23:00','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(6,'555088-500','아메리카','미국','미국_18montrose','https://us.18montrose.com/footwear/sneakers','2020-04-11 23:00','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(7,'555088-500','아메리카','캐나다','캐나다_NRML','https://nrml.ca/collections/new-arrivals','2020-04-11 23:00','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배가능',''),(8,'555088-500','유럽','독일','독일_bstn','https://raffle.bstn.com/air-jordan-1-retro-high-og-court-purple-','2020-04-11 10:00','2020-04-16 23:00','2020-04-20 16:00','드로우','당첨 후 결제','직배가능','');
+INSERT INTO `shoeinfo_onlineinfo` VALUES (1,'555088-500','아시아','대한민국','대한민국_snkrs','https://www.nike.com/kr/launch/t/men/fw/basketball/555088-500/mzqw37/air-jordan-1-retro-high-og','2020-04-18 10:00','2020-04-18 11:00','드로우','당첨 후 결제','-',''),(2,'555088-500','유럽','프랑스','프랑스_basket4ballers','https://www.basket4ballers.com/fr/basket-sneakers/22296-air-jordan-1-retro-high-og-court-purple.html','2020-04-11 10:00','2020-04-16 19:00','드로우','당첨 후 결제','직배불가(배대지추천)',''),(3,'555088-500','아메리카','미국','미국_FINISHLINE','https://www.finishline.com/store/product/mens-air-jordan-retro-1-high-og-basketball-shoes/prod1360195?styleId=555088&colorId=500&ranMID=37731&ranEAID=W9MhUk6cl28&ranSiteID=W9MhUk6cl28-22UBwzUF0cy1wYn.GinGZg&CMP=AFL-LS-affiliatechannel&sourceid=affiliate&utm_source=3168473&utm_medium=affiliate&utm_campaign=1&siteID=W9MhUk6cl28-22UBwzUF0cy1wYn.GinGZg','2020-04-15 23:00','2020-04-15 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(4,'555088-500','아메리카','미국','미국_ShoePalace','https://www.shoepalace.com/product/jordan/555088-500/air-jordan-1-high-og-court-purple-mens-lifestyle-shoe-court-purple-white-black/','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(5,'555088-500','아메리카','미국','미국_JD Sports','https://www.jdsports.com/store/product/mens-air-jordan-retro-1-high-og-basketball-shoes/prod1360195?styleId=555088&colorId=500','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(6,'555088-500','아메리카','미국','미국_18montrose','https://us.18montrose.com/footwear/sneakers','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배불가(배대지추천)',''),(7,'555088-500','아메리카','캐나다','캐나다_NRML','https://nrml.ca/collections/new-arrivals','2020-04-11 23:00','2020-04-11 23:00','선착','선착순 구매','직배가능',''),(8,'555088-500','유럽','독일','독일_bstn','https://raffle.bstn.com/air-jordan-1-retro-high-og-court-purple-','2020-04-11 10:00','2020-04-16 23:00','드로우','당첨 후 결제','직배가능',''),(9,'555088-500','아시아','대한민국','대한민국_카시나','https://www.kasina.co.kr/main/html.php?htmid=proc/page/draw/draw20200416jd1p.html','2020-04-16 22:00','2020-04-17 08:00','드로우','당첨 후 결제','-',''),(10,'555088-500','아시아','대한민국','대한민국_아트모스','http://www.atmos-seoul.com/m/seminar.html?seminar_type=draw_list','2020-04-17 12:00','2020-04-17 15:00','드로우','당첨 후 결제','-',''),(11,'555088-500','아시아','대한민국','대한민국_JD Sports','https://www.instagram.com/p/B_CK-WAgtkh/?igshid=w50zuudf5vjc','2020-04-18 12:00','2020-04-20 12:00','드로우','당첨 후 결제','-',''),(12,'555088-500','아시아','대한민국','대한민국_HOOOPCITY','https://www.hoopcity.co.kr/shop/goods/goods_view.php?goodsno=5514&category=005','2020-04-16 16:00','2020-04-17 09:00','드로우','당첨 후 결제','-',''),(13,'AR4237-005','아시아','대한민국','대한민국_snkrs','https://www.nike.com/kr/launch/t/men/fw/basketball/AR4237-005/jubx15/nike-air-fear-of-god-1','2020-04-25 10:00','2020-04-25 10:00','선착','선착순 구매','-','');
 /*!40000 ALTER TABLE `shoeinfo_onlineinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +237,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-16 17:44:12
+-- Dump completed on 2020-04-17 13:53:06

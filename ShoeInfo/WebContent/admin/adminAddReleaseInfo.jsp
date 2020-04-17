@@ -69,10 +69,6 @@
 							<td> <input type="date" name="offline_date_start"><input type="time" name="offline_hour_start">~<input type="date" name="offline_date_end"><input type="time" name="offline_hour_end"></td>
 						</tr>
 						<tr>
-							<td> 발표 시간 </td>
-							<td> <input type="date" name="offline_result_date"><input type="time" name="offline_result_hour"></td>
-						</tr>
-						<tr>
 							<td> 오프라인 방식 </td>
 							<td> 
 								<select name="offline_method">
@@ -132,10 +128,6 @@
 						<tr>
 							<td> 온라인 시간 </td>
 							<td> <input type="date" name="online_date_start"><input type="time" name="online_hour_start">~<input type="date" name="online_date_end"><input type="time" name="online_hour_end"></td>
-						</tr>
-						<tr>
-							<td> 발표 시간 </td>
-							<td> <input type="date" name="online_result_date"><input type="time" name="online_result_hour"></td>
 						</tr>
 						<tr>
 							<td> 온라인 방식 </td>

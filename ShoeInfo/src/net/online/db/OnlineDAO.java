@@ -51,7 +51,7 @@ public class OnlineDAO {
 			if(rs.next()){
 				online_num = rs.getInt(1) + 1;
 			}
-			sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, online_num);
 			pstmt.setString(2, odto.getModel_stylecode());
@@ -61,11 +61,10 @@ public class OnlineDAO {
 			pstmt.setString(6, odto.getOnline_link());
 			pstmt.setString(7, odto.getOnline_start_time());
 			pstmt.setString(8, odto.getOnline_end_time());
-			pstmt.setString(9, odto.getOnline_result_time());
-			pstmt.setString(10, odto.getOnline_method());
-			pstmt.setString(11, odto.getBuy_method());
-			pstmt.setString(12, odto.getDelivery_method());
-			pstmt.setString(13, odto.getDescription());	
+			pstmt.setString(9, odto.getOnline_method());
+			pstmt.setString(10, odto.getBuy_method());
+			pstmt.setString(11, odto.getDelivery_method());
+			pstmt.setString(12, odto.getDescription());	
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,7 +104,6 @@ public class OnlineDAO {
 				odto.setOnline_link(rs.getString("online_link"));
 				odto.setOnline_start_time(rs.getString("online_start_time"));
 				odto.setOnline_end_time(rs.getString("online_end_time"));
-				odto.setOnline_result_time(rs.getString("online_result_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
@@ -176,7 +174,6 @@ public class OnlineDAO {
 				odto.setOnline_link(rs.getString("online_link"));
 				odto.setOnline_start_time(rs.getString("online_start_time"));
 				odto.setOnline_end_time(rs.getString("online_end_time"));
-				odto.setOnline_result_time(rs.getString("online_result_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
@@ -244,7 +241,6 @@ public class OnlineDAO {
 				odto.setOnline_link(rs.getString("online_link"));
 				odto.setOnline_start_time(rs.getString("online_start_time"));
 				odto.setOnline_end_time(rs.getString("online_end_time"));
-				odto.setOnline_result_time(rs.getString("online_result_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));

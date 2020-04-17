@@ -10,7 +10,6 @@ public class OnlineDTO {
 	private String online_link;
 	private String online_start_time;
 	private String online_end_time;
-	private String online_result_time;
 	private String online_method;
 	private String buy_method;
 	private String delivery_method;
@@ -63,12 +62,6 @@ public class OnlineDTO {
 	}
 	public void setOnline_end_time(String online_end_time) {
 		this.online_end_time = online_end_time;
-	}
-	public String getOnline_result_time() {
-		return online_result_time;
-	}
-	public void setOnline_result_time(String online_result_time) {
-		this.online_result_time = online_result_time;
 	}
 	public String getOnline_method() {
 		return online_method;
