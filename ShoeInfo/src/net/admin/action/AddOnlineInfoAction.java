@@ -32,12 +32,28 @@ public class AddOnlineInfoAction implements Action{
 		String brand_name = request.getParameter("brand_name");
 		String online_link = request.getParameter("online_link");
 		
+		//온라인 시작 시간
 		String online_date_start = request.getParameter("online_date_start");
 		String online_hour_start = request.getParameter("online_hour_start");
+		//null이면 0000-00-00, 00:00 으로 저장하기
+		if(online_date_start.equals("")){
+			online_date_start = "0000-00-00";
+		}
+		if(online_hour_start.equals("")){
+			online_hour_start = "00:00";
+		}
 		String online_start_time = online_date_start + " " + online_hour_start;
-
+		
+		//온라인 끝나는 시간
 		String online_date_end = request.getParameter("online_date_end");
 		String online_hour_end = request.getParameter("online_hour_end");
+		//null이면 0000-00-00, 00:00 으로 저장하기
+		if(online_date_end.equals("")){
+			online_date_end = "0000-00-00";
+		}
+		if(online_hour_end.equals("")){
+			online_hour_end = "00:00";
+		}
 		String online_end_time = online_date_end + " " + online_hour_end;
 
 		String online_method = request.getParameter("online_method");

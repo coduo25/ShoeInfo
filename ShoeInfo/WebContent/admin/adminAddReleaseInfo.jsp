@@ -127,7 +127,13 @@
 						</tr>
 						<tr>
 							<td> 온라인 시간 </td>
-							<td> <input type="date" name="online_date_start"><input type="time" name="online_hour_start">~<input type="date" name="online_date_end"><input type="time" name="online_hour_end"></td>
+							<td> 
+								<input type="date" name="online_date_start">
+								<input type="time" name="online_hour_start">
+								~
+								<input type="date" name="online_date_end">
+								<input type="time" name="online_hour_end">
+							</td>
 						</tr>
 						<tr>
 							<td> 온라인 방식 </td>

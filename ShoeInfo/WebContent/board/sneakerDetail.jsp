@@ -178,7 +178,7 @@
 							<td style="width:50px;"> </td>
 							<td style="width:100px;"> </td>
 							<td style="width:30px;"> </td>
-							<td style="width:200px;"> </td>
+							<td style="width:200px;"> 시간 </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
 							<td style="width:60px;"> 응모여부 </td>
@@ -219,11 +219,26 @@
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </td>
 						
 						<!-- 응모시간 -->
-						<td> <%=new_Online_start_time_kr%> ~ 
+						<td>
+							<!-- 선착일시 -->
 							<%if(odto_kr.getOnline_method().contains("선착")){%>
-							<span> </span> 
-							<%}else{%>
-								<%=new_Online_end_time_kr%>
+								<!-- 시작시간이 아직 미정일때 -->
+								<%if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else{%>
+								 	<%=new_Online_start_time_kr%> ~ 
+								<%}%>
+							<!-- 드로우일시 -->
+							<%}else if(odto_kr.getOnline_method().contains("드로우")){%> 
+								<%if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00") && odto_kr.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									~ <%=new_Online_end_time_kr%>
+								<%}else if(odto_kr.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<%=new_Online_start_time_kr%> ~
+								<%}else{%>
+									<%=new_Online_start_time_kr%> ~ <%=new_Online_end_time_kr%>
+								<%}%>
 							<%}%>
 						</td>
 						
@@ -277,7 +292,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;"> </td>
+						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
 						<td style="width:60px;"> 응모여부 </td>
@@ -318,11 +333,26 @@
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_asia.getCountry_flag()%>" width="22" height="15"> </td>
 						
 						<!-- 응모시간 -->
-						<td> <%=new_Online_start_time_asia%> ~ 
+						<td>
+							<!-- 선착일시 -->
 							<%if(odto_asia.getOnline_method().contains("선착")){%>
-							<span> </span> 
-							<%}else{%>
-								<%=new_Online_end_time_asia%>
+								<!-- 시작시간이 아직 미정일때 -->
+								<%if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else{%>
+								 	<%=new_Online_start_time_asia%> ~ 
+								<%}%>
+							<!-- 드로우일시 -->
+							<%}else if(odto_asia.getOnline_method().contains("드로우")){%> 
+								<%if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00") && odto_asia.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									~ <%=new_Online_end_time_asia%>
+								<%}else if(odto_asia.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<%=new_Online_start_time_asia%> ~
+								<%}else{%>
+									<%=new_Online_start_time_asia%> ~ <%=new_Online_end_time_asia%>
+								<%}%>
 							<%}%>
 						</td>
 						
@@ -373,7 +403,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;"> </td>
+						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
 						<td style="width:60px;"> 응모여부 </td>
@@ -414,11 +444,26 @@
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_america.getCountry_flag()%>" width="22" height="15"> </td>
 						
 						<!-- 응모시간 -->
-						<td> <%=new_Online_start_time_america%> ~ 
+						<td>
+							<!-- 선착일시 -->
 							<%if(odto_america.getOnline_method().contains("선착")){%>
-							<span> </span> 
-							<%}else{%>
-								<%=new_Online_end_time_america%>
+								<!-- 시작시간이 아직 미정일때 -->
+								<%if(odto_america.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else{%>
+								 	<%=new_Online_start_time_america%> ~ 
+								<%}%>
+							<!-- 드로우일시 -->
+							<%}else if(odto_america.getOnline_method().contains("드로우")){%> 
+								<%if(odto_america.getOnline_start_time().contains("0000-00-00 00:00") && odto_america.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else if(odto_america.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									~ <%=new_Online_end_time_america%>
+								<%}else if(odto_america.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<%=new_Online_start_time_america%> ~
+								<%}else{%>
+									<%=new_Online_start_time_america%> ~ <%=new_Online_end_time_america%>
+								<%}%>
 							<%}%>
 						</td>
 						
@@ -469,7 +514,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;"> </td>
+						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
 						<td style="width:60px;"> 응모여부 </td>
@@ -510,11 +555,26 @@
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_europe.getCountry_flag()%>" width="22" height="15"> </td>
 						
 						<!-- 응모시간 -->
-						<td> <%=new_Online_start_time_europe%> ~ 
+						<td> 
+							<!-- 선착일시 -->
 							<%if(odto_europe.getOnline_method().contains("선착")){%>
-							<span> </span> 
-							<%}else{%>
-								<%=new_Online_end_time_europe%>
+								<!-- 시작시간이 아직 미정일때 -->
+								<%if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else{%>
+								 	<%=new_Online_start_time_europe%> ~ 
+								<%}%>
+							<!-- 드로우일시 -->
+							<%}else if(odto_europe.getOnline_method().contains("드로우")){%> 
+								<%if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00") && odto_europe.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									~ <%=new_Online_end_time_europe%>
+								<%}else if(odto_europe.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<%=new_Online_start_time_europe%> ~
+								<%}else{%>
+									<%=new_Online_start_time_europe%> ~ <%=new_Online_end_time_europe%>
+								<%}%>
 							<%}%>
 						</td>
 						
@@ -565,7 +625,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
-						<td style="width:200px;">  </td>
+						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
 						<td style="width:60px;"> 응모여부 </td>
@@ -606,11 +666,26 @@
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_etc.getCountry_flag()%>" width="22" height="15"> </td>
 						
 						<!-- 응모시간 -->
-						<td> <%=new_Online_start_time_etc%> ~ 
+						<td>
+							<!-- 선착일시 -->
 							<%if(odto_etc.getOnline_method().contains("선착")){%>
-							<span> </span> 
-							<%}else{%>
-								<%=new_Online_end_time_etc%>
+								<!-- 시작시간이 아직 미정일때 -->
+								<%if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else{%>
+								 	<%=new_Online_start_time_etc%> ~ 
+								<%}%>
+							<!-- 드로우일시 -->
+							<%}else if(odto_etc.getOnline_method().contains("드로우")){%> 
+								<%if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00") && odto_etc.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00")){%>
+									~ <%=new_Online_end_time_etc%>
+								<%}else if(odto_etc.getOnline_end_time().contains("0000-00-00 00:00")){%>
+									<%=new_Online_start_time_etc%> ~
+								<%}else{%>
+									<%=new_Online_start_time_etc%> ~ <%=new_Online_end_time_etc%>
+								<%}%>
 							<%}%>
 						</td>
 						
