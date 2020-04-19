@@ -270,6 +270,8 @@
 							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
 						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null){%>
 							<td id="draw-status_kr<%=i%>"> 
+								<input type="hidden" id="kr_model_stylecode<%=i%>" value="<%=odto_kr.getModel_stylecode()%>">
+								<input type="hidden" id="kr_brand_id<%=i%>" value="<%=odto_kr.getBrand_id()%>">
 <%-- 								<a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모체크"></a> --%>
 								<input type="checkbox" id="drawCheckbox_kr<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
 							</td>
@@ -795,19 +797,25 @@
 			
 			//사용자가 응모여부에 체크하였을시 호출되는 함수
 			$('#drawCheckbox_kr'+i).change(function(){
+				alert(i);
 				if($(this).is(":checked")==true){
 					//체크가 안된 상태에서 응모여부 물어보기
 					$(this).prop("checked", false);
 					var draw_confirm_yes = confirm("해당 사이트 응모 하셨습니까?");
 				   	if(draw_confirm_yes){
-				   		$(this).prop("checked", true);
+				   		alert(i);
+				   		var kr_model_stylecode = $('#kr_model_stylecode'+i).val();
+				   		var brand_id = $('#kr_brand_id').val();
+				   		alert(kr_model_stylecode);
+				   		alert(brand_id);
 				   		$.ajax({
 				   			type:'get',
 				   			url:'./addUserDrawInfoAction.me',
-				   			data: 'model_stylecode'+$('#').val(),
+				   			data: 'model_stylecode='+$('#kr_model_stylecode'+i).val()+'&brand_id='+$('#kr_brand_id'+i).val(),
 				   			dataType: 'html',
 				   			success:function(data) {
-				   				alert("해당 사이트를 나의 페이지에 저장하였습니다.")
+				   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");
+				   				$(this).prop("checked", true);
 				   			},error:function(request,status,error){
 							 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 							}

@@ -26,6 +26,8 @@ public class addUserDrawInfoAction implements Action{
 		String model_stylecode = request.getParameter("model_stylecode");
 		String brand_id = request.getParameter("brand_id");
 		
+		System.out.println(model_stylecode + ", " + brand_id);
+			
 		MemberDrawDTO mddto = new MemberDrawDTO();
 		
 		mddto.setBrand_id(brand_id);
