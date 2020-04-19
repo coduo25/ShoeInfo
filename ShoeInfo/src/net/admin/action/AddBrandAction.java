@@ -15,7 +15,7 @@ public class AddBrandAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -26,22 +26,22 @@ public class AddBrandAction implements Action{
 		}
 		
 		// ---------------------------------------------------------------------------------------------------------------------------
-		// 1. ÆÄÀÏ ¾÷·Îµå (ÀÌ¹ÌÁö)
+		// 1. íŒŒì¼ ì—…ë¡œë“œ (ì´ë¯¸ì§€)
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/brand_img_upload");
-		//System.out.println("ÆÄÀÏÀÌ ÀúÀåµÇ´Â°÷ (¼­¹öÀÇ HDD) :" + realPath);
+		//System.out.println("íŒŒì¼ì´ ì €ì¥ë˜ëŠ”ê³³ (ì„œë²„ì˜ HDD) :" + realPath);
 		
-		//ÆÄÀÏ Å©±â ÁöÁ¤
+		//íŒŒì¼ í¬ê¸° ì§€ì •
 		int maxSize = 30 * 1024 * 1024; //30MB
 		
-		//ÆÄÀÏ ¾÷·Îµå(cos.jar)
+		//íŒŒì¼ ì—…ë¡œë“œ(cos.jar)
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8");
 		
 		// ---------------------------------------------------------------------------------------------------------------------------
-		// 2. BrandDTO °´Ã¼ »ı¼º (Àü´Ş¹ŞÀº Á¤º¸¸¦ ÀúÀå)
+		// 2. BrandDTO ê°ì²´ ìƒì„± (ì „ë‹¬ë°›ì€ ì •ë³´ë¥¼ ì €ì¥)
 		BrandDTO bdto = new BrandDTO();
 		
-		//³Ñ¾î¿Â °ª ÀúÀåÇÏ±â
+		//ë„˜ì–´ì˜¨ ê°’ ì €ì¥í•˜ê¸°
 		String country_name = multi.getParameter("country_name");
 		String brand_logo = multi.getFilesystemName("brand_logo");
 		String brand_name = multi.getParameter("brand_name");
@@ -58,7 +58,7 @@ public class AddBrandAction implements Action{
 		bdao.insertNewBrand(bdto);
 		
 		// ---------------------------------------------------------------------------------------------------------------------------
-		// 3. ÆäÀÌÁöÀÌµ¿
+		// 3. í˜ì´ì§€ì´ë™
 		forward.setPath("./searchBrand.ad");
 		forward.setRedirect(true);
 		return forward;

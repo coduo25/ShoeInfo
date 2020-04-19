@@ -20,15 +20,15 @@ public class OnlineDAO {
 	ResultSet rs = null;
 	String sql="";
 	
-	// µğºñ ¿¬°á(Ä¿³Ø¼Ç Ç® »ç¿ë)
+	// ë””ë¹„ ì—°ê²°(ì»¤ë„¥ì…˜ í’€ ì‚¬ìš©)
 	private Connection getConnection() throws Exception{
-		// Context °´Ã¼¸¦ »ı¼º
+		// Context ê°ì²´ë¥¼ ìƒì„±
 		Context init = new InitialContext();
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/shoeinfo");
 		con = ds.getConnection();
 		return con;
 	}
-	// ÀÚ¿ø ÇØÁ¦ 
+	// ìì› í•´ì œ 
 	public void closeDB(){
 		try {
 			if(rs !=null) rs.close();
@@ -39,12 +39,12 @@ public class OnlineDAO {
 		}
 	}
 	
-	//½Å¹ß ¿Â¶óÀÎ Á¤º¸ ÀúÀåÇÏ´Â ÇÔ¼ö
+	//ì‹ ë°œ ì˜¨ë¼ì¸ ì •ë³´ ì €ì¥í•˜ëŠ” í•¨ìˆ˜
 	public void insertOnlineInfo(OnlineDTO odto) {
 		int online_num = 0;
 		try {
 			con = getConnection();
-			//draw_num °è»ê
+			//draw_num ê³„ì‚°
 			sql = "select max(online_num) from shoeinfo_onlineinfo";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -73,7 +73,7 @@ public class OnlineDAO {
 		}
 	}
 
-	//´ëÇÑ¹Î±¹ ½Å¹ß ¿Â¶óÀÎ Á¤º¸ °¡Á®¿À´Â ÇÔ¼ö(ºê·£µå Á¤º¸ + ¿Â¶óÀÎ Á¤º¸)
+	//ëŒ€í•œë¯¼êµ­ ì‹ ë°œ ì˜¨ë¼ì¸ ì •ë³´ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜(ë¸Œëœë“œ ì •ë³´ + ì˜¨ë¼ì¸ ì •ë³´)
 	public Vector getOnlineInfo_kr(String model_stylecode) {
 		Vector vec = new Vector();
 		
@@ -83,8 +83,8 @@ public class OnlineDAO {
 		PreparedStatement pstmt3 = null;
 		ResultSet rs3 = null;
 		
-		//´ëÇÑ¹Î±¹(kr) ½Å¹ß ÀÀ¸ğ Á¤º¸ ÀúÀå
-		//´ëÇÑ¹Î±¹(kr) ºê·£µå Á¤º¸ ÀúÀå
+		//ëŒ€í•œë¯¼êµ­(kr) ì‹ ë°œ ì‘ëª¨ ì •ë³´ ì €ì¥
+		//ëŒ€í•œë¯¼êµ­(kr) ë¸Œëœë“œ ì •ë³´ ì €ì¥
 		ArrayList onlineInfoList_kr = new ArrayList();
 		ArrayList brandList_kr = new ArrayList();
 		
@@ -93,7 +93,7 @@ public class OnlineDAO {
 			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, "´ëÇÑ¹Î±¹");
+			pstmt.setString(2, "ëŒ€í•œë¯¼êµ­");
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OnlineDTO odto = new OnlineDTO();
@@ -110,13 +110,13 @@ public class OnlineDAO {
 				odto.setDescription(rs.getString("description"));
 				onlineInfoList_kr.add(odto);
 				
-				//ÇÑ±¹ ºê·£µå Á¤º¸ °¡Á®¿À±â
+				//í•œêµ­ ë¸Œëœë“œ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 				sql = "select * from shoeinfo_brand where brand_id = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, odto.getBrand_id());
 				rs2 = pstmt2.executeQuery();
 				if(rs2.next()){
-					//ºê·£µå Á¤º¸ DB¿¡ ÇØ´ç ºê·£µå°¡ ÀúÀåµÇ¾îÀÖÀ¸¸é
+					//ë¸Œëœë“œ ì •ë³´ DBì— í•´ë‹¹ ë¸Œëœë“œê°€ ì €ì¥ë˜ì–´ìˆìœ¼ë©´
 					BrandDTO bdto = new BrandDTO();
 					bdto.setCountry_name(rs2.getString("country_name"));
 					bdto.setBrand_logo(rs2.getString("brand_logo"));
@@ -142,7 +142,7 @@ public class OnlineDAO {
 		return vec;
 	}
 	
-	//Asia(´ëÇÑ¹Î±¹ »©°í)Áö¿ª ½Å¹ß ¿Â¶óÀÎ Á¤º¸ °¡Á®¿À´Â ÇÔ¼ö(ºê·£µå Á¤º¸ + ÀÀ¸ğ Á¤º¸)
+	//Asia(ëŒ€í•œë¯¼êµ­ ë¹¼ê³ )ì§€ì—­ ì‹ ë°œ ì˜¨ë¼ì¸ ì •ë³´ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜(ë¸Œëœë“œ ì •ë³´ + ì‘ëª¨ ì •ë³´)
 	public Vector getOnlineInfo_asia(String model_stylecode) {
 		Vector vec = new Vector();
 		
@@ -152,8 +152,8 @@ public class OnlineDAO {
 		PreparedStatement pstmt3 = null;
 		ResultSet rs3 = null;
 		
-		//¾Æ½Ã¾Æ-´ëÇÑ¹Î±¹ »©°í(asia) ½Å¹ß ¿Â¶óÀÎ Á¤º¸ ÀúÀå
-		//¾Æ½Ã¾Æ-´ëÇÑ¹Î±¹ »©°í(asia) ºê·£µå Á¤º¸ ÀúÀå
+		//ì•„ì‹œì•„-ëŒ€í•œë¯¼êµ­ ë¹¼ê³ (asia) ì‹ ë°œ ì˜¨ë¼ì¸ ì •ë³´ ì €ì¥
+		//ì•„ì‹œì•„-ëŒ€í•œë¯¼êµ­ ë¹¼ê³ (asia) ë¸Œëœë“œ ì •ë³´ ì €ì¥
 		ArrayList onlineInfoList_asia = new ArrayList();
 		ArrayList brandList_asia = new ArrayList();
 		
@@ -162,8 +162,8 @@ public class OnlineDAO {
 			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, "¾Æ½Ã¾Æ");
-			pstmt.setString(3, "´ëÇÑ¹Î±¹");
+			pstmt.setString(2, "ì•„ì‹œì•„");
+			pstmt.setString(3, "ëŒ€í•œë¯¼êµ­");
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OnlineDTO odto = new OnlineDTO();
@@ -180,13 +180,13 @@ public class OnlineDAO {
 				odto.setDescription(rs.getString("description"));
 				onlineInfoList_asia.add(odto);
 				
-				//¾Æ½Ã¾Æ ºê·£µå Á¤º¸ °¡Á®¿À±â
+				//ì•„ì‹œì•„ ë¸Œëœë“œ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 				sql = "select * from shoeinfo_brand where brand_id = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, odto.getBrand_id());
 				rs2 = pstmt2.executeQuery();
 				if(rs2.next()){
-					//ºê·£µå Á¤º¸ DB¿¡ ÇØ´ç ºê·£µå°¡ ÀúÀåµÇ¾îÀÖÀ¸¸é
+					//ë¸Œëœë“œ ì •ë³´ DBì— í•´ë‹¹ ë¸Œëœë“œê°€ ì €ì¥ë˜ì–´ìˆìœ¼ë©´
 					BrandDTO bdto = new BrandDTO();
 					bdto.setCountry_name(rs2.getString("country_name"));
 					bdto.setBrand_logo(rs2.getString("brand_logo"));
@@ -247,13 +247,13 @@ public class OnlineDAO {
 				odto.setDescription(rs.getString("description"));
 				onlineInfoList.add(odto);
 				
-				//¾Æ¸Ş¸®Ä« ºê·£µå Á¤º¸ °¡Á®¿À±â
+				//ì•„ë©”ë¦¬ì¹´ ë¸Œëœë“œ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 				sql = "select * from shoeinfo_brand where brand_id = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, odto.getBrand_id());
 				rs2 = pstmt2.executeQuery();
 				if(rs2.next()){
-					//ºê·£µå Á¤º¸ DB¿¡ ÇØ´ç ºê·£µå°¡ ÀúÀåµÇ¾îÀÖÀ¸¸é
+					//ë¸Œëœë“œ ì •ë³´ DBì— í•´ë‹¹ ë¸Œëœë“œê°€ ì €ì¥ë˜ì–´ìˆìœ¼ë©´
 					BrandDTO bdto = new BrandDTO();
 					bdto.setCountry_name(rs2.getString("country_name"));
 					bdto.setBrand_logo(rs2.getString("brand_logo"));
@@ -280,7 +280,7 @@ public class OnlineDAO {
 		return vec;
 	}
 	
-	//model_stylcode¿Í brand_id¸¸ °¡Áö°í ÇØ´ç ºê·£µå ¹ß¸Å Á¤º¸ ¼öÁ¤ÇÏ±â À§ÇØ¼­ Á¤º¸ °¡Á®¿À´Â ÇÔ¼ö(°ü¸®ÀÚ¸¸)
+	//model_stylcodeì™€ brand_idë§Œ ê°€ì§€ê³  í•´ë‹¹ ë¸Œëœë“œ ë°œë§¤ ì •ë³´ ìˆ˜ì •í•˜ê¸° ìœ„í•´ì„œ ì •ë³´ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜(ê´€ë¦¬ìë§Œ)
 	public OnlineDTO getOneOnlineInfo(String model_stylecode, String brand_id){
 		OnlineDTO odto = null;
 		try {
@@ -313,7 +313,7 @@ public class OnlineDAO {
 		return odto;
 	}
 	
-	//½Å¹ß ¿Â¶óÀÎ Á¤º¸ ¼öÁ¤ÇÏ´Â ÇÔ¼ö
+	//ì‹ ë°œ ì˜¨ë¼ì¸ ì •ë³´ ìˆ˜ì •í•˜ëŠ” í•¨ìˆ˜
 	public void updateOnlineinfo(OnlineDTO odto){
 		try {
 			con = getConnection();

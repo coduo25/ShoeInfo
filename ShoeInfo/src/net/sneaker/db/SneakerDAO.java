@@ -19,15 +19,15 @@ public class SneakerDAO {
 	ResultSet rs = null;
 	String sql="";
 	
-	// µğºñ ¿¬°á(Ä¿³Ø¼Ç Ç® »ç¿ë)
+	// ë””ë¹„ ì—°ê²°(ì»¤ë„¥ì…˜ í’€ ì‚¬ìš©)
 	private Connection getConnection() throws Exception{
-		// Context °´Ã¼¸¦ »ı¼º
+		// Context ê°ì²´ë¥¼ ìƒì„±
 		Context init = new InitialContext();
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/shoeinfo");
 		con = ds.getConnection();
 		return con;
 	}
-	// ÀÚ¿ø ÇØÁ¦ 
+	// ìì› í•´ì œ 
 	public void closeDB(){
 		try {
 			if(rs !=null) rs.close();
@@ -39,7 +39,7 @@ public class SneakerDAO {
 	}
 	
 	
-	//»õ·Î¿î ½Å¹ßÁ¤º¸ Ãß°¡ÇÏ´Â ÇÔ¼ö
+	//ìƒˆë¡œìš´ ì‹ ë°œì •ë³´ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
 	public void insertSneaker(SneakerDTO sdto) {
 		try {
 			con = getConnection();
@@ -62,7 +62,7 @@ public class SneakerDAO {
 		}
 	}
 	
-	//½Å¹ßÁ¤º¸ ¸®½ºÆ®·Î °¡Á®¿À´Â ÇÔ¼ö(¿ùº°·Î)
+	//ì‹ ë°œì •ë³´ ë¦¬ìŠ¤íŠ¸ë¡œ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜(ì›”ë³„ë¡œ)
 	public ArrayList getSneakerList(String date) {
 		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
 		try {
@@ -92,7 +92,7 @@ public class SneakerDAO {
 		return sneakerList;
 	}
 	
-	//½Å¹ß »ó¼¼Á¤º¸ °¡Á®¿À´Â ÇÔ¼ö
+	//ì‹ ë°œ ìƒì„¸ì •ë³´ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
 	public SneakerDTO getSneakerDetail(String model_stylecode) {
 		SneakerDTO sdto = null;
 		try {
@@ -103,7 +103,7 @@ public class SneakerDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				//½Å¹ßÀÌ ÀÖÀ¸¸é
+				//ì‹ ë°œì´ ìˆìœ¼ë©´
 				sdto = new SneakerDTO();
 				sdto.setBrand(rs.getString("brand"));
 				sdto.setSub_brand(rs.getString("sub_brand"));
@@ -123,7 +123,7 @@ public class SneakerDAO {
 		return sdto;
 	}
 	
-	//½Å¹ß Á¤º¸ ¼öÁ¤ÇÏ´Â ÇÔ¼ö
+	//ì‹ ë°œ ì •ë³´ ìˆ˜ì •í•˜ëŠ” í•¨ìˆ˜
 	public void updateSneakerInfo(SneakerDTO sdto) {
 		try {
 			con = getConnection();
@@ -146,7 +146,7 @@ public class SneakerDAO {
 		}
 	}
 	
-	//½Å¹ß ¹ß¸Å Á¤º¸ ¼öÁ¤ÇÏ´Â ÇÔ¼ö
+	//ì‹ ë°œ ë°œë§¤ ì •ë³´ ìˆ˜ì •í•˜ëŠ” í•¨ìˆ˜
 	
 
 

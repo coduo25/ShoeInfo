@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface Action {
 
-	//Ãß»ó¸Ş¼­µå ¼±¾ğ -> ÀÎÅÍÆäÀÌ½º¸£ ±¸ÇöÇÏ´Â ¸ğµç Å¬·¡½º¿¡ Ã³¸®ÇÏ´Â µ¿ÀÛÀÇ Æ²À» ±¸¼ºÇÑ´Ù.
+	//ì¶”ìƒë©”ì„œë“œ ì„ ì–¸ -> ì¸í„°í˜ì´ìŠ¤ë¥´ êµ¬í˜„í•˜ëŠ” ëª¨ë“  í´ë˜ìŠ¤ì— ì²˜ë¦¬í•˜ëŠ” ë™ì‘ì˜ í‹€ì„ êµ¬ì„±í•œë‹¤.
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

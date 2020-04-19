@@ -23,28 +23,28 @@ public class BoardFrontController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		/************************************************************
-		 * 1. °¡»ó ÁÖ¼Ò °è»ê
+		 * 1. ê°€ìƒ ì£¼ì†Œ ê³„ì‚°
 		 *************************************************************/
 		String requestURI = request.getRequestURI();
 		//System.out.println("URI: " + requestURI);
 		
 		String contextPath = request.getContextPath();
-		//System.out.println("ContextPath(ÇÁ·ÎÁ§Æ®¸í): " + contextPath);
+		//System.out.println("ContextPath(í”„ë¡œì íŠ¸ëª…): " + contextPath);
 		
 		String command = requestURI.substring(contextPath.length());
 		//System.out.println("command : " + command);
 		
-		//System.out.println("-------ÆäÀÌÁö ÁÖ¼Ò °è»ê ¿Ï·á-------------");
+		//System.out.println("-------í˜ì´ì§€ ì£¼ì†Œ ê³„ì‚° ì™„ë£Œ-------------");
 		
 		/************************************************************
-		 * 2. °è»êµÈ ÁÖ¼Ò¸¦ »ç¿ëÇØ¼­ ÆäÀÌÁö ÇüÅÂ±¸ºĞ(View/Model)
+		 * 2. ê³„ì‚°ëœ ì£¼ì†Œë¥¼ ì‚¬ìš©í•´ì„œ í˜ì´ì§€ í˜•íƒœêµ¬ë¶„(View/Model)
 		 *************************************************************/
-		//System.out.println("-------ÆäÀÌÁö ±¸ºĞ (view/model)-------------");
+		//System.out.println("-------í˜ì´ì§€ êµ¬ë¶„ (view/model)-------------");
 		
 		Action action = null;
 		ActionForward forward = null;
 		
-		//¸ŞÀÎÆäÀÌÁö(¸ŞÀÎ°Ô½ÃÆÇ)À¸·Î °¡±â
+		//ë©”ì¸í˜ì´ì§€(ë©”ì¸ê²Œì‹œíŒ)ìœ¼ë¡œ ê°€ê¸°
 		if(command.equals("/Main.bo")) {
 			forward = new ActionForward();
 			forward.setPath("SneakerList.go");
@@ -52,16 +52,16 @@ public class BoardFrontController extends HttpServlet{
 		}
 		
 		/************************************************************
-		 * 3. ½ÇÁ¦ ÆäÀÌÁö ÀÌµ¿ µ¿ÀÛ (redirect/forward)
+		 * 3. ì‹¤ì œ í˜ì´ì§€ ì´ë™ ë™ì‘ (redirect/forward)
 		 *************************************************************/
-		//System.out.println("-------ÆäÀÌÁö ÀÌµ¿(redirect-true/forward-false)-----------");
-		//ÆäÀÌÁö ÀÌµ¿Á¤º¸°¡ ÀÖÀ»¶§¸¸ ÀÌµ¿
+		//System.out.println("-------í˜ì´ì§€ ì´ë™(redirect-true/forward-false)-----------");
+		//í˜ì´ì§€ ì´ë™ì •ë³´ê°€ ìˆì„ë•Œë§Œ ì´ë™
 		if(forward != null) {
 			if(forward.isRedirect()) {
-				//System.out.println("sendReirect() ÀÌµ¿: " + forward.getPath());
+				//System.out.println("sendReirect() ì´ë™: " + forward.getPath());
 				response.sendRedirect(forward.getPath());
 			} else {
-				//System.out.println("forward() ÀÌµ¿: " + forward.getPath());
+				//System.out.println("forward() ì´ë™: " + forward.getPath());
 				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
 			}

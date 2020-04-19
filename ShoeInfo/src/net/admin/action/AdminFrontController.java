@@ -26,42 +26,42 @@ public class AdminFrontController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		/************************************************************
-		 * 1. °¡»ó ÁÖ¼Ò °è»ê
+		 * 1. ê°€ìƒ ì£¼ì†Œ ê³„ì‚°
 		 *************************************************************/
 		String requestURI = request.getRequestURI();
 		//System.out.println("URI: " + requestURI);
 		
 		String contextPath = request.getContextPath();
-		//System.out.println("ContextPath(ÇÁ·ÎÁ§Æ®¸í): " + contextPath);
+		//System.out.println("ContextPath(í”„ë¡œì íŠ¸ëª…): " + contextPath);
 		
 		String command = requestURI.substring(contextPath.length());
 		//System.out.println("command : " + command);
 		
-		//System.out.println("-------ÆäÀÌÁö ÁÖ¼Ò °è»ê ¿Ï·á-------------");
+		//System.out.println("-------í˜ì´ì§€ ì£¼ì†Œ ê³„ì‚° ì™„ë£Œ-------------");
 		
 		/************************************************************
-		 * 2. °è»êµÈ ÁÖ¼Ò¸¦ »ç¿ëÇØ¼­ ÆäÀÌÁö ÇüÅÂ±¸ºĞ(View/Model)
+		 * 2. ê³„ì‚°ëœ ì£¼ì†Œë¥¼ ì‚¬ìš©í•´ì„œ í˜ì´ì§€ í˜•íƒœêµ¬ë¶„(View/Model)
 		 *************************************************************/
-		//System.out.println("-------ÆäÀÌÁö ±¸ºĞ (view/model)-------------");
+		//System.out.println("-------í˜ì´ì§€ êµ¬ë¶„ (view/model)-------------");
 		
 		Action action = null;
 		ActionForward forward = null;
 		
-		//°ü¸®ÀÚ ¸ŞÀÎ ÆäÀÌÁö Ã³¸®
+		//ê´€ë¦¬ì ë©”ì¸ í˜ì´ì§€ ì²˜ë¦¬
 		if(command.equals("/Main.ad")){
 			forward = new ActionForward();
 			forward.setPath("./admin/adminMain.jsp");
 			forward.setRedirect(false);
 		}
 		
-		// ---------------»õ ½Å¹ß Á¤º¸ Ãß°¡----------------------------
-		//»õ·Î¿î ½Å¹ß Ãß°¡ÇÏ´Â  form ÆäÀÌÁö·Î °¡±â
+		// ---------------ìƒˆ ì‹ ë°œ ì •ë³´ ì¶”ê°€----------------------------
+		//ìƒˆë¡œìš´ ì‹ ë°œ ì¶”ê°€í•˜ëŠ”  form í˜ì´ì§€ë¡œ ê°€ê¸°
 		else if(command.equals("/AddSneaker.ad")) {
 			forward = new ActionForward();
 			forward.setPath("./admin/adminAddSneaker.jsp");
 			forward.setRedirect(false);
 		}
-		//½Å¹ß Ãß°¡ÇÏ´Â ÆäÀÌÁö Ã³¸®
+		//ì‹ ë°œ ì¶”ê°€í•˜ëŠ” í˜ì´ì§€ ì²˜ë¦¬
 		else if(command.equals("/AddSneakerAction.ad")) {
 			action = new AddSneakerAction();
 			try {
@@ -71,7 +71,7 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 		
-		//½Å¹ß Á¤º¸ ¼öÁ¤ÇÏ´Â ÆäÀÌÁö·Î °¡±â
+		//ì‹ ë°œ ì •ë³´ ìˆ˜ì •í•˜ëŠ” í˜ì´ì§€ë¡œ ê°€ê¸°
 		else if(command.equals("/UpdateSneakerInfo.ad")) {
 			action = new UpdateSneaker();
 			try {
@@ -80,7 +80,7 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		//½Å¹ß Á¤º¸ ¼öÁ¤ÇÏ´Â ÆäÀÌÁö Ã³¸®
+		//ì‹ ë°œ ì •ë³´ ìˆ˜ì •í•˜ëŠ” í˜ì´ì§€ ì²˜ë¦¬
 		else if(command.equals("/UpdateSneakerInfoAction.ad")) {
 			action = new UpdateSneakerAction();
 			try {
@@ -90,7 +90,7 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 		
-		//½Å¹ß ¹ß¸Å Á¤º¸ ¼öÁ¤ÇÏ´Â ÆäÀÌÁö·Î °¡±â
+		//ì‹ ë°œ ë°œë§¤ ì •ë³´ ìˆ˜ì •í•˜ëŠ” í˜ì´ì§€ë¡œ ê°€ê¸°
 		else if(command.equals("/UpdateDrawInfo.ad")){
 			action = new UpdateDrawInfo();
 			try {
@@ -99,7 +99,7 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		//½Å¹ß ¹ß¸Å Á¤º¸ ¼öÁ¤ÇÏ´Â ÆäÀÌÁö Ã³¸®ÇÏ±â
+		//ì‹ ë°œ ë°œë§¤ ì •ë³´ ìˆ˜ì •í•˜ëŠ” í˜ì´ì§€ ì²˜ë¦¬í•˜ê¸°
 		else if(command.equals("/UpdateDrawInfoAction.ad")){
 			action = new UpdateDrawInfoAction();
 			try {
@@ -109,8 +109,8 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 		
-		// ---------------³ª¶óÃß°¡----------------------------
-		//»õ·Î¿î ³ª¶ó Ãß°¡ÇÏ´Â ÆäÀÌÁö Ã³¸®
+		// ---------------ë‚˜ë¼ì¶”ê°€----------------------------
+		//ìƒˆë¡œìš´ ë‚˜ë¼ ì¶”ê°€í•˜ëŠ” í˜ì´ì§€ ì²˜ë¦¬
 		else if(command.equals("/AddCountryAction.ad")){
 			action = new AddCountryAction();
 			try {
@@ -120,8 +120,8 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 		
-		// ---------------³ª¶óº° ºê·£µåÃß°¡------------------------
-		//ºê·£µå »çÀÌÆ® Ãß°¡ÇÏ´Â ÆäÀÌÁö Ã³¸®
+		// ---------------ë‚˜ë¼ë³„ ë¸Œëœë“œì¶”ê°€------------------------
+		//ë¸Œëœë“œ ì‚¬ì´íŠ¸ ì¶”ê°€í•˜ëŠ” í˜ì´ì§€ ì²˜ë¦¬
 		else if(command.equals("/AddBrandAction.ad")){
 			action = new AddBrandAction();
 			try {
@@ -131,8 +131,8 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 
-		// ---------------¿Â¶óÀÎ/¿ÀÇÁ¶óÀÎ ¹ß¸ÅÁ¤º¸ Ãß°¡-------------------
-		//¹ß¸ÅÁ¤º¸ Ãß°¡ÇÏ´Â ÆäÀÌÁö °¡±âÀü ±¹°¡ Á¤º¸ °¡Á®¿À´Â Ã³¸®ÆäÀÌÁö·Î °¡±â
+		// ---------------ì˜¨ë¼ì¸/ì˜¤í”„ë¼ì¸ ë°œë§¤ì •ë³´ ì¶”ê°€-------------------
+		//ë°œë§¤ì •ë³´ ì¶”ê°€í•˜ëŠ” í˜ì´ì§€ ê°€ê¸°ì „ êµ­ê°€ ì •ë³´ ê°€ì ¸ì˜¤ëŠ” ì²˜ë¦¬í˜ì´ì§€ë¡œ ê°€ê¸°
 		else if(command.equals("/searchBrand.ad")) {
 			action = new searchBrandAction();
 			try {
@@ -141,7 +141,7 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		//¿ÀÇÁ¶óÀÎ Á¤º¸ ÀÔ·Â Ã³¸® ÆäÀÌÁö
+		//ì˜¤í”„ë¼ì¸ ì •ë³´ ì…ë ¥ ì²˜ë¦¬ í˜ì´ì§€
 		else if(command.equals("/AddOfflineInfoAction.ad")) {
 			action = new AddOfflineInfoAction();
 			try {
@@ -150,7 +150,7 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		//¿Â¶óÀÎ Á¤º¸ ÀÔ·Â Ã³¸® ÆäÀÌÁö
+		//ì˜¨ë¼ì¸ ì •ë³´ ì…ë ¥ ì²˜ë¦¬ í˜ì´ì§€
 		else if(command.equals("/AddOnlineInfoAction.ad")) {
 			action = new AddOnlineInfoAction();
 			try {
@@ -161,16 +161,16 @@ public class AdminFrontController extends HttpServlet{
 		}
 		
 		/************************************************************
-		 * 3. ½ÇÁ¦ ÆäÀÌÁö ÀÌµ¿ µ¿ÀÛ (redirect/forward)
+		 * 3. ì‹¤ì œ í˜ì´ì§€ ì´ë™ ë™ì‘ (redirect/forward)
 		 *************************************************************/
-		//System.out.println("-------ÆäÀÌÁö ÀÌµ¿(redirect-true/forward-false)-----------");
-		//ÆäÀÌÁö ÀÌµ¿Á¤º¸°¡ ÀÖÀ»¶§¸¸ ÀÌµ¿
+		//System.out.println("-------í˜ì´ì§€ ì´ë™(redirect-true/forward-false)-----------");
+		//í˜ì´ì§€ ì´ë™ì •ë³´ê°€ ìˆì„ë•Œë§Œ ì´ë™
 		if(forward != null) {
 			if(forward.isRedirect()) {
-				//System.out.println("sendReirect() ÀÌµ¿: " + forward.getPath());
+				//System.out.println("sendReirect() ì´ë™: " + forward.getPath());
 				response.sendRedirect(forward.getPath());
 			} else {
-				//System.out.println("forward() ÀÌµ¿: " + forward.getPath());
+				//System.out.println("forward() ì´ë™: " + forward.getPath());
 				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
 			}

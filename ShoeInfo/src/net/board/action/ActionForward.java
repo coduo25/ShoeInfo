@@ -1,14 +1,15 @@
+
 package net.board.action;
 
 public class ActionForward {
 
-	//ÆäÀÌÁö ÀÌµ¿½Ã¸¶´Ù ÀÌµ¿Á¤º¸¸¦ ÀúÀå °´Ã¼
-	//(ÀÌµ¿ÇÒ ÆäÀÌÁö ÁÖ¼Ò, ÀÌµ¿ÇÒ ¹æ½Ä)
+	//í˜ì´ì§€ ì´ë™ì‹œë§ˆë‹¤ ì´ë™ì •ë³´ë¥¼ ì €ì¥ ê°ì²´
+	//(ì´ë™í•  í˜ì´ì§€ ì£¼ì†Œ, ì´ë™í•  ë°©ì‹)
 	
-	private String path; 		//ÀÌµ¿ÇÒ ÆäÀÌÁö ÁÖ¼Ò
-	private boolean isRedirect; //ÀÌµ¿ÇÒ ¹æ½Ä
-	// true 	-> sendRedirect ÀÌµ¿
-	// false 	-> forward ÀÌµ¿
+	private String path; 		//ì´ë™í•  í˜ì´ì§€ ì£¼ì†Œ
+	private boolean isRedirect; //ì´ë™í•  ë°©ì‹
+	// true 	-> sendRedirect ì´ë™
+	// false 	-> forward ì´ë™
 	
 	public String getPath() {
 		return path;

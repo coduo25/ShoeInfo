@@ -15,7 +15,7 @@ public class searchBrandAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -26,18 +26,18 @@ public class searchBrandAction implements Action{
 		}
 		
 		// -------------------------------------------------
-		// DB°´Ã¼ ¸¸µé±â
+		// DBê°ì²´ ë§Œë“¤ê¸°
 		
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		if(model_stylecode == null){
 			model_stylecode = "";
 		}
 		
-		//CountryDB·ÎºÎÅÍ ¸ğµç ±¹°¡ ¸®½ºÆ® °¡Á®¿À´Â ÇÔ¼ö
+		//CountryDBë¡œë¶€í„° ëª¨ë“  êµ­ê°€ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
 		CountryDAO cdao = new CountryDAO();
 		List<CountryDTO> countryList_all = (List<CountryDTO>) cdao.countryList_all();
 		
-		//BrandDB·ÎºÎÅÍ ºê·£µåº° ±¹°¡ ¸®½ºÆ® °¡Á®¿À´Â ÇÔ¼ö
+		//BrandDBë¡œë¶€í„° ë¸Œëœë“œë³„ êµ­ê°€ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
 		BrandDAO bdao = new BrandDAO();
 		List countryList_bybrand = bdao.searchCountryList_bybrand();
 		
@@ -45,7 +45,7 @@ public class searchBrandAction implements Action{
 		request.setAttribute("countryList_bybrand", countryList_bybrand);
 		
 		// ------------------------------------------------
-		// 3. ÆäÀÌÁöÀÌµ¿
+		// 3. í˜ì´ì§€ì´ë™
 		forward.setPath("admin/adminAddReleaseInfo.jsp?model_stylecode"+model_stylecode);
 		forward.setRedirect(false);
 		return forward;

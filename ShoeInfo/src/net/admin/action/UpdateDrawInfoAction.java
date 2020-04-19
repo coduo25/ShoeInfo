@@ -14,7 +14,7 @@ public class UpdateDrawInfoAction implements Action{
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -24,7 +24,7 @@ public class UpdateDrawInfoAction implements Action{
 			return forward;
 		}
 		
-		//³Ñ¾î¿Â °ª ÀúÀåÇÏ±â
+		//ë„˜ì–´ì˜¨ ê°’ ì €ì¥í•˜ê¸°
 		OnlineDTO odto = new OnlineDTO();
 		odto.setModel_stylecode(request.getParameter("model_stylecode"));
 		odto.setCountry_region(request.getParameter("country_region"));
@@ -49,7 +49,7 @@ public class UpdateDrawInfoAction implements Action{
 		
 		odao.updateOnlineinfo(odto);
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//í˜ì´ì§€ì´ë™
 		forward.setPath("./SneakerDetail.go?model_stylecode="+odto.getModel_stylecode());
 		forward.setRedirect(true);
 		return forward;

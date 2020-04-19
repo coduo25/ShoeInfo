@@ -13,53 +13,53 @@ public class MemberLoginAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//Àü´Ş ¹ŞÀº Á¤º¸ ÀúÀå
+		//ì „ë‹¬ ë°›ì€ ì •ë³´ ì €ì¥
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
-		//DBÃ³¸® °´Ã¼ »ı¼º
+		//DBì²˜ë¦¬ ê°ì²´ ìƒì„±
 		MemberDAO mdao = new MemberDAO();
 		
 		int check = mdao.idCheck(id, pass);
 			
-		//ºñ¹Ğ¹øÈ£ ¿À·ù
+		//ë¹„ë°€ë²ˆí˜¸ ì˜¤ë¥˜
 		if (check == 0) {
-			// ÀÀ´äÁ¤º¸ÀÇ Å¸ÀÔÀ» html Çü½ÄÀ¸·Î ÀÀ´äÇÏ°Ú´Ù.¼³Á¤
+			// ì‘ë‹µì •ë³´ì˜ íƒ€ì…ì„ html í˜•ì‹ìœ¼ë¡œ ì‘ë‹µí•˜ê² ë‹¤.ì„¤ì •
 			response.setContentType("text/html; charset=UTF-8");
 
-			// Ãâ·Â°´Ã¼¸¦ »ı¼º(response°´Ã¼ÀÇ Á¤º¸¸¦ °¡Áö°í »ı¼º)
+			// ì¶œë ¥ê°ì²´ë¥¼ ìƒì„±(responseê°ì²´ì˜ ì •ë³´ë¥¼ ê°€ì§€ê³  ìƒì„±)
 			PrintWriter out = response.getWriter();
 
 			out.print("<script>");
-			out.print("  alert('ºñ¹Ğ¹øÈ£ ¿À·ù ÀÔ´Ï´Ù.'); ");
+			out.print("  alert('ë¹„ë°€ë²ˆí˜¸ ì˜¤ë¥˜ ì…ë‹ˆë‹¤.'); ");
 			out.print("  history.back(); ");
 			out.print("</script>");
 			out.close();
 
 			return null;
 		} 
-		//¾ÆÀÌµğ ¾øÀ½
+		//ì•„ì´ë”” ì—†ìŒ
 		else if (check == -1) {
-			// ÀÀ´äÁ¤º¸ÀÇ Å¸ÀÔÀ» html Çü½ÄÀ¸·Î ÀÀ´äÇÏ°Ú´Ù.¼³Á¤
+			// ì‘ë‹µì •ë³´ì˜ íƒ€ì…ì„ html í˜•ì‹ìœ¼ë¡œ ì‘ë‹µí•˜ê² ë‹¤.ì„¤ì •
 			response.setContentType("text/html; charset=UTF-8");
 
-			// Ãâ·Â°´Ã¼¸¦ »ı¼º(response°´Ã¼ÀÇ Á¤º¸¸¦ °¡Áö°í »ı¼º)
+			// ì¶œë ¥ê°ì²´ë¥¼ ìƒì„±(responseê°ì²´ì˜ ì •ë³´ë¥¼ ê°€ì§€ê³  ìƒì„±)
 			PrintWriter out = response.getWriter();
 
-			// ÀÚ¹Ù½ºÅ©¸³Æ®¸¦ ÅëÇÑ ÆäÀÌÁö ÀÌµ¿Àº ÄÁÆ®·Ñ·¯ ¾øÀÌ ¹Ù·Î ÀÌµ¿ 
+			// ìë°”ìŠ¤í¬ë¦½íŠ¸ë¥¼ í†µí•œ í˜ì´ì§€ ì´ë™ì€ ì»¨íŠ¸ë¡¤ëŸ¬ ì—†ì´ ë°”ë¡œ ì´ë™ 
 			out.print("<script>");
-			out.print("  alert('¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.'); ");
+			out.print("  alert('ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.'); ");
 			out.print(" location.href='./MemberLogin.me'; ");
 			out.print("</script>");
 			out.close();
 
 			return null;
 		}
-		// request °´Ã¼¸¦ »ç¿ëÇØ¼­ ¼¼¼Ç °´Ã¼¸¦ »ı¼º
+		// request ê°ì²´ë¥¼ ì‚¬ìš©í•´ì„œ ì„¸ì…˜ ê°ì²´ë¥¼ ìƒì„±
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
 		
-		// ÆäÀÌÁö ÀÌµ¿(¸ŞÀÎÆäÀÌÁö)
+		// í˜ì´ì§€ ì´ë™(ë©”ì¸í˜ì´ì§€)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Main.bo");
 		forward.setRedirect(true);

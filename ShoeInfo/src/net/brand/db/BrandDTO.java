@@ -39,4 +39,3 @@ public class BrandDTO {
 		this.country_flag = country_flag;
 	}
 }
-

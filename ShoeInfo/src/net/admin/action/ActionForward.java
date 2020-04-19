@@ -2,13 +2,13 @@ package net.admin.action;
 
 public class ActionForward {
 
-	//ÆäÀÌÁö ÀÌµ¿½Ã¸¶´Ù ÀÌµ¿Á¤º¸¸¦ ÀúÀå °´Ã¼
-	//(ÀÌµ¿ÇÒ ÆäÀÌÁö ÁÖ¼Ò, ÀÌµ¿ÇÒ ¹æ½Ä)
+	//í˜ì´ì§€ ì´ë™ì‹œë§ˆë‹¤ ì´ë™ì •ë³´ë¥¼ ì €ì¥ ê°ì²´
+	//(ì´ë™í•  í˜ì´ì§€ ì£¼ì†Œ, ì´ë™í•  ë°©ì‹)
 	
-	private String path; 		//ÀÌµ¿ÇÒ ÆäÀÌÁö ÁÖ¼Ò
-	private boolean isRedirect; //ÀÌµ¿ÇÒ ¹æ½Ä
-	//true  -> sendRedirect ¹æ½Ä ÀÌµ¿ (ÆíÀç ÆäÀÌÁö ÁÖ¼Òµµ ¹Ù²î°í ³»¿ëµµ ¹Ù²¸¾ß ÇÒ¶§)
-	//false -> forward ÀÌµ¿ (ÇöÀç ÆäÀÌÁö ÁÖ¼Ò´Â ±×´ë·ÎÁö¸¸ ³»¿ëÀº ¹Ù²¸¾ß ÇÒ¶§)
+	private String path; 		//ì´ë™í•  í˜ì´ì§€ ì£¼ì†Œ
+	private boolean isRedirect; //ì´ë™í•  ë°©ì‹
+	//true  -> sendRedirect ë°©ì‹ ì´ë™ (í¸ì¬ í˜ì´ì§€ ì£¼ì†Œë„ ë°”ë€Œê³  ë‚´ìš©ë„ ë°”ê»´ì•¼ í• ë•Œ)
+	//false -> forward ì´ë™ (í˜„ì¬ í˜ì´ì§€ ì£¼ì†ŒëŠ” ê·¸ëŒ€ë¡œì§€ë§Œ ë‚´ìš©ì€ ë°”ê»´ì•¼ í• ë•Œ)
 	
 	public String getPath() {
 		return path;

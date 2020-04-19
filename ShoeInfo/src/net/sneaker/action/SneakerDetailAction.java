@@ -22,77 +22,77 @@ public class SneakerDetailAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//¾ÆÀÌµğ°ª ÀúÀå
+		//ì•„ì´ë””ê°’ ì €ì¥
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		
-		//³Ñ¾î¿Â °ª ÀúÀå(model_stylecode)
+		//ë„˜ì–´ì˜¨ ê°’ ì €ì¥(model_stylecode)
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		
 		/******************************************************
-		 * »ç¿ëÀÚ ÀÀ¸ğÇÑ ºê·£µå ¸®½ºÆ® ¸¸µé±â
+		 * ì‚¬ìš©ì ì‘ëª¨í•œ ë¸Œëœë“œ ë¦¬ìŠ¤íŠ¸ ë§Œë“¤ê¸°
 		 ******************************************************/
 		MemberDAO mdao = new MemberDAO();
 		ArrayList<String> userDrawBrandList = mdao.searchDrawBrandInfo(user, model_stylecode);
-		//request¿¡ ÀúÀå
+		//requestì— ì €ì¥
 		request.setAttribute("userDrawBrandList", userDrawBrandList);
 		
 		/******************************************************
-		 * ½Å¹ß ±âº» Á¤º¸ ¸®½ºÆ® ¸¸µé±â
+		 * ì‹ ë°œ ê¸°ë³¸ ì •ë³´ ë¦¬ìŠ¤íŠ¸ ë§Œë“¤ê¸°
 		 ******************************************************/
 		SneakerDAO sdao = new SneakerDAO();
 		SneakerDTO sdto = sdao.getSneakerDetail(model_stylecode);
-		//request¿¡ ÀúÀå
+		//requestì— ì €ì¥
 		request.setAttribute("sneakerDetail", sdto);
 		
 		/******************************************************
-		 * ½Å¹ß ¹ß¸Å Á¤º¸ ¸®½ºÆ® ¸¸µé±â
+		 * ì‹ ë°œ ë°œë§¤ ì •ë³´ ë¦¬ìŠ¤íŠ¸ ë§Œë“¤ê¸°
 		 ******************************************************/
 		
-		//-----------¿ÀÇÁ¶óÀÎ---------
+		//-----------ì˜¤í”„ë¼ì¸---------
 		OfflineDAO ofdao = new OfflineDAO();
 		
 		Vector vec_off_kr = ofdao.getOfflineInfo_kr(model_stylecode);
 		
-		//DAO¿¡¼­ ¹ŞÀº Vector ÇüÅÂ¸¦ ¸®½ºÆ®·Î ³ª´©±â
+		//DAOì—ì„œ ë°›ì€ Vector í˜•íƒœë¥¼ ë¦¬ìŠ¤íŠ¸ë¡œ ë‚˜ëˆ„ê¸°
 		ArrayList<OfflineDTO> offLineList_kr = (ArrayList<OfflineDTO>) vec_off_kr.get(0);
 		ArrayList<OfflineDTO> brandList_off_kr = (ArrayList<OfflineDTO>) vec_off_kr.get(1);
-		//request¿¡ ÀúÀå
+		//requestì— ì €ì¥
 		request.setAttribute("offLineList_kr", offLineList_kr);
 		request.setAttribute("brandList_off_kr", brandList_off_kr);
 		
-		//-----------¿Â¶óÀÎ-------------
+		//-----------ì˜¨ë¼ì¸-------------
 		OnlineDAO odao = new OnlineDAO();
 		
-		//´ëÇÑ¹Î±¹
+		//ëŒ€í•œë¯¼êµ­
 		Vector vec_on_kr = odao.getOnlineInfo_kr(model_stylecode);
 		ArrayList<OnlineDTO> onlineList_kr = (ArrayList<OnlineDTO>) vec_on_kr.get(0);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec_on_kr.get(1);
 		
-		//¾Æ½Ã¾Æ
+		//ì•„ì‹œì•„
 		Vector vec_on_asia = odao.getOnlineInfo_asia(model_stylecode);
 		ArrayList<OnlineDTO> onlineList_asia = (ArrayList<OnlineDTO>) vec_on_asia.get(0);
 		ArrayList<BrandDTO> brandList_asia = (ArrayList<BrandDTO>) vec_on_asia.get(1);
 		
-		//¾Æ¸Ş¸®Ä«
-		String country_region_us = "¾Æ¸Ş¸®Ä«";
+		//ì•„ë©”ë¦¬ì¹´
+		String country_region_us = "ì•„ë©”ë¦¬ì¹´";
 		Vector vec_on_america = odao.getOnlineInfo(model_stylecode, country_region_us);
 		ArrayList<OnlineDTO> onlineList_america = (ArrayList<OnlineDTO>) vec_on_america.get(0);
 		ArrayList<BrandDTO> brandList_america = (ArrayList<BrandDTO>) vec_on_america.get(1);
 		
-		//À¯·´
-		String country_region_eu = "À¯·´";
+		//ìœ ëŸ½
+		String country_region_eu = "ìœ ëŸ½";
 		Vector vec_on_europe = odao.getOnlineInfo(model_stylecode, country_region_eu);;
 		ArrayList<OnlineDTO> onlineList_europe = (ArrayList<OnlineDTO>) vec_on_europe.get(0);
 		ArrayList<BrandDTO> brandList_europe = (ArrayList<BrandDTO>) vec_on_europe.get(1);
 		
-		//±âÅ¸Áö¿ª
-		String country_region_etc = "±âÅ¸";
+		//ê¸°íƒ€ì§€ì—­
+		String country_region_etc = "ê¸°íƒ€";
 		Vector vec_on_etc = odao.getOnlineInfo(model_stylecode, country_region_etc);
 		ArrayList<OnlineDTO> onlineList_etc = (ArrayList<OnlineDTO>) vec_on_etc.get(0);
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_on_etc.get(1);
 		
-		//request¿¡ ÀúÀå
+		//requestì— ì €ì¥
 		request.setAttribute("onlineList_kr", onlineList_kr);
 		request.setAttribute("brandList_kr", brandList_kr);
 		

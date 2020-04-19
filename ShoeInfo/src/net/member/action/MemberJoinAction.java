@@ -13,12 +13,12 @@ public class MemberJoinAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		// ÇÑ±ÛÃ³¸® 
+		// í•œê¸€ì²˜ë¦¬ 
 		request.setCharacterEncoding("UTF-8");
 		
-		// Àü´ŞµÈ È¸¿øÁ¤º¸¸¦ ÀúÀå °´Ã¼»ı¼º(ÀÚ¹Ùºó°´Ã¼)
+		// ì „ë‹¬ëœ íšŒì›ì •ë³´ë¥¼ ì €ì¥ ê°ì²´ìƒì„±(ìë°”ë¹ˆê°ì²´)
 		MemberDTO mdto = new MemberDTO();
-		// Àü´ŞµÈ ÆÄ¶ó¹ÌÅÍÁ¤º¸¸¦ ÀúÀå 
+		// ì „ë‹¬ëœ íŒŒë¼ë¯¸í„°ì •ë³´ë¥¼ ì €ì¥ 
 		mdto.setId(request.getParameter("id"));
 		mdto.setPass(request.getParameter("pass"));
 		mdto.setName(request.getParameter("name"));
@@ -26,14 +26,14 @@ public class MemberJoinAction implements Action{
 		mdto.setPhone(request.getParameter("phone"));
 		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 
-		// DB¿¡ °ªÀ» ÀúÀåÇÏ±â À§ÇÑ °´Ã¼»ı¼º (DAO°´Ã¼)
+		// DBì— ê°’ì„ ì €ì¥í•˜ê¸° ìœ„í•œ ê°ì²´ìƒì„± (DAOê°ì²´)
 		MemberDAO mdao = new MemberDAO();
 		
-		// insertMember(ÀÚ¹Ùºó);
+		// insertMember(ìë°”ë¹ˆ);
 		mdao.insertMember(mdto);
 		
-		// ÆäÀÌÁö ÀÌµ¿(·Î±×ÀÎ ÆäÀÌÁö·ÎÀÌµ¿)
-		// ActionForward °´Ã¼¸¦ »ı¼ºÇØ¼­ °ª ÀúÀå ÈÄ ÀÌµ¿
+		// í˜ì´ì§€ ì´ë™(ë¡œê·¸ì¸ í˜ì´ì§€ë¡œì´ë™)
+		// ActionForward ê°ì²´ë¥¼ ìƒì„±í•´ì„œ ê°’ ì €ì¥ í›„ ì´ë™
 		ActionForward forward = new ActionForward();
 		forward.setPath("./MemberLogin.me");
 		forward.setRedirect(true);		

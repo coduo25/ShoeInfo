@@ -16,16 +16,16 @@ public class MemberDAO {
 	ResultSet rs = null;
 	String sql="";
 	
-	// µğºñ ¿¬°á(Ä¿³Ø¼Ç Ç® »ç¿ë)
+	// ë””ë¹„ ì—°ê²°(ì»¤ë„¥ì…˜ í’€ ì‚¬ìš©)
 	private Connection getConnection() throws Exception{
-		// Context °´Ã¼¸¦ »ı¼º
+		// Context ê°ì²´ë¥¼ ìƒì„±
 		Context init = new InitialContext();
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/shoeinfo");
 		con = ds.getConnection();
 		return con;
 	}
 	
-	// ÀÚ¿ø ÇØÁ¦ 
+	// ìì› í•´ì œ 
 	public void closeDB(){
 		try {
 			if(rs !=null) rs.close();
@@ -36,7 +36,7 @@ public class MemberDAO {
 		}
 	}
 	
-	//È¸¿ø Ãß°¡ÇÏ´Â ÇÔ¼ö
+	//íšŒì› ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
 	public void insertMember(MemberDTO mdto){
 		try {
 			con = getConnection();
@@ -52,7 +52,7 @@ public class MemberDAO {
 			
 			pstmt.executeUpdate();
 			
-			System.out.println("È¸¿ø °¡ÀÔ ¿Ï·á!");
+			System.out.println("íšŒì› ê°€ì… ì™„ë£Œ!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -60,7 +60,7 @@ public class MemberDAO {
 		}
 	}
 	
-	//¾ÆÀÌµğ Ã¼Å© ÇÏ´Â ÇÔ¼ö
+	//ì•„ì´ë”” ì²´í¬ í•˜ëŠ” í•¨ìˆ˜
 	public int idCheck(String id, String pass){
 		int check = -1;
 		try {
@@ -79,7 +79,7 @@ public class MemberDAO {
 			}else{
 				check = -1;
 			}
-			//System.out.println(" ¾ÆÀÌµğ Ã¼Å© ¿Ï·á : "+check);			
+			//System.out.println(" ì•„ì´ë”” ì²´í¬ ì™„ë£Œ : "+check);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -88,7 +88,7 @@ public class MemberDAO {
 		return check;
 	}
 	
-	//È¸¿ø ÀÀ¸ğ Á¤º¸ Ãß°¡ÇÏ´Â ÇÔ¼ö
+	//íšŒì› ì‘ëª¨ ì •ë³´ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
 	public void insertUserDrawInfo(MemberDrawDTO mddto){
 		int userDraw_num = 0;
 		int userDraw_count = 0;
@@ -122,7 +122,7 @@ public class MemberDAO {
 		}
 	}
 	
-	//»ç¿ëÀÚÀÇ ÀÀ¸ğ Á¤º¸ ºÒ·¯¿À´Â ÇÔ¼ö
+	//ì‚¬ìš©ìì˜ ì‘ëª¨ ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ” í•¨ìˆ˜
 	public ArrayList<String> searchDrawBrandInfo(String user, String model_stylecode) {
 		ArrayList<String> userDrawBrandList = new ArrayList();
 		try {

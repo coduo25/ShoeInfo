@@ -11,7 +11,7 @@ public class UpdateDrawInfo implements Action{
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -21,17 +21,17 @@ public class UpdateDrawInfo implements Action{
 			return forward;
 		}
 		
-		//³Ñ¾î¿Â Á¤º¸ °¡Á®¿À±â(model_stylecode, brand_id)
+		//ë„˜ì–´ì˜¨ ì •ë³´ ê°€ì ¸ì˜¤ê¸°(model_stylecode, brand_id)
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		String brand_id = (String) request.getParameter("brand_id");
 		
 		OnlineDAO odao = new OnlineDAO();
 		OnlineDTO onlineDrawInfo = (OnlineDTO) odao.getOneOnlineInfo(model_stylecode, brand_id);
 		
-		//Á¤º¸¸¦ °´Ã¼¿¡ ÀúÀå
+		//ì •ë³´ë¥¼ ê°ì²´ì— ì €ì¥
 		request.setAttribute("onlineDrawInfo", onlineDrawInfo);
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//í˜ì´ì§€ì´ë™
 		forward.setPath("./admin/adminUpdateDrawInfo.jsp");
 		forward.setRedirect(false);
 		return forward;

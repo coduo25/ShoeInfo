@@ -11,7 +11,7 @@ public class MemberLogoutAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
@@ -19,7 +19,7 @@ public class MemberLogoutAction implements Action{
 		PrintWriter out = response.getWriter();
 		
 		out.print("<script>");
-		out.print(" alert('·Î±×¾Æ¿ô ¼º°ø'); ");
+		out.print(" alert('ë¡œê·¸ì•„ì›ƒ ì„±ê³µ'); ");
 		out.print(" location.href='./Main.bo'; ");
 		out.print("</script>");
 		

@@ -15,7 +15,7 @@ public class UpdateSneakerAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -25,13 +25,13 @@ public class UpdateSneakerAction implements Action{
 			return forward;
 		}
 		
-		//³Ñ¾î¿Â »õ·Î¿î Á¤º¸ ÀúÀåÇÏ±â
+		//ë„˜ì–´ì˜¨ ìƒˆë¡œìš´ ì •ë³´ ì €ì¥í•˜ê¸°
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/sneaker_img_upload");
-		//ÆÄÀÏ Å©±â ÁöÁ¤
+		//íŒŒì¼ í¬ê¸° ì§€ì •
 		int maxSize = 30 * 1024 * 1024; //30MB
 		
-		//ÆÄÀÏ ¾÷·Îµå(cos.jar)
+		//íŒŒì¼ ì—…ë¡œë“œ(cos.jar)
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8");
 		
 		SneakerDTO sdto = new SneakerDTO();
@@ -49,7 +49,7 @@ public class UpdateSneakerAction implements Action{
 		SneakerDAO asdao = new SneakerDAO();
 		asdao.updateSneakerInfo(sdto);
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//í˜ì´ì§€ì´ë™
 		forward.setPath("./SneakerDetail.go?model_stylecode="+sdto.getModel_stylecode());
 		forward.setRedirect(true);
 		return forward;

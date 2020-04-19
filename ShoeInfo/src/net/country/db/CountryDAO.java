@@ -17,15 +17,15 @@ public class CountryDAO {
 	ResultSet rs = null;
 	String sql="";
 	
-	// µğºñ ¿¬°á(Ä¿³Ø¼Ç Ç® »ç¿ë)
+	// ë””ë¹„ ì—°ê²°(ì»¤ë„¥ì…˜ í’€ ì‚¬ìš©)
 	private Connection getConnection() throws Exception{
-		// Context °´Ã¼¸¦ »ı¼º
+		// Context ê°ì²´ë¥¼ ìƒì„±
 		Context init = new InitialContext();
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/shoeinfo");
 		con = ds.getConnection();
 		return con;
 	}
-	// ÀÚ¿ø ÇØÁ¦ 
+	// ìì› í•´ì œ 
 	public void closeDB(){
 		try {
 			if(rs !=null) rs.close();
@@ -36,7 +36,7 @@ public class CountryDAO {
 		}
 	}
 	
-	//»õ·Î¿î ³ª¶ó Ãß°¡ÇÏ´Â ÇÔ¼ö
+	//ìƒˆë¡œìš´ ë‚˜ë¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
 	public void insertNewCountry(CountryDTO ctdo){
 		try {
 			con = getConnection();
@@ -54,7 +54,7 @@ public class CountryDAO {
 		}
 	}
 	
-	//±¹°¡ ¸®½ºÆ® °¡Á®¿À´Â ÇÔ¼ö
+	//êµ­ê°€ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
 	public List<CountryDTO> countryList_all(){
 		List<CountryDTO> countryAllList = new ArrayList();
 		try {
@@ -77,7 +77,7 @@ public class CountryDAO {
 		return countryAllList;
 	}
 	
-	//±¹°¡Áö¿ª °¡Á®¿À´Â ÇÔ¼ö
+	//êµ­ê°€ì§€ì—­ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
 	public String getCountry_region(String country_name) {
 		String country_region = "";
 		try {

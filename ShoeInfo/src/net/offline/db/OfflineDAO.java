@@ -21,15 +21,15 @@ public class OfflineDAO {
 	ResultSet rs = null;
 	String sql="";
 	
-	// µğºñ ¿¬°á(Ä¿³Ø¼Ç Ç® »ç¿ë)
+	// ë””ë¹„ ì—°ê²°(ì»¤ë„¥ì…˜ í’€ ì‚¬ìš©)
 	private Connection getConnection() throws Exception{
-		// Context °´Ã¼¸¦ »ı¼º
+		// Context ê°ì²´ë¥¼ ìƒì„±
 		Context init = new InitialContext();
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/shoeinfo");
 		con = ds.getConnection();
 		return con;
 	}
-	// ÀÚ¿ø ÇØÁ¦ 
+	// ìì› í•´ì œ 
 	public void closeDB(){
 		try {
 			if(rs !=null) rs.close();
@@ -40,12 +40,12 @@ public class OfflineDAO {
 		}
 	}
 	
-	//½Å¹ß ¿ÀÇÁ¶óÀÎ Á¤º¸ ÀúÀåÇÏ´Â ÇÔ¼ö
+	//ì‹ ë°œ ì˜¤í”„ë¼ì¸ ì •ë³´ ì €ì¥í•˜ëŠ” í•¨ìˆ˜
 	public void insertOfflineInfo(OfflineDTO odto) {
 		int offline_num = 0;
 		try {
 			con = getConnection();
-			//draw_num °è»ê
+			//draw_num ê³„ì‚°
 			sql = "select max(offline_num) from shoeinfo_offlineinfo";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -72,7 +72,7 @@ public class OfflineDAO {
 		}
 	}
 	
-	//´ëÇÑ¹Î±¹ ½Å¹ß ¿ÀÇÁ¶óÀÎ Á¤º¸ °¡Á®¿À´Â ÇÔ¼ö(ºê·£µå Á¤º¸ + ¿Â¶óÀÎ Á¤º¸)
+	//ëŒ€í•œë¯¼êµ­ ì‹ ë°œ ì˜¤í”„ë¼ì¸ ì •ë³´ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜(ë¸Œëœë“œ ì •ë³´ + ì˜¨ë¼ì¸ ì •ë³´)
 	public Vector getOfflineInfo_kr(String model_stylecode) {
 		Vector vec = new Vector();
 		
@@ -82,8 +82,8 @@ public class OfflineDAO {
 		PreparedStatement pstmt3 = null;
 		ResultSet rs3 = null;
 		
-		//´ëÇÑ¹Î±¹(kr) ½Å¹ß ¿ÀÇÁ¶óÀÎ Á¤º¸ ÀúÀå
-		//´ëÇÑ¹Î±¹(kr) ºê·£µå Á¤º¸ ÀúÀå
+		//ëŒ€í•œë¯¼êµ­(kr) ì‹ ë°œ ì˜¤í”„ë¼ì¸ ì •ë³´ ì €ì¥
+		//ëŒ€í•œë¯¼êµ­(kr) ë¸Œëœë“œ ì •ë³´ ì €ì¥
 		ArrayList offlineInfoList_kr = new ArrayList();
 		ArrayList brandList_kr = new ArrayList();
 		
@@ -92,7 +92,7 @@ public class OfflineDAO {
 			sql = "select * from shoeinfo_offlineinfo where model_stylecode = ? AND country_name = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, "´ëÇÑ¹Î±¹");
+			pstmt.setString(2, "ëŒ€í•œë¯¼êµ­");
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OfflineDTO ofdto = new OfflineDTO();
@@ -107,13 +107,13 @@ public class OfflineDAO {
 				ofdto.setDescription(rs.getString("description"));
 				offlineInfoList_kr.add(ofdto);
 				
-				//ÇÑ±¹ ºê·£µå Á¤º¸ °¡Á®¿À±â
+				//í•œêµ­ ë¸Œëœë“œ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 				sql = "select * from shoeinfo_brand where brand_id = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, ofdto.getBrand_id());
 				rs2 = pstmt2.executeQuery();
 				if(rs2.next()){
-					//ºê·£µå Á¤º¸ DB¿¡ ÇØ´ç ºê·£µå°¡ ÀúÀåµÇ¾îÀÖÀ¸¸é
+					//ë¸Œëœë“œ ì •ë³´ DBì— í•´ë‹¹ ë¸Œëœë“œê°€ ì €ì¥ë˜ì–´ìˆìœ¼ë©´
 					BrandDTO bdto = new BrandDTO();
 					bdto.setCountry_name(rs2.getString("country_name"));
 					bdto.setBrand_logo(rs2.getString("brand_logo"));

@@ -16,7 +16,7 @@ public class AddOnlineInfoAction implements Action{
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -26,16 +26,16 @@ public class AddOnlineInfoAction implements Action{
 			return forward;
 		}
 		
-		//³Ñ¾î¿Â Á¤º¸µé °ª 
+		//ë„˜ì–´ì˜¨ ì •ë³´ë“¤ ê°’ 
 		String model_stylecode = request.getParameter("model_stylecode");
 		String country_name = request.getParameter("country_name");
 		String brand_name = request.getParameter("brand_name");
 		String online_link = request.getParameter("online_link");
 		
-		//¿Â¶óÀÎ ½ÃÀÛ ½Ã°£
+		//ì˜¨ë¼ì¸ ì‹œì‘ ì‹œê°„
 		String online_date_start = request.getParameter("online_date_start");
 		String online_hour_start = request.getParameter("online_hour_start");
-		//nullÀÌ¸é 0000-00-00, 00:00 À¸·Î ÀúÀåÇÏ±â
+		//nullì´ë©´ 0000-00-00, 00:00 ìœ¼ë¡œ ì €ì¥í•˜ê¸°
 		if(online_date_start.equals("")){
 			online_date_start = "0000-00-00";
 		}
@@ -44,10 +44,10 @@ public class AddOnlineInfoAction implements Action{
 		}
 		String online_start_time = online_date_start + " " + online_hour_start;
 		
-		//¿Â¶óÀÎ ³¡³ª´Â ½Ã°£
+		//ì˜¨ë¼ì¸ ëë‚˜ëŠ” ì‹œê°„
 		String online_date_end = request.getParameter("online_date_end");
 		String online_hour_end = request.getParameter("online_hour_end");
-		//nullÀÌ¸é 0000-00-00, 00:00 À¸·Î ÀúÀåÇÏ±â
+		//nullì´ë©´ 0000-00-00, 00:00 ìœ¼ë¡œ ì €ì¥í•˜ê¸°
 		if(online_date_end.equals("")){
 			online_date_end = "0000-00-00";
 		}
@@ -62,15 +62,15 @@ public class AddOnlineInfoAction implements Action{
 		
 		String description = request.getParameter("description");
 		
-		//country_region °ª Ã£¾Æ¿À±â
+		//country_region ê°’ ì°¾ì•„ì˜¤ê¸°
 		CountryDAO cdao = new CountryDAO();
 		String country_region = cdao.getCountry_region(country_name);
 		
-		//brand_id °ª ÀúÀåÇÏ±â
+		//brand_id ê°’ ì €ì¥í•˜ê¸°
 		BrandDAO bdao = new BrandDAO();
 		String brand_id = bdao.searchBrand_id(country_name, brand_name);
 		
-		//³Ñ¾î¿Â °ª DrawDTO °´Ã¼¿¡ ´ã±â
+		//ë„˜ì–´ì˜¨ ê°’ DrawDTO ê°ì²´ì— ë‹´ê¸°
 		OnlineDTO odto = new OnlineDTO();
 		
 		odto.setModel_stylecode(model_stylecode);
@@ -88,7 +88,7 @@ public class AddOnlineInfoAction implements Action{
 		OnlineDAO odao = new OnlineDAO();
 		odao.insertOnlineInfo(odto);
 
-		//ÆäÀÌÁöÀÌµ¿
+		//í˜ì´ì§€ì´ë™
 		forward.setPath("./Main.ad");
 		forward.setRedirect(true);
 		return forward;

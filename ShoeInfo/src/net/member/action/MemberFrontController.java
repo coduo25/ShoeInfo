@@ -25,42 +25,42 @@ public class MemberFrontController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//System.out.println("BoardFrontController_doProcess È£Ãâ");
+		//System.out.println("BoardFrontController_doProcess í˜¸ì¶œ");
 		
 		/************************************************************
-		 * 1. °¡»ó ÁÖ¼Ò °è»ê
+		 * 1. ê°€ìƒ ì£¼ì†Œ ê³„ì‚°
 		 *************************************************************/
 		String requestURI = request.getRequestURI();
 		//System.out.println("URI: " + requestURI);
 		
 		String contextPath = request.getContextPath();
-		//System.out.println("ContextPath(ÇÁ·ÎÁ§Æ®¸í): " + contextPath);
+		//System.out.println("ContextPath(í”„ë¡œì íŠ¸ëª…): " + contextPath);
 		
 		String command = requestURI.substring(contextPath.length());
 		//System.out.println("command : " + command);
 		
-		//System.out.println("-------ÆäÀÌÁö ÁÖ¼Ò °è»ê ¿Ï·á-------------");
+		//System.out.println("-------í˜ì´ì§€ ì£¼ì†Œ ê³„ì‚° ì™„ë£Œ-------------");
 		
 		/************************************************************
-		 * 2. °è»êµÈ ÁÖ¼Ò¸¦ »ç¿ëÇØ¼­ ÆäÀÌÁö ÇüÅÂ±¸ºĞ(View/Model)
+		 * 2. ê³„ì‚°ëœ ì£¼ì†Œë¥¼ ì‚¬ìš©í•´ì„œ í˜ì´ì§€ í˜•íƒœêµ¬ë¶„(View/Model)
 		 *************************************************************/
-		//System.out.println("-------ÆäÀÌÁö ±¸ºĞ (view/model)-------------");
+		//System.out.println("-------í˜ì´ì§€ êµ¬ë¶„ (view/model)-------------");
 		
 		Action action = null;
 		ActionForward forward = null;
 		
-		//È¸¿ø°¡ÀÔ Ã³¸®ÆäÀÌÁö(/MemberJoin.me)
+		//íšŒì›ê°€ì… ì²˜ë¦¬í˜ì´ì§€(/MemberJoin.me)
 		if(command.equals("/MemberJoin.me")){
-			// È¸¿ø°¡ÀÔÃ³¸® ÆäÀÌÁö·Î ¹Ù·Î ÀÌµ¿
-			//System.out.println("/MemberJoin.me ÁÖ¼Ò¿äÃ» ");
+			// íšŒì›ê°€ì…ì²˜ë¦¬ í˜ì´ì§€ë¡œ ë°”ë¡œ ì´ë™
+			//System.out.println("/MemberJoin.me ì£¼ì†Œìš”ì²­ ");
 			
-			// ActionForward °´Ã¼ »ı¼º
+			// ActionForward ê°ì²´ ìƒì„±
 			forward = new ActionForward();
 			forward.setPath("./member/insertForm.jsp");
 			forward.setRedirect(false);	
 		} 
 		
-		//È¸¿ø°¡ÀÔ Ã³¸®ÆäÀÌÁö2(/MemberJoinAction.me)
+		//íšŒì›ê°€ì… ì²˜ë¦¬í˜ì´ì§€2(/MemberJoinAction.me)
 		else if(command.equals("/MemberJoinAction.me")){
 			action = new MemberJoinAction();
 			try {
@@ -70,14 +70,14 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		
-		//·Î±×ÀÎ ÆäÀÌÁö Ã³¸®
+		//ë¡œê·¸ì¸ í˜ì´ì§€ ì²˜ë¦¬
 		else if(command.equals("/MemberLogin.me")){
 			forward = new ActionForward();
 			forward.setPath("./member/loginForm.jsp");
 			forward.setRedirect(false);
 		}
 		
-		//·Î±×ÀÎ ÆäÀÌÁö Ã³¸®2
+		//ë¡œê·¸ì¸ í˜ì´ì§€ ì²˜ë¦¬2
 		else if(command.equals("/MemberLoginAction.me")){
 			action = new MemberLoginAction();
 			try {
@@ -87,7 +87,7 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		
-		//·Î±×¾Æ¿ô ÆäÀÌÁö Ã³¸®
+		//ë¡œê·¸ì•„ì›ƒ í˜ì´ì§€ ì²˜ë¦¬
 		else if(command.equals("/MemberLogout.me")) {
 			action = new MemberLogoutAction();
 			try {
@@ -97,7 +97,7 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		
-		//ÀÀ¸ğÁ¤º¸ ÀúÀåÇÏ´Â ÆäÀÌÁö Ã³¸®
+		//ì‘ëª¨ì •ë³´ ì €ì¥í•˜ëŠ” í˜ì´ì§€ ì²˜ë¦¬
 		else if(command.equals("/addUserDrawInfoAction.me")){
 			action = new addUserDrawInfoAction();
 			try {
@@ -110,16 +110,16 @@ public class MemberFrontController extends HttpServlet{
 		
 		
 		/************************************************************
-		 * 3. ½ÇÁ¦ ÆäÀÌÁö ÀÌµ¿ µ¿ÀÛ (redirect/forward)
+		 * 3. ì‹¤ì œ í˜ì´ì§€ ì´ë™ ë™ì‘ (redirect/forward)
 		 *************************************************************/
-		//System.out.println("-------ÆäÀÌÁö ÀÌµ¿(redirect-true/forward-false)-----------");
-		//ÆäÀÌÁö ÀÌµ¿Á¤º¸°¡ ÀÖÀ»¶§¸¸ ÀÌµ¿
+		//System.out.println("-------í˜ì´ì§€ ì´ë™(redirect-true/forward-false)-----------");
+		//í˜ì´ì§€ ì´ë™ì •ë³´ê°€ ìˆì„ë•Œë§Œ ì´ë™
 		if(forward != null) {
 			if(forward.isRedirect()) {
-				//System.out.println("sendReirect() ÀÌµ¿: " + forward.getPath());
+				//System.out.println("sendReirect() ì´ë™: " + forward.getPath());
 				response.sendRedirect(forward.getPath());
 			} else {
-				//System.out.println("forward() ÀÌµ¿: " + forward.getPath());
+				//System.out.println("forward() ì´ë™: " + forward.getPath());
 				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
 			}

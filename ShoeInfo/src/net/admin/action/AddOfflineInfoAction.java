@@ -16,7 +16,7 @@ public class AddOfflineInfoAction implements Action{
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -26,7 +26,7 @@ public class AddOfflineInfoAction implements Action{
 			return forward;
 		}
 		
-		//³Ñ¾î¿Â Á¤º¸µé °ª 
+		//ë„˜ì–´ì˜¨ ì •ë³´ë“¤ ê°’ 
 		String model_stylecode = request.getParameter("model_stylecode");
 		String country_name = request.getParameter("country_name");
 		String brand_name = request.getParameter("brand_name");
@@ -44,11 +44,11 @@ public class AddOfflineInfoAction implements Action{
 		String offline_method = request.getParameter("offline_method");
 		String description = request.getParameter("description");
 		
-		//brand_id °ª ÀúÀåÇÏ±â
+		//brand_id ê°’ ì €ì¥í•˜ê¸°
 		BrandDAO bdao = new BrandDAO();
 		String brand_id = bdao.searchBrand_id(country_name, brand_name);
 		
-		//³Ñ¾î¿Â °ª DrawDTO °´Ã¼¿¡ ´ã±â
+		//ë„˜ì–´ì˜¨ ê°’ DrawDTO ê°ì²´ì— ë‹´ê¸°
 		OfflineDTO odto = new OfflineDTO();
 		
 		odto.setModel_stylecode(model_stylecode);
@@ -64,7 +64,7 @@ public class AddOfflineInfoAction implements Action{
 		OfflineDAO odao = new OfflineDAO();
 		odao.insertOfflineInfo(odto);
 
-		//ÆäÀÌÁöÀÌµ¿
+		//í˜ì´ì§€ì´ë™
 		forward.setPath("./Main.ad");
 		forward.setRedirect(true);
 		return forward;

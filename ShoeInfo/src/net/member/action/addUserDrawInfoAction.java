@@ -12,7 +12,7 @@ public class addUserDrawInfoAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
-		//·Î±×ÀÎ Á¤º¸ °¡Á®¿À±â
+		//ë¡œê·¸ì¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("id");
 		ActionForward forward = new ActionForward();
@@ -22,7 +22,7 @@ public class addUserDrawInfoAction implements Action{
 			return forward;
 		}
 		
-		//³Ñ¾î¿Â°ª ¹Ş±â(model_stylecode, brand_id)
+		//ë„˜ì–´ì˜¨ê°’ ë°›ê¸°(model_stylecode, brand_id)
 		String model_stylecode = request.getParameter("model_stylecode");
 		String brand_id = request.getParameter("brand_id");
 		
@@ -37,7 +37,7 @@ public class addUserDrawInfoAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		mdao.insertUserDrawInfo(mddto);
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//í˜ì´ì§€ì´ë™
 		forward.setPath("./SneakerDetail.go?model_stylecode="+model_stylecode);
 		forward.setRedirect(true);
 		return forward;
