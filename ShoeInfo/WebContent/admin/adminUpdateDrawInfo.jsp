@@ -1,8 +1,8 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="net.online.db.OnlineDTO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,7 +27,7 @@
 		Date original_Online_start_time = original_format.parse(onlineDrawInfo.getOnline_start_time());
 		Date original_Online_end_time = original_format.parse(onlineDrawInfo.getOnline_end_time());
 		
-		//°¡Áö°í¿Â ½Ã°£ ³ª´©±â(yyyy-MM-dd¶û HH:mm)
+		//ê°€ì§€ê³ ì˜¨ ì‹œê°„ ë‚˜ëˆ„ê¸°(yyyy-MM-ddë‘ HH:mm)
 		String new_Online_start_date = new_date_format.format(original_Online_start_time);
 		String new_Online_start_hour = new_hour_format.format(original_Online_start_time);
 		
@@ -43,24 +43,24 @@
 	<div id="wrapper" class="container">
 		<!-- content -->
 		<div id="content_adminAddSneaker">
-			<!-- ¿Â¶óÀÎ Á¤º¸ Ãß°¡ÇÏ´Â ¶õ -->
+			<!-- ì˜¨ë¼ì¸ ì •ë³´ ì¶”ê°€í•˜ëŠ” ë€ -->
 			<div>
-				<h3> ¿Â¶óÀÎ ¹ß¸Å Á¤º¸ ¼öÁ¤ÇÏ±â </h3>
+				<h3> ì˜¨ë¼ì¸ ë°œë§¤ ì •ë³´ ìˆ˜ì •í•˜ê¸° </h3>
 				<form action="./UpdateDrawInfoAction.ad" method="post">
 					<table border = "1">
 						<input type="hidden" name="country_region" value="<%=onlineDrawInfo.getCountry_region()%>">
 						<input type="hidden" name="country_name" value="<%=onlineDrawInfo.getCountry_name()%>">
 						<input type="hidden" name="brand_id" value="<%=onlineDrawInfo.getBrand_id()%>">
 						<tr>
-							<td> ½Å¹ß ½ºÅ¸ÀÏ ÄÚµå </td>
+							<td> ì‹ ë°œ ìŠ¤íƒ€ì¼ ì½”ë“œ </td>
 							<td> <input type="text" name="model_stylecode" value="<%=onlineDrawInfo.getModel_stylecode()%>"> </td>
 						</tr>
 						<tr>
-							<td> ¿Â¶óÀÎ ¸µÅ© </td>
+							<td> ì˜¨ë¼ì¸ ë§í¬ </td>
 							<td> <input type="text" name="online_link" value="<%=onlineDrawInfo.getOnline_link()%>"> </td>
 						</tr>
 						<tr>
-							<td> ¿Â¶óÀÎ ½Ã°£ </td>
+							<td> ì˜¨ë¼ì¸ ì‹œê°„ </td>
 							<td> 
 								<input type="date" name="online_date_start" value="<%=new_Online_start_date%>">
 								<input type="time" name="online_hour_start" value="<%=new_Online_start_hour%>">
@@ -70,46 +70,46 @@
 							</td>
 						</tr>
 						<tr>
-							<td> ¿Â¶óÀÎ ¹æ½Ä </td>
+							<td> ì˜¨ë¼ì¸ ë°©ì‹ </td>
 							<td> 
 								<select name="online_method">
-									<option value="default" <%if(onlineDrawInfo.getOnline_method().equals("default")){%> selected<%}%>> ¿Â¶óÀÎ ¹æ½ÄÀ» ¼±ÅÃÇØÁÖ¼¼¿ä. </option>
-									<option value="¼±Âø" <%if(onlineDrawInfo.getOnline_method().equals("¼±Âø")){%> selected<%}%>> ¼±Âø </option>
-									<option value="µå·Î¿ì" <%if(onlineDrawInfo.getOnline_method().equals("µå·Î¿ì")){%> selected<%}%>> µå·Î¿ì </option>
+									<option value="default" <%if(onlineDrawInfo.getOnline_method().equals("default")){%> selected<%}%>> ì˜¨ë¼ì¸ ë°©ì‹ì„ ì„ íƒí•´ì£¼ì„¸ìš”. </option>
+									<option value="ì„ ì°©" <%if(onlineDrawInfo.getOnline_method().equals("ì„ ì°©")){%> selected<%}%>> ì„ ì°© </option>
+									<option value="ë“œë¡œìš°" <%if(onlineDrawInfo.getOnline_method().equals("ë“œë¡œìš°")){%> selected<%}%>> ë“œë¡œìš° </option>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<td> ±¸¸Å ¹æ½Ä </td>
+							<td> êµ¬ë§¤ ë°©ì‹ </td>
 							<td>
 								<select name="buy_method">
-									<option value="default" <%if(onlineDrawInfo.getBuy_method().equals("default")){%> selected<%}%>> ±¸¸Å ¹æ½ÄÀ» ¼±ÅÃÇØÁÖ¼¼¿ä. </option>
-									<option value="¼±Âø¼ø ±¸¸Å" <%if(onlineDrawInfo.getBuy_method().equals("¼±Âø¼ø ±¸¸Å")){%> selected<%}%>> ¼±Âø¼ø ±¸¸Å </option>
-									<option value="´çÃ· ÈÄ °áÁ¦" <%if(onlineDrawInfo.getBuy_method().equals("´çÃ· ÈÄ °áÁ¦")){%> selected<%}%>> ´çÃ· ÈÄ °áÁ¦ </option>
-									<option value="´çÃ·Àü ¼±°áÁ¦" <%if(onlineDrawInfo.getBuy_method().equals("´çÃ·Àü ¼±°áÁ¦")){%> selected<%}%>> ´çÃ· Àü ¼±°áÁ¦ </option>
-									<option value="´çÃ·ÀÚ°£ ¼±Âø¼ø ±¸¸Å" <%if(onlineDrawInfo.getBuy_method().equals("´çÃ·ÀÚ°£ ¼±Âø¼ø ±¸¸Å")){%> selected<%}%>> ´çÃ·ÀÚ°£ ¼±Âø¼ø ±¸¸Å </option> 
+									<option value="default" <%if(onlineDrawInfo.getBuy_method().equals("default")){%> selected<%}%>> êµ¬ë§¤ ë°©ì‹ì„ ì„ íƒí•´ì£¼ì„¸ìš”. </option>
+									<option value="ì„ ì°©ìˆœ êµ¬ë§¤" <%if(onlineDrawInfo.getBuy_method().equals("ì„ ì°©ìˆœ êµ¬ë§¤")){%> selected<%}%>> ì„ ì°©ìˆœ êµ¬ë§¤ </option>
+									<option value="ë‹¹ì²¨ í›„ ê²°ì œ" <%if(onlineDrawInfo.getBuy_method().equals("ë‹¹ì²¨ í›„ ê²°ì œ")){%> selected<%}%>> ë‹¹ì²¨ í›„ ê²°ì œ </option>
+									<option value="ë‹¹ì²¨ì „ ì„ ê²°ì œ" <%if(onlineDrawInfo.getBuy_method().equals("ë‹¹ì²¨ì „ ì„ ê²°ì œ")){%> selected<%}%>> ë‹¹ì²¨ ì „ ì„ ê²°ì œ </option>
+									<option value="ë‹¹ì²¨ìê°„ ì„ ì°©ìˆœ êµ¬ë§¤" <%if(onlineDrawInfo.getBuy_method().equals("ë‹¹ì²¨ìê°„ ì„ ì°©ìˆœ êµ¬ë§¤")){%> selected<%}%>> ë‹¹ì²¨ìê°„ ì„ ì°©ìˆœ êµ¬ë§¤ </option> 
 									<option value="-" <%if(onlineDrawInfo.getBuy_method().equals("-")){%> selected<%}%>> - </optino>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<td> Á÷¹è ¿©ºÎ </td>
+							<td> ì§ë°° ì—¬ë¶€ </td>
 							<td>
 								<select name="delivery_method">
-									<option value="default" <%if(onlineDrawInfo.getDelivery_method().equals("default")){%> selected<%}%>> Á÷¹è¿©ºÎ¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä. </option>
-									<option value="Á÷¹è°¡´É" <%if(onlineDrawInfo.getDelivery_method().equals("Á÷¹è°¡´É")){%> selected<%}%>> Á÷¹è°¡´É </option>
-									<option value="Á÷¹èºÒ°¡(¹è´ëÁöÃßÃµ)" <%if(onlineDrawInfo.getDelivery_method().equals("Á÷¹èºÒ°¡(¹è´ëÁöÃßÃµ)")){%> selected<%}%>> Á÷¹èºÒ°¡(¹è´ëÁöÃßÃµ) </option>
+									<option value="default" <%if(onlineDrawInfo.getDelivery_method().equals("default")){%> selected<%}%>> ì§ë°°ì—¬ë¶€ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”. </option>
+									<option value="ì§ë°°ê°€ëŠ¥" <%if(onlineDrawInfo.getDelivery_method().equals("ì§ë°°ê°€ëŠ¥")){%> selected<%}%>> ì§ë°°ê°€ëŠ¥ </option>
+									<option value="ì§ë°°ë¶ˆê°€(ë°°ëŒ€ì§€ì¶”ì²œ)" <%if(onlineDrawInfo.getDelivery_method().equals("ì§ë°°ë¶ˆê°€(ë°°ëŒ€ì§€ì¶”ì²œ)")){%> selected<%}%>> ì§ë°°ë¶ˆê°€(ë°°ëŒ€ì§€ì¶”ì²œ) </option>
 									<option value="-" <%if(onlineDrawInfo.getDelivery_method().equals("-")){%> selected<%}%>> - </option>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<td> Æ¯ÀÌ»çÇ× </td>
+							<td> íŠ¹ì´ì‚¬í•­ </td>
 							<td> <textarea name="description"><%=onlineDrawInfo.getDescription()%></textarea>
 						</tr>
 						<tr>
 							<td colspan="2"> 
-								<input type="submit" value="¼öÁ¤ÇÏ±â">
+								<input type="submit" value="ìˆ˜ì •í•˜ê¸°">
 							</td>
 						</tr>
 					</table>

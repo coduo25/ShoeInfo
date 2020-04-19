@@ -12,6 +12,8 @@ public class UpdateDrawInfoAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		response.setContentType("text/html;charset=UTF-8");
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		//로그인 정보 가져오기
@@ -32,10 +34,10 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setBrand_id(request.getParameter("brand_id"));
 		odto.setOnline_link(request.getParameter("online_link"));
 		
-		String online_start_time = request.getParameter("online_date_start") + request.getParameter("online_hour_start");
+		String online_start_time = request.getParameter("online_date_start") + " " + request.getParameter("online_hour_start");
 		odto.setOnline_start_time(online_start_time);
 		
-		String online_end_time = request.getParameter("online_date_end") + request.getParameter("online_hour_end");
+		String online_end_time = request.getParameter("online_date_end") + " " + request.getParameter("online_hour_end");
 		odto.setOnline_end_time(online_end_time);
 		
 		odto.setOnline_method(request.getParameter("online_method"));
@@ -44,8 +46,6 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setDescription(request.getParameter("description"));
 		
 		OnlineDAO odao = new OnlineDAO();
-		
-		System.out.print(odto.getBrand_id() + ", " + odto.getModel_stylecode());
 		
 		odao.updateOnlineinfo(odto);
 		
