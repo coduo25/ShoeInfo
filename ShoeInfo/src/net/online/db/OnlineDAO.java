@@ -72,7 +72,7 @@ public class OnlineDAO {
 			closeDB();
 		}
 	}
-	
+
 	//대한민국 신발 온라인 정보 가져오는 함수(브랜드 정보 + 온라인 정보)
 	public Vector getOnlineInfo_kr(String model_stylecode) {
 		Vector vec = new Vector();
@@ -279,4 +279,66 @@ public class OnlineDAO {
 		}
 		return vec;
 	}
+	
+	//model_stylcode와 brand_id만 가지고 해당 브랜드 발매 정보 수정하기 위해서 정보 가져오는 함수(관리자만)
+	public OnlineDTO getOneOnlineInfo(String model_stylecode, String brand_id){
+		OnlineDTO odto = null;
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND brand_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model_stylecode);
+			pstmt.setString(2, brand_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				odto = new OnlineDTO();
+				odto.setOnline_num(rs.getInt("online_num"));
+				odto.setModel_stylecode(rs.getString("model_stylecode"));
+				odto.setCountry_region(rs.getString("country_region"));
+				odto.setCountry_name(rs.getString("country_name"));
+				odto.setBrand_id(rs.getString("brand_id"));
+				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_start_time(rs.getString("online_start_time"));
+				odto.setOnline_end_time(rs.getString("online_end_time"));
+				odto.setOnline_method(rs.getString("online_method"));
+				odto.setBuy_method(rs.getString("buy_method"));
+				odto.setDelivery_method(rs.getString("delivery_method"));
+				odto.setDescription(rs.getString("description"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			closeDB();
+		}
+		return odto;
+	}
+	
+	//신발 온라인 정보 수정하는 함수
+	public void updateOnlineinfo(OnlineDTO odto){
+		try {
+			con = getConnection();
+			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_time = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, description = ? where model_stylecode = ? AND brand_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, odto.getModel_stylecode());
+			pstmt.setString(2, odto.getCountry_region());
+			pstmt.setString(3, odto.getCountry_name());
+			pstmt.setString(4, odto.getBrand_id());
+			pstmt.setString(5, odto.getOnline_link());
+			pstmt.setString(6, odto.getOnline_start_time());
+			pstmt.setString(7, odto.getOnline_end_time());
+			pstmt.setString(8, odto.getOnline_method());
+			pstmt.setString(9, odto.getBuy_method());
+			pstmt.setString(10, odto.getDelivery_method());
+			pstmt.setString(11, odto.getDescription());
+			pstmt.setString(12, odto.getModel_stylecode());
+			pstmt.setString(13, odto.getBrand_id());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			closeDB();
+		}
+	}
+	
+	
 }

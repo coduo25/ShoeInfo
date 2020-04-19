@@ -27,6 +27,8 @@
 
 	<!-- Main Content -->
 	<%
+		request.setCharacterEncoding("UTF-8");
+		
 		//로그인한 사용자가 체크
 		String user = (String) session.getAttribute("id");
 		if(user == null){
@@ -111,7 +113,11 @@
 					</td>
 				</tr>
 			</table>
-			
+			<%	//관리자 권한일때 제품 발매정보 추가하는 페이지로 가는 버튼
+				if(user.equals("admin")){
+			%>
+				<a href="./searchBrand.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="제품 발매 정보 추가하기" style="float: right;"></a>
+			<%}%>
 			<!-- 신발 온라인/오프라인 정보 -->
 			<div id="content_sneakerInfo">
 				<!-- 오프라인 테이블 -->
@@ -273,10 +279,14 @@
 								<input type="hidden" id="kr_model_stylecode<%=i%>" value="<%=odto_kr.getModel_stylecode()%>">
 								<input type="hidden" id="kr_brand_id<%=i%>" value="<%=odto_kr.getBrand_id()%>">
 <%-- 								<a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모체크"></a> --%>
-								<input type="checkbox" id="drawCheckbox_kr<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
+								<input type="checkbox" id="drawCheckbox_kr" style="width:18px; height:18px; vertical-align: middle;">
 							</td>
 						<%}else {%>
 							<td id="draw-status_kr<%=i%>"> - </td>
+						<%}%>
+						
+						<%if(user.equals("admin")){%>
+							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'"> </td> 
 						<%}%>
 					</tr>
 					<%
@@ -796,8 +806,7 @@
 			}
 			
 			//사용자가 응모여부에 체크하였을시 호출되는 함수
-			$('#drawCheckbox_kr'+i).change(function(){
-				alert(i);
+			$('#drawCheckbox_kr').change(function(){
 				if($(this).is(":checked")==true){
 					//체크가 안된 상태에서 응모여부 물어보기
 					$(this).prop("checked", false);
@@ -837,9 +846,34 @@
 				   		$(this).prop("checked", true);
 				   	}
 				}
-
 			});
-		}		
+		}
+		
+		$("input:checkbox").on('click', function() {
+			if($(this).is(":checked")==true){
+				//체크가 안된 상태에서 응모여부 물어보기
+				$(this).prop("checked", false);
+				var draw_confirm_yes = confirm("해당 사이트를 응모 하셨습니까?");
+			   	if(draw_confirm_yes){
+			   		alert("테스트");
+			   		$(this).prop("checked", true);
+			   	}else {
+			   		$(this).prop("checked", false);
+			   	}
+			}
+			else if($(this).is(":not(:checked)")==true){
+				//체크가 된 상태에서 응모여부 물어보기
+				$(this).prop("checked", true);
+				var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
+			   	if(draw_confirm_no){
+			   		$(this).prop("checked", false);
+			   		alert("응모여부를 취소하였습니다.");
+			   	}else {
+			   		$(this).prop("checked", true);
+			   	}
+			}
+
+		});
 	
 		//온라인 아시아 리스트
 		var onLineList_asia = [];

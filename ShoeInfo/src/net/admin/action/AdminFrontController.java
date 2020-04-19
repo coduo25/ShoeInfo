@@ -90,6 +90,25 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 		
+		//신발 발매 정보 수정하는 페이지로 가기
+		else if(command.equals("/UpdateDrawInfo.ad")){
+			action = new UpdateDrawInfo();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//신발 발매 정보 수정하는 페이지 처리하기
+		else if(command.equals("/UpdateDrawInfoAction.ad")){
+			action = new UpdateDrawInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		// ---------------나라추가----------------------------
 		//새로운 나라 추가하는 페이지 처리
 		else if(command.equals("/AddCountryAction.ad")){

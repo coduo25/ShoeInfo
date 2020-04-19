@@ -28,6 +28,11 @@ public class searchBrandAction implements Action{
 		// -------------------------------------------------
 		// DB객체 만들기
 		
+		String model_stylecode = (String) request.getParameter("model_stylecode");
+		if(model_stylecode == null){
+			model_stylecode = "";
+		}
+		
 		//CountryDB로부터 모든 국가 리스트 가져오는 함수
 		CountryDAO cdao = new CountryDAO();
 		List<CountryDTO> countryList_all = (List<CountryDTO>) cdao.countryList_all();
@@ -41,7 +46,7 @@ public class searchBrandAction implements Action{
 		
 		// ------------------------------------------------
 		// 3. 페이지이동
-		forward.setPath("admin/adminAddReleaseInfo.jsp");
+		forward.setPath("admin/adminAddReleaseInfo.jsp?model_stylecode"+model_stylecode);
 		forward.setRedirect(false);
 		return forward;
 	}

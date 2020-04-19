@@ -15,6 +15,16 @@
 <body>
 
 	<%
+		String user = (String) session.getAttribute("id");
+		if(user == null){
+			response.sendRedirect("./searchBrand.ad");
+		}
+		
+		String model_stylecode = (String) request.getParameter("model_stylecode");
+		if(model_stylecode == null){
+			model_stylecode = "";
+		}
+	
 		//CountryDB로부터 모든 국가 리스트 가져오는 함수
 		List<CountryDTO> countryList_all = (List<CountryDTO>) request.getAttribute("countryList_all");
 	
@@ -40,7 +50,7 @@
 					<table border = "1">
 						<tr>
 							<td> 신발 스타일 코드 </td>
-							<td> <input type="text" name="model_stylecode"> </td>
+							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>"> </td>
 						</tr>
 						<tr>
 							<td rowspan="2"> 브랜드* </td>
@@ -104,7 +114,7 @@
 					<table border = "1">
 						<tr>
 							<td> 신발 스타일 코드 </td>
-							<td> <input type="text" name="model_stylecode"> </td>
+							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>"> </td>
 						</tr>
 						<tr>
 							<td rowspan="2"> 브랜드* </td>

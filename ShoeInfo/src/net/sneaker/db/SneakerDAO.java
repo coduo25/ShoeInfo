@@ -145,6 +145,9 @@ public class SneakerDAO {
 			closeDB();
 		}
 	}
+	
+	//신발 발매 정보 수정하는 함수
+	
 
 
 }
