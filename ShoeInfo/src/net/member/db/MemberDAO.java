@@ -203,8 +203,8 @@ public class MemberDAO {
 		PreparedStatement pstmt3 = null;
 		ResultSet rs3 = null;
 		
-		//대한민국(kr) 신발 응모 정보 저장
-		//대한민국(kr) 브랜드 정보 저장
+		//대한민국 신발 응모 정보 저장
+		//브랜드 정보 저장
 		ArrayList drawInfoList_kr = new ArrayList();
 		ArrayList brandList_kr = new ArrayList();
 		
@@ -254,7 +254,66 @@ public class MemberDAO {
 		return vec;
 	}
 	
-
+	//사용자가 응모한 대한민국외의 해외 브랜드 정보 불러오는 함수
+	public Vector getDrawInfo_etc(String model_stylecode, String user) {
+		Vector vec = new Vector();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
+		
+		//해외 신발 응모 정보 저장
+		//브랜드 정보 저장
+		ArrayList drawInfoList_etc = new ArrayList();
+		ArrayList brandList_etc = new ArrayList();
+		
+		try {	
+			con = getConnection();
+			sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_id = ? AND not country_name = ? order by country_name";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model_stylecode);
+			pstmt.setString(2, user);
+			pstmt.setString(3, "대한민국");
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				MemberDrawDTO mddto = new MemberDrawDTO();
+				mddto.setBrand_id(rs.getString("brand_id"));
+				mddto.setModel_stylecode(rs.getString("model_stylecode"));
+				drawInfoList_etc.add(mddto);
+				
+				//한국 브랜드 정보 가져오기
+				sql = "select * from shoeinfo_brand where brand_id = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, mddto.getBrand_id());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					//브랜드 정보 DB에 해당 브랜드가 저장되어있으면
+					BrandDTO bdto = new BrandDTO();
+					bdto.setCountry_name(rs2.getString("country_name"));
+					bdto.setBrand_logo(rs2.getString("brand_logo"));
+					bdto.setBrand_name(rs2.getString("brand_name"));
+					bdto.setBrand_id(rs2.getString("brand_id"));
+					sql="select country_flag from shoeinfo_country where country_name = ?";
+					pstmt3 = con.prepareStatement(sql);
+					pstmt3.setString(1, bdto.getCountry_name());
+					rs3 = pstmt3.executeQuery();
+					if(rs3.next()){
+						bdto.setCountry_flag(rs3.getString("country_flag"));
+					}
+					brandList_etc.add(bdto);
+				}
+			}
+			vec.add(drawInfoList_etc);
+			vec.add(brandList_etc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return vec;
+	}
 	
 	
 }

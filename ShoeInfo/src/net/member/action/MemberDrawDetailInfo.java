@@ -43,13 +43,22 @@ public class MemberDrawDetailInfo implements Action{
 		 * 응모한 신발 브랜드 정보 가져오기
 		 ******************************************************/
 		MemberDAO mdao = new MemberDAO();
-		Vector vec_draw_kr = mdao.getDrawInfo_kr(model_stylecode, user);
 		
+		//국내 응모 한 곳
+		Vector vec_draw_kr = mdao.getDrawInfo_kr(model_stylecode, user);
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) vec_draw_kr.get(0);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(1);
 		
 		request.setAttribute("drawInfoList_kr", drawInfoList_kr);
 		request.setAttribute("brandList_kr", brandList_kr);
+		
+		//해외 응모 한곳
+		Vector vec_draw_etc = mdao.getDrawInfo_etc(model_stylecode, user);
+		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec_draw_etc.get(0);
+		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(1);
+		
+		request.setAttribute("drawInfoList_etc", drawInfoList_etc);
+		request.setAttribute("brandList_etc", brandList_etc);
 		
 		forward.setPath("./member/memberDrawDetailList.jsp");
 		forward.setRedirect(false);

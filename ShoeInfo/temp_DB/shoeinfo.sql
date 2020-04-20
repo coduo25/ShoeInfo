@@ -39,7 +39,7 @@ CREATE TABLE `shoeinfo_brand` (
 
 LOCK TABLES `shoeinfo_brand` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_brand` DISABLE KEYS */;
-INSERT INTO `shoeinfo_brand` VALUES ('대한민국','HOOPCITY.png','HOOOPCITY','대한민국_HOOOPCITY'),('대한민국','JD Sports.png','JD Sports','대한민국_JD Sports'),('대한민국','snkrs.png','snkrs 코리아','대한민국_snkrs'),('대한민국','atmos.png','아트모스','대한민국_아트모스'),('대한민국','kasina.png','카시나','대한민국_카시나'),('대한민국','casestudy.png','케이스스터디','대한민국_케이스스터디'),('독일','bstn.png','bstn','독일_bstn'),('미국','18montrose.png','18montrose','미국_18montrose'),('미국','extrabutter.png','extrabutter','미국_extrabutter'),('미국','finishline.png','FINISHLINE','미국_FINISHLINE'),('미국','JD Sports.png','JD Sports','미국_JD Sports'),('미국','LIVESTOCK.png','LIVESTOCK','미국_LIVESTOCK'),('미국','shoepalace.png','ShoePalace','미국_ShoePalace'),('미국','snkrs.png','snkrs USA','미국_snkrs'),('미국','UNDEFEATED.png','UNDEFEATED','미국_UNDEFEATED'),('미국','XHIBITION.png','XHIBITION','미국_XHIBITION'),('스페인','noirfonce.png','noirfonce','스페인_noirfonce'),('일본','atmos.png','아트모스 도쿄','일본_아트모스 도쿄'),('중국','JD Sports.png','JD Sports','중국_JD Sports'),('캐나다','NRML.png','NRML','캐나다_NRML'),('프랑스','basket4ballers.png','basket4ballers','프랑스_basket4ballers');
+INSERT INTO `shoeinfo_brand` VALUES ('대한민국','HOOPCITY.png','HOOOPCITY','대한민국_HOOOPCITY'),('대한민국','JD Sports.png','JD Sports','대한민국_JD Sports'),('대한민국','snkrs.png','snkrs 코리아','대한민국_snkrs'),('대한민국','atmos.png','아트모스','대한민국_아트모스'),('대한민국','kasina.png','카시나','대한민국_카시나'),('대한민국','casestudy.png','케이스스터디','대한민국_케이스스터디'),('덴마트','NAKED.png','NAKED','덴마트_NAKED'),('독일','bstn.png','bstn','독일_bstn'),('독일','KICKZ.png','KICKZ','독일_KICKZ'),('독일','SOTO.png','SOTO','독일_SOTO'),('독일','VooStore.png','VooStore','독일_VooStore'),('미국','18montrose.png','18montrose','미국_18montrose'),('미국','extrabutter.png','extrabutter','미국_extrabutter'),('미국','FEATURES.png','FEATURES','미국_FEATURES'),('미국','finishline.png','FINISHLINE','미국_FINISHLINE'),('미국','JD Sports.png','JD Sports','미국_JD Sports'),('미국','LIVESTOCK.png','LIVESTOCK','미국_LIVESTOCK'),('미국','shoepalace.png','ShoePalace','미국_ShoePalace'),('미국','snkrs.png','snkrs USA','미국_snkrs'),('미국','UNDEFEATED.png','UNDEFEATED','미국_UNDEFEATED'),('미국','XHIBITION.png','XHIBITION','미국_XHIBITION'),('스웨덴','SNS.png','SNS','스웨덴_SNS'),('스페인','FOOTDISTRICT.png','FOOTDISTRICT','스페인_FOOTDISTRICT'),('스페인','noirfonce.png','noirfonce','스페인_noirfonce'),('영국','END.png','END','영국_END'),('영국','FOOTPATROL.png','FOOTPATROL','영국_FOOTPATROL'),('영국','GOODHOOD.png','GOODHOOD','영국_GOODHOOD'),('영국','TRES BIEN.png','TRES BIEN','영국_TRES BIEN'),('이탈리아','ONEBLOCKDOWN.png','ONEBLOCKDOWN','이탈리아_ONEBLOCKDOWN'),('일본','atmos.png','아트모스 도쿄','일본_아트모스 도쿄'),('중국','JD Sports.png','JD Sports','중국_JD Sports'),('캐나다','NRML.png','NRML','캐나다_NRML'),('프랑스','basket4ballers.png','basket4ballers','프랑스_basket4ballers');
 /*!40000 ALTER TABLE `shoeinfo_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `shoeinfo_country` (
 
 LOCK TABLES `shoeinfo_country` WRITE;
 /*!40000 ALTER TABLE `shoeinfo_country` DISABLE KEYS */;
-INSERT INTO `shoeinfo_country` VALUES ('아메리카','캐나다','01','캐나다.png'),('아메리카','미국','1','미국.png'),('유럽','네덜란드','31','네덜란드.png'),('유럽','프랑스','33','프랑스.png'),('유럽','스페인','34','스페인.png'),('유럽','영국','44','영국.png'),('유럽','독일','49','독일.png'),('기타','호주','61','호주.png'),('기타','뉴질랜드','64','뉴질랜드.png'),('아시아','일본','81','일본.png'),('아시아','대한민국','82','대한민국.png'),('아시아','중국','86','중국.png');
+INSERT INTO `shoeinfo_country` VALUES ('아메리카','캐나다','01','캐나다.png'),('아메리카','미국','1','미국.png'),('유럽','네덜란드','31','네덜란드.png'),('유럽','프랑스','33','프랑스.png'),('유럽','스페인','34','스페인.png'),('유럽','이탈리아','39','이탈리아.png'),('유럽','영국','44','영국.png'),('유럽','덴마트','45','덴마크.png'),('유럽','스웨덴','46','스웨덴.png'),('유럽','독일','49','독일.png'),('기타','호주','61','호주.png'),('기타','뉴질랜드','64','뉴질랜드.png'),('아시아','일본','81','일본.png'),('아시아','대한민국','82','대한민국.png'),('아시아','중국','86','중국.png');
 /*!40000 ALTER TABLE `shoeinfo_country` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,4 +238,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 17:51:17
+-- Dump completed on 2020-04-21  0:43:08

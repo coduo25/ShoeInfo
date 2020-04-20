@@ -31,10 +31,13 @@
 		//신발 기본 정보 리스트
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
 		
-		// ---------- 온라인 정보 -----------
-		//대한민국
+		//국내 응모 정보
 		List<MemberDrawDTO> drawInfoList_kr = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
 		List<BrandDTO> brandList_kr = (List<BrandDTO>) request.getAttribute("brandList_kr");
+		
+		//해외 응모 정보
+		List<MemberDrawDTO> drawInfoList_etc = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
+		List<BrandDTO> brandList_etc = (List<BrandDTO>) request.getAttribute("brandList_etc");
 
 	%>
 	<div id="wrapper" class="container">
@@ -73,14 +76,33 @@
 			</table>
 			<!-- 응모한 브랜드 정보 보여주는 영역 -->
 			<div id="content_userDrawInfo">
-				<table border="0">
+				<table border="1">
 					<tr>
-						<th colspan="3"> 한국 </th>
+						<th colspan="3"> 국내 응모 한 곳 </th>
 					</tr>
 					<%
 						for(int i=0; i<drawInfoList_kr.size(); i++){
 							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(i);
 							BrandDTO bdto = (BrandDTO) brandList_kr.get(i);
+					%>
+						<tr>
+							<td> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="50" height="50"> </td>
+							<td> <%=bdto.getBrand_name()%></td>
+							<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" width="22" height="15"> </td>
+						</tr>
+					<%
+						}
+					%>
+				</table>
+				
+				<table border="1">
+					<tr>
+						<th colspan="3"> 해외 응모 한 곳 </th>
+					</tr>
+					<%
+						for(int i=0; i<drawInfoList_etc.size(); i++){
+							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_etc.get(i);
+							BrandDTO bdto = (BrandDTO) brandList_etc.get(i);
 					%>
 						<tr>
 							<td> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="50" height="50"> </td>
