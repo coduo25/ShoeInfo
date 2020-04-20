@@ -5,6 +5,7 @@ public class MemberDrawDTO {
 	
 	private String member_id;
 	private String model_stylecode;
+	private String country_name;
 	private String brand_id;
 	private String draw_count;
 	
@@ -19,6 +20,12 @@ public class MemberDrawDTO {
 	}
 	public void setModel_stylecode(String model_stylecode) {
 		this.model_stylecode = model_stylecode;
+	}
+	public String getCountry_name() {
+		return country_name;
+	}
+	public void setCountry_name(String country_name) {
+		this.country_name = country_name;
 	}
 	public String getBrand_id() {
 		return brand_id;

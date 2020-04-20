@@ -36,7 +36,7 @@ public class AddSneakerAction implements Action {
 		int maxSize = 30 * 1024 * 1024; //30MB
 		
 		//파일 업로드(cos.jar)
-		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8");
 		
 		// ---------------------------------------------------------------------------------------------------------------------------
 		// 2. SneakerDTO 객체 생성 (전달받은 정보를 저장)
@@ -50,8 +50,19 @@ public class AddSneakerAction implements Action {
 		sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
 		sdto.setModel_name(multi.getParameter("model_name"));
 		sdto.setModel_colorway(multi.getParameter("model_colorway"));
-		sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
-		sdto.setRelease_date(multi.getParameter("release_date"));
+		int price = 0;
+		if(multi.getParameter("price").equals("")){
+			sdto.setPrice(price);
+		}else{
+			sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
+		}
+		
+		String empty_release_date = "0000-00-00";
+		if(multi.getParameter("release_date").equals("")){
+			sdto.setRelease_date(empty_release_date);
+		}else{
+			sdto.setRelease_date(multi.getParameter("release_date"));
+		}
 		
 		SneakerDAO asdao = new SneakerDAO();
 		asdao.insertSneaker(sdto);

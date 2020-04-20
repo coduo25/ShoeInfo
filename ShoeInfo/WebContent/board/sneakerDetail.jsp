@@ -104,7 +104,9 @@
 						</div>
 						<!-- price -->
 						<div class="sneaker_option_info">
-							가격 : <span> $<%=sdto.getPrice() %></span>
+							가격 : 
+							<%if(sdto.getPrice() == 0){%> <span>미정</span>
+							<%}else{%> <span> $<%=sdto.getPrice() %></span> <%}%>
 						</div>
 						<!-- relase_date -->
 						<div class="sneaker_option_info">
@@ -167,7 +169,13 @@
 						<%} else {%>
 							<td> <a href="<%=ofdto_kr.getOffline_link()%>">보기</a> </td>
 						<%}%>
+						
+						<%if(user.equals("admin")){%>
+							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=ofdto_kr.getModel_stylecode()%>&brand_id=<%=ofdto_kr.getBrand_id()%>'"> </td> 
+						<%}%>
 					</tr>
+					
+					
 					<%
 							}
 						}
@@ -278,8 +286,8 @@
 							<td id="draw-status_kr<%=i%>"> 
 								<input type="hidden" id="kr_model_stylecode<%=i%>" value="<%=odto_kr.getModel_stylecode()%>">
 								<input type="hidden" id="kr_brand_id<%=i%>" value="<%=odto_kr.getBrand_id()%>">
-<%-- 								<a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>"><input type="button" value="응모체크"></a> --%>
-								<input type="checkbox" id="drawCheckbox_kr" style="width:18px; height:18px; vertical-align: middle;">
+<%-- 								<a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>&country_name=<%=odto_kr.getCountry_name()%>"><input type="button" value="응모체크"></a> --%>
+								<input type="checkbox" id="drawCheckbox_kr<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
 							</td>
 						<%}else {%>
 							<td id="draw-status_kr<%=i%>"> - </td>
@@ -399,6 +407,10 @@
 						<%}else {%>
 							<td id="draw-status_asia<%=i%>"> - </td>
 						<%}%>
+						
+						<%if(user.equals("admin")){%>
+							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'"> </td> 
+						<%}%>
 					</tr>
 					<%
 							}
@@ -509,6 +521,10 @@
 							<td id="draw-status_america<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
 						<%}else {%>
 							<td id="draw-status_america<%=i%>"> - </td>
+						<%}%>
+						
+						<%if(user.equals("admin")){%>
+							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'"> </td> 
 						<%}%>
 					</tr>
 					<%
@@ -621,6 +637,10 @@
 						<%}else {%>
 							<td id="draw-status_europe<%=i%>"> - </td>
 						<%}%>
+						
+						<%if(user.equals("admin")){%>
+							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'"> </td> 
+						<%}%>
 					</tr>
 					<%
 							}
@@ -731,6 +751,10 @@
 							<td id="draw-status_etc<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
 						<%}else {%>
 							<td id="draw-status_etc<%=i%>"> - </td>
+						<%}%>
+						
+						<%if(user.equals("admin")){%>
+							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'"> </td> 
 						<%}%>
 					</tr>
 					<%
@@ -850,6 +874,7 @@
 		}
 		
 		$("input:checkbox").on('click', function() {
+			var test = document.getElementById
 			if($(this).is(":checked")==true){
 				//체크가 안된 상태에서 응모여부 물어보기
 				$(this).prop("checked", false);
@@ -872,9 +897,8 @@
 			   		$(this).prop("checked", true);
 			   	}
 			}
-
 		});
-	
+		
 		//온라인 아시아 리스트
 		var onLineList_asia = [];
 		<c:forEach items="${onlineList_asia}" var="onLineList_asia">

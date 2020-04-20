@@ -20,10 +20,10 @@
 			<a href="./MemberLogin.me"> LOGIN </a>
 		<% }else if(user.equals("admin")) { %>
 			<a href="./Main.ad"> ADMIN_PAGE </a>
-			<a href=""> MYPAGE </a>
+			<a href="./MemberDrawInfo.me"> MYPAGE </a>
 			<a href="./MemberLogout.me"> LOGOUT </a>
 		<% }else{ %>
-			<a href=""> MYPAGE </a>
+			<a href="./MemberDrawInfo.me"> MYPAGE </a>
 			<a href="./MemberLogout.me"> LOGOUT </a>
 		<% } %> 
 		</div>

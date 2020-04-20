@@ -50,7 +50,7 @@
 					<table border = "1">
 						<tr>
 							<td> 신발 스타일 코드 </td>
-							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>"> </td>
+							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>" required> </td>
 						</tr>
 						<tr>
 							<td rowspan="2"> 브랜드* </td>
@@ -114,7 +114,7 @@
 					<table border = "1">
 						<tr>
 							<td> 신발 스타일 코드 </td>
-							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>"> </td>
+							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>" required> </td>
 						</tr>
 						<tr>
 							<td rowspan="2"> 브랜드* </td>
