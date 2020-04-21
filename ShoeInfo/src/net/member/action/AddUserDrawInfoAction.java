@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import net.member.db.MemberDAO;
 import net.member.db.MemberDrawDTO;
 
-public class addUserDrawInfoAction implements Action{
+public class AddUserDrawInfoAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

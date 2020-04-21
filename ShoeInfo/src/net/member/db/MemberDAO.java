@@ -112,17 +112,38 @@ public class MemberDAO {
 			if(rs.next()){
 				userDraw_count = rs.getInt(1) + 1;
 			}
-			sql = "insert into shoeinfo_memberdrawinfo values(?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_memberdrawinfo values(?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userDraw_num);
 			pstmt.setString(2, mddto.getMember_id());
 			pstmt.setString(3, mddto.getModel_stylecode());
-			pstmt.setString(4, mddto.getBrand_id());
-			pstmt.setInt(5, userDraw_count);
+			pstmt.setString(4, mddto.getCountry_name());
+			pstmt.setString(5, mddto.getBrand_id());
+			pstmt.setInt(6, userDraw_count);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			closeDB();
+		}
+	}
+	
+	//회원 응모 정보 삭제하는 함수
+	public void deleteUserDrawInfo(MemberDrawDTO mddto){
+		int userDraw_num = 0;
+		int userDraw_count = 0;
+		try {
+			con = getConnection();
+			sql = "delete from shoeinfo_memberdrawinfo where member_id = ? AND model_stylecode = ? AND brand_id = ? AND country_name = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mddto.getMember_id());
+			pstmt.setString(2, mddto.getModel_stylecode());
+			pstmt.setString(3, mddto.getBrand_id());
+			pstmt.setString(4, mddto.getCountry_name());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {	
 			closeDB();
 		}
 	}

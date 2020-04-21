@@ -70,7 +70,7 @@
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d a HH:mm");
-		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");	
 	%>
 	<div id="wrapper" class="container">
 		<!-- side bar -->
@@ -278,16 +278,24 @@
 						<td> <%=odto_kr.getOnline_method()%> </td>
 						
 						<!-- 응모여부 -->
-						<%if(odto_kr.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_kr.getBrand_id())){%>
-							<td id="draw-status_kr<%=i%>"> 응모완료 </td>
-						<%}else if(odto_kr.getOnline_method().contains("드로우") && user.equals("")){%>
+						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
+						<%if(odto_kr.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
-						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null){%>
+						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_kr.getBrand_id())){%>
 							<td id="draw-status_kr<%=i%>"> 
 								<input type="hidden" id="kr_model_stylecode<%=i%>" value="<%=odto_kr.getModel_stylecode()%>">
 								<input type="hidden" id="kr_brand_id<%=i%>" value="<%=odto_kr.getBrand_id()%>">
-<%-- 								<a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>&country_name=<%=odto_kr.getCountry_name()%>"><input type="button" value="응모체크"></a> --%>
+								<input type="hidden" id="kr_country_name<%=i%>" value="<%=odto_kr.getCountry_name()%>">
 								<input type="checkbox" id="drawCheckbox_kr<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
+							</td>
+						<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
+						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_kr.getBrand_id())){%>
+							<td id="draw-status_kr<%=i%>"> 
+								<input type="hidden" id="kr_model_stylecode<%=i%>" value="<%=odto_kr.getModel_stylecode()%>">
+								<input type="hidden" id="kr_brand_id<%=i%>" value="<%=odto_kr.getBrand_id()%>">
+								<input type="hidden" id="kr_country_name<%=i%>" value="<%=odto_kr.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_kr<%=i%>" style="width:18px; height:18px; vertical-align: middle;" checked>
 							</td>
 						<%}else {%>
 							<td id="draw-status_kr<%=i%>"> - </td>
@@ -397,13 +405,26 @@
 						<!-- 응모 방식 -->
 						<td> <span class="tooltip1"> <%=odto_asia.getOnline_method()%> <span class="tooltiptext1"> <%=odto_asia.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_asia.getDelivery_method()%></span></span> </td>
 						
-						<!-- 응모체크 -->
-						<%if(odto_asia.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_asia.getBrand_id())){%>
-							<td id="draw-status_asia<%=i%>"> 응모완료 </td>
-						<%}else if(odto_asia.getOnline_method().contains("드로우") && user.equals("")){%>
+						<!-- 응모여부 -->
+						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
+						<%if(odto_asia.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_asia<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
-						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_asia<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_asia.getBrand_id())){%>
+							<td id="draw-status_asia<%=i%>"> 
+								<input type="hidden" id="asia_model_stylecode<%=i%>" value="<%=odto_asia.getModel_stylecode()%>">
+								<input type="hidden" id="asia_brand_id<%=i%>" value="<%=odto_asia.getBrand_id()%>">
+								<input type="hidden" id="asia_country_name<%=i%>" value="<%=odto_asia.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_asia<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
+							</td>
+						<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
+						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_asia.getBrand_id())){%>
+							<td id="draw-status_asia<%=i%>"> 
+								<input type="hidden" id="asia_model_stylecode<%=i%>" value="<%=odto_asia.getModel_stylecode()%>">
+								<input type="hidden" id="asia_brand_id<%=i%>" value="<%=odto_asia.getBrand_id()%>">
+								<input type="hidden" id="asia_country_name<%=i%>" value="<%=odto_asia.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_asia<%=i%>" style="width:18px; height:18px; vertical-align: middle;" checked>
+							</td>
 						<%}else {%>
 							<td id="draw-status_asia<%=i%>"> - </td>
 						<%}%>
@@ -512,13 +533,26 @@
 						<!-- 응모방식/직배 여부 -->
 						<td> <span class="tooltip1"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1"> <%=odto_america.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span></span> </td>
 						
-						<!-- 응모체크 -->
-						<%if(odto_america.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_america.getBrand_id())){%>
-							<td id="draw-status_america<%=i%>"> 응모완료 </td>
-						<%}else if(odto_america.getOnline_method().contains("드로우") && user.equals("")){%>
+						<!-- 응모여부 -->
+						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
+						<%if(odto_america.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_america<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
-						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_america<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_america.getBrand_id())){%>
+							<td id="draw-status_america<%=i%>"> 
+								<input type="hidden" id="america_model_stylecode<%=i%>" value="<%=odto_america.getModel_stylecode()%>">
+								<input type="hidden" id="america_brand_id<%=i%>" value="<%=odto_america.getBrand_id()%>">
+								<input type="hidden" id="america_country_name<%=i%>" value="<%=odto_america.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_america<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
+							</td>
+						<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
+						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_america.getBrand_id())){%>
+							<td id="draw-status_america<%=i%>"> 
+								<input type="hidden" id="america_model_stylecode<%=i%>" value="<%=odto_america.getModel_stylecode()%>">
+								<input type="hidden" id="america_brand_id<%=i%>" value="<%=odto_america.getBrand_id()%>">
+								<input type="hidden" id="america_country_name<%=i%>" value="<%=odto_america.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_america<%=i%>" style="width:18px; height:18px; vertical-align: middle;" checked>
+							</td>
 						<%}else {%>
 							<td id="draw-status_america<%=i%>"> - </td>
 						<%}%>
@@ -574,8 +608,10 @@
 							String current = original_format.format(currentTime);
 							Date today = original_format.parse(current);
 							
-							int compare_w_start_result_europe = today.compareTo(original_Online_start_time_europe);		//응모 시작하는 시간
-							int compare_w_end_result_europe = today.compareTo(original_Online_end_time_europe); 		//응모 끝나는 시간
+							int compare_w_start_result_europe = today.compareTo(original_Online_start_time_europe);		//오늘이랑 응모 시작하는 시간이랑 비교, -1 이면 오늘이 응모시간보다 전	1이면 오늘이 응모시간보다 후
+							int compare_w_end_result_europe = today.compareTo(original_Online_end_time_europe); 		//오늘이랑 응모 끝나는 시간 비교
+							
+							System.out.println(compare_w_start_result_europe);
 					%>
 					<tr id="europe_drawRaw<%=i%>">
 						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_europe.getBrand_logo()%>" width="50" height="50"> </a> </td>
@@ -614,12 +650,26 @@
 						</td>
 						<%}else if(odto_europe.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_europe<%=i%>">
+							<!-- 오늘이 시작시간 전일때 -->
 							<%if(compare_w_start_result_europe == -1){%>
-							<span id="final_count_Online_end_time_europe<%=i%>"></span>
+								<span id="final_count_Online_end_time_europe<%=i%>"></span>
+							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_europe == 1 && compare_w_end_result_europe == -1){%>
-							<span id="final_count_Online_end_time_europe<%=i%>"></span><span id="draw_count_result_ing">진행중 </span>
-							<%}else if(compare_w_end_result_europe == 1){%>
-							<span id="draw_count_result_after"> 응모종료 </span> <br>
+								<span id="final_count_Online_end_time_europe<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
+							<%}else if(odto_europe.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_europe == -1){%>
+								<span id="final_count_Online_end_time_europe<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
+							<%}else if(odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == -1){%>
+								<span> 응모전</span>
+							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
+							<%}else if(odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == 1){%>
+								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+							<!-- 오늘이 끝나는 시간을 지났을때 -->
+							<%}else if(compare_w_end_result_europe == 1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="draw_count_result_after"> 응모종료 </span> <br>
+							<%}else{%>
+								<span> - </span>
 							<%}%>
 						</td>
 						<%}%>
@@ -627,13 +677,26 @@
 						<!-- 응모방식/직배여부 -->
 						<td> <span class="tooltip1"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1"> <%=odto_europe.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span></span> </td>
 						
-						<!-- 응모체크 -->
-						<%if(odto_europe.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_europe.getBrand_id())){%>
-							<td id="draw-status_europe<%=i%>"> 응모완료 </td>
-						<%}else if(odto_europe.getOnline_method().contains("드로우") && user.equals("")){%>
+						<!-- 응모여부 -->
+						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
+						<%if(odto_europe.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_europe<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
-						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_europe<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_europe.getBrand_id())){%>
+							<td id="draw-status_europe<%=i%>"> 
+								<input type="hidden" id="europe_model_stylecode<%=i%>" value="<%=odto_europe.getModel_stylecode()%>">
+								<input type="hidden" id="europe_brand_id<%=i%>" value="<%=odto_europe.getBrand_id()%>">
+								<input type="hidden" id="europe_country_name<%=i%>" value="<%=odto_europe.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_europe<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
+							</td>
+						<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
+						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_europe.getBrand_id())){%>
+							<td id="draw-status_europe<%=i%>"> 
+								<input type="hidden" id="europe_model_stylecode<%=i%>" value="<%=odto_europe.getModel_stylecode()%>">
+								<input type="hidden" id="europe_brand_id<%=i%>" value="<%=odto_europe.getBrand_id()%>">
+								<input type="hidden" id="europe_country_name<%=i%>" value="<%=odto_europe.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_europe<%=i%>" style="width:18px; height:18px; vertical-align: middle;" checked>
+							</td>
 						<%}else {%>
 							<td id="draw-status_europe<%=i%>"> - </td>
 						<%}%>
@@ -742,13 +805,26 @@
 						<!-- 응모방식/직배 여부 -->
 						<td> <span class="tooltip1"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1"> <%=odto_etc.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span></span> </td>
 						
-						<!-- 응모체크 -->
-						<%if(odto_etc.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_etc.getBrand_id())){%>
-							<td id="draw-status_etc<%=i%>"> 응모완료 </td>
-						<%}else if(odto_etc.getOnline_method().contains("드로우") && user.equals("")){%>
+						<!-- 응모여부 -->
+						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
+						<%if(odto_etc.getOnline_method().contains("드로우") && user.equals("")){%>
 							<td id="draw-status_etc<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
-						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null){%>
-							<td id="draw-status_etc<%=i%>"> <a href="./addUserDrawInfoAction.me?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>"><input type="button" value="응모체크"></a></td>
+						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_etc.getBrand_id())){%>
+							<td id="draw-status_etc<%=i%>"> 
+								<input type="hidden" id="etc_model_stylecode<%=i%>" value="<%=odto_etc.getModel_stylecode()%>">
+								<input type="hidden" id="etc_brand_id<%=i%>" value="<%=odto_etc.getBrand_id()%>">
+								<input type="hidden" id="etc_country_name<%=i%>" value="<%=odto_etc.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_etc<%=i%>" style="width:18px; height:18px; vertical-align: middle;">
+							</td>
+						<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
+						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto_etc.getBrand_id())){%>
+							<td id="draw-status_etc<%=i%>"> 
+								<input type="hidden" id="etc_model_stylecode<%=i%>" value="<%=odto_etc.getModel_stylecode()%>">
+								<input type="hidden" id="etc_brand_id<%=i%>" value="<%=odto_etc.getBrand_id()%>">
+								<input type="hidden" id="etc_country_name<%=i%>" value="<%=odto_etc.getCountry_name()%>">
+								<input type="checkbox" id="drawCheckbox_etc<%=i%>" style="width:18px; height:18px; vertical-align: middle;" checked>
+							</td>
 						<%}else {%>
 							<td id="draw-status_etc<%=i%>"> - </td>
 						<%}%>
@@ -828,76 +904,7 @@
 				var kr_drawRaw = $('#kr_drawRaw'+i);
 				kr_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 			}
-			
-			//사용자가 응모여부에 체크하였을시 호출되는 함수
-			$('#drawCheckbox_kr').change(function(){
-				if($(this).is(":checked")==true){
-					//체크가 안된 상태에서 응모여부 물어보기
-					$(this).prop("checked", false);
-					var draw_confirm_yes = confirm("해당 사이트 응모 하셨습니까?");
-				   	if(draw_confirm_yes){
-				   		alert(i);
-				   		var kr_model_stylecode = $('#kr_model_stylecode'+i).val();
-				   		var brand_id = $('#kr_brand_id').val();
-				   		alert(kr_model_stylecode);
-				   		alert(brand_id);
-				   		$.ajax({
-				   			type:'get',
-				   			url:'./addUserDrawInfoAction.me',
-				   			data: 'model_stylecode='+$('#kr_model_stylecode'+i).val()+'&brand_id='+$('#kr_brand_id'+i).val(),
-				   			dataType: 'html',
-				   			success:function(data) {
-				   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");
-				   				$(this).prop("checked", true);
-				   			},error:function(request,status,error){
-							 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-							}
-				   		});
-				   		
-				   	}else {
-				   		$(this).prop("checked", false);
-				   	}
-				}
-				else if($(this).is(":not(:checked)")==true){
-					//체크가 된 상태에서 응모여부 물어보기
-					$(this).prop("checked", true);
-					var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
-				   	if(draw_confirm_no){
-				   		$(this).prop("checked", false);
-				   		
-				   		alert("해당 사이트를 나의 페이지에서 삭제하였습니다.")
-				   	}else {
-				   		$(this).prop("checked", true);
-				   	}
-				}
-			});
 		}
-		
-		$("input:checkbox").on('click', function() {
-			var test = document.getElementById
-			if($(this).is(":checked")==true){
-				//체크가 안된 상태에서 응모여부 물어보기
-				$(this).prop("checked", false);
-				var draw_confirm_yes = confirm("해당 사이트를 응모 하셨습니까?");
-			   	if(draw_confirm_yes){
-			   		alert("테스트");
-			   		$(this).prop("checked", true);
-			   	}else {
-			   		$(this).prop("checked", false);
-			   	}
-			}
-			else if($(this).is(":not(:checked)")==true){
-				//체크가 된 상태에서 응모여부 물어보기
-				$(this).prop("checked", true);
-				var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
-			   	if(draw_confirm_no){
-			   		$(this).prop("checked", false);
-			   		alert("응모여부를 취소하였습니다.");
-			   	}else {
-			   		$(this).prop("checked", true);
-			   	}
-			}
-		});
 		
 		//온라인 아시아 리스트
 		var onLineList_asia = [];
@@ -970,6 +977,62 @@
 				etc_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 			}
 		}
+		
+		//체크박스 클릭했을시
+		$("input:checkbox").on('click', function() {
+			//drawCheckbox_kr + i
+			var checkbox_id = $(this).attr("id");
+			//i
+			var checkbox_id_num = checkbox_id.substr(checkbox_id.length - 1);
+			//kr3
+			var idx = checkbox_id.indexOf("_");
+			var checkbox_id_country_num = checkbox_id.substring(idx+1);
+			//kr
+			var checkbox_country = checkbox_id_country_num.substr(0, checkbox_id_country_num.length-1);
+			
+			if($(this).is(":checked")==true){
+				//체크가 안된 상태에서 응모여부 물어보기
+				$(this).prop("checked", false);
+				var draw_confirm_yes = confirm("해당 사이트를 응모 하셨습니까?");
+			   	if(draw_confirm_yes){
+			   		$.ajax({
+			   			type:'get',
+			   			url:'./addUserDrawInfoAction.me',
+			   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+			   			dataType: 'html',
+			   			success:function(data) {
+			   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");	
+			   			},error:function(request,status,error){
+						 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+						}
+			   		});
+			   		$(this).prop("checked", true);
+			   	}else {
+			   		$(this).prop("checked", false);
+			   	}
+			}
+			else if($(this).is(":not(:checked)")==true){
+				//체크가 된 상태에서 응모여부 물어보기
+				$(this).prop("checked", true);
+				var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
+			   	if(draw_confirm_no){
+			   		$.ajax({
+			   			type:'get',
+			   			url:'./deleteUserDrawInfoAction.me',
+			   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+			   			dataType: 'html',
+			   			success:function(data) {
+			   				alert("응모여부를 취소하였습니다.");
+			   			},error:function(request,status,error){
+						 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+						}
+			   		});
+			   		$(this).prop("checked", false);	
+			   	}else {
+			   		$(this).prop("checked", true);
+			   	}
+			}
+		});
 		
 	});
 	
