@@ -611,6 +611,7 @@
 							int compare_w_start_result_europe = today.compareTo(original_Online_start_time_europe);		//오늘이랑 응모 시작하는 시간이랑 비교, -1 이면 오늘이 응모시간보다 전	1이면 오늘이 응모시간보다 후
 							int compare_w_end_result_europe = today.compareTo(original_Online_end_time_europe); 		//오늘이랑 응모 끝나는 시간 비교
 							
+							System.out.println(odto_europe.getOnline_end_time());
 							System.out.println(compare_w_start_result_europe);
 					%>
 					<tr id="europe_drawRaw<%=i%>">
