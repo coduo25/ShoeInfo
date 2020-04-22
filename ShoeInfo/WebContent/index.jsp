@@ -9,8 +9,8 @@
 <body>
 
 	<%	
-		//ShoeInfo 메인페이지
-		response.sendRedirect("./SneakerList.go");
+		//ShoeInfo 메인페이지 테스트
+		response.sendRedirect("./SneakerList.go"); 
 	%>
 
 </body>
