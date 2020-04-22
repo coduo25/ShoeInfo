@@ -49,7 +49,7 @@
 		<!-- content -->
 		<div id="content_sneakerDetail">
 			<!-- 신발 기본 정보 -->
-			<table id="sneaker_Detail">
+			<table id="sneaker_Detail" style="border-bottom: 1px solid #8c8c8c;">
 				<tr>
 					<td> 
 						<div class="sneaker_image"> 
@@ -75,8 +75,9 @@
 				</tr>
 			</table>
 			<!-- 응모한 브랜드 정보 보여주는 영역 -->
-			<div id="content_userDrawInfo">
-				<table border="1">
+			<div id="content_userDrawInfo" style="margin-left: 150px; margin-top: 10px;">
+				<!-- 국내 응모 한 테이블 -->
+				<table id="drawInfoTable_kr">
 					<tr>
 						<th colspan="3"> 국내 응모 한 곳 </th>
 					</tr>
@@ -94,8 +95,8 @@
 						}
 					%>
 				</table>
-				
-				<table border="1">
+				<!-- 해외 응모 한 테이블 -->
+				<table id="drawInfoTable_etc">
 					<tr>
 						<th colspan="3"> 해외 응모 한 곳 </th>
 					</tr>

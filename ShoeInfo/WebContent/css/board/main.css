@@ -47,7 +47,7 @@ body {font-size:1em; line-weight:1.4}
 	.sneaker_name {font-style:oblique; text-transform: uppercase; font-size:35px; font-family: 'Anton', sans-serif;}
 	
 	/* 신발 온라인, 오프라인 정보 */
-	#content_sneakerInfo {margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Noto Sans KR:400', sans-serif; font-size:0.9em;}
+	#content_sneakerInfo, #content_userDrawInfo{margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Noto Sans KR:400', sans-serif; font-size:0.9em;}
 	#content_sneakerInfo table{ width:928px; text-align:center;}
 	#content_sneakerInfo table td {padding:10px 0}
 	
@@ -64,8 +64,12 @@ body {font-size:1em; line-weight:1.4}
 	.tooltip1 .tooltiptext1 { visibility: hidden; width: 150px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: 20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; } 
 	.tooltip2 .tooltiptext2 { visibility: hidden; width: 200px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: -20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; }
 	.tooltip1 .tooltiptext1::after, .tooltip2 .tooltiptext2::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent; }
-	.tooltip1:hover .tooltiptext1, .tooltip2:hover .tooltiptext2 { visibility: visible; opacity: 1; }
-
+	.tooltip1:hover .tooltiptext1, .tooltip2:hover .tooltiptext2 { visibility: visible; opacity: 1;}
+	
+	/* 응모한 테이블 css */
+	#drawInfoTable_kr, #drawInfoTable_etc { width: 300px; text-align: center; float: left; margin-right: 100px;}
+	#drawInfoTable_kr th, #drawInfoTable_etc th {padding: 15px 0;}
+	#drawInfoTable_kr td, #drawInfoTable_etc td {padding: 5px 0;}
 
 
 

@@ -7,7 +7,7 @@ public class MemberDrawDTO {
 	private String model_stylecode;
 	private String country_name;
 	private String brand_id;
-	private String draw_count;
+	private int draw_count;
 	
 	public String getMember_id() {
 		return member_id;
@@ -33,10 +33,10 @@ public class MemberDrawDTO {
 	public void setBrand_id(String brand_id) {
 		this.brand_id = brand_id;
 	}
-	public String getDraw_count() {
+	public int getDraw_count() {
 		return draw_count;
 	}
-	public void setDraw_count(String draw_count) {
+	public void setDraw_count(int draw_count) {
 		this.draw_count = draw_count;
 	}
 }

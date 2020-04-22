@@ -35,10 +35,24 @@ public class AddOfflineInfoAction implements Action{
 		
 		String offline_date_start = request.getParameter("offline_date_start");
 		String offline_hour_start = request.getParameter("offline_hour_start");
+		//null이면 0000-00-00, 00:00 으로 저장하기
+		if(offline_date_start.equals("")){
+			offline_date_start = "0000-00-00";
+		}
+		if(offline_hour_start.equals("")){
+			offline_hour_start = "00:00";
+		}
 		String offline_start_time = offline_date_start + " " + offline_hour_start;
 
 		String offline_date_end = request.getParameter("offline_date_end");
 		String offline_hour_end = request.getParameter("offline_hour_end");
+		//null이면 0000-00-00, 00:00 으로 저장하기
+		if(offline_date_end.equals("")){
+			offline_date_end = "0000-00-00";
+		}
+		if(offline_hour_end.equals("")){
+			offline_hour_end = "00:00";
+		}
 		String offline_end_time = offline_date_end + " " + offline_hour_end;
 
 		String offline_method = request.getParameter("offline_method");

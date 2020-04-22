@@ -181,7 +181,7 @@ public class MemberDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select distinct model_stylecode from shoeinfo_memberdrawinfo where member_id = ?";
+			sql = "select distinct model_stylecode from shoeinfo_memberdrawinfo where member_id = ? order by draw_count desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
