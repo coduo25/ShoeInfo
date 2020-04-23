@@ -9,7 +9,7 @@
 <body>
 
 	<%	
-		//ShoeInfo 메인페이지 
+		//ShoeInfo 메인페이지 테스트
 		response.sendRedirect("./SneakerList.go"); 
 	%>
 
