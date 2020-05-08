@@ -168,7 +168,30 @@
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=ofdto_kr.getOffline_location()%> <%=bdto_kr.getBrand_name()%> </a> </td>
 						
 						<!-- 응모시간 -->
-						<td> <span id="offline_start_time"> <%=new_Offline_start_time%> </span> ~ <%=new_Offline_end_time%> </td>
+						<td> 			
+							<!-- 선착일시 -->
+							<%if(ofdto_kr.getOffline_method().contains("선착")){%>
+								<!-- 시작시간이 아직 미정일때 -->
+								<%if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else{%>
+								 	<span id="offline_start_time"> <%=new_Offline_start_time%> ~ </span>
+								<%}%>
+							<!-- 드로우일시 -->
+							<%}else if(ofdto_kr.getOffline_method().contains("드로우")){%> 
+								<%if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00") && ofdto_kr.getOffline_end_time().contains("0000-00-00 00:00")){%>
+									<span> 추후공지예정 </span>
+								<%}else if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00")){%>
+									<span id="offline_start_time"> ~ <%=new_Offline_end_time%> </span>
+								<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00 00:00")){%>
+									<span id="offline_start_time"> <%=new_Offline_start_time%> ~ </span>
+								<%}else{%>
+									<span id="offline_start_time"> <%=new_Offline_start_time%> ~ <%=new_Offline_end_time%> </span>
+								<%}%>
+							<%}%>
+						
+						
+						</td>
 						
 						<!--  남은시간 -->
 						<span id="count_Offline_end_time<%=i%>" style="display:none;"> <%=count_Offline_end_time%> </span>
@@ -999,6 +1022,9 @@
 			if(remain_time_status_kr.match("응모종료")){
 				var kr_drawRaw = $('#kr_drawRaw'+i);
 				kr_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				
+				var drawCheckbox_kr = $('#drawCheckbox_kr' + i);
+				drawCheckbox_kr.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1017,6 +1043,9 @@
 			if(remain_time_status_asia.match("응모종료")){
 				var asia_drawRaw = $('#asia_drawRaw'+i);
 				asia_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				
+				var drawCheckbox_asia = $('#drawCheckbox_asia' + i);
+				drawCheckbox_asia.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1035,6 +1064,9 @@
 			if(remain_time_status_america.match("응모종료")){
 				var america_drawRaw = $('#america_drawRaw'+i);
 				america_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				
+				var drawCheckbox_america = $('#drawCheckbox_america' + i);
+				drawCheckbox_america.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1054,6 +1086,9 @@
 			if(remain_time_status_europe.match("응모종료")){
 				var europe_drawRaw = $('#europe_drawRaw'+i);
 				europe_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				
+				var drawCheckbox_europe = $('#drawCheckbox_europe' + i);
+				drawCheckbox_europe.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1072,6 +1107,9 @@
 			if(remain_time_status_etc.match("응모종료")){
 				var etc_drawRaw = $('#etc_drawRaw'+i);
 				etc_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				
+				var drawCheckbox_etc = $('#drawCheckbox_etc' + i);
+				drawCheckbox_etc.css({"pointer-events" : "visible"});
 			}
 		}
 		

@@ -45,19 +45,16 @@ public class MemberDAO {
 	public void insertMember(MemberDTO mdto){
 		try {
 			con = getConnection();
-			sql = "insert into shoeinfo_member(id, pass, name, email, phone, entry_comp, reg_date) values(?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_member(id, pass, name, email, phone, reg_date) values(?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mdto.getId());
 			pstmt.setString(2, mdto.getPass());
 			pstmt.setString(3, mdto.getName());
 			pstmt.setString(4, mdto.getEmail());
 			pstmt.setString(5, mdto.getPhone());
-			pstmt.setString(6, null);
-			pstmt.setTimestamp(7, mdto.getReg_date());
+			pstmt.setTimestamp(6, mdto.getReg_date());
 			
 			pstmt.executeUpdate();
-			
-			System.out.println("회원 가입 완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

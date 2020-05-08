@@ -224,10 +224,7 @@
 				</table>
 			</div>
 			<%} 
-				System.out.println(current_month);
-				System.out.println(current_month.compareTo("10"));
 				if(current_month.compareTo("6") == 0 || current_month.compareTo("6") == -1){
-				
 				
 			%>
 			<!-- 6월 발매 테이블 -->
