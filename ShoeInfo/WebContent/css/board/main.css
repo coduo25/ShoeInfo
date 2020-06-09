@@ -3,12 +3,6 @@
 * {margin:0; padding:0; box-sizing: border-box;}
 body {font-size:1em; line-weight:1.4}
 
-#wrapper {position: relative;}
-
-#main-nav {padding-top: 20px; text-transform: uppercase; text-align: right; padding-right: 20px; float: left; width: 12.5%; font-family: 'Noto Sans KR', sans-serif;}
-#main-nav .menu-link {font-size: 0.9em; display:block;}
-#content{margin-top: 20px; width: 75%; float: left; position: relative; z-index: 2;}
-
 /* 로그인 페이지 */
 #content_login {font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:200px 0;}
 
@@ -20,8 +14,12 @@ body {font-size:1em; line-weight:1.4}
 #content_adminAddSneaker { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align: center;}
 #content_adminAddSneaker table{ margin-left:auto; margin-right:auto;}
 
-/* 신발 리스트 페이지 */
-#content_sneakerList {margin-top: 20px; width: 75%; float: left; position: relative; z-index: 2;}
+/* 모든 페이지 공통 부분 */
+.container {position: relative; width: 1200px; margin: 5px auto;}
+
+
+/* 신발 리스트 페이지 ------------------------------------------------------------------------------------------------------------ */
+#content_sneakerList {margin-top: 20px; width: 100%; float: left; position: relative; z-index: 2;}
 #content_sneakerList table#sneaker_List, p{margin-left: 80px; margin-right: auto;}
 #month {width: 1000px; text-align:right; border-bottom: 1px solid #e6e6e6; font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: bold; padding:5px;}
 
@@ -31,7 +29,11 @@ body {font-size:1em; line-weight:1.4}
 .popup_date{background:#000000; opacity:0;}
 .shoelist_image:hover .popup_date {opacity:0.6; text-align:center; color: #fff; background-color:#000;}
 
-/* 신발 상세정보 페이지 */
+
+
+
+
+/* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
 #content_sneakerDetail{margin-top: 20px; width: 75%; float: left; position: relative; z-index: 2;}
 #content_sneakerDetail table#sneaker_Detail{margin-left:80px; margin-right:auto; margin-bottom:20px;}
 #content_sneakerDetail table#sneakerOnlineInfo_table{width:1050px;}

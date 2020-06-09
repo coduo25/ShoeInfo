@@ -1,14 +1,189 @@
 @CHARSET "UTF-8";
 
-*{margin:0; padding:0; box-sizing: border-box;}
-body{font-size:1em; line-weight:1.4}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-#header {position: relative; z-index: 1000; padding: 10px 0; text-align: center; width: 72%;}
-.container {width: 100%; max-width: 1400px; margin-left: auto; margin-right: auto;}
+body { font-size: 1em; line-weight: 1.4; }
 
-#logo {font-family: 'Anton', sans-serif; position: relative; z-index: 1; display: inline-block; text-decoration: none; font-size: 60px;}
-#head-right {position: absolute; top: 50%; right: 0; font-size: 0.9em;}
-a{text-decoration:none; color: #000000;}
-#head-right>a{padding-left:10px;}
+a { text-decoration: none; color: #000000; }
+
+/* 헤더 전체 적용 */
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	margin: 5px auto;
+	padding: 0 5px;
+}
+
+/* 로고 */
+.navbar_logo {
+	z-index: 1;
+	font-size: 50px;
+	font-family: 'Anton', sans-serif;
+}
+
+/* 메뉴 */
+.navbar_menu {
+	display: flex;
+	list-style: none;
+	padding-left: 0;
+	font-size: 18px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.navbar_menu li {
+	padding: 8px 12px;
+}
+.navbar_menu li a:hover{
+	color:#ffb400;
+}
+
+/* 로그인, 마이페이지, 로그아웃 링크 */
+.navbar_userlinks {
+	display: flex;
+	list-style: none;
+	font-size: 0.9em;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar_userlinks li{
+	border: 1px solid #c0c0c0;
+	padding: 4px;
+	margin: 0 7px;
+}
+
+
+/* Hamburger Icon */
+.navbar_toggleBtn {
+	display: none;
+	position: absolute;
+	right: 32px;
+	font-size: 24px;
+}
+
+
+/* media Query */
+/* 0 ~ 1220px */
+@media screen and (max-width: 1220px){
+	.navbar {
+		width: 100%;
+		padding: 0 40px;
+	}	
+}
+
+/* 0 ~ 768px */
+@media screen and (max-width: 768px){
+	/* 헤더 전체 적용 */
+	.navbar {
+		border-bottom: 1px solid #c0c0c0;
+		padding: 0 20px;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+	/* 메인 메뉴 */
+	.navbar_menu {
+		display: none;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+	
+	.navbar_menu li {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.navbar_menu li:hover {
+		background-color: #808080;
+		border-radius: 4px;
+	}
+	
+	.navbar_userlinks {
+		display: none;
+		justify-content: center;
+		width: 100%;
+		padding: 10px 12px;
+	}
+	
+	.navbar_userlinks li {
+		margin: 10px;
+	}
+	
+	/* toggle button */
+	.navbar_toggleBtn {
+		display: block;
+		margin-top: 20px;
+	}
+	
+	.navbar_menu.active, .navbar_userlinks.active {
+		display: flex;
+	}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* #header { */
+/* 	position: relative; */
+/* 	z-index: 1000; */
+/* 	padding: 10px 0; */
+/* 	text-align: center; */
+/* 	width: 72%; */
+/* } */
+
+/* .container { */
+/* 	width: 100%; */
+/* 	max-width: 1200px; */
+/* 	margin-left: auto; */
+/* 	margin-right: auto; */
+/* } */
+
+/* #logo { */
+/* 	font-family: 'Anton', sans-serif; */
+/* 	position: relative; */
+/* 	z-index: 1; */
+/* 	display: inline-block; */
+/* 	text-decoration: none; */
+/* 	font-size: 60px; */
+/* } */
+
+/* #head-right { */
+/* 	position: absolute; */
+/* 	top: 50%; */
+/* 	right: 0; */
+/* 	font-size: 0.9em; */
+/* } */
+
+
+
+/* #head-right>a { */
+/* 	padding-left: 10px; */
+/* } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

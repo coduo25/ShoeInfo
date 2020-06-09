@@ -44,12 +44,7 @@
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
-		<!-- side bar -->
-		<div id="main-nav">
-			<a href="./SneakerList.go" class="menu-link">런칭 캘린더</a>
-			<a href="" class="menu-link">발매 정보</a>
-		</div>
-		<!-- content -->
+	
 		<div id="content_sneakerList">
 			
 			<!-- 3월 발매 테이블 -->
@@ -108,11 +103,6 @@
 				</table>
 			</div>
 
-			<%
-				Date currentTime_test = new Date();
-				String current_month = new_month_format.format(currentTime_test); //현재 월
-				if(current_month.compareTo("4")  == 0 || current_month.compareTo("4")  == -1){
-			%>
 			<!-- 4월 발매 테이블 -->
 			<div id="div_month_4"> 
 				<p id="month"> 4월 April. </p>
@@ -167,9 +157,6 @@
 				</table>
 			</div>
 			
-			<%}
-				if(current_month.compareTo("5") == 0 || current_month.compareTo("5") == -1){
-			%>
 			<!-- 5월 발매 테이블 -->
 			<div id="div_month_5"> 
 				<p id="month"> 5월 May. </p>
@@ -223,10 +210,7 @@
 					%>
 				</table>
 			</div>
-			<%} 
-				if(current_month.compareTo("6") == 0 || current_month.compareTo("6") == -1){
-				
-			%>
+
 			<!-- 6월 발매 테이블 -->
 			<div id="div_month_6"> 
 				<p id="month"> 6월 June. </p>
@@ -280,8 +264,7 @@
 					%>
 				</table>
 			</div>
-			<%}%>
-			
+
 			<!-- 7월 발매 테이블 -->
 			<div id="div_month_7"> 
 				<p id="month"> 7월 July. </p>
@@ -390,7 +373,6 @@
 				</table>
 			</div>
 			
-			
 			<!-- 9월 발매 테이블 -->
 			<div id="div_month_9"> 
 				<p id="month"> 9월 Sep. </p>
@@ -455,22 +437,20 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-	
-		
 		
 		//4월의 신발 리스트
-		var sneakerList4 = [];
-		<c:forEach items="${sneakerList4}" var="sneakerList4">
-			sneakerList4.push("${sneakerList4}");
-		</c:forEach>
-		for(var i=0; i<sneakerList4.length; i++){
-			//현재 발매 status가 발매후이면 blur 처리 발매전이면 그대로 유지
-			var release_status = document.getElementById('release_status'+i).innerText;
-			if(release_status.match("발매후")){
-				var shoeList_4 = $('#shoeList_4'+i);
-				shoeList_4.css({"opacity" : "0.3"} /*, {"pointer-events" : "none"}*/);	
-			}
-		}
+// 		var sneakerList4 = [];
+// 		<c:forEach items="${sneakerList4}" var="sneakerList4">
+// 			sneakerList4.push("${sneakerList4}");
+// 		</c:forEach>
+// 		for(var i=0; i<sneakerList4.length; i++){
+// 			//현재 발매 status가 발매후이면 blur 처리 발매전이면 그대로 유지
+// 			var release_status = document.getElementById('release_status'+i).innerText;
+// 			if(release_status.match("발매후")){
+// 				var shoeList_4 = $('#shoeList_4'+i);
+// 				shoeList_4.css({"opacity" : "0.3"} /*, {"pointer-events" : "none"}*/);	
+// 			}
+// 		}
 		
 	});
 
