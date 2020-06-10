@@ -48,385 +48,43 @@
 	
 		<div id="content_sneakerList">
 			
-			<!-- 3월 발매 테이블 -->
-			<div id="div_month_3"> 
-				<p id="month"> 3월 March. </p>
-				<table id="sneaker_List">
-					<%
-				        int size = sneakerList3.size();
-					    int col = 5;
-					    int row = (size / col) + (size%col>0? 1:0);
-					    int num = 0;
-						for (int a = 0; a < row; a++) {
-					%>
-					<tr>
-						<%
-							for (int i = 0; i <col; i++) {
-								SneakerDTO sdto = sneakerList3.get(num);
-								Date original_release_date = original_format.parse(sdto.getRelease_date());
-								String new_release_date = new_format.format(original_release_date);
-								
-								//오늘날짜
-								Date currentTime = new Date();
-								String current = original_format.format(currentTime);
-								Date today = original_format.parse(current);
-								
-								int compare_releaseTime_3 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-								
-								
-						%>
-						<td colspan="2">
-							<div class="shoelist_image">
-								<div id="shoeList_3<%=i%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-				  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-									<div class="popup_date">
-										<%= new_release_date %> 발매 <br>
-									</div>
-									</a>
-									<%if(compare_releaseTime_3 == 1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-									<%}else if(compare_releaseTime_3 == -1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-									<%}%>
-								</div>
-							</div>
-						</td>
-						<%
-							   num++;  
-							   if(size <= num) break;		
-							}
-						%>
-					</tr>
-					<%
-						} 
-					%>
-				</table>
-			</div>
-
 			<!-- 4월 발매 테이블 -->
 			<div id="div_month_4"> 
 				<p id="month"> 4월 April. </p>
-				<table id="sneaker_List">
 					<%
-				        size = sneakerList4.size();
-					    col = 5;
-					    row = (size / col) + (size%col>0? 1:0);
-					    num = 0;
-						for (int a = 0; a < row; a++) {
+						for (int i = 0; i <sneakerList4.size(); i++) {
+							SneakerDTO sdto = sneakerList4.get(i);
+							Date original_release_date = original_format.parse(sdto.getRelease_date());
+							String new_release_date = new_format.format(original_release_date);
+							
+							//오늘날짜
+							Date currentTime = new Date();
+							String current = original_format.format(currentTime);
+							Date today = original_format.parse(current);
+							
+							int compare_releaseTime_4 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 					%>
-					<tr>
-						<%
-							for (int i = 0; i <col; i++) {
-								SneakerDTO sdto = sneakerList4.get(num);
-								Date original_release_date = original_format.parse(sdto.getRelease_date());
-								String new_release_date = new_format.format(original_release_date);
-								
-								//오늘날짜
-								Date currentTime = new Date();
-								String current = original_format.format(currentTime);
-								Date today = original_format.parse(current);
-								
-								int compare_releaseTime_4 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-						%>
-						<td colspan="2">
-							<div class="shoelist_image">
-								<div id="shoeList_4<%=i%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-				  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-									<div class="popup_date">
-										<%= new_release_date %> 발매 <br>
-									</div>
-									</a>
-									<%if(compare_releaseTime_4 == 1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-									<%}else if(compare_releaseTime_4 == -1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-									<%}%>
+						<div class="shoelist_image">
+							<div id="shoeList_4<%=i%>">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
+			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
+								<div class="popup_date">
+									<%= new_release_date %> 발매 <br>
 								</div>
+								</a>
+								<%if(compare_releaseTime_4 == 1){%>
+									<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
+								<%}else if(compare_releaseTime_4 == -1){%>
+									<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
+								<%}%>
 							</div>
-						</td>
-						<%
-							   	num++;  
-							   	if(size <= num) break;			
-							}
-						%>
-					</tr>
-					<%
-						} 
-					%>
-				</table>
-			</div>
-			
-			<!-- 5월 발매 테이블 -->
-			<div id="div_month_5"> 
-				<p id="month"> 5월 May. </p>
-				<table id="sneaker_List">	
+						</div>
 					<%	
-				        size = sneakerList5.size();
-					    col = 5;
-					    row = (size / col) + (size%col>0? 1:0);
-					    num = 0;
-						for (int a = 0; a < row; a++) {
+						}
 					%>
-					<tr>
-						<%
-							for (int i = 0; i <col; i++) {
-								SneakerDTO sdto = sneakerList5.get(num);
-								Date original_release_date = original_format.parse(sdto.getRelease_date());
-								String new_release_date = new_format.format(original_release_date);
-								
-								//오늘날짜
-								Date currentTime = new Date();
-								String current = original_format.format(currentTime);
-								Date today = original_format.parse(current);
-								
-								int compare_releaseTime_5 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-						%>
-						<td colspan="2">
-							<div class="shoelist_image">
-								<div id="shoeList_5<%=i%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-					  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-										<div class="popup_date">
-											<%= new_release_date %> 발매 <br>
-										</div>
-									</a>
-									<%if(compare_releaseTime_5 == 1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-									<%}else if(compare_releaseTime_5 == -1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-									<%}%>
-								</div>
-							</div>
-						</td>
-						<%
-							   num++;  
-							   if(size <= num) break;		
-							}
-						%>
-					</tr>
-					<%
-						} 
-					%>
-				</table>
-			</div>
-
-			<!-- 6월 발매 테이블 -->
-			<div id="div_month_6"> 
-				<p id="month"> 6월 June. </p>
-				<table id="sneaker_List" border = "0">
-					<%    
-				        size = sneakerList6.size();
-					    col = 5;
-					    row = (size / col) + (size%col>0? 1:0);
-					    num = 0;
-						for (int a = 0; a < row; a++) {
-					%>
-					<tr>
-						<%
-							for (int i = 0; i <col; i++) {
-								SneakerDTO sdto = sneakerList6.get(num);
-								Date original_release_date = original_format.parse(sdto.getRelease_date());
-								String new_release_date = new_format.format(original_release_date);
-								
-								//오늘날짜
-								Date currentTime = new Date();
-								String current = original_format.format(currentTime);
-								Date today = original_format.parse(current);
-								
-								int compare_releaseTime_6 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-						%>
-						<td colspan="2">
-							<div class="shoelist_image">
-								<div id="shoeList_6<%=i%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-					  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-										<div class="popup_date">
-											<%= new_release_date %> 발매 <br>
-										</div>
-									</a>
-									<%if(compare_releaseTime_6 == 1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-									<%}else if(compare_releaseTime_6 == -1){%>
-										<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-									<%}%>
-								</div>
-							</div>
-						</td>
-						<%
-							   num++;  
-							   if(size <= num) break;		
-							}
-						%>
-					</tr>
-					<%
-						} 
-					%>
-				</table>
-			</div>
-
-			<!-- 7월 발매 테이블 -->
-			<div id="div_month_7"> 
-				<p id="month"> 7월 July. </p>
-				<table id="sneaker_List">
-					<%    
-				        size = sneakerList7.size();
-					    col = 5;
-					    row = (size / col) + (size%col>0? 1:0);
-					    num = 0;
-						for (int a = 0; a < row; a++) {
-					%>
-					<tr>
-						<%
-							for (int i = 0; i <col; i++) {
-								SneakerDTO sdto = sneakerList7.get(num);
-								Date original_release_date = original_format.parse(sdto.getRelease_date());
-								String new_release_date = new_format.format(original_release_date);
-								
-								//오늘날짜
-								Date currentTime = new Date();
-								String current = original_format.format(currentTime);
-								Date today = original_format.parse(current);
-								
-								int compare_releaseTime_7 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-						%>
-						<td colspan="2">
-							<div class="shoelist_image">
-								<div id="shoeList_7<%=i%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-					  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-										<div class="popup_date">
-											<%= new_release_date %> 발매 <br>
-										</div>
-										<%if(compare_releaseTime_7 == 1){%>
-											<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-										<%}else if(compare_releaseTime_7 == -1){%>
-											<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-										<%}%>
-									</a>
-								</div>
-							</div>
-						</td>
-						<%
-							   num++;  
-							   if(size <= num) break;		
-							}
-						%>
-					</tr>
-					<%
-						} 
-					%>
-				</table>
-			</div>
-
-			<!-- 8월 발매 테이블 -->
-			<div id="div_month_8"> 
-				<p id="month"> 8월 August. </p>
-				<table id="sneaker_List">
-					<%    
-				        size = sneakerList8.size();
-					    col = 5;
-					    row = (size / col) + (size%col>0? 1:0);
-					    num = 0;
-						for (int a = 0; a < row; a++) {
-					%>
-					<tr>
-						<%
-							for (int i = 0; i <col; i++) {
-								SneakerDTO sdto = sneakerList8.get(num);
-								Date original_release_date = original_format.parse(sdto.getRelease_date());
-								String new_release_date = new_format.format(original_release_date);
-								
-								//오늘날짜
-								Date currentTime = new Date();
-								String current = original_format.format(currentTime);
-								Date today = original_format.parse(current);
-								
-								int compare_releaseTime_8 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-						%>
-						<td colspan="2">
-							<div class="shoelist_image">
-								<div id="shoeList_8<%=i%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-					  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-										<div class="popup_date">
-											<%= new_release_date %> 발매 <br>
-										</div>
-										<%if(compare_releaseTime_8 == 1){%>
-											<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-										<%}else if(compare_releaseTime_8 == -1){%>
-											<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-										<%}%>
-									</a>
-								</div>
-							</div>
-						</td>
-						<%
-							   num++;  
-							   if(size <= num) break;		
-							}
-						%>
-					</tr>
-					<%
-						} 
-					%>
-				</table>
-			</div>
+			</div>			
 			
-			<!-- 9월 발매 테이블 -->
-			<div id="div_month_9"> 
-				<p id="month"> 9월 Sep. </p>
-				<table id="sneaker_List">
-					<%    
-				        size = sneakerList9.size();
-					    col = 5;
-					    row = (size / col) + (size%col>0? 1:0);
-					    num = 0;
-						for (int a = 0; a < row; a++) {
-					%>
-					<tr>
-						<%
-							for (int i = 0; i <col; i++) {
-								SneakerDTO sdto = sneakerList9.get(num);
-								Date original_release_date = original_format.parse(sdto.getRelease_date());
-								String new_release_date = new_format.format(original_release_date);
-								
-								//오늘날짜
-								Date currentTime = new Date();
-								String current = original_format.format(currentTime);
-								Date today = original_format.parse(current);
-								
-								int compare_releaseTime_9 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-						%>
-						<td colspan="2">
-							<div class="shoelist_image">
-								<div id="shoeList_9<%=i%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-					  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-										<div class="popup_date">
-											<%= new_release_date %> 발매 <br>
-										</div>
-										<%if(compare_releaseTime_9 == 1){%>
-											<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-										<%}else if(compare_releaseTime_9 == -1){%>
-											<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-										<%}%>
-									</a>
-								</div>
-							</div>
-						</td>
-						<%
-							   num++;  
-							   if(size <= num) break;		
-							}
-						%>
-					</tr>
-					<%
-						} 
-					%>
-				</table>
-			</div>
+			
 		</div>
 	</div>
 

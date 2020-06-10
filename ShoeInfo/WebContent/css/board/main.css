@@ -26,9 +26,54 @@ body {font-size:1em; line-weight:1.4}
 #sneaker_List tr td#month{text-align:right; border-bottom: 1px solid #c3c3c3; font-size: 18px; font-weight: bold;}
 
 .popup_date{background:#000000; opacity:0;}
+.shoelist_image {float: left; text-align: center; width: 18%; margin: 1%;}
 .shoelist_image:hover .popup_date {opacity:0.6; text-align:center; color: #fff; background-color:#000;}
 
+/* media Query */
+/* 0 ~ 1220px */
+@media screen and (max-width: 1220px){
+	.container {
+		width: 90%;
+	}
+	.content_sneakerList {
+		width: 90%;
+	}
+	.shoelist_image {
+		width: 23%;
+	}
+}
 
+/* 0 ~ 768px */
+@media screen and (max-width: 768px){
+	.container {
+		width: 90%;
+	}
+	.content_sneakerList {
+		width: 90%;
+	}
+	#month {
+		text-align: center;
+	}
+	.shoelist_image {
+		width: 48%;
+	}
+}
+
+/* 0 ~ 468px */
+@media screen and (max-width: 468px){
+	.container {
+		width: 90%;
+	}
+	.content_sneakerList {
+		width: 90%;
+	}
+	#month {
+		text-align: center;
+	}
+	.shoelist_image {
+		width: 48%;
+	}
+}
 
 
 
