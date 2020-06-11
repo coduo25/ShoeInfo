@@ -10,10 +10,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" />
-<title>Insert title here</title>
+<title>Launching Calendar</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
 <body>	
 	<%
@@ -38,6 +39,11 @@
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d");
 		SimpleDateFormat new_month_format = new SimpleDateFormat("M");
+		
+		//오늘날짜
+		Date currentTime = new Date();
+		String current = original_format.format(currentTime);
+		Date today = original_format.parse(current);
 	%>
 
 	<!-- Header -->
@@ -49,40 +55,114 @@
 		<div id="content_sneakerList">
 			
 			<!-- 4월 발매 테이블 -->
-			<div id="div_month_4"> 
-				<p id="month"> 4월 April. </p>
-					<%
-						for (int i = 0; i <sneakerList4.size(); i++) {
-							SneakerDTO sdto = sneakerList4.get(i);
-							Date original_release_date = original_format.parse(sdto.getRelease_date());
-							String new_release_date = new_format.format(original_release_date);
-							
-							//오늘날짜
-							Date currentTime = new Date();
-							String current = original_format.format(currentTime);
-							Date today = original_format.parse(current);
-							
-							int compare_releaseTime_4 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
-					%>
-						<div class="shoelist_image">
-							<div id="shoeList_4<%=i%>">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-			  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="180" height="130"> <br>
-								<div class="popup_date">
-									<%= new_release_date %> 발매 <br>
-								</div>
-								</a>
-								<%if(compare_releaseTime_4 == 1){%>
-									<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-								<%}else if(compare_releaseTime_4 == -1){%>
-									<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-								<%}%>
+			<p id="month4" class="month"> 
+				4월 April. 
+				<span> <i class="fas fa-caret-down"></i> </span>  
+			</p>
+			
+			<div id="div_month_4" class="div_month">
+				<%
+					for (int i = 0; i <sneakerList4.size(); i++) {
+						SneakerDTO sdto = sneakerList4.get(i);
+						Date original_release_date = original_format.parse(sdto.getRelease_date());
+						String new_release_date = new_format.format(original_release_date);
+
+						int compare_releaseTime_4 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
+				%>
+					<div id="shoeList_image_4" class="shoelist_image">
+						<div id="shoeList_4<%=i%>">
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
+		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+							<div class="popup_date">
+								<%= new_release_date %> 발매 <br>
 							</div>
+							</a>
+							<%if(compare_releaseTime_4 == 1){%>
+								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
+							<%}else if(compare_releaseTime_4 == -1){%>
+								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
+							<%}%>
 						</div>
-					<%	
-						}
-					%>
+					</div>
+				<%	
+					}
+				%>
 			</div>			
+			
+			<!-- 5월 발매 테이블 -->
+			<p id="month5" class="month"> 
+				5월 May. 
+				<span> <i class="fas fa-caret-down"></i> </span>  
+			</p>
+			
+			<div id="div_month_5" class="div_month">
+				<%
+					for (int i = 0; i <sneakerList5.size(); i++) {
+						SneakerDTO sdto = sneakerList5.get(i);
+						Date original_release_date = original_format.parse(sdto.getRelease_date());
+						String new_release_date = new_format.format(original_release_date);
+
+						int compare_releaseTime_5 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
+				%>
+					<div id="shoeList_image_5" class="shoelist_image">
+						<div id="shoeList_5<%=i%>">
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
+		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+							<div class="popup_date">
+								<%= new_release_date %> 발매 <br>
+							</div>
+							</a>
+							<%if(compare_releaseTime_5 == 1){%>
+								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
+							<%}else if(compare_releaseTime_5 == -1){%>
+								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
+							<%}%>
+						</div>
+					</div>
+				<%	
+					}
+				%>
+			</div>		
+
+			<!-- 6월 발매 테이블 -->
+			<p id="month6" class="month"> 
+				6월 June.
+				<span> <i class="fas fa-caret-down"></i> </span>  
+			</p>
+			
+			<div id="div_month_6" class="div_month">
+				<%
+					for (int i = 0; i <sneakerList6.size(); i++) {
+						SneakerDTO sdto = sneakerList6.get(i);
+						Date original_release_date = original_format.parse(sdto.getRelease_date());
+						String new_release_date = new_format.format(original_release_date);
+
+						int compare_releaseTime_6 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
+				%>
+					<div id="shoeList_image_6" class="shoelist_image">
+						<div id="shoeList_6<%=i%>">
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
+		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+							<div class="popup_date">
+								<%= new_release_date %> 발매 <br>
+							</div>
+							</a>
+							<%if(compare_releaseTime_6 == 1){%>
+								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
+							<%}else if(compare_releaseTime_6 == -1){%>
+								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
+							<%}%>
+						</div>
+					</div>
+				<%	
+					}
+				%>
+			</div>		
+			
+			
+			
+			
+			
 			
 			
 		</div>
@@ -96,6 +176,12 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
+		//각 달별로 slide down 버튼을 눌렸을시
+		$(".month").click(function(){
+			$("#div_month_" + $(this).attr('id').charAt($(this).attr('id').length - 1)).slideToggle("slow");
+		});
+		
 		
 		//4월의 신발 리스트
 // 		var sneakerList4 = [];

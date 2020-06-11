@@ -103,12 +103,13 @@ a { text-decoration: none; color: #000000; }
 	.navbar_userlinks {
 		display: none;
 		justify-content: center;
-		width: 100%;
 		padding: 10px 12px;
+		margin: 0 auto;
 	}
 	
 	.navbar_userlinks li {
 		margin: 10px;
+		float: left;
 	}
 	
 	/* toggle button */
@@ -116,10 +117,7 @@ a { text-decoration: none; color: #000000; }
 		display: block;
 		margin-top: 20px;
 	}
-	
-	.navbar_menu.active, .navbar_userlinks.active {
-		display: flex;
-	}
+
 }
 
 /* 0 ~ 468px */
@@ -153,12 +151,13 @@ a { text-decoration: none; color: #000000; }
 	.navbar_userlinks {
 		display: none;
 		justify-content: center;
-		width: 100%;
 		padding: 10px 12px;
+		margin: 0 auto;
 	}
 	
 	.navbar_userlinks li {
 		margin: 10px;
+		float: left;
 	}
 	
 	/* toggle button */
@@ -166,10 +165,7 @@ a { text-decoration: none; color: #000000; }
 		display: block;
 		margin-top: 20px;
 	}
-	
-	.navbar_menu.active, .navbar_userlinks.active {
-		display: flex;
-	}
+
 }
 
 

@@ -56,13 +56,11 @@
 
 </body>
 <script type="text/javascript">
-	const toggleBtn = document.querySelector('.navbar_toggleBtn');
-	const menu = document.querySelector('.navbar_menu');
-	const userLinks = document.querySelector('.navbar_userlinks');
 	
-	toggleBtn.addEventListener('click', () => {
-		menu.classList.toggle('active');
-		userLinks.classList.toggle('active');
+	$(".navbar_toggleBtn").click(function(){
+		$(".navbar_menu").slideToggle("fast");
+		$(".navbar_userlinks").slideToggle("fast");
 	});
+	
 </script>
 </html>
