@@ -45,13 +45,14 @@ public class MemberDAO {
 	public void insertMember(MemberDTO mdto){
 		try {
 			con = getConnection();
-			sql = "insert into shoeinfo_member(email, pass, name, phone, reg_date) values(?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_member(email, pass, name, phone, reg_date, position) values(?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mdto.getEmail());
 			pstmt.setString(2, mdto.getPass());
 			pstmt.setString(3, mdto.getName());
 			pstmt.setString(4, mdto.getPhone());
 			pstmt.setTimestamp(5, mdto.getReg_date());
+			pstmt.setString(6, "user");
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -61,8 +62,8 @@ public class MemberDAO {
 		}
 	}
 	
-	//아이디 체크 하는 함수
-	public int idCheck(String email, String pass){
+	//이메일 체크 하는 함수
+	public int emailCheck(String email, String pass){
 		int check = -1;
 		try {
 			con = getConnection();
@@ -87,6 +88,27 @@ public class MemberDAO {
 			closeDB();
 		}	
 		return check;
+	}
+	
+	//position 체크 하는 함수
+	public String positionCheck(String email){
+		String position = "";
+		try {
+			con = getConnection();
+			sql = "select position from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				position = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return position;
 	}
 	
 	//회원 응모 정보 추가하는 함수
@@ -149,7 +171,7 @@ public class MemberDAO {
 		ArrayList<String> userDrawBrandList = new ArrayList();
 		try {
 			con = getConnection();
-			sql = "select distinct brand_id from shoeinfo_memberdrawinfo where member_id = ? AND model_stylecode = ?";
+			sql = "select distinct brand_id from shoeinfo_memberdrawinfo where member_email = ? AND model_stylecode = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			pstmt.setString(2, model_stylecode);
@@ -211,7 +233,7 @@ public class MemberDAO {
 	}
 	
 	//사용자가 응모한 대한민국 브랜드 정보 불러오는 함수
-	public Vector getDrawInfo_kr(String model_stylecode, String user) {
+	public Vector getDrawInfo_kr(String model_stylecode, String email) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -227,10 +249,10 @@ public class MemberDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_id = ? AND country_name = ?";
+			sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_email = ? AND country_name = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, user);
+			pstmt.setString(2, email);
 			pstmt.setString(3, "대한민국");
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -272,7 +294,7 @@ public class MemberDAO {
 	}
 	
 	//사용자가 응모한 대한민국외의 해외 브랜드 정보 불러오는 함수
-	public Vector getDrawInfo_etc(String model_stylecode, String user) {
+	public Vector getDrawInfo_etc(String model_stylecode, String email) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -288,10 +310,10 @@ public class MemberDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_id = ? AND not country_name = ? order by country_name";
+			sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_email = ? AND not country_name = ? order by country_name";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, user);
+			pstmt.setString(2, email);
 			pstmt.setString(3, "대한민국");
 			rs = pstmt.executeQuery();
 			while(rs.next()){

@@ -18,8 +18,9 @@ public class searchBrandAction implements Action{
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
 		ActionForward forward = new ActionForward();
-		if(!user.equals("admin@gmail.com")){
+		if(!usr_position.equals("admin")){
 			forward.setPath("./Main.bo");
 			forward.setRedirect(true);
 			return forward;
@@ -37,6 +38,8 @@ public class searchBrandAction implements Action{
 		CountryDAO cdao = new CountryDAO();
 		List<CountryDTO> countryList_all = (List<CountryDTO>) cdao.countryList_all();
 		
+		System.out.println("여기까지 온다");
+		
 		//BrandDB로부터 브랜드별 국가 리스트 가져오는 함수
 		BrandDAO bdao = new BrandDAO();
 		List countryList_bybrand = bdao.searchCountryList_bybrand();
@@ -46,7 +49,7 @@ public class searchBrandAction implements Action{
 		
 		// ------------------------------------------------
 		// 3. 페이지이동
-		forward.setPath("admin/adminAddReleaseInfo.jsp?model_stylecode"+model_stylecode);
+		forward.setPath("admin/adminAddReleaseInfo.jsp?model_stylecode="+model_stylecode);
 		forward.setRedirect(false);
 		return forward;
 	}

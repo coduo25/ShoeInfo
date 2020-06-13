@@ -12,22 +12,20 @@ public class UpdateSneaker implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
 		ActionForward forward = new ActionForward();
-		if(!user.equals("admin")){
+		if(!usr_position.equals("admin")){
 			forward.setPath("./Main.bo");
 			forward.setRedirect(true);
 			return forward;
 		}
 		
-		
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		SneakerDAO sdao = new SneakerDAO();
 		SneakerDTO sneakerInfo = sdao.getSneakerDetail(model_stylecode);
 		
-		
 		request.setAttribute("sneakerInfo", sneakerInfo);
-		
 		
 		forward.setPath("./admin/adminUpdateSneakerInfo.jsp");
 		forward.setRedirect(false);

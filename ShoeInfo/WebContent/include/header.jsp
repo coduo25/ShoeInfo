@@ -29,11 +29,17 @@
 			<%
 				//로그인 되었는지	
 				String user = (String) session.getAttribute("email");
+				//로그인 된 사용자의 position 가져오기
+				String usr_position = (String) session.getAttribute("usr_position");
+				if(usr_position == null){
+					usr_position = "";
+				}
+				
 				if(user == null){
 			%>
 				<li> <a href="./MemberLogin.me"> LOGIN </a> </li>
 			<%
-				}else if(user.equals("admin@gmail.com")){ 
+				}else if(usr_position.equals("admin")){ 
 			%>
 				<li> <a href="./Main.ad"> ADMIN_PAGE </a> </li>
 				<li> <a href="./MemberDrawInfo.me"> MYPAGE </a> </li>

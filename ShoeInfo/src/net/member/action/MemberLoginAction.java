@@ -20,7 +20,7 @@ public class MemberLoginAction implements Action{
 		//DB처리 객체 생성
 		MemberDAO mdao = new MemberDAO();
 		
-		int check = mdao.idCheck(email, pass);
+		int check = mdao.emailCheck(email, pass);
 			
 		//비밀번호 오류
 		if (check == 0) {
@@ -31,7 +31,7 @@ public class MemberLoginAction implements Action{
 			PrintWriter out = response.getWriter();
 
 			out.print("<script>");
-			out.print("  alert('비밀번호 오류 입니다.'); ");
+			out.print("  alert('비밀번호가 올바르지 않습니다.'); ");
 			out.print("  history.back(); ");
 			out.print("</script>");
 			out.close();
@@ -49,15 +49,23 @@ public class MemberLoginAction implements Action{
 			// 자바스크립트를 통한 페이지 이동은 컨트롤러 없이 바로 이동 
 			out.print("<script>");
 			out.print("  alert('존재하지 않는 이메일입니다.'); ");
-			out.print(" location.href='./MemberLogin.me'; ");
+			out.print("  location.href='./MemberLogin.me'; ");
 			out.print("</script>");
 			out.close();
 
 			return null;
 		}
+	
+		//로그인 성공시
+	
 		// request 객체를 사용해서 세션 객체를 생성
 		HttpSession session = request.getSession();
 		session.setAttribute("email", email);
+		
+		//로그인 성공했을시 해당 유저의 position이 뭔지 알아내기
+		String usr_position = mdao.positionCheck(email);
+		
+		session.setAttribute("usr_position", usr_position);
 		
 		// 페이지 이동(메인페이지)
 		ActionForward forward = new ActionForward();

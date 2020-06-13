@@ -18,9 +18,10 @@ public class AddOnlineInfoAction implements Action{
 		
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
 		ActionForward forward = new ActionForward();
-		if(!user.equals("admin")){
+		if(!usr_position.equals("admin")){
 			forward.setPath("./Main.bo");
 			forward.setRedirect(true);
 			return forward;

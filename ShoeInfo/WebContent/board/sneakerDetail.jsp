@@ -31,8 +31,10 @@
 		
 		//로그인한 사용자가 체크
 		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
 		if(user == null){
 			user = "";
+			usr_position = "";
 		}
 		
 		//사용자 응모한 브랜드 리스트
@@ -90,7 +92,7 @@
 					</td>
 					<td class="detail_table">
 						<%	//관리자 권한일때 제품 기본정보 수정하는 페이지로 가는 버튼
-							if(user.equals("admin")){
+							if(usr_position.equals("admin")){
 						%>
 							<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
 						<%}%>
@@ -116,7 +118,7 @@
 				</tr>
 			</table>
 			<%	//관리자 권한일때 제품 발매정보 추가하는 페이지로 가는 버튼
-				if(user.equals("admin")){
+				if(usr_position.equals("admin")){
 			%>
 				<a href="./searchBrand.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="제품 발매 정보 추가하기" style="float: right;"></a>
 			<%}%>
