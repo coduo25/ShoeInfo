@@ -23,7 +23,7 @@
 		request.setCharacterEncoding("UTF-8");
 		
 		//로그인한 사용자가 체크
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
 		if(user == null){
 			user = "";
 		}

@@ -19,10 +19,9 @@ public class MemberJoinAction implements Action{
 		// 전달된 회원정보를 저장 객체생성(자바빈객체)
 		MemberDTO mdto = new MemberDTO();
 		// 전달된 파라미터정보를 저장 
-		mdto.setId(request.getParameter("id"));
+		mdto.setEmail(request.getParameter("email"));
 		mdto.setPass(request.getParameter("pass"));
 		mdto.setName(request.getParameter("name"));
-		mdto.setEmail(request.getParameter("email"));
 		mdto.setPhone(request.getParameter("phone"));
 		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 

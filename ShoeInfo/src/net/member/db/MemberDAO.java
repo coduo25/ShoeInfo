@@ -45,14 +45,13 @@ public class MemberDAO {
 	public void insertMember(MemberDTO mdto){
 		try {
 			con = getConnection();
-			sql = "insert into shoeinfo_member(id, pass, name, email, phone, reg_date) values(?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_member(email, pass, name, phone, reg_date) values(?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mdto.getId());
+			pstmt.setString(1, mdto.getEmail());
 			pstmt.setString(2, mdto.getPass());
 			pstmt.setString(3, mdto.getName());
-			pstmt.setString(4, mdto.getEmail());
-			pstmt.setString(5, mdto.getPhone());
-			pstmt.setTimestamp(6, mdto.getReg_date());
+			pstmt.setString(4, mdto.getPhone());
+			pstmt.setTimestamp(5, mdto.getReg_date());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -63,13 +62,13 @@ public class MemberDAO {
 	}
 	
 	//아이디 체크 하는 함수
-	public int idCheck(String id, String pass){
+	public int idCheck(String email, String pass){
 		int check = -1;
 		try {
 			con = getConnection();
-			sql = "select pass from shoeinfo_member where id=?";
+			sql = "select pass from shoeinfo_member where email=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();			
 
 			if(rs.next()){
@@ -81,7 +80,7 @@ public class MemberDAO {
 			}else{
 				check = -1;
 			}
-			//System.out.println(" 아이디 체크 완료 : "+check);			
+			//System.out.println("이메일 체크 완료 : "+check);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -102,9 +101,9 @@ public class MemberDAO {
 			if(rs.next()){
 				userDraw_num = rs.getInt(1) + 1;
 			}
-			sql = "select Max(draw_count) from shoeinfo_memberdrawinfo where member_id = ?";
+			sql = "select Max(draw_count) from shoeinfo_memberdrawinfo where member_email = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mddto.getMember_id());
+			pstmt.setString(1, mddto.getMember_email());
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				userDraw_count = rs.getInt(1) + 1;
@@ -112,7 +111,7 @@ public class MemberDAO {
 			sql = "insert into shoeinfo_memberdrawinfo values(?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userDraw_num);
-			pstmt.setString(2, mddto.getMember_id());
+			pstmt.setString(2, mddto.getMember_email());
 			pstmt.setString(3, mddto.getModel_stylecode());
 			pstmt.setString(4, mddto.getCountry_name());
 			pstmt.setString(5, mddto.getBrand_id());
@@ -131,9 +130,9 @@ public class MemberDAO {
 		int userDraw_count = 0;
 		try {
 			con = getConnection();
-			sql = "delete from shoeinfo_memberdrawinfo where member_id = ? AND model_stylecode = ? AND brand_id = ? AND country_name = ?";
+			sql = "delete from shoeinfo_memberdrawinfo where member_email = ? AND model_stylecode = ? AND brand_id = ? AND country_name = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mddto.getMember_id());
+			pstmt.setString(1, mddto.getMember_email());
 			pstmt.setString(2, mddto.getModel_stylecode());
 			pstmt.setString(3, mddto.getBrand_id());
 			pstmt.setString(4, mddto.getCountry_name());
@@ -178,7 +177,7 @@ public class MemberDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select distinct model_stylecode from shoeinfo_memberdrawinfo where member_id = ? order by draw_count desc";
+			sql = "select distinct model_stylecode from shoeinfo_memberdrawinfo where member_email = ? order by draw_count desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();

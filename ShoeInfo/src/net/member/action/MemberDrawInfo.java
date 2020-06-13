@@ -18,7 +18,7 @@ public class MemberDrawInfo implements Action{
 		
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
 		ActionForward forward = new ActionForward();
 		if(user == null){
 			forward.setPath("./MemberLogin.me");

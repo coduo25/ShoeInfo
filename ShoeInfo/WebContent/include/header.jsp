@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SHOE INFO.</title>
 <link href="./css/include/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
@@ -28,12 +28,12 @@
 		<ul class="navbar_userlinks">
 			<%
 				//로그인 되었는지	
-				String user = (String) session.getAttribute("id");
+				String user = (String) session.getAttribute("email");
 				if(user == null){
 			%>
 				<li> <a href="./MemberLogin.me"> LOGIN </a> </li>
 			<%
-				}else if(user.equals("admin")){ 
+				}else if(user.equals("admin@gmail.com")){ 
 			%>
 				<li> <a href="./Main.ad"> ADMIN_PAGE </a> </li>
 				<li> <a href="./MemberDrawInfo.me"> MYPAGE </a> </li>

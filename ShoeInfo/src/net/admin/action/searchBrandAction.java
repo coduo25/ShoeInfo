@@ -17,9 +17,9 @@ public class searchBrandAction implements Action{
 		
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
 		ActionForward forward = new ActionForward();
-		if(!user.equals("admin")){
+		if(!user.equals("admin@gmail.com")){
 			forward.setPath("./Main.bo");
 			forward.setRedirect(true);
 			return forward;

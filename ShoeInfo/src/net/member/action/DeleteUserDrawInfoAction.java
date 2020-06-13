@@ -14,7 +14,7 @@ public class DeleteUserDrawInfoAction implements Action{
 		
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
 		ActionForward forward = new ActionForward();
 		if(user == null){
 			forward.setPath("./MemberLogin.me");
@@ -30,7 +30,7 @@ public class DeleteUserDrawInfoAction implements Action{
 		MemberDrawDTO mddto = new MemberDrawDTO();
 		
 		mddto.setBrand_id(brand_id);
-		mddto.setMember_id(user);
+		mddto.setMember_email(user);
 		mddto.setModel_stylecode(model_stylecode);
 		mddto.setCountry_name(country_name);
 		

@@ -3,8 +3,9 @@
 * {margin:0; padding:0; box-sizing: border-box;}
 body {font-size:1em; line-weight:1.4}
 
-/* 로그인 페이지 */
+/* 로그인 & 회원가입 페이지 */
 #content_login {font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:200px 0;}
+#content_register {font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:200px 0;}
 
 /* 관리자 페이지 */
 #content_adminMain { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align:center;}

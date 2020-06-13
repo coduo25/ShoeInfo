@@ -14,13 +14,13 @@ public class MemberLoginAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		//전달 받은 정보 저장
-		String id = request.getParameter("id");
+		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		
 		//DB처리 객체 생성
 		MemberDAO mdao = new MemberDAO();
 		
-		int check = mdao.idCheck(id, pass);
+		int check = mdao.idCheck(email, pass);
 			
 		//비밀번호 오류
 		if (check == 0) {
@@ -48,7 +48,7 @@ public class MemberLoginAction implements Action{
 
 			// 자바스크립트를 통한 페이지 이동은 컨트롤러 없이 바로 이동 
 			out.print("<script>");
-			out.print("  alert('아이디가 없습니다.'); ");
+			out.print("  alert('존재하지 않는 이메일입니다.'); ");
 			out.print(" location.href='./MemberLogin.me'; ");
 			out.print("</script>");
 			out.close();
@@ -57,7 +57,7 @@ public class MemberLoginAction implements Action{
 		}
 		// request 객체를 사용해서 세션 객체를 생성
 		HttpSession session = request.getSession();
-		session.setAttribute("id", id);
+		session.setAttribute("email", email);
 		
 		// 페이지 이동(메인페이지)
 		ActionForward forward = new ActionForward();

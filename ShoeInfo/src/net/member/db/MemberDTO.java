@@ -3,19 +3,18 @@ package net.member.db;
 import java.sql.Timestamp;
 
 public class MemberDTO {
-
-	private String id;
+	
+	private String email;
 	private String pass;
 	private String name;
-	private String email;
 	private String phone;
 	private Timestamp reg_date;
-	
-	public String getId() {
-		return id;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPass() {
 		return pass;
@@ -28,12 +27,6 @@ public class MemberDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getPhone() {
 		return phone;

@@ -36,14 +36,6 @@
 					<td> 전체 회원 보기(관리) </td>
 				</tr>
 			</table>
-			<br>
-			<br>
-			<table border="1">
-				<h3> 게시판 </h3>
-				<tr>
-					<td> 전체 글 보기(관리) </td>
-				</tr>
-			</table>
 		</div>
 	</div>
 

@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" />
-<title>Launching Calendar</title>
+<title>SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,7 +18,7 @@
 </head>
 <body>	
 	<%
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
 		if(user == null){
 			user="";
 		}
@@ -57,7 +57,8 @@
 			<!-- 4월 발매 테이블 -->
 			<p id="month4" class="month"> 
 				4월 April. 
-				<span> <i class="fas fa-caret-down"></i> </span>  
+				<span id="slide-down_4"> <i class="fas fa-caret-down"></i> </span>
+				<span id="slide-up_4"> <i class="fas fa-caret-up"></i> </span>
 			</p>
 			
 			<div id="div_month_4" class="div_month">
@@ -92,7 +93,8 @@
 			<!-- 5월 발매 테이블 -->
 			<p id="month5" class="month"> 
 				5월 May. 
-				<span> <i class="fas fa-caret-down"></i> </span>  
+				<span id="slide-down_5"> <i class="fas fa-caret-down"></i> </span>
+				<span id="slide-up_5"> <i class="fas fa-caret-up"></i> </span>
 			</p>
 			
 			<div id="div_month_5" class="div_month">
@@ -127,7 +129,8 @@
 			<!-- 6월 발매 테이블 -->
 			<p id="month6" class="month"> 
 				6월 June.
-				<span> <i class="fas fa-caret-down"></i> </span>  
+				<span id="slide-down_6"> <i class="fas fa-caret-down"></i> </span>
+				<span id="slide-up_6"> <i class="fas fa-caret-up"></i> </span>
 			</p>
 			
 			<div id="div_month_6" class="div_month">
@@ -177,13 +180,49 @@
 	
 	$(document).ready(function(){
 		
+		var today = new Date();
+		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
+		
+		for(var i=1; i<13; i++){
+			if(i < month) {
+				$("#slide-up_" + i).hide();
+				$("#slide-down_" + i).show();
+				
+				$("#div_month_" + i).hide();
+				
+			}
+			else if(i >= month) {
+				$("#slide-up_" + i).show();
+				$("#slide-down_" + i).hide();
+				
+				$("#div_month_" + i).show();
+			}
+		}
+		
+		
 		//각 달별로 slide down 버튼을 눌렸을시
 		$(".month").click(function(){
-			$("#div_month_" + $(this).attr('id').charAt($(this).attr('id').length - 1)).slideToggle("slow");
+			var month = $(this).attr('id').charAt($(this).attr('id').length - 1);
+			
+			//만약 신발 리스트가 닫혀있으면
+			if($("#div_month_" + month).css("display") == "none"){
+				$("#slide-up_" + month).show();
+				$("#slide-down_" + month).hide();
+			}
+			//신발 리스트가 열려있으면
+			else {
+				$("#slide-up_" + month).hide();
+				$("#slide-down_" + month).show();
+			}
+			
+			$("#div_month_" + month).slideToggle("slow");
+			
 		});
 		
 		
-		//4월의 신발 리스트
+
+		
+// 		//4월의 신발 리스트
 // 		var sneakerList4 = [];
 // 		<c:forEach items="${sneakerList4}" var="sneakerList4">
 // 			sneakerList4.push("${sneakerList4}");
