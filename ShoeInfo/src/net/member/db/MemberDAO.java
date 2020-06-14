@@ -62,8 +62,31 @@ public class MemberDAO {
 		}
 	}
 	
-	//이메일 체크 하는 함수
-	public int emailCheck(String email, String pass){
+	//회원가입 할때 이메일 중복 체크하는 함수
+	public int joinEmailCheck(String email){
+		int check = -1;
+		try {
+			con = getConnection();
+			sql = "select email from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				check = 0;
+			}else {
+				check = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
+	//로그인할때 이메일 체크 하는 함수
+	public int loginEmailCheck(String email, String pass){
 		int check = -1;
 		try {
 			con = getConnection();

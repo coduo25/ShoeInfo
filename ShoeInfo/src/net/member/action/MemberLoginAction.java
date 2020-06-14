@@ -20,7 +20,7 @@ public class MemberLoginAction implements Action{
 		//DB처리 객체 생성
 		MemberDAO mdao = new MemberDAO();
 		
-		int check = mdao.emailCheck(email, pass);
+		int check = mdao.loginEmailCheck(email, pass);
 			
 		//비밀번호 오류
 		if (check == 0) {

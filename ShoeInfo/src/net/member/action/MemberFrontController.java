@@ -70,6 +70,16 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		
+		//회원가입시 이메일 체크 하는 페이지 처리
+		else if(command.equals("/MemberCheckEmailAction.me")){
+			action = new MemberCheckEmailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		//로그인 페이지 처리
 		else if(command.equals("/MemberLogin.me")){
 			forward = new ActionForward();
