@@ -1,2 +1,2 @@
 # ShoeInfo
-Personal Project #2
+personal project #2
