@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SHOE INFO.</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<link href="./css/board/member.css" rel="stylesheet">
 </head>
 <body>
 

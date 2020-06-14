@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SHOE INFO.</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<link href="./css/board/member.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -20,55 +20,62 @@
 		<!-- content -->
 		<div id="content_register">
 
-			<h2>회원가입</h2>
+			<h3>회원정보 입력</h3>
 
 			<form action="./MemberJoinAction.me" method="post">
-			
-				<!-- 이메일 -->
-				<div class="fm_email">
-					<span> 이메일 * </span> 
-					<input type="text" name="email">
-					
-					<button type="button" class="checkEmail"> 중복체크 </button>
-					<input type="hidden" name="checkedEmail" value="">
-				</div>
-				
-				<!-- 비밀번호 -->
-				<div class="fm_pass">
-					<span> 비밀번호 * </span>
-					<input type="password" name="pass">
-				</div>
-				
-				<!-- 비밀번호 체크 -->
-				<div class="fm_passChk">
-					<span> 비밀번호 확인 * </span>
-					<input type="password" name="pass2">
-				</div>
+				<ul class="join-form">
+					<li>
+						<!-- 이메일 -->
+						<div class="fm_email">
+							<input type="text" name="email" placeholder="이메일">
+							
+							<div class="emailCheck">
+								<button type="button" class="checkEmail"> 중복체크 </button>
+								<input type="hidden" name="checkedEmail" value="">
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- 비밀번호 -->
+						<div class="fm_pass">
+							<input type="password" name="pass" placeholder="비밀번호">
+						</div>
+					</li>
+					<li>
+						<!-- 비밀번호 체크 -->
+						<div class="fm_passChk">
+							<input type="password" name="pass2" placeholder="비밀번호 확인">
+						</div>
+					</li>
+					<li>
+						<!-- 이름 -->
+						<div class="fm_name">
+							<input type="text" name="name" placeholder="이름">
+						</div>
+					</li>
+					<li>
+						<!-- 휴대폰번호 -->
+						<div class="fm_phone">
+							<input type="text" name="phone" placeholder="휴대폰번호">
+						</div>
+					</li>
+					<li>
+						<!-- 개인정보 처리방침 & 이용약관 동의 체크박스 -->
+						<div class="fm_Agree">
+							<div>
+								<input type="checkbox"> <span> <a href="#">개인정보처리방침</a>을 모두 읽었으며, 이에 동의합니다. </span>
+							</div>
+							<div>
+								<input type="checkbox"> <span> <a href="#">이용약관</a>을 모두 읽었으며, 이에 동의합니다. </span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<input type="submit" value="가입하기">
+					</li>
+				</ul>
 
-				<!-- 이름 -->
-				<div class="fm_name">
-					<span> 이름 * </span>
-					<input type="text" name="name">
-				</div>
 				
-				<!-- 휴대폰번호 -->
-				<div class="fm_phone">
-					<span> 휴대폰번호 * </span>
-					<input type="text" name="phone">
-				</div>
-				
-				<!-- 개인정보 처리방침 & 이용약관 동의 체크박스 -->
-				<div class="fm_Agree">
-					<div>
-						<input type="checkbox"> <span> <a href="#">개인정보처리방침</a>을 모두 읽었으며, 이에 동의합니다. </span>
-					</div>
-					<div>
-						<input type="checkbox"> <span> <a href="#">이용약관</a>을 모두 읽었으며, 이에 동의합니다. </span>
-					</div>
-				</div>
-				 
-				 
-				<input type="submit" value="가입하기">
 			</form>
 		</div>
 	</div>

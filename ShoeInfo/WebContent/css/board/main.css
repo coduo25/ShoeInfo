@@ -3,10 +3,6 @@
 * {margin:0; padding:0; box-sizing: border-box;}
 body {font-size:1em; line-weight:1.4}
 
-/* 로그인 & 회원가입 페이지 */
-#content_login {font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:200px 0;}
-#content_register {font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:200px 0;}
-
 /* 관리자 페이지 */
 #content_adminMain { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align:center;}
 #content_adminMain table { margin: 0 auto;}
@@ -14,10 +10,6 @@ body {font-size:1em; line-weight:1.4}
 /* 신발 추가 페이지 */
 #content_adminAddSneaker { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align: center;}
 #content_adminAddSneaker table{ margin-left:auto; margin-right:auto;}
-
-/* 모든 페이지 공통 부분 */
-.container {position: relative; width: 1200px; margin: 5px auto;}
-
 
 /* 신발 리스트 페이지 ------------------------------------------------------------------------------------------------------------ */
 #content_sneakerList {margin-top: 20px; width: 100%; float: left; position: relative; z-index: 2;}
