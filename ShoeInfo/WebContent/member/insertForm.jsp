@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SHOE INFO.</title>
 <link href="./css/board/member.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -23,57 +25,53 @@
 			<h3>회원정보 입력</h3>
 
 			<form action="./MemberJoinAction.me" method="post">
-				<ul class="join-form">
-					<li>
-						<!-- 이메일 -->
-						<div class="fm_email">
-							<input type="text" name="email" placeholder="이메일">
-							
-							<div class="emailCheck">
-								<button type="button" class="checkEmail"> 중복체크 </button>
-								<input type="hidden" name="checkedEmail" value="">
-							</div>
+				<div class="join-form">
+				
+					<!-- 이메일 -->
+					<div class="fm_email">
+						<input type="text" name="email" placeholder="이메일" style="float: left;">
+						
+						<div class="emailCheck">
+							<button type="button" class="checkEmail"> 중복체크 </button>
+							<input type="hidden" name="checkedEmail" value="">
 						</div>
-					</li>
-					<li>
-						<!-- 비밀번호 -->
-						<div class="fm_pass">
-							<input type="password" name="pass" placeholder="비밀번호">
-						</div>
-					</li>
-					<li>
-						<!-- 비밀번호 체크 -->
-						<div class="fm_passChk">
-							<input type="password" name="pass2" placeholder="비밀번호 확인">
-						</div>
-					</li>
-					<li>
-						<!-- 이름 -->
-						<div class="fm_name">
-							<input type="text" name="name" placeholder="이름">
-						</div>
-					</li>
-					<li>
-						<!-- 휴대폰번호 -->
-						<div class="fm_phone">
-							<input type="text" name="phone" placeholder="휴대폰번호">
-						</div>
-					</li>
-					<li>
-						<!-- 개인정보 처리방침 & 이용약관 동의 체크박스 -->
-						<div class="fm_Agree">
-							<div>
-								<input type="checkbox"> <span> <a href="#">개인정보처리방침</a>을 모두 읽었으며, 이에 동의합니다. </span>
-							</div>
-							<div>
-								<input type="checkbox"> <span> <a href="#">이용약관</a>을 모두 읽었으며, 이에 동의합니다. </span>
-							</div>
-						</div>
-					</li>
-					<li>
-						<input type="submit" value="가입하기">
-					</li>
-				</ul>
+					</div>
+
+					<!-- 비밀번호 -->
+					<div class="fm_pass">
+						<input type="password" name="pass" placeholder="비밀번호">
+					</div>
+
+					<!-- 비밀번호 체크 --> 
+					<div class="fm_passChk">
+						<input type="password" name="pass2" placeholder="비밀번호 확인">
+					</div>
+
+					<!-- 이름 -->
+					<div class="fm_name">
+						<input type="text" name="name" placeholder="이름">
+					</div>
+
+					<!-- 휴대폰번호 -->
+					<div class="fm_phone">
+						<input type="text" name="phone" placeholder="휴대폰번호( '-' 제외)" maxlength="13" pattern="\d*">
+					</div>
+
+					<!-- 개인정보 처리방침 & 이용약관 동의 체크박스 -->
+<!-- 					<div class="fm_Agree"> -->
+<!-- 						<div> -->
+<!-- 							<input type="checkbox"> <span> <a href="#">개인정보처리방침</a>을 모두 읽었으며, 이에 동의합니다. </span> -->
+<!-- 						</div> -->
+<!-- 						<div> -->
+<!-- 							<input type="checkbox"> <span> <a href="#">이용약관</a>을 모두 읽었으며, 이에 동의합니다. </span> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
+					<!-- 가입하기 버튼 -->
+					<div class="fm_submitBtn">
+						<input type="submit" value="가입하기" class="submitBtn">
+					</div>
+				</div>
 
 				
 			</form>
@@ -137,15 +135,30 @@
 		});
 	});
 	
-	//이름 input 태그를 클릭했을시
-	$('input[name=name]').click(function(){
-		//이메일 인증 체크하기
-		if($("input[name=checkedEmail]").val() == "checked"){
-			alert("본인 인증하기");
-		} else{
-			alert("본인인증은 이메일 인증 이후 가능합니다.");
-		}
+	//이름 input에 한글, 영어만 입력하도록 하는 함수
+	$("input[name=name]").keyup(function(event){
+		var inputName = $(this).val();
+		$(this).val(inputName.replace(/[^a-z][^A-Z]/gi,''));
 	});
+	
+	//휴대폰번호 input에 숫자만 입력하도록 하는 함수
+	$("input[name=phone]").keyup(function(event){
+		var inputNum = $(this).val();
+		$(this).val(inputNum.replace(/[^0-9]/gi,''));
+	});
+	
+	
+	
+	
+	//이름 input 태그를 클릭했을시 (사이트 공식 배포하고 사업자 등록 한 후 업체 등록하기)
+// 	$('input[name=name]').click(function(){
+// 		//이메일 인증 체크하기
+// 		if($("input[name=checkedEmail]").val() == "checked"){
+// 			alert("본인 인증하기");
+// 		} else{
+// 			alert("본인인증은 이메일 인증 이후 가능합니다.");
+// 		}
+// 	});
 	
 </script>
 </html>
