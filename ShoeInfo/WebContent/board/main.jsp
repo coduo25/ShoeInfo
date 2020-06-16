@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
 <title>SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
@@ -169,10 +169,14 @@
 			
 			
 		</div>
+		
+		
 	</div>
-
+	
 	<!-- FOOTER -->
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
+
+	
 
 </body>
 
@@ -219,6 +223,15 @@
 			
 		});
 		
+// 		$.fn.hasScrollBar = function() {
+// 		    return (this.prop("scrollHeight") == 0 && this.prop("clientHeight") == 0)
+// 		            || (this.prop("scrollHeight") > this.prop("clientHeight"));
+// 		};
+
+// 		if($("body").hasScrollBar()){
+// 			alert("테스트");
+// 		}
+		
 		
 
 		
@@ -237,6 +250,15 @@
 // 		}
 		
 	});
+	
+
+	
+
+
+	
+// 	$(window).scroll(function(){
+// 		$('#footer').css("position", "relative");
+// 	});
 
 </script>
 </html>

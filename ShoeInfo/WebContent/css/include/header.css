@@ -4,9 +4,6 @@
 
 body { font-size: 1em; line-weight: 1.4; }
 
-/* 모든 페이지 공통 부분 */
-.container {position: relative; width: 1200px; margin: 5px auto;}
-
 a { text-decoration: none; color: #000000; }
 
 /* 헤더 전체 적용 */

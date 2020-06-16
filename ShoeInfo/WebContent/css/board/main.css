@@ -4,7 +4,7 @@
 body {font-size:1em; line-weight:1.4}
 
 /* 모든 페이지 공통 부분 */
-.container {position: relative; width: 1200px; margin: 5px auto;}
+.container {position: relative; width: 1200px; margin: 5px auto; }
 
 /* 관리자 페이지 */
 #content_adminMain { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align:center;}
@@ -15,10 +15,10 @@ body {font-size:1em; line-weight:1.4}
 #content_adminAddSneaker table{ margin-left:auto; margin-right:auto;}
 
 /* 신발 리스트 페이지 ------------------------------------------------------------------------------------------------------------ */
-#content_sneakerList {margin-top: 20px; width: 100%; float: left; position: relative; z-index: 2;}
+#content_sneakerList { margin-top: 20px; width: 100%; height: 700px; z-index: 2; padding-bottom: 2.5rem; }
 .month {width: 100%;  text-align: right; border-bottom: 1px solid #e6e6e6; font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: bold; padding:5px;}
 .month span { font-size: 20px; margin: 0 5px;}
-.div_month { width: 100%; float: left;}
+.div_month { position: relative; width: 100%; float: left; margin-bottom: 20px; }
 
 #sneaker_List tr td{padding:10px;}
 #sneaker_List tr td#month{text-align:right; border-bottom: 1px solid #c3c3c3; font-size: 18px; font-weight: bold;}
@@ -53,6 +53,7 @@ body {font-size:1em; line-weight:1.4}
 	}
 	.content_sneakerList {
 		width: 90%;
+		height: 500px;
 	}
 	.month {
 		text-align: center;
@@ -73,6 +74,7 @@ body {font-size:1em; line-weight:1.4}
 	}
 	.content_sneakerList {
 		width: 90%;
+		height: 500px;
 	}
 	.month {
 		text-align: center;

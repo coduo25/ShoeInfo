@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
 <title>SHOE INFO.</title>
 <link href="./css/board/member.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
@@ -29,13 +30,11 @@
 				
 					<!-- 이메일 -->
 					<div class="fm_email">
-						<input type="text" name="email" placeholder="이메일" style="float: left;">
-						
-						<div class="emailCheck">
-							<button type="button" class="checkEmail"> 중복체크 </button>
-							<input type="hidden" name="checkedEmail" value="">
-						</div>
+						<input type="text" name="email" placeholder="이메일" style="float: left;">			
 					</div>
+					
+					<button type="button" class="checkEmail"> 중복체크 </button>
+					<input type="hidden" name="checkedEmail" value="">
 
 					<!-- 비밀번호 -->
 					<div class="fm_pass">
@@ -69,7 +68,7 @@
 					
 					<!-- 가입하기 버튼 -->
 					<div class="fm_submitBtn">
-						<input type="submit" value="가입하기" class="submitBtn">
+						<input type="submit" value="가입하기" class="join_submitBtn">
 					</div>
 				</div>
 
@@ -138,8 +137,9 @@
 	//이름 input에 한글, 영어만 입력하도록 하는 함수
 	$("input[name=name]").keyup(function(event){
 		var inputName = $(this).val();
-		$(this).val(inputName.replace(/[^a-z][^A-Z]/gi,''));
+		$(this).val(inputName.replace(/[^ㄱ-힣a-zA-Z]/gi,''));
 	});
+
 	
 	//휴대폰번호 input에 숫자만 입력하도록 하는 함수
 	$("input[name=phone]").keyup(function(event){
