@@ -22,7 +22,9 @@
 	
 		<!-- 메인메뉴  -->
 		<ul class="navbar_menu">
-			<li> <a href="./SneakerList.go"> 런칭 캘린더 </a> </li> 
+			<li> <a href="./SneakerList.go"> 런칭 캘린더 </a> </li>
+			<li> <a href="#"> 발매 예정 </a> </li>
+			<li> <a href="#"> 기습 발매 </a> </li>
 		</ul>
 		
 		<!-- 로그인, 마이페이지, 로그아웃 링크 -->
@@ -54,7 +56,10 @@
 				} 
 			%> 
 		</ul>
+
 		
+		
+		<!-- 모바일 버전일때 메뉴 버튼 -->
 		<a href="#" class="navbar_toggleBtn">
 			<i class="fas fa-bars"></i>
 		</a>
@@ -63,11 +68,27 @@
 
 </body>
 <script type="text/javascript">
+
 	
-	$(".navbar_toggleBtn").click(function(){
-		$(".navbar_menu").slideToggle("fast");
-		$(".navbar_userlinks").slideToggle("fast");
-	});
+// 		if($(".navbar_toggleBtn").css("display") == "none"){
+// 			$(".navbar_menu").css("display", "flex");
+// 			$(".navbar_userlinks").css("display", "flex");
+// 		}
+	
+
+		$(".navbar_toggleBtn").click(function(){
+			if($(".navbar_menu").css("display") == "none"){
+				$(".navbar_menu").slideDown();
+				$(".navbar_userlinks").slideDown();
+			}
+			else if($(".navbar_menu").css("display") == "block"){
+				$(".navbar_menu").slideUp();
+				$(".navbar_userlinks").slideUp();
+			}
+//	 		$(".navbar_menu").slideToggle("fast");
+//	 		$(".navbar_userlinks").slideToggle("fast");
+		});
+
 	
 </script>
 </html>

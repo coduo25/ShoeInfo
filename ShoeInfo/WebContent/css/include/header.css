@@ -33,7 +33,7 @@ a { text-decoration: none; color: #000000; }
 }
 
 .navbar_menu li {
-	padding: 8px 12px;
+	padding: 8px 20px;
 }
 .navbar_menu li a:hover{
 	color:#ffb400;
@@ -69,7 +69,13 @@ a { text-decoration: none; color: #000000; }
 	.navbar {
 		width: 100%;
 		padding: 0 40px;
-	}	
+	}
+	.navbar_menu {
+		display: flex;
+	}
+	.navbar_userlinks {
+		display: flex;
+	}
 }
 
 /* 0 ~ 768px */
