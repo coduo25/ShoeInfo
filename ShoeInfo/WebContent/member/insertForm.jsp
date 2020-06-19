@@ -30,7 +30,7 @@
 				
 					<!-- 이메일 -->
 					<div class="fm_email">
-						<input type="text" name="email" placeholder="이메일" style="float: left;">			
+						<input type="text" name="email" placeholder="이메일" style="float: left;"> 
 					</div>
 					
 					<button type="button" class="checkEmail"> 중복체크 </button>
@@ -38,12 +38,15 @@
 
 					<!-- 비밀번호 -->
 					<div class="fm_pass">
-						<input type="password" name="pass" placeholder="비밀번호">
+						<input type="password" name="pass" placeholder="비밀번호 (8~16 영문/숫자 포함)" maxlength="16">
+						
 					</div>
+					
+					<div class="confirmIcon" id="pwConfirmIcon"> 사용하실수 있는 비밀번호입니다. </div>
 
 					<!-- 비밀번호 체크 --> 
 					<div class="fm_passChk">
-						<input type="password" name="pass2" placeholder="비밀번호 확인">
+						<input type="password" name="pass2" placeholder="비밀번호 확인"> <span class="confirmIcon" id="pwDoubleConfirmIcon"></span>
 					</div>
 
 					<!-- 이름 -->
@@ -107,7 +110,9 @@
 			 			
 			 			//checkedEmail input 값에 checked 값 넣기
 			 			$("input[name=checkedEmail]").val("checked");
+			 			$('#emailConfirmIcon').text('✔').css({'color':'green', 'font-size':16, 'font-weight':'bold'});
 			 			$("input[name=pass]").focus();
+			 				
 			 		}
 			 		//이미 가입되어있는 이메일이면
 			 		else if($.trim(data) == "NO"){
@@ -133,6 +138,8 @@
  			$("input[name=checkedEmail]").val(null);
 		});
 	});
+	
+	//비밀번호 유효성 검사
 	
 	//이름 input에 한글, 영어만 입력하도록 하는 함수
 	$("input[name=name]").keyup(function(event){
