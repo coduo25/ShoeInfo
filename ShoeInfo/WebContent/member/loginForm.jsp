@@ -23,7 +23,7 @@
 		
 			<h3> 로그인 </h3>
 		
-			<form action="./MemberLoginAction.me" method="post">
+			<form action="./MemberLoginAction.me" method="post" id="loginForm">
 				<div class="login-form">
 				
 					<!-- 이메일 -->
@@ -59,4 +59,31 @@
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 	
 </body>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		//모든 input 체크하기
+		
+		$('#loginForm').submit(function(){
+		
+			//이메일란이 비어있으면
+			if($('input[name=email]').val() == ''){
+				alert("이메일을 입력해주세요.");
+				$('input[name=email]').focus();
+				return false;
+			}
+			//비밀번호란이 비어있으면
+			else if($('input[name=pass]').val() == ''){
+				alert("비밀번호를 입력해주세요.");
+				$('input[name=pass]').focus();
+				return false;
+			}
+			
+		});
+		
+		
+	});
+</script>
 </html>

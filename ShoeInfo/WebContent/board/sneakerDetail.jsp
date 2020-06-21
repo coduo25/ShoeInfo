@@ -16,7 +16,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -75,17 +75,13 @@
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");	
 	%>
 	<div id="wrapper" class="container">
-		<!-- side bar -->
-		<div id="main-nav">
-			<a href="./SneakerList.go" class="menu-link">런칭 캘린더</a>
-			<a href="" class="menu-link">발매 정보</a>
-		</div>
+
 		<!-- content -->
 		<div id="content_sneakerDetail">
 			<!-- 신발 기본 정보 -->
 			<table id="sneaker_Detail">
 				<tr>
-					<td> 
+					<td class="sneaker_image_table"> 
 						<div class="sneaker_image"> 
 							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 						</div>
@@ -102,17 +98,17 @@
 						</div>
 						<!-- stylecode -->
 						<div class="sneaker_option_info">
-							스타일코드 : <span> <%=sdto.getModel_stylecode() %></span>
+							<span> 스타일코드 :  <%=sdto.getModel_stylecode() %></span>
 						</div>
 						<!-- price -->
 						<div class="sneaker_option_info">
-							가격 : 
-							<%if(sdto.getPrice() == 0){%> <span>미정</span>
-							<%}else{%> <span> $<%=sdto.getPrice() %></span> <%}%>
+							<span> 가격 : 
+							<%if(sdto.getPrice() == 0){%> 미정</span>
+							<%}else{%> $<%=sdto.getPrice() %></span> <%}%>
 						</div>
 						<!-- relase_date -->
 						<div class="sneaker_option_info">
-							발매일(한국기준) : <span> <%=sdto.getRelease_date() %></span>
+							<span> 발매일(한국기준) :  <%=sdto.getRelease_date() %></span>
 						</div>
 					</td>
 				</tr>
@@ -248,10 +244,8 @@
 						}
 					%>
 				</table>
-				<br>
-				<br>
-				<br>
-				<br>
+				
+				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
 						<h4> [한국 온라인 발매처] </h4>
@@ -391,10 +385,8 @@
 						}
 					%>
 				</table>
-				<br>
-				<br>
-				<br>
-				<br>
+				
+				
 				<table id="sneakerOnlineInfo_table">
 					<h4> [아시아 지역 발매처] </h4>
 					<tr class="ta_release_info">
@@ -533,10 +525,8 @@
 						}
 					%>
 				</table>
-				<br>
-				<br>
-				<br>
-				<br>
+				
+				
 				<table id="sneakerOnlineInfo_table">
 					<h4> [북미 지역 발매처] </h4>
 					<tr class="ta_release_info">
@@ -675,10 +665,8 @@
 						}
 					%>
 				</table>
-				<br>
-				<br>
-				<br>
-				<br>
+				
+				
 				<table id="sneakerOnlineInfo_table">
 					<h4> [유럽 지역 발매처] </h4>
 					<tr class="ta_release_info">
@@ -817,10 +805,8 @@
 						}	
 					%>
 				</table>
-				<br>
-				<br>
-				<br>
-				<br>
+				
+				
 				<table id="sneakerOnlineInfo_table">
 					<h4> [기타 지역 발매처] </h4>
 					<tr class="ta_release_info">
