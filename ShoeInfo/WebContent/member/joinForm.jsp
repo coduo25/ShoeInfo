@@ -30,7 +30,7 @@
 				
 					<!-- 이메일 -->
 					<div class="fm_email">
-						<input type="text" name="email" placeholder="이메일" style="float: left;"> 
+						<input type="email" name="email" placeholder="이메일" style="float: left;"> 
 					</div>
 					
 					<button type="button" class="checkEmail"> 중복체크 </button>

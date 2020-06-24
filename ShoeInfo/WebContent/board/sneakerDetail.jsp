@@ -96,20 +96,24 @@
 						<div class="sneaker_name">
 							<span> <%=sdto.getModel_name() %></span>
 						</div>
-						<!-- stylecode -->
-						<div class="sneaker_option_info">
-							<span> 스타일코드 :  <%=sdto.getModel_stylecode() %></span>
+						
+						<div class="sneaker_option_wrapper">
+							<!-- stylecode -->
+							<div class="sneaker_option_info">
+								<span> 스타일코드 :  <%=sdto.getModel_stylecode() %></span>
+							</div>
+							<!-- price -->
+							<div class="sneaker_option_info">
+								<span> 가격 : 
+								<%if(sdto.getPrice() == 0){%> 미정</span>
+								<%}else{%> $<%=sdto.getPrice() %></span> <%}%>
+							</div>
+							<!-- relase_date -->
+							<div class="sneaker_option_info">
+								<span> 발매일(한국기준) :  <%=sdto.getRelease_date() %></span>
+							</div>
 						</div>
-						<!-- price -->
-						<div class="sneaker_option_info">
-							<span> 가격 : 
-							<%if(sdto.getPrice() == 0){%> 미정</span>
-							<%}else{%> $<%=sdto.getPrice() %></span> <%}%>
-						</div>
-						<!-- relase_date -->
-						<div class="sneaker_option_info">
-							<span> 발매일(한국기준) :  <%=sdto.getRelease_date() %></span>
-						</div>
+						
 					</td>
 				</tr>
 			</table>
@@ -250,13 +254,13 @@
 				<table id="sneakerOnlineInfo_table">
 						<h4> [한국 온라인 발매처] </h4>
 						<tr class="ta_release_info">
-							<td style="width:50px;"> </td>
-							<td style="width:100px;"> </td>
-							<td style="width:30px;"> </td>
-							<td style="width:200px;"> 시간 </td>
-							<td style="width:200px;"> 남은시간 </td>
-							<td style="width:160px;"> 응모방식 </td>
-							<td style="width:60px;"> 응모여부 </td>
+							<th style="width:50px;"> </th>
+							<th style="width:100px;"> </th>
+							<th style="width:30px;"> </th>
+							<th style="width:200px;"> 시간 </th>
+							<th style="width:200px;"> 남은시간 </th>
+							<th style="width:160px;"> 응모방식 </th>
+							<th style="width:60px;"> 응모여부 </th>
 						</tr>
 					<%
 						if(onlineList_kr.isEmpty()){
@@ -951,6 +955,7 @@
 
 	<!-- FOOTER -->
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
+	
 </body>
 <script type="text/javascript">
 

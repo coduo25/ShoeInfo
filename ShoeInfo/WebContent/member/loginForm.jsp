@@ -28,7 +28,7 @@
 				
 					<!-- 이메일 -->
 					<div class="fm_email">
-						<input type="text" name="email" placeholder="이메일">
+						<input type="email" name="email" placeholder="이메일" id="email">
 					</div>
 					
 					<!-- 비밀번호 -->
@@ -65,7 +65,6 @@
 	$(document).ready(function(){
 		
 		//모든 input 체크하기
-		
 		$('#loginForm').submit(function(){
 		
 			//이메일란이 비어있으면

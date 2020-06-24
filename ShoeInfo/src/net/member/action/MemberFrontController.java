@@ -56,7 +56,7 @@ public class MemberFrontController extends HttpServlet{
 			
 			// ActionForward 객체 생성
 			forward = new ActionForward();
-			forward.setPath("./member/insertForm.jsp");
+			forward.setPath("./member/joinForm.jsp");
 			forward.setRedirect(false);	
 		} 
 		
