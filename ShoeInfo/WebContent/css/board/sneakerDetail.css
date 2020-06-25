@@ -47,6 +47,7 @@ body {font-size:1em; line-weight:1.4}
 	#drawInfoTable_kr th, #drawInfoTable_etc th {padding: 15px 0;}
 	#drawInfoTable_kr td, #drawInfoTable_etc td {padding: 5px 0;}
 
+	table#sneakerOnlineInfo_table td:nth-child(4) { display: none; }
 	
 	/* media Query */
 /* 0 ~ 1220px */
@@ -83,14 +84,56 @@ body {font-size:1em; line-weight:1.4}
 		text-align: center;
 		font-size: 2.5em;
 	}
+	.detail_table div span{
+		font-size: 1.2em;
+	}
 	.detail_table div.sneaker_option_wrapper{
-		margin: 0 30%;
+		margin: 0 0 0 30%;
 	}
 	.detail_table div.sneaker_option_info {
 		margin-bottom: 15px;
 		margin-right: auto;
 		margin-left: auto;
 	}
+	
+	/* 발매처 table 수정하기 */
+/* 	table#sneakerOfflineInfo_table, table#sneakerOnlineInfo_table { border-spacing: 0 40px; } */
+	
+/* 	table#sneakerOfflineInfo_table .ta_release_info, table#sneakerOnlineInfo_table .ta_release_info { display: none; } */
+/* 	table#sneakerOfflineInfo_table td, table#sneakerOnlineInfo_table td { display: block; font-size: 1.2em; } */
+	
+/* 	table#sneakerOfflineInfo_table #no_info, table#sneakerOnlineInfo_table #no_info { width: 100%; } */
+	
+	/* 오프라인 테이블 수정 ------------------------------------------------------------------------------------- */
+/* 	table#sneakerOfflineInfo_table td:nth-child(1) { display: inline-block; width: 20%; } */
+/* 	table#sneakerOfflineInfo_table td:nth-child(2) { display: inline-block; width: 80%; padding-left: 0; } */
+	
+/* 	table#sneakerOfflineInfo_table td:nth-child(3):before { content: "시간 : "; } */
+/* 	table#sneakerOfflineInfo_table td:nth-child(3) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 3% 3% 3% 4%; } */
+	
+/* 	table#sneakerOfflineInfo_table td:nth-child(4) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: center; padding: 3% 3% 3% 4%;} */
+	
+/* 	table#sneakerOfflineInfo_table td:nth-child(5):before { content: "응모방식 : "; } */
+/* 	table#sneakerOfflineInfo_table td:nth-child(5) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 3% 3% 3% 4%; } */
+	
+/* 	table#sneakerOfflineInfo_table td:nth-child(6):before { content: "응모여부 : "; } */
+/* 	table#sneakerOfflineInfo_table td:nth-child(6) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 3% 3% 3% 4%; } */
+	
+	/* 온라인 테이블 수정 ------------------------------------------------------------------------------------- */
+/* 	table#sneakerOnlineInfo_table td:nth-child(1) { display: inline-block; width: 20%; } */
+/* 	table#sneakerOnlineInfo_table td:nth-child(2) { display: inline-block; width: 60%; padding-left: 0; } */
+/* 	table#sneakerOnlineInfo_table td:nth-child(3) { display: inline-block; width: 20%; padding-left: 0; } */
+
+/* 	table#sneakerOnlineInfo_table td:nth-child(4):before { content: "시간 : "; } */
+/* 	table#sneakerOnlineInfo_table td:nth-child(4) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 3% 3% 3% 4%; } */
+
+/* 	table#sneakerOnlineInfo_table td:nth-child(5) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: center; padding: 3% 3% 3% 4%; } */
+	
+/* 	table#sneakerOnlineInfo_table td:nth-child(6):before { content: "응모방식 : "; } */
+/* 	table#sneakerOnlineInfo_table td:nth-child(6) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 3% 3% 3% 4%; } */
+
+/* 	table#sneakerOnlineInfo_table td:nth-child(7):before { content: "응모여부 : "; } */
+/* 	table#sneakerOnlineInfo_table td:nth-child(7) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 3% 3% 3% 4%; } */
 
 }
 
@@ -109,8 +152,11 @@ body {font-size:1em; line-weight:1.4}
 		float: left;
 		width: 100%;
 	}
+	.detail_table div span{
+		font-size: 1em;
+	}
 	.detail_table div.sneaker_option_wrapper{
-		margin: 0 10%;
+		margin: 0 0 0 10%;
 	}
 	.detail_table div.sneaker_name {
 		margin: 20px auto;
@@ -118,19 +164,46 @@ body {font-size:1em; line-weight:1.4}
 		font-size: 1.5em;
 	}
 	
-	
 	/* 발매처 table 수정하기 */
-	table#sneakerOnlineInfo_table { border-spacing: 0 20px; }
+	table#sneakerOfflineInfo_table, table#sneakerOnlineInfo_table { border-spacing: 0 40px; }
 	
-	table#sneakerOnlineInfo_table th { display: none; }
-	table#sneakerOnlineInfo_table td { display: block; }
-	table#sneakerOnlineInfo_table td:nth-child(1) { display: table-cell; float: left; height: 70px; }
-	table#sneakerOnlineInfo_table td:nth-child(2) { display: block; float: left; height: 70px; vertical-align: top;}
-	table#sneakerOnlineInfo_table td:nth-child(3) { display: block; float: left; height: 70px; }
-	table#sneakerOnlineInfo_table td:nth-child(4) { display: table-row; float: left; width: 80%; text-align: center; }
-	table#sneakerOnlineInfo_table td:nth-child(5) { display: table-row; float: right; width: 20%; text-align: left; }
-	table#sneakerOnlineInfo_table td:nth-child(6) { display: block; text-align: left;}
-	table#sneakerOnlineInfo_table td:nth-child(7) { display: block; text-align: left;}
+	table#sneakerOfflineInfo_table .ta_release_info, table#sneakerOnlineInfo_table .ta_release_info { display: none; }
+	table#sneakerOfflineInfo_table td, table#sneakerOnlineInfo_table td { display: block; font-size: 1em; }
+	
+	table#sneakerOfflineInfo_table #no_info, table#sneakerOnlineInfo_table #no_info { width: 100%; }
+	
+	/* 오프라인 테이블 수정 ------------------------------------------------------------------------------------- */
+	table#sneakerOfflineInfo_table td:nth-child(1) { display: inline-block; width: 20%; }
+	table#sneakerOfflineInfo_table td:nth-child(2) { display: inline-block; width: 80%; padding-left: 0; }
+	
+	table#sneakerOfflineInfo_table td:nth-child(3):before { content: "시간 : "; }
+	table#sneakerOfflineInfo_table td:nth-child(3) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%;}
+	
+	table#sneakerOfflineInfo_table td:nth-child(4) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: center; padding: 4%; }
+	
+	table#sneakerOfflineInfo_table td:nth-child(5):before { content: "응모방식 : "; }
+	table#sneakerOfflineInfo_table td:nth-child(5) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%; }
+	
+	table#sneakerOfflineInfo_table td:nth-child(6):before { content: "응모여부 : "; }
+	table#sneakerOfflineInfo_table td:nth-child(6) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%; }
+	
+	/* 온라인 테이블 수정 ------------------------------------------------------------------------------------- */
+	table#sneakerOnlineInfo_table td:nth-child(1) { display: inline-block; width: 20%; }
+	table#sneakerOnlineInfo_table td:nth-child(2) { display: inline-block; width: 60%; padding-left: 0; }
+	table#sneakerOnlineInfo_table td:nth-child(3) { display: inline-block; width: 10%; padding-left: 0; text-align: right; }
+	table#sneakerOnlineInfo_table td:nth-child(4) { display: inline-block; width: 10%; text-align: right; font-size: 1.2em; }
+
+	table#sneakerOnlineInfo_table td:nth-child(5):before { content: "시간 : "; }
+	table#sneakerOnlineInfo_table td:nth-child(5) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%;}
+
+/* 	table#sneakerOnlineInfo_table td:nth-child(5):before { content: "남은시간 : "; } */
+	table#sneakerOnlineInfo_table td:nth-child(6) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: center; padding: 4%; }
+	
+	table#sneakerOnlineInfo_table td:nth-child(7):before { content: "응모방식 : "; }
+	table#sneakerOnlineInfo_table td:nth-child(7) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%; }
+
+	table#sneakerOnlineInfo_table td:nth-child(8):before { content: "응모여부 : "; }
+	table#sneakerOnlineInfo_table td:nth-child(8) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%; }
 
 	
 }

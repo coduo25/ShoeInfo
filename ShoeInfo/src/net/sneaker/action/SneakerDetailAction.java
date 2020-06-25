@@ -24,7 +24,7 @@ public class SneakerDetailAction implements Action{
 		
 		//아이디값 저장
 		HttpSession session = request.getSession();
-		String user = (String) session.getAttribute("id");
+		String user = (String) session.getAttribute("email");
 		
 		//넘어온 값 저장(model_stylecode)
 		String model_stylecode = (String) request.getParameter("model_stylecode");

@@ -36,7 +36,7 @@
 			user = "";
 			usr_position = "";
 		}
-		
+
 		//사용자 응모한 브랜드 리스트
 		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
 	
@@ -139,7 +139,7 @@
 						if(offLineList_kr.isEmpty()){
 					%>
 						<tr style="height: 70px;">
-							<td colspan="7"> 아직 오프라인 발매 정보가 없습니다. </td>
+							<td colspan="7" id="no_info"> 아직 오프라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
 						for(int i=0; i<offLineList_kr.size();i++){	
@@ -196,8 +196,8 @@
 						</td>
 						
 						<!--  남은시간 -->
-						<span id="count_Offline_end_time<%=i%>" style="display:none;"> <%=count_Offline_end_time%> </span>
-						<td id="draw-status-off_kr<%=i%>" style="display:none;"> </td>
+<%-- 						<span id="count_Offline_end_time<%=i%>"> <%=count_Offline_end_time%> </span> --%>
+<%-- 						<td id="draw-status-off_kr<%=i%>"> </td> --%>
 						<%if(ofdto_kr.getOffline_method().contains("선착")){%>
 							<td id="remain_time_status_kr<%=i%>">
 								<span> - </span>
@@ -254,19 +254,19 @@
 				<table id="sneakerOnlineInfo_table">
 						<h4> [한국 온라인 발매처] </h4>
 						<tr class="ta_release_info">
-							<th style="width:50px;"> </th>
-							<th style="width:100px;"> </th>
-							<th style="width:30px;"> </th>
-							<th style="width:200px;"> 시간 </th>
-							<th style="width:200px;"> 남은시간 </th>
-							<th style="width:160px;"> 응모방식 </th>
-							<th style="width:60px;"> 응모여부 </th>
+							<td style="width:50px;"> </td>
+							<td style="width:100px;"> </td>
+							<td style="width:30px;"> </td>
+							<td style="width:200px;"> 시간 </td>
+							<td style="width:200px;"> 남은시간 </td>
+							<td style="width:160px;"> 응모방식 </td>
+							<td style="width:60px;"> 응모여부 </td>
 						</tr>
 					<%
 						if(onlineList_kr.isEmpty()){
 					%>
 						<tr style="height: 70px;">
-							<td colspan="7"> 아직 온라인 발매 정보가 없습니다. </td>
+							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
 						for(int i=0; i<onlineList_kr.size();i++){	
@@ -296,6 +296,11 @@
 						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </td>
+						
+						<!-- 반응형을 위한 숨김 줄 -->
+						<td> 
+							<i class="fas fa-caret-down"></i>
+						</td>
 						
 						<!-- 응모시간 -->
 						<td>
@@ -406,7 +411,7 @@
 						if(onlineList_asia.isEmpty()){
 					%>
 						<tr style="height: 70px;">
-							<td colspan="7"> 아직 온라인 발매 정보가 없습니다. </td>
+							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
 						for(int i=0; i<onlineList_asia.size();i++){
@@ -546,7 +551,7 @@
 						if(onlineList_america.isEmpty()){
 					%>
 						<tr style="height: 70px;">
-							<td colspan="7"> 아직 온라인 발매 정보가 없습니다. </td>
+							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
 						for(int i=0; i<onlineList_america.size();i++){
@@ -686,7 +691,7 @@
 						if(onlineList_europe.isEmpty()){
 					%>
 						<tr style="height: 70px;">
-							<td colspan="7"> 아직 온라인 발매 정보가 없습니다. </td>
+							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
 						for(int i=0; i<onlineList_europe.size();i++){
@@ -826,7 +831,7 @@
 						if(onlineList_etc.isEmpty()){
 					%>
 						<tr style="height: 70px;">
-							<td colspan="7"> 아직 온라인 발매 정보가 없습니다. </td>
+							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
 						for(int i=0; i<onlineList_etc.size();i++){
@@ -960,6 +965,8 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
+		
+	
 		const countDownTimer = function (id, date, drawstatus_id) { 
 			var _vDate = new Date(date); // 전달 받은 일자 
 			var _second = 1000; 
@@ -1106,8 +1113,11 @@
 			}
 		}
 		
+		
+		
 		//체크박스 클릭했을시
 		$("input:checkbox").on('click', function() {
+
 			//drawCheckbox_kr + i
 			var checkbox_id = $(this).attr("id");
 			//i
@@ -1135,6 +1145,7 @@
 						}
 			   		});
 			   		$(this).prop("checked", true);
+			   		$(this).css({'color':'green', 'font-size':16});
 			   	}else {
 			   		$(this).prop("checked", false);
 			   	}
