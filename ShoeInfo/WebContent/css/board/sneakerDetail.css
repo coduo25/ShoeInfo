@@ -48,6 +48,8 @@ body {font-size:1em; line-weight:1.4}
 	#drawInfoTable_kr td, #drawInfoTable_etc td {padding: 5px 0;}
 
 	table#sneakerOnlineInfo_table td:nth-child(4) { display: none; }
+/* 	table#sneakerOnlineInfo_table td:nth-child(4) #trigger { display: none; } */
+	
 	
 	/* media Query */
 /* 0 ~ 1220px */
@@ -193,17 +195,23 @@ body {font-size:1em; line-weight:1.4}
 	table#sneakerOnlineInfo_table td:nth-child(3) { display: inline-block; width: 10%; padding-left: 0; text-align: right; }
 	table#sneakerOnlineInfo_table td:nth-child(4) { display: inline-block; width: 10%; text-align: right; font-size: 1.2em; }
 
+	
+/* 	table#sneakerOnlineInfo_table td:nth-child(4):hover  table#sneakerOnlineInfo_table td:nth-child(4) #trigger { display: block; } */
+	table#sneakerOnlineInfo_table td:nth-child(4) #trigger:checked ~ table#sneakerOnlineInfo_table td:nth-child(5) {
+		display: block;
+	}
+
 	table#sneakerOnlineInfo_table td:nth-child(5):before { content: "시간 : "; }
-	table#sneakerOnlineInfo_table td:nth-child(5) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%;}
+	table#sneakerOnlineInfo_table td:nth-child(5) { border-bottom: 1px solid #F2F2F2; display: none; width: 100%; text-align: left; padding: 4%;}
 
 /* 	table#sneakerOnlineInfo_table td:nth-child(5):before { content: "남은시간 : "; } */
-	table#sneakerOnlineInfo_table td:nth-child(6) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: center; padding: 4%; }
+	table#sneakerOnlineInfo_table td:nth-child(6) { border-bottom: 1px solid #F2F2F2; display: none; width: 100%; text-align: center; padding: 4%; }
 	
 	table#sneakerOnlineInfo_table td:nth-child(7):before { content: "응모방식 : "; }
-	table#sneakerOnlineInfo_table td:nth-child(7) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%; }
+	table#sneakerOnlineInfo_table td:nth-child(7) { border-bottom: 1px solid #F2F2F2; display: none; width: 100%; text-align: left; padding: 4%; }
 
 	table#sneakerOnlineInfo_table td:nth-child(8):before { content: "응모여부 : "; }
-	table#sneakerOnlineInfo_table td:nth-child(8) { border-bottom: 1px solid #F2F2F2; display: block; width: 100%; text-align: left; padding: 4%; }
+	table#sneakerOnlineInfo_table td:nth-child(8) { border-bottom: 1px solid #F2F2F2; display: none; width: 100%; text-align: left; padding: 4%; }
 
 	
 }

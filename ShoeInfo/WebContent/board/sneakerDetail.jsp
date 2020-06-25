@@ -299,8 +299,12 @@
 						
 						<!-- 반응형을 위한 숨김 줄 -->
 						<td> 
-							<i class="fas fa-caret-down"></i>
+							<span class="fas_slide_down"> <i class="fas fa-caret-down"></i> </span>
+							<span class="fas_slide_up" style="display: none;"> <i class="fas fa-caret-up"></i> </span>
+							<input type="checkbox" id="trigger">
 						</td>
+						
+						
 						
 						<!-- 응모시간 -->
 						<td>
@@ -1113,7 +1117,17 @@
 			}
 		}
 		
-		
+		//반응형 숨김 줄 클릭했을시
+		$(".fas_slide_down").click(function(){
+			$('#trigger').prop('checked', true);
+			$(".fas_slide_down").hide();
+			$(".fas_slide_up").show();
+		});
+		$(".fas_slide_up").click(function(){
+			$('#trigger').prop('checked', false);
+			$(".fas_slide_up").hide();
+			$(".fas_slide_down").show();
+		});
 		
 		//체크박스 클릭했을시
 		$("input:checkbox").on('click', function() {
