@@ -130,6 +130,7 @@
 						<tr class="ta_release_info">
 							<td style="width:50px;"> </td>
 							<td style="width:130px;"> </td>
+							<td> </td>
 							<td style="width:200px;"> </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
@@ -169,8 +170,13 @@
 						<td> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=ofdto_kr.getOffline_location()%> <%=bdto_kr.getBrand_name()%> </a> </td>
 						
+						<td> 
+							<label class="fas_slide_down_off" id="fas_slide_down_kr<%=i%>" > <i class="fas fa-caret-down"></i> </label>
+							<label class="fas_slide_up_off" id="fas_slide_up_kr<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
+						</td>
+						
 						<!-- 응모시간 -->
-						<td> 			
+						<td id="draw_time_off<%=i%><"> 			
 							<!-- 선착일시 -->
 							<%if(ofdto_kr.getOffline_method().contains("선착")){%>
 								<!-- 시작시간이 아직 미정일때 -->
@@ -190,16 +196,15 @@
 								<%}else{%>
 									<span id="offline_start_time"> <%=new_Offline_start_time%> ~ <%=new_Offline_end_time%> </span>
 								<%}%>
-							<%}%>
-						
+							<%}%>	
 						
 						</td>
 						
 						<!--  남은시간 -->
-<%-- 						<span id="count_Offline_end_time<%=i%>"> <%=count_Offline_end_time%> </span> --%>
-<%-- 						<td id="draw-status-off_kr<%=i%>"> </td> --%>
+						<span id="count_Offline_end_time<%=i%>" style="display: none;"> <%=count_Offline_end_time%> </span>
+						<td id="draw-status-off_kr<%=i%>" style="display: none;"> </td>
 						<%if(ofdto_kr.getOffline_method().contains("선착")){%>
-							<td id="remain_time_status_kr<%=i%>">
+							<td id="remain_time_status_off<%=i%>">
 								<span> - </span>
 							</td>
 						<%}else{%>
@@ -228,17 +233,17 @@
 						<%}%>
 						
 						<!-- 오프라인 방식 -->
-						<td> <%=ofdto_kr.getOffline_method()%> </td>
+						<td id="online_method_off<%=i%>"> <%=ofdto_kr.getOffline_method()%> </td>
 						
 						<!-- 보기란 -->
 						<% if(ofdto_kr.getOffline_link().equals("")) {%>
-							<td> - </td>
+							<td id="info_link_off<%=i%>"> - </td>
 						<%} else {%>
-							<td> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank">보기</a> </td>
+							<td id="info_link_off<%=i%>"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank">보기</a> </td>
 						<%}%>
 						
 						<%if(user.equals("admin")){%>
-							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=ofdto_kr.getModel_stylecode()%>&brand_id=<%=ofdto_kr.getBrand_id()%>'"> </td> 
+							<td id="info_link_off<%=i%>" style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=ofdto_kr.getModel_stylecode()%>&brand_id=<%=ofdto_kr.getBrand_id()%>'"> </td> 
 						<%}%>
 					</tr>
 					
@@ -257,6 +262,7 @@
 							<td style="width:50px;"> </td>
 							<td style="width:100px;"> </td>
 							<td style="width:30px;"> </td>
+							<td> </td>
 							<td style="width:200px;"> 시간 </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
@@ -299,15 +305,13 @@
 						
 						<!-- 반응형을 위한 숨김 줄 -->
 						<td> 
-							<span class="fas_slide_down"> <i class="fas fa-caret-down"></i> </span>
-							<span class="fas_slide_up" style="display: none;"> <i class="fas fa-caret-up"></i> </span>
-							<input type="checkbox" id="trigger">
+							<label class="fas_slide_down" id="fas_slide_down_kr<%=i%>" > <i class="fas fa-caret-down"></i> </label>
+							<label class="fas_slide_up" id="fas_slide_up_kr<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
 						</td>
 						
 						
-						
 						<!-- 응모시간 -->
-						<td>
+						<td id="draw_time_kr<%=i%>">
 							<!-- 선착일시 -->
 							<%if(odto_kr.getOnline_method().contains("선착")){%>
 								<!-- 시작시간이 아직 미정일때 -->
@@ -363,7 +367,7 @@
 						<%}%>
 						
 						<!-- 응모방식 -->
-						<td> <%=odto_kr.getOnline_method()%> </td>
+						<td id="online_method_kr<%=i%>"> <%=odto_kr.getOnline_method()%> </td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -392,6 +396,7 @@
 						<%if(user.equals("admin")){%>
 							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'"> </td> 
 						<%}%>
+						
 					</tr>
 					<%
 							}
@@ -406,6 +411,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
+						<td> </td>
 						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
@@ -445,6 +451,12 @@
 						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <%=bdto_asia.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_asia.getCountry_flag()%>" width="22" height="15"> </td>
+						
+						<!-- 반응형을 위한 숨김 줄 -->
+						<td> 
+							<label class="fas_slide_down" id="fas_slide_down_kr<%=i%>" > <i class="fas fa-caret-down"></i> </label>
+							<label class="fas_slide_up" id="fas_slide_up_kr<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
+						</td>
 						
 						<!-- 응모시간 -->
 						<td>
@@ -546,6 +558,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
+						<td> </td>
 						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
@@ -586,8 +599,14 @@
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <%=bdto_america.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_america.getCountry_flag()%>" width="22" height="15"> </td>
 						
+						<!-- 반응형을 위한 숨김 줄 -->
+						<td> 
+							<label class="fas_slide_down" id="fas_slide_down_america<%=i%>"> <i class="fas fa-caret-down"></i> </label> 
+							<label class="fas_slide_up" id="fas_slide_up_america<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
+						</td>
+						
 						<!-- 응모시간 -->
-						<td>
+						<td id="draw_time_america<%=i%>">
 							<!-- 선착일시 -->
 							<%if(odto_america.getOnline_method().contains("선착")){%>
 								<!-- 시작시간이 아직 미정일때 -->
@@ -643,7 +662,7 @@
 						<%}%>
 						
 						<!-- 응모방식/직배 여부 -->
-						<td> <span class="tooltip1"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1"> <%=odto_america.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span></span> </td>
+						<td id="online_method_america<%=i%>"> <span class="tooltip1"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1"> <%=odto_america.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span></span> </td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -686,6 +705,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
+						<td> </td>
 						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
@@ -726,8 +746,14 @@
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <%=bdto_europe.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_europe.getCountry_flag()%>" width="22" height="15"> </td>
 						
-						<!-- 응모시간 -->
+						<!-- 반응형을 위한 숨김 줄 -->
 						<td> 
+							<label class="fas_slide_down" id="fas_slide_down_europe<%=i%>" > <i class="fas fa-caret-down"></i> </label>
+							<label class="fas_slide_up" id="fas_slide_up_europe<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
+						</td>
+						
+						<!-- 응모시간 -->
+						<td id="draw_time_europe<%=i%>"> 
 							<!-- 선착일시 -->
 							<%if(odto_europe.getOnline_method().contains("선착")){%>
 								<!-- 시작시간이 아직 미정일때 -->
@@ -783,7 +809,7 @@
 						<%}%>
 						
 						<!-- 응모방식/직배여부 -->
-						<td> <span class="tooltip1"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1"> <%=odto_europe.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span></span> </td>
+						<td id="online_method_europe<%=i%>"> <span class="tooltip1"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1"> <%=odto_europe.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span></span> </td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -826,6 +852,7 @@
 						<td style="width:50px;"> </td>
 						<td style="width:100px;"> </td>
 						<td style="width:30px;"> </td>
+						<td> </td>
 						<td style="width:200px;"> 시간 </td>
 						<td style="width:200px;"> 남은시간 </td>
 						<td style="width:160px;"> 응모방식 </td>
@@ -866,8 +893,14 @@
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <%=bdto_etc.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_etc.getCountry_flag()%>" width="22" height="15"> </td>
 						
+						<!-- 반응형을 위한 숨김 줄 -->
+						<td> 
+							<label class="fas_slide_down" id="fas_slide_down_etc<%=i%>" > <i class="fas fa-caret-down"></i> </label>
+							<label class="fas_slide_up" id="fas_slide_up_etc<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
+						</td>
+						
 						<!-- 응모시간 -->
-						<td>
+						<td id="draw_time_etc<%=i%>">
 							<!-- 선착일시 -->
 							<%if(odto_etc.getOnline_method().contains("선착")){%>
 								<!-- 시작시간이 아직 미정일때 -->
@@ -923,7 +956,7 @@
 						<%}%>
 						
 						<!-- 응모방식/직배 여부 -->
-						<td> <span class="tooltip1"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1"> <%=odto_etc.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span></span> </td>
+						<td id="online_method_etc<%=i%>"> <span class="tooltip1"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1"> <%=odto_etc.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span></span> </td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -1117,19 +1150,113 @@
 			}
 		}
 		
-		//반응형 숨김 줄 클릭했을시
-		$(".fas_slide_down").click(function(){
-			$('#trigger').prop('checked', true);
-			$(".fas_slide_down").hide();
-			$(".fas_slide_up").show();
+		//반응형 숨김 줄 클릭했을시 ------------------------------------------------
+		//오프라인일때
+		//펼칠때
+		$(".fas_slide_down_off").click(function(){
+			
+			alert("테스트");
+			
+			//fas_slide_down_(country Name) + i
+			var slide_down_id = $(this).attr("id");
+			
+			//i
+			var i = slide_down_id.substr(slide_down_id.length - 1);
+			
+			$("#fas_slide_down_kr" + i).hide();
+			$("#fas_slide_up_kr" + i).show();
+			
+			$("#draw_time_off" + i).css({"display" : "block"});
+			$("#remain_time_status_off" + i).css({"display" : "block"});
+			$("#online_method_off" + i).css({"display" : "block"});
+			$("#info_link_off" + i).css({"display" : "block"});
 		});
-		$(".fas_slide_up").click(function(){
-			$('#trigger').prop('checked', false);
-			$(".fas_slide_up").hide();
-			$(".fas_slide_down").show();
+		//접을때
+		$(".fas_slide_up_off").click(function(){
+			
+			//fas_slide_up_(country Name) + i
+			var slide_up_id = $(this).attr("id");
+			
+			var idSplit_array = [];
+			idSplit_array = slide_up_id.split("_");
+			
+			//(country Name) + i 
+			var country_Name_i = idSplit_array[idSplit_array.length - 1];
+			
+			//i
+			var i = slide_up_id.substr(slide_up_id.length - 1);
+			
+			//country Name
+			var country_Name = country_Name_i.slice(0, -1);
+			
+			$("#fas_slide_up_" + country_Name + i).hide();
+			$("#fas_slide_down_" + country_Name + i).show();
+			
+			$("#draw_time_" + country_Name + i).css({"display" : "none"});
+			$("#remain_time_status_" + country_Name + i).css({"display" : "none"});
+			$("#online_method_" + country_Name + i).css({"display" : "none"});
+			$("#draw-status_" + country_Name + i).css({"display" : "none"});
 		});
 		
-		//체크박스 클릭했을시
+		//온라인일때
+		//펼칠때
+		$(".fas_slide_down").click(function(){
+			
+			alert("테스트");
+			
+			//fas_slide_down_(country Name) + i
+			var slide_down_id = $(this).attr("id");
+			
+			var idSplit_array = [];
+			idSplit_array = slide_down_id.split("_");
+
+			//(country Name) + i 
+			var country_Name_i = idSplit_array[idSplit_array.length - 1];
+			
+			//i
+			var i = slide_down_id.substr(slide_down_id.length - 1);
+			
+			//country Name
+			var country_Name = country_Name_i.slice(0, -1);
+			
+			$("#fas_slide_down_" + country_Name + i).hide();
+			$("#fas_slide_up_" + country_Name + i).show();
+			
+			$("#draw_time_" + country_Name + i).css({"display" : "block"});
+			$("#remain_time_status_" + country_Name + i).css({"display" : "block"});
+			$("#online_method_" + country_Name + i).css({"display" : "block"});
+			$("#draw-status_" + country_Name + i).css({"display" : "block"});
+		});
+		//접을때
+		$(".fas_slide_up").click(function(){
+			
+			//fas_slide_up_(country Name) + i
+			var slide_up_id = $(this).attr("id");
+			
+			var idSplit_array = [];
+			idSplit_array = slide_up_id.split("_");
+			
+			//(country Name) + i 
+			var country_Name_i = idSplit_array[idSplit_array.length - 1];
+			
+			//i
+			var i = slide_up_id.substr(slide_up_id.length - 1);
+			
+			//country Name
+			var country_Name = country_Name_i.slice(0, -1);
+			
+			$("#fas_slide_up_" + country_Name + i).hide();
+			$("#fas_slide_down_" + country_Name + i).show();
+			
+			$("#draw_time_" + country_Name + i).css({"display" : "none"});
+			$("#remain_time_status_" + country_Name + i).css({"display" : "none"});
+			$("#online_method_" + country_Name + i).css({"display" : "none"});
+			$("#draw-status_" + country_Name + i).css({"display" : "none"});
+		});
+		
+		
+		
+		// 응모 여부 체크박스 클릭했을시 -----------------------------------------------
 		$("input:checkbox").on('click', function() {
 
 			//drawCheckbox_kr + i
