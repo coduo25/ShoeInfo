@@ -145,6 +145,15 @@ public class MemberFrontController extends HttpServlet{
 		}
 		//회원 정보 수정하기
 		else if(command.equals("/MemberUpdateInfo.me")){
+			action = new MemberUpdateInfo();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 정보 수정 처리하기
+		else if(command.equals("/MemberUpdateInfoAction.me")){
 			action = new MemberUpdateInfoAction();
 			try {
 				forward = action.execute(request, response);
@@ -152,7 +161,6 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
 		
 		
 		/************************************************************

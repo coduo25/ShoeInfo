@@ -163,7 +163,7 @@
 			$('.confirmMsg').hide("fast");
 		});
 		
-		//이름 input에 한글, 영어만 입력하도록 하는 함수
+		//이름 input에 한글,영어만 입력하도록 하는 함수
 		$("input[name=name]").keyup(function(event){
 			var inputName = $(this).val();
 			$(this).val(inputName.replace(/[^ㄱ-힣a-zA-Z]/gi,''));

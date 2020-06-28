@@ -112,6 +112,37 @@ public class MemberDAO {
 		return check;
 	}
 	
+	//회원 정보 수정하는 함수 
+	public int modiMemberInfo(MemberDTO mdto) {
+		int check = -1;
+		try {
+			con = getConnection();
+			sql = "select email from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mdto.getEmail());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				sql = "update shoeinfo_member set pass = ?, name = ?, phone = ? where email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, mdto.getPass());
+				pstmt.setString(2, mdto.getName());
+				pstmt.setString(3, mdto.getPhone());
+				pstmt.setString(4, mdto.getEmail());
+				pstmt.executeUpdate();	
+				check = 1;
+			}
+			else {
+				check = 0;
+			}		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
 	//position 체크 하는 함수
 	public String positionCheck(String email){
 		String position = "";
