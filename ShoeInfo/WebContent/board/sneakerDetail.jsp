@@ -171,12 +171,12 @@
 						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=ofdto_kr.getOffline_location()%> <%=bdto_kr.getBrand_name()%> </a> </td>
 						
 						<td> 
-							<label class="fas_slide_down_off" id="fas_slide_down_kr<%=i%>" > <i class="fas fa-caret-down"></i> </label>
+							<label class="fas_slide_down_off" id="fas_slide_down_kr<%=i%>"> <i class="fas fa-caret-down"></i> </label>
 							<label class="fas_slide_up_off" id="fas_slide_up_kr<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
 						</td>
 						
 						<!-- 응모시간 -->
-						<td id="draw_time_off<%=i%><"> 			
+						<td id="draw_time_off<%=i%>"> 			
 							<!-- 선착일시 -->
 							<%if(ofdto_kr.getOffline_method().contains("선착")){%>
 								<!-- 시작시간이 아직 미정일때 -->
@@ -202,34 +202,34 @@
 						
 						<!--  남은시간 -->
 						<span id="count_Offline_end_time<%=i%>" style="display: none;"> <%=count_Offline_end_time%> </span>
-						<td id="draw-status-off_kr<%=i%>" style="display: none;"> </td>
+						<span id="draw-status-off_kr<%=i%>" style="display: none;"> </span>
 						<%if(ofdto_kr.getOffline_method().contains("선착")){%>
 							<td id="remain_time_status_off<%=i%>">
 								<span> - </span>
 							</td>
-						<%}else{%>
+<%-- 						<%}else{%> --%>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때 -->
-							<%if(compare_w_start_result_kr == -1 && !ofdto_kr.getOffline_start_time().contains("0000-00-00") && !ofdto_kr.getOffline_end_time().contains("0000-00-00")){%>
-								<td id="final_count_Offline_end_time<%=i%>"> </td>
+<%-- 							<%if(compare_w_start_result_kr == -1 && !ofdto_kr.getOffline_start_time().contains("0000-00-00") && !ofdto_kr.getOffline_end_time().contains("0000-00-00")){%> --%>
+<%-- 								<td id="final_count_Offline_end_time<%=i%>"> </td> --%>
 								
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
-							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1){%>
-								<td> <span id="final_count_Offline_end_time<%=i%>"></span> <span id="draw_count_result_ing">진행중</span> </td>
+<%-- 							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1){%> --%>
+<%-- 								<td> <span id="final_count_Offline_end_time<%=i%>"></span> <span id="draw_count_result_ing">진행중</span> </td> --%>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
-							<%}else if(ofdto_kr.getOffline_start_time().contains("0000-00-00") && compare_w_end_result_kr == -1){%>
-								<span id="final_count_Offline_end_time<%=i%>"></span> <span id="draw_count_result_ing">진행중</span>
+<%-- 							<%}else if(ofdto_kr.getOffline_start_time().contains("0000-00-00") && compare_w_end_result_kr == -1){%> --%>
+<%-- 								<span id="final_count_Offline_end_time<%=i%>"></span> <span id="draw_count_result_ing">진행중</span> --%>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
-							<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00") && compare_w_start_result_kr == -1){%>
-								<span> 응모전 </span>
+<%-- 							<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00") && compare_w_start_result_kr == -1){%> --%>
+<!-- 								<span> 응모전 </span> -->
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-							<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00") && compare_w_start_result_kr == 1){%>
-								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+<%-- 							<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00") && compare_w_start_result_kr == 1){%> --%>
+<!-- 								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span> -->
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-							<%}else if(compare_w_end_result_kr == 1 && !ofdto_kr.getOffline_start_time().contains("0000-00-00") && !ofdto_kr.getOffline_end_time().contains("0000-00-00")){%>
-								<span> 응모종료 </span>
-							<%}else{%>
-								<td> - </td>
-							<%}%>
+<%-- 							<%}else if(compare_w_end_result_kr == 1 && !ofdto_kr.getOffline_start_time().contains("0000-00-00") && !ofdto_kr.getOffline_end_time().contains("0000-00-00")){%> --%>
+<!-- 								<span> 응모종료 </span> -->
+<%-- 							<%}else{%> --%>
+<!-- 								<td> - </td> -->
+<%-- 							<%}%> --%>
 						<%}%>
 						
 						<!-- 오프라인 방식 -->
@@ -243,7 +243,7 @@
 						<%}%>
 						
 						<%if(user.equals("admin")){%>
-							<td id="info_link_off<%=i%>" style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=ofdto_kr.getModel_stylecode()%>&brand_id=<%=ofdto_kr.getBrand_id()%>'"> </td> 
+							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=ofdto_kr.getModel_stylecode()%>&brand_id=<%=ofdto_kr.getBrand_id()%>'"> </td> 
 						<%}%>
 					</tr>
 					
@@ -1150,14 +1150,11 @@
 			}
 		}
 		
-		//반응형 숨김 줄 클릭했을시 ------------------------------------------------
-		//오프라인일때
-		//펼칠때
+		// 반응형 숨김 줄 클릭했을시 ------------------------------------------------
+		// 오프라인 펼칠때
 		$(".fas_slide_down_off").click(function(){
 			
-			alert("테스트");
-			
-			//fas_slide_down_(country Name) + i
+			//fas_slide_down_kr + i
 			var slide_down_id = $(this).attr("id");
 			
 			//i
@@ -1171,38 +1168,26 @@
 			$("#online_method_off" + i).css({"display" : "block"});
 			$("#info_link_off" + i).css({"display" : "block"});
 		});
-		//접을때
+		// 오프라인 접을때
 		$(".fas_slide_up_off").click(function(){
 			
-			//fas_slide_up_(country Name) + i
+			//fas_slide_up_kr + i
 			var slide_up_id = $(this).attr("id");
-			
-			var idSplit_array = [];
-			idSplit_array = slide_up_id.split("_");
-			
-			//(country Name) + i 
-			var country_Name_i = idSplit_array[idSplit_array.length - 1];
-			
+
 			//i
 			var i = slide_up_id.substr(slide_up_id.length - 1);
 			
-			//country Name
-			var country_Name = country_Name_i.slice(0, -1);
+			$("#fas_slide_up_kr" + i).hide();
+			$("#fas_slide_down_kr" + i).show();
 			
-			$("#fas_slide_up_" + country_Name + i).hide();
-			$("#fas_slide_down_" + country_Name + i).show();
-			
-			$("#draw_time_" + country_Name + i).css({"display" : "none"});
-			$("#remain_time_status_" + country_Name + i).css({"display" : "none"});
-			$("#online_method_" + country_Name + i).css({"display" : "none"});
-			$("#draw-status_" + country_Name + i).css({"display" : "none"});
+			$("#draw_time_off" + i).css({"display" : "none"});
+			$("#remain_time_status_off" + i).css({"display" : "none"});
+			$("#online_method_off" + i).css({"display" : "none"});
+			$("#info_link_off" + i).css({"display" : "none"});
 		});
 		
-		//온라인일때
-		//펼칠때
+		// 온라인 펼칠때
 		$(".fas_slide_down").click(function(){
-			
-			alert("테스트");
 			
 			//fas_slide_down_(country Name) + i
 			var slide_down_id = $(this).attr("id");
@@ -1227,7 +1212,7 @@
 			$("#online_method_" + country_Name + i).css({"display" : "block"});
 			$("#draw-status_" + country_Name + i).css({"display" : "block"});
 		});
-		//접을때
+		// 온라인 접을때
 		$(".fas_slide_up").click(function(){
 			
 			//fas_slide_up_(country Name) + i

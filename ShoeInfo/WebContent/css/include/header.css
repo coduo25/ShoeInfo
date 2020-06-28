@@ -6,6 +6,25 @@ body { font-size: 1em; line-weight: 1.4; }
 
 a { text-decoration: none; color: #000000; }
 
+/* 오늘 날짜 헤더 */
+.datebar {
+	display: flex;
+	max-width: 1200px;
+	margin: 5px auto;
+	padding: 0 5px; 
+}
+
+.today_date {
+	width: 100%;
+	text-align: center;
+	font-size: 13px;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: white;
+	margin: 4px 0;
+	padding-right: 7px; 
+}
+
+
 /* 헤더 전체 적용 */
 .navbar {
 	display: flex;
@@ -30,6 +49,7 @@ a { text-decoration: none; color: #000000; }
 	padding-left: 0;
 	font-size: 18px;
 	font-family: 'Noto Sans KR', sans-serif;
+	margin: 0 auto;
 }
 
 .navbar_menu li {
@@ -52,6 +72,27 @@ a { text-decoration: none; color: #000000; }
 	padding: 4px;
 	margin: 0 7px;
 }
+
+.mypage_btn {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown_mymenu {
+	display: none;
+	position: absolute;
+	width: 100%;
+}
+
+.dropdown_mymenu a {
+	border: 1px solid #c0c0c0;
+	padding: 4px; 
+	margin: 0 7px;
+	display: block;
+	text-decoration: none;
+}
+
+.mypage_btn a:hover .dropdown_mymenu { display:block; }
 
 
 /* Hamburger Icon */
@@ -82,7 +123,7 @@ a { text-decoration: none; color: #000000; }
 @media screen and (max-width: 768px){
 	/* 헤더 전체 적용 */
 	.navbar {
-		border-bottom: 1px solid #c0c0c0;
+/* 		border-bottom: 1px solid #c0c0c0; */
 		padding: 0 20px;
 		flex-direction: column;
 		align-items: flex-start;
@@ -130,7 +171,7 @@ a { text-decoration: none; color: #000000; }
 @media screen and (max-width: 468px){
 	/* 헤더 전체 적용 */
 	.navbar {
-		border-bottom: 1px solid #c0c0c0;
+/* 		border-bottom: 1px solid #c0c0c0; */
 		padding: 0 20px;
 		flex-direction: column;
 		align-items: flex-start;

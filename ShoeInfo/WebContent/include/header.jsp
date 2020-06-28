@@ -13,6 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
+
 	<nav class="navbar">
 	
 		<!-- 로고 -->
@@ -23,7 +24,6 @@
 		<!-- 메인메뉴  -->
 		<ul class="navbar_menu">
 			<li> <a href="./SneakerList.go"> 런칭 캘린더 </a> </li>
-			<li> <a href="#"> 발매 예정 </a> </li>
 			<li> <a href="#"> 기습 발매 </a> </li>
 		</ul>
 		
@@ -45,13 +45,21 @@
 				}else if(usr_position.equals("admin")){ 
 			%>
 				<li> <a href="./Main.ad"> ADMIN_PAGE </a> </li>
+				<li> <a href="./MemberDrawInfo.me"> MYDRAW </a> </li>
 				<li> <a href="./MemberDrawInfo.me"> MYPAGE </a> </li>
 				<li> <a href="./MemberLogout.me"> LOGOUT </a> </li>
 			<% 
 				}else{ 
 			%>
-				<li> <a href="./MemberDrawInfo.me"> MYPAGE </a> </li>
+	
+				<li class="mypage_btn"> <a href="#"> MYPAGE <i class="fas fa-caret-down"></i> </a> </li> 
+					<div class="dropdown_mymenu">
+						<a href="#"> MY INFO </a>
+						<a href="./MemberDrawInfo.me"> MY DRAW </a>
+					</div>
+
 				<li> <a href="./MemberLogout.me"> LOGOUT </a> </li>
+				
 			<% 
 				} 
 			%> 
@@ -65,10 +73,61 @@
 		</a>
 		
 	</nav>
+	
+	<div style="width: 100%; background-color: black;">
+		<nav class="datebar">
+			<!-- 오늘 날짜 표시 -->
+			<div class="today_date">	
+				<span id="today_date_val">  </span>
+			</div>
+		</nav>
+	</div>
+	
 
 </body>
 <script type="text/javascript">
 
+		//현재 시간 계산해주는 함수
+		function getTime(){
+			
+			//현재 시간 계산
+			var date = new Date();
+			//요일
+			var week = new Array('일', '월', '화', '수', '목', '금', '토'); 
+			
+			var currentDate = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월 " +  date.getDate() + "일 " + "(" + week[date.getDay()] +")"; 
+			
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			//오전/오후 표시하기
+			var AMorPM = date.getHours() < 12 ? "AM" : "PM";
+			
+			//오후시간일때 12시간 빼기
+			if(hours > 12) {
+				hours -= 12;
+			}
+			
+			//시간, 분, 초 앞에 한자리수이면 앞자리수에 0 붙이기
+			if(hours < 10){ hours = "0" + hours; }
+			if(minutes < 10){ minutes = "0" + minutes; }
+			if(seconds < 10){ seconds = "0" + seconds; }
+			
+			var currentTime = hours + ":" + minutes + ":" + seconds  + " " + AMorPM;
+			
+			var result = document.getElementById("today_date_val");
+			
+			result.innerHTML = "현재시간: " + currentDate + " " + currentTime;
+			
+		}
+	
+		//실시간 갱신시켜주는 함수
+		function init(){
+		    setInterval(getTime, 1000);
+		}
+		
+		init();
+	
 	
 // 		if($(".navbar_toggleBtn").css("display") == "none"){
 // 			$(".navbar_menu").css("display", "flex");
