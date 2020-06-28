@@ -12,7 +12,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.brand.db.BrandDTO;
-import net.online.db.OnlineDTO;
 import net.sneaker.db.SneakerDTO;
 
 public class MemberDAO {
@@ -210,8 +209,8 @@ public class MemberDAO {
 		return userDrawBrandList;
 	}
 	
-	//사용자의 모든 응모 브랜드 정보 불러오는 함수
-	public Vector searchUserDrawStylecode_kr(String user) {
+	//사용자의 월별 응모 브랜드 정보 불러오는 함수
+	public Vector searchUserDrawStylecode_kr(String user, String date) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -226,23 +225,31 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()){
 				MemberDrawDTO mddto = new MemberDrawDTO();
 				mddto.setModel_stylecode(rs.getString("model_stylecode"));
-				userDrawStylecodeList.add(mddto);
 				
 				//해당 브랜드 정보 가져오기
 				sql = "select * from shoeinfo_sneakerlibrary where model_stylecode = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, mddto.getModel_stylecode());
 				rs2 = pstmt2.executeQuery();
+				
 				if(rs2.next()){
-					//스니커 정보 DB에 해당 스니커가 저장되어있으면
-					SneakerDTO sdto = new SneakerDTO();
-					sdto.setModel_stylecode(rs2.getString("model_stylecode"));
-					sdto.setImage(rs2.getString("image"));
-					sdto.setRelease_date(rs2.getString("release_date"));
-					sneakerInfoList.add(sdto);
+
+					//가지고온 스니커 정보중에 release_date에 date가 포함되어있으면 list에 추가하기
+					if(rs2.getString("release_date").contains(date)){
+						
+						userDrawStylecodeList.add(mddto);
+						
+						//스니커 정보 DB에 해당 스니커가 저장되어있으면
+						SneakerDTO sdto = new SneakerDTO();
+						sdto.setModel_stylecode(rs2.getString("model_stylecode"));
+						sdto.setImage(rs2.getString("image"));
+						sdto.setRelease_date(rs2.getString("release_date"));
+						sneakerInfoList.add(sdto);
+					}	
 				}
 			}
 			vec.add(userDrawStylecodeList);
@@ -375,6 +382,29 @@ public class MemberDAO {
 			closeDB();
 		}
 		return vec;
+	}
+	
+	//회원 정보 가져오는 함수
+	public MemberDTO getMemberInfo(String email){
+		MemberDTO mdto = new MemberDTO();
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				mdto.setEmail(email);
+				mdto.setName(rs.getString("name"));
+				mdto.setPhone(rs.getString("phone"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return mdto;		
 	}
 	
 	

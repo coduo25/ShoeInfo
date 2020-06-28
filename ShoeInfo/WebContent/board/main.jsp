@@ -37,8 +37,6 @@
 		List<SneakerDTO> sneakerList12 = (List<SneakerDTO>) request.getAttribute("sneakerList12");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat new_format = new SimpleDateFormat("M/d");
-		SimpleDateFormat new_month_format = new SimpleDateFormat("M");
 		
 		//오늘날짜
 		Date currentTime = new Date();

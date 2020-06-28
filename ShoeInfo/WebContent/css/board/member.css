@@ -13,9 +13,9 @@ h3{ margin: 30px 0; }
 #content_login {font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:200px auto; height: 300px;}
 #content_register {font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 500px;}
 
-.login-form, .join-form { list-style: none; width: 40%; height: 100%; margin: 0 auto; position: relative; }
-.login-form div, .join-form div {position:relative; float: left; width: 100%; height: 40px; margin: 5px 0; }
-.login-form input, .join-form input { width: 100%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Source Sans Pro', sans-serif; padding-left: 8px;}
+.login-form, .join-form, .modi-form { list-style: none; width: 40%; height: 100%; margin: 0 auto; position: relative; }
+.login-form div, .join-form div, .modi-form div {position:relative; float: left; width: 100%; height: 40px; margin: 5px 0; }
+.login-form input, .join-form input, .modi-form input { width: 100%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Source Sans Pro', sans-serif; padding-left: 8px;}
 
 /* 중복체크 버튼*/
 .checkEmail { position: absolute; float: right; height: 40px; width: 20%; margin-top: 5px; margin-left: 10px; border: 1px solid #000000; background-color: white; font-size: 15px; font-family: 'Noto Sans KR', sans-serif; font-weight: bold;}

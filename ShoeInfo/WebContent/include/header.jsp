@@ -45,19 +45,25 @@
 				}else if(usr_position.equals("admin")){ 
 			%>
 				<li> <a href="./Main.ad"> ADMIN_PAGE </a> </li>
-				<li> <a href="./MemberDrawInfo.me"> MYDRAW </a> </li>
-				<li> <a href="./MemberDrawInfo.me"> MYPAGE </a> </li>
+				<div class="mypage_btn"> 
+					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
+					<div class="dropdown_mymenu">
+						<a href="./MemberUpdateInfo.me"> MY INFO </a>
+						<a href="./MemberDrawInfo.me"> MY DRAW </a>
+					</div>
+				</div>
 				<li> <a href="./MemberLogout.me"> LOGOUT </a> </li>
 			<% 
 				}else{ 
 			%>
 	
-				<li class="mypage_btn"> <a href="#"> MYPAGE <i class="fas fa-caret-down"></i> </a> </li> 
+				<div class="mypage_btn"> 
+					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
 					<div class="dropdown_mymenu">
-						<a href="#"> MY INFO </a>
+						<a href="./MemberUpdateInfo.me"> MY INFO </a>
 						<a href="./MemberDrawInfo.me"> MY DRAW </a>
 					</div>
-
+				</div>
 				<li> <a href="./MemberLogout.me"> LOGOUT </a> </li>
 				
 			<% 
