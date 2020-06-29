@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./css/board/member.css" rel="stylesheet">
+<link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -41,19 +41,15 @@
 
 	%>
 	<div id="wrapper" class="container">
-		<!-- side bar -->
-		<div id="main-nav">
-			<a href="./SneakerList.go" class="menu-link">런칭 캘린더</a>
-			<a href="" class="menu-link">발매 정보</a>
-		</div>
+
 		<!-- content -->
 		<div id="content_sneakerDetail">
 			<!-- 신발 기본 정보 -->
-			<table id="sneaker_Detail" style="border-bottom: 1px solid #8c8c8c;">
+			<table id="sneaker_Detail" style="border-bottom: 1px solid #c3c3c3;">
 				<tr>
-					<td> 
-						<div class="sneaker_image"> 
-							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" style="width:300px; height: 200px;">
+					<td class="sneaker_image_table"> 
+						<div class="sneaker_image_draw"> 
+							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 						</div>
 					</td>
 					<td class="detail_table">
@@ -61,25 +57,29 @@
 						<div class="sneaker_name">
 							<span> <%=sdto.getModel_name() %></span>
 						</div>
-						<!-- relase_date -->
-						<div class="sneaker_option_info">
-							발매일(한국기준) : <span> <%=sdto.getRelease_date() %></span>
+						
+						<div class="sneaker_option_wrapper">
+							<!-- relase_date -->
+							<div class="sneaker_option_info">
+								발매일(한국기준) : <span> <%=sdto.getRelease_date() %></span>
+							</div>
+							<!-- price -->
+							<div class="sneaker_option_info">
+								가격 : 
+								<%if(sdto.getPrice() == 0){%> <span>미정</span>
+								<%}else{%> <span> $<%=sdto.getPrice() %></span> <%}%>
+							</div>
 						</div>
-						<!-- price -->
-						<div class="sneaker_option_info">
-							가격 : 
-							<%if(sdto.getPrice() == 0){%> <span>미정</span>
-							<%}else{%> <span> $<%=sdto.getPrice() %></span> <%}%>
-						</div>
+						
 					</td>
 				</tr>
 			</table>
 			<!-- 응모한 브랜드 정보 보여주는 영역 -->
-			<div id="content_userDrawInfo" style="margin-left: 150px; margin-top: 10px;">
+			<div id="content_userDrawInfo">
 				<!-- 국내 응모 한 테이블 -->
 				<table id="drawInfoTable_kr">
 					<tr>
-						<th colspan="3"> 국내 응모 한 곳 </th>
+						<th colspan="3"> [국내 응모 한 곳] </th>
 					</tr>
 					<%
 						for(int i=0; i<drawInfoList_kr.size(); i++){
@@ -98,7 +98,7 @@
 				<!-- 해외 응모 한 테이블 -->
 				<table id="drawInfoTable_etc">
 					<tr>
-						<th colspan="3"> 해외 응모 한 곳 </th>
+						<th colspan="3"> [해외 응모 한 곳] </th>
 					</tr>
 					<%
 						for(int i=0; i<drawInfoList_etc.size(); i++){

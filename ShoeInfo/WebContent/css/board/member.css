@@ -13,10 +13,15 @@ h3{ margin: 30px 0; }
 #content_login { font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:200px auto; height: 300px;}
 #content_register { font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 500px;}
 #content_modify { font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 500px;}
+#content_idpwfind { font-family: 'Noto Sans KR', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 300px; }
 
 .login-form, .join-form, .modi-form { list-style: none; width: 40%; height: 100%; margin: 0 auto; position: relative; }
-.login-form div, .join-form div, .modi-form div {position:relative; float: left; width: 100%; height: 40px; margin: 5px 0; }
+.idfind-form, .pwfind-form { list-style: none; width: 100%; height: 100%; margin: 0 auto; position: relative; }
+
+.login-form div, .join-form div, .modi-form div, .idfind-form div, .pwfind-form div {position:relative; float: left; width: 100%; height: 40px; margin: 5px 0; }
 .login-form input, .join-form input, .modi-form input { width: 100%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Source Sans Pro', sans-serif; padding-left: 8px;}
+
+.idfind-form input, .pwfind-form input { width: 70%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Source Sans Pro', sans-serif; padding-left: 8px; }
 
 /* 중복체크 버튼*/
 .checkEmail { position: absolute; float: right; height: 40px; width: 20%; margin-top: 5px; margin-left: 10px; border: 1px solid #000000; background-color: white; font-size: 15px; font-family: 'Noto Sans KR', sans-serif; font-weight: bold;}
@@ -34,10 +39,18 @@ input:focus::placeholder { color: transparent; }
 
 .join_submitBtn:not(.join-form) { width: 100%; height: 48px; border: 1px solid #303030; background-color: #303030; font-size: 20px; color: white; font-family: 'Noto Sans KR', sans-serif; font-weight: bold; margin: 10px 0;}
 
+/* 아이디찾기, 비밀번호 찾기 버튼 부모 속성 무시하기 */
+.fm_idpwsubmitBtn:not(.idfind-form) {position:relative; float: left; width: 100%; height: 48px; margin: 5px 0;  margin-top: 10px; margin-bottom: 5px; }
+.fm_idpwsubmitBtn input { width: 70%; height: 48px; border: 1px solid #303030; background-color: #303030; font-size: 20px; color: white; font-family: 'Noto Sans KR', sans-serif; font-weight: bold; margin-bottom: 5px; }
+
 /* 아이디, 비밀번호 찾기 */
 .fm_findBtn:not(.join-form) { margin: 40px 0; text-align: center; }
 .fm_findBtn ul { display: inline-block; margin-right: 10px; }
 .fm_findBtn li { list-style: none; float: left; padding: 0 20px; }
+
+#content_idpwfind p { font-size: 12px; color: #8d8d8d; line-height: 18px; font-family: none; }
+#idfind_wrap { height:100%; float: left; width: 50%; border-right: 1px solid black; }
+#pwfind_wrap { height:100%; float: left; width: 50%; }
 
 
 /* media Query */
@@ -46,13 +59,7 @@ input:focus::placeholder { color: transparent; }
 	.container {
 		width: 100%;
 	}
-	.login-form {
-		width: 50%;
-	}
-	.join-form {
-		width: 50%;
-	}
-	.modi-form {
+	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form {
 		width: 50%;
 	}
 	.checkEmail {
@@ -62,7 +69,7 @@ input:focus::placeholder { color: transparent; }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	#content_login, #content_register, #content_modify{
+	#content_login, #content_register, #content_modify, #content_idpwfind{
 		margin: 70px auto;
 		height: 500px;
 	}
@@ -72,16 +79,10 @@ input:focus::placeholder { color: transparent; }
 	.login-form {
 		width: 70%;
 	}
-	.join-form {
+	.join-form, .modi-form, .idfind-form, .pwfind-form {
 		width: 80%;
 	}
-	.join-form div{
-		margin: 8px 0;
-	}
-	.modi-form {
-		width: 80%;
-	}
-	.modi-form div {
+	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div {
 		margin: 8px 0;
 	}
 	.checkEmail {
@@ -94,7 +95,7 @@ input:focus::placeholder { color: transparent; }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	#content_login, #content_register, #content_modify{
+	#content_login, #content_register, #content_modify, #content_idpwfind{
 		margin: 70px auto;
 		height: 500px;
 	}
@@ -104,16 +105,10 @@ input:focus::placeholder { color: transparent; }
 	.login-form {
 		width: 70%;
 	}
-	.join-form {
+	.join-form, .modi-form, .idfind-form, .pwfind-form {
 		width: 80%;
 	}
-	.join-form div{
-		margin: 8px 0;
-	}
-	.modi-form {
-		width: 80%;
-	}
-	.modi-form div {
+	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div {
 		margin: 8px 0;
 	}
 	.checkEmail {

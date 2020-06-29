@@ -161,6 +161,12 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//회원 아이디 비밀번호 찾는 페이지로 이동하기
+		else if(command.equals("/MemberFindIDPW.me")){
+			forward = new ActionForward();
+			forward.setPath("./member/lostinfo.jsp");
+			forward.setRedirect(false);
+		}
 		
 		
 		/************************************************************

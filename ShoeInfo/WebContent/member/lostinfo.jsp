@@ -19,39 +19,60 @@
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 		<!-- content -->
-		<div id="content_login">
+		<div id="content_idpwfind">
 		
-			<h3> 로그인 </h3>
-		
-			<form action="./MemberLoginAction.me" method="post" id="loginForm">
-				<div class="login-form">
+			<div id="idfind_wrap">
+			
+				<h3> 아이디 찾기 </h3>
 				
-					<!-- 이메일 -->
-					<div class="fm_email">
-						<input type="email" name="email" placeholder="이메일" id="email">
+				<p> 회원가입 시, 입력하신 이름 + 이메일로 아이디를 확인하실 수 있습니다. </p> 	
+			
+				<form method="post" id="idfindForm">
+					<div class="idfind-form">
+					
+						<!-- 이름 -->
+						<div class="fm_name">
+							<input type="text" name="name" placeholder="이름" id="name">
+						</div>
+					
+						<!-- 이메일 -->
+						<div class="fm_email">
+							<input type="email" name="email" placeholder="이메일" id="email">
+						</div>
+						
+						<!-- 아이디 찾기 -->
+						<div class="fm_idpwsubmitBtn">
+							<input type="submit" value="아이디 찾기">
+						</div>
+	
 					</div>
+				</form>
+			
+			</div>
+			
+			<div id="pwfind_wrap">
+			
+				<h3> 비밀번호 찾기 </h3>
+				
+				<p> 가입하신 이메일을 통해 비밀번호를 재설정 하실 수 있습니다. </p> 	
+				
+				<form method="post" id="pwfindForm">
+					<div class="pwfind-form">
 					
-					<!-- 비밀번호 -->
-					<div class="fm_pass">
-						<input type="password" name="pass" placeholder="비밀번호">
+						<!-- 이메일 -->
+						<div class="fm_email">
+							<input type="email" name="email" placeholder="이메일" id="email">
+						</div>
+						
+						<!-- 비밀번호 찾기 -->
+						<div class="fm_idpwsubmitBtn">
+							<input type="submit" value="비밀번호 찾기">
+						</div>
+	
 					</div>
-					
-					<!-- 로그인 -->
-					<div class="fm_submitBtn">
-						<input type="submit" value="로그인">
-					</div>
-					
-					<!-- 아이디 찾기/비밀번호 찾기 -->
-					<div class="fm_findBtn"> 
-						<ul>
-							<li> <a href="./MemberFindIDPW.me"> ID/PW 찾기 </a> </li>
-							<li style="border-left: 1px solid #666666"> <a href="./MemberJoin.me"> 회원가입 </a> </li>
-						</ul>
-					</div>
-					
-					
-				</div>
-			</form>
+				</form>
+			
+			</div>
 		</div>
 	</div>
 	
