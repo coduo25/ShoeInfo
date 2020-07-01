@@ -7,12 +7,14 @@ public class SneakerDTO {
 	private String brand;
 	private String sub_brand;
 	private String brand_index;
+	private String image_thumb;
 	private String image;
 	private String model_stylecode;
 	private String model_name;
 	private String model_colorway;
 	private int price;
 	private String release_date;
+	private String release_status;
 	
 	public String getBrand() {
 		return brand;
@@ -31,6 +33,13 @@ public class SneakerDTO {
 	}
 	public void setBrand_index(String brand_index) {
 		this.brand_index = brand_index;
+	}
+	
+	public String getImage_thumb() {
+		return image_thumb;
+	}
+	public void setImage_thumb(String image_thumb) {
+		this.image_thumb = image_thumb;
 	}
 	public String getImage() {
 		return image;
@@ -68,11 +77,10 @@ public class SneakerDTO {
 	public void setRelease_date(String string) {
 		this.release_date = string;
 	}
-	
-	@Override
-	public String toString() {
-		return "SneakerDTO [brand=" + brand + ", sub_brand=" + sub_brand + ", brand_index=" + brand_index + ", image="
-				+ image + ", model_stylecode=" + model_stylecode + ", model_name=" + model_name + ", model_colorway="
-				+ model_colorway + ", price=" + price + ", release_date=" + release_date + "]";
+	public String getRelease_status() {
+		return release_status;
+	}
+	public void setRelease_status(String release_status) {
+		this.release_status = release_status;
 	}
 }

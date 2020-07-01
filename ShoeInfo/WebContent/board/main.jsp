@@ -77,13 +77,8 @@
 					<div id="shoeList_image_1" class="shoelist_image">
 						<div id="shoeList_1<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_1 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_1 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -116,13 +111,8 @@
 					<div id="shoeList_image_2" class="shoelist_image">
 						<div id="shoeList_2<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_2 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_2 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -155,13 +145,8 @@
 					<div id="shoeList_image_3" class="shoelist_image">
 						<div id="shoeList_3<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_3 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_3 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -194,13 +179,8 @@
 					<div id="shoeList_image_4" class="shoelist_image">
 						<div id="shoeList_4<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_4 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_4 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -233,13 +213,8 @@
 					<div id="shoeList_image_5" class="shoelist_image">
 						<div id="shoeList_5<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_5 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_5 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -272,13 +247,8 @@
 					<div id="shoeList_image_6" class="shoelist_image">
 						<div id="shoeList_6<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_6 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_6 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -311,13 +281,8 @@
 					<div id="shoeList_image_7" class="shoelist_image">
 						<div id="shoeList_7<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_7 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_7 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -350,13 +315,8 @@
 					<div id="shoeList_image_8" class="shoelist_image">
 						<div id="shoeList_8<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_8 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_8 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -389,13 +349,8 @@
 					<div id="shoeList_image_9" class="shoelist_image">
 						<div id="shoeList_9<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_9 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_9 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -428,13 +383,8 @@
 					<div id="shoeList_image_10" class="shoelist_image">
 						<div id="shoeList_10<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_10 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_10 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -467,13 +417,8 @@
 					<div id="shoeList_image_11" class="shoelist_image">
 						<div id="shoeList_11<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_11 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_11 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -506,13 +451,8 @@
 					<div id="shoeList_image_12" class="shoelist_image">
 						<div id="shoeList_12<%=i%>">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  					<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
 							</a>
-							<%if(compare_releaseTime_12 == 1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매후 </span>
-							<%}else if(compare_releaseTime_12 == -1){%>
-								<span id="release_status<%=i%>" style="display:none"> 발매전 </span>
-							<%}%>
 						</div>
 					</div>
 				<%	
@@ -586,22 +526,6 @@
 		});
 
 
-		
-// 		//6월의 신발 리스트
-		var sneakerList6 = [];
-		<c:forEach items="${sneakerList4}" var="sneakerList4">
-			sneakerList6.push("${sneakerList6}");
-		</c:forEach>
-
-		for(var i=0; i<sneakerList6.length; i++){
-			//현재 발매 status가 발매후이면 blur 처리 발매전이면 그대로 유지
-			var release_status = document.getElementById('release_status'+i).innerText;
-			if(release_status.match("발매후")){
-				var shoeList_6 = $('#shoeList_6'+i);
-				shoeList_6.css({"opacity" : "0.3"} /*, {"pointer-events" : "none"}*/);	
-			}
-		}
-		
 	});
 
 

@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="net.member.db.MemberDrawDTO"%>
 <%@page import="net.offline.db.OfflineDTO"%>
 <%@page import="net.online.db.OnlineDTO"%>
@@ -15,7 +16,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SHOE INFO.</title>
 <link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -72,7 +73,10 @@
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d a HH:mm");
-		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");	
+		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		
+		DecimalFormat formatter = new DecimalFormat("#,###,###");
+		
 	%>
 	<div id="wrapper" class="container">
 
@@ -106,11 +110,11 @@
 							<div class="sneaker_option_info">
 								<span> 가격 : 
 								<%if(sdto.getPrice() == 0){%> 미정</span>
-								<%}else{%> $<%=sdto.getPrice() %></span> <%}%>
+								<%}else{%> <%=formatter.format(sdto.getPrice()) %>원 </span> <%}%>
 							</div>
 							<!-- relase_date -->
 							<div class="sneaker_option_info">
-								<span> 발매일(한국기준) :  <%=sdto.getRelease_date() %></span>
+								<span> 발매일(한국기준) :  <%=sdto.getRelease_date()%></span>
 							</div>
 						</div>
 						
@@ -183,7 +187,7 @@
 								<%if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
 								<%}else{%>
-								 	<span id="offline_start_time"> <%=new_Offline_start_time%> ~ </span>
+								 	<span id="offline_start_time"> <%=new_Offline_start_time%> </span>
 								<%}%>
 							<!-- 드로우일시 -->
 							<%}else if(ofdto_kr.getOffline_method().contains("드로우")){%> 
@@ -318,7 +322,7 @@
 								<%if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
 								<%}else{%>
-								 	<%=new_Online_start_time_kr%> ~ 
+								 	<%=new_Online_start_time_kr%> 
 								<%}%>
 							<!-- 드로우일시 -->
 							<%}else if(odto_kr.getOnline_method().contains("드로우")){%> 
@@ -342,21 +346,24 @@
 						</td>
 						<%}else if(odto_kr.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_kr<%=i%>">
+							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
+							<%if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00") && odto_kr.getOnline_end_time().contains("0000-00-00 00:00")) {%>
+								<span> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
-							<%if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_time().contains("0000-00-00") && !odto_kr.getOnline_end_time().contains("0000-00-00")){%>
+							<%}else if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_time().contains("0000-00-00") && !odto_kr.getOnline_end_time().contains("0000-00-00")){%>
 								<span id="final_count_Online_end_time_kr<%=i%>"></span>
-							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
-							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1){%>
+							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
+							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1 && !odto_kr.getOnline_start_time().contains("0000-00-00") && !odto_kr.getOnline_end_time().contains("0000-00-00")){%>
 								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
+							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_kr.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_kr == -1){%>
 								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
-							<%}else if(odto_kr.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_kr == -1){%>
-								<span> 응모전 </span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-							<%}else if(odto_kr.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_kr == 1){%>
+							<%}else if(!odto_kr.getOnline_start_time().contains("0000-00-00") && odto_kr.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_kr == 1){%>
 								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
+							<%}else if(!odto_kr.getOnline_start_time().contains("0000-00-00") && odto_kr.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_kr == -1) {%>
+								<span> 계산전 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_kr == 1 && !odto_kr.getOnline_start_time().contains("0000-00-00") && !odto_kr.getOnline_end_time().contains("0000-00-00")){%>
 								<span> 응모종료 </span>
@@ -466,7 +473,7 @@
 								<%if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
 								<%}else{%>
-								 	<%=new_Online_start_time_asia%> ~ 
+								 	<%=new_Online_start_time_asia%>
 								<%}%>
 							<!-- 드로우일시 -->
 							<%}else if(odto_asia.getOnline_method().contains("드로우")){%> 
@@ -490,21 +497,24 @@
 						</td>
 						<%}else if(odto_asia.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_asia<%=i%>">
+							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
+							<%if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00") && odto_asia.getOnline_end_time().contains("0000-00-00 00:00")) {%>
+								<span> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
-							<%if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_time().contains("0000-00-00") && !odto_asia.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_asia<%=i%>"></span>
-							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
-							<%}else if(compare_w_start_result_asia == 1 && compare_w_end_result_asia == -1){%>
-								<span id="final_count_Online_end_time_asia<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
+							<%}else if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_time().contains("0000-00-00") && !odto_asia.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
+							<%}else if(compare_w_start_result_asia == 1 && compare_w_end_result_asia == -1 && !odto_asia.getOnline_start_time().contains("0000-00-00") && !odto_asia.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_asia.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_asia == -1){%>
-								<span id="final_count_Online_end_time_asia<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
-							<%}else if(odto_asia.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_asia == -1){%>
-								<span> 응모전 </span>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-							<%}else if(odto_asia.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_asia == 1){%>
+							<%}else if(!odto_asia.getOnline_start_time().contains("0000-00-00") && odto_asia.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_asia == 1){%>
 								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
+							<%}else if(!odto_asia.getOnline_start_time().contains("0000-00-00") && odto_asia.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_asia == -1) {%>
+								<span> 계산전 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_asia == 1 && !odto_asia.getOnline_start_time().contains("0000-00-00") && !odto_asia.getOnline_end_time().contains("0000-00-00")){%>
 								<span> 응모종료 </span>
@@ -613,7 +623,7 @@
 								<%if(odto_america.getOnline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
 								<%}else{%>
-								 	<%=new_Online_start_time_america%> ~ 
+								 	<%=new_Online_start_time_america%> 
 								<%}%>
 							<!-- 드로우일시 -->
 							<%}else if(odto_america.getOnline_method().contains("드로우")){%> 
@@ -637,21 +647,24 @@
 						</td>
 						<%}else if(odto_america.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_america<%=i%>">
+							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
+							<%if(odto_america.getOnline_start_time().contains("0000-00-00 00:00") && odto_america.getOnline_end_time().contains("0000-00-00 00:00")) {%>
+								<span> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
-							<%if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_time().contains("0000-00-00") && !odto_america.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_america<%=i%>"></span>
-							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
-							<%}else if(compare_w_start_result_america == 1 && compare_w_end_result_america == -1){%>
-								<span id="final_count_Online_end_time_america<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
+							<%}else if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_time().contains("0000-00-00") && !odto_america.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
+							<%}else if(compare_w_start_result_america == 1 && compare_w_end_result_america == -1 && !odto_america.getOnline_start_time().contains("0000-00-00") && !odto_america.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_america.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_america == -1){%>
-								<span id="final_count_Online_end_time_america<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
-							<%}else if(odto_america.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_america == -1){%>
-								<span> 응모전 </span>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-							<%}else if(odto_america.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_america == 1){%>
+							<%}else if(!odto_america.getOnline_start_time().contains("0000-00-00") && odto_america.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_america == 1){%>
 								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
+							<%}else if(!odto_america.getOnline_start_time().contains("0000-00-00") && odto_america.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_america == -1) {%>
+								<span> 계산전 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_america == 1 && !odto_america.getOnline_start_time().contains("0000-00-00") && !odto_america.getOnline_end_time().contains("0000-00-00")){%>
 								<span> 응모종료 </span>
@@ -760,7 +773,7 @@
 								<%if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
 								<%}else{%>
-								 	<%=new_Online_start_time_europe%> ~ 
+								 	<%=new_Online_start_time_europe%>
 								<%}%>
 							<!-- 드로우일시 -->
 							<%}else if(odto_europe.getOnline_method().contains("드로우")){%> 
@@ -784,21 +797,24 @@
 						</td>
 						<%}else if(odto_europe.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_europe<%=i%>">
+							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
+							<%if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00") && odto_europe.getOnline_end_time().contains("0000-00-00 00:00")) {%>
+								<span> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
-							<%if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_europe<%=i%>"></span>
-							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
-							<%}else if(compare_w_start_result_europe == 1 && compare_w_end_result_europe == -1){%>
-								<span id="final_count_Online_end_time_europe<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
+							<%}else if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
+							<%}else if(compare_w_start_result_europe == 1 && compare_w_end_result_europe == -1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_europe.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_europe == -1){%>
-								<span id="final_count_Online_end_time_europe<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
-							<%}else if(odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == -1){%>
-								<span> 응모전 </span>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-							<%}else if(odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == 1){%>
+							<%}else if(!odto_europe.getOnline_start_time().contains("0000-00-00") && odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == 1){%>
 								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
+							<%}else if(!odto_europe.getOnline_start_time().contains("0000-00-00") && odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == -1) {%>
+								<span> 계산전 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_europe == 1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
 								<span> 응모종료 </span>
@@ -907,7 +923,7 @@
 								<%if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
 								<%}else{%>
-								 	<%=new_Online_start_time_etc%> ~ 
+								 	<%=new_Online_start_time_etc%>
 								<%}%>
 							<!-- 드로우일시 -->
 							<%}else if(odto_etc.getOnline_method().contains("드로우")){%> 
@@ -931,23 +947,26 @@
 						</td>
 						<%}else if(odto_etc.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_etc<%=i%>">
+							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
+							<%if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00") && odto_etc.getOnline_end_time().contains("0000-00-00 00:00")) {%>
+								<span> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
-							<%if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_etc<%=i%>"></span>
-							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
-							<%}else if(compare_w_start_result_etc == 1 && compare_w_end_result_etc == -1){%>
-								<span id="final_count_Online_end_time_etc<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
+							<%}else if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
+							<%}else if(compare_w_start_result_etc == 1 && compare_w_end_result_etc == -1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_etc.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_etc == -1){%>
-								<span id="final_count_Online_end_time_etc<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
-							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
-							<%}else if(odto_etc.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_etc == -1){%>
-								<span> 응모전 </span>
+								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-							<%}else if(odto_etc.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_etc == 1){%>
+							<%}else if(!odto_etc.getOnline_start_time().contains("0000-00-00") && odto_etc.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_etc == 1){%>
 								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
+							<%}else if(!odto_etc.getOnline_start_time().contains("0000-00-00") && odto_etc.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_etc == -1) {%>
+								<span> 계산전 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-							<%}else if(compare_w_end_result_etc == 1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
+							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
 								<span> 응모종료 </span>
 							<%}else{%>
 								<span> - </span>

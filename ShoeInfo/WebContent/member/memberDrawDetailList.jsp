@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="net.brand.db.BrandDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="net.member.db.MemberDrawDTO"%>
@@ -8,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SHOE INFO.</title>
 <link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -39,6 +40,8 @@
 		List<MemberDrawDTO> drawInfoList_etc = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
 		List<BrandDTO> brandList_etc = (List<BrandDTO>) request.getAttribute("brandList_etc");
 
+		DecimalFormat formatter = new DecimalFormat("#,###,###");
+		
 	%>
 	<div id="wrapper" class="container">
 
@@ -67,7 +70,7 @@
 							<div class="sneaker_option_info">
 								가격 : 
 								<%if(sdto.getPrice() == 0){%> <span>미정</span>
-								<%}else{%> <span> $<%=sdto.getPrice() %></span> <%}%>
+								<%}else{%> <span> $<%=formatter.format(sdto.getPrice()) %></span> <%}%>
 							</div>
 						</div>
 						

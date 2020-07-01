@@ -38,7 +38,11 @@
 						<td> <input type="text" name="brand_index" value="<%=sdto.getBrand_index()%>"> </td>
 					</tr>
 					<tr>
-						<td> 제품 이미지 </td>
+						<td> 제품 이미지 <br> (썸네일용 - 날짜 적혀있는) </td>
+						<td colspan="2"> <input type="file" name="file0"> </td>
+					</tr>
+					<tr>
+						<td> 제품 이미지 <br> (날짜 없는 사진) </td>
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>

@@ -39,8 +39,10 @@ public class UpdateSneakerAction implements Action{
 		sdto.setBrand(multi.getParameter("brand"));
 		sdto.setSub_brand(multi.getParameter("sub_brand"));
 		sdto.setBrand_index(multi.getParameter("brand_index"));
-		String image = multi.getFilesystemName("file1");
-		sdto.setImage(image);
+		String image0 = multi.getFilesystemName("file0");
+		String image1 = multi.getFilesystemName("file1");
+		sdto.setImage_thumb(image0);
+		sdto.setImage(image1);
 		sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
 		sdto.setModel_name(multi.getParameter("model_name"));
 		sdto.setModel_colorway(multi.getParameter("model_colorway"));

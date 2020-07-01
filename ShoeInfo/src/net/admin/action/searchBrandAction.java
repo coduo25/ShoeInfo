@@ -38,8 +38,6 @@ public class searchBrandAction implements Action{
 		CountryDAO cdao = new CountryDAO();
 		List<CountryDTO> countryList_all = (List<CountryDTO>) cdao.countryList_all();
 		
-		System.out.println("여기까지 온다");
-		
 		//BrandDB로부터 브랜드별 국가 리스트 가져오는 함수
 		BrandDAO bdao = new BrandDAO();
 		List countryList_bybrand = bdao.searchCountryList_bybrand();
