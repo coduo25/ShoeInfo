@@ -143,6 +143,85 @@ public class MemberDAO {
 		return check;
 	}
 	
+	//회원 아아디 찾는 함수
+	public String findEmail(String name, String phone){
+		String email = "";
+		try {
+			con = getConnection();
+			sql = "select email from shoeinfo_member where name = ? and phone = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				//DB에 메일이 존재하면
+				email = rs.getString(1);
+			}else {
+				//DB에 메일이 존재하지 않으면
+				email = "NOEMAIL";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return email;
+	}
+	
+	//회원 비밀번호 찾는 함수
+	public String findPW(String name, String email){
+		String checkEmail = "";
+		try {
+			con = getConnection();
+			sql = "select email from shoeinfo_member where name = ? and email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				//DB에 메일이 존재하면
+				checkEmail = rs.getString(1);
+			}else {
+				//DB에 메일이 존재하지 않으면
+				checkEmail = "NOEMAIL";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return checkEmail;
+	}
+	
+	//회원 비밀번호 재설정 하는 함수
+	public int changePass(String email, String pass){
+		int check = -1; 
+		try {
+			con = getConnection();
+			sql = "select email from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				sql = "update shoeinfo_member set pass = ? where email = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, pass);
+				pstmt.setString(2, email);
+				pstmt.executeUpdate();	
+				check = 1;
+			}
+			else {
+				check = 0;
+			}		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
 	//position 체크 하는 함수
 	public String positionCheck(String email){
 		String position = "";

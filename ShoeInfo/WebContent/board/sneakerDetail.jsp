@@ -379,7 +379,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_kr.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
+							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_kr.getBrand_id())){%>
 							<td id="draw-status_kr<%=i%>"> 
@@ -530,7 +530,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_asia.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_asia<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
+							<td id="draw-status_asia<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_asia.getBrand_id())){%>
 							<td id="draw-status_asia<%=i%>"> 
@@ -680,7 +680,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_america.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_america<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
+							<td id="draw-status_america<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_america.getBrand_id())){%>
 							<td id="draw-status_america<%=i%>"> 
@@ -830,7 +830,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_europe.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_europe<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
+							<td id="draw-status_europe<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_europe.getBrand_id())){%>
 							<td id="draw-status_europe<%=i%>"> 
@@ -980,7 +980,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_etc.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_etc<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인필요"> </a></td>
+							<td id="draw-status_etc<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_etc.getBrand_id())){%>
 							<td id="draw-status_etc<%=i%>"> 

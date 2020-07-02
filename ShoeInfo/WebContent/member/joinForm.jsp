@@ -163,6 +163,11 @@
 			$('.confirmMsg').hide("fast");
 		});
 		
+		//비밀번호 확인 input를 다시 클릭했을시
+		$("input[name=pass2]").click(function(){
+			this.value = '';
+		});
+		
 		//이름 input에 한글,영어만 입력하도록 하는 함수
 		$("input[name=name]").keyup(function(event){
 			var inputName = $(this).val();

@@ -46,7 +46,6 @@ public class MemberUpdateInfoAction implements Action{
 			out.print(str);
 			session.invalidate(); //로그아웃 시키기
 		}
-			
 		
 		return null;
 	}

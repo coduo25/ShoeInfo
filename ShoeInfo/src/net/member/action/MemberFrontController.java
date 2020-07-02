@@ -167,6 +167,39 @@ public class MemberFrontController extends HttpServlet{
 			forward.setPath("./member/lostinfo.jsp");
 			forward.setRedirect(false);
 		}
+		//회원 아이디 찾는 페이지로 이동하기
+		else if(command.equals("/MemberIDFindAction.me")){
+			action = new MemberIDFindAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 비밀번호 찾는 페이지로 이동하기
+		else if(command.equals("/MemberPWFindAction.me")){
+			action = new MemberPWFindAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 비밀번호 바꾸는 페이지로 이동하기
+		else if(command.equals("/ChangePass.me")){
+			forward = new ActionForward();
+			forward.setPath("./member/changePass.jsp");
+			forward.setRedirect(false);
+		}
+		//회원 비밀번호 변경 처리하기
+		else if(command.equals("/MemberChangePassAction.me")){
+			action = new MemberChangePassAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		/************************************************************

@@ -1,11 +1,10 @@
 <%@page import="net.member.db.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta content="width=device-width, initial-scale=1" name="viewport" />
 <title>SHOE INFO.</title>
 <link href="./css/board/member.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
@@ -15,9 +14,12 @@
 <body>
 
 	<%
-		MemberDTO mdto = (MemberDTO) session.getAttribute("mdto");
+		String email = request.getParameter("email");
+		if(email == null || email == ""){
+			response.sendRedirect("./MemberLogin.me");
+		}
 	%>
-
+	
 	<!-- Header -->
 	<header>
 		<jsp:include page="/include/header.jsp" />
@@ -28,14 +30,14 @@
 		<!-- content -->
 		<div id="content_modify">
 
-			<h3>회원정보 입력</h3>
+			<h3>비밀번호 재설정</h3>
 
 			<form action="#" method="post" name="modiForm" id="modiForm">
 				<div class="modi-form">
 				
 					<!-- 이메일 -->
 					<div class="fm_email">
-						<input type="email" name="email" placeholder="이메일" value="<%=mdto.getEmail()%>" disabled> 
+						<input type="email" name="email" placeholder="이메일" value="<%=email%>" disabled> 
 					</div>
 
 					<!-- 비밀번호 -->
@@ -52,20 +54,10 @@
 					<div class="fm_passChk">
 						<input type="password" name="pass2" placeholder="비밀번호 확인">
 					</div>
-
-					<!-- 이름 -->
-					<div class="fm_name">
-						<input type="text" name="name" placeholder="이름" value="<%=mdto.getName()%>">
-					</div>
-
-					<!-- 휴대폰번호 -->
-					<div class="fm_phone">
-						<input type="text" name="phone" placeholder="휴대폰번호( '-' 제외)" maxlength="13" pattern="\d*" value="<%=mdto.getPhone()%>">
-					</div>
 					
 					<!-- 수정하기 버튼 -->
 					<div class="fm_submitBtn">
-						<input type="button" value="수정하기" class="modi_submitBtn">
+						<input type="button" value="재설정하기" class="modi_submitBtn">
 					</div>
 				</div>
 
@@ -110,19 +102,6 @@
 			this.value = '';
 		});
 		
-		//이름 input에 한글,영어만 입력하도록 하는 함수
-		$("input[name=name]").keyup(function(event){
-			var inputName = $(this).val();
-			$(this).val(inputName.replace(/[^ㄱ-힣a-zA-Z]/gi,''));
-		});
-	
-		
-		//휴대폰번호 input에 숫자만 입력하도록 하는 함수
-		$("input[name=phone]").keyup(function(event){
-			var inputNum = $(this).val();
-			$(this).val(inputNum.replace(/[^0-9]/gi,''));
-		});
-		
 		// ----------------------------------------------------------------------------
 		// 모든 input 유효성 검사하는 함수
 		
@@ -152,28 +131,16 @@
 				$('input[name=pass2]').focus();
 				return false;
 			}
-			//이름 빈칸이면
-			else if($('input[name=name]').val() == ''){
-				alert("이름을 입력해주세요.");
-				$('input[name=name]').focus();
-				return false;
-			}
-			//휴대폰 번호 빈칸이면
-			else if($('input[name=phone]').val() == ''){
-				alert("휴대폰을 입력해주세요.");
-				$('input[name=phone]').focus();
-				return false;
-			}
-			
+
 			//모든 유효성 검사 통과했을시 Ajax로 정보 수정하기
 			$.ajax({
 				type:"post",
-				url:"./MemberUpdateInfoAction.me",
-				data: {"email":$("input[name=email]").val(), "pass":$("input[name=pass]").val(), "name":$("input[name=name]").val(), "phone":$("input[name=phone]").val()},
+				url:"./MemberChangePassAction.me",
+				data: {"email":$("input[name=email]").val(), "pass":$("input[name=pass]").val()},
 				success:function(data){
 					//정보 수정했을시
 					if($.trim(data) == "YES"){
-						alert("회원 정보가 수정되었습니다.");
+						alert("비밀번호가 재설정되었습니다.");
 						location.href="./MemberLogin.me";
 					}
 					//가입되어 있지 않은 이메일이면
@@ -193,5 +160,4 @@
 	});
 
 </script>
-
 </html>
