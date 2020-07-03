@@ -75,6 +75,8 @@
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d a HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		
+		SimpleDateFormat new_offline_time_format = new SimpleDateFormat("M/d");
+		
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
 		
 	%>
@@ -135,7 +137,7 @@
 							<td style="width:50px;"> </td>
 							<td style="width:130px;"> </td>
 							<td> </td>
-							<td style="width:200px;"> </td>
+							<td style="width:200px;"> 시간 </td>
 							<td style="width:200px;"> 남은시간 </td>
 							<td style="width:160px;"> 응모방식 </td>
 							<td style="width:60px;"> 정보 </td>
@@ -158,6 +160,8 @@
 							// 04/18 10:00
 							String new_Offline_start_time = new_format.format(original_Offline_start_time);
 							String new_Offline_end_time = new_format.format(original_Offline_end_time);
+							// 04/18
+							String new_Offline_start_time_2 = new_offline_time_format.format(original_Offline_start_time);
 							
 							// 04/18/2020 10:00
 							String count_Offline_end_time = count_format.format(original_Offline_end_time);
@@ -172,7 +176,7 @@
 					%>
 					<tr>
 						<td> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=ofdto_kr.getOffline_location()%> <%=bdto_kr.getBrand_name()%> </a> </td>
+						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
 						
 						<td> 
 							<label class="fas_slide_down_off" id="fas_slide_down_kr<%=i%>"> <i class="fas fa-caret-down"></i> </label>
@@ -186,6 +190,8 @@
 								<!-- 시작시간이 아직 미정일때 -->
 								<%if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
+								<%}else if(ofdto_kr.getOffline_start_time().contains("00:00")){%>
+									<span id="offline_start_time"> <%=new_Offline_start_time_2%> 시간랜덤</span>
 								<%}else{%>
 								 	<span id="offline_start_time"> <%=new_Offline_start_time%> </span>
 								<%}%>

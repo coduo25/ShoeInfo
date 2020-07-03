@@ -32,7 +32,12 @@ public class AddOfflineInfoAction implements Action{
 		String country_name = request.getParameter("country_name");
 		String brand_name = request.getParameter("brand_name");
 		String offline_location = request.getParameter("offline_location");
+		
 		String offline_link = request.getParameter("offline_link");
+		//공지나 해당 게시물 링크가 없을시,
+		if(offline_link.equals("") || offline_link == null){
+			offline_link = "";
+		}
 		
 		String offline_date_start = request.getParameter("offline_date_start");
 		String offline_hour_start = request.getParameter("offline_hour_start");
