@@ -90,7 +90,7 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ?";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ? order by online_method desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "대한민국");
@@ -159,7 +159,7 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ?";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ? order by online_method desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "아시아");
@@ -227,7 +227,7 @@ public class OnlineDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ?";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? order by online_method desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, country_region);

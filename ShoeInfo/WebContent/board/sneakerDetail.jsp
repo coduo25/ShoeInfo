@@ -159,6 +159,7 @@
 							String new_Online_end_time_kr = new_format.format(original_Online_end_time_kr);
 							
 							// 04/18/2020 10:00
+							String count_Online_start_time_kr = count_format.format(original_Online_start_time_kr);
 							String count_Online_end_time_kr = count_format.format(original_Online_end_time_kr);
 							
 							// 오늘 날짜
@@ -193,16 +194,28 @@
 								<%}else if(odto_kr.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_kr%> ~
 								<%}else{%>
-									<%=new_Online_start_time_kr%> ~ <%=new_Online_end_time_kr%>
+									<%=new_Online_start_time_kr%> <span id="tilde">~</span> <%=new_Online_end_time_kr%>
 								<%}%>
 							<%}%>
 						</td>
 						
 						<!-- 남은시간 -->
+						<span id="count_Online_start_time_kr<%=i%>" style="display:none;"> <%=count_Online_start_time_kr%> </span>
 						<span id="count_Online_end_time_kr<%=i%>" style="display:none;"> <%=count_Online_end_time_kr%> </span>
 						<%if(odto_kr.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_kr<%=i%>">
-							<span> - </span>
+							<!-- 시작 시간이 존재할때  -->
+							<%if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span id="final_count_Online_start_time_kr<%=i%>" class="draw_count_result"></span>
+							<!-- 시작시간이 오늘보다 지났을때 -->
+							<%}else if(compare_w_start_result_kr == 1 && !odto_kr.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 종료 </span>
+							<!-- 시작 시간이 미정일때 -->
+							<%}else if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 추후공지예정 </span>
+							<%}else {%>
+								<span class="draw_count_result"> - </span>
+							<%} %>
 						</td>
 						<%}else if(odto_kr.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_kr<%=i%>">
@@ -233,8 +246,18 @@
 						</td>
 						<%}%>
 						
-						<!-- 응모방식 -->
-						<td id="online_method_kr<%=i%>"> <%=odto_kr.getOnline_method()%> </td>
+						<!-- 응모방식/직배여부 -->
+						<td id="online_method_kr<%=i%>"> 
+							<%if(odto_kr.getOnline_method().contains("선착")){%> 
+							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_kr.getOnline_method()%> </span>
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_kr.getDelivery_method()%></span> </span> 
+							<%}else if(odto_kr.getOnline_method().contains("드로우")) {%>
+							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_kr.getOnline_method()%> <span class="tooltiptext1" > <%=odto_kr.getBuy_method()%></span> </span> 
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_kr.getDelivery_method()%></span> </span> 
+							<%} %>
+						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -303,6 +326,7 @@
 							String new_Online_end_time_asia = new_format.format(original_Online_end_time_asia);
 							
 							// 04/18/2020 10:00
+							String count_Online_start_time_asia = count_format.format(original_Online_start_time_asia);
 							String count_Online_end_time_asia = count_format.format(original_Online_end_time_asia);
 							
 							// 오늘 날짜
@@ -337,16 +361,28 @@
 								<%}else if(odto_asia.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_asia%> ~
 								<%}else{%>
-									<%=new_Online_start_time_asia%> ~ <%=new_Online_end_time_asia%>
+									<%=new_Online_start_time_asia%> <span id="tilde">~</span> <%=new_Online_end_time_asia%>
 								<%}%>
 							<%}%>
 						</td>
 						
 						<!-- 남은시간 -->
+						<span id="count_Online_start_time_asia<%=i%>" style="display:none;"> <%=count_Online_start_time_asia%> </span>
 						<span id="count_Online_end_time_asia<%=i%>" style="display:none;"> <%=count_Online_end_time_asia%> </span>
 						<%if(odto_asia.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_asia<%=i%>">
-							<span> - </span>
+							<!-- 시작 시간이 존재할때  -->
+							<%if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span id="final_count_Online_start_time_asia<%=i%>" class="draw_count_result"></span>
+							<!-- 시작시간이 오늘보다 지났을때 -->
+							<%}else if(compare_w_start_result_asia == 1 && !odto_asia.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 종료 </span>
+							<!-- 시작 시간이 미정일때 -->
+							<%}else if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 추후공지예정 </span>
+							<%}else {%>
+								<span class="draw_count_result"> - </span>
+							<%} %>
 						</td>
 						<%}else if(odto_asia.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_asia<%=i%>">
@@ -377,8 +413,18 @@
 						</td>
 						<%}%>
 						
-						<!-- 응모 방식 -->
-						<td> <span class="tooltip1"> <%=odto_asia.getOnline_method()%> <span class="tooltiptext1"> <%=odto_asia.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_asia.getDelivery_method()%></span></span> </td>
+						<!-- 응모방식 -->
+						<td id="online_method_asia<%=i%>"> 
+							<%if(odto_asia.getOnline_method().contains("선착")){%> 
+							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_asia.getOnline_method()%> </span>
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_asia.getDelivery_method()%></span> </span> 
+							<%}else if(odto_asia.getOnline_method().contains("드로우")) {%>
+							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_asia.getOnline_method()%> <span class="tooltiptext1" > <%=odto_asia.getBuy_method()%></span> </span> 
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_asia.getDelivery_method()%></span> </span> 
+							<%} %>
+						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -446,6 +492,7 @@
 							String new_Online_end_time_america = new_format.format(original_Online_end_time_america);
 							
 							// 04/18/2020 10:00
+							String count_Online_start_time_america = count_format.format(original_Online_start_time_america);
 							String count_Online_end_time_america = count_format.format(original_Online_end_time_america);
 							
 							// 오늘 날짜
@@ -480,16 +527,28 @@
 								<%}else if(odto_america.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_america%> ~
 								<%}else{%>
-									<%=new_Online_start_time_america%> ~ <%=new_Online_end_time_america%>
+									<%=new_Online_start_time_america%> <span id="tilde">~</span> <%=new_Online_end_time_america%>
 								<%}%>
 							<%}%>
 						</td>
 						
 						<!-- 남은시간 -->
+						<span id="count_Online_start_time_america<%=i%>" style="display:none;"> <%=count_Online_start_time_america%> </span>
 						<span id="count_Online_end_time_america<%=i%>" style="display:none;"> <%=count_Online_end_time_america%> </span>
 						<%if(odto_america.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_america<%=i%>">
-							<span> - </span>
+							<!-- 시작 시간이 존재할때  -->
+							<%if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span id="final_count_Online_start_time_america<%=i%>" class="draw_count_result"></span>
+							<!-- 시작시간이 오늘보다 지났을때 -->
+							<%}else if(compare_w_start_result_america == 1 && !odto_america.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 종료 </span>
+							<!-- 시작 시간이 미정일때 -->
+							<%}else if(odto_america.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 추후공지예정 </span>
+							<%}else {%>
+								<span class="draw_count_result"> - </span>
+							<%} %>
 						</td>
 						<%}else if(odto_america.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_america<%=i%>">
@@ -521,7 +580,17 @@
 						<%}%>
 						
 						<!-- 응모방식/직배 여부 -->
-						<td id="online_method_america<%=i%>"> <span class="tooltip1"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1"> <%=odto_america.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span></span> </td>
+						<td id="online_method_america<%=i%>"> 
+							<%if(odto_america.getOnline_method().contains("선착")){%> 
+							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_america.getOnline_method()%> </span>
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_america.getDelivery_method()%></span> </span> 
+							<%}else if(odto_america.getOnline_method().contains("드로우")) {%>
+							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_america.getOnline_method()%> <span class="tooltiptext1" > <%=odto_america.getBuy_method()%></span> </span> 
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span> </span> 
+							<%} %>
+						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -589,6 +658,7 @@
 							String new_Online_end_time_europe = new_format.format(original_Online_end_time_europe);
 							
 							// 04/18/2020 10:00
+							String count_Online_start_time_europe = count_format.format(original_Online_start_time_europe);
 							String count_Online_end_time_europe = count_format.format(original_Online_end_time_europe);
 							
 							// 오늘 날짜
@@ -623,16 +693,28 @@
 								<%}else if(odto_europe.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_europe%> ~
 								<%}else{%>
-									<%=new_Online_start_time_europe%> ~ <%=new_Online_end_time_europe%>
+									<%=new_Online_start_time_europe%> <span id="tilde">~</span> <%=new_Online_end_time_europe%>
 								<%}%>
 							<%}%>
 						</td>
 						
 						<!-- 남은시간 -->
+						<span id="count_Online_start_time_europe<%=i%>" style="display:none;"> <%=count_Online_start_time_europe%> </span>
 						<span id="count_Online_end_time_europe<%=i%>" style="display:none;"> <%=count_Online_end_time_europe%> </span>
 						<%if(odto_europe.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_europe<%=i%>">
-							<span> - </span>
+							<!-- 시작 시간이 존재할때  -->
+							<%if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span id="final_count_Online_start_time_europe<%=i%>" class="draw_count_result"></span>
+							<!-- 시작시간이 오늘보다 지났을때 -->
+							<%}else if(compare_w_start_result_europe == 1 && !odto_europe.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 종료 </span>
+							<!-- 시작 시간이 미정일때 -->
+							<%}else if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 추후공지예정 </span>
+							<%}else {%>
+								<span class="draw_count_result"> - </span>
+							<%} %>
 						</td>
 						<%}else if(odto_europe.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_europe<%=i%>">
@@ -663,8 +745,18 @@
 						</td>
 						<%}%>
 						
-						<!-- 응모방식/직배여부 -->
-						<td id="online_method_europe<%=i%>"> <span class="tooltip1"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1"> <%=odto_europe.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span></span> </td>
+						<!-- 응모방식/직배 여부 -->
+						<td id="online_method_europe<%=i%>"> 
+							<%if(odto_europe.getOnline_method().contains("선착")){%> 
+							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_europe.getOnline_method()%> </span>
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_europe.getDelivery_method()%></span> </span> 
+							<%}else if(odto_europe.getOnline_method().contains("드로우")) {%>
+							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_europe.getOnline_method()%> <span class="tooltiptext1" > <%=odto_europe.getBuy_method()%></span> </span> 
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span> </span> 
+							<%} %>
+						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -732,7 +824,8 @@
 							String new_Online_end_time_etc = new_format.format(original_Online_end_time_etc);
 							
 							// 04/18/2020 10:00
-							String count_Online_end_time_etc = count_format.format(original_Online_start_time_etc);
+							String count_Online_start_time_etc = count_format.format(original_Online_start_time_etc);
+							String count_Online_end_time_etc = count_format.format(original_Online_end_time_etc);
 							
 							// 오늘 날짜
 							Date currentTime = new Date();
@@ -766,16 +859,28 @@
 								<%}else if(odto_etc.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_etc%> ~
 								<%}else{%>
-									<%=new_Online_start_time_etc%> ~ <%=new_Online_end_time_etc%>
+									<%=new_Online_start_time_etc%> <span id="tilde">~</span> <%=new_Online_end_time_etc%>
 								<%}%>
 							<%}%>
 						</td>
 						
 						<!-- 남은시간 -->
+						<span id="count_Online_start_time_etc<%=i%>" style="display:none;"> <%=count_Online_start_time_etc%> </span>
 						<span id="count_Online_end_time_etc<%=i%>" style="display:none;"> <%=count_Online_end_time_etc%> </span>
 						<%if(odto_etc.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_etc<%=i%>">
-							<span> - </span>
+							<!-- 시작 시간이 존재할때  -->
+							<%if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span id="final_count_Online_start_time_etc<%=i%>" class="draw_count_result"></span>
+							<!-- 시작시간이 오늘보다 지났을때 -->
+							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 종료 </span>
+							<!-- 시작 시간이 미정일때 -->
+							<%}else if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00")) {%>
+								<span class="draw_count_result"> 추후공지예정 </span>
+							<%}else {%>
+								<span class="draw_count_result"> - </span>
+							<%} %>
 						</td>
 						<%}else if(odto_etc.getOnline_method().contains("드로우")){%>
 						<td id="remain_time_status_etc<%=i%>">
@@ -807,7 +912,17 @@
 						<%}%>
 						
 						<!-- 응모방식/직배 여부 -->
-						<td id="online_method_etc<%=i%>"> <span class="tooltip1"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1"> <%=odto_etc.getBuy_method()%></span></span> / <span class="tooltip2"> 직배여부 <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span></span> </td>
+						<td id="online_method_europe<%=i%>"> 
+							<%if(odto_etc.getOnline_method().contains("선착")){%> 
+							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_etc.getOnline_method()%> </span>
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_etc.getDelivery_method()%></span> </span> 
+							<%}else if(odto_etc.getOnline_method().contains("드로우")) {%>
+							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_etc.getOnline_method()%> <span class="tooltiptext1" > <%=odto_etc.getBuy_method()%></span> </span> 
+							/ 
+							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span> </span> 
+							<%} %>
+						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -868,7 +983,7 @@
 				var distDt = _vDate - now;
 				if (distDt < 0) {
 					clearInterval(timer);
-					document.getElementById(id).textContent = '응모종료'; 
+					document.getElementById(id).textContent = '종료'; 
 					document.getElementById(drawstatus_id).textContent = '-';
 					return; 
 				} 
@@ -891,12 +1006,15 @@
 		</c:forEach>
 		//onLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_kr.length; i++) {		
+			var count_span_start = document.getElementById("count_Online_start_time_kr"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_kr"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_kr'+i, count_span_start, 'draw-status_kr'+i);
 			countDownTimer('final_count_Online_end_time_kr'+i, count_span, 'draw-status_kr'+i);
 			
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_kr = document.getElementById('remain_time_status_kr'+i).innerText;
-			if(remain_time_status_kr.match("응모종료")){
+			if(remain_time_status_kr.match("종료") || remain_time_status_kr.match("응모종료")){
 				var kr_drawRaw = $('#kr_drawRaw'+i);
 				kr_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				
@@ -912,12 +1030,15 @@
 		</c:forEach>
 		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_asia.length; i++) {		
+			var count_span_start = document.getElementById("count_Online_start_time_asia"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_asia"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_asia'+i, count_span_start, 'draw-status_asia'+i);
 			countDownTimer('final_count_Online_end_time_asia'+i, count_span, 'draw-status_asia'+i);
 			
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_asia = document.getElementById('remain_time_status_asia'+i).innerText;
-			if(remain_time_status_asia.match("응모종료")){
+			if(remain_time_status_asia.match("종료") || remain_time_status_asia.match("응모종료")){
 				var asia_drawRaw = $('#asia_drawRaw'+i);
 				asia_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				
@@ -932,13 +1053,16 @@
 			onLineList_america.push("${onLineList_america}");
 		</c:forEach>
 		//onLineList_america 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
-		for(var i=0; i<onLineList_america.length; i++) {		
+		for(var i=0; i<onLineList_america.length; i++) {
+			var count_span_start = document.getElementById("count_Online_start_time_america"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_america"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_america'+i, count_span_start, 'draw-status_america'+i);
 			countDownTimer('final_count_Online_end_time_america'+i, count_span, 'draw-status_america'+i);
 			
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_america = document.getElementById('remain_time_status_america'+i).innerText;
-			if(remain_time_status_america.match("응모종료")){
+			if(remain_time_status_america.match("종료") || remain_time_status_america.match("응모종료")){
 				var america_drawRaw = $('#america_drawRaw'+i);
 				america_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				
@@ -954,13 +1078,16 @@
 		</c:forEach>
 		//onLineList_europe 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_europe.length; i++) {		
-			var count_span = document.getElementById("count_Online_end_time_europe"+i).innerText; // 00/00/0000 00:00
+			var count_span_start = document.getElementById("count_Online_start_time_europe"+i).innerText;
+			var count_span = document.getElementById("count_Online_end_time_europe"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_europe'+i, count_span_start, 'draw-status_europe'+i);
 			countDownTimer('final_count_Online_end_time_europe'+i, count_span, 'draw-status_europe'+i);
 			
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_europe = document.getElementById('remain_time_status_europe'+i).innerText;
 			//alert(remain_time_status_europe);
-			if(remain_time_status_europe.match("응모종료")){
+			if(remain_time_status_europe.match("종료") || remain_time_status_europe.match("응모종료")){
 				var europe_drawRaw = $('#europe_drawRaw'+i);
 				europe_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				
@@ -976,12 +1103,15 @@
 		</c:forEach>
 		//onLineList_etc 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_etc.length; i++) {		
+			var count_span_start = document.getElementById("count_Online_start_time_etc"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_etc"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_etc'+i, count_span_start, 'draw-status_etc'+i);
 			countDownTimer('final_count_Online_end_time_etc'+i, count_span, 'draw-status_etc'+i);
 			
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_etc = document.getElementById('remain_time_status_etc'+i).innerText;
-			if(remain_time_status_etc.match("응모종료")){
+			if(remain_time_status_etc.match("종료") || remain_time_status_etc.match("응모종료")){
 				var etc_drawRaw = $('#etc_drawRaw'+i);
 				etc_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				

@@ -101,8 +101,8 @@
 									<option value="선착순 구매"> 선착순 구매 </option>
 									<option value="당첨 후 결제"> 당첨 후 결제 </option>
 									<option value="당첨전 선결제"> 당첨 전 선결제 </option>
-									<option value="당첨자간 선착순 구매"> 당첨자간 선착순 구매 </option> 
-									<option value="-"> - </optino>
+									<option value="당첨자간 선착순"> 당첨자간 선착순 구매 </option> 
+									<option value="-"> - </option>
 								</select>
 							</td>
 						</tr>
@@ -112,7 +112,7 @@
 								<select name="delivery_method">
 									<option value="default"> 직배여부를 선택해주세요. </option>
 									<option value="직배가능"> 직배가능 </option>
-									<option value="직배불가(배대지추천)"> 직배불가(배대지추천) </option>
+									<option value="배대지"> 직배불가(배대지추천) </option>
 									<option value="-"> - </option>
 								</select>
 							</td>
