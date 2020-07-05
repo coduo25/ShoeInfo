@@ -7,6 +7,15 @@ body { font-size: 1em; line-weight: 1.4; }
 a { text-decoration: none; color: #000000; }
 
 /* 오늘 날짜 헤더 */
+#datebar_div { width: 100%; background-color: black; }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
 .datebar {
 	display: flex;
 	max-width: 1200px;

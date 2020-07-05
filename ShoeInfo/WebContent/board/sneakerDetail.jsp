@@ -1,6 +1,5 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="net.member.db.MemberDrawDTO"%>
-<%@page import="net.offline.db.OfflineDTO"%>
 <%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.util.Date"%>
 <%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
@@ -45,9 +44,6 @@
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
 	
 		//브랜드 정보 리스트
-		// ---------- 오프라인 정보 -----------
-		List<OfflineDTO> offLineList_kr = (List<OfflineDTO>) request.getAttribute("offLineList_kr");
-		List<BrandDTO> brandList_off_kr = (List<BrandDTO>) request.getAttribute("brandList_off_kr");
 		
 		// ---------- 온라인 정보 -----------
 		//대한민국
@@ -75,11 +71,11 @@
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d a HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		
-		SimpleDateFormat new_offline_time_format = new SimpleDateFormat("M/d");
-		
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
 		
 	%>
+	<input type="hidden" class="login_user" value="<%=user%>">
+	
 	<div id="wrapper" class="container">
 
 		<!-- content -->
@@ -116,7 +112,7 @@
 							</div>
 							<!-- relase_date -->
 							<div class="sneaker_option_info">
-								<span> 발매일(한국기준) :  <%=sdto.getRelease_date()%></span>
+								<span> 발매일(글로벌) :  <%=sdto.getRelease_date()%></span>
 							</div>
 						</div>
 						
@@ -128,155 +124,20 @@
 			%>
 				<a href="./searchBrand.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="제품 발매 정보 추가하기" style="float: right;"></a>
 			<%}%>
-			<!-- 신발 온라인/오프라인 정보 -->
+			<!-- 신발 온라인 정보 -->
 			<div id="content_sneakerInfo">
-				<!-- 오프라인 테이블 -->
-				<table id="sneakerOfflineInfo_table">
-						<h4> [오프라인 발매처]</h4>
-						<tr class="ta_release_info">
-							<td style="width:50px;"> </td>
-							<td style="width:130px;"> </td>
-							<td> </td>
-							<td style="width:200px;"> 시간 </td>
-							<td style="width:200px;"> 남은시간 </td>
-							<td style="width:160px;"> 응모방식 </td>
-							<td style="width:60px;"> 정보 </td>
-						</tr>
-					<%
-						if(offLineList_kr.isEmpty()){
-					%>
-						<tr style="height: 70px;">
-							<td colspan="7" id="no_info"> 아직 오프라인 발매 정보가 없습니다. </td>
-						</tr>	 
-					<%	} else {
-						for(int i=0; i<offLineList_kr.size();i++){	
-							OfflineDTO ofdto_kr = (OfflineDTO) offLineList_kr.get(i);
-							BrandDTO bdto_kr = (BrandDTO) brandList_off_kr.get(i);
-							
-							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
-							// 2020-04-18 10:00
-							Date original_Offline_start_time = original_format.parse(ofdto_kr.getOffline_start_time());
-							Date original_Offline_end_time = original_format.parse(ofdto_kr.getOffline_end_time());
-							// 04/18 10:00
-							String new_Offline_start_time = new_format.format(original_Offline_start_time);
-							String new_Offline_end_time = new_format.format(original_Offline_end_time);
-							// 04/18
-							String new_Offline_start_time_2 = new_offline_time_format.format(original_Offline_start_time);
-							
-							// 04/18/2020 10:00
-							String count_Offline_end_time = count_format.format(original_Offline_end_time);
-							
-							// 오늘 날짜
-							Date currentTime = new Date();
-							String current = original_format.format(currentTime);
-							Date today = original_format.parse(current);
-							
-							int compare_w_start_result_kr = today.compareTo(original_Offline_start_time);	//응모 시작하는 시간
-							int compare_w_end_result_kr = today.compareTo(original_Offline_end_time); 		//응모 끝나는 시간
-					%>
-					<tr>
-						<td> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td style="text-align:left; padding-left: 15px;"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
-						
-						<td> 
-							<label class="fas_slide_down_off" id="fas_slide_down_kr<%=i%>"> <i class="fas fa-caret-down"></i> </label>
-							<label class="fas_slide_up_off" id="fas_slide_up_kr<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
-						</td>
-						
-						<!-- 응모시간 -->
-						<td id="draw_time_off<%=i%>"> 			
-							<!-- 선착일시 -->
-							<%if(ofdto_kr.getOffline_method().contains("선착")){%>
-								<!-- 시작시간이 아직 미정일때 -->
-								<%if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00")){%>
-									<span> 추후공지예정 </span>
-								<%}else if(ofdto_kr.getOffline_start_time().contains("00:00")){%>
-									<span id="offline_start_time"> <%=new_Offline_start_time_2%> 시간랜덤</span>
-								<%}else{%>
-								 	<span id="offline_start_time"> <%=new_Offline_start_time%> </span>
-								<%}%>
-							<!-- 드로우일시 -->
-							<%}else if(ofdto_kr.getOffline_method().contains("드로우")){%> 
-								<%if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00") && ofdto_kr.getOffline_end_time().contains("0000-00-00 00:00")){%>
-									<span> 추후공지예정 </span>
-								<%}else if(ofdto_kr.getOffline_start_time().contains("0000-00-00 00:00")){%>
-									<span id="offline_start_time"> ~ <%=new_Offline_end_time%> </span>
-								<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00 00:00")){%>
-									<span id="offline_start_time"> <%=new_Offline_start_time%> ~ </span>
-								<%}else{%>
-									<span id="offline_start_time"> <%=new_Offline_start_time%> ~ <%=new_Offline_end_time%> </span>
-								<%}%>
-							<%}%>	
-						
-						</td>
-						
-						<!--  남은시간 -->
-						<span id="count_Offline_end_time<%=i%>" style="display: none;"> <%=count_Offline_end_time%> </span>
-						<span id="draw-status-off_kr<%=i%>" style="display: none;"> </span>
-						<%if(ofdto_kr.getOffline_method().contains("선착")){%>
-							<td id="remain_time_status_off<%=i%>">
-								<span> - </span>
-							</td>
-<%-- 						<%}else{%> --%>
-							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때 -->
-<%-- 							<%if(compare_w_start_result_kr == -1 && !ofdto_kr.getOffline_start_time().contains("0000-00-00") && !ofdto_kr.getOffline_end_time().contains("0000-00-00")){%> --%>
-<%-- 								<td id="final_count_Offline_end_time<%=i%>"> </td> --%>
-								
-							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 응모시간 사이일때 -->
-<%-- 							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1){%> --%>
-<%-- 								<td> <span id="final_count_Offline_end_time<%=i%>"></span> <span id="draw_count_result_ing">진행중</span> </td> --%>
-							<!-- 시작시간이 없고 끝나는 시간만 존재하고 오늘이 응모시간 전일때 -->
-<%-- 							<%}else if(ofdto_kr.getOffline_start_time().contains("0000-00-00") && compare_w_end_result_kr == -1){%> --%>
-<%-- 								<span id="final_count_Offline_end_time<%=i%>"></span> <span id="draw_count_result_ing">진행중</span> --%>
-							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
-<%-- 							<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00") && compare_w_start_result_kr == -1){%> --%>
-<!-- 								<span> 응모전 </span> -->
-							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-<%-- 							<%}else if(ofdto_kr.getOffline_end_time().contains("0000-00-00") && compare_w_start_result_kr == 1){%> --%>
-<!-- 								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span> -->
-							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-<%-- 							<%}else if(compare_w_end_result_kr == 1 && !ofdto_kr.getOffline_start_time().contains("0000-00-00") && !ofdto_kr.getOffline_end_time().contains("0000-00-00")){%> --%>
-<!-- 								<span> 응모종료 </span> -->
-<%-- 							<%}else{%> --%>
-<!-- 								<td> - </td> -->
-<%-- 							<%}%> --%>
-						<%}%>
-						
-						<!-- 오프라인 방식 -->
-						<td id="online_method_off<%=i%>"> <%=ofdto_kr.getOffline_method()%> </td>
-						
-						<!-- 보기란 -->
-						<% if(ofdto_kr.getOffline_link().equals("")) {%>
-							<td id="info_link_off<%=i%>"> - </td>
-						<%} else {%>
-							<td id="info_link_off<%=i%>"> <a href="<%=ofdto_kr.getOffline_link()%>" target="_blank">보기</a> </td>
-						<%}%>
-						
-						<%if(user.equals("admin")){%>
-							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=ofdto_kr.getModel_stylecode()%>&brand_id=<%=ofdto_kr.getBrand_id()%>'"> </td> 
-						<%}%>
-					</tr>
-					
-					
-					<%
-							}
-						}
-					%>
-				</table>
-				
-				
+
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
 						<h4> [한국 온라인 발매처] </h4>
 						<tr class="ta_release_info">
-							<td style="width:50px;"> </td>
-							<td style="width:100px;"> </td>
-							<td style="width:30px;"> </td>
-							<td> </td>
-							<td style="width:200px;"> 시간 </td>
-							<td style="width:200px;"> 남은시간 </td>
-							<td style="width:160px;"> 응모방식 </td>
-							<td style="width:60px;"> 응모여부 </td>
+							<td style="width:6.25%;"> </td>
+							<td style="width:12.5%;"> </td>
+							<td style="width:3.75%;"> </td>
+							<td style="width:25%;"> 시간 </td>
+							<td style="width:25%;"> 남은시간 </td>
+							<td style="width:20%;"> 응모방식 </td>
+							<td style="width:7.5%;"> 응모여부 </td>
 						</tr>
 					<%
 						if(onlineList_kr.isEmpty()){
@@ -310,16 +171,9 @@
 					%>
 					<tr id="kr_drawRaw<%=i%>">
 						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </td>
-						
-						<!-- 반응형을 위한 숨김 줄 -->
-						<td> 
-							<label class="fas_slide_down" id="fas_slide_down_kr<%=i%>" > <i class="fas fa-caret-down"></i> </label>
-							<label class="fas_slide_up" id="fas_slide_up_kr<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
-						</td>
-						
-						
+	
 						<!-- 응모시간 -->
 						<td id="draw_time_kr<%=i%>">
 							<!-- 선착일시 -->
@@ -354,27 +208,27 @@
 						<td id="remain_time_status_kr<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00") && odto_kr.getOnline_end_time().contains("0000-00-00 00:00")) {%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_time().contains("0000-00-00") && !odto_kr.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+								<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1 && !odto_kr.getOnline_start_time().contains("0000-00-00") && !odto_kr.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_kr.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_kr == -1){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_kr.getOnline_start_time().contains("0000-00-00") && odto_kr.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_kr == 1){%>
-								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_kr.getOnline_start_time().contains("0000-00-00") && odto_kr.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_kr == -1) {%>
-								<span> 계산전 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_kr == 1 && !odto_kr.getOnline_start_time().contains("0000-00-00") && !odto_kr.getOnline_end_time().contains("0000-00-00")){%>
-								<span> 응모종료 </span>
+								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
 						<%}%>
@@ -385,7 +239,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_kr.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_kr<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
+							<td id="draw-status_kr<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_kr.getBrand_id())){%>
 							<td id="draw-status_kr<%=i%>"> 
@@ -421,14 +275,13 @@
 				<table id="sneakerOnlineInfo_table">
 					<h4> [아시아 지역 발매처] </h4>
 					<tr class="ta_release_info">
-						<td style="width:50px;"> </td>
-						<td style="width:100px;"> </td>
-						<td style="width:30px;"> </td>
-						<td> </td>
-						<td style="width:200px;"> 시간 </td>
-						<td style="width:200px;"> 남은시간 </td>
-						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:6.25%;"> </td>
+						<td style="width:12.5%;"> </td>
+						<td style="width:3.75%;"> </td>
+						<td style="width:25%;"> 시간 </td>
+						<td style="width:25%;"> 남은시간 </td>
+						<td style="width:20%;"> 응모방식 </td>
+						<td style="width:7.5%;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_asia.isEmpty()){
@@ -462,14 +315,8 @@
 					%>
 					<tr id="asia_drawRaw<%=i%>">
 						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <%=bdto_asia.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <%=bdto_asia.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_asia.getCountry_flag()%>" width="22" height="15"> </td>
-						
-						<!-- 반응형을 위한 숨김 줄 -->
-						<td> 
-							<label class="fas_slide_down" id="fas_slide_down_kr<%=i%>" > <i class="fas fa-caret-down"></i> </label>
-							<label class="fas_slide_up" id="fas_slide_up_kr<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
-						</td>
 						
 						<!-- 응모시간 -->
 						<td>
@@ -505,27 +352,27 @@
 						<td id="remain_time_status_asia<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00") && odto_asia.getOnline_end_time().contains("0000-00-00 00:00")) {%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_time().contains("0000-00-00") && !odto_asia.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+								<span id="final_count_Online_end_time_asia<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_asia == 1 && compare_w_end_result_asia == -1 && !odto_asia.getOnline_start_time().contains("0000-00-00") && !odto_asia.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_asia<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_asia.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_asia == -1){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_asia<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_asia.getOnline_start_time().contains("0000-00-00") && odto_asia.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_asia == 1){%>
-								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_asia.getOnline_start_time().contains("0000-00-00") && odto_asia.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_asia == -1) {%>
-								<span> 계산전 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_asia == 1 && !odto_asia.getOnline_start_time().contains("0000-00-00") && !odto_asia.getOnline_end_time().contains("0000-00-00")){%>
-								<span> 응모종료 </span>
+								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
 						<%}%>
@@ -536,7 +383,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_asia.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_asia<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
+							<td id="draw-status_asia<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_asia.getBrand_id())){%>
 							<td id="draw-status_asia<%=i%>"> 
@@ -571,14 +418,13 @@
 				<table id="sneakerOnlineInfo_table">
 					<h4> [북미 지역 발매처] </h4>
 					<tr class="ta_release_info">
-						<td style="width:50px;"> </td>
-						<td style="width:100px;"> </td>
-						<td style="width:30px;"> </td>
-						<td> </td>
-						<td style="width:200px;"> 시간 </td>
-						<td style="width:200px;"> 남은시간 </td>
-						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:6.25%;"> </td>
+						<td style="width:12.5%;"> </td>
+						<td style="width:3.75%;"> </td>
+						<td style="width:25%;"> 시간 </td>
+						<td style="width:25%;"> 남은시간 </td>
+						<td style="width:20%;"> 응모방식 </td>
+						<td style="width:7.5%;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_america.isEmpty()){
@@ -612,15 +458,9 @@
 					%>
 					<tr id="america_drawRaw<%=i%>">
 						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_america.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <%=bdto_america.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <%=bdto_america.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_america.getCountry_flag()%>" width="22" height="15"> </td>
-						
-						<!-- 반응형을 위한 숨김 줄 -->
-						<td> 
-							<label class="fas_slide_down" id="fas_slide_down_america<%=i%>"> <i class="fas fa-caret-down"></i> </label> 
-							<label class="fas_slide_up" id="fas_slide_up_america<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
-						</td>
-						
+
 						<!-- 응모시간 -->
 						<td id="draw_time_america<%=i%>">
 							<!-- 선착일시 -->
@@ -655,27 +495,27 @@
 						<td id="remain_time_status_america<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_america.getOnline_start_time().contains("0000-00-00 00:00") && odto_america.getOnline_end_time().contains("0000-00-00 00:00")) {%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_time().contains("0000-00-00") && !odto_america.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+								<span id="final_count_Online_end_time_america<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_america == 1 && compare_w_end_result_america == -1 && !odto_america.getOnline_start_time().contains("0000-00-00") && !odto_america.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_america<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_america.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_america == -1){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_america<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_america.getOnline_start_time().contains("0000-00-00") && odto_america.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_america == 1){%>
-								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_america.getOnline_start_time().contains("0000-00-00") && odto_america.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_america == -1) {%>
-								<span> 계산전 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_america == 1 && !odto_america.getOnline_start_time().contains("0000-00-00") && !odto_america.getOnline_end_time().contains("0000-00-00")){%>
-								<span> 응모종료 </span>
+								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
 						<%}%>
@@ -686,7 +526,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_america.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_america<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
+							<td id="draw-status_america<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_america.getBrand_id())){%>
 							<td id="draw-status_america<%=i%>"> 
@@ -721,14 +561,13 @@
 				<table id="sneakerOnlineInfo_table">
 					<h4> [유럽 지역 발매처] </h4>
 					<tr class="ta_release_info">
-						<td style="width:50px;"> </td>
-						<td style="width:100px;"> </td>
-						<td style="width:30px;"> </td>
-						<td> </td>
-						<td style="width:200px;"> 시간 </td>
-						<td style="width:200px;"> 남은시간 </td>
-						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:6.25%;"> </td>
+						<td style="width:12.5%;"> </td>
+						<td style="width:3.75%;"> </td>
+						<td style="width:25%;"> 시간 </td>
+						<td style="width:25%;"> 남은시간 </td>
+						<td style="width:20%;"> 응모방식 </td>
+						<td style="width:7.5%;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_europe.isEmpty()){
@@ -762,14 +601,8 @@
 					%>
 					<tr id="europe_drawRaw<%=i%>">
 						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_europe.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <%=bdto_europe.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <%=bdto_europe.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_europe.getCountry_flag()%>" width="22" height="15"> </td>
-						
-						<!-- 반응형을 위한 숨김 줄 -->
-						<td> 
-							<label class="fas_slide_down" id="fas_slide_down_europe<%=i%>" > <i class="fas fa-caret-down"></i> </label>
-							<label class="fas_slide_up" id="fas_slide_up_europe<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
-						</td>
 						
 						<!-- 응모시간 -->
 						<td id="draw_time_europe<%=i%>"> 
@@ -805,27 +638,27 @@
 						<td id="remain_time_status_europe<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00") && odto_europe.getOnline_end_time().contains("0000-00-00 00:00")) {%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+								<span id="final_count_Online_end_time_europe<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_europe == 1 && compare_w_end_result_europe == -1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_europe<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_europe.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_europe == -1){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_europe<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_europe.getOnline_start_time().contains("0000-00-00") && odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == 1){%>
-								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_europe.getOnline_start_time().contains("0000-00-00") && odto_europe.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_europe == -1) {%>
-								<span> 계산전 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_europe == 1 && !odto_europe.getOnline_start_time().contains("0000-00-00") && !odto_europe.getOnline_end_time().contains("0000-00-00")){%>
-								<span> 응모종료 </span>
+								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
 						<%}%>
@@ -836,7 +669,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_europe.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_europe<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
+							<td id="draw-status_europe<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_europe.getBrand_id())){%>
 							<td id="draw-status_europe<%=i%>"> 
@@ -871,14 +704,13 @@
 				<table id="sneakerOnlineInfo_table">
 					<h4> [기타 지역 발매처] </h4>
 					<tr class="ta_release_info">
-						<td style="width:50px;"> </td>
-						<td style="width:100px;"> </td>
-						<td style="width:30px;"> </td>
-						<td> </td>
-						<td style="width:200px;"> 시간 </td>
-						<td style="width:200px;"> 남은시간 </td>
-						<td style="width:160px;"> 응모방식 </td>
-						<td style="width:60px;"> 응모여부 </td>
+						<td style="width:6.25%;"> </td>
+						<td style="width:12.5%;"> </td>
+						<td style="width:3.75%;"> </td>
+						<td style="width:25%;"> 시간 </td>
+						<td style="width:25%;"> 남은시간 </td>
+						<td style="width:20%;"> 응모방식 </td>
+						<td style="width:7.5%;"> 응모여부 </td>
 					</tr>
 					<%
 						if(onlineList_etc.isEmpty()){
@@ -912,14 +744,8 @@
 					%>
 					<tr id="etc_drawRaw<%=i%>">
 						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_etc.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td style="text-align:left; padding-left: 15px;"> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <%=bdto_etc.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <%=bdto_etc.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_etc.getCountry_flag()%>" width="22" height="15"> </td>
-						
-						<!-- 반응형을 위한 숨김 줄 -->
-						<td> 
-							<label class="fas_slide_down" id="fas_slide_down_etc<%=i%>" > <i class="fas fa-caret-down"></i> </label>
-							<label class="fas_slide_up" id="fas_slide_up_etc<%=i%>" style="display: none;"> <i class="fas fa-caret-up"></i> </label>
-						</td>
 						
 						<!-- 응모시간 -->
 						<td id="draw_time_etc<%=i%>">
@@ -955,27 +781,27 @@
 						<td id="remain_time_status_etc<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00") && odto_etc.getOnline_end_time().contains("0000-00-00 00:00")) {%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>
+								<span id="final_count_Online_end_time_etc<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_etc == 1 && compare_w_end_result_etc == -1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_etc<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_etc.getOnline_start_time().contains("0000-00-00") && compare_w_end_result_etc == -1){%>
-								<span id="final_count_Online_end_time_kr<%=i%>"></span>	<span id="draw_count_result_ing">진행중</span>
+								<span id="final_count_Online_end_time_etc<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_etc.getOnline_start_time().contains("0000-00-00") && odto_etc.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_etc == 1){%>
-								<span> 계산전 </span> <span id="draw_count_result_ing">진행중</span>
+								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_etc.getOnline_start_time().contains("0000-00-00") && odto_etc.getOnline_end_time().contains("0000-00-00") && compare_w_start_result_etc == -1) {%>
-								<span> 계산전 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_time().contains("0000-00-00") && !odto_etc.getOnline_end_time().contains("0000-00-00")){%>
-								<span> 응모종료 </span>
+								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
-								<span> - </span>
+								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
 						<%}%>
@@ -986,7 +812,7 @@
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_etc.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_etc<%=i%>"> <a href="./MemberLogin.me"> <input type="button" value="로그인"> </a></td>
+							<td id="draw-status_etc<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_etc.getBrand_id())){%>
 							<td id="draw-status_etc<%=i%>"> 
@@ -1056,17 +882,6 @@
 				document.getElementById(id).textContent += seconds + '초'; 
 			} 
 			timer = setInterval(showRemaining, 1000); 
-		}
-		
-		//오프라인 한국 리스트
-		var offLineList_kr = [];
-		<c:forEach items="${offLineList_kr}" var="offLineList_kr">
-			offLineList_kr.push("${offLineList_kr}");
-		</c:forEach>
-		//offLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
-		for(var i=0; i<offLineList_kr.length; i++) {		
-			var count_span = document.getElementById("count_Offline_end_time"+i).innerText;
-			countDownTimer('final_count_Offline_end_time'+i, count_span, 'draw-status-off_kr'+i);
 		}
 		
 		//온라인 한국 리스트
@@ -1174,154 +989,78 @@
 				drawCheckbox_etc.css({"pointer-events" : "visible"});
 			}
 		}
-		
-		// 반응형 숨김 줄 클릭했을시 ------------------------------------------------
-		// 오프라인 펼칠때
-		$(".fas_slide_down_off").click(function(){
-			
-			//fas_slide_down_kr + i
-			var slide_down_id = $(this).attr("id");
-			
-			//i
-			var i = slide_down_id.substr(slide_down_id.length - 1);
-			
-			$("#fas_slide_down_kr" + i).hide();
-			$("#fas_slide_up_kr" + i).show();
-			
-			$("#draw_time_off" + i).css({"display" : "block"});
-			$("#remain_time_status_off" + i).css({"display" : "block"});
-			$("#online_method_off" + i).css({"display" : "block"});
-			$("#info_link_off" + i).css({"display" : "block"});
-		});
-		// 오프라인 접을때
-		$(".fas_slide_up_off").click(function(){
-			
-			//fas_slide_up_kr + i
-			var slide_up_id = $(this).attr("id");
 
-			//i
-			var i = slide_up_id.substr(slide_up_id.length - 1);
-			
-			$("#fas_slide_up_kr" + i).hide();
-			$("#fas_slide_down_kr" + i).show();
-			
-			$("#draw_time_off" + i).css({"display" : "none"});
-			$("#remain_time_status_off" + i).css({"display" : "none"});
-			$("#online_method_off" + i).css({"display" : "none"});
-			$("#info_link_off" + i).css({"display" : "none"});
-		});
-		
-		// 온라인 펼칠때
-		$(".fas_slide_down").click(function(){
-			
-			//fas_slide_down_(country Name) + i
-			var slide_down_id = $(this).attr("id");
-			
-			var idSplit_array = [];
-			idSplit_array = slide_down_id.split("_");
-
-			//(country Name) + i 
-			var country_Name_i = idSplit_array[idSplit_array.length - 1];
-			
-			//i
-			var i = slide_down_id.substr(slide_down_id.length - 1);
-			
-			//country Name
-			var country_Name = country_Name_i.slice(0, -1);
-			
-			$("#fas_slide_down_" + country_Name + i).hide();
-			$("#fas_slide_up_" + country_Name + i).show();
-			
-			$("#draw_time_" + country_Name + i).css({"display" : "block"});
-			$("#remain_time_status_" + country_Name + i).css({"display" : "block"});
-			$("#online_method_" + country_Name + i).css({"display" : "block"});
-			$("#draw-status_" + country_Name + i).css({"display" : "block"});
-		});
-		// 온라인 접을때
-		$(".fas_slide_up").click(function(){
-			
-			//fas_slide_up_(country Name) + i
-			var slide_up_id = $(this).attr("id");
-			
-			var idSplit_array = [];
-			idSplit_array = slide_up_id.split("_");
-			
-			//(country Name) + i 
-			var country_Name_i = idSplit_array[idSplit_array.length - 1];
-			
-			//i
-			var i = slide_up_id.substr(slide_up_id.length - 1);
-			
-			//country Name
-			var country_Name = country_Name_i.slice(0, -1);
-			
-			$("#fas_slide_up_" + country_Name + i).hide();
-			$("#fas_slide_down_" + country_Name + i).show();
-			
-			$("#draw_time_" + country_Name + i).css({"display" : "none"});
-			$("#remain_time_status_" + country_Name + i).css({"display" : "none"});
-			$("#online_method_" + country_Name + i).css({"display" : "none"});
-			$("#draw-status_" + country_Name + i).css({"display" : "none"});
-		});
-		
-		
 		
 		// 응모 여부 체크박스 클릭했을시 -----------------------------------------------
 		$("input:checkbox").on('click', function() {
-
-			//drawCheckbox_kr + i
-			var checkbox_id = $(this).attr("id");
-			//i
-			var checkbox_id_num = checkbox_id.substr(checkbox_id.length - 1);
-			//kr3
-			var idx = checkbox_id.indexOf("_");
-			var checkbox_id_country_num = checkbox_id.substring(idx+1);
-			//kr
-			var checkbox_country = checkbox_id_country_num.substr(0, checkbox_id_country_num.length-1);
 			
-			if($(this).is(":checked")==true){
-				//체크가 안된 상태에서 응모여부 물어보기
-				$(this).prop("checked", false);
-				var draw_confirm_yes = confirm("해당 사이트를 응모 하셨습니까?");
-			   	if(draw_confirm_yes){
-			   		$.ajax({
-			   			type:'get',
-			   			url:'./addUserDrawInfoAction.me',
-			   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
-			   			dataType: 'html',
-			   			success:function(data) {
-			   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");	
-			   			},error:function(request,status,error){
-						 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-						}
-			   		});
-			   		$(this).prop("checked", true);
-			   		$(this).css({'color':'green', 'font-size':16});
-			   	}else {
-			   		$(this).prop("checked", false);
-			   	}
+			//로그인 체크
+			if($(".login_user").val() == "") {
+				var login_confirm = confirm("응모여부를 체크하시려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
+				if(login_confirm){
+					location.href="./MemberLogin.me";
+					$(this).prop("checked", false);
+				}else {
+					$(this).prop("checked", false);
+				}
 			}
-			else if($(this).is(":not(:checked)")==true){
-				//체크가 된 상태에서 응모여부 물어보기
-				$(this).prop("checked", true);
-				var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
-			   	if(draw_confirm_no){
-			   		$.ajax({
-			   			type:'get',
-			   			url:'./deleteUserDrawInfoAction.me',
-			   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
-			   			dataType: 'html',
-			   			success:function(data) {
-			   				alert("응모여부를 취소하였습니다.");
-			   			},error:function(request,status,error){
-						 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-						}
-			   		});
-			   		$(this).prop("checked", false);	
-			   	}else {
-			   		$(this).prop("checked", true);
-			   	}
+			else {
+				//drawCheckbox_kr + i
+				var checkbox_id = $(this).attr("id");
+				//i
+				var checkbox_id_num = checkbox_id.substr(checkbox_id.length - 1);
+				//kr3
+				var idx = checkbox_id.indexOf("_");
+				var checkbox_id_country_num = checkbox_id.substring(idx+1);
+				//kr
+				var checkbox_country = checkbox_id_country_num.substr(0, checkbox_id_country_num.length-1);
+				
+				if($(this).is(":checked")==true){
+					//체크가 안된 상태에서 응모여부 물어보기
+					$(this).prop("checked", false);
+					var draw_confirm_yes = confirm("해당 사이트를 응모 하셨습니까?");
+				   	if(draw_confirm_yes){
+				   		$.ajax({
+				   			type:'get',
+				   			url:'./addUserDrawInfoAction.me',
+				   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+				   			dataType: 'html',
+				   			success:function(data) {
+				   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");	
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+				   		$(this).prop("checked", true);
+				   		$(this).css({'color':'green', 'font-size':16});
+				   	}else {
+				   		$(this).prop("checked", false);
+				   	}
+				}
+				else if($(this).is(":not(:checked)")==true){
+					//체크가 된 상태에서 응모여부 물어보기
+					$(this).prop("checked", true);
+					var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
+				   	if(draw_confirm_no){
+				   		$.ajax({
+				   			type:'get',
+				   			url:'./deleteUserDrawInfoAction.me',
+				   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+				   			dataType: 'html',
+				   			success:function(data) {
+				   				alert("응모여부를 취소하였습니다.");
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+				   		$(this).prop("checked", false);	
+				   	}else {
+				   		$(this).prop("checked", true);
+				   	}
+				}
 			}
+
+			
 		});
 		
 	});

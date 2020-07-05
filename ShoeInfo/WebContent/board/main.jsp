@@ -524,6 +524,8 @@
 			
 			$("#div_month_" + month).slideToggle("slow");
 		});
+		
+		
 
 
 	});

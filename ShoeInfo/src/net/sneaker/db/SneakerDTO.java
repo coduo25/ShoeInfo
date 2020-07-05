@@ -83,4 +83,5 @@ public class SneakerDTO {
 	public void setRelease_status(String release_status) {
 		this.release_status = release_status;
 	}
+	
 }

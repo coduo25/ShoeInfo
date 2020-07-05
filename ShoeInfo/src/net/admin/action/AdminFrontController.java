@@ -141,15 +141,6 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		//오프라인 정보 입력 처리 페이지
-		else if(command.equals("/AddOfflineInfoAction.ad")) {
-			action = new AddOfflineInfoAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 		//온라인 정보 입력 처리 페이지
 		else if(command.equals("/AddOnlineInfoAction.ad")) {
 			action = new AddOnlineInfoAction();

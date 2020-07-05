@@ -44,70 +44,7 @@
 	<div id="wrapper" class="container">
 		<!-- content -->
 		<div id="content_adminAddSneaker">
-			<!-- 오프라인 정보 추가하는 란 -->
-			<div>
-				<h3> 오프라인 발매 정보 추가하기 </h3>
-				<form action="./AddOfflineInfoAction.ad" method="post">
-					<table border = "1">
-						<tr>
-							<td> 신발 스타일 코드 </td>
-							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>" required> </td>
-						</tr>
-						<tr>
-							<td rowspan="2"> 브랜드* </td>
-							<td> 
-								나라 선택
-								<select id="country_name_off" name="country_name">
-									<option value="default"> 나라를 선택해주세요 </option>
-									<% for(int i=0;i<countryList_bybrand.size();i++) { BrandDTO bdto = countryList_bybrand.get(i); %><option value="<%=bdto.getCountry_name()%>"> <%=bdto.getCountry_name()%> </option><%}%>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td id="brand_name_off"> 
-							</td>
-						</tr>
-						<tr>
-							<td> 오프라인 장소명 </td>
-							<td> <input type="text" name="offline_location"> </td>
-						</tr>
-						<tr>
-							<td> 오프라인 링크 </td>
-							<td> <input type="text" name="offline_link"> </td>
-						</tr>
-						<tr>
-							<td> 오프라인 시간 </td>
-							<td> <input type="date" name="offline_date_start"><input type="time" name="offline_hour_start">~<input type="date" name="offline_date_end"><input type="time" name="offline_hour_end"></td>
-						</tr>
-						<tr>
-							<td> 오프라인 방식 </td>
-							<td> 
-								<select name="offline_method">
-									<option value="default"> 오프라인 방식을 선택해주세요. </option>
-									<option value="선착"> 선착 </option>
-									<option value="스크래치"> 스크래치 </option>
-									<option value="추첨"> 추첨(응모) </option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td> 특이사항 </td>
-							<td> <textarea name="description"></textarea>
-						</tr>
-						<tr>
-							<td colspan="2"> 
-								<input type="submit" value="추가하기">
-								<input type="reset" value="다시작성">
-							</td>
-							
-						</tr>
-					</table>
-				</form>
-			</div>
-			
-			<br>
-			<br>
-		
+
 			<!-- 온라인 정보 추가하는 란 -->
 			<div>
 				<h3> 온라인 발매 정보 추가하기 </h3>
@@ -290,23 +227,8 @@
 
 </body>
 <script type="text/javascript">
-	//jquery 구문
+
 	$(document).ready(function(){
-		//오프라인 나라 항목을 선택했을시 브랜드 호출하는 함수
-		$('#country_name_off').change(function() {
-			$.ajax({
-				type:'get',
-				url:'/ShoeInfo/admin/searchBrandAjax.jsp',
-				data:'country_name='+$("#country_name_off").val(),
-				dataType:"html",
-				success:function(data){
-					$('#brand_name_off').html(data);
-				},error:function(request,status,error){
-					 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-				}
-			});
-	    });
-		
 		$('#country_name_on').change(function() {
 			//온라인 나라 항목을 선택했을시 브랜드 호출하는 함수
 			$.ajax({

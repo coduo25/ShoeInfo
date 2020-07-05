@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 import net.brand.db.BrandDTO;
 import net.member.db.MemberDAO;
 import net.member.db.MemberDrawDTO;
-import net.offline.db.OfflineDAO;
-import net.offline.db.OfflineDTO;
 import net.online.db.OnlineDAO;
 import net.online.db.OnlineDTO;
 import net.sneaker.db.SneakerDAO;
@@ -48,18 +46,6 @@ public class SneakerDetailAction implements Action{
 		/******************************************************
 		 * 신발 발매 정보 리스트 만들기
 		 ******************************************************/
-		
-		//-----------오프라인---------
-		OfflineDAO ofdao = new OfflineDAO();
-		
-		Vector vec_off_kr = ofdao.getOfflineInfo_kr(model_stylecode);
-		
-		//DAO에서 받은 Vector 형태를 리스트로 나누기
-		ArrayList<OfflineDTO> offLineList_kr = (ArrayList<OfflineDTO>) vec_off_kr.get(0);
-		ArrayList<OfflineDTO> brandList_off_kr = (ArrayList<OfflineDTO>) vec_off_kr.get(1);
-		//request에 저장
-		request.setAttribute("offLineList_kr", offLineList_kr);
-		request.setAttribute("brandList_off_kr", brandList_off_kr);
 		
 		//-----------온라인-------------
 		OnlineDAO odao = new OnlineDAO();
