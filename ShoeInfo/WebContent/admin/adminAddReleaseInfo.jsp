@@ -74,7 +74,7 @@
 							<td> <input type="text" name="online_link"> </td>
 						</tr>
 						<tr>
-							<td> 온라인 시간 </td>
+							<td> 온라인 시간  <br> (시간이 없으면 빈칸으로 그대로 두기!) </td>
 							<td> 
 								<input type="date" name="online_date_start">
 								<input type="time" name="online_hour_start">
@@ -112,8 +112,8 @@
 								<select name="delivery_method">
 									<option value="default"> 직배여부를 선택해주세요. </option>
 									<option value="직배가능"> 직배가능 </option>
-									<option value="배대지"> 직배불가(배대지추천) </option>
-									<option value="-"> - </option>
+									<option value="배대지"> 배대지 </option>
+									<option value="국내배송"> 국내배송 </option>
 								</select>
 							</td>
 						</tr>

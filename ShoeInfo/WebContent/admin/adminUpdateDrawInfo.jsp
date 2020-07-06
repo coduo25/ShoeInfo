@@ -60,7 +60,7 @@
 							<td> <input type="text" name="online_link" value="<%=onlineDrawInfo.getOnline_link()%>"> </td>
 						</tr>
 						<tr>
-							<td> 온라인 시간 </td>
+							<td> 온라인 시간  <br> (시간이 없으면 그대로 두기!) <br> <span style="color: red; font-weight: bold"> (수정할때 0002-11-30 이면 전부 delete 하기!) </span> </td>
 							<td> 
 								<input type="date" name="online_date_start" value="<%=new_Online_start_date%>">
 								<input type="time" name="online_hour_start" value="<%=new_Online_start_hour%>">
@@ -98,8 +98,8 @@
 								<select name="delivery_method">
 									<option value="default" <%if(onlineDrawInfo.getDelivery_method().equals("default")){%> selected<%}%>> 직배여부를 선택해주세요. </option>
 									<option value="직배가능" <%if(onlineDrawInfo.getDelivery_method().equals("직배가능")){%> selected<%}%>> 직배가능 </option>
-									<option value="직배불가(배대지추천)" <%if(onlineDrawInfo.getDelivery_method().equals("직배불가(배대지추천)")){%> selected<%}%>> 직배불가(배대지추천) </option>
-									<option value="-" <%if(onlineDrawInfo.getDelivery_method().equals("-")){%> selected<%}%>> - </option>
+									<option value="배대지" <%if(onlineDrawInfo.getDelivery_method().equals("배대지")){%> selected<%}%>> 배대지 </option>
+									<option value="국내배송" <%if(onlineDrawInfo.getDelivery_method().equals("국내배송")){%> selected<%}%>> 국내배송 </option>
 								</select>
 							</td>
 						</tr>

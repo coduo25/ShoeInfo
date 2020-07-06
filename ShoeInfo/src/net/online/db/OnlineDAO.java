@@ -40,37 +40,57 @@ public class OnlineDAO {
 	}
 	
 	//신발 온라인 정보 저장하는 함수
-	public void insertOnlineInfo(OnlineDTO odto) {
+	public int insertOnlineInfo(OnlineDTO odto) {
+		int check = -1;
 		int online_num = 0;
+		
 		try {
 			con = getConnection();
-			//draw_num 계산
-			sql = "select max(online_num) from shoeinfo_onlineinfo";
+			
+			//중복 데이터가 있는지 체크하기
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, odto.getModel_stylecode());
+			pstmt.setString(2, odto.getBrand_id());
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()){
-				online_num = rs.getInt(1) + 1;
+				//중복 데이터가 있으면
+				check = 0;
 			}
-			sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, online_num);
-			pstmt.setString(2, odto.getModel_stylecode());
-			pstmt.setString(3, odto.getCountry_region());
-			pstmt.setString(4, odto.getCountry_name());
-			pstmt.setString(5, odto.getBrand_id());
-			pstmt.setString(6, odto.getOnline_link());
-			pstmt.setString(7, odto.getOnline_start_time());
-			pstmt.setString(8, odto.getOnline_end_time());
-			pstmt.setString(9, odto.getOnline_method());
-			pstmt.setString(10, odto.getBuy_method());
-			pstmt.setString(11, odto.getDelivery_method());
-			pstmt.setString(12, odto.getDescription());	
-			pstmt.executeUpdate();
+			//중복 데이터가 없으면
+			else {
+				//draw_num 계산
+				sql = "select max(online_num) from shoeinfo_onlineinfo";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					online_num = rs.getInt(1) + 1;
+				}
+				
+				sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, online_num);
+				pstmt.setString(2, odto.getModel_stylecode());
+				pstmt.setString(3, odto.getCountry_region());
+				pstmt.setString(4, odto.getCountry_name());
+				pstmt.setString(5, odto.getBrand_id());
+				pstmt.setString(6, odto.getOnline_link());
+				pstmt.setString(7, odto.getOnline_start_time());
+				pstmt.setString(8, odto.getOnline_end_time());
+				pstmt.setString(9, odto.getOnline_method());
+				pstmt.setString(10, odto.getBuy_method());
+				pstmt.setString(11, odto.getDelivery_method());
+				pstmt.setString(12, odto.getDescription());	
+				pstmt.executeUpdate();
+				check = 1;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
+		return check;
 	}
 
 	//대한민국 신발 온라인 정보 가져오는 함수(브랜드 정보 + 온라인 정보)
@@ -90,7 +110,7 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ? order by online_method desc";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ? order by online_method desc, online_start_time, online_end_time";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "대한민국");
@@ -159,7 +179,7 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ? order by online_method desc";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ? order by online_method desc, online_start_time, online_end_time";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "아시아");
@@ -227,7 +247,7 @@ public class OnlineDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? order by online_method desc";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? order by online_method desc, online_start_time, online_end_time";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, country_region);
@@ -336,6 +356,22 @@ public class OnlineDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
+			closeDB();
+		}
+	}
+	
+	//신발 온라인 정보 삭제하는 함수
+	public void deleteOnlineInfo(String model_stylecode, String brand_id){
+		try {
+			con = getConnection();
+			sql = "delete from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model_stylecode);
+			pstmt.setString(2, brand_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			closeDB();
 		}
 	}

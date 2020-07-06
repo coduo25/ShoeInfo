@@ -108,6 +108,15 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//신발 발매 정보 삭제하는 페이지 처리하기
+		else if(command.equals("/DeleteDrawInfo.ad")){
+			action = new DeleteDrawInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		// ---------------나라추가----------------------------
 		//새로운 나라 추가하는 페이지 처리

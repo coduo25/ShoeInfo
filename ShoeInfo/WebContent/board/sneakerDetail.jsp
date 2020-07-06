@@ -68,7 +68,7 @@
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
-		SimpleDateFormat new_format = new SimpleDateFormat("M/d a HH:mm");
+		SimpleDateFormat new_format = new SimpleDateFormat("M/d a h:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
@@ -138,11 +138,16 @@
 							<td style="width:25%;"> 남은시간 </td>
 							<td style="width:20%;"> 응모방식 </td>
 							<td style="width:7.5%;"> 응모여부 </td>
+							<%
+								if(usr_position.equals("admin")){
+							%>
+								<td> </td>
+							<%}%>
 						</tr>
 					<%
 						if(onlineList_kr.isEmpty()){
 					%>
-						<tr style="height: 70px;">
+						<tr style="height: 70px;" class="no_info_tr">
 							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
@@ -194,7 +199,7 @@
 								<%}else if(odto_kr.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_kr%> ~
 								<%}else{%>
-									<%=new_Online_start_time_kr%> <span id="tilde">~</span> <%=new_Online_end_time_kr%>
+									<span class="start_time"> <%=new_Online_start_time_kr%> </span> ~ <%=new_Online_end_time_kr%>
 								<%}%>
 							<%}%>
 						</td>
@@ -212,7 +217,7 @@
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_kr.getOnline_start_time().contains("0000-00-00 00:00")) {%>
-								<span class="draw_count_result"> 추후공지예정 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
 								<span class="draw_count_result"> - </span>
 							<%} %>
@@ -249,20 +254,17 @@
 						<!-- 응모방식/직배여부 -->
 						<td id="online_method_kr<%=i%>"> 
 							<%if(odto_kr.getOnline_method().contains("선착")){%> 
-							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_kr.getOnline_method()%> </span>
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_kr.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_kr.getOnline_method()%> </span>
 							<%}else if(odto_kr.getOnline_method().contains("드로우")) {%>
-							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_kr.getOnline_method()%> <span class="tooltiptext1" > <%=odto_kr.getBuy_method()%></span> </span> 
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_kr.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_kr.getOnline_method()%> <span class="tooltiptext1" > <%=odto_kr.getBuy_method()%></span> </span> 
+								/ <%=odto_kr.getDelivery_method()%>
 							<%} %>
 						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_kr.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_kr<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
+							<td id="draw-status_kr<%=i%>"> <input id="drawCheckbox_kr<%=i%>" type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_kr.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_kr.getBrand_id())){%>
 							<td id="draw-status_kr<%=i%>"> 
@@ -283,11 +285,14 @@
 							<td id="draw-status_kr<%=i%>"> - </td>
 						<%}%>
 						
-						<%if(user.equals("admin")){%>
-							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'"> </td> 
+						<%if(usr_position.equals("admin")){%>
+							<td> 
+								<input type="button" id="adminModiBtn_kr<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'"> 
+								<input type="button" id="adminModiBtn_kr<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'">
+							</td> 
 						<%}%>
-						
 					</tr>
+					
 					<%
 							}
 						}
@@ -305,11 +310,16 @@
 						<td style="width:25%;"> 남은시간 </td>
 						<td style="width:20%;"> 응모방식 </td>
 						<td style="width:7.5%;"> 응모여부 </td>
+						<%
+							if(usr_position.equals("admin")){
+						%>
+							<td> </td>
+						<%}%>
 					</tr>
 					<%
 						if(onlineList_asia.isEmpty()){
 					%>
-						<tr style="height: 70px;">
+						<tr style="height: 70px;" class="no_info_tr">
 							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
@@ -361,7 +371,7 @@
 								<%}else if(odto_asia.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_asia%> ~
 								<%}else{%>
-									<%=new_Online_start_time_asia%> <span id="tilde">~</span> <%=new_Online_end_time_asia%>
+									<span class="start_time"> <%=new_Online_start_time_asia%> </span> ~ <%=new_Online_end_time_asia%>
 								<%}%>
 							<%}%>
 						</td>
@@ -379,7 +389,7 @@
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_asia.getOnline_start_time().contains("0000-00-00 00:00")) {%>
-								<span class="draw_count_result"> 추후공지예정 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
 								<span class="draw_count_result"> - </span>
 							<%} %>
@@ -416,20 +426,17 @@
 						<!-- 응모방식 -->
 						<td id="online_method_asia<%=i%>"> 
 							<%if(odto_asia.getOnline_method().contains("선착")){%> 
-							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_asia.getOnline_method()%> </span>
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_asia.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_asia.getOnline_method()%> </span>
 							<%}else if(odto_asia.getOnline_method().contains("드로우")) {%>
-							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_asia.getOnline_method()%> <span class="tooltiptext1" > <%=odto_asia.getBuy_method()%></span> </span> 
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_asia.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_asia.getOnline_method()%> <span class="tooltiptext1" > <%=odto_asia.getBuy_method()%></span> </span> 
+								/ <%=odto_asia.getDelivery_method()%>
 							<%} %>
 						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_asia.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_asia<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
+							<td id="draw-status_asia<%=i%>"> <input type="checkbox" id="drawCheckbox_asia<%=i%>" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_asia.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_asia.getBrand_id())){%>
 							<td id="draw-status_asia<%=i%>"> 
@@ -450,8 +457,11 @@
 							<td id="draw-status_asia<%=i%>"> - </td>
 						<%}%>
 						
-						<%if(user.equals("admin")){%>
-							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'"> </td> 
+						<%if(usr_position.equals("admin")){%>
+							<td>
+								<input type="button" id="adminModiBtn_asia<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'"> 
+								<input type="button" id="adminModiBtn_asia<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'">
+							</td>
 						<%}%>
 					</tr>
 					<%
@@ -471,11 +481,16 @@
 						<td style="width:25%;"> 남은시간 </td>
 						<td style="width:20%;"> 응모방식 </td>
 						<td style="width:7.5%;"> 응모여부 </td>
+						<%
+							if(usr_position.equals("admin")){
+						%>
+							<td> </td>
+						<%}%>
 					</tr>
 					<%
 						if(onlineList_america.isEmpty()){
 					%>
-						<tr style="height: 70px;">
+						<tr style="height: 70px;" class="no_info_tr">
 							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
@@ -510,13 +525,14 @@
 
 						<!-- 응모시간 -->
 						<td id="draw_time_america<%=i%>">
+							<div>
 							<!-- 선착일시 -->
 							<%if(odto_america.getOnline_method().contains("선착")){%>
 								<!-- 시작시간이 아직 미정일때 -->
 								<%if(odto_america.getOnline_start_time().contains("0000-00-00 00:00")){%>
 									<span> 추후공지예정 </span>
 								<%}else{%>
-								 	<%=new_Online_start_time_america%> 
+								 	<span> <%=new_Online_start_time_america%> </span> 
 								<%}%>
 							<!-- 드로우일시 -->
 							<%}else if(odto_america.getOnline_method().contains("드로우")){%> 
@@ -527,9 +543,10 @@
 								<%}else if(odto_america.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_america%> ~
 								<%}else{%>
-									<%=new_Online_start_time_america%> <span id="tilde">~</span> <%=new_Online_end_time_america%>
+									<span class="start_time"><%=new_Online_start_time_america%></span> ~ <%=new_Online_end_time_america%>
 								<%}%>
 							<%}%>
+							</div>
 						</td>
 						
 						<!-- 남은시간 -->
@@ -545,7 +562,7 @@
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_america.getOnline_start_time().contains("0000-00-00 00:00")) {%>
-								<span class="draw_count_result"> 추후공지예정 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
 								<span class="draw_count_result"> - </span>
 							<%} %>
@@ -582,20 +599,17 @@
 						<!-- 응모방식/직배 여부 -->
 						<td id="online_method_america<%=i%>"> 
 							<%if(odto_america.getOnline_method().contains("선착")){%> 
-							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_america.getOnline_method()%> </span>
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_america.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_america.getOnline_method()%> </span>
 							<%}else if(odto_america.getOnline_method().contains("드로우")) {%>
-							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_america.getOnline_method()%> <span class="tooltiptext1" > <%=odto_america.getBuy_method()%></span> </span> 
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_america.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#006600; font-weight: bold;"> <%=odto_america.getOnline_method()%> <span class="tooltiptext1" > <%=odto_america.getBuy_method()%></span> </span> 
+								/ <%=odto_america.getDelivery_method()%>
 							<%} %>
 						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_america.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_america<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
+							<td id="draw-status_america<%=i%>"> <input type="checkbox" id="drawCheckbox_america<%=i%>" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_america.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_america.getBrand_id())){%>
 							<td id="draw-status_america<%=i%>"> 
@@ -616,8 +630,11 @@
 							<td id="draw-status_america<%=i%>"> - </td>
 						<%}%>
 						
-						<%if(user.equals("admin")){%>
-							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'"> </td> 
+						<%if(usr_position.equals("admin")){%>
+							<td>
+								<input type="button" id="adminModiBtn_america<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'"> 
+								<input type="button" id="adminModiBtn_america<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'">
+							</td>
 						<%}%>
 					</tr>
 					<%
@@ -637,11 +654,16 @@
 						<td style="width:25%;"> 남은시간 </td>
 						<td style="width:20%;"> 응모방식 </td>
 						<td style="width:7.5%;"> 응모여부 </td>
+						<%
+							if(usr_position.equals("admin")){
+						%>
+							<td> </td>
+						<%}%>
 					</tr>
 					<%
 						if(onlineList_europe.isEmpty()){
 					%>
-						<tr style="height: 70px;">
+						<tr style="height: 70px;" class="no_info_tr">
 							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
@@ -693,7 +715,7 @@
 								<%}else if(odto_europe.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_europe%> ~
 								<%}else{%>
-									<%=new_Online_start_time_europe%> <span id="tilde">~</span> <%=new_Online_end_time_europe%>
+									<span class="start_time"><%=new_Online_start_time_europe%></span> ~ <%=new_Online_end_time_europe%>
 								<%}%>
 							<%}%>
 						</td>
@@ -711,7 +733,7 @@
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_europe.getOnline_start_time().contains("0000-00-00 00:00")) {%>
-								<span class="draw_count_result"> 추후공지예정 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
 								<span class="draw_count_result"> - </span>
 							<%} %>
@@ -748,20 +770,17 @@
 						<!-- 응모방식/직배 여부 -->
 						<td id="online_method_europe<%=i%>"> 
 							<%if(odto_europe.getOnline_method().contains("선착")){%> 
-							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_europe.getOnline_method()%> </span>
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_europe.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_europe.getOnline_method()%> </span>
 							<%}else if(odto_europe.getOnline_method().contains("드로우")) {%>
-							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_europe.getOnline_method()%> <span class="tooltiptext1" > <%=odto_europe.getBuy_method()%></span> </span> 
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_europe.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#006600; font-weight: bold;"> <%=odto_europe.getOnline_method()%> <span class="tooltiptext1" > <%=odto_europe.getBuy_method()%></span> </span> 
+								/ <%=odto_europe.getDelivery_method()%>
 							<%} %>
 						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_europe.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_europe<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
+							<td id="draw-status_europe<%=i%>"> <input type="checkbox" id="drawCheckbox_europe<%=i%>" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_europe.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_europe.getBrand_id())){%>
 							<td id="draw-status_europe<%=i%>"> 
@@ -782,8 +801,11 @@
 							<td id="draw-status_europe<%=i%>"> - </td>
 						<%}%>
 						
-						<%if(user.equals("admin")){%>
-							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'"> </td> 
+						<%if(usr_position.equals("admin")){%>
+							<td>
+								<input type="button" id="adminModiBtn_europe<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'"> 
+								<input type="button" id="adminModiBtn_europe<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'"> 
+							</td>
 						<%}%>
 					</tr>
 					<%
@@ -803,11 +825,16 @@
 						<td style="width:25%;"> 남은시간 </td>
 						<td style="width:20%;"> 응모방식 </td>
 						<td style="width:7.5%;"> 응모여부 </td>
+						<%
+							if(usr_position.equals("admin")){
+						%>
+							<td> </td>
+						<%}%>
 					</tr>
 					<%
 						if(onlineList_etc.isEmpty()){
 					%>
-						<tr style="height: 70px;">
+						<tr style="height: 70px;" class="no_info_tr">
 							<td colspan="7" id="no_info"> 아직 온라인 발매 정보가 없습니다. </td>
 						</tr>	 
 					<%	} else {
@@ -859,7 +886,7 @@
 								<%}else if(odto_etc.getOnline_end_time().contains("0000-00-00 00:00")){%>
 									<%=new_Online_start_time_etc%> ~
 								<%}else{%>
-									<%=new_Online_start_time_etc%> <span id="tilde">~</span> <%=new_Online_end_time_etc%>
+									<span class="start_time"> <%=new_Online_start_time_etc%> </span> ~ <%=new_Online_end_time_etc%>
 								<%}%>
 							<%}%>
 						</td>
@@ -877,7 +904,7 @@
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_etc.getOnline_start_time().contains("0000-00-00 00:00")) {%>
-								<span class="draw_count_result"> 추후공지예정 </span>
+								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
 								<span class="draw_count_result"> - </span>
 							<%} %>
@@ -912,22 +939,19 @@
 						<%}%>
 						
 						<!-- 응모방식/직배 여부 -->
-						<td id="online_method_europe<%=i%>"> 
+						<td id="online_method_etc<%=i%>"> 
 							<%if(odto_etc.getOnline_method().contains("선착")){%> 
-							<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_etc.getOnline_method()%> </span>
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"> <%=odto_etc.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_etc.getOnline_method()%> </span>
 							<%}else if(odto_etc.getOnline_method().contains("드로우")) {%>
-							<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_etc.getOnline_method()%> <span class="tooltiptext1" > <%=odto_etc.getBuy_method()%></span> </span> 
-							/ 
-							<span class="tooltip2"> 직배여부  <span class="tooltiptext2"><%=odto_etc.getDelivery_method()%></span> </span> 
+								<span class="tooltip1" style="color:#006600; font-weight: bold;"> <%=odto_etc.getOnline_method()%> <span class="tooltiptext1" > <%=odto_etc.getBuy_method()%></span> </span> 
+								/ <%=odto_etc.getDelivery_method()%>
 							<%} %>
 						</td>
 						
 						<!-- 응모여부 -->
 						<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 						<%if(odto_etc.getOnline_method().contains("드로우") && user.equals("")){%>
-							<td id="draw-status_etc<%=i%>"> <input type="checkbox" style="width:18px; height:18px; vertical-align: middle;"> </td>
+							<td id="draw-status_etc<%=i%>"> <input type="checkbox" id="drawCheckbox_etc<%=i%>" style="width:18px; height:18px; vertical-align: middle;"> </td>
 						<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 						<%}else if(odto_etc.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto_etc.getBrand_id())){%>
 							<td id="draw-status_etc<%=i%>"> 
@@ -948,8 +972,11 @@
 							<td id="draw-status_etc<%=i%>"> - </td>
 						<%}%>
 						
-						<%if(user.equals("admin")){%>
-							<td style="width:30px;"> <input type="button" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'"> </td> 
+						<%if(usr_position.equals("admin")){%>
+							<td>
+								<input type="button" id="adminModiBtn_etc<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'"> 
+								<input type="button" id="adminModiBtn_etc<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'">
+							</td>
 						<%}%>
 					</tr>
 					<%
@@ -983,18 +1010,20 @@
 				var distDt = _vDate - now;
 				if (distDt < 0) {
 					clearInterval(timer);
-					document.getElementById(id).textContent = '종료'; 
-					document.getElementById(drawstatus_id).textContent = '-';
+// 					document.getElementById(id).textContent = '종료'; 
+// 					document.getElementById(drawstatus_id).textContent = '-';
 					return; 
 				} 
 				var days = Math.floor(distDt / _day); 
 				var hours = Math.floor((distDt % _day) / _hour); 
 				var minutes = Math.floor((distDt % _hour) / _minute); 
-				var seconds = Math.floor((distDt % _minute) / _second); 		
-				document.getElementById(id).textContent = days + '일 '; 
-				document.getElementById(id).textContent += hours + '시간 '; 
-				document.getElementById(id).textContent += minutes + '분 '; 
-				document.getElementById(id).textContent += seconds + '초'; 
+				var seconds = Math.floor((distDt % _minute) / _second); 	
+				if(days || hours || minutes || seconds){
+					document.getElementById(id).textContent = days + '일 '; 
+					document.getElementById(id).textContent += hours + '시간 '; 
+					document.getElementById(id).textContent += minutes + '분 '; 
+					document.getElementById(id).textContent += seconds + '초';
+				}
 			} 
 			timer = setInterval(showRemaining, 1000); 
 		}
@@ -1020,6 +1049,9 @@
 				
 				var drawCheckbox_kr = $('#drawCheckbox_kr' + i);
 				drawCheckbox_kr.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminModiBtn_kr' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1044,6 +1076,9 @@
 				
 				var drawCheckbox_asia = $('#drawCheckbox_asia' + i);
 				drawCheckbox_asia.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminModiBtn_asia' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1068,6 +1103,9 @@
 				
 				var drawCheckbox_america = $('#drawCheckbox_america' + i);
 				drawCheckbox_america.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminModiBtn_america' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1093,6 +1131,9 @@
 				
 				var drawCheckbox_europe = $('#drawCheckbox_europe' + i);
 				drawCheckbox_europe.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminModiBtn_europe' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1117,6 +1158,9 @@
 				
 				var drawCheckbox_etc = $('#drawCheckbox_etc' + i);
 				drawCheckbox_etc.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminModiBtn_etc' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 

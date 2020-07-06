@@ -1,5 +1,7 @@
 package net.admin.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -87,7 +89,18 @@ public class AddOnlineInfoAction implements Action{
 		odto.setDescription(description);
 		
 		OnlineDAO odao = new OnlineDAO();
-		odao.insertOnlineInfo(odto);
+		int check = odao.insertOnlineInfo(odto);
+		
+		if(check == 0){
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('이미 존재하는 발매정보입니다.');");
+			out.print("location.href=history.back()");
+			out.print("</script>");
+			out.close();
+			return null;
+		}
 
 		//페이지이동
 		forward.setPath("./Main.ad");

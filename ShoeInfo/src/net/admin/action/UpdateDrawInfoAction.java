@@ -35,10 +35,31 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setBrand_id(request.getParameter("brand_id"));
 		odto.setOnline_link(request.getParameter("online_link"));
 		
-		String online_start_time = request.getParameter("online_date_start") + " " + request.getParameter("online_hour_start");
-		odto.setOnline_start_time(online_start_time);
+		//온라인 시작 시간
+		String online_date_start = request.getParameter("online_date_start");
+		String online_hour_start = request.getParameter("online_hour_start");
+		//null이면 0000-00-00, 00:00 으로 저장하기
+		if(online_date_start.equals("")){
+			online_date_start = "0000-00-00";
+		}
+		if(online_hour_start.equals("")){
+			online_hour_start = "00:00";
+		}
+		String online_start_time = online_date_start + " " + online_hour_start;
 		
-		String online_end_time = request.getParameter("online_date_end") + " " + request.getParameter("online_hour_end");
+		//온라인 끝나는 시간
+		String online_date_end = request.getParameter("online_date_end");
+		String online_hour_end = request.getParameter("online_hour_end");
+		//null이면 0000-00-00, 00:00 으로 저장하기
+		if(online_date_end.equals("")){
+			online_date_end = "0000-00-00";
+		}
+		if(online_hour_end.equals("")){
+			online_hour_end = "00:00";
+		}
+		String online_end_time = online_date_end + " " + online_hour_end;
+		
+		odto.setOnline_start_time(online_start_time);
 		odto.setOnline_end_time(online_end_time);
 		
 		odto.setOnline_method(request.getParameter("online_method"));
