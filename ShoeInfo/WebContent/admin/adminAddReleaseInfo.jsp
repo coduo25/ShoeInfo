@@ -48,10 +48,10 @@
 			<!-- 온라인 정보 추가하는 란 -->
 			<div>
 				<h3> 온라인 발매 정보 추가하기 </h3>
-				<form action="./AddOnlineInfoAction.ad" method="post">
+				<form action="./AddOnlineInfoAction.ad" id="addOnlineForm" method="post">
 					<table border = "1">
 						<tr>
-							<td> 신발 스타일 코드 </td>
+							<td> 신발 스타일 코드* </td>
 							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>" required> </td>
 						</tr>
 						<tr>
@@ -70,11 +70,11 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 온라인 링크 </td>
+							<td> 온라인 링크* </td>
 							<td> <input type="text" name="online_link"> </td>
 						</tr>
 						<tr>
-							<td> 온라인 시간  <br> (시간이 없으면 빈칸으로 그대로 두기!) </td>
+							<td> 온라인 시간  <br> 시간이 없으면 빈칸으로 그대로 두기! <br> 단, 발매방식이 미정이고 발매날짜가 있을때 시작시간에 입력하기  </td>
 							<td> 
 								<input type="date" name="online_date_start">
 								<input type="time" name="online_hour_start">
@@ -84,19 +84,20 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 온라인 방식 </td>
+							<td> 온라인 방식* </td>
 							<td> 
-								<select name="online_method">
+								<select name="online_method" id="online_method">
 									<option value="default"> 온라인 방식을 선택해주세요. </option>
 									<option value="선착"> 선착 </option>
 									<option value="드로우"> 드로우 </option>
+									<option value="-"> 미정 </option>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<td> 구매 방식 </td>
+							<td> 구매 방식* </td>
 							<td>
-								<select name="buy_method">
+								<select name="buy_method" id="buy_method">
 									<option value="default"> 구매 방식을 선택해주세요. </option>
 									<option value="선착순 구매"> 선착순 구매 </option>
 									<option value="당첨 후 결제"> 당첨 후 결제 </option>
@@ -107,9 +108,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 직배 여부 </td>
+							<td> 직배 여부* </td>
 							<td>
-								<select name="delivery_method">
+								<select name="delivery_method" id="delivery_method">
 									<option value="default"> 직배여부를 선택해주세요. </option>
 									<option value="직배가능"> 직배가능 </option>
 									<option value="배대지"> 배대지 </option>
@@ -124,7 +125,6 @@
 						<tr>
 							<td colspan="2"> 
 								<input type="submit" value="추가하기">
-								<input type="reset" value="다시작성">
 							</td>
 							
 						</tr>
@@ -138,7 +138,7 @@
 			<!-- 새로운 브랜드 추가하는 란 -->
 			<div>
 				<h3> 새로운 브랜드 추가하기 </h3>
-				<form action="./AddBrandAction.ad" method="post" enctype="multipart/form-data">	
+				<form action="./AddBrandAction.ad" id="addBrandForm" method="post" enctype="multipart/form-data">	
 					<table border = "1">
 						<tr> 
 							<td colspan="2"> 브랜드(사이트)의 국가 정보 </td>	
@@ -146,7 +146,7 @@
 						<tr>
 							<td> 국가/지역 </td>
 							<td> 
-								<select name="country_name">
+								<select name="country_name" id="country_name">
 									<option value="default"> 나라를 선택해주세요. </option>
 									<%
 										for(int i=0;i<countryList_all.size();i++) {
@@ -171,7 +171,6 @@
 						<tr>
 							<td colspan="2"> 
 								<input type="submit" value="추가하기"> 
-								<input type="reset" value="다시작성">
 							</td>
 						</tr>
 				</table>
@@ -184,12 +183,12 @@
 			<!-- 새로운 나라 추가하는 란 -->
 			<div>
 				<h3> 새로운 나라 추가하기 </h3>
-				<form action="./AddCountryAction.ad" method="post" enctype="multipart/form-data">
+				<form action="./AddCountryAction.ad" id="addCountryForm" method="post" enctype="multipart/form-data">
 					<table border = "1">
 						<tr>
 							<td> 지역 </td>
 							<td> 
-								<select name="country_region">
+								<select name="country_region" id="country_region">
 									<option value="default"> 지역을 선택해주세요. </option>
 									<option value="아시아"> 아시아 </option>
 									<option value="유럽"> 유럽 </option>
@@ -213,7 +212,6 @@
 						<tr>
 							<td colspan="2"> 
 								<input type="submit" value="추가하기"> 
-								<input type="reset" value="다시작성">
 							</td>
 						</tr>
 					</table>
@@ -243,6 +241,106 @@
 				}
 			});
 	    });
+		
+		
+		//모든 input 유효성 검사
+		//온라인 발매 정보 추가하는 form 태그 검사
+		$('#addOnlineForm').submit(function(){
+			//신발 스타일 코드가 빈칸일때
+			if($('input[name=model_stylecode]').val() == '') {
+				alert("스타일 코드를 입력해주세요.");
+				$('input[name=model_stylecode]').focus();
+				return false;
+			}
+			//나라를 선택 안했을시
+			else if($('#country_name_on').val() == 'default'){
+				alert("나라를 선택해주세요.");
+				$('#country_name_on').focus();
+				return false;
+			}
+			//브랜드를 선택 안했을시
+			else if($('#brand_name').val() == 'default'){
+				alert("브랜드를 선택해주세요.");
+				$('#brand_name').focus();
+				return false;
+			}
+			//온라인 링크가 빈칸일때
+			else if($('input[name=online_link]').val() == '') {
+				alert("온라인 링크를 입력해주세요.");
+				$('input[name=online_link]').focus();
+				return false;
+			}
+			//온라인 방식을 선택 안했을시
+			else if($('#online_method').val() == 'default'){
+				alert("온라인 방식을 선택해주세요.");
+				$('#online_method').focus();
+				return false;
+			}
+			//구매 방식을 선택 안했을시
+			else if($('#buy_method').val() == 'default'){
+				alert("구매 방식을 선택해주세요.");
+				$('#buy_method').focus();
+				return false;
+			}
+			//직배 여부를 선택 안했을시
+			else if($('#delivery_method').val() == 'default'){
+				alert("직배 여부를 선택해주세요.");
+				$('#delivery_method').focus();
+				return false;
+			}
+		});
+		
+		//새로운 브랜드 추가 유효성 검사
+		$('#addBrandForm').submit(function(){
+			//나라를 선택 안했을시
+			if($('#country_name').val() == 'default'){
+				alert("나라를 선택해주세요.");
+				$('#country_name').focus();
+				return false;
+			}
+			//로고 이미지를 첨부 안했을시
+			else if($('input[name=brand_logo]').val() == ''){
+				alert("로고 이미지를 첨부해주세요.");
+				$('input[name=brand_logo]').focus();
+				return false;
+			}
+			//브랜드 이름이 빈칸일시
+			else if($('input[name=brand_name]').val() == ''){
+				alert("브랜드 이름을 입력해주세요.");
+				$('input[name=brand_name]').focus();
+				return false;
+			}
+		});
+		
+		//새로운 나라 추가 유효성 검사
+		$('#addCountryForm').submit(function(){
+			//지역을 선택 안했을시
+			if($('#country_region').val() == 'default'){
+				alert("지역을 선택해주세요.");
+				$('#country_region').focus();
+				return false;
+			}
+			//나라 이름이 빈칸일시
+			else if($('input[name=country_name]').val() == ''){
+				alert("나라 이름을 입력해주세요.");
+				$('input[name=country_name]').focus();
+				return false;
+			}
+			//나라 코드가 빈칸일시
+			else if($('input[name=country_code]').val() == ''){
+				alert("나라 코드를 입력해주세요.");
+				$('input[name=country_code]').focus();
+				return false;
+			}
+			//국가 이미지를 첨부 안했을시
+			else if($('input[name=country_flag]').val() == ''){
+				alert("국가 이미지를 첨부해주세요.");
+				$('input[name=country_flag]').focus();
+				return false;
+			}
+			
+		});
+		
 	}); 
 </script>
 </html>

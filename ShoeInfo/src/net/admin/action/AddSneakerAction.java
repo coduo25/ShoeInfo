@@ -52,28 +52,32 @@ public class AddSneakerAction implements Action {
 		sdto.setImage(image1);
 		
 		//model_stylecode
-		if(multi.getParameter("model_stylecode") == null || multi.getParameter("model_stylecode") == ""){
+		if(multi.getParameter("model_stylecode") == null || multi.getParameter("model_stylecode").isEmpty()){
 			sdto.setModel_stylecode("미정");
 		}else {
 			sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
 		}
 		
 		//model_name
-		if(multi.getParameter("model_name") == null || multi.getParameter("model_name") == ""){
+		if(multi.getParameter("model_name") == null || multi.getParameter("model_name").isEmpty()){
 			sdto.setModel_name("UNKNOWN");
 		}else {
 			sdto.setModel_name(multi.getParameter("model_name"));
 		}
 		
 		//model_colorway
-		if(multi.getParameter("model_colorway") == null || multi.getParameter("model_colorway") == ""){
+		if(multi.getParameter("model_colorway") == null || multi.getParameter("model_colorway").isEmpty()){
 			sdto.setModel_colorway("미정");
 		}else {
 			sdto.setModel_colorway(multi.getParameter("model_colorway"));
 		}
 		
 		//price
-		sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
+		if(multi.getParameter("price") == null || multi.getParameter("price").isEmpty()){
+			sdto.setPrice(0);
+		}else{
+			sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
+		}
 		
 		//출시일자
 		String year = multi.getParameter("year");

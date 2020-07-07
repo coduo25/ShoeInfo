@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+* {margin:0; padding:0; box-sizing: border-box;}
+body {font-size:1em; line-weight:1.4}
+
+/* 모든 페이지 공통 부분 */
+.container {position: relative; width: 1200px; margin: 5px auto; }
+
+/* 관리자 페이지 */
+#content_adminMain { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align:center;}
+#content_adminMain table { margin: 0 auto;}

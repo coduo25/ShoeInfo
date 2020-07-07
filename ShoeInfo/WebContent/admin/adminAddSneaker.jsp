@@ -7,6 +7,7 @@
 <title>SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
 	<div id="wrapper" class="container">
 		<!-- content -->
 		<div id="content_adminAddSneaker">
-			<form action="./AddSneakerAction.ad" method="post" enctype="multipart/form-data">
+			<form action="./AddSneakerAction.ad" id="addSneakerForm" method="post" enctype="multipart/form-data">
 				<table border = "1">
 					<tr>
 						<td> 발매방식 </td>
@@ -30,7 +31,7 @@
 					</tr>
 					<tr>
 						<td rowspan="3"> 브랜드 </td>
-						<td> brand <br> (ex. Nike, Air Jordan, Adidas) </td>
+						<td> brand* <br> (ex. Nike, Air Jordan, Adidas) </td>
 						<td> <input type="text" name="brand"> </td>
 					</tr>
 					<tr>
@@ -42,39 +43,41 @@
 						<td> <input type="text" name="brand_index"> </td>
 					</tr>
 					<tr>
-						<td> 제품 이미지 <br> (썸네일용 - 날짜 적혀있는) </td>
+						<td> 썸네일 이미지* </td>
 						<td colspan="2"> <input type="file" name="file0"> </td>
 					</tr>
 					<tr>
-						<td> 제품 이미지 <br> (날짜 없는 사진) </td>
+						<td> 제품 이미지* </td>
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td> 제품 스타일 코드  </td>
+						<td> 제품 스타일 코드 <br> (미정일시, 빈칸유지)  </td>
 						<td colspan="2"> <input type="text" name="model_stylecode"> </td>
 					</tr>
 					<tr>
-						<td> 제품명 </td>
+						<td> 제품명 <br> (미정일시, 빈칸유지) </td>
 						<td colspan="2"> <input type="text" name="model_name"> </td>
 					</tr>
 					<tr>
-						<td> 제품 컬러 웨이 </td>
+						<td> 제품 컬러 웨이 <br> (미정일시, 빈칸유지) </td>
 						<td colspan="2"> <input type="text" name="model_colorway"> </td>
 					</tr>
 					<tr>
-						<td> 가격 <br> (한국 가격이 아직 나오지 않았다면 0으로 쓰기) </td>
+						<td> 가격 <br> (한국기준 가격이 미정일때 빈칸유지) </td>
 						<td colspan="2"> <input type="text" name="price"> 원</td>
 					</tr>
 					<tr>
-						<td> 발매일 <br> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </td>
+						<td> 발매일* <br> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </td>
 						<td colspan="2">
-							<select name="year">
+							<select name="year" id="sel_year">
+								<option value="default"> 년 </option>
 								<option value="2020"> 2020 </option>
 								<option value="2021"> 2021 </option>
 								<option value="2022"> 2022 </option>
 							</select>
 							년
-							<select name="month">
+							<select name="month" id="sel_month">
+								<option value="default"> 월 </option>
 								<option value="01"> 1 </option>
 								<option value="02"> 2 </option>
 								<option value="03"> 3 </option>
@@ -89,7 +92,8 @@
 								<option value="12"> 12 </option>
 							</select>
 							월
-							<select name="day">
+							<select name="day" id="sel_day">
+								<option value="default"> 일 </option>
 								<option value="01"> 1 </option>
 								<option value="02"> 2 </option>
 								<option value="03"> 3 </option>
@@ -138,5 +142,54 @@
 	
 	<!-- FOOTER -->
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
+	
 </body>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		//모든 input 유효성 검사하는 함수
+		$('#addSneakerForm').submit(function(){
+			//브랜드가 빈칸이면
+			if($('input[name=brand]').val() == ''){
+				alert("브랜드를 입력해주세요.");
+				$('input[name=brand]').focus();
+				return false;
+			}
+			//제품 이미지들 안 넣을때
+			else if($('input[name=file0]').val() == ''){
+				alert("썸네일 이미지를 넣어주세요.");
+				$('input[name=file0]').focus();
+				return false;
+			}
+			else if($('input[name=file1]').val() == ''){
+				alert("신발 이미지를 넣어주세요.");
+				$('input[name=file1]').focus();
+				return false;
+			}
+			
+			//발매일이 빈칸일시
+			else if($('#sel_year').val() == 'default'){
+				alert("발매 년도를 선택해주세요.");
+				$('#sel_year').focus();
+				return false;
+			}
+			else if($('#sel_month').val() == 'default'){
+				alert("발매 월을 선택해주세요.");
+				$('#sel_month').focus();
+				return false;
+			}
+			else if($('#sel_day').val() == 'default'){
+				alert("발매 날짜를 선택해주세요.");
+				$('#sel_day').focus();
+				return false;
+			}
+			
+		});
+		
+	});
+
+</script>
+
 </html>

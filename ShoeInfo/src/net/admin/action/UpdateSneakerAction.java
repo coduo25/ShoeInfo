@@ -43,11 +43,44 @@ public class UpdateSneakerAction implements Action{
 		String image1 = multi.getFilesystemName("file1");
 		sdto.setImage_thumb(image0);
 		sdto.setImage(image1);
-		sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
-		sdto.setModel_name(multi.getParameter("model_name"));
-		sdto.setModel_colorway(multi.getParameter("model_colorway"));
-		sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
-		sdto.setRelease_date(multi.getParameter("release_date"));
+		
+		//model_stylecode
+		if(multi.getParameter("model_stylecode") == null || multi.getParameter("model_stylecode").isEmpty()){
+			sdto.setModel_stylecode("미정");
+		}else {
+			sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
+		}
+		
+		//model_name
+		if(multi.getParameter("model_name") == null || multi.getParameter("model_name").isEmpty()){
+			sdto.setModel_name("UNKNOWN");
+		}else {
+			sdto.setModel_name(multi.getParameter("model_name"));
+		}
+		
+		//model_colorway
+		if(multi.getParameter("model_colorway") == null || multi.getParameter("model_colorway").isEmpty()){
+			sdto.setModel_colorway("미정");
+		}else {
+			sdto.setModel_colorway(multi.getParameter("model_colorway"));
+		}
+		
+		//price
+		if(multi.getParameter("price") == null || multi.getParameter("price").isEmpty()){
+			sdto.setPrice(0);
+		}else{
+			sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
+		}
+		
+		//출시일자
+		String year = multi.getParameter("year");
+		String month = multi.getParameter("month");
+		String day = multi.getParameter("day");
+		
+		String release_date = year + "-" + month + "-" + day;
+		sdto.setRelease_date(release_date);
+		
+		sdto.setRelease_status(multi.getParameter("release_status"));
 		
 		SneakerDAO asdao = new SneakerDAO();
 		asdao.updateSneakerInfo(sdto);

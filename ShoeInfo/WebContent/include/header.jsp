@@ -24,7 +24,6 @@
 		<!-- 메인메뉴  -->
 		<ul class="navbar_menu">
 			<li> <a href="./SneakerList.go"> 런칭 캘린더 </a> </li>
-			<li> <a href="#"> 기습 발매 </a> </li>
 		</ul>
 		
 		<!-- 로그인, 마이페이지, 로그아웃 링크 -->

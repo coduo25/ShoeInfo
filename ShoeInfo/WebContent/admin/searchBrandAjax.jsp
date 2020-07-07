@@ -22,7 +22,7 @@
 		
 		List brandNameList = (List) bdao.searchBrand(country_name);
 	%>
-		<select name="brand_name">
+		<select name="brand_name" id="brand_name">
 			<option value="default"> 브랜드를 선택해주세요 </option>
 			<%
 				for(int i=0; i<brandNameList.size(); i++) {
