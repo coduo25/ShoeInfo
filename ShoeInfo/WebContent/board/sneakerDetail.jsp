@@ -254,7 +254,7 @@
 							<%}else if(!odto_kr.getOnline_start_time().contains("9999-99-99 99:99") && odto_kr.getOnline_end_time().contains("9999-99-99 99:99") && compare_w_start_result_kr == -1) {%>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-							<%}else if(compare_w_end_result_kr == 1 && !odto_kr.getOnline_start_time().contains("9999-99-99 99:99") && !odto_kr.getOnline_end_time().contains("9999-99-99 99:99")){%>
+							<%}else if(compare_w_end_result_kr == 1 && !odto_kr.getOnline_end_time().contains("9999-99-99 99:99")){%>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span class="draw_count_result"> - </span>
@@ -433,7 +433,7 @@
 							<%}else if(!odto_asia.getOnline_start_time().contains("9999-99-99 99:99") && odto_asia.getOnline_end_time().contains("9999-99-99 99:99") && compare_w_start_result_asia == -1) {%>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-							<%}else if(compare_w_end_result_asia == 1 && !odto_asia.getOnline_start_time().contains("9999-99-99 99:99") && !odto_asia.getOnline_end_time().contains("9999-99-99 99:99")){%>
+							<%}else if(compare_w_end_result_asia == 1 && !odto_asia.getOnline_end_time().contains("9999-99-99 99:99")){%>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span class="draw_count_result"> - </span>
@@ -614,7 +614,7 @@
 							<%}else if(!odto_america.getOnline_start_time().contains("9999-99-99 99:99") && odto_america.getOnline_end_time().contains("9999-99-99 99:99") && compare_w_start_result_america == -1) {%>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-							<%}else if(compare_w_end_result_america == 1 && !odto_america.getOnline_start_time().contains("9999-99-99 99:99") && !odto_america.getOnline_end_time().contains("9999-99-99 99:99")){%>
+							<%}else if(compare_w_end_result_america == 1 && !odto_america.getOnline_end_time().contains("9999-99-99 99:99")){%>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span class="draw_count_result"> - </span>
@@ -792,7 +792,7 @@
 							<%}else if(!odto_europe.getOnline_start_time().contains("9999-99-99 99:99") && odto_europe.getOnline_end_time().contains("9999-99-99 99:99") && compare_w_start_result_europe == -1) {%>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-							<%}else if(compare_w_end_result_europe == 1 && !odto_europe.getOnline_start_time().contains("9999-99-99 99:99") && !odto_europe.getOnline_end_time().contains("9999-99-99 99:99")){%>
+							<%}else if(compare_w_end_result_europe == 1 && !odto_europe.getOnline_end_time().contains("9999-99-99 99:99")){%>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span class="draw_count_result"> - </span>
@@ -970,7 +970,7 @@
 							<%}else if(!odto_etc.getOnline_start_time().contains("9999-99-99 99:99") && odto_etc.getOnline_end_time().contains("9999-99-99 99:99") && compare_w_start_result_etc == -1) {%>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
-							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_time().contains("9999-99-99 99:99") && !odto_etc.getOnline_end_time().contains("9999-99-99 99:99")){%>
+							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_end_time().contains("9999-99-99 99:99")){%>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span class="draw_count_result"> - </span>

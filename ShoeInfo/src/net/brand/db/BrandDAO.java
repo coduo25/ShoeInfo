@@ -37,6 +37,25 @@ public class BrandDAO {
 		}
 	}
 	
+	//전체 브랜드 수 구하는 함수
+	public int countBrand(){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_brand";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				num += 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
+	
 	//새로운 브랜드 저장하는 함수
 	public void insertNewBrand(BrandDTO bdto) {
 		try {

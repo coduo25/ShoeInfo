@@ -49,9 +49,12 @@ public class AdminFrontController extends HttpServlet{
 		
 		//관리자 메인 페이지 처리
 		if(command.equals("/Main.ad")){
-			forward = new ActionForward();
-			forward.setPath("./admin/adminMain.jsp");
-			forward.setRedirect(false);
+			action = new GetAllInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		// ---------------새 신발 정보 추가----------------------------
@@ -119,6 +122,12 @@ public class AdminFrontController extends HttpServlet{
 		}
 		
 		// ---------------나라추가----------------------------
+		//새로운 나라 추가하는 form 페이지로 가기
+		else if(command.equals("/AddCountry.ad")){
+			forward = new ActionForward();
+			forward.setPath("./admin/adminAddCountry.jsp");
+			forward.setRedirect(false);
+		}
 		//새로운 나라 추가하는 페이지 처리
 		else if(command.equals("/AddCountryAction.ad")){
 			action = new AddCountryAction();
@@ -130,6 +139,15 @@ public class AdminFrontController extends HttpServlet{
 		}
 		
 		// ---------------나라별 브랜드추가------------------------
+		//브랜드 추가하는 form 페이지로 가기
+		else if(command.equals("/AddBrand.ad")){
+			action = new searchBrandAction2();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//브랜드 사이트 추가하는 페이지 처리
 		else if(command.equals("/AddBrandAction.ad")){
 			action = new AddBrandAction();
@@ -140,7 +158,7 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 
-		// ---------------온라인/오프라인 발매정보 추가-------------------
+		// ---------------온라인 발매정보 추가-------------------
 		//발매정보 추가하는 페이지 가기전 국가 정보 가져오는 처리페이지로 가기
 		else if(command.equals("/searchBrand.ad")) {
 			action = new searchBrandAction();
@@ -159,6 +177,20 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		
+		//--------------- 모든 리스트 가져오는 함수들 처리 ------------------
+		else if(command.equals("/SneakerList.ad")) {
+			action = new SneakerListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
 		
 		/************************************************************
 		 * 3. 실제 페이지 이동 동작 (redirect/forward)

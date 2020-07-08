@@ -12,6 +12,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.board.action.Criteria;
+
 public class SneakerDAO {
 	
 	Connection con = null;
@@ -38,6 +40,24 @@ public class SneakerDAO {
 		}
 	}
 	
+	//전체 신발 수 구하는 함수
+	public int countSneaker(){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select num from shoeinfo_sneakerlibrary";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				num += 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
 	
 	//새로운 신발정보 추가하는 함수
 	public void insertSneaker(SneakerDTO sdto) {
@@ -71,6 +91,39 @@ public class SneakerDAO {
 		} finally {
 			closeDB();
 		}
+	}
+	
+	//모든 신발 정보 리스트 가져오는 함수
+	public ArrayList getAllSneakerList(Criteria cri) {
+		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_sneakerlibrary order by release_date desc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cri.getPageStart());
+			pstmt.setInt(2, cri.getPerpageNum());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SneakerDTO sdto = new SneakerDTO();
+				sdto.setBrand(rs.getString("brand"));
+				sdto.setSub_brand(rs.getString("sub_brand"));
+				sdto.setBrand_index(rs.getString("brand_index"));
+				sdto.setImage_thumb(rs.getString("image_thumb"));
+				sdto.setImage(rs.getString("image"));
+				sdto.setModel_stylecode(rs.getString("model_stylecode"));
+				sdto.setModel_name(rs.getString("model_name"));
+				sdto.setModel_colorway(rs.getString("model_colorway"));
+				sdto.setPrice(rs.getInt("price"));
+				sdto.setRelease_date(rs.getString("release_date"));
+				sdto.setRelease_status(rs.getString("release_status"));
+				sneakerList.add(sdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return sneakerList;
 	}
 	
 	//신발정보 리스트로 가져오는 함수(월별로)
@@ -128,6 +181,7 @@ public class SneakerDAO {
 				sdto.setModel_stylecode(rs.getString("model_stylecode"));
 				sdto.setPrice(rs.getInt("price"));
 				sdto.setRelease_date(rs.getString("release_date"));
+				sdto.setRelease_status(rs.getString("release_status"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

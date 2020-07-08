@@ -5,8 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SHOE INFO.</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<link href="./css/board/adminForm.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -16,12 +17,16 @@
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
+	
+		<!-- 제목 -->
+		<h3> 새로운 신발 추가하기 </h3>
+	
 		<!-- content -->
 		<div id="content_adminAddSneaker">
 			<form action="./AddSneakerAction.ad" id="addSneakerForm" method="post" enctype="multipart/form-data">
-				<table border = "1">
+				<table>
 					<tr>
-						<td> 발매방식 </td>
+						<td id="category" colspan="2"> 발매방식 </td>
 						<td colspan="2">
 							<select name="release_status">
 								<option value="planned"> 정식 발매 </option>
@@ -30,54 +35,54 @@
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="3"> 브랜드 </td>
-						<td> brand* <br> (ex. Nike, Air Jordan, Adidas) </td>
+						<td rowspan="3" id="category_brand"> 브랜드 </td>
+						<td id="category"> 브랜드* <span id="cate_ref"> (ex. Nike, Air Jordan, Adidas) </span> </td>
 						<td> <input type="text" name="brand"> </td>
 					</tr>
 					<tr>
-						<td> sub-brand <br> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </td> 
+						<td id="category"> 서브브랜드  <span id="cate_ref"> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </span> </td> 
 						<td> <input type="text" name="sub_brand"> </td>
 					</tr>
 					<tr>
-						<td> brand-index <br> (ex. Low, Fear of God, Boost 350 V2, 992) </td> 
+						<td id="category"> 브랜드인덱스 <span id="cate_ref"> (ex. Low, Fear of God, Boost 350 V2, 992) </span> </td> 
 						<td> <input type="text" name="brand_index"> </td>
 					</tr>
 					<tr>
-						<td> 썸네일 이미지* </td>
+						<td id="category" colspan="2"> 썸네일 이미지* </td>
 						<td colspan="2"> <input type="file" name="file0"> </td>
 					</tr>
 					<tr>
-						<td> 제품 이미지* </td>
+						<td id="category" colspan="2"> 제품 이미지* </td>
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td> 제품 스타일 코드 <br> (미정일시, 빈칸유지)  </td>
+						<td id="category" colspan="2"> 제품 스타일 코드 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
 						<td colspan="2"> <input type="text" name="model_stylecode"> </td>
 					</tr>
 					<tr>
-						<td> 제품명 <br> (미정일시, 빈칸유지) </td>
+						<td id="category" colspan="2"> 제품명 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
 						<td colspan="2"> <input type="text" name="model_name"> </td>
 					</tr>
 					<tr>
-						<td> 제품 컬러 웨이 <br> (미정일시, 빈칸유지) </td>
+						<td id="category" colspan="2"> 제품 컬러 웨이 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
 						<td colspan="2"> <input type="text" name="model_colorway"> </td>
 					</tr>
 					<tr>
-						<td> 가격 <br> (한국기준 가격이 미정일때 빈칸유지) </td>
-						<td colspan="2"> <input type="text" name="price"> 원</td>
+						<td id="category" colspan="2"> 가격  <span id="cate_ref"> (한국기준 가격이 미정일때 빈칸유지) </span> </td>
+						<td colspan="2"> <input type="text" name="price">원</td>
 					</tr>
 					<tr>
-						<td> 발매일* <br> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </td>
+						<td id="category" colspan="2"> 발매일* <span id="cate_ref"> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </span> </td>
 						<td colspan="2">
 							<select name="year" id="sel_year">
-								<option value="default"> 년 </option>
+								<option value="default"> - </option>
 								<option value="2020"> 2020 </option>
 								<option value="2021"> 2021 </option>
 								<option value="2022"> 2022 </option>
 							</select>
 							년
 							<select name="month" id="sel_month">
-								<option value="default"> 월 </option>
+								<option value="default"> - </option>
 								<option value="01"> 1 </option>
 								<option value="02"> 2 </option>
 								<option value="03"> 3 </option>
@@ -93,7 +98,7 @@
 							</select>
 							월
 							<select name="day" id="sel_day">
-								<option value="default"> 일 </option>
+								<option value="default"> - </option>
 								<option value="01"> 1 </option>
 								<option value="02"> 2 </option>
 								<option value="03"> 3 </option>
@@ -132,7 +137,7 @@
 					</tr>
 					<tr>
 						<td colspan="3">
-							<input type="submit" value="신발 등록">
+							<input type="submit" id="submit_btn" value="등록하기">
 						</td>
 					</tr>
 				</table>

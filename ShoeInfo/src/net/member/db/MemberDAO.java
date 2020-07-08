@@ -40,6 +40,44 @@ public class MemberDAO {
 		}
 	}
 	
+	//모든 회원수 계산하는 함수
+	public int countMember(){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select email from shoeinfo_member";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				num += 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
+	
+	//모든 회원이 응모한 횟수 계산하는 함수
+	public int countTotalDraw(){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select userDraw_num from shoeinfo_memberdrawinfo";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				num += 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
+	
 	//회원 추가하는 함수
 	public void insertMember(MemberDTO mdto){
 		try {

@@ -7,9 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<title>SHOE INFO.</title>
+<link href="./css/board/adminForm.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
@@ -45,35 +46,35 @@
 		<div id="content_adminAddSneaker">
 			<!-- 온라인 정보 추가하는 란 -->
 			<div>
-				<h3> 온라인 발매 정보 수정하기 </h3>
+				<h3> 발매 정보 수정하기 </h3>
 				<form action="./UpdateDrawInfoAction.ad" id="updateDrawForm" method="post">
 					<table border = "1">
 						<input type="hidden" name="country_region" value="<%=onlineDrawInfo.getCountry_region()%>">
 						<input type="hidden" name="country_name" value="<%=onlineDrawInfo.getCountry_name()%>">
 						<input type="hidden" name="brand_id" value="<%=onlineDrawInfo.getBrand_id()%>">
 						<tr>
-							<td> 신발 스타일 코드* </td>
+							<td id="category"> 신발 스타일 코드* </td>
 							<td> <input type="text" name="model_stylecode" value="<%=onlineDrawInfo.getModel_stylecode()%>"> </td>
 						</tr>
 						<tr>
-							<td> 온라인 링크* </td>
+							<td id="category"> 온라인 링크* </td>
 							<td> <input type="text" name="online_link" value="<%=onlineDrawInfo.getOnline_link()%>"> </td>
 						</tr>
 						<tr>
-							<td> 온라인 시간  <br> (시간이 없으면 그대로 두기!) <br> <span style="color: red; font-weight: bold"> (수정할때 10007-06-11 오전 04:39 이면 전부 delete 하기!) </span> </td>
+							<td id="category"> 온라인 시간  <span id="cate_ref"> 시간이 없으면 빈칸으로 그대로 두기! </span> <span id="cate_ref"> 단, 발매방식이 미정이고 발매날짜가 있을때 시작시간에 입력하기 </span>  </td>
 							<td> 
-								<input type="date" name="online_date_start" value="<%=new_Online_start_date%>">
-								<input type="time" name="online_hour_start" value="<%=new_Online_start_hour%>">
+								<input type="date" name="online_date_start" value="<%=new_Online_start_date%>" id="input_date">
+								<input type="time" name="online_hour_start" value="<%=new_Online_start_hour%>" id="input_date">
 								~
-								<input type="date" name="online_date_end" value="<%=new_Online_end_date%>">
-								<input type="time" name="online_hour_end" value="<%=new_Online_end_hour%>">
+								<input type="date" name="online_date_end" value="<%=new_Online_end_date%>" id="input_date">
+								<input type="time" name="online_hour_end" value="<%=new_Online_end_hour%>" id="input_date">
 							</td>
 						</tr>
 						<tr>
-							<td> 온라인 방식* </td>
+							<td id="category"> 발매 방식* </td>
 							<td> 
 								<select name="online_method" id="online_method">
-									<option value="default" <%if(onlineDrawInfo.getOnline_method().equals("default")){%> selected<%}%>> 온라인 방식을 선택해주세요. </option>
+									<option value="default" <%if(onlineDrawInfo.getOnline_method().equals("default")){%> selected<%}%>> 발매 방식을 선택해주세요. </option>
 									<option value="선착" <%if(onlineDrawInfo.getOnline_method().equals("선착")){%> selected<%}%>> 선착 </option>
 									<option value="드로우" <%if(onlineDrawInfo.getOnline_method().equals("드로우")){%> selected<%}%>> 드로우 </option>
 									<option value="-" <%if(onlineDrawInfo.getOnline_method().equals("-")){%> selected <%}%>> 미정 </option>
@@ -81,7 +82,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 구매 방식* </td>
+							<td id="category"> 구매 방식* </td>
 							<td>
 								<select name="buy_method" id="buy_method">
 									<option value="default" <%if(onlineDrawInfo.getBuy_method().equals("default")){%> selected<%}%>> 구매 방식을 선택해주세요. </option>
@@ -94,7 +95,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 직배 여부* </td>
+							<td id="category"> 직배 여부* </td>
 							<td>
 								<select name="delivery_method" id="delivery_method">
 									<option value="default" <%if(onlineDrawInfo.getDelivery_method().equals("default")){%> selected<%}%>> 직배여부를 선택해주세요. </option>
@@ -105,12 +106,12 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 특이사항 </td>
+							<td id="category"> 특이사항 </td>
 							<td> <textarea name="description"><%=onlineDrawInfo.getDescription()%></textarea>
 						</tr>
 						<tr>
 							<td colspan="2"> 
-								<input type="submit" value="수정하기">
+								<input type="submit" id="submit_btn" value="수정하기">
 							</td>
 						</tr>
 					</table>

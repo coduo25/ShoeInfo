@@ -7,5 +7,68 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative; width: 1200px; margin: 5px auto; }
 
 /* 관리자 페이지 */
-#content_adminMain { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align:center;}
+/* 제목 */
+h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
+
+/* 모든 정보 보여주는 표 */
+#total_infoTable { display: table; position: relative; width: 100%; border: 1px dashed #d5d5d5; border-radius: 3%; box-sizing: border-box; padding: 0 20px 20px 20px; text-align: center; font-family: 'Nanum Gothic', sans-serif; }
+#total_infoTable li{ display: inline-block; margin-top: 20px; height: 45px; position: relative; list-style: none; border-right: 1px solid #e1e1e1; padding: 2px 45px; margin-left: 5px; }
+#total_infoTable li:last-child { border-right: 0px; }
+.total_subTit { display:block; margin-bottom: 12px; font-size: 15px; line-height: 1; color: #888; }
+.total_main { font-size: 16px; color: #222; font-weight: bold; }
+
+#content_adminMain { width: 100%; margin-top: 30px; position: relative; z-index: 2; }
 #content_adminMain table { margin: 0 auto;}
+
+/* 신발 추가하는 영역 */
+#Sneaker_wrapper, #Member_wrapper { display: table; width: 100%; border: 1px solid #dfdfdf; border-radius: 4px; padding: 2% 0; font-family: 'Nanum Gothic', sans-serif;}
+#Sneaker_wrapper h5 { font-size: 15px; padding-bottom: 3%; }
+#Sneaker_wrapper div, #Member_wrapper div { display: table-cell; width: 33.333%; padding: 15px; border-right: 1px solid #e1e1e1; padding-left: 6%; }
+#Sneaker_wrapper div:last-child { border-right: 0px; }
+
+#add_Sneaker_menu li, #add_brand_menu li, #add_country_menu li, #Member_menu li { line-height: 3; list-style: none; }
+#add_Sneaker_menu li span, #add_brand_menu li span, #add_country_menu li span, #Member_menu li span { border: 1px solid #c0c0c0; padding: 4px; }
+
+
+/* 새로운 신발 추가하는 form */
+#content_adminAddSneaker, #content_admin_sneakerList { font-family: 'Nanum Gothic', sans-serif; }
+#content_adminAddSneaker table, #content_admin_sneakerList table { width: 100%; border-collapse: collapse;}
+#content_adminAddSneaker table tr td, #content_admin_sneakerList table tr th, #content_admin_sneakerList table tr td { border: 1px solid #cacaca; }
+#content_adminAddSneaker table tr:first-child td { border-top: 3px solid #808080; }
+#content_adminAddSneaker table tr:last-child td { border-bottom: 3px solid #808080; }
+
+#content_adminAddSneaker table td, #content_admin_sneakerList table th, #content_admin_sneakerList table td { padding: 1.5%; }
+
+#content_adminAddSneaker #cate_ref { display: block; font-weight: normal; font-size: 0.8em; padding-top: 2%;}
+
+#content_adminAddSneaker #category { background-color: #f2f2f2; font-weight: bold; width: 25%; text-align: center;}
+#content_adminAddSneaker #category_brand { background-color: #f2f2f2; font-weight: bold; width: 10%; text-align: center;}
+
+#content_adminAddSneaker select { height: 25px; }
+#content_adminAddSneaker input { text-align: left; width: 50%; height: 30px; font-size: 15px; padding-left: 8px; }
+#content_adminAddSneaker input#submit_btn { text-align: center; width: 30%; height: 45px; font-size: 1.2em; font-weight: bold; background-color: #303030; color: white; border-radius: 0.5em; }
+#content_adminAddSneaker table tr:last-child td { text-align: center; }
+
+#content_adminAddSneaker input#input_date { width: unset; }
+
+/* 전체 신발 리스트 form */
+#content_admin_sneakerList { height: 1200px; }
+#content_admin_sneakerList table tr { text-align: center; }
+#content_admin_sneakerList table tr th { background-color: #f2f2f2; }
+#content_admin_sneakerList table tr td a img { width: 100%; }
+
+#content_admin_sneakerList input#modi_btn { border: 1px solid #c0c0c0; padding: 4px; background-color: white; }
+
+	/* 페이징 처리 영역 */
+	#content_admin_sneakerList .page_Area { height: 100px; }
+	#content_admin_sneakerList #pageList { list-style: none; margin: 1em auto; padding: 0; max-width: fit-content; }
+	#content_admin_sneakerList #pageList li, #content_admin_sneakerList #pageList li i { float: left; display: inline-block; width: 2.5em; height: 2.5em; line-height: 2.5em; text-align: center;} 
+
+
+
+
+
+
+
+
+

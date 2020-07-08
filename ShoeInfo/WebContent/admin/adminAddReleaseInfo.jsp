@@ -7,9 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<title>SHOE INFO.</title>
+<link href="./css/board/adminForm.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
@@ -18,7 +19,7 @@
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
 		if(user == null){
-			response.sendRedirect("./searchBrand.ad");
+			response.sendRedirect("./SneakerList.go");
 		}
 		
 		String model_stylecode = (String) request.getParameter("model_stylecode");
@@ -47,15 +48,15 @@
 
 			<!-- 온라인 정보 추가하는 란 -->
 			<div>
-				<h3> 온라인 발매 정보 추가하기 </h3>
+				<h3> 발매 정보 추가하기 </h3>
 				<form action="./AddOnlineInfoAction.ad" id="addOnlineForm" method="post">
-					<table border = "1">
+					<table>
 						<tr>
-							<td> 신발 스타일 코드* </td>
+							<td id="category"> 신발 스타일 코드* </td>
 							<td> <input type="text" name="model_stylecode" value="<%=model_stylecode%>" required> </td>
 						</tr>
 						<tr>
-							<td rowspan="2"> 브랜드* </td>
+							<td id="category" rowspan="2"> 브랜드* </td>
 							<td> 
 								나라 선택
 								<select id="country_name_on" name="country_name">
@@ -70,24 +71,24 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 온라인 링크* </td>
+							<td id="category"> 온라인 링크* </td>
 							<td> <input type="text" name="online_link"> </td>
 						</tr>
 						<tr>
-							<td> 온라인 시간  <br> 시간이 없으면 빈칸으로 그대로 두기! <br> 단, 발매방식이 미정이고 발매날짜가 있을때 시작시간에 입력하기  </td>
+							<td id="category"> 온라인 시간  <span id="cate_ref"> 시간이 없으면 빈칸으로 그대로 두기! </span> <span id="cate_ref"> 단, 발매방식이 미정이고 발매날짜가 있을때 시작시간에 입력하기 </span>  </td>
 							<td> 
-								<input type="date" name="online_date_start">
-								<input type="time" name="online_hour_start">
+								<input type="date" name="online_date_start" id="input_date">
+								<input type="time" name="online_hour_start" id="input_date">
 								~
-								<input type="date" name="online_date_end">
-								<input type="time" name="online_hour_end">
+								<input type="date" name="online_date_end" id="input_date">
+								<input type="time" name="online_hour_end" id="input_date">
 							</td>
 						</tr>
 						<tr>
-							<td> 온라인 방식* </td>
+							<td id="category"> 발매 방식* </td>
 							<td> 
 								<select name="online_method" id="online_method">
-									<option value="default"> 온라인 방식을 선택해주세요. </option>
+									<option value="default"> 발매 방식을 선택해주세요. </option>
 									<option value="선착"> 선착 </option>
 									<option value="드로우"> 드로우 </option>
 									<option value="-"> 미정 </option>
@@ -95,7 +96,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 구매 방식* </td>
+							<td id="category"> 구매 방식* </td>
 							<td>
 								<select name="buy_method" id="buy_method">
 									<option value="default"> 구매 방식을 선택해주세요. </option>
@@ -108,7 +109,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 직배 여부* </td>
+							<td id="category"> 직배 여부* </td>
 							<td>
 								<select name="delivery_method" id="delivery_method">
 									<option value="default"> 직배여부를 선택해주세요. </option>
@@ -119,12 +120,12 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 특이사항 </td>
+							<td id="category"> 특이사항 </td>
 							<td> <textarea name="description"></textarea>
 						</tr>
 						<tr>
 							<td colspan="2"> 
-								<input type="submit" value="추가하기">
+								<input type="submit" id="submit_btn" value="추가하기">
 							</td>
 							
 						</tr>
@@ -140,11 +141,8 @@
 				<h3> 새로운 브랜드 추가하기 </h3>
 				<form action="./AddBrandAction.ad" id="addBrandForm" method="post" enctype="multipart/form-data">	
 					<table border = "1">
-						<tr> 
-							<td colspan="2"> 브랜드(사이트)의 국가 정보 </td>	
 						<tr>
-						<tr>
-							<td> 국가/지역 </td>
+							<td id="category"> 국가/지역 </td>
 							<td> 
 								<select name="country_name" id="country_name">
 									<option value="default"> 나라를 선택해주세요. </option>
@@ -160,17 +158,17 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 로고 Image </td>
+							<td id="category"> 로고 Image </td>
 							<td> <input type="file" name="brand_logo"> </td>
 						</tr>
 						<tr>
-							<td> 브랜드 이름 </td>
+							<td id="category"> 브랜드 이름 </td>
 							<td> <input type="text" name="brand_name"> </td>
 						</tr>
 					
 						<tr>
 							<td colspan="2"> 
-								<input type="submit" value="추가하기"> 
+								<input type="submit" id="submit_btn" value="추가하기"> 
 							</td>
 						</tr>
 				</table>
@@ -186,7 +184,7 @@
 				<form action="./AddCountryAction.ad" id="addCountryForm" method="post" enctype="multipart/form-data">
 					<table border = "1">
 						<tr>
-							<td> 지역 </td>
+							<td id="category"> 지역 </td>
 							<td> 
 								<select name="country_region" id="country_region">
 									<option value="default"> 지역을 선택해주세요. </option>
@@ -198,20 +196,20 @@
 							</td>
 						</tr>
 						<tr>
-							<td> 나라 이름(ex.대한민국) </td>
+							<td id="category"> 나라 이름(ex.대한민국) </td>
 							<td> <input type="text" name="country_name"> </td>
 						</tr>
 						<tr>
-							<td> 나라 코드(ex.82 - <a href="https://countrycode.org/" target="_blank">코드보러가기</a>) </td>
+							<td id="category"> 나라 코드(ex.82 - <a href="https://countrycode.org/" target="_blank">코드보러가기</a>) </td>
 							<td> <input type="text" name="country_code"> </td>
 						</tr>
 						<tr>
-							<td> 국기 이미지 업로드 </td>
+							<td id="category"> 국기 이미지 업로드 </td>
 							<td> <input type="file" name="country_flag"> </td>
 						</tr>
 						<tr>
 							<td colspan="2"> 
-								<input type="submit" value="추가하기"> 
+								<input type="submit" id="submit_btn" value="추가하기"> 
 							</td>
 						</tr>
 					</table>

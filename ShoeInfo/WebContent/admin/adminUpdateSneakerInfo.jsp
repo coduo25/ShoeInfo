@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<title>SHOE INFO.</title>
+<link href="./css/board/adminForm.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -29,49 +30,62 @@
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
+	
+		<!-- 제목 -->
+		<h3> 신발 기본정보 수정하기 </h3>
+	
 		<!-- content -->
 		<div id="content_adminAddSneaker">
 			<form action="./UpdateSneakerInfoAction.ad" id="updateSneakerForm" method="post" enctype="multipart/form-data">
 				<table border = "1">
 					<tr>
-						<td rowspan="3"> 브랜드 </td>
-						<td> brand* </td>
+						<td id="category" colspan="2"> 발매방식 </td>
+						<td colspan="2">
+							<select name="release_status">
+								<option value="planned" <%if(sdto.getRelease_status().equals("planned")) {%> selected <%}%>> 정식 발매 </option>
+								<option value="shock" <%if(sdto.getRelease_status().equals("shock")) {%> selected <%}%>> 기습 발매 </option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="3" id="category_brand"> 브랜드 </td>
+						<td id="category"> 브랜드* <span id="cate_ref"> (ex. Nike, Air Jordan, Adidas) </span> </td>
 						<td> <input type="text" name="brand" value="<%=sdto.getBrand()%>"> </td>
 					</tr>
 					<tr>
-						<td> sub-brand </td> 
+						<td id="category"> 서브브랜드  <span id="cate_ref"> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </span> </td> 
 						<td> <input type="text" name="sub_brand" value="<%=sdto.getSub_brand()%>"> </td>
 					</tr>
 					<tr>
-						<td> brand-index </td> 
+						<td id="category"> 브랜드인덱스 <span id="cate_ref"> (ex. Low, Fear of God, Boost 350 V2, 992) </span> </td>
 						<td> <input type="text" name="brand_index" value="<%=sdto.getBrand_index()%>"> </td>
 					</tr>
 					<tr>
-						<td> 썸네일 이미지* </td>
+						<td id="category" colspan="2"> 썸네일 이미지* </td>
 						<td colspan="2"> <input type="file" name="file0"> </td>
 					</tr>
 					<tr>
-						<td> 제품 이미지* </td>
+						<td id="category" colspan="2"> 제품 이미지* </td>
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td> 제품 스타일 코드 <br> (미정일시, 빈칸유지)  </td>
+						<td id="category" colspan="2"> 제품 스타일 코드 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
 						<td colspan="2"> <input type="text" name="model_stylecode" value="<%=sdto.getModel_stylecode()%>" readonly> </td>
 					</tr>
 					<tr>
-						<td> 제품명 <br> (미정일시, 빈칸유지) </td>
+						<td id="category" colspan="2"> 제품명 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
 						<td colspan="2"> <input type="text" name="model_name" value="<%=sdto.getModel_name()%>"> </td>
 					</tr>
 					<tr>
-						<td> 제품 컬러 웨이 <br> (미정일시, 빈칸유지) </td>
+						<td id="category" colspan="2"> 제품 컬러 웨이 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
 						<td colspan="2"> <input type="text" name="model_colorway" value="<%=sdto.getModel_colorway()%>"> </td>
 					</tr>
 					<tr>
-						<td> 가격 <br> (한국기준 가격이 미정일때 빈칸유지) </td>
+						<td id="category" colspan="2"> 가격  <span id="cate_ref"> (한국기준 가격이 미정일때 빈칸유지) </span> </td>
 						<td colspan="2"> <input type="text" name="price" value="<%=sdto.getPrice()%>">원 </td>
 					</tr>
 					<tr>
-						<td> 발매일* <br> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </td>
+						<td id="category" colspan="2"> 발매일* <span id="cate_ref"> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </span> </td>
 						<td colspan="2">
 							<select name="year" id="sel_year">
 								<option value="default"> 년 </option>
@@ -135,8 +149,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<input type="submit" value="신발 정보 수정하기">
+						<td colspan="3">
+							<input type="submit" id="submit_btn" value="수정하기">
 						</td>
 					</tr>
 				</table>

@@ -7,36 +7,113 @@
 <title>SHOE INFO.</title>
 <link href="./css/board/adminForm.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+	<%
+	
+		request.setCharacterEncoding("UTF-8");
+	
+		int memberNum = (int) request.getAttribute("memberNum");
+		int brandNum = (int) request.getAttribute("brandNum");
+		int sneakerNum = (int) request.getAttribute("sneakerNum");
+		int memberDrawNum = (int) request.getAttribute("memberDrawNum");
+		
+	%>
 
 	<!-- Header -->
 	<header> <jsp:include page="/include/header.jsp" /> </header>
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
+	
+		<!-- 제목 -->
+		<div>
+			<h3> 관리자 페이지 </h3>
+		</div>
+	
 		<!-- content -->
 		<div id="content_adminMain">
-			<table border="1">
-				<h3> 신발 </h3>
-				<tr>
-					<td> 새로운 신발 </td>
-					<td> <a href="./AddSneaker.ad"> 추가하기 </a> </td>
-				</tr>
-				<tr>
-					<td> 신발 발매 정보 </td>
-					<td> <a href="./searchBrand.ad"> 추가하기 </a></td>
-				</tr>
-			</table>
-			<br>
-			<br>
-			<table border="1">
-				<h3> 회원 </h3>
-				<tr>
-					<td> 전체 회원 보기(관리) </td>
-				</tr>
-			</table>
+		
+			<!-- 모든 정보 보여주는 표 -->
+			<div id="total_infoTable">
+				<ul>
+					<li>
+						<span class="total_subTit"> 총 회원 수 </span>
+						<span class="total_main"> <a href="#"> <%=memberNum%> 명 </a> </span>
+					</li>
+					<li>
+						<span class="total_subTit"> 총 브랜드 수 </span>
+						<span class="total_main"> <a href="#"> <%=brandNum%> 개 </a></span>
+					</li>
+					<li>
+						<span class="total_subTit"> 총 신발 수 </span>
+						<span class="total_main"> <a href="#"> <%=sneakerNum%> 개 </a></span>
+					</li>
+					<li>
+						<span class="total_subTit"> 총 응모한 수 </span>
+						<span class="total_main"> <a href="#"> <%=memberDrawNum%> 개 </a></span>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- 신발 관리 영역 -->
+			<h4> 신발 <i class="fas fa-shoe-prints"></i> </h4>
+			<div id="Sneaker_wrapper">
+				<div id="add_Sneaker_menu"> 
+					<h5> 신발 관리하기 </h5>
+					<ul>
+						<li>
+							<span> <a href="./AddSneaker.ad"> 새로운 신발 추가하기 <i class="fas fa-exclamation-circle"></i> </a> </span>
+						</li>
+						<li>
+							<span> <a href="./searchBrand.ad"> 발매 정보 추가하기 <i class="fas fa-exclamation-circle" style="color:red;"></i> </a> </span>
+						</li>
+						<li>
+							<span> <a href="./SneakerList.ad"> 전체 목록보기 </a> </span>
+						</li>
+					</ul>
+				</div>
+				<div id="add_brand_menu">
+					<h5> 브랜드 관리하기 </h5>
+					<ul>
+						<li>
+							<span> <a href="./AddBrand.ad"> 새로운 브랜드 추가하기 <i class="fas fa-exclamation-circle"></i> </a> </span>
+						</li>
+						<li>
+							<span> <a href="#"> 전체 목록보기 </a> </span>
+						</li>
+					</ul>
+				</div>
+				<div id="add_country_menu">
+					<h5> 국가 관리하기 </h5>
+					<ul>
+						<li>
+							<span> <a href="./AddCountry.ad"> 새로운 국가 추가하기 <i class="fas fa-exclamation-circle"></i> </a> </span>
+						</li>
+						<li>
+							<span> <a href="#"> 전체 목록보기 </a> </span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+			<!-- 회원 관리 영역 -->
+			<h4> 회원 <i class="fas fa-user-friends"></i> </h4>
+			<div id="Member_wrapper">
+				<div id="Member_menu"> 
+					<ul>
+						<li>
+							<span> <a href="#"> 전체 회원 보기 </a> </span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
 		</div>
+		
+		
 	</div>
 
 	<!-- FOOTER -->
