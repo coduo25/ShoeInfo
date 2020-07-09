@@ -8,7 +8,9 @@ public class OnlineDTO {
 	private String country_name;
 	private String brand_id;
 	private String online_link;
+	private String online_start_date;
 	private String online_start_time;
+	private String online_end_date;
 	private String online_end_time;
 	private String online_method;
 	private String buy_method;
@@ -51,11 +53,23 @@ public class OnlineDTO {
 	public void setOnline_link(String online_link) {
 		this.online_link = online_link;
 	}
+	public String getOnline_start_date() {
+		return online_start_date;
+	}
+	public void setOnline_start_date(String online_start_date) {
+		this.online_start_date = online_start_date;
+	}
 	public String getOnline_start_time() {
 		return online_start_time;
 	}
 	public void setOnline_start_time(String online_start_time) {
 		this.online_start_time = online_start_time;
+	}
+	public String getOnline_end_date() {
+		return online_end_date;
+	}
+	public void setOnline_end_date(String online_end_date) {
+		this.online_end_date = online_end_date;
 	}
 	public String getOnline_end_time() {
 		return online_end_time;

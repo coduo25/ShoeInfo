@@ -31,13 +31,21 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 
 
 /* 새로운 신발 추가하는 form */
-#content_adminAddSneaker, #content_admin_sneakerList { font-family: 'Nanum Gothic', sans-serif; }
-#content_adminAddSneaker table, #content_admin_sneakerList table { width: 100%; border-collapse: collapse;}
-#content_adminAddSneaker table tr td, #content_admin_sneakerList table tr th, #content_admin_sneakerList table tr td { border: 1px solid #cacaca; }
+#content_adminAddSneaker, #content_admin_sneakerList, #content_admin_brandList, #content_admin_countryList { font-family: 'Nanum Gothic', sans-serif; }
+#content_adminAddSneaker table, #content_admin_sneakerList table, #content_admin_brandList table, #content_admin_countryList table { width: 100%; border-collapse: collapse; margin-bottom: 3%;}
+
+#content_adminAddSneaker table tr td, 
+#content_admin_sneakerList table tr th, #content_admin_sneakerList table tr td, 
+#content_admin_brandList table tr th, #content_admin_brandList table tr td,
+#content_admin_countryList table tr th, #content_admin_countryList tr td { border: 1px solid #cacaca; }
+
 #content_adminAddSneaker table tr:first-child td { border-top: 3px solid #808080; }
 #content_adminAddSneaker table tr:last-child td { border-bottom: 3px solid #808080; }
 
-#content_adminAddSneaker table td, #content_admin_sneakerList table th, #content_admin_sneakerList table td { padding: 1.5%; }
+#content_adminAddSneaker table td, 
+#content_admin_sneakerList table th, #content_admin_sneakerList table td, 
+#content_admin_brandList table th, #content_admin_brandList table td,
+#content_admin_countryList table th, #content_admin_countryList table td { padding: 1.5%; }
 
 #content_adminAddSneaker #cate_ref { display: block; font-weight: normal; font-size: 0.8em; padding-top: 2%;}
 
@@ -51,18 +59,24 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 
 #content_adminAddSneaker input#input_date { width: unset; }
 
-/* 전체 신발 리스트 form */
-#content_admin_sneakerList { height: 1200px; }
-#content_admin_sneakerList table tr { text-align: center; }
-#content_admin_sneakerList table tr th { background-color: #f2f2f2; }
-#content_admin_sneakerList table tr td a img { width: 100%; }
+/* 전체 신발, 브랜드, 국가 리스트 form */
+#content_admin_sneakerList, #content_admin_brandList, #content_admin_countryList { height: 1200px; }
+#content_admin_sneakerList table tr, #content_admin_brandList table tr, #content_admin_countryList table tr { text-align: center; }
+#content_admin_sneakerList table tr th, #content_admin_brandList table tr th, #content_admin_countryList table tr th { background-color: #f2f2f2; }
 
-#content_admin_sneakerList input#modi_btn { border: 1px solid #c0c0c0; padding: 4px; background-color: white; }
+#content_admin_sneakerList table tr td a img { width: 100%; }
+#content_admin_brandList table tr td img { width: 55%; }
+#content_admin_countryList table tr td img { width: 30%; }
+
+#content_admin_sneakerList input#modi_btn, #content_admin_brandList input#modi_btn, #content_admin_countryList input#modi_btn { border: 1px solid #c0c0c0; padding: 4px; background-color: white; }
 
 	/* 페이징 처리 영역 */
-	#content_admin_sneakerList .page_Area { height: 100px; }
-	#content_admin_sneakerList #pageList { list-style: none; margin: 1em auto; padding: 0; max-width: fit-content; }
-	#content_admin_sneakerList #pageList li, #content_admin_sneakerList #pageList li i { float: left; display: inline-block; width: 2.5em; height: 2.5em; line-height: 2.5em; text-align: center;} 
+	#content_admin_sneakerList .page_Area, #content_admin_brandList .page_Area, #content_admin_countryList .page_Area { height: 100px; }
+	#content_admin_sneakerList #pageList, #content_admin_brandList #pageList, #content_admin_countryList #pageList { list-style: none; margin: 1em auto; padding: 0; max-width: fit-content; }
+	
+	#content_admin_sneakerList #pageList li, #content_admin_sneakerList #pageList li i, 
+	#content_admin_brandList #pageList li, #content_admin_brandList #pageList li i,
+	#content_admin_countryList #pageList li, #content_admin_countryList #pageList li i { float: left; display: inline-block; width: 2.5em; height: 2.5em; line-height: 2.5em; text-align: center;} 
 
 
 

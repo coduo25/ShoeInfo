@@ -82,7 +82,7 @@
 							<span> <a href="./AddBrand.ad"> 새로운 브랜드 추가하기 <i class="fas fa-exclamation-circle"></i> </a> </span>
 						</li>
 						<li>
-							<span> <a href="#"> 전체 목록보기 </a> </span>
+							<span> <a href="./BrandList.ad"> 전체 목록보기 </a> </span>
 						</li>
 					</ul>
 				</div>
@@ -93,7 +93,7 @@
 							<span> <a href="./AddCountry.ad"> 새로운 국가 추가하기 <i class="fas fa-exclamation-circle"></i> </a> </span>
 						</li>
 						<li>
-							<span> <a href="#"> 전체 목록보기 </a> </span>
+							<span> <a href="./CountryList.ad"> 전체 목록보기 </a> </span>
 						</li>
 					</ul>
 				</div>

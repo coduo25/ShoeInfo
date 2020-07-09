@@ -40,24 +40,26 @@ public class AddOnlineInfoAction implements Action{
 		String online_hour_start = request.getParameter("online_hour_start");
 		//null이면 9999-99-99, 99:99 으로 저장하기
 		if(online_date_start.equals("")){
-			online_date_start = "9999-99-99";
+			online_date_start = "";
 		}
 		if(online_hour_start.equals("")){
-			online_hour_start = "99:99";
+			online_hour_start = "";
 		}
-		String online_start_time = online_date_start + " " + online_hour_start;
+		String online_start_date = online_date_start;
+		String online_start_time = online_hour_start;
 		
 		//온라인 끝나는 시간
 		String online_date_end = request.getParameter("online_date_end");
 		String online_hour_end = request.getParameter("online_hour_end");
 		//null이면9999-99-99, 99:99 으로 저장하기
 		if(online_date_end.equals("")){
-			online_date_end = "9999-99-99";
+			online_date_end = "";
 		}
 		if(online_hour_end.equals("")){
-			online_hour_end = "99:99";
+			online_hour_end = "";
 		}
-		String online_end_time = online_date_end + " " + online_hour_end;
+		String online_end_date = online_date_end;
+		String online_end_time = online_hour_end;
 
 		String online_method = request.getParameter("online_method");
 		String buy_method = request.getParameter("buy_method");
@@ -81,7 +83,9 @@ public class AddOnlineInfoAction implements Action{
 		odto.setCountry_name(country_name);
 		odto.setBrand_id(brand_id);
 		odto.setOnline_link(online_link);
+		odto.setOnline_start_date(online_start_date);
 		odto.setOnline_start_time(online_start_time);
+		odto.setOnline_end_date(online_end_date);
 		odto.setOnline_end_time(online_end_time);
 		odto.setOnline_method(online_method);
 		odto.setBuy_method(buy_method);

@@ -68,7 +68,7 @@ public class OnlineDAO {
 					online_num = rs.getInt(1) + 1;
 				}
 				
-				sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, online_num);
 				pstmt.setString(2, odto.getModel_stylecode());
@@ -76,12 +76,14 @@ public class OnlineDAO {
 				pstmt.setString(4, odto.getCountry_name());
 				pstmt.setString(5, odto.getBrand_id());
 				pstmt.setString(6, odto.getOnline_link());
-				pstmt.setString(7, odto.getOnline_start_time());
-				pstmt.setString(8, odto.getOnline_end_time());
-				pstmt.setString(9, odto.getOnline_method());
-				pstmt.setString(10, odto.getBuy_method());
-				pstmt.setString(11, odto.getDelivery_method());
-				pstmt.setString(12, odto.getDescription());	
+				pstmt.setString(7, odto.getOnline_start_date());
+				pstmt.setString(8, odto.getOnline_start_time());
+				pstmt.setString(9, odto.getOnline_end_date());
+				pstmt.setString(10, odto.getOnline_end_time());
+				pstmt.setString(11, odto.getOnline_method());
+				pstmt.setString(12, odto.getBuy_method());
+				pstmt.setString(13, odto.getDelivery_method());
+				pstmt.setString(14, odto.getDescription());	
 				pstmt.executeUpdate();
 				check = 1;
 			}
@@ -110,7 +112,7 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ? order by online_method desc, online_start_time, online_end_time";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ? order by online_method desc, online_start_date, online_end_date";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "대한민국");
@@ -122,7 +124,9 @@ public class OnlineDAO {
 				odto.setCountry_name(rs.getString("country_name"));
 				odto.setBrand_id(rs.getString("brand_id"));
 				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_start_date(rs.getString("online_start_date"));
 				odto.setOnline_start_time(rs.getString("online_start_time"));
+				odto.setOnline_end_date(rs.getString("online_end_date"));
 				odto.setOnline_end_time(rs.getString("online_end_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
@@ -179,7 +183,7 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ? order by online_method desc, online_start_time, online_end_time";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ? order by online_method desc, online_start_date, online_end_date";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "아시아");
@@ -192,7 +196,9 @@ public class OnlineDAO {
 				odto.setCountry_name(rs.getString("country_name"));
 				odto.setBrand_id(rs.getString("brand_id"));
 				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_start_date(rs.getString("online_start_date"));
 				odto.setOnline_start_time(rs.getString("online_start_time"));
+				odto.setOnline_end_date(rs.getString("online_end_date"));
 				odto.setOnline_end_time(rs.getString("online_end_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
@@ -247,7 +253,7 @@ public class OnlineDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? order by online_method desc, online_start_time, online_end_time";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? order by online_method desc, online_start_date, online_end_date";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, country_region);
@@ -259,7 +265,9 @@ public class OnlineDAO {
 				odto.setCountry_name(rs.getString("country_name"));
 				odto.setBrand_id(rs.getString("brand_id"));
 				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_start_date(rs.getString("online_start_date"));
 				odto.setOnline_start_time(rs.getString("online_start_time"));
+				odto.setOnline_end_date(rs.getString("online_end_date"));
 				odto.setOnline_end_time(rs.getString("online_end_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
@@ -318,7 +326,9 @@ public class OnlineDAO {
 				odto.setCountry_name(rs.getString("country_name"));
 				odto.setBrand_id(rs.getString("brand_id"));
 				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_start_date(rs.getString("online_start_date"));
 				odto.setOnline_start_time(rs.getString("online_start_time"));
+				odto.setOnline_end_date(rs.getString("online_end_date"));
 				odto.setOnline_end_time(rs.getString("online_end_time"));
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
@@ -337,21 +347,23 @@ public class OnlineDAO {
 	public void updateOnlineinfo(OnlineDTO odto){
 		try {
 			con = getConnection();
-			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_time = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, description = ? where model_stylecode = ? AND brand_id = ?";
+			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_date = ?, online_start_time = ?, online_end_date = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, description = ? where model_stylecode = ? AND brand_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, odto.getModel_stylecode());
 			pstmt.setString(2, odto.getCountry_region());
 			pstmt.setString(3, odto.getCountry_name());
 			pstmt.setString(4, odto.getBrand_id());
 			pstmt.setString(5, odto.getOnline_link());
-			pstmt.setString(6, odto.getOnline_start_time());
-			pstmt.setString(7, odto.getOnline_end_time());
-			pstmt.setString(8, odto.getOnline_method());
-			pstmt.setString(9, odto.getBuy_method());
-			pstmt.setString(10, odto.getDelivery_method());
-			pstmt.setString(11, odto.getDescription());
-			pstmt.setString(12, odto.getModel_stylecode());
-			pstmt.setString(13, odto.getBrand_id());
+			pstmt.setString(6, odto.getOnline_start_date());
+			pstmt.setString(7, odto.getOnline_start_time());
+			pstmt.setString(8, odto.getOnline_end_date());
+			pstmt.setString(9, odto.getOnline_end_time());
+			pstmt.setString(10, odto.getOnline_method());
+			pstmt.setString(11, odto.getBuy_method());
+			pstmt.setString(12, odto.getDelivery_method());
+			pstmt.setString(13, odto.getDescription());
+			pstmt.setString(14, odto.getModel_stylecode());
+			pstmt.setString(15, odto.getBrand_id());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.board.action.Criteria;
+
 public class BrandDAO {
 
 	Connection con = null;
@@ -72,6 +74,32 @@ public class BrandDAO {
 		} finally {
 			closeDB();
 		}
+	}
+	
+	//모든 브랜드 정보 리스트 가져오는 함수
+	public ArrayList getAllBrandList(Criteria cri) {
+		ArrayList<BrandDTO> brandList = new ArrayList<BrandDTO>();
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_brand order by brand_name limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cri.getPageStart());
+			pstmt.setInt(2, cri.getPerpageNum());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				BrandDTO bdto = new BrandDTO();
+				bdto.setCountry_name(rs.getString("country_name"));
+				bdto.setBrand_logo(rs.getString("brand_logo"));
+				bdto.setBrand_name(rs.getString("brand_name"));
+				bdto.setBrand_id(rs.getString("brand_id"));
+				brandList.add(bdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return brandList;
 	}
 	
 	//브랜드별 국가리스트 가져오는 함수

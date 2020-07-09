@@ -25,8 +25,34 @@
 		SimpleDateFormat new_date_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat new_hour_format = new SimpleDateFormat("HH:mm");
 		
-		Date original_Online_start_time = original_format.parse(onlineDrawInfo.getOnline_start_time());
-		Date original_Online_end_time = original_format.parse(onlineDrawInfo.getOnline_end_time());
+		String online_start_date = "";
+		String online_start_time = "";
+		String online_end_date = "";
+		String online_end_time = "";
+		
+		if(onlineDrawInfo.getOnline_start_date().isEmpty()){
+			online_start_date = "9999-99-99";
+		}else {
+			online_start_date = onlineDrawInfo.getOnline_start_date();
+		}
+		if(onlineDrawInfo.getOnline_start_time().isEmpty()){
+			online_start_time = "00:00";
+		}else {
+			online_start_time = onlineDrawInfo.getOnline_start_time();
+		}
+		if(onlineDrawInfo.getOnline_end_time().isEmpty()){
+			online_end_date = "9999-99-99";
+		}else {
+			online_end_date = onlineDrawInfo.getOnline_end_date();
+		}
+		if(onlineDrawInfo.getOnline_end_time().isEmpty()){
+			online_end_time = "00:00";
+		}else {
+			online_end_time = onlineDrawInfo.getOnline_end_time();
+		}
+		
+		Date original_Online_start_time = original_format.parse(online_start_date + " " + online_start_time);
+		Date original_Online_end_time = original_format.parse(online_end_date + " " + online_end_time);
 		
 		//가지고온 시간 나누기(yyyy-MM-dd랑 HH:mm)
 		String new_Online_start_date = new_date_format.format(original_Online_start_time);
@@ -52,6 +78,10 @@
 						<input type="hidden" name="country_region" value="<%=onlineDrawInfo.getCountry_region()%>">
 						<input type="hidden" name="country_name" value="<%=onlineDrawInfo.getCountry_name()%>">
 						<input type="hidden" name="brand_id" value="<%=onlineDrawInfo.getBrand_id()%>">
+						<input type="hidden" name="start_date" value="<%=onlineDrawInfo.getOnline_start_date()%>">
+						<input type="hidden" name="start_time" value="<%=onlineDrawInfo.getOnline_start_time()%>">
+						<input type="hidden" name="end_date" value="<%=onlineDrawInfo.getOnline_end_date()%>">
+						<input type="hidden" name="end_time" value="<%=onlineDrawInfo.getOnline_end_time()%>">
 						<tr>
 							<td id="category"> 신발 스타일 코드* </td>
 							<td> <input type="text" name="model_stylecode" value="<%=onlineDrawInfo.getModel_stylecode()%>"> </td>
@@ -135,8 +165,21 @@
 			$('input[name=online_date_start]').val('');
 			$('input[name=online_hour_start]').val('');
 		}
-		else if($('input[name=online_date_end]').val().match("10007")){
+		if($('input[name=online_date_end]').val().match("10007")){
 			$('input[name=online_date_end]').val('');
+			$('input[name=online_hour_end]').val('');
+		}
+		
+		if($('input[name=start_date]').val() == ''){
+			$('input[name=online_date_start]').val('');
+		}
+		if($('input[name=start_time]').val() == ''){
+			$('input[name=online_hour_start]').val('');
+		}
+		if($('input[name=end_date]').val() == ''){
+			$('input[name=online_date_end]').val('');
+		}
+		if($('input[name=end_time]').val() == ''){
 			$('input[name=online_hour_end]').val('');
 		}
 		

@@ -11,6 +11,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.board.action.Criteria;
+import net.brand.db.BrandDTO;
+
 public class CountryDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -36,6 +39,25 @@ public class CountryDAO {
 		}
 	}
 	
+	//전체 국가 수 구하는 함수
+	public int countCountry(){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_country";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				num += 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
+	
 	//새로운 나라 추가하는 함수
 	public void insertNewCountry(CountryDTO ctdo){
 		try {
@@ -52,6 +74,32 @@ public class CountryDAO {
 		} finally {
 			closeDB();
 		}
+	}
+	
+	//관리자 권한 모든 국가 리스트 가져오는 함수
+	public List<CountryDTO> getAllCountryList(Criteria cri) {
+		ArrayList<CountryDTO> countryList = new ArrayList<CountryDTO>();
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_country order by country_name limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cri.getPageStart());
+			pstmt.setInt(2, cri.getPerpageNum());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				CountryDTO cdto = new CountryDTO();
+				cdto.setCountry_region(rs.getString("country_region"));
+				cdto.setCountry_flag(rs.getString("country_flag"));
+				cdto.setCountry_name(rs.getString("country_name"));
+				cdto.setCountry_code(rs.getString("country_code"));
+				countryList.add(cdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return countryList;
 	}
 	
 	//국가 리스트 가져오는 함수
