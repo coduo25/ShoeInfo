@@ -307,9 +307,9 @@
 						<!-- 응모방식/직배여부 -->
 						<td id="online_method_kr<%=i%>"> 
 							<%if(odto_kr.getOnline_method().contains("선착")){%> 
-								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_kr.getOnline_method()%> </span>
+								<span class="tooltip1"> <a href="<%=odto_kr.getOnline_link()%>" target="_blank" style="color:#ff6600; font-weight: bold;"> <%=odto_kr.getOnline_method()%> </a> </span>
 							<%}else if(odto_kr.getOnline_method().contains("드로우")) {%>
-								<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_kr.getOnline_method()%> <span class="tooltiptext1" > <%=odto_kr.getBuy_method()%></span> </span> 
+								<span class="tooltip1"> <a href="<%=odto_kr.getOnline_link()%>" target="_blank" style="color:#006600; font-weight: bold;"> <%=odto_kr.getOnline_method()%> </a> <span class="tooltiptext1" > <%=odto_kr.getBuy_method()%></span> </span> 
 								/ <%=odto_kr.getDelivery_method()%>
 							<%}else if(odto_kr.getOnline_method().contains("-")) {%>
 								<span> 미정 </span>
@@ -527,9 +527,9 @@
 						<!-- 응모방식/직배여부 -->
 						<td id="online_method_asia<%=i%>"> 
 							<%if(odto_asia.getOnline_method().contains("선착")){%> 
-								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_asia.getOnline_method()%> </span>
+								<span class="tooltip1"> <a href="<%=odto_asia.getOnline_link()%>" target="_blank" style="color:#ff6600; font-weight: bold;"> <%=odto_asia.getOnline_method()%> </a> </span>
 							<%}else if(odto_asia.getOnline_method().contains("드로우")) {%>
-								<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_asia.getOnline_method()%> <span class="tooltiptext1" > <%=odto_asia.getBuy_method()%></span> </span> 
+								<span class="tooltip1"> <a href="<%=odto_asia.getOnline_link()%>" target="_blank" style="color:#006600; font-weight: bold;"> <%=odto_asia.getOnline_method()%> </a> <span class="tooltiptext1" > <%=odto_asia.getBuy_method()%></span> </span> 
 								/ <%=odto_asia.getDelivery_method()%>
 							<%}else if(odto_asia.getOnline_method().contains("-")) {%>
 								<span> 미정 </span>
@@ -655,7 +655,7 @@
 							String current = original_format.format(currentTime);
 							Date today = original_format.parse(current);
 							
-							int compare_w_start_result_america = today.compareTo(original_Online_start_time_america);		//응모 시작하는 시간
+							int compare_w_start_result_america = today.compareTo(original_Online_start_time_america);	//응모 시작하는 시간
 							int compare_w_end_result_america = today.compareTo(original_Online_end_time_america); 		//응모 끝나는 시간
 					%>
 					<tr id="america_drawRaw<%=i%>">
@@ -747,9 +747,9 @@
 						<!-- 응모방식/직배여부 -->
 						<td id="online_method_america<%=i%>"> 
 							<%if(odto_america.getOnline_method().contains("선착")){%> 
-								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_america.getOnline_method()%> </span>
+								<span class="tooltip1"> <a href="<%=odto_america.getOnline_link()%>" target="_blank" style="color:#ff6600; font-weight: bold;"> <%=odto_america.getOnline_method()%> </a> </span>
 							<%}else if(odto_america.getOnline_method().contains("드로우")) {%>
-								<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_america.getOnline_method()%> <span class="tooltiptext1" > <%=odto_america.getBuy_method()%></span> </span> 
+								<span class="tooltip1"> <a href="<%=odto_america.getOnline_link()%>" target="_blank" style="color:#006600; font-weight: bold;"> <%=odto_america.getOnline_method()%> </a> <span class="tooltiptext1" > <%=odto_america.getBuy_method()%></span> </span> 
 								/ <%=odto_america.getDelivery_method()%>
 							<%}else if(odto_america.getOnline_method().contains("-")) {%>
 								<span> 미정 </span>
@@ -967,9 +967,9 @@
 						<!-- 응모방식/직배여부 -->
 						<td id="online_method_europe<%=i%>"> 
 							<%if(odto_europe.getOnline_method().contains("선착")){%> 
-								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_europe.getOnline_method()%> </span>
+								<span class="tooltip1"> <a href="<%=odto_europe.getOnline_link()%>" target="_blank" style="color:#ff6600; font-weight: bold;"> <%=odto_europe.getOnline_method()%> </a> </span>
 							<%}else if(odto_europe.getOnline_method().contains("드로우")) {%>
-								<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_europe.getOnline_method()%> <span class="tooltiptext1" > <%=odto_europe.getBuy_method()%></span> </span> 
+								<span class="tooltip1"> <a href="<%=odto_europe.getOnline_link()%>" target="_blank" style="color:#006600; font-weight: bold;"> <%=odto_europe.getOnline_method()%> </a> <span class="tooltiptext1" > <%=odto_europe.getBuy_method()%></span> </span> 
 								/ <%=odto_europe.getDelivery_method()%>
 							<%}else if(odto_europe.getOnline_method().contains("-")) {%>
 								<span> 미정 </span>
@@ -1187,9 +1187,9 @@
 						<!-- 응모방식/직배여부 -->
 						<td id="online_method_etc<%=i%>"> 
 							<%if(odto_etc.getOnline_method().contains("선착")){%> 
-								<span class="tooltip1" style="color:#ff6600; font-weight: bold;"> <%=odto_etc.getOnline_method()%> </span>
+								<span class="tooltip1"> <a href="<%=odto_etc.getOnline_link()%>" target="_blank" style="color:#ff6600; font-weight: bold;"> <%=odto_etc.getOnline_method()%> </a> </span>
 							<%}else if(odto_etc.getOnline_method().contains("드로우")) {%>
-								<span class="tooltip1" style="color:#006600; font-weight: bold;" > <%=odto_etc.getOnline_method()%> <span class="tooltiptext1" > <%=odto_etc.getBuy_method()%></span> </span> 
+								<span class="tooltip1"> <a href="<%=odto_etc.getOnline_link()%>" target="_blank" style="color:#006600; font-weight: bold;"> <%=odto_etc.getOnline_method()%> </a> <span class="tooltiptext1" > <%=odto_etc.getBuy_method()%></span> </span> 
 								/ <%=odto_etc.getDelivery_method()%>
 							<%}else if(odto_etc.getOnline_method().contains("-")) {%>
 								<span> 미정 </span>
@@ -1268,13 +1268,15 @@
 				var days = Math.floor(distDt / _day); 
 				var hours = Math.floor((distDt % _day) / _hour); 
 				var minutes = Math.floor((distDt % _hour) / _minute); 
-				var seconds = Math.floor((distDt % _minute) / _second); 	
+				var seconds = Math.floor((distDt % _minute) / _second); 
+				
 				if(days || hours || minutes || seconds){
 					document.getElementById(id).textContent = days + '일 '; 
 					document.getElementById(id).textContent += hours + '시간 '; 
 					document.getElementById(id).textContent += minutes + '분 '; 
 					document.getElementById(id).textContent += seconds + '초';
 				}
+				
 			} 
 			timer = setInterval(showRemaining, 1000); 
 		}

@@ -9,6 +9,7 @@ public class MemberDTO {
 	private String name;
 	private String phone;
 	private Timestamp reg_date;
+	private String position;
 
 	public String getEmail() {
 		return email;
@@ -39,6 +40,12 @@ public class MemberDTO {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 }

@@ -5,12 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.board.action.Criteria;
 import net.brand.db.BrandDTO;
 import net.sneaker.db.SneakerDTO;
 
@@ -59,6 +61,32 @@ public class MemberDAO {
 		return num;
 	}
 	
+	//모든 회원 리스트 불러오는 함수
+	public List<MemberDTO> getAllMemberList(Criteria cri){
+		ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_member order by count";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				MemberDTO mdto = new MemberDTO();
+				mdto.setEmail(rs.getString("email"));
+				mdto.setPass(rs.getString("pass"));
+				mdto.setName(rs.getString("name"));
+				mdto.setPhone(rs.getString("phone"));
+				mdto.setReg_date(rs.getTimestamp("reg_date"));
+				mdto.setPosition(rs.getString("position"));
+				memberList.add(mdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return memberList;
+	}
+	
 	//모든 회원이 응모한 횟수 계산하는 함수
 	public int countTotalDraw(){
 		int num = 0;
@@ -80,17 +108,25 @@ public class MemberDAO {
 	
 	//회원 추가하는 함수
 	public void insertMember(MemberDTO mdto){
+		int count = 0;
 		try {
 			con = getConnection();
-			sql = "insert into shoeinfo_member(email, pass, name, phone, reg_date, position) values(?, ?, ?, ?, ?, ?)";
+			sql = "select max(count) from shoeinfo_member";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mdto.getEmail());
-			pstmt.setString(2, mdto.getPass());
-			pstmt.setString(3, mdto.getName());
-			pstmt.setString(4, mdto.getPhone());
-			pstmt.setTimestamp(5, mdto.getReg_date());
-			pstmt.setString(6, "user");
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				count = rs.getInt(1) + 1;
+			}
 			
+			sql = "insert into shoeinfo_member(count, email, pass, name, phone, reg_date, position) values(?, ?, ?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, count);
+			pstmt.setString(2, mdto.getEmail());
+			pstmt.setString(3, mdto.getPass());
+			pstmt.setString(4, mdto.getName());
+			pstmt.setString(5, mdto.getPhone());
+			pstmt.setTimestamp(6, mdto.getReg_date());
+			pstmt.setString(7, "user");
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

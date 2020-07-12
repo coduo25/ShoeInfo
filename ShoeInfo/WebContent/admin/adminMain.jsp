@@ -41,19 +41,19 @@
 				<ul>
 					<li>
 						<span class="total_subTit"> 총 회원 수 </span>
-						<span class="total_main"> <a href="#"> <%=memberNum%> 명 </a> </span>
+						<span class="total_main"> <a href="./MemberList.ad"> <%=memberNum%> 명 </a> </span>
 					</li>
 					<li>
 						<span class="total_subTit"> 총 브랜드 수 </span>
-						<span class="total_main"> <a href="#"> <%=brandNum%> 개 </a></span>
+						<span class="total_main"> <a href="./BrandList.ad"> <%=brandNum%> 개 </a></span>
 					</li>
 					<li>
 						<span class="total_subTit"> 총 신발 수 </span>
-						<span class="total_main"> <a href="#"> <%=sneakerNum%> 개 </a></span>
+						<span class="total_main"> <a href="./SneakerList.ad"> <%=sneakerNum%> 개 </a></span>
 					</li>
 					<li>
-						<span class="total_subTit"> 총 응모한 수 </span>
-						<span class="total_main"> <a href="#"> <%=memberDrawNum%> 개 </a></span>
+						<span class="total_subTit"> 회원 총 응모 횟수 </span>
+						<span class="total_main"> <%=memberDrawNum%> 개 </span>
 					</li>
 				</ul>
 			</div>
@@ -105,7 +105,7 @@
 				<div id="Member_menu"> 
 					<ul>
 						<li>
-							<span> <a href="#"> 전체 회원 보기 </a> </span>
+							<span> <a href="./MemberList.ad"> 전체 회원 보기 </a> </span>
 						</li>
 					</ul>
 				</div>

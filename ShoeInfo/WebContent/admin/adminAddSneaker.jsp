@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -36,16 +37,25 @@
 					</tr>
 					<tr>
 						<td rowspan="3" id="category_brand"> 브랜드 </td>
-						<td id="category"> 브랜드* <span id="cate_ref"> (ex. Nike, Air Jordan, Adidas) </span> </td>
-						<td> <input type="text" name="brand"> </td>
+						<td id="category"> 브랜드* </td>
+						<td> 
+							<input type="text" name="brand">
+							<span id="cate_ref"> (ex. Nike, Air Jordan, Adidas) </span> 
+						</td>
 					</tr>
 					<tr>
-						<td id="category"> 서브브랜드  <span id="cate_ref"> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </span> </td> 
-						<td> <input type="text" name="sub_brand"> </td>
+						<td id="category"> 서브브랜드  </td> 
+						<td> 
+							<input type="text" name="sub_brand">
+							<span id="cate_ref"> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </span> 
+						</td>
 					</tr>
 					<tr>
-						<td id="category"> 브랜드인덱스 <span id="cate_ref"> (ex. Low, Fear of God, Boost 350 V2, 992) </span> </td> 
-						<td> <input type="text" name="brand_index"> </td>
+						<td id="category"> 브랜드인덱스 </td> 
+						<td> 
+							<input type="text" name="brand_index">
+							 <span id="cate_ref"> (ex. Low, Fear of God, Boost 350 V2, 992) </span> 
+						</td>
 					</tr>
 					<tr>
 						<td id="category" colspan="2"> 썸네일 이미지* </td>
@@ -56,23 +66,35 @@
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 스타일 코드 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="model_stylecode"> </td>
+						<td id="category" colspan="2"> 제품 스타일 코드 </td>
+						<td colspan="2">
+							<input type="text" name="model_stylecode">
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품명 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="model_name"> </td>
+						<td id="category" colspan="2"> 제품명 </td>
+						<td colspan="2"> 
+							<input type="text" name="model_name">
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span> 
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 컬러 웨이 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="model_colorway"> </td>
+						<td id="category" colspan="2"> 제품 컬러 웨이 </td>
+						<td colspan="2"> 
+							<input type="text" name="model_colorway">
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span> 
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 가격  <span id="cate_ref"> (한국기준 가격이 미정일때 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="price">원</td>
+						<td id="category" colspan="2"> 가격  </td>
+						<td colspan="2"> 
+							<input type="text" name="price">원
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 한국기준 가격이 미정일시, 빈칸유지 </span> 
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 발매일* <span id="cate_ref"> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </span> </td>
+						<td id="category" colspan="2"> 발매일* </td>
 						<td colspan="2">
 							<select name="year" id="sel_year">
 								<option value="default"> - </option>
@@ -133,6 +155,7 @@
 								<option value="99"> 99 </option>
 							</select>
 							일
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 글로벌기준, 만약 월만 나왔을경우 일은 99 선택 </span> 
 						</td>
 					</tr>
 					<tr>

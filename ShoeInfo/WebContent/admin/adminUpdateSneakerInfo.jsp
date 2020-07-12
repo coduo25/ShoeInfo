@@ -49,16 +49,25 @@
 					</tr>
 					<tr>
 						<td rowspan="3" id="category_brand"> 브랜드 </td>
-						<td id="category"> 브랜드* <span id="cate_ref"> (ex. Nike, Air Jordan, Adidas) </span> </td>
-						<td> <input type="text" name="brand" value="<%=sdto.getBrand()%>"> </td>
+						<td id="category"> 브랜드* </td>
+						<td> 
+							<input type="text" name="brand" value="<%=sdto.getBrand()%>">
+							<span id="cate_ref"> (ex. Nike, Air Jordan, Adidas) </span>
+						</td>
 					</tr>
 					<tr>
-						<td id="category"> 서브브랜드  <span id="cate_ref"> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </span> </td> 
-						<td> <input type="text" name="sub_brand" value="<%=sdto.getSub_brand()%>"> </td>
+						<td id="category"> 서브브랜드  </td> 
+						<td> 
+							<input type="text" name="sub_brand" value="<%=sdto.getSub_brand()%>">
+							<span id="cate_ref"> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </span>
+						</td>
 					</tr>
 					<tr>
-						<td id="category"> 브랜드인덱스 <span id="cate_ref"> (ex. Low, Fear of God, Boost 350 V2, 992) </span> </td>
-						<td> <input type="text" name="brand_index" value="<%=sdto.getBrand_index()%>"> </td>
+						<td id="category"> 브랜드인덱스  </td>
+						<td> 
+							<input type="text" name="brand_index" value="<%=sdto.getBrand_index()%>">
+							<span id="cate_ref"> (ex. Low, Fear of God, Boost 350 V2, 992) </span> 
+						</td>
 					</tr>
 					<tr>
 						<td id="category" colspan="2"> 썸네일 이미지* </td>
@@ -69,23 +78,35 @@
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 스타일 코드 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="model_stylecode" value="<%=sdto.getModel_stylecode()%>" readonly> </td>
+						<td id="category" colspan="2"> 제품 스타일 코드  </td>
+						<td colspan="2"> 
+							<input type="text" name="model_stylecode" value="<%=sdto.getModel_stylecode()%>" readonly> 
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품명 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="model_name" value="<%=sdto.getModel_name()%>"> </td>
+						<td id="category" colspan="2"> 제품명 </td>
+						<td colspan="2">
+							<input type="text" name="model_name" value="<%=sdto.getModel_name()%>">
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 컬러 웨이 <span id="cate_ref"> (미정일시, 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="model_colorway" value="<%=sdto.getModel_colorway()%>"> </td>
+						<td id="category" colspan="2"> 제품 컬러 웨이 </td>
+						<td colspan="2">
+							<input type="text" name="model_colorway" value="<%=sdto.getModel_colorway()%>">
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span> 
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 가격  <span id="cate_ref"> (한국기준 가격이 미정일때 빈칸유지) </span> </td>
-						<td colspan="2"> <input type="text" name="price" value="<%=sdto.getPrice()%>">원 </td>
+						<td id="category" colspan="2"> 가격 </td>
+						<td colspan="2">
+							<input type="text" name="price" value="<%=sdto.getPrice()%>">원
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 한국기준 가격이 미정일시, 빈칸유지 </span> 	
+						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 발매일* <span id="cate_ref"> (글로벌기준, 만약 월만 나왔을경우 일은 99 선택) </span> </td>
+						<td id="category" colspan="2"> 발매일* </td>
 						<td colspan="2">
 							<select name="year" id="sel_year">
 								<option value="default"> 년 </option>
@@ -146,6 +167,7 @@
 								<option value="99" <%if(day.equals("99")){%> selected <%}%>> 99 </option>
 							</select>
 							일
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 글로벌기준, 만약 월만 나왔을경우 일은 99 선택 </span> 
 						</td>
 					</tr>
 					<tr>

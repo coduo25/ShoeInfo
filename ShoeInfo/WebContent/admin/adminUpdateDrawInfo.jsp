@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -91,8 +92,13 @@
 							<td> <input type="text" name="online_link" value="<%=onlineDrawInfo.getOnline_link()%>"> </td>
 						</tr>
 						<tr>
-							<td id="category"> 온라인 시간  <span id="cate_ref"> 시간이 없으면 빈칸으로 그대로 두기! </span> <span id="cate_ref"> 단, 발매방식이 미정이고 발매날짜가 있을때 시작시간에 입력하기 </span>  </td>
+							<td id="category"> 온라인 시간 </td>
 							<td> 
+								<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매방식이 선착일시, 시작시간만 작성하기 </span> 
+								<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매방식이 미정이고 발매날짜가 있을시, 시작시간에 입력 </span>
+								<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매날짜와 시간이 없을시, 모두 빈칸으로 입력 </span>
+								<br>
+								
 								<input type="date" name="online_date_start" value="<%=new_Online_start_date%>" id="input_date">
 								<input type="time" name="online_hour_start" value="<%=new_Online_start_hour%>" id="input_date">
 								~
