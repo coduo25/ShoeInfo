@@ -163,7 +163,7 @@ public class MemberDAO {
 		int check = -1;
 		try {
 			con = getConnection();
-			sql = "select pass from shoeinfo_member where email=?";
+			sql = "select pass from shoeinfo_member where BINARY email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();			

@@ -2,12 +2,19 @@ package net.brand.db;
 
 public class BrandDTO {
 	
+	private int brand_num;
 	private String country_name;
 	private String brand_logo;
 	private String brand_name;
 	private String brand_id;
 	private String country_flag;
 	
+	public int getBrand_num() {
+		return brand_num;
+	}
+	public void setBrand_num(int brand_num) {
+		this.brand_num = brand_num;
+	}
 	public String getCountry_name() {
 		return country_name;
 	}

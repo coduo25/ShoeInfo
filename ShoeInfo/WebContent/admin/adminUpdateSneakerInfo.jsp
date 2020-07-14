@@ -225,10 +225,6 @@
 				$('#sel_day').focus();
 				return false;
 			}
-			else {
-				alert("성공");
-				return false;
-			}
 			
 		});
 		

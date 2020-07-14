@@ -62,7 +62,7 @@
 							<td> <%=bdto.getCountry_name()%> </td>
 							<td> <%=bdto.getBrand_name()%> </td>
 							<td> <%=bdto.getBrand_id()%> </td>
-							<td> <input type="button" id="modi_btn" onclick="location.href='./UpdateSneakerInfo.ad?model_stylecode='" value="수정"> / <input type="button" id="modi_btn" value="삭제"> </td>
+							<td> <input type="button" id="modi_btn" onclick="location.href='./UpdateBrandInfo.ad?brand_id=<%=bdto.getBrand_id()%>'" value="수정"> / <input type="button" id="modi_btn" value="삭제"> </td>
 						</tr>
 					</tbody>
 					<%}%>

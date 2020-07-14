@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.board.action.Criteria;
+import net.sneaker.db.SneakerDTO;
 
 public class BrandDAO {
 
@@ -60,14 +61,23 @@ public class BrandDAO {
 	
 	//새로운 브랜드 저장하는 함수
 	public void insertNewBrand(BrandDTO bdto) {
+		int num = 0;
 		try {
 			con = getConnection();
-			sql = "insert into shoeinfo_brand values(?, ?, ?, ?)";
+			sql = "select Max(brand_num) from shoeinfo_brand";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bdto.getCountry_name());
-			pstmt.setString(2, bdto.getBrand_logo());
-			pstmt.setString(3, bdto.getBrand_name());
-			pstmt.setString(4, bdto.getBrand_id());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				num = rs.getInt(1) + 1;
+			}
+			
+			sql = "insert into shoeinfo_brand values(?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, bdto.getCountry_name());
+			pstmt.setString(3, bdto.getBrand_logo());
+			pstmt.setString(4, bdto.getBrand_name());
+			pstmt.setString(5, bdto.getBrand_id());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,6 +110,69 @@ public class BrandDAO {
 			closeDB();
 		}
 		return brandList;
+	}
+	
+	// 브랜드 상세정보 가져오는 함수
+	public BrandDTO getBrandDetail(String brand_id) {
+		BrandDTO bdto = null;
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_brand where brand_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, brand_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				//신발이 있으면
+				bdto = new BrandDTO();
+				bdto.setBrand_num(rs.getInt("brand_num"));
+				bdto.setCountry_name(rs.getString("country_name"));
+				bdto.setBrand_logo(rs.getString("brand_logo"));
+				bdto.setBrand_name(rs.getString("brand_name"));
+				bdto.setBrand_id(rs.getString("brand_id"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return bdto;
+	}
+	
+	// 브랜드 정보 수정하는 함수
+	public void updateBrandInfo(BrandDTO bdto, String old_brand_id) {
+		int check = 0;
+		try {
+			con = getConnection();
+			sql = "select brand_name from shoeinfo_brand where brand_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bdto.getBrand_num());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				sql = "update shoeinfo_brand set country_name = ?, brand_logo = ?, brand_name = ?, brand_id = ? where brand_num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, bdto.getCountry_name());
+				pstmt.setString(2, bdto.getBrand_logo());
+				pstmt.setString(3, bdto.getBrand_name());
+				pstmt.setString(4, bdto.getBrand_id());
+				pstmt.setInt(5, bdto.getBrand_num());
+				
+				check = pstmt.executeUpdate();
+				if(check > 0){
+					//onlineinfo table에 바뀐 brand_id 모두 바꾸기
+					sql = "update shoeinfo_onlineinfo set brand_id = ? where brand_id = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, bdto.getBrand_id());
+					pstmt.setString(2, old_brand_id);
+					pstmt.executeUpdate();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	}
 	
 	//브랜드별 국가리스트 가져오는 함수

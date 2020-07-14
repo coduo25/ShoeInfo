@@ -107,7 +107,7 @@ public class AddOnlineInfoAction implements Action{
 		}
 
 		//페이지이동
-		forward.setPath("./Main.ad");
+		forward.setPath("./SneakerDetail.go?model_stylecode="+odto.getModel_stylecode());
 		forward.setRedirect(true);
 		return forward;
 	}
