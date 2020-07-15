@@ -201,7 +201,7 @@ public class BrandDAO {
 		List<BrandDTO> brandNameList = new ArrayList();
 		try {
 			con = getConnection();
-			sql = "select distinct brand_name from shoeinfo_brand where country_name = ?";
+			sql = "select distinct brand_name from shoeinfo_brand where country_name = ? order by brand_name";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, country_name);
 			rs = pstmt.executeQuery();

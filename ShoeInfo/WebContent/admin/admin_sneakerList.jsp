@@ -42,6 +42,17 @@
 			<!-- 전체 신발 리스트 -->
 			<div>
 				<h3> 전체 신발 리스트 </h3>
+				
+				<!-- 검색하는 input 창 -->
+				<div class="search_wrapper">
+					<div class="input_wrapper">
+						<input class="search_input" type="text" size="20">
+					</div>
+					<div class="btn_wrapper">
+						<button class="search_btn"> 검색 </button>
+					</div>
+				</div>
+				
 				<table>
 					<thead>
 						<tr>
