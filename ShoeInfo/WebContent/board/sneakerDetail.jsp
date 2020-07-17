@@ -264,11 +264,14 @@
 								<span id="final_count_Online_start_time_kr<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
 							<%}else if(compare_w_start_result_kr == 1 && !odto_kr.getOnline_start_date().isEmpty()) {%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%} %>
 						</td>
@@ -276,9 +279,11 @@
 						<td id="remain_time_status_kr<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
@@ -291,14 +296,18 @@
 								<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty() && compare_w_start_result_kr == 1){%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty() && compare_w_start_result_kr == -1) {%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_kr == 1 && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -484,11 +493,14 @@
 								<span id="final_count_Online_start_time_asia<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
 							<%}else if(compare_w_start_result_asia == 1 && !odto_asia.getOnline_start_date().isEmpty()) {%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%} %>
 						</td>
@@ -496,9 +508,11 @@
 						<td id="remain_time_status_asia<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty() && odto_asia.getOnline_end_date().isEmpty() && odto_asia.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_asia.getOnline_start_time().isEmpty() && odto_asia.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty() && !odto_asia.getOnline_end_date().isEmpty() && !odto_asia.getOnline_end_time().isEmpty()){%>
@@ -511,14 +525,18 @@
 								<span id="final_count_Online_end_time_asia<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty() && odto_asia.getOnline_end_date().isEmpty() && odto_asia.getOnline_end_time().isEmpty() && compare_w_start_result_asia == 1){%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty() && odto_asia.getOnline_end_date().isEmpty() && odto_asia.getOnline_end_time().isEmpty() && compare_w_start_result_asia == -1) {%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_asia == 1 && !odto_asia.getOnline_end_date().isEmpty() && !odto_asia.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -704,11 +722,14 @@
 								<span id="final_count_Online_start_time_america<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
 							<%}else if(compare_w_start_result_america == 1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%} %>
 						</td>
@@ -716,9 +737,11 @@
 						<td id="remain_time_status_america<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty() && odto_america.getOnline_end_date().isEmpty() && odto_america.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_america.getOnline_start_time().isEmpty() && odto_america.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty() && !odto_america.getOnline_end_date().isEmpty() && !odto_america.getOnline_end_time().isEmpty()){%>
@@ -734,11 +757,14 @@
 								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty() && odto_america.getOnline_end_date().isEmpty() && odto_america.getOnline_end_time().isEmpty() && compare_w_start_result_america == -1) {%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_america == 1 && !odto_america.getOnline_end_date().isEmpty() && !odto_america.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -924,11 +950,14 @@
 								<span id="final_count_Online_start_time_europe<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
 							<%}else if(compare_w_start_result_europe == 1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%} %>
 						</td>
@@ -936,9 +965,11 @@
 						<td id="remain_time_status_europe<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty() && odto_europe.getOnline_end_date().isEmpty() && odto_europe.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_europe.getOnline_start_time().isEmpty() && odto_europe.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty() && !odto_europe.getOnline_end_date().isEmpty() && !odto_europe.getOnline_end_time().isEmpty()){%>
@@ -951,14 +982,18 @@
 								<span id="final_count_Online_end_time_europe<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty() && odto_europe.getOnline_end_date().isEmpty() && odto_europe.getOnline_end_time().isEmpty() && compare_w_start_result_europe == 1){%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty() && odto_europe.getOnline_end_date().isEmpty() && odto_europe.getOnline_end_time().isEmpty() && compare_w_start_result_europe == -1) {%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_europe == 1 && !odto_europe.getOnline_end_date().isEmpty() && !odto_europe.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -1144,11 +1179,14 @@
 								<span id="final_count_Online_start_time_etc<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
 							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
 							<%}else if(odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<%}else {%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%} %>
 						</td>
@@ -1156,9 +1194,11 @@
 						<td id="remain_time_status_etc<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty() && odto_etc.getOnline_end_date().isEmpty() && odto_etc.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_etc.getOnline_start_time().isEmpty() && odto_etc.getOnline_end_time().isEmpty()) {%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty() && !odto_etc.getOnline_end_date().isEmpty() && !odto_etc.getOnline_end_time().isEmpty()){%>
@@ -1171,14 +1211,18 @@
 								<span id="final_count_Online_end_time_etc<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty() && odto_etc.getOnline_end_date().isEmpty() && odto_etc.getOnline_end_time().isEmpty() && compare_w_start_result_etc == 1){%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty() && odto_etc.getOnline_end_date().isEmpty() && odto_etc.getOnline_end_time().isEmpty() && compare_w_start_result_etc == -1) {%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_etc == 1 && !odto_etc.getOnline_end_date().isEmpty() && !odto_etc.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
