@@ -6,14 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="./css/include/footer.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div id="footer">
-		<a href=""> COMPANY </a>
-		<a href=""> AGREEMENT </a>
-		<a href=""> PRIVACY POLICY </a>
-		<a href=""> GUIDE </a>
+		<span> Copyright 2020 (C) SHOEINFO. All rights reserved. </span>
 	</div>
 </body>
 </html>

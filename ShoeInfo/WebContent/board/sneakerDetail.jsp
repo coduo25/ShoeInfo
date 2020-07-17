@@ -1247,7 +1247,6 @@
 
 	$(document).ready(function(){
 		
-	
 		const countDownTimer = function (id, date, drawstatus_id) { 
 			var _vDate = new Date(date); // 전달 받은 일자 
 			var _second = 1000; 

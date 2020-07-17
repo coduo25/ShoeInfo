@@ -3,19 +3,20 @@
 #footer {
 	position: relative;
 	z-index: 1000;
-	padding-top: 40px;
 	margin-top: 50px;
 	text-align: center;
 	width: 100%;
-	height: 150px;
+	height: 80px;
 	bottom: 0;
 	clear: both;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 0.8em;
 	font-weight: lighter;
-	background-color: #303030;
+	background-color: black;
+	padding:2%;
 }
 
-#footer>a {
-	padding-left: 15px;
+#footer>span {
+	text-align: center;
+	color: white;
 }
