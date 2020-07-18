@@ -524,7 +524,7 @@ public class MemberDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_email = ? AND not country_name = ? order by country_name";
+			sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_email = ? AND not country_name = ? order by draw_count";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, email);

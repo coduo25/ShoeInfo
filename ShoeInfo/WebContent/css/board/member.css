@@ -10,9 +10,8 @@ body { font-size:1em; line-weight:1.4 }
 
 h3{ margin: 30px 0; }
 
-#content_login { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:200px auto; height: 300px; font-weight: bold; }
-#content_register { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 500px; }
-#content_modify { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 500px; }
+#content_login { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:200px auto; height: 400px; font-weight: bold; }
+#content_register, #content_modify { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:140px auto; height: 500px; }
 #content_idpwfind { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 500px; }
 
 .login-form, .join-form, .modi-form { list-style: none; width: 40%; height: 100%; margin: 0 auto; position: relative; }
@@ -28,7 +27,7 @@ h3{ margin: 30px 0; }
 .checkEmail:hover { background-color: black; color: white; }
 
 /* 비밀번호 확인하는 div 태그 */
-.confirmMsg:not(.join-form) { height: 20px; font-size: 14px; text-align: left; margin: 0 0 10px 0; padding-left: 10px; }
+.confirmMsg1:not(.join-form), .confirmMsg2:not(.join-form) { height: 20px; font-size: 14px; text-align: left; margin: 0 0 10px 0; padding-left: 10px; }
 
 ::placeholder { }
 input:focus::placeholder { color: transparent; }

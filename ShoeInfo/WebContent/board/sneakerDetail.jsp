@@ -279,17 +279,19 @@
 						<td id="remain_time_status_kr<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty()) {%>
-								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty() && compare_w_end_result_kr == -1){%>
@@ -305,9 +307,11 @@
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_kr == 1 && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
 								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -352,7 +356,7 @@
 						<%if(usr_position.equals("admin")){%>
 							<td> 
 								<input type="button" id="adminModiBtn_kr<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'"> 
-								<input type="button" id="adminModiBtn_kr<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'">
+								<input type="button" id="adminDelBtn_kr<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'">
 							</td> 
 						<%}%>
 					</tr>
@@ -508,17 +512,19 @@
 						<td id="remain_time_status_asia<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty() && odto_asia.getOnline_end_date().isEmpty() && odto_asia.getOnline_end_time().isEmpty()) {%>
-								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_asia.getOnline_start_time().isEmpty() && odto_asia.getOnline_end_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty() && !odto_asia.getOnline_end_date().isEmpty() && !odto_asia.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_asia<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_asia == 1 && compare_w_end_result_asia == -1 && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty() && !odto_asia.getOnline_end_date().isEmpty() && !odto_asia.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_asia<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty() && compare_w_end_result_asia == -1){%>
@@ -534,9 +540,11 @@
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_asia == 1 && !odto_asia.getOnline_end_date().isEmpty() && !odto_asia.getOnline_end_time().isEmpty()){%>
 								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -581,7 +589,7 @@
 						<%if(usr_position.equals("admin")){%>
 							<td> 
 								<input type="button" id="adminModiBtn_asia<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'"> 
-								<input type="button" id="adminModiBtn_asia<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'">
+								<input type="button" id="adminDelBtn_asia<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'">
 							</td> 
 						<%}%>
 					</tr>
@@ -737,23 +745,26 @@
 						<td id="remain_time_status_america<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty() && odto_america.getOnline_end_date().isEmpty() && odto_america.getOnline_end_time().isEmpty()) {%>
-								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_america.getOnline_start_time().isEmpty() && odto_america.getOnline_end_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty() && !odto_america.getOnline_end_date().isEmpty() && !odto_america.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_america<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_america == 1 && compare_w_end_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty() && !odto_america.getOnline_end_date().isEmpty() && !odto_america.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_america<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty() && compare_w_end_result_america == -1){%>
 								<span id="final_count_Online_end_time_america<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 							<%}else if(!odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty() && odto_america.getOnline_end_date().isEmpty() && odto_america.getOnline_end_time().isEmpty() && compare_w_start_result_america == 1){%>
+								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span> <span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 							<%}else if(!odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty() && odto_america.getOnline_end_date().isEmpty() && odto_america.getOnline_end_time().isEmpty() && compare_w_start_result_america == -1) {%>
@@ -762,9 +773,11 @@
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_america == 1 && !odto_america.getOnline_end_date().isEmpty() && !odto_america.getOnline_end_time().isEmpty()){%>
 								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -809,7 +822,7 @@
 						<%if(usr_position.equals("admin")){%>
 							<td> 
 								<input type="button" id="adminModiBtn_america<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'"> 
-								<input type="button" id="adminModiBtn_america<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'">
+								<input type="button" id="adminDelBtn_america<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'">
 							</td> 
 						<%}%>
 					</tr>
@@ -965,17 +978,19 @@
 						<td id="remain_time_status_europe<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty() && odto_europe.getOnline_end_date().isEmpty() && odto_europe.getOnline_end_time().isEmpty()) {%>
-								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_europe.getOnline_start_time().isEmpty() && odto_europe.getOnline_end_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty() && !odto_europe.getOnline_end_date().isEmpty() && !odto_europe.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_europe<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_europe == 1 && compare_w_end_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty() && !odto_europe.getOnline_end_date().isEmpty() && !odto_europe.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_europe<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty() && compare_w_end_result_europe == -1){%>
@@ -991,9 +1006,11 @@
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_europe == 1 && !odto_europe.getOnline_end_date().isEmpty() && !odto_europe.getOnline_end_time().isEmpty()){%>
 								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -1038,7 +1055,7 @@
 						<%if(usr_position.equals("admin")){%>
 							<td> 
 								<input type="button" id="adminModiBtn_europe<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'"> 
-								<input type="button" id="adminModiBtn_europe<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'">
+								<input type="button" id="adminDelBtn_europe<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'">
 							</td> 
 						<%}%>
 					</tr>
@@ -1194,17 +1211,19 @@
 						<td id="remain_time_status_etc<%=i%>">
 							<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 							<%if(odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty() && odto_etc.getOnline_end_date().isEmpty() && odto_etc.getOnline_end_time().isEmpty()) {%>
-								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 							<%}else if(odto_etc.getOnline_start_time().isEmpty() && odto_etc.getOnline_end_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 미정 </span>
 							<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 							<%}else if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty() && !odto_etc.getOnline_end_date().isEmpty() && !odto_etc.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_etc<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 							<%}else if(compare_w_start_result_etc == 1 && compare_w_end_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty() && !odto_etc.getOnline_end_date().isEmpty() && !odto_etc.getOnline_end_time().isEmpty()){%>
+								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span id="final_count_Online_end_time_etc<%=i%>" class="draw_count_result"></span>	<span id="draw_count_result_ing">진행중</span>
 							<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 							<%}else if(odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty() && compare_w_end_result_etc == -1){%>
@@ -1220,9 +1239,11 @@
 							<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 							<%}else if(compare_w_end_result_etc == 1 && !odto_etc.getOnline_end_date().isEmpty() && !odto_etc.getOnline_end_time().isEmpty()){%>
 								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 응모종료 </span>
 							<%}else{%>
 								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
+								<span id="final_count_Online_end_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> - </span>
 							<%}%>
 						</td>
@@ -1267,7 +1288,7 @@
 						<%if(usr_position.equals("admin")){%>
 							<td> 
 								<input type="button" id="adminModiBtn_etc<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'"> 
-								<input type="button" id="adminModiBtn_etc<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'">
+								<input type="button" id="adminDelBtn_etc<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'">
 							</td> 
 						<%}%>
 					</tr>
@@ -1289,40 +1310,40 @@
 </body>
 <script type="text/javascript">
 
-	$(document).ready(function(){
+	const countDownTimer = function (id, date, drawstatus_id) { 
+		var _vDate = new Date(date); // 전달 받은 일자 
+		var _second = 1000; 
+		var _minute = _second * 60; 
+		var _hour = _minute * 60; 
+		var _day = _hour * 24; 
+		var timer; 
 		
-		const countDownTimer = function (id, date, drawstatus_id) { 
-			var _vDate = new Date(date); // 전달 받은 일자 
-			var _second = 1000; 
-			var _minute = _second * 60; 
-			var _hour = _minute * 60; 
-			var _day = _hour * 24; 
-			var timer; 
-			
-			function showRemaining() { 
-				var now = new Date(); 
-				var distDt = _vDate - now;
-				if (distDt < 0) {
-					clearInterval(timer);
-// 					document.getElementById(id).textContent = '종료'; 
-// 					document.getElementById(drawstatus_id).textContent = '-';
-					return; 
-				} 
-				var days = Math.floor(distDt / _day); 
-				var hours = Math.floor((distDt % _day) / _hour); 
-				var minutes = Math.floor((distDt % _hour) / _minute); 
-				var seconds = Math.floor((distDt % _minute) / _second); 
-				
-				if(days || hours || minutes || seconds){
-					document.getElementById(id).textContent = days + '일 '; 
-					document.getElementById(id).textContent += hours + '시간 '; 
-					document.getElementById(id).textContent += minutes + '분 '; 
-					document.getElementById(id).textContent += seconds + '초';
-				}
-				
+		function showRemaining() { 
+			var now = new Date(); 
+			var distDt = _vDate - now;
+			if (distDt < 0) {
+				clearInterval(timer);
+	//				document.getElementById(id).textContent = '종료'; 
+	//				document.getElementById(drawstatus_id).textContent = '-';
+				return; 
 			} 
-			timer = setInterval(showRemaining, 1000); 
-		}
+			var days = Math.floor(distDt / _day); 
+			var hours = Math.floor((distDt % _day) / _hour); 
+			var minutes = Math.floor((distDt % _hour) / _minute); 
+			var seconds = Math.floor((distDt % _minute) / _second); 
+			
+			if(days || hours || minutes || seconds){
+				document.getElementById(id).textContent = days + '일 '; 
+				document.getElementById(id).textContent += hours + '시간 '; 
+				document.getElementById(id).textContent += minutes + '분 '; 
+				document.getElementById(id).textContent += seconds + '초';
+			}
+			
+		} 
+		timer = setInterval(showRemaining, 1000); 
+	}
+
+	$(document).ready(function(){
 		
 		//온라인 한국 리스트
 		var onLineList_kr = [];
@@ -1347,6 +1368,9 @@
 				drawCheckbox_kr.css({"pointer-events" : "visible"});
 				
 				var adminModiBtn = $('#adminModiBtn_kr' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminDelBtn_kr' + i);
 				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
@@ -1375,6 +1399,9 @@
 				
 				var adminModiBtn = $('#adminModiBtn_asia' + i);
 				adminModiBtn.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminDelBtn_asia' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1401,6 +1428,9 @@
 				drawCheckbox_america.css({"pointer-events" : "visible"});
 				
 				var adminModiBtn = $('#adminModiBtn_america' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminDelBtn_america' + i);
 				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
@@ -1430,6 +1460,9 @@
 				
 				var adminModiBtn = $('#adminModiBtn_europe' + i);
 				adminModiBtn.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminDelBtn_europe' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 		
@@ -1457,6 +1490,9 @@
 				
 				var adminModiBtn = $('#adminModiBtn_etc' + i);
 				adminModiBtn.css({"pointer-events" : "visible"});
+				
+				var adminModiBtn = $('#adminDelBtn_etc' + i);
+				adminModiBtn.css({"pointer-events" : "visible"});
 			}
 		}
 
@@ -1478,12 +1514,12 @@
 				//drawCheckbox_kr + i
 				var checkbox_id = $(this).attr("id");
 				//i
-				var checkbox_id_num = checkbox_id.substr(checkbox_id.length - 1);
+				var checkbox_id_num = checkbox_id.replace(/[^0-9]/g,'');
 				//kr3
 				var idx = checkbox_id.indexOf("_");
 				var checkbox_id_country_num = checkbox_id.substring(idx+1);
 				//kr
-				var checkbox_country = checkbox_id_country_num.substr(0, checkbox_id_country_num.length-1);
+				var checkbox_country = checkbox_id_country_num.replace(/[0-9]/g,'');
 				
 				if($(this).is(":checked")==true){
 					//체크가 안된 상태에서 응모여부 물어보기

@@ -30,7 +30,7 @@
 				
 					<!-- 이메일 -->
 					<div class="fm_email">
-						<input type="email" name="email" placeholder="이메일" style="float: left;"> 
+						<input type="text" name="email" placeholder="이메일" style="float: left;"> 
 					</div>
 					
 					<button type="button" class="checkEmail"> 중복체크 </button>
@@ -42,14 +42,18 @@
 						
 					</div>
 					
-					<div class="confirmMsg" style="display: none;">
-						<span id="pwConfirmMsg"></span>
-					</div>
+						<div class="confirmMsg1" style="display: none;">
+							<span id="pwConfirmMsg"></span>
+						</div>
 
 					<!-- 비밀번호 체크 --> 
 					<div class="fm_passChk">
 						<input type="password" name="pass2" placeholder="비밀번호 확인">
 					</div>
+					
+						<div class="confirmMsg2" style="display: none;">
+							<span id="pw2ConfirmMsg"></span>
+						</div>
 
 					<!-- 이름 -->
 					<div class="fm_name">
@@ -110,7 +114,7 @@
 					success:function(data){
 						//가입 되어 있지 않은 이메일이면
 						if($.trim(data) == "YES"){
-				 			alert("사용하실수 있는 이메일입니다.");
+				 			alert("사용하실수 있는 이메일입니다.\n\n※ 주의 : 반드시 본인이 수신가능한 메일이어야합니다.");
 				 			
 				 			//checkedEmail input 값에 checked 값 넣기
 				 			$("input[name=checkedEmail]").val("checked");
@@ -148,10 +152,10 @@
 			//비밀번호 조건(8~16자, 영문/숫자 포함)
 			if(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/.test($(this).val())){
 				$('#pwConfirmMsg').text('사용할 수 있는 비밀번호 입니다.').css({'color':'#009c00'});
-				$('.confirmMsg').show("fast");
+				$('.confirmMsg1').show("fast");
 			} else{
-				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다.').css({'color':'#af0000'});
-				$('.confirmMsg').show("fast");
+				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다. (8~16 영문/숫자 포함)').css({'color':'#af0000'});
+				$('.confirmMsg1').show("fast");
 				$('input[name=pass]').focus();
 			}
 		});
@@ -160,12 +164,37 @@
 		$("input[name=pass]").click(function(){
 			this.value = '';
 			$('#pwConfirmMsg').text('');
-			$('.confirmMsg').hide("fast");
+			$('.confirmMsg1').hide("fast");
+		});
+		
+		//비밀번호 확인란 체크하기
+		$("input[name=pass2]").change(function(){
+			if($("input[name=pass]").val() == ''){
+				alert("비밀번호를 작성해주세요.");
+				$("input[name=pass2]").val('');
+				$("input[name=pass]").focus();
+				return false;
+			}
+			else if(document.joinForm.pass.value != document.joinForm.pass2.value){
+				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
+				$('.confirmMsg2').show("fast");
+				$('input[name=pass2]').focus();
+			} else{
+				$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
+				$('.confirmMsg2').show("fast");
+			}
 		});
 		
 		//비밀번호 확인 input를 다시 클릭했을시
 		$("input[name=pass2]").click(function(){
 			this.value = '';
+		});
+		
+		//비밀번호확인 input를 다시 클릭했을시
+		$("input[name=pass2]").click(function(){
+			this.value = '';
+			$('#pw2ConfirmMsg').text('');
+			$('.confirmMsg2').hide("fast");
 		});
 		
 		//이름 input에 한글,영어만 입력하도록 하는 함수
