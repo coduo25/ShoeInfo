@@ -28,7 +28,7 @@
 		<!-- content -->
 		<div id="content_modify">
 
-			<h3>회원정보 입력</h3>
+			<h3>회원정보 수정</h3>
 
 			<form action="#" method="post" name="modiForm" id="modiForm">
 				<div class="modi-form">
