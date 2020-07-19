@@ -215,7 +215,32 @@ public class SneakerDAO {
 		}
 	}
 	
-	//신발 발매 정보 수정하는 함수
+	//신발 검색할때 사용하는 함수
+	public ArrayList<SneakerDTO> searchSneaker(String model_name){
+		ArrayList sneakerList = new ArrayList();
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_sneakerlibrary where model_name LIKE ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + model_name + "%");
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SneakerDTO sdto = new SneakerDTO();
+				sdto.setImage(rs.getString("image"));
+				sdto.setModel_name(rs.getString("model_name"));
+				sdto.setModel_stylecode(rs.getString("model_stylecode"));
+				sdto.setPrice(Integer.parseInt(rs.getString("price")));
+				sdto.setRelease_date(rs.getString("release_date"));
+				sdto.setRelease_status(rs.getString("release_status"));				
+				sneakerList.add(sdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return sneakerList;
+	}
 	
 
 

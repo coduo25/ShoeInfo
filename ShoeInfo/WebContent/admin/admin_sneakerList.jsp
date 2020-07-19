@@ -46,7 +46,7 @@
 				<!-- 검색하는 input 창 -->
 				<div class="search_wrapper">
 					<div class="input_wrapper">
-						<input class="search_input" type="text" size="20">
+						<input class="search_input" id="model_name" type="text" size="20" onkeyup="searchFunction()">
 					</div>
 					<div class="btn_wrapper">
 						<button class="search_btn"> 검색 </button>
@@ -65,6 +65,16 @@
 							<th style="width:11%;"> 수정/삭제 </th>
 						</tr>
 					</thead>
+<!-- 					<tbody id="ajaxTable"> -->
+<!-- 						<tr> -->
+<!-- 							<td> 테스트 </td> -->
+<!-- 							<td> 테스트 </td> -->
+<!-- 							<td> 테스트 </td> -->
+<!-- 							<td> 테스트 </td> -->
+<!-- 							<td> 테스트 </td> -->
+<!-- 							<td> 테스트 </td> -->
+<!-- 						</tr> -->
+<!-- 					</tbody> -->
 					<%
 						for( int i=0; i<admin_sneakerList.size(); i++){
 							SneakerDTO sdto = admin_sneakerList.get(i);
@@ -125,4 +135,38 @@
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 
 </body>
+<script type="text/javascript">
+
+	var request = new XMLHttpRequest();
+	
+	function searchFunction(){
+		request.open("Post", "./SneakerSearchServlet?model_name=" + encodeURIComponent(document.getElementById("model_name").value), true);
+		request.onreadystatechange = searchProcess;
+		request.send(null);
+	}
+	
+	function searchProcess() {
+		var table = document.getElementById("ajaxTable");
+		table.innerHTML = "";
+		if(request.readyState == 4 && request.status == 200) {
+// 			var object = "(" + request.responseText + ")";
+			//여기서 막혔다.
+			//https://www.youtube.com/watch?v=Wn8GT7Uxuds&list=PLRx0vPvlEmdD2mcWus8hakX103PwcSJe8&index=5
+			var object = eval("(" + request.responseText + ")");
+			var result = object.result;
+			
+			for(var i = 0; i<result.length; i++){
+				var row = table.insertRow(0);
+				for(var j=0; j<result[i].length; j++) {
+					var cell = row.insertCell(j);
+					cell.innerHTML = result[i][j].value;
+				}
+			}
+		}
+	}
+// 	window.onload = function() {
+// 		searchFunction();
+// 	}
+
+</script>
 </html>

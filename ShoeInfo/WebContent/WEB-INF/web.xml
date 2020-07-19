@@ -9,51 +9,36 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-   <!-- 회원 관리 -->
   <servlet>
-  	<servlet-name>MemberFrontController</servlet-name>
-  	<servlet-class>net.member.action.MemberFrontController</servlet-class>
+    <servlet-name>MemberFrontController</servlet-name>
+    <servlet-class>net.member.action.MemberFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>MemberFrontController</servlet-name>
-  	<url-pattern>*.me</url-pattern>
+    <servlet-name>MemberFrontController</servlet-name>
+    <url-pattern>*.me</url-pattern>
   </servlet-mapping>
-  
-  <!-- 관리자 페이지 -->
   <servlet>
-  	<servlet-name>AdminFrontController</servlet-name>
-  	<servlet-class>net.admin.action.AdminFrontController</servlet-class>
+    <servlet-name>AdminFrontController</servlet-name>
+    <servlet-class>net.admin.action.AdminFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>AdminFrontController</servlet-name>
-  	<url-pattern>*.ad</url-pattern>
+    <servlet-name>AdminFrontController</servlet-name>
+    <url-pattern>*.ad</url-pattern>
   </servlet-mapping>
-  
-  <!-- 게시판 관리 -->
   <servlet>
-  	<servlet-name>BoardFrontController</servlet-name>
-  	<servlet-class>net.board.action.BoardFrontController</servlet-class>
+    <servlet-name>BoardFrontController</servlet-name>
+    <servlet-class>net.board.action.BoardFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>BoardFrontController</servlet-name>
-  	<url-pattern>*.bo</url-pattern>
+    <servlet-name>BoardFrontController</servlet-name>
+    <url-pattern>*.bo</url-pattern>
   </servlet-mapping>
-  
-  <!-- 신발 관리 -->
   <servlet>
-  	<servlet-name>SneakerFrontController</servlet-name>
-  	<servlet-class>net.sneaker.action.SneakerFrontController</servlet-class>
+    <servlet-name>SneakerFrontController</servlet-name>
+    <servlet-class>net.sneaker.action.SneakerFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>SneakerFrontController</servlet-name>
-  	<url-pattern>*.go</url-pattern>
+    <servlet-name>SneakerFrontController</servlet-name>
+    <url-pattern>*.go</url-pattern>
   </servlet-mapping>
-  
-  
-  
 </web-app>
