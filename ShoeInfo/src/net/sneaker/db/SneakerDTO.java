@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class SneakerDTO {
 
+	private int num;
 	private String brand;
 	private String sub_brand;
 	private String brand_index;
@@ -16,6 +17,12 @@ public class SneakerDTO {
 	private String release_date;
 	private String release_status;
 	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getBrand() {
 		return brand;
 	}

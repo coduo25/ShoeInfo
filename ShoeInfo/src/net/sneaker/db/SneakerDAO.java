@@ -171,6 +171,7 @@ public class SneakerDAO {
 			if(rs.next()){
 				//신발이 있으면
 				sdto = new SneakerDTO();
+				sdto.setNum(rs.getInt("num"));
 				sdto.setBrand(rs.getString("brand"));
 				sdto.setSub_brand(rs.getString("sub_brand"));
 				sdto.setBrand_index(rs.getString("brand_index"));
@@ -192,22 +193,31 @@ public class SneakerDAO {
 	}
 	
 	//신발 정보 수정하는 함수
-	public void updateSneakerInfo(SneakerDTO sdto) {
+	public void updateSneakerInfo(SneakerDTO sdto, String old_model_stylecode) {
 		try {
 			con = getConnection();
-			sql = "update shoeinfo_sneakerlibrary set brand = ?, sub_brand = ?, brand_index = ?, image_thumb = ?, image = ?, model_name = ?, model_colorway = ?, price = ?, release_date = ? where model_stylecode = ?";
+			sql = "update shoeinfo_sneakerlibrary set brand = ?, sub_brand = ?, brand_index = ?, image_thumb = ?, image = ?, model_stylecode = ?, model_name = ?, model_colorway = ?, price = ?, release_date = ? where num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sdto.getBrand());
 			pstmt.setString(2, sdto.getSub_brand());
 			pstmt.setString(3, sdto.getBrand_index());
 			pstmt.setString(4, sdto.getImage_thumb());
 			pstmt.setString(5, sdto.getImage());
-			pstmt.setString(6, sdto.getModel_name());
-			pstmt.setString(7, sdto.getModel_colorway());
-			pstmt.setInt(8, sdto.getPrice());
-			pstmt.setString(9, sdto.getRelease_date());
-			pstmt.setString(10, sdto.getModel_stylecode());
-			pstmt.executeUpdate();
+			pstmt.setString(6, sdto.getModel_stylecode());
+			pstmt.setString(7, sdto.getModel_name());
+			pstmt.setString(8, sdto.getModel_colorway());
+			pstmt.setInt(9, sdto.getPrice());
+			pstmt.setString(10, sdto.getRelease_date());
+			pstmt.setInt(11, sdto.getNum());
+			int check = pstmt.executeUpdate();
+			
+			if(check > 0) {
+				sql = "update shoeinfo_onlineinfo set model_stylecode = ? where model_stylecode = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, sdto.getModel_stylecode());
+				pstmt.setString(2, old_model_stylecode);
+				pstmt.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

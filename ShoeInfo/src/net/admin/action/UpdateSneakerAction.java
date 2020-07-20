@@ -36,6 +36,9 @@ public class UpdateSneakerAction implements Action{
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8");
 		
 		SneakerDTO sdto = new SneakerDTO();
+		sdto.setNum(Integer.parseInt(multi.getParameter("num")));
+		String old_model_stylecode = multi.getParameter("old_model_stylecode");
+		
 		sdto.setBrand(multi.getParameter("brand"));
 		sdto.setSub_brand(multi.getParameter("sub_brand"));
 		sdto.setBrand_index(multi.getParameter("brand_index"));
@@ -83,7 +86,7 @@ public class UpdateSneakerAction implements Action{
 		sdto.setRelease_status(multi.getParameter("release_status"));
 		
 		SneakerDAO asdao = new SneakerDAO();
-		asdao.updateSneakerInfo(sdto);
+		asdao.updateSneakerInfo(sdto, old_model_stylecode);
 		
 		//페이지이동
 		forward.setPath("./SneakerDetail.go?model_stylecode="+sdto.getModel_stylecode());

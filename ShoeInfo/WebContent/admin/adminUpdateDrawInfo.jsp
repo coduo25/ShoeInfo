@@ -75,6 +75,7 @@
 			<div>
 				<h3> 발매 정보 수정하기 </h3>
 				<form action="./UpdateDrawInfoAction.ad" id="updateDrawForm" method="post">
+					<input type="hidden" name="online_num" value="<%=onlineDrawInfo.getOnline_num()%>">
 					<table border = "1">
 						<input type="hidden" name="country_region" value="<%=onlineDrawInfo.getCountry_region()%>">
 						<input type="hidden" name="country_name" value="<%=onlineDrawInfo.getCountry_name()%>">

@@ -347,7 +347,7 @@ public class OnlineDAO {
 	public void updateOnlineinfo(OnlineDTO odto){
 		try {
 			con = getConnection();
-			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_date = ?, online_start_time = ?, online_end_date = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, description = ? where model_stylecode = ? AND brand_id = ?";
+			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_date = ?, online_start_time = ?, online_end_date = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, description = ? where online_num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, odto.getModel_stylecode());
 			pstmt.setString(2, odto.getCountry_region());
@@ -362,8 +362,7 @@ public class OnlineDAO {
 			pstmt.setString(11, odto.getBuy_method());
 			pstmt.setString(12, odto.getDelivery_method());
 			pstmt.setString(13, odto.getDescription());
-			pstmt.setString(14, odto.getModel_stylecode());
-			pstmt.setString(15, odto.getBrand_id());
+			pstmt.setInt(14, odto.getOnline_num());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

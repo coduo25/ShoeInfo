@@ -29,6 +29,7 @@ public class UpdateDrawInfoAction implements Action{
 		
 		//넘어온 값 저장하기
 		OnlineDTO odto = new OnlineDTO();
+		odto.setOnline_num(Integer.parseInt(request.getParameter("online_num")));
 		odto.setModel_stylecode(request.getParameter("model_stylecode"));
 		odto.setCountry_region(request.getParameter("country_region"));
 		odto.setCountry_name(request.getParameter("country_name"));

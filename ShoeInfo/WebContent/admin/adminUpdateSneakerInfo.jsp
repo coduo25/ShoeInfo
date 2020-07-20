@@ -37,6 +37,8 @@
 		<!-- content -->
 		<div id="content_adminAddSneaker">
 			<form action="./UpdateSneakerInfoAction.ad" id="updateSneakerForm" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="num" value="<%=sdto.getNum()%>">
+				<input type="hidden" name="old_model_stylecode" value="<%=sdto.getModel_stylecode()%>"> 
 				<table border = "1">
 					<tr>
 						<td id="category" colspan="2"> 발매방식 </td>
@@ -80,7 +82,7 @@
 					<tr>
 						<td id="category" colspan="2"> 제품 스타일 코드  </td>
 						<td colspan="2"> 
-							<input type="text" name="model_stylecode" value="<%=sdto.getModel_stylecode()%>" readonly> 
+							<input type="text" name="model_stylecode" value="<%=sdto.getModel_stylecode()%>"> 
 							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
 						</td>
 					</tr>
