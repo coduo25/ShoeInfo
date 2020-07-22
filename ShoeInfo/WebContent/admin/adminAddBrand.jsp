@@ -48,6 +48,7 @@
 							<td> 
 								<select name="country_name" id="country_name">
 									<option value="default"> 나라를 선택해주세요. </option>
+									<option value="default" disabled> ------------------------ </option>
 									<%
 										for(int i=0;i<countryList_all.size();i++) {
 											CountryDTO cdto = countryList_all.get(i);
@@ -90,6 +91,7 @@
 							<td> 
 								<select name="country_region" id="country_region">
 									<option value="default"> 지역을 선택해주세요. </option>
+									<option value="default" disabled> ------------------------ </option>
 									<option value="아시아"> 아시아 </option>
 									<option value="유럽"> 유럽 </option>
 									<option value="아메리카"> 아메리카 </option>
@@ -98,12 +100,18 @@
 							</td>
 						</tr>
 						<tr>
-							<td id="category"> 나라 이름(ex.대한민국) </td>
-							<td> <input type="text" name="country_name"> </td>
+							<td id="category"> 나라 이름 </td>
+							<td>
+								<input type="text" name="country_name"> 
+								<span id="cate_ref"> 예시) 대한민국, 미국, 네덜란드 </span>
+							</td>
 						</tr>
 						<tr>
-							<td id="category"> 나라 코드(ex.82 - <a href="https://countrycode.org/" target="_blank">코드보러가기</a>) </td>
-							<td> <input type="text" name="country_code"> </td>
+							<td id="category"> 나라 코드 </td>
+							<td>
+								<input type="text" name="country_code">
+								<span id="cate_ref"> 예시) 82, 12 <a href="https://countrycode.org/" target="_blank" style="color:#e00000; font-weight: bold;">코드보러가기</a> </span>
+							</td>
 						</tr>
 						<tr>
 							<td id="category"> 국기 이미지 업로드 </td>

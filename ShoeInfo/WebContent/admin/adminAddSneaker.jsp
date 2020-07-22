@@ -40,21 +40,21 @@
 						<td id="category"> 브랜드* </td>
 						<td> 
 							<input type="text" name="brand">
-							<span id="cate_ref"> (ex. Nike, Air Jordan, Adidas) </span> 
+							<span id="cate_ref"> 예시) Nike, Air Jordan, Adidas </span> 
 						</td>
 					</tr>
 					<tr>
 						<td id="category"> 서브브랜드  </td> 
 						<td> 
 							<input type="text" name="sub_brand">
-							<span id="cate_ref"> (ex. 1, 11, Yeezy, Dunk, Dunk SB) </span> 
+							<span id="cate_ref"> 예시) 1, 11, Yeezy, Dunk, Dunk SB </span> 
 						</td>
 					</tr>
 					<tr>
 						<td id="category"> 브랜드인덱스 </td> 
 						<td> 
 							<input type="text" name="brand_index">
-							 <span id="cate_ref"> (ex. Low, Fear of God, Boost 350 V2, 992) </span> 
+							 <span id="cate_ref"> 예시) Low, Fear of God, Boost 350 V2, 992 </span> 
 						</td>
 					</tr>
 					<tr>
@@ -152,6 +152,7 @@
 								<option value="29"> 29 </option>
 								<option value="30"> 30 </option>
 								<option value="31"> 31 </option>
+								<option value="default" disabled> ---- </option>
 								<option value="99"> 99 </option>
 							</select>
 							일

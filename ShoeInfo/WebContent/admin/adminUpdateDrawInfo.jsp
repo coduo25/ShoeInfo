@@ -112,8 +112,10 @@
 							<td> 
 								<select name="online_method" id="online_method">
 									<option value="default" <%if(onlineDrawInfo.getOnline_method().equals("default")){%> selected<%}%>> 발매 방식을 선택해주세요. </option>
+									<option value="default" disabled> ------------------------ </option>
 									<option value="선착" <%if(onlineDrawInfo.getOnline_method().equals("선착")){%> selected<%}%>> 선착 </option>
 									<option value="드로우" <%if(onlineDrawInfo.getOnline_method().equals("드로우")){%> selected<%}%>> 드로우 </option>
+									<option value="default" disabled> ------------------------ </option>
 									<option value="-" <%if(onlineDrawInfo.getOnline_method().equals("-")){%> selected <%}%>> 미정 </option>
 								</select>
 							</td>
@@ -123,11 +125,14 @@
 							<td>
 								<select name="buy_method" id="buy_method">
 									<option value="default" <%if(onlineDrawInfo.getBuy_method().equals("default")){%> selected<%}%>> 구매 방식을 선택해주세요. </option>
+									<option value="default" disabled> ------------------------ </option>
 									<option value="선착순 구매" <%if(onlineDrawInfo.getBuy_method().equals("선착순 구매")){%> selected<%}%>> 선착순 구매 </option>
+									<option value="default" disabled> ------------------------ </option>
 									<option value="당첨 후 결제" <%if(onlineDrawInfo.getBuy_method().equals("당첨 후 결제")){%> selected<%}%>> 당첨 후 결제 </option>
 									<option value="당첨전 선결제" <%if(onlineDrawInfo.getBuy_method().equals("당첨전 선결제")){%> selected<%}%>> 당첨 전 선결제 </option>
 									<option value="당첨자간 선착순 구매" <%if(onlineDrawInfo.getBuy_method().equals("당첨자간 선착순 구매")){%> selected<%}%>> 당첨자간 선착순 구매 </option> 
-									<option value="-" <%if(onlineDrawInfo.getBuy_method().equals("-")){%> selected<%}%>> - </optino>
+									<option value="default" disabled> ------------------------ </option>
+									<option value="-" <%if(onlineDrawInfo.getBuy_method().equals("-")){%> selected<%}%>> 미정 </optino>
 								</select>
 							</td>
 						</tr>
@@ -136,9 +141,13 @@
 							<td>
 								<select name="delivery_method" id="delivery_method">
 									<option value="default" <%if(onlineDrawInfo.getDelivery_method().equals("default")){%> selected<%}%>> 직배여부를 선택해주세요. </option>
+									<option value="default" disabled> ------------------------ </option>
 									<option value="직배가능" <%if(onlineDrawInfo.getDelivery_method().equals("직배가능")){%> selected<%}%>> 직배가능 </option>
 									<option value="배대지" <%if(onlineDrawInfo.getDelivery_method().equals("배대지")){%> selected<%}%>> 배대지 </option>
+									<option value="default" disabled> ------------------------ </option>
 									<option value="국내배송" <%if(onlineDrawInfo.getDelivery_method().equals("국내배송")){%> selected<%}%>> 국내배송 </option>
+									<option value="default" disabled> ------------------------ </option>
+									<option value="매장수령" <%if(onlineDrawInfo.getDelivery_method().equals("매장수령")){%> selected<%}%>>> 매장수령 </option>
 								</select>
 							</td>
 						</tr>

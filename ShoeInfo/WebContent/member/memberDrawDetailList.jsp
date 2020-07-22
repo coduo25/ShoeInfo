@@ -64,13 +64,19 @@
 						<div class="sneaker_option_wrapper">
 							<!-- relase_date -->
 							<div class="sneaker_option_info">
-								발매일(한국기준) : <span> <%=sdto.getRelease_date() %></span>
+								<span> 발매일(글로벌) :  
+								<%if(sdto.getRelease_date().contains("99")){%>
+									미정
+								<%}else{%>
+									<%=sdto.getRelease_date()%>
+								<%}%>	
+								</span>
 							</div>
 							<!-- price -->
 							<div class="sneaker_option_info">
-								가격 : 
+								<span> 가격 : 
 								<%if(sdto.getPrice() == 0){%> <span>미정</span>
-								<%}else{%> <span> $<%=formatter.format(sdto.getPrice()) %></span> <%}%>
+								<%}else{%>  <%=formatter.format(sdto.getPrice()) %>원 </span> <%}%>
 							</div>
 						</div>
 						

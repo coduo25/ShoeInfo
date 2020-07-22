@@ -47,6 +47,7 @@
 							<td> 
 								<select name="country_name" id="country_name">
 									<option value="default"> 나라를 선택해주세요. </option>
+									<option value="default" disabled> ------------------------ </option>
 									<%
 										for(int i=0;i<countryList_all.size();i++) {
 											CountryDTO cdto = countryList_all.get(i);
