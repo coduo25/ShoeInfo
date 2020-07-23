@@ -72,7 +72,7 @@
   * 북미 온라인 발매처
   * 유럽 온라인 발매처
   * 기타 온라인 발매처
-<img src="./ShoeInfo/screenshots/detail_page.png" width="600px">
+<img src="./ShoeInfo/screenshots/detail_page.png" width="500px">
 
 ### 디테일 페이지 세부 영역
 * 브랜드 이미지, 이름, 응모방식: 클릭했을시, 해당 브랜드 응모 사이트로 이동.
