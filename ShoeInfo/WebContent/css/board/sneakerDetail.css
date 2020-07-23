@@ -126,7 +126,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	table#sneakerOnlineInfo_table td:nth-child(1) img { width: 50%; height: 50%; }
 	
-	table#sneakerOnlineInfo_table td:nth-child(2) { text-align: center; padding-left: 0; font-weight: bold; }
+	table#sneakerOnlineInfo_table td:nth-child(2) { text-align: center; padding-left: 0; font-weight: bold;  margin: 0 auto; text-overflow: ellipsis; width: 90%; overflow: hidden; white-space: nowrap; }
 	
 	table#sneakerOnlineInfo_table td:nth-child(3) { display: none; }
 	
@@ -196,7 +196,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	table#sneakerOnlineInfo_table td:nth-child(1) img { width: 50%; height: 50%; }
 	
-	table#sneakerOnlineInfo_table td:nth-child(2) { text-align: center; padding-left: 0; font-weight: bold; }
+	table#sneakerOnlineInfo_table td:nth-child(2) { text-align: center; padding-left: 0; font-weight: bold; margin: 0 auto; text-overflow: ellipsis; width: 90%; overflow: hidden; white-space: nowrap; }
 	
 	table#sneakerOnlineInfo_table td:nth-child(3) { display: none; }
 	
