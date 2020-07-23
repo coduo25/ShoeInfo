@@ -41,7 +41,7 @@ body {font-size:1em; line-weight:1.4}
 	.tooltip1 .tooltiptext1::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent; }
 	.tooltip1:hover .tooltiptext1 { visibility: visible; opacity: 1;}
 
-table#sneakerOnlineInfo_table td:nth-child(2) { text-align: left; padding-left: 15px; margin: 0 auto; text-overflow: ellipsis; width: 90%; overflow: hidden; white-space: nowrap;}
+table#sneakerOnlineInfo_table td:nth-child(2) { text-align: left; padding-left: 15px; }
 
 	
 /* 사용자 응모 여부 페이지 -------------------------------------------------------------------------------------------------- */
