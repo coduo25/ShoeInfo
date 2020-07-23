@@ -57,19 +57,34 @@
 
 ## 메인 페이지
 * `JavaScript`를 이용한 실시간 시간 나타내기
-<img src="./ShoeInfo/screenshots/main_time.gif" width="700px">
+<img src="./ShoeInfo/screenshots/main_time.gif" width="500px">
 
 <br>
 
-* `jQuery` `slideToggle()` 함수를 활용한 월별 발매 신발 접었다/폈다 나타내기
-<img src="./ShoeInfo/screenshots/slide.gif" width="700px">
+* `jQuery` `slideToggle()` 함수를 활용한 월별 발매 신발 접었다/폈다 나타내기.
+<img src="./ShoeInfo/screenshots/slide.gif" width="500px">
 
 <br>
 
 ## 신발 디테일 페이지
-Desktop Version & Mobile Version
-<img src="./ShoeInfo/screenshots/detail_page.png" width="500px"> <img src="./ShoeInfo/screenshots/detail_page_mobile.png" width="150px">
 
+### 디테일 페이지 전체 레이아웃
+* 신발 기본 정보 영역
+* 전세계 지역별 발매 브랜드 리스트
+  * 한국 온라인 발매처
+  * 아시아 온라인 발매처
+  * 북미 온라인 발매처
+  * 유럽 온라인 발매처
+  * 기타 온라인 발매처
+<img src="./ShoeInfo/screenshots/detail_page.png" width="600px">
+
+### 디테일 페이지 세부 영역
+* 브랜드 이미지, 이름, 응모방식: 클릭했을시, 해당 브랜드 응모 사이트로 이동.
+* 남은시간: 현재 시간 기준으로 발매시간과 비교하여 남은 시간 실시간으로 알려주기. `GIF 만들 당시 시간: 7월 23일 pm 06:53`
+* 응모여부: 로그인을 했을시, 응모여부 체크를 통해 나의 페이지에 저장하기.
+<img src="./ShoeInfo/screenshots/detail_page.gif" width="700px">
+                                                              
+                                                              
 
 
 
