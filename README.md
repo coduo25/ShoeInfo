@@ -64,7 +64,7 @@
 
 ## 신발 디테일 페이지
 
-### (#디테일 페이지 전체 레이아웃)
+### 디테일 페이지 전체 레이아웃
 * 신발 기본 정보 영역
 * 전세계 지역별 발매 브랜드 리스트
   * 한국 온라인 발매처
@@ -80,43 +80,21 @@
 * 응모여부: 로그인을 했을시, 응모여부 체크를 통해 나의 페이지에 저장하기.
 <img src="./ShoeInfo/screenshots/detail_page.gif" width="600px">
 
+<br>
+
 ## 나의 응모 페이지
-<img src="./ShoeInfo/screenshots/my_draw_page click.png" width="50px">
-
-
-
-
-
-
-## 게시판
-
-### 전체 게시판
-* 전체 num 컬럼으로 전체 게시판 리스트 뿌려주기. (특정 게시판은 board_type, re_ref 컬럼으로 리스트 뿌려주기)
-<p> <img src="./Project/Screenshots/all_board.png" width="700px"> <img src="./Project/Screenshots/all_board2.png" width="600px"> </p>
+<img src="./ShoeInfo/screenshots/my_draw_page click.png" width="100px"> <br>
+<img src="./ShoeInfo/screenshots/my_draw.png" width="600px">
 
 <br>
 
-### 일반 게시판
-* 글 상단부에 최근 공지사항 글 5개를 DB에서 가지고 와서 뿌려줌.
-<img src="./Project/Screenshots/board1.png" width="700px">
+## 반응형 웹 미리보기
 
-<br>
+### 메인페이지
 
-### 이미지 게시판
-<img src="./Project/Screenshots/image_board.png" width="700px">
+### 신발 디테일 페이지
 
-<br>
-
-## 글쓰기 form
-* `네이버 스마트 에디터 api`를 이용하여 이미지 파일 업로드가 가능한 글쓰기 구현.
-<p> <img src="./Project/Screenshots/write1.png" width="500px"> <img src="./Project/Screenshots/write2.png" width="200px"> </p>
-
-<br>
-
-## 나의 신발장
-* 소개: 본인이 가지고 있는 신발들을 추가하여 도표를 통해 정리할수 있는 페이지.
-* 추가하기 버튼(검색기능): `Ajax`를 활용하여 검색한 글자를 토대로 DB에서 리스트 가져오기.
-<img src="./Project/Screenshots/my_locker.gif" width="800px">
+### 나의 응모 페이지
 
 <br>
 
