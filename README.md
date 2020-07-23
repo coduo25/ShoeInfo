@@ -1,5 +1,4 @@
 # ShoeInfo Project / 2020.04 - 2020.07
-<p align="center"> Desktop, Mobile version preview </p>
 <p align="center"> <img src="./ShoeInfo/screenshots/main_preview.png" width="800px"> </p>
 <br>
 
