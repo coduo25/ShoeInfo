@@ -76,9 +76,9 @@
 
 ### 디테일 페이지 세부 영역
 * 브랜드 이미지, 이름, 응모방식: 클릭했을시, 해당 브랜드 응모 사이트로 이동.
-* 남은시간: 현재 시간 기준으로 발매시간과 비교하여 남은 시간 실시간으로 알려주기. `GIF 만들 당시 시간: 7월 23일 pm 06:53`
+* 남은시간: 현재 시간 기준으로 발매시간과 비교하여 남은 시간 실시간으로 알려주기. `GIF 만들 당시 시간: 7월 23일 pm 07:20`
 * 응모여부: 로그인을 했을시, 응모여부 체크를 통해 나의 페이지에 저장하기.
-<img src="./ShoeInfo/screenshots/detail_page.gif" width="1000px">
+<img src="./ShoeInfo/screenshots/detailpage.gif" width="700px">
 
 <br>
 
@@ -89,12 +89,16 @@
 <br>
 
 ## 반응형 웹 미리보기
+* 1220px, 768px, 468px 총 3가지 기준 width를 잡아서 만듬.
 
 ### 메인페이지
+<img src="./ShoeInfo/screenshots/responsive_main.gif" width="600px">
 
 ### 신발 디테일 페이지
+<img src="./ShoeInfo/screenshots/detail_page.gif" width="600px">
 
 ### 나의 응모 페이지
+<img src="./ShoeInfo/screenshots/draw_page.gif" width="600px">
 
 <br>
 
