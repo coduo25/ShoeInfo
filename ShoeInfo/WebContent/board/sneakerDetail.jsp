@@ -729,7 +729,7 @@
 							<%if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_america<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_america == 1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()) {%>
+							<%}else if(compare_w_start_result_america == 1 && !odto_america.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
@@ -962,7 +962,7 @@
 							<%if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_europe<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_europe == 1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()) {%>
+							<%}else if(compare_w_start_result_europe == 1 && !odto_europe.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
@@ -1195,7 +1195,7 @@
 							<%if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_etc<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()) {%>
+							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
