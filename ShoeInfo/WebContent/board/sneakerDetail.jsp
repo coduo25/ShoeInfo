@@ -258,7 +258,7 @@
 						<span id="count_Online_start_time_kr<%=i%>" style="display:none;"> <%=count_Online_start_time_kr%> </span>
 						<span id="count_Online_end_time_kr<%=i%>" style="display:none;"> <%=count_Online_end_time_kr%> </span>
 						<%if(odto_kr.getOnline_method().contains("선착")){%>
-						<td id="remain_time_status_kr<%=i%>">
+						<td id="remain_time_status_kr<%=i%>"> 
 							<!-- 시작 시간이 존재할때  -->
 							<%if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_kr<%=i%>" class="draw_count_result"></span>
