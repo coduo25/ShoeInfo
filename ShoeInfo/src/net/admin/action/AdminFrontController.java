@@ -92,6 +92,15 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//신발 삭제하는 페이지 처리
+		else if(command.equals("/DeleteSneaker.ad")){
+			action = new DeleteSneaker();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		//신발 발매 정보 수정하는 페이지로 가기
 		else if(command.equals("/UpdateDrawInfo.ad")){

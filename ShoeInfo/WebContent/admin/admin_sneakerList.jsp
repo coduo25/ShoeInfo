@@ -93,7 +93,10 @@
 									기습발매
 								<%}%>
 							</td>
-							<td> <input type="button" id="modi_btn" onclick="location.href='./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>'" value="수정"> / <input type="button" id="modi_btn" value="삭제"> </td>
+							<td> 
+							<input type="button" id="modi_btn" onclick="location.href='./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>'" value="수정"> 
+							/ 
+							<input type="button" id="modi_btn" onclick="location.href='./DeleteSneaker.ad?model_stylecode=<%=sdto.getModel_stylecode()%>'" value="삭제"> </td>
 						</tr>
 					</tbody>
 					<%}%>

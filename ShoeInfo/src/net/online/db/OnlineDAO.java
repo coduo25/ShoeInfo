@@ -94,6 +94,28 @@ public class OnlineDAO {
 		}
 		return check;
 	}
+	
+	//신발 삭제하는 함수
+	public void deleteSneaker(String model_stylecode){
+		int check = 0;
+		try {
+			con = getConnection();
+			sql = "delete from shoeinfo_sneakerlibrary where model_stylecode = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model_stylecode);
+			check = pstmt.executeUpdate();
+			if(check>0){
+				sql = "delete from shoeinfo_onlineinfo where model_stylecode = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, model_stylecode);
+				pstmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
 
 	//대한민국 신발 온라인 정보 가져오는 함수(브랜드 정보 + 온라인 정보)
 	public Vector getOnlineInfo_kr(String model_stylecode) {
