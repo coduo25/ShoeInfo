@@ -137,7 +137,7 @@
 
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [한국 온라인 발매처] </h4>
+						<h4> [한국 발매처] </h4>
 						<tr class="ta_release_info">
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
@@ -370,7 +370,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [아시아 온라인 발매처] </h4>
+						<h4> [아시아 발매처] </h4>
 						<tr class="ta_release_info">
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
@@ -603,7 +603,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [북미 온라인 발매처] </h4>
+						<h4> [북미 발매처] </h4>
 						<tr class="ta_release_info">
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
@@ -836,7 +836,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [유럽 온라인 발매처] </h4>
+						<h4> [유럽 발매처] </h4>
 						<tr class="ta_release_info">
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
@@ -1069,7 +1069,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [기타 온라인 발매처] </h4>
+						<h4> [기타 발매처] </h4>
 						<tr class="ta_release_info">
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>

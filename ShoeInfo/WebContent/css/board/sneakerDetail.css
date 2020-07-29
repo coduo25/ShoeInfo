@@ -22,10 +22,13 @@ body {font-size:1em; line-weight:1.4}
 	
 	.sneaker_name {font-style:oblique; text-transform: uppercase; font-size:35px; font-family: 'Anton', sans-serif;}
 	
-	/* 신발 온라인, 오프라인 정보 */
+	/* 신발 온라인 정보 */
 	#content_sneakerInfo {margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em;}
 	#content_sneakerInfo table{ width:928px; text-align:center;}
-	#content_sneakerInfo table td {padding:10px 0}
+	#content_sneakerInfo table td { padding:10px 0; }
+	
+	#content_sneakerInfo h4 { font-size: 1.1em; }
+	
 	
 	/* 테이블 css */
 	#sneakerOnlineInfo_table tr.ta_release_info td{border-bottom: 1px solid #e0e0e0;}
