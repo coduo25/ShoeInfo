@@ -44,15 +44,37 @@
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
+	#footer {
+		height: 100px;
+	}
 	#footer-wrapper {
 		width: 90%;
+	}
+	#copyright {
+		display:table-cell;
+		line-height: 60px;
+	}
+	.footer-nav {
+		line-height: 10px;
+		float: left;
 	}
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
+	#footer {
+		height: 100px;
+	}
 	#footer-wrapper {
 		width: 90%;
+	}
+	#copyright {
+		display:table-cell;
+		line-height: 60px;
+	}
+	.footer-nav {
+		line-height: 10px;
+		float: left;
 	}
 }
 	
