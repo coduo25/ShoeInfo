@@ -2,17 +2,16 @@
 
 <Context>
   <Resource 
-   name="jdbc/shoeinfo"
+   name="jdbc/coduo25"
    auth="Container"
    type="javax.sql.DataSource"
    driverClassName="com.mysql.jdbc.Driver"
-   url="jdbc:mysql://localhost:3306/shoeinfo"
-   username="root"
-   password="1234"
+   url="jdbc:mysql://coduo25.cafe24.com/coduo25"
+   username="coduo25"
+   password="Park@7650!"
    maxActive="500"
    maxIdle="100"  
   />
-
 </Context>
 
 

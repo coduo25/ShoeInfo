@@ -32,3 +32,27 @@
 .footer-nav ul li { display: inline-block; }
 .footer-nav ul li a { color: white; }
 .footer-nav ul li:not(:first-child):before { content: '|'; padding: 0.3em; color: white; }
+
+
+/* media Query */
+/* 0 ~ 1220px */
+@media screen and (max-width: 1220px){
+	#footer-wrapper {
+		width: 90%;
+	}
+}
+
+/* 0 ~ 768px */
+@media screen and (max-width: 768px){
+	#footer-wrapper {
+		width: 90%;
+	}
+}
+
+/* 0 ~ 468px */
+@media screen and (max-width: 468px){
+	#footer-wrapper {
+		width: 90%;
+	}
+}
+	

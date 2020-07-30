@@ -24,7 +24,7 @@ public class CountryDAO {
 	private Connection getConnection() throws Exception{
 		// Context 객체를 생성
 		Context init = new InitialContext();
-		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/shoeinfo");
+		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/coduo25");
 		con = ds.getConnection();
 		return con;
 	}
