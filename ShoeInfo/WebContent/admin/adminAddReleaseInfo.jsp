@@ -255,7 +255,7 @@
 			//온라인 나라 항목을 선택했을시 브랜드 호출하는 함수
 			$.ajax({
 				type:'get',
-				url:'/ShoeInfo/admin/searchBrandAjax.jsp',
+				url:'./admin/searchBrandAjax.jsp',
 				data:'country_name='+$("#country_name_on").val(),
 				dataType:"html",
 				success:function(data){
