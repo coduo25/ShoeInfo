@@ -42,44 +42,44 @@ public class MemberJoinAction implements Action{
 		mdao.insertMember(mdto);
 		
 		// 운영자 메일로 회원가입된 이메일로 가입인사 메일보내기
-			String host = "smtp.gmail.com";
-			final String user = "shoeinfoshoeinfo";
-			final String password = "dhfpswl@7695!";
-			
-			//세션
-			Properties props = new Properties();
-			props.put("mail.smtp.host", host);
-			props.put("mail.smtp.auth", "true");
-			props.put("mail.smtp.starttls.enable", "true");
-			
-			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(user, password);
-				}
-			});
-			try{
-				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress(user));
-				message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-				
-				// Subject
-				message.setSubject("[SHOEINFO] 회원가입을 축하드립니다.");
-	
-				// Text
-				message.setText("회원가입을 진심으로 축하드립니다. \n"
-						+ "\n"
-						+ "회원님의 메일은 " + email + "입니다. \n"
-						+ "\n"
-						+ "SHOINFO 페이지 이동하기. \n"
-						+ "\n"
-						+ "http://localhost:8080/ShoeInfo/SneakerList.go");
-				
-				// send the message
-				Transport.send(message);
-//				System.out.println("message sent successfully...");
-			} catch (MessagingException e) {
-				e.printStackTrace();
-			}
+//			String host = "smtp.gmail.com";
+//			final String user = "shoeinfoshoeinfo";
+//			final String password = "dhfpswl@7695!";
+//			
+//			//세션
+//			Properties props = new Properties();
+//			props.put("mail.smtp.host", host);
+//			props.put("mail.smtp.auth", "true");
+//			props.put("mail.smtp.starttls.enable", "true");
+//			
+//			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+//				protected PasswordAuthentication getPasswordAuthentication() {
+//					return new PasswordAuthentication(user, password);
+//				}
+//			});
+//			try{
+//				MimeMessage message = new MimeMessage(session);
+//				message.setFrom(new InternetAddress(user));
+//				message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+//				
+//				// Subject
+//				message.setSubject("[SHOEINFO] 회원가입을 축하드립니다.");
+//	
+//				// Text
+//				message.setText("회원가입을 진심으로 축하드립니다. \n"
+//						+ "\n"
+//						+ "회원님의 메일은 " + email + "입니다. \n"
+//						+ "\n"
+//						+ "SHOINFO 페이지 이동하기. \n"
+//						+ "\n"
+//						+ "http://localhost:8080/ShoeInfo/SneakerList.go");
+//				
+//				// send the message
+//				Transport.send(message);
+////				System.out.println("message sent successfully...");
+//			} catch (MessagingException e) {
+//				e.printStackTrace();
+//			}
 			
 		
 		// 페이지 이동(로그인 페이지로이동)
