@@ -77,13 +77,16 @@
 					
 					<!-- 가입하기 버튼 -->
 					<div class="fm_submitBtn">
-						<input type="submit" value="가입하기" class="join_submitBtn">
+						<button type="button" class="join_submitBtn">
+							<span id="join_text">가입하기</span> <span id="loading" style="display:none; font-size: 1.1em;"><i class="fa fa-spinner fa-spin"></i> </span>
+						</button>
 					</div>
+					
 				</div>
 
-				
 			</form>
 		</div>
+		
 	</div>
 
 	<!-- FOOTER -->
@@ -215,7 +218,7 @@
 		// ----------------------------------------------------------------------------
 		// 모든 input 유효성 검사하는 함수
 		
-		$("#joinForm").submit(function(){
+		$(".join_submitBtn").click(function(){
 			//이메일 빈칸이면
 			if($('input[name=email]').val() == ''){
 				alert("이메일을 입력해주세요.");
@@ -263,6 +266,10 @@
 				$('input[name=phone]').focus();
 				return false;
 			}
+			
+			$('#join_text').hide();
+			$('#loading').show();
+			$('#joinForm').submit();
 		});
 
 	});
