@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
 <link href="./css/board/adminForm.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">

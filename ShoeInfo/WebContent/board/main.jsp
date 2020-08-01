@@ -10,6 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta content="width=device-width, initial-scale=1" name="viewport" />
+<link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
