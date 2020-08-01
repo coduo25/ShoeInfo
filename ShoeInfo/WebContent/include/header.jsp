@@ -24,7 +24,7 @@
 	
 		<!-- 메인메뉴  -->
 		<ul class="navbar_menu">
-			<li> <a href="./SneakerList.go"> 런칭 캘린더 </a> </li>
+			<li> <a href="./SneakerList.go"> <span id="cal_icon"><i class="fas fa-calendar"></i></span> 런칭 캘린더 </a> </li>
 		</ul>
 		
 		<!-- 로그인, 마이페이지, 로그아웃 링크 -->
@@ -40,11 +40,11 @@
 				
 				if(user == null){
 			%>
-				<li> <a href="./MemberLogin.me"> LOGIN </a> </li>
+				<li> <a href="./MemberLogin.me"> <span id="user_icon"><i class="fas fa-user"></i></span> LOGIN </a> </li>
 			<%
 				}else if(usr_position.equals("admin")){ 
 			%>
-				<li> <a href="./Main.ad"> ADMIN_PAGE </a> </li>
+				<li> <a href="./Main.ad"> <span id="user_icon"> <i class="fas fa-tools"></i> </span> ADMIN PAGE </a> </li>
 				<div class="mypage_btn"> 
 					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
 					<div class="dropdown_mymenu">
@@ -52,11 +52,15 @@
 						<a href="./MemberDrawInfo.me"> MY DRAW </a>
 					</div>
 				</div>
-				<li> <a href="./MemberLogout.me"> LOGOUT </a> </li>
+
+				<li class="mypage_btn_mobile"> <a href="./MemberUpdateInfo.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <span id="user_icon"> <i class="fas fa-calendar-check"></i> </span> MY DRAW  </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <span id="logout_icon"> <i class="fas fa-sign-out-alt"></i> </span>  LOGOUT </a> </li>
+				
+				<li class="logout"> <a href="./MemberLogout.me"> LOGOUT </a> </li>
 			<% 
 				}else{ 
 			%>
-	
 				<div class="mypage_btn"> 
 					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
 					<div class="dropdown_mymenu">
@@ -64,14 +68,17 @@
 						<a href="./MemberDrawInfo.me"> MY DRAW </a>
 					</div>
 				</div>
-				<li> <a href="./MemberLogout.me"> LOGOUT </a> </li>
+				
+				<li class="mypage_btn_mobile"> <a href="./MemberUpdateInfo.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <span id="user_icon"> <i class="fas fa-calendar-check"></i> </span> MY DRAW  </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <span id="logout_icon"> <i class="fas fa-sign-out-alt"></i> </span>  LOGOUT </a> </li>
+				
+				<li class="logout"> <a href="./MemberLogout.me"> LOGOUT </a> </li>
 				
 			<% 
 				} 
 			%> 
 		</ul>
-
-		
 		
 		<!-- 모바일 버전일때 메뉴 버튼 -->
 		<a href="#" class="navbar_toggleBtn">
