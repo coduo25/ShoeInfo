@@ -56,9 +56,10 @@
 						
 						<!-- 아이디 찾기 -->
 						<div class="fm_idpwsubmitBtn">
-							<input type="button" value="이메일 찾기" class="idfind_btn">
+							<button type="button" class="idfind_btn">
+								<span id="join_text">이메일 찾기</span>
+							</button>
 						</div>
-						
 						<!-- 가입한 이메일 나타내는 div -->
 						<div class="fm_my_email" style="display: none">
 							가입하신 이메일은 <span id="fd_email"></span> 입니다.
@@ -88,9 +89,10 @@
 							
 							<!-- 비밀번호 찾기 -->
 							<div class="fm_idpwsubmitBtn">
-								<input type="button" value="비밀번호 찾기" class="pwfind_btn">
+								<button type="button" class="pwfind_btn">
+									<span id="join_text">비밀번호 찾기</span>
+								</button>
 							</div>
-		
 						</div>
 				
 				</div>

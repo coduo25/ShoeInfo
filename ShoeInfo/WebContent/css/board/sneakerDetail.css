@@ -83,12 +83,15 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#content_sneakerDetail, #content_userDrawInfo {
 		width: 100%;
+		margin-top: 0;
 	}
-	
 	#content_sneakerDetail table#sneaker_Detail{ 
 		width: 90%; 
 		margin: 10px auto; 
-	} 
+	}
+	#content_sneakerDetail table { 
+		margin-bottom: 50px; 
+	}
 	.sneaker_image_table, .detail_table {
 		float: left;
 		width: 100%;
@@ -153,16 +156,16 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	
 	#content_sneakerDetail, #content_userDrawInfo {
 		width: 100%;
-	}
-	#content_userDrawInfo {
-		width: 100%;
+		margin-top: 0;
 	}
 	#content_sneakerDetail table#sneaker_Detail{ 
 		width: 90%; 
 		margin: 10px auto; 
+	}
+	#content_sneakerDetail table { 
+		margin-bottom: 50px; 
 	}
 	.sneaker_image_table, .detail_table {
 		float: left;

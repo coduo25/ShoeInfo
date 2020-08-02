@@ -69,7 +69,10 @@
 						
 						<!-- 수정하기 버튼 -->
 						<div class="fm_submitBtn">
-							<input type="button" value="수정하기" class="modi_submitBtn">
+							<button type="button" class="modi_submitBtn">
+								<span id="join_text">수정하기</span>
+							</button>
+<!-- 							<input type="button" value="수정하기" class="modi_submitBtn"> -->
 						</div>
 					</div>
 	

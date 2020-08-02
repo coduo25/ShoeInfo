@@ -58,7 +58,9 @@
 					
 					<!-- 수정하기 버튼 -->
 					<div class="fm_submitBtn">
-						<input type="button" value="재설정하기" class="modi_submitBtn">
+						<button type="button" class="modi_submitBtn">
+							<span id="join_text">재설정하기</span>
+						</button>
 					</div>
 				</div>
 

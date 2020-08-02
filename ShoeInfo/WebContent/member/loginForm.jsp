@@ -119,9 +119,10 @@
 						
 						<!-- 로그인 -->
 						<div class="fm_submitBtn">
-							<input type="submit" value="로그인">
+							<button type="button" class="login_submitBtn">
+								<span id="join_text">로그인</span>
+							</button>
 						</div>
-						
 					</div>
 				</form>
 			</div>
@@ -140,7 +141,7 @@
 		//회원가입 form을 클릭했을시
 		$('.signup-toggle').click(function(){
 			$('#content_login').css("height", "550px");
-			$('.signup-toggle').css({"border-bottom":"3px solid #616161", "color":"#616161"})
+			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
 			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
 			$('#loginForm').hide();
 			$('#joinForm').show();
@@ -149,7 +150,7 @@
 		$('.login-toggle').click(function(){
 			$('#content_login').css("height", "350px");
 			$('.signup-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
-			$('.login-toggle').css({"border-bottom":"3px solid #616161", "color":"#616161"})
+			$('.login-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
 			$('#joinForm').hide();
 			$('#loginForm').show();
 		});
@@ -325,7 +326,7 @@
 		// ---------------- 로그인 Form 관련 유효성 검사 --------------------
 		
 		//모든 input 체크하기
-		$('#loginForm').submit(function(){
+		$('.login_submitBtn').click(function(){
 		
 			//이메일란이 비어있으면
 			if($('#fm_email_login').val() == ''){
@@ -339,6 +340,8 @@
 				$('#fm_pass_login').focus();
 				return false;
 			}
+			
+			$('#loginForm').submit();
 			
 		});
 		
