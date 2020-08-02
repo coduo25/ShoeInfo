@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
 <link href="./css/board/member.css" rel="stylesheet">
@@ -98,7 +98,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-	
+		
 		//올바른 이메일 양식 체크하는 함수
 		$('.checkEmail').click(function(){
 			var email = $("input[name=email]").val();

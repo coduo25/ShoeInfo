@@ -4,17 +4,27 @@
 body { font-size:1em; line-weight:1.4 }
 
 /* 모든 페이지 공통 부분 */
-.container { position: relative; width: 1200px; margin: 5px auto; }
+a { text-decoration: none; color: #000000; }
+.container { position: relative;  display: table; background: #fafafa; width:100%; height: 900px;}
+.component-page { width: 1200px; margin: 0 auto;  }
 
 /* 로그인 & 회원가입 페이지 */
+.mem_header { min-height:80px; border-bottom: 1px solid #e7e7e7; display: table; width: 100%;}
+.navbar_logo { z-index: 1; font-size: 60px; font-family: 'Anton', sans-serif; text-align: center; display: table-cell; vertical-align: middle; padding: 5px 0;}
 
 h3{ margin: 30px 0; }
+.change_form { width:90%; margin: 0 auto; position: relative; }
+.change_form .signup-toggle, .change_form .login-toggle { width: 50%; float: left; height: 50px; border-bottom: 3px solid #e0e0e0; color: #939393; padding: 14px; cursor: pointer; margin: 5px 0 30px 0; }
+.change_form .login-toggle { border-bottom: 3px solid #616161; color: #616161; }
 
-#content_login { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:200px auto; height: 400px; font-weight: bold; }
-#content_register, #content_modify { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:140px auto; height: 500px; }
-#content_idpwfind { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:120px auto; height: 500px; }
+#content_login { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin:100px auto; height: 350px; font-weight: bold; border: 1px solid #e0e0e0; background: white; }
+#content_modify { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin:100px auto; height: 500px; font-weight: bold; border: 1px solid #e0e0e0; background: white; }
+#content_idpwfind { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:40px auto; height: 400px; }
 
-.login-form, .join-form, .modi-form { list-style: none; width: 40%; height: 100%; margin: 0 auto; position: relative; }
+.pre-page { margin: 60px 0 30px 90px;}
+.pre-page p { font-family: 'Nanum Gothic', sans-serif; }
+
+.login-form, .join-form, .modi-form { list-style: none; width: 90%; height: 100%; margin: 0 auto; position: relative; }
 .idfind-form, .pwfind-form { list-style: none; width: 100%; height: 100%; margin: 0 auto; position: relative; }
 
 .login-form div, .join-form div, .modi-form div, .idfind-form div, .pwfind-form div {position:relative; float: left; width: 100%; height: 40px; margin: 5px 0; }
@@ -22,8 +32,12 @@ h3{ margin: 30px 0; }
 
 .idfind-form input, .pwfind-form input { width: 70%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; padding-left: 8px; }
 
+/* 회원가입 form display: none */
+#joinForm { display: none; }
+
 /* 중복체크 버튼*/
-.checkEmail { position: absolute; float: right; height: 40px; width: 20%; margin-top: 5px; margin-left: 10px; border: 1px solid #000000; background-color: white; font-size: 15px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold;}
+/* .checkEmail { position: absolute; float: right; height: 40px; width: 20%; margin-top: 5px; margin-left: 10px; border: 1px solid #000000; background-color: white; font-size: 15px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold;} */
+.checkEmail { display: table; float: right; height: 40px; width: 100%; position: relative; margin-top: 0; margin-bottom: 5px; border: 1px solid black; background-color: white; font-size: 15px; font-weight: bold;}
 .checkEmail:hover { background-color: black; color: white; }
 
 /* 비밀번호 확인하는 div 태그 */
@@ -42,17 +56,11 @@ input:focus::placeholder { color: transparent; }
 .fm_idpwsubmitBtn:not(.idfind-form) {position:relative; float: left; width: 100%; height: 48px; margin: 5px 0;  margin-top: 10px; margin-bottom: 5px; }
 .fm_idpwsubmitBtn input { width: 70%; height: 48px; border: 1px solid #303030; background-color: #303030; font-size: 20px; color: white; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; margin-bottom: 5px; }
 
-/* 아이디, 비밀번호 찾기 */
-.fm_findBtn:not(.join-form) { margin: 40px 0; text-align: center; }
-.fm_findBtn ul { display: inline-block; margin-right: 10px; }
-.fm_findBtn li { list-style: none; float: left; padding: 0 20px; }
-
 #content_idpwfind p { font-size: 12px; color: #8d8d8d; line-height: 18px; }
 #idfind_wrap { height:100%; float: left; width: 50%; border-right: 1px solid #c3c3c3; }
 #pwfind_wrap { height:100%; float: left; width: 50%; }
 
-/* 로딩 애니메이션 */
-
+.fm_find { font-size: 0.8em; margin: 0; text-align: right; }
 
 /* media Query */
 /* 0 ~ 1220px */
@@ -60,11 +68,19 @@ input:focus::placeholder { color: transparent; }
 	.container {
 		width: 100%;
 	}
+	.component-page {
+		width: 100%;
+	}
+	
+	.pre-page {
+		margin: 60px 0 30px 18%;
+	}
+	
 	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form {
-		width: 50%;
+		width: 90%;
 	}
 	.checkEmail {
-		width: 25%;
+		width: 100%;
 	}
 	#pwfind_wrap {
 		height: none;
@@ -85,16 +101,21 @@ input:focus::placeholder { color: transparent; }
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
 	#content_login, #content_register, #content_modify, #content_idpwfind{
-		margin: 70px auto;
-		height: 500px;
+		margin: 50px auto;
+		width: 90%;
 	}
 	.container {
 		width: 100%;
 	}
-	.login-form {
-		width: 70%;
+	.component-page {
+		width: 100%;
 	}
-	.join-form, .modi-form, .idfind-form, .pwfind-form {
+
+	.pre-page {
+		margin: 60px 0 30px 25%;
+	}
+
+	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form {
 		width: 80%;
 	}
 	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div {
@@ -108,7 +129,7 @@ input:focus::placeholder { color: transparent; }
 	}
 	
 	#content_idpwfind p {
-		font-size: 0.8em;
+		font-size: 0.7em;
 	}
 	.idfind-form input, .pwfind-form input {
 		width: 70%;
@@ -118,16 +139,18 @@ input:focus::placeholder { color: transparent; }
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
 	#content_login, #content_register, #content_modify, #content_idpwfind{
-		margin: 70px auto;
-		height: 500px;
+		margin: 40px auto;
+		width: 90%;
 	}
 	.container {
 		width: 100%;
 	}
-	.login-form {
-		width: 70%;
+	
+	.pre-page {
+		margin: 30px 0 10px 10%;
 	}
-	.join-form, .modi-form, .idfind-form, .pwfind-form {
+	
+	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form {
 		width: 80%;
 	}
 	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div {

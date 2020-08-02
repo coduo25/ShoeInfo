@@ -11,81 +11,95 @@
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 	<!-- Header -->
-	<header> <jsp:include page="/include/header.jsp" /> </header>
+<%-- 	<header> <jsp:include page="/include/header.jsp" /> </header> --%>
+
+	<div class="mem_header">
+		<!-- 로고 -->
+		<div class="navbar_logo">
+			<a href="./SneakerList.go"> SHOE Info. </a>
+		</div>
+	</div>
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
-		<!-- content -->
-		<div id="content_idpwfind">
+		<div class="component-page">
 		
-			<div id="idfind_wrap">
-			
-				<h3> 이메일 찾기 </h3>
-				
-				<p> 회원가입 시, 입력하신 이름 + 전화번호로 이메일을 확인하실 수 있습니다. </p> 	
-			
-
-				<div class="idfind-form">
-				
-					<!-- 이름 -->
-					<div class="fm_name">
-						<input type="text" name="name" placeholder="이름" id="idfind_name">
-					</div>
-				
-					<!-- 전화번호 -->
-					<div class="fm_phone">
-						<input type="phone" name="phone" placeholder="휴대폰번호( '-' 제외)" id="idfind_phone">
-					</div>
-					
-					<!-- 아이디 찾기 -->
-					<div class="fm_idpwsubmitBtn">
-						<input type="button" value="이메일 찾기" class="idfind_btn">
-					</div>
-					
-					<!-- 가입한 이메일 나타내는 div -->
-					<div class="fm_my_email" style="display: none">
-						가입하신 이메일은 <span id="fd_email"></span> 입니다.
-					</div>
-
-				</div>
-
+			<div class="pre-page">
+				<p> <a href="./MemberLogin.me"> <i class="fas fa-angle-left"></i> 뒤로가기  </a> </p>
 			</div>
+
+			<!-- content -->
+			<div id="content_idpwfind">
 			
-			<div id="pwfind_wrap">
-			
-				<h3> 비밀번호 찾기 </h3>
+				<div id="idfind_wrap">
 				
-				<p> 이름과 가입하신 이메일을 통해 비밀번호를 재설정 하실 수 있습니다. </p> 	
-				
-					<div class="pwfind-form">
+					<h3> 이메일 찾기 </h3>
+					
+					<p> 회원가입 시, 입력하신 이름 + 전화번호로 이메일을 확인하실 수 있습니다. </p> 	
+	
+					<div class="idfind-form">
 					
 						<!-- 이름 -->
 						<div class="fm_name">
-							<input type="text" name="name" placeholder="이름" id="pwfind_name">
+							<input type="text" name="name" placeholder="이름" id="idfind_name">
 						</div>
 					
-						<!-- 이메일 -->
-						<div class="fm_email">
-							<input type="email" name="email" placeholder="이메일" id="pwfind_email">
+						<!-- 전화번호 -->
+						<div class="fm_phone">
+							<input type="phone" name="phone" placeholder="휴대폰번호( '-' 제외)" id="idfind_phone">
 						</div>
 						
-						<!-- 비밀번호 찾기 -->
+						<!-- 아이디 찾기 -->
 						<div class="fm_idpwsubmitBtn">
-							<input type="button" value="비밀번호 찾기" class="pwfind_btn">
+							<input type="button" value="이메일 찾기" class="idfind_btn">
+						</div>
+						
+						<!-- 가입한 이메일 나타내는 div -->
+						<div class="fm_my_email" style="display: none">
+							가입하신 이메일은 <span id="fd_email"></span> 입니다.
 						</div>
 	
 					</div>
-			
+	
+				</div>
+				
+				<div id="pwfind_wrap">
+				
+					<h3> 비밀번호 찾기 </h3>
+					
+					<p> 이름과 가입하신 이메일을 통해 비밀번호를 재설정 하실 수 있습니다. </p> 	
+					
+						<div class="pwfind-form">
+						
+							<!-- 이름 -->
+							<div class="fm_name">
+								<input type="text" name="name" placeholder="이름" id="pwfind_name">
+							</div>
+						
+							<!-- 이메일 -->
+							<div class="fm_email">
+								<input type="email" name="email" placeholder="이메일" id="pwfind_email">
+							</div>
+							
+							<!-- 비밀번호 찾기 -->
+							<div class="fm_idpwsubmitBtn">
+								<input type="button" value="비밀번호 찾기" class="pwfind_btn">
+							</div>
+		
+						</div>
+				
+				</div>
 			</div>
 		</div>
 	</div>
 	
 	<!-- FOOTER -->
-	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
+<%-- 	<footer> <jsp:include page="/include/footer.jsp"/> </footer> --%>
 	
 </body>
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <title>SHOE INFO.</title>
 <link href="./css/include/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
