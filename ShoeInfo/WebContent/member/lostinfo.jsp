@@ -32,7 +32,7 @@
 			<div id="content_idpwfind">
 			
 				<div class="pre-page">
-					<p> <a href="./MemberLogin.me"> <i class="fas fa-angle-left"></i> </a> </p>
+					<p> <a href="./MemberLogin.me"> <i class="fas fa-angle-left" id="pre-page-icon"></i> </a> </p>
 				</div>
 			
 				<div class="change_form">
