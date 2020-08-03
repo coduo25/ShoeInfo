@@ -14,23 +14,18 @@ a { text-decoration: none; color: #000000; }
 
 h3{ margin: 30px 0; }
 .change_form { width:90%; margin: 0 auto; position: relative; }
-.change_form .signup-toggle, .change_form .login-toggle { width: 50%; float: left; height: 50px; border-bottom: 3px solid #e0e0e0; color: #939393; padding: 14px; cursor: pointer; margin: 5px 0 30px 0; }
+.change_form .signup-toggle, .change_form .login-toggle { width: 50%; float: left; height: 50px; border-bottom: 3px solid #e0e0e0; color: #939393; padding: 14px; cursor: pointer; margin: 10px 0 30px 0; }
 .change_form .login-toggle { border-bottom: 3px solid #424242; color: #424242; }
 
 #content_login { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin:100px auto; height: 350px; font-weight: bold; border: 1px solid #e0e0e0; background: white; }
 #content_modify { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin:100px auto; height: 500px; font-weight: bold; border: 1px solid #e0e0e0; background: white; }
-#content_idpwfind { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 100%; margin:40px auto; height: 400px; }
-
-.pre-page { margin: 60px 0 30px 90px;}
-.pre-page p { font-family: 'Nanum Gothic', sans-serif; }
+#content_idpwfind { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin:100px auto; height: 400px; font-weight: bold; border: 1px solid #e0e0e0; background: white; }
 
 .login-form, .join-form, .modi-form { list-style: none; width: 90%; height: 100%; margin: 0 auto; position: relative; }
-.idfind-form, .pwfind-form { list-style: none; width: 100%; height: 100%; margin: 0 auto; position: relative; }
+.idfind-form, .pwfind-form { list-style: none; width: 90%; height: 100%; margin: 0 auto; position: relative; }
 
 .login-form div, .join-form div, .modi-form div, .idfind-form div, .pwfind-form div {position:relative; float: left; width: 100%; height: 40px; margin: 5px 0; }
-.login-form input, .join-form input, .modi-form input { width: 100%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; padding-left: 8px;}
-
-.idfind-form input, .pwfind-form input { width: 70%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; padding-left: 8px; }
+.login-form input, .join-form input, .modi-form input, .idfind-form input, .pwfind-form input { width: 100%; height: 100%; font-size: 15px; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; padding-left: 8px;}
 
 /* 회원가입 form display: none */
 #joinForm { display: none; }
@@ -53,12 +48,15 @@ input:focus::placeholder { color: transparent; }
 .join_submitBtn:not(.join-form){ width: 100%; height: 48px; border: 1px solid #303030;  background-color: #303030; font-size: 20px; color: white; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; margin: 10px 0;}
 
 /* 아이디찾기, 비밀번호 찾기 버튼 부모 속성 무시하기 */
-.fm_idpwsubmitBtn:not(.idfind-form) {position:relative; float: left; width: 100%; height: 48px; margin: 5px 0;  margin-top: 10px; margin-bottom: 5px; }
-.fm_idpwsubmitBtn button { width: 70%; height: 48px; border: 1px solid #303030; border-radius: 7px; background-color: #303030; font-size: 20px; color: white; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; margin-bottom: 5px; }
+#pwfind_wrap { display: none; }
 
-#content_idpwfind p { font-size: 12px; color: #8d8d8d; line-height: 18px; }
-#idfind_wrap { height:100%; float: left; width: 50%; border-right: 1px solid #c3c3c3; }
-#pwfind_wrap { height:100%; float: left; width: 50%; }
+.fm_idpwsubmitBtn:not(.idfind-form) {position:relative; float: left; width: 100%; height: 48px; margin: 5px 0;  margin-top: 10px; margin-bottom: 5px; }
+.fm_idpwsubmitBtn button { width: 100%; height: 48px; border: 1px solid #303030; border-radius: 7px; background-color: #303030; font-size: 20px; color: white; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; margin-bottom: 5px; }
+
+#content_idpwfind p { width: 90%; font-size: 12px; color: #8d8d8d; line-height: 18px; margin: 0 auto; }
+
+.pre-page { display: inline-flex; height: 15px; text-align: left; width: 100%;}
+.fas { font-size: 25px; padding-top: 20px; }
 
 .fm_find { font-size: 0.8em; margin: 0; text-align: right; }
 
@@ -70,10 +68,6 @@ input:focus::placeholder { color: transparent; }
 	}
 	.component-page {
 		width: 100%;
-	}
-	
-	.pre-page {
-		margin: 60px 0 30px 18%;
 	}
 	
 	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form {
@@ -111,12 +105,8 @@ input:focus::placeholder { color: transparent; }
 		width: 100%;
 	}
 
-	.pre-page {
-		margin: 60px 0 30px 25%;
-	}
-
 	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form {
-		width: 80%;
+		width: 90%;
 	}
 	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div {
 		margin: 8px 0;
@@ -128,11 +118,12 @@ input:focus::placeholder { color: transparent; }
 		width: 100%;
 	}
 	
+	.pre_page p {
+		font-size: 1em; 
+	}
+	
 	#content_idpwfind p {
 		font-size: 0.7em;
-	}
-	.idfind-form input, .pwfind-form input {
-		width: 70%;
 	}
 }
 
@@ -146,12 +137,8 @@ input:focus::placeholder { color: transparent; }
 		width: 100%;
 	}
 	
-	.pre-page {
-		margin: 30px 0 10px 10%;
-	}
-	
 	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form {
-		width: 80%;
+		width: 90%;
 	}
 	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div {
 		margin: 8px 0;
@@ -163,10 +150,11 @@ input:focus::placeholder { color: transparent; }
 		width: 100%;
 	}
 	
+	.pre_page p {
+		font-size: 1em; 
+	}
+	
 	#content_idpwfind p {
 		font-size: 0.7em;
-	}
-	.idfind-form input, .pwfind-form input {
-		width: 100%;
 	}
 }

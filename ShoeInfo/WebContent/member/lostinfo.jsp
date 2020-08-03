@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
 <link href="./css/board/member.css" rel="stylesheet">
@@ -28,17 +28,24 @@
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 		<div class="component-page">
-		
-			<div class="pre-page">
-				<p> <a href="./MemberLogin.me"> <i class="fas fa-angle-left"></i> 뒤로가기  </a> </p>
-			</div>
-
 			<!-- content -->
 			<div id="content_idpwfind">
 			
+				<div class="pre-page">
+					<p> <a href="./MemberLogin.me"> <i class="fas fa-angle-left"></i> </a> </p>
+				</div>
+			
+				<div class="change_form">
+					<div class="login-toggle">
+						<span> 아이디 찾기 </span>
+					</div>
+					<div class="signup-toggle">
+						<span> 비밀번호 찾기  </span>
+					</div>
+				</div>
+			
+			
 				<div id="idfind_wrap">
-				
-					<h3> 이메일 찾기 </h3>
 					
 					<p> 회원가입 시, 입력하신 이름 + 전화번호로 이메일을 확인하실 수 있습니다. </p> 	
 	
@@ -61,17 +68,18 @@
 							</button>
 						</div>
 						<!-- 가입한 이메일 나타내는 div -->
-						<div class="fm_my_email" style="display: none">
+						<div class="fm_my_email" style="display: none; font-size: 0.9em;">
 							가입하신 이메일은 <span id="fd_email"></span> 입니다.
 						</div>
+						<div class="fm_my_email_no" style="display: none; font-size: 0.9em;">
+							가입되어 있지 않은 이메일입니다.
+						</div>	
 	
 					</div>
 	
 				</div>
 				
 				<div id="pwfind_wrap">
-				
-					<h3> 비밀번호 찾기 </h3>
 					
 					<p> 이름과 가입하신 이메일을 통해 비밀번호를 재설정 하실 수 있습니다. </p> 	
 					
@@ -109,6 +117,22 @@
 	
 	$(document).ready(function(){
 		
+		//비밀번호 찾기를 눌렸을시
+		$('.signup-toggle').click(function(){
+			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
+			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
+			$('#idfind_wrap').hide();
+			$('#pwfind_wrap').show();
+		});
+		
+		//아이디 찾기를 눌렸을시
+		$('.login-toggle').click(function(){
+			$('.signup-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
+			$('.login-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
+			$('#pwfind_wrap').hide();
+			$('#idfind_wrap').show();
+		});
+		
 		//이름 input에 한글,영어만 입력하도록 하는 함수
 		$("input[name=name]").keyup(function(event){
 			var inputName = $(this).val();
@@ -145,7 +169,7 @@
 				success:function(data){
 					//가입 되어 있지 않은 이메일이면
 					if($.trim(data) == "NOEMAIL") {
-						alert("가입되어 있지 않은 메일입니다.");
+						$(".fm_my_email_no").show();
 					}
 					//가입된 메일이면
 					else {
