@@ -118,7 +118,7 @@ public class MemberDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into shoeinfo_member(count, email, pass, name, phone, reg_date, position) values(?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_member(count, email, pass, name, phone, reg_date, position, salt) values(?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, count);
 			pstmt.setString(2, mdto.getEmail());
@@ -127,12 +127,33 @@ public class MemberDAO {
 			pstmt.setString(5, mdto.getPhone());
 			pstmt.setTimestamp(6, mdto.getReg_date());
 			pstmt.setString(7, "user");
+			pstmt.setString(8, mdto.getSalt());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
+	}
+	
+	//이메일에 해당하는 salt 값 가져오는 함수
+	public String getSaltByEmail(String email){
+		String salt = "";
+		try {
+			con = getConnection();
+			sql = "select salt from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				salt = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return salt;
 	}
 	
 	//회원가입 할때 이메일 중복 체크하는 함수
@@ -172,7 +193,7 @@ public class MemberDAO {
                if(pass.equals(rs.getString("pass"))){
             	   check = 1;            	   
                }else{
-            	   check=0;
+            	   check = 0;
                }
 			}else{
 				check = -1;
@@ -197,12 +218,13 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				sql = "update shoeinfo_member set pass = ?, name = ?, phone = ? where email = ?";
+				sql = "update shoeinfo_member set pass = ?, name = ?, phone = ?, salt = ? where email = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, mdto.getPass());
 				pstmt.setString(2, mdto.getName());
 				pstmt.setString(3, mdto.getPhone());
-				pstmt.setString(4, mdto.getEmail());
+				pstmt.setString(4, mdto.getSalt());
+				pstmt.setString(5, mdto.getEmail());
 				pstmt.executeUpdate();	
 				check = 1;
 			}

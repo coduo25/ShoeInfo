@@ -505,7 +505,7 @@
 				$("#div_month_" + i).show();
 			}
 		}
-		
+	
 		
 		//각 달별로 slide down 버튼을 눌렸을시
 		$(".month").click(function(){
@@ -525,12 +525,14 @@
 			
 			$("#div_month_" + month).slideToggle("slow");
 		});
-		
-		
-
 
 	});
 
+	<!-- 리포트2.0 로그분석코드 시작 -->
+	var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+	var sTime = new Date().getTime();
+	document.write(unescape("%3Cscript id='log_script' src='" + JsHost + "coduo25.weblog.cafe24.com/weblog.js?uid=coduo25&t="+sTime+"' type='text/javascript'%3E%3C/script%3E"));
+	<!-- 리포트2.0  로그분석코드 완료 -->
 
 </script>
 </html>

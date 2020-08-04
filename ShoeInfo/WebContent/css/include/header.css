@@ -118,6 +118,7 @@ span#cal_icon, span#user_icon, span#logout_icon {
 	display: none;
 	position: absolute;
 	width: 100%;
+	z-index: 100;
 }
 
 .dropdown_mymenu a {

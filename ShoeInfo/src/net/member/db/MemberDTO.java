@@ -10,6 +10,7 @@ public class MemberDTO {
 	private String phone;
 	private Timestamp reg_date;
 	private String position;
+	private String salt;
 
 	public String getEmail() {
 		return email;
@@ -46,6 +47,12 @@ public class MemberDTO {
 	}
 	public void setPosition(String position) {
 		this.position = position;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 }

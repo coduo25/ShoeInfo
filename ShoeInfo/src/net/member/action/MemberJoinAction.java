@@ -30,11 +30,17 @@ public class MemberJoinAction implements Action{
 		// 전달된 파라미터정보를 저장 
 		String email = request.getParameter("email");
 		mdto.setEmail(email);
-		mdto.setPass(request.getParameter("pass"));
+		
+		String salt = SHA256Util.generateSalt();
+		String newpass = SHA256Util.getEncrypt(request.getParameter("pass"), salt);
+		
+		mdto.setPass(newpass);
+		
 		mdto.setName(request.getParameter("name"));
 		mdto.setPhone(request.getParameter("phone"));
 		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
-
+		mdto.setSalt(salt);
+		
 		// DB에 값을 저장하기 위한 객체생성 (DAO객체)
 		MemberDAO mdao = new MemberDAO();
 		

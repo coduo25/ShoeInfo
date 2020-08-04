@@ -20,7 +20,14 @@
 	%>
 
 	<!-- Header -->
-	<header> <jsp:include page="/include/header.jsp" /> </header>
+<%-- 	<header> <jsp:include page="/include/header.jsp" /> </header> --%>
+
+	<div class="mem_header">
+		<!-- 로고 -->
+		<div class="navbar_logo">
+			<a href="./SneakerList.go"> SHOE Info. </a>
+		</div>
+	</div>
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
@@ -83,7 +90,7 @@
 	</div>
 
 	<!-- FOOTER -->
-	<footer> <jsp:include page="/include/footer.jsp" /> </footer>
+<%-- 	<footer> <jsp:include page="/include/footer.jsp" /> </footer> --%>
 
 </body>
 

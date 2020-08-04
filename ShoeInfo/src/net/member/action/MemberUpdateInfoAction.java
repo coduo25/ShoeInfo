@@ -18,7 +18,12 @@ public class MemberUpdateInfoAction implements Action{
 		MemberDTO mdto = new MemberDTO();
 		
 		mdto.setEmail(request.getParameter("email"));
-		mdto.setPass(request.getParameter("pass"));
+		
+		String salt = SHA256Util.generateSalt();
+		String newpass = SHA256Util.getEncrypt(request.getParameter("pass"), salt);
+		
+		mdto.setSalt(salt);
+		mdto.setPass(newpass);
 		mdto.setName(request.getParameter("name"));
 		mdto.setPhone(request.getParameter("phone"));;
 		

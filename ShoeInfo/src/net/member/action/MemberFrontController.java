@@ -143,6 +143,21 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//회원 정보 수정하는 페이지 전 비밀번호 확인 페이지로 가기
+		else if(command.equals("/MemberInfoCheck.me")){
+			forward = new ActionForward();
+			forward.setPath("./member/memberInfoCheck.jsp");
+			forward.setRedirect(false);
+		}
+		//비밀번호 확인 페이지 처리
+		else if(command.equals("/MemberInfoCheckAction.me")){
+			action = new MemberInfoCheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//회원 정보 수정하기
 		else if(command.equals("/MemberUpdateInfo.me")){
 			action = new MemberUpdateInfo();

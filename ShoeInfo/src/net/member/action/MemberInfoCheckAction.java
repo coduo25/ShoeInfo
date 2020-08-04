@@ -4,12 +4,11 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.member.db.MemberDAO;
 
-public class MemberLoginAction implements Action{
-
+public class MemberInfoCheckAction implements Action{
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -23,7 +22,7 @@ public class MemberLoginAction implements Action{
 		String pass = SHA256Util.getEncrypt(request.getParameter("pass"), salt);
 		
 		int check = mdao.loginEmailCheck(email, pass);
-			
+		
 		//비밀번호 오류
 		if (check == 0) {
 			// 응답정보의 타입을 html 형식으로 응답하겠다.설정
@@ -39,7 +38,7 @@ public class MemberLoginAction implements Action{
 			out.close();
 
 			return null;
-		} 
+		}
 		//이메일 없음
 		else if (check == -1) {
 			// 응답정보의 타입을 html 형식으로 응답하겠다.설정
@@ -57,23 +56,11 @@ public class MemberLoginAction implements Action{
 
 			return null;
 		}
-	
-		//로그인 성공시
-	
-		// request 객체를 사용해서 세션 객체를 생성
-		HttpSession session = request.getSession();
-		session.setAttribute("email", email);
-		
-		//로그인 성공했을시 해당 유저의 position이 뭔지 알아내기
-		String usr_position = mdao.positionCheck(email);
-		
-		session.setAttribute("usr_position", usr_position);
-		
-		// 페이지 이동(메인페이지)
+
+		// 비밀번호 맞았을시 페이지 이동(수정페이지)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./Main.bo");
+		forward.setPath("./MemberUpdateInfo.me");
 		forward.setRedirect(true);
 		return forward;
 	}
-
 }

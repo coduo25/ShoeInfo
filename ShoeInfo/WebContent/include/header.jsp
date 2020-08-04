@@ -48,12 +48,12 @@
 				<div class="mypage_btn"> 
 					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
 					<div class="dropdown_mymenu">
-						<a href="./MemberUpdateInfo.me"> MY INFO </a>
+						<a href="./MemberInfoCheck.me"> MY INFO </a>
 						<a href="./MemberDrawInfo.me"> MY DRAW </a>
 					</div>
 				</div>
 
-				<li class="mypage_btn_mobile"> <a href="./MemberUpdateInfo.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
 				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <span id="user_icon"> <i class="fas fa-calendar-check"></i> </span> MY DRAW  </a> </li>
 				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <span id="logout_icon"> <i class="fas fa-sign-out-alt"></i> </span>  LOGOUT </a> </li>
 				
@@ -64,12 +64,12 @@
 				<div class="mypage_btn"> 
 					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
 					<div class="dropdown_mymenu">
-						<a href="./MemberUpdateInfo.me"> MY INFO </a>
+						<a href="./MemberInfoCheck.me"> MY INFO </a>
 						<a href="./MemberDrawInfo.me"> MY DRAW </a>
 					</div>
 				</div>
 				
-				<li class="mypage_btn_mobile"> <a href="./MemberUpdateInfo.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
 				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <span id="user_icon"> <i class="fas fa-calendar-check"></i> </span> MY DRAW  </a> </li>
 				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <span id="logout_icon"> <i class="fas fa-sign-out-alt"></i> </span>  LOGOUT </a> </li>
 				
