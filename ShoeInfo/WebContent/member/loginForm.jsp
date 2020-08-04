@@ -266,6 +266,14 @@
 			$(this).val(inputNum.replace(/[^0-9]/gi,''));
 		});
 		
+		//enter 키 눌렸을시
+		$('#fm_email_join, #fm_pass_join, #fm_passChk_join, #fm_name_join, #fm_phone_join').keypress(function(event){
+			if(event.which == 13){
+				$(".join_submitBtn").click();
+				return false;
+			}
+		});
+		
 		//모든 회원가입 input 유효성 검사하는 함수 -------------------------
 		$(".join_submitBtn").click(function(){
 			//이메일 빈칸이면
@@ -324,6 +332,13 @@
 		
 		
 		// ---------------- 로그인 Form 관련 유효성 검사 --------------------
+		//Enter키 눌렸을시
+		$('#fm_email_login, #fm_pass_login').keypress(function(event){
+			if(event.which == 13){
+				$('.login_submitBtn').click();
+				return false;
+			}
+		});
 		
 		//모든 input 체크하기
 		$('.login_submitBtn').click(function(){

@@ -157,6 +157,14 @@
 		// ----------------------------------------------------------------------------
 		// 모든 input 유효성 검사하는 함수
 		
+		//Enter키 눌렸을시
+		$('input').keypress(function(event){
+			if(event.which == 13){
+				$(".modi_submitBtn").click();
+				return false;
+			}
+		});
+		
 		$(".modi_submitBtn").click(function(){
 			
 			//비밀번호 빈칸이면
