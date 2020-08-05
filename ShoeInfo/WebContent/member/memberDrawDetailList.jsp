@@ -89,7 +89,7 @@
 				<!-- 국내 응모 한 테이블 -->
 				<table id="drawInfoTable_kr">
 					<tr>
-						<th colspan="3"> [국내 응모 한 곳] </th>
+						<th colspan="3"> <h4>[국내 응모 한 곳]</h4> </th>
 					</tr>
 					<%
 						for(int i=0; i<drawInfoList_kr.size(); i++){
@@ -108,7 +108,7 @@
 				<!-- 해외 응모 한 테이블 -->
 				<table id="drawInfoTable_etc">
 					<tr>
-						<th colspan="3"> [해외 응모 한 곳] </th>
+						<th colspan="3"> <h4>[해외 응모 한 곳]</h4> </th>
 					</tr>
 					<%
 						for(int i=0; i<drawInfoList_etc.size(); i++){
