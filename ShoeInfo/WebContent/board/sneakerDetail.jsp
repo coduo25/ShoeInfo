@@ -427,6 +427,7 @@
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
 							<td style="width:3.75%;"> </td>
+							<td> </td>
 							<td style="width:25%;"> 기간 </td>
 							<td style="width:25%;"> 남은시간 </td>
 							<td style="width:15%;"> 응모방식 </td>
@@ -699,6 +700,7 @@
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
 							<td style="width:3.75%;"> </td>
+							<td> </td>
 							<td style="width:25%;"> 기간 </td>
 							<td style="width:25%;"> 남은시간 </td>
 							<td style="width:15%;"> 응모방식 </td>
@@ -971,6 +973,7 @@
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
 							<td style="width:3.75%;"> </td>
+							<td> </td>
 							<td style="width:25%;"> 기간 </td>
 							<td style="width:25%;"> 남은시간 </td>
 							<td style="width:15%;"> 응모방식 </td>
@@ -1243,6 +1246,7 @@
 							<td style="width:6.25%;"> </td>
 							<td style="width:12.5%;"> </td>
 							<td style="width:3.75%;"> </td>
+							<td> </td>
 							<td style="width:25%;"> 기간 </td>
 							<td style="width:25%;"> 남은시간 </td>
 							<td style="width:15%;"> 응모방식 </td>
