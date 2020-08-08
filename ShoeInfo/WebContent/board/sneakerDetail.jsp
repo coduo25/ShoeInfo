@@ -80,6 +80,13 @@
 		
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
 		
+		// 오늘 날짜
+		Date currentTime = new Date();
+		String current = original_format.format(currentTime);
+		Date today = original_format.parse(current);
+		
+		String monthCurrent = monthDate_format.format(currentTime);
+		Date month_today = monthDate_format.parse(monthCurrent);
 	%>
 	<input type="hidden" class="login_user" value="<%=user%>">
 	
@@ -216,14 +223,12 @@
 							int month = Integer.parseInt(start_time_Arr[1]);
 							int date = Integer.parseInt(start_time_Arr[2]);
 							String new_date_start_time_kr = month + "/" + date;
-							
-							// 오늘 날짜
-							Date currentTime = new Date();
-							String current = original_format.format(currentTime);
-							Date today = original_format.parse(current);
+							Date p_date_start_time_kr = monthDate_format.parse(new_date_start_time_kr);
 							
 							int compare_w_start_result_kr = today.compareTo(original_Online_start_time_kr);		//응모 시작하는 시간
 							int compare_w_end_result_kr = today.compareTo(original_Online_end_time_kr); 		//응모 끝나는 시간
+							// 오늘 하고 선착 시간 비교
+							int compare_w_month_start_result_kr = month_today.compareTo(p_date_start_time_kr);
 					%>
 					<tr id="kr_drawRaw<%=i%>">
 					
@@ -311,10 +316,10 @@
 						<%if(odto_kr.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_kr<%=i%>"> 
 							<!-- 시작 시간이 존재할때  -->
-							<%if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty()) {%>
+							<%if(compare_w_month_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_kr<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_kr == 1 && !odto_kr.getOnline_start_date().isEmpty()) {%>
+							<%}else if(compare_w_month_start_result_kr == 1 && !odto_kr.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
@@ -495,14 +500,12 @@
 							int month = Integer.parseInt(start_time_Arr[1]);
 							int date = Integer.parseInt(start_time_Arr[2]);
 							String new_date_start_time_asia = month + "/" + date;
-							
-							// 오늘 날짜
-							Date currentTime = new Date();
-							String current = original_format.format(currentTime);
-							Date today = original_format.parse(current);
+							Date p_date_start_time_asia = monthDate_format.parse(new_date_start_time_asia);
 							
 							int compare_w_start_result_asia = today.compareTo(original_Online_start_time_asia);		//응모 시작하는 시간
 							int compare_w_end_result_asia = today.compareTo(original_Online_end_time_asia); 		//응모 끝나는 시간
+							// 오늘 하고 선착 시간 비교
+							int compare_w_month_start_result_asia = month_today.compareTo(p_date_start_time_asia);
 					%>
 					<tr id="asia_drawRaw<%=i%>">
 						<td>
@@ -584,10 +587,10 @@
 						<%if(odto_asia.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_asia<%=i%>">
 							<!-- 시작 시간이 존재할때  -->
-							<%if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty()) {%>
+							<%if(compare_w_month_start_result_asia == -1 && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_asia<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_asia == 1 && !odto_asia.getOnline_start_date().isEmpty()) {%>
+							<%}else if(compare_w_month_start_result_asia == 1 && !odto_asia.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_asia<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
@@ -768,14 +771,12 @@
 							int month = Integer.parseInt(start_time_Arr[1]);
 							int date = Integer.parseInt(start_time_Arr[2]);
 							String new_date_start_time_america = month + "/" + date;
-							
-							// 오늘 날짜
-							Date currentTime = new Date();
-							String current = original_format.format(currentTime);
-							Date today = original_format.parse(current);
+							Date p_date_start_time_america = monthDate_format.parse(new_date_start_time_america);
 							
 							int compare_w_start_result_america = today.compareTo(original_Online_start_time_america);	//응모 시작하는 시간
 							int compare_w_end_result_america = today.compareTo(original_Online_end_time_america); 		//응모 끝나는 시간
+							// 오늘 하고 선착 시간 비교
+							int compare_w_month_start_result_america = month_today.compareTo(p_date_start_time_america);
 					%>
 					<tr id="america_drawRaw<%=i%>">
 						<td>
@@ -857,10 +858,10 @@
 						<%if(odto_america.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_america<%=i%>">
 							<!-- 시작 시간이 존재할때  -->
-							<%if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()) {%>
+							<%if(compare_w_month_start_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_america<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_america == 1 && !odto_america.getOnline_start_date().isEmpty()) {%>
+							<%}else if(compare_w_month_start_result_america == 1 && !odto_america.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_america<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
@@ -1041,14 +1042,12 @@
 							int month = Integer.parseInt(start_time_Arr[1]);
 							int date = Integer.parseInt(start_time_Arr[2]);
 							String new_date_start_time_europe = month + "/" + date;
-							
-							// 오늘 날짜
-							Date currentTime = new Date();
-							String current = original_format.format(currentTime);
-							Date today = original_format.parse(current);
+							Date p_date_start_time_europe = monthDate_format.parse(new_date_start_time_europe);
 							
 							int compare_w_start_result_europe = today.compareTo(original_Online_start_time_europe);		//응모 시작하는 시간
 							int compare_w_end_result_europe = today.compareTo(original_Online_end_time_europe); 		//응모 끝나는 시간
+							// 오늘 하고 선착 시간 비교
+							int compare_w_month_start_result_europe = month_today.compareTo(p_date_start_time_europe);
 					%>
 					<tr id="europe_drawRaw<%=i%>">
 						<td>
@@ -1130,10 +1129,10 @@
 						<%if(odto_europe.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_europe<%=i%>">
 							<!-- 시작 시간이 존재할때  -->
-							<%if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()) {%>
+							<%if(compare_w_month_start_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_europe<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_europe == 1 && !odto_europe.getOnline_start_date().isEmpty()) {%>
+							<%}else if(compare_w_month_start_result_europe == 1 && !odto_europe.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_europe<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
@@ -1314,14 +1313,12 @@
 							int month = Integer.parseInt(start_time_Arr[1]);
 							int date = Integer.parseInt(start_time_Arr[2]);
 							String new_date_start_time_etc = month + "/" + date;
-							
-							// 오늘 날짜
-							Date currentTime = new Date();
-							String current = original_format.format(currentTime);
-							Date today = original_format.parse(current);
+							Date p_date_start_time_etc = monthDate_format.parse(new_date_start_time_etc);
 							
 							int compare_w_start_result_etc = today.compareTo(original_Online_start_time_etc);		//응모 시작하는 시간
 							int compare_w_end_result_etc = today.compareTo(original_Online_end_time_etc); 		//응모 끝나는 시간
+							// 오늘 하고 선착 시간 비교
+							int compare_w_month_start_result_etc = month_today.compareTo(p_date_start_time_etc);
 					%>
 					<tr id="etc_drawRaw<%=i%>">
 						<td>
@@ -1403,10 +1400,10 @@
 						<%if(odto_etc.getOnline_method().contains("선착")){%>
 						<td id="remain_time_status_etc<%=i%>">
 							<!-- 시작 시간이 존재할때  -->
-							<%if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()) {%>
+							<%if(compare_w_month_start_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()) {%>
 								<span id="final_count_Online_start_time_etc<%=i%>" class="draw_count_result"></span>
 							<!-- 시작시간이 오늘보다 지났을때 -->
-							<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_date().isEmpty()) {%>
+							<%}else if(compare_w_month_start_result_etc == 1 && !odto_etc.getOnline_start_date().isEmpty()) {%>
 								<span id="final_count_Online_start_time_etc<%=i%>" style="display:none;"> </span>
 								<span class="draw_count_result"> 종료 </span>
 							<!-- 시작 시간이 미정일때 -->
