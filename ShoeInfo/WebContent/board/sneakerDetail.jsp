@@ -149,7 +149,7 @@
 
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [한국 발매처] </h4>
+						<h4> 한국 발매처 </h4>
 						<tr class="ta_release_info">
 							<td style="width:5%"> </td>
 							<td style="width:6.25%;"> </td>
@@ -253,9 +253,9 @@
 						</td>
 						
 						<!-- 2 -->
-						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
+						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank" id="onlineLink_kr<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="50" height="50"> </a> </td>
 						<!-- 3 -->
-						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank"> <%=bdto_kr.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_kr.getOnline_link()%>" target="_blank" id="onlineLink_kr<%=i%>"> <%=bdto_kr.getBrand_name()%> </a> </td>
 						<!-- 4 -->
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </td>
 				
@@ -426,7 +426,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [아시아 발매처] </h4>
+						<h4> 아시아 발매처 </h4>
 						<tr class="ta_release_info">
 							<td style="width:5%"> </td>
 							<td style="width:6.25%;"> </td>
@@ -527,8 +527,8 @@
 							<%}%>
 						</td>
 					
-						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank"> <%=bdto_asia.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank" id="onlineLink_asia<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="50" height="50"> </a> </td>
+						<td> <a href="<%=odto_asia.getOnline_link()%>" target="_blank" id="onlineLink_asia<%=i%>"> <%=bdto_asia.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_asia.getCountry_flag()%>" width="22" height="15"> </td>
 	
 						<td>
@@ -697,7 +697,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [북미 발매처] </h4>
+						<h4> 북미 발매처 </h4>
 						<tr class="ta_release_info">
 							<td style="width:5%"> </td>
 							<td style="width:6.25%;"> </td>
@@ -798,8 +798,8 @@
 							<%}%>
 						</td>
 						
-						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_america.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank"> <%=bdto_america.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank" id="onlineLink_america<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_america.getBrand_logo()%>" width="50" height="50"> </a> </td>
+						<td> <a href="<%=odto_america.getOnline_link()%>" target="_blank" id="onlineLink_america<%=i%>"> <%=bdto_america.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_america.getCountry_flag()%>" width="22" height="15"> </td>
 	
 						<td>
@@ -968,7 +968,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [유럽 발매처] </h4>
+						<h4> 유럽 발매처 </h4>
 						<tr class="ta_release_info">
 							<td style="width:5%"> </td>
 							<td style="width:6.25%;"> </td>
@@ -1069,8 +1069,8 @@
 							<%}%>
 						</td>
 						
-						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_europe.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank"> <%=bdto_europe.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank" id="onlineLink_europe<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_europe.getBrand_logo()%>" width="50" height="50"> </a> </td>
+						<td> <a href="<%=odto_europe.getOnline_link()%>" target="_blank" id="onlineLink_europe<%=i%>"> <%=bdto_europe.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_europe.getCountry_flag()%>" width="22" height="15"> </td>
 	
 						<td>
@@ -1239,7 +1239,7 @@
 				
 				<!-- 온라인 테이블 -->
 				<table id="sneakerOnlineInfo_table">
-						<h4> [기타 발매처] </h4>
+						<h4> 기타 발매처 </h4>
 						<tr class="ta_release_info">
 							<td style="width:5%"> </td>
 							<td style="width:6.25%;"> </td>
@@ -1340,8 +1340,8 @@
 							<%}%>
 						</td>
 						
-						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_etc.getBrand_logo()%>" width="50" height="50"> </a> </td>
-						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank"> <%=bdto_etc.getBrand_name()%> </a> </td>
+						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank" id="onlineLink_etc<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_etc.getBrand_logo()%>" width="50" height="50"> </a> </td>
+						<td> <a href="<%=odto_etc.getOnline_link()%>" target="_blank" id="onlineLink_etc<%=i%>"> <%=bdto_etc.getBrand_name()%> </a> </td>
 						<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_etc.getCountry_flag()%>" width="22" height="15"> </td>
 	
 						<td>
@@ -1572,6 +1572,9 @@
 				var kr_drawRaw = $('#kr_drawRaw'+i);
 				kr_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				
+				var onlineLink_kr = $('a[id=onlineLink_kr' + i + ']');
+				onlineLink_kr.css({"pointer-events" : "visible"});
+				
 				var drawCheckbox_kr = $('#drawCheckbox_kr' + i);
 				drawCheckbox_kr.css({"pointer-events" : "visible"});
 				
@@ -1602,6 +1605,9 @@
 				var asia_drawRaw = $('#asia_drawRaw'+i);
 				asia_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				
+				var onlineLink_asia = $('a[id=onlineLink_asia' + i + ']');
+				onlineLink_asia.css({"pointer-events" : "visible"});
+				
 				var drawCheckbox_asia = $('#drawCheckbox_asia' + i);
 				drawCheckbox_asia.css({"pointer-events" : "visible"});
 				
@@ -1631,6 +1637,9 @@
 			if(remain_time_status_america.match("종료") || remain_time_status_america.match("응모종료")){
 				var america_drawRaw = $('#america_drawRaw'+i);
 				america_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				
+				var onlineLink_america = $('a[id=onlineLink_america' + i + ']');
+				onlineLink_america.css({"pointer-events" : "visible"});
 				
 				var drawCheckbox_america = $('#drawCheckbox_america' + i);
 				drawCheckbox_america.css({"pointer-events" : "visible"});
@@ -1663,6 +1672,9 @@
 				var europe_drawRaw = $('#europe_drawRaw'+i);
 				europe_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
 				
+				var onlineLink_europe = $('a[id=onlineLink_europe' + i + ']');
+				onlineLink_europe.css({"pointer-events" : "visible"});
+				
 				var drawCheckbox_europe = $('#drawCheckbox_europe' + i);
 				drawCheckbox_europe.css({"pointer-events" : "visible"});
 				
@@ -1692,6 +1704,9 @@
 			if(remain_time_status_etc.match("종료") || remain_time_status_etc.match("응모종료")){
 				var etc_drawRaw = $('#etc_drawRaw'+i);
 				etc_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				
+				var onlineLink_etc = $('a[id=onlineLink_etc' + i + ']');
+				onlineLink_etc.css({"pointer-events" : "visible"});
 				
 				var drawCheckbox_etc = $('#drawCheckbox_etc' + i);
 				drawCheckbox_etc.css({"pointer-events" : "visible"});
