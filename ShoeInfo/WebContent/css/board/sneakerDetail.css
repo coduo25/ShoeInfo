@@ -13,54 +13,68 @@ body {font-size:1em; line-weight:1.4}
 #content_sneakerDetail table#sneakerOnlineInfo_table{ width: 100%; }
 
 	/* 신발 기본정보 */
+	.sneaker_option_wrapper { font-family: 'Nanum Gothic', sans-serif; }
+	
 	.detail_table div.sneaker_name{ margin: 20px 20px 20px 50px;}
 	.detail_table div.sneaker_option_info{margin-bottom: 15px; margin-left:50px;}
 	.sneaker_image {text-align: center;}
-	.sneaker_image>img, .sneaker_image_draw>img { /* width:450px; height: 320px; */ width: 300px; height: 200px}
-		/* 사용자 드로우 페이지 이미지 크기 */
-/* 		.sneaker_image_draw>img{ width: 300px; height: 200px; } */
+	.sneaker_image>img, .sneaker_image_draw>img { width: 300px; height: 200px}
 	
 	.sneaker_name {font-style:oblique; text-transform: uppercase; font-size:35px; font-family: 'Anton', sans-serif;}
 	
+	
+	
 	/* 신발 온라인 정보 */
-	#content_sneakerInfo {margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em;}
-	#content_sneakerInfo table{ width:928px; text-align:center;}
-	#content_sneakerInfo table td { padding:10px 0; }
+/* 	#content_sneakerInfo table{ width:928px; text-align:center;} */
+/* 	#content_sneakerInfo table td { padding:10px 0; } */
 	
-	#content_sneakerInfo h4, #content_userDrawInfo h4 { font-size: 1.1em; }
-	
-	.sneaker_option_wrapper { font-family: 'Nanum Gothic', sans-serif; }
-	
-	/* 테이블 css */
-	#sneakerOnlineInfo_table tr.ta_release_info td{border-bottom: 1px solid #e0e0e0;}
-	
-	#brandlogo_img {border: 0.5px solid #cacaca; vertical-align: middle;}
-	#country_flag_img {border: 0.5px solid #D9D9D9; vertical-align: middle;}
-	
-	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 6px; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; margin-left: 5px; padding: 0 2px; }
-	#draw_count_result_after{color: black; text-align: center;}
+/* 	/* 테이블 css */ */
+/* 	#sneakerOnlineInfo_table tr.ta_release_info td{border-bottom: 1px solid #e0e0e0;} */
 	
 	.tooltip1 { position: relative; display: inline-block; border-bottom: 1px dotted black; }
-	.tooltip1 .tooltiptext1 { visibility: hidden; width: 300%; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: 20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; } 
-	.tooltip1 .tooltiptext1::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent; }
-	.tooltip1:hover .tooltiptext1 { visibility: visible; opacity: 1;}
+/* 	.tooltip1 .tooltiptext1 { visibility: hidden; width: 300%; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: 20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; }  */
+/* 	.tooltip1 .tooltiptext1::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent; } */
+/* 	.tooltip1:hover .tooltiptext1 { visibility: visible; opacity: 1;} */
 
-table#sneakerOnlineInfo_table td:nth-child(3) { text-align: left; padding-left: 15px; }
-table#sneakerOnlineInfo_table td:nth-child(5) { display: none; }
+/* 	table#sneakerOnlineInfo_table td:nth-child(3) { text-align: left; padding-left: 15px; } */
+/* 	table#sneakerOnlineInfo_table td:nth-child(5) { display: none; } */
 
-/* 테스트 */
+
+
+
+/* 발매리스트 css -------------------------------------------------------------------------------------------------- */
+#content_sneakerInfo {margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em;}
+#content_sneakerInfo h4, #content_userDrawInfo h4 { font-size: 1.1em; }
+
+#brandlogo_img {border: 0.5px solid #cacaca; vertical-align: middle;}
+#country_flag_img {border: 0.5px solid #D9D9D9; vertical-align: middle;}
+
 #grid-list { width: 100%;  display: block; height: auto; overflow:auto; margin-bottom: 2em; }
 #grid-wrapper { padding: 1%; width: 20%; float: left; display: block; }
-.grid-item { background: #ffffff; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
+.grid-item { position: relative; background: #ffffff; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
 .grid-logo img { width: 100%; height: 100%; }
 .grid-content { padding: 5%; }
 .grid-content div { margin-bottom: 8%; }
 
+	/* 발매 정보가 없을경우 */
+	#no-info-wrapper { width: 100%; text-align: center; padding: 3%; }
+	#no-info-label { display: inline-block; padding: 1%; }
+
+	/* 진행중 마크 */
+	.grid-ing { position: absolute; top: 5px; left: 175px; }
+	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.5em; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; padding: 1px 2px; }
+	
+	/* 작성자 마크 */
+	.grid-info { position: absolute; top: 195px; left: 195px; }
+	.grid-info span { color: #b3b3b37d; }
+	
+	/* 발매 내용 파트 */
 	#wrapper-name { margin-bottom: 4%; font-size: 1.3em; font-weight: bold; }
 	#link-icon { font-size: 0.8em; }
 	#span-flag, #wrapper-content { float: right; }
 	#wrapper-period { margin-bottom: 15%; color: #dc5757; font-weight: bold; }
 	
+	/* 남은 시간 파트 */
 	.grid-time { height:80px; display: block; }
 	#remain-time { text-align: center; }
 	.time-label-wrapper { display: block; font-size: 0.6em; }
@@ -70,6 +84,9 @@ table#sneakerOnlineInfo_table td:nth-child(5) { display: none; }
 	#time-label{ display: block; font-size: 0.5em; font-weight: normal; padding-top: 15%; }
 	#time-colon { font-size: 0.8em; padding: 0;}
 
+	/* 관리자 버튼 */
+	#wrapper-admin { text-align: center; padding-bottom: 10%; }
+	
 
 /* 사용자 응모 여부 페이지 -------------------------------------------------------------------------------------------------- */
 #content_userDrawInfo { margin:10px auto; height:500px; width: 80%; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif;  font-size:0.9em; }
