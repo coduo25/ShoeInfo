@@ -330,26 +330,26 @@
 											<!-- 시작시간이 오늘보다 지났을때 -->
 											<%}else if(compare_w_month_start_result_kr == 1 && !odto_kr.getOnline_start_date().isEmpty()) {%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> 종료 </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> 종료 </span>
 											<!-- 시작 시간이 미정일때 -->
 											<%}else if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty()) {%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> 미정 </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> 미정 </span>
 											<%}else {%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> - </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> - </span>
 											<%} %>
 										</span>
 										<%}else if(odto_kr.getOnline_method().contains("드로우") || odto_kr.getOnline_method().contains("-")){%>
 										<span id="remain_time_status_kr<%=i%>">
 											<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 											<%if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty()) {%>
-												<span class="draw_count_result"> - </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> - </span>
 											<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
 											<%}else if(odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_time().isEmpty()) {%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 												<span id="final_count_Online_end_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> 미정 </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> 미정 </span>
 											<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
 											<%}else if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
@@ -357,15 +357,52 @@
 											<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
 											<%}else if(compare_w_start_result_kr == 1 && compare_w_end_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
-												<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span>
+<%-- 												<span id="final_count_Online_end_time_kr<%=i%>" class="draw_count_result"></span> --%>
 												
-												<div class="time-label-wrapper">
-													<span id="time-label"> days </span>
-													<span id="time-label"> hours </span>
-													<span id="time-label"> mins </span>
-													<span id="time-label"> secs </span>
-												</div>
-												
+												<div class="draw_count_result_wrapper">
+													<!-- 일 -->
+													<div class="draw_count_result">
+														<span id="final_count_Online_end_time_kr<%=i%>days"></span>
+														<span id="time-label"> days </span>
+													</div>
+													
+														<!-- : -->
+														<div class="draw_count_result">
+															<span id="time-colon"> : </span>
+															<span id="time-label"> &nbsp; </span>
+														</div>
+													
+													<!-- 시 -->
+													<div class="draw_count_result">
+														<span id="final_count_Online_end_time_kr<%=i%>hours"></span>
+														<span id="time-label"> hours </span>
+													</div>
+													
+														<!-- : -->
+														<div class="draw_count_result">
+															<span id="time-colon"> : </span>
+															<span id="time-label"> &nbsp; </span>
+														</div>
+													
+													<!-- 분 -->
+													<div class="draw_count_result">
+														<span id="final_count_Online_end_time_kr<%=i%>minutes"></span>
+														<span id="time-label"> mins </span>
+													</div>
+														
+														<!-- : -->
+														<div class="draw_count_result">
+															<span id="time-colon"> : </span>
+															<span id="time-label"> &nbsp; </span>
+														</div>
+													
+													<!-- 초 -->
+													<div class="draw_count_result">
+														<span id="final_count_Online_end_time_kr<%=i%>seconds"></span>
+														<span id="time-label"> secs </span>
+													</div>
+													
+												</div>	
 												
 											<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 											<%}else if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty() && compare_w_end_result_kr == -1){%>
@@ -373,20 +410,20 @@
 											<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 											<%}else if(!odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty() && compare_w_start_result_kr == 1){%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> 미정 </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> 미정 </span>
 											<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
 											<%}else if(!odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty() && odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty() && compare_w_start_result_kr == -1) {%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> 미정 </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> 미정 </span>
 											<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
 											<%}else if(compare_w_end_result_kr == 1 && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 												<span id="final_count_Online_end_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> 응모종료 </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> 응모종료 </span>
 											<%}else{%>
 												<span id="final_count_Online_start_time_kr<%=i%>" style="display:none;"> </span>
 												<span id="final_count_Online_end_time_kr<%=i%>" style="display:none;"> </span>
-												<span class="draw_count_result"> - </span>
+												<span class="draw_count_result" id="draw_count_result_yet"> - </span>
 											<%}%>
 										</span>
 										<%}%>
@@ -1816,6 +1853,11 @@
 				document.getElementById(id).textContent += hours + ' : '; 
 				document.getElementById(id).textContent += minutes + ' : '; 
 				document.getElementById(id).textContent += seconds;
+				
+				document.getElementById(id + 'days').textContent = days; 
+				document.getElementById(id + 'hours').textContent = hours; 
+				document.getElementById(id + 'minutes').textContent = minutes; 
+				document.getElementById(id + 'seconds').textContent = seconds;
 			}
 			
 		} 

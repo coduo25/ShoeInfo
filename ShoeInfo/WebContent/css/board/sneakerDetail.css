@@ -56,16 +56,20 @@ table#sneakerOnlineInfo_table td:nth-child(5) { display: none; }
 .grid-content { padding: 5%; }
 .grid-content div { margin-bottom: 8%; }
 
-	#wrapper-name { font-size: 1.2em; font-weight: bold; margin-bottom: 4%;}
+	#wrapper-name { margin-bottom: 4%; font-size: 1.3em; font-weight: bold; }
 	#link-icon { font-size: 0.8em; }
 	#span-flag, #wrapper-content { float: right; }
 	#wrapper-period { margin-bottom: 15%; color: #dc5757; font-weight: bold; }
 	
-	.grid-time { padding-bottom: 10%; display: block; }
-	#remain-time { text-align: center; font-size: 1.5em; font-weight: bold; }
+	.grid-time { height:80px; display: block; }
+	#remain-time { text-align: center; }
 	.time-label-wrapper { display: block; font-size: 0.6em; }
-	.draw_count_result { padding-bottom: 3%; display: block; }
-	#time-label:not(:last-child) { padding-right: 5%; }
+	.draw_count_result_wrapper { display: block; }
+	.draw_count_result { display: inline-block; font-size: 1.6em; font-weight: bold; }
+	#draw_count_result_yet { font-size: 1em; font-weight: normal; padding-top: 5%;}
+	#time-label{ display: block; font-size: 0.5em; font-weight: normal; padding-top: 15%; }
+	#time-colon { font-size: 0.8em; padding: 0;}
+
 
 /* 사용자 응모 여부 페이지 -------------------------------------------------------------------------------------------------- */
 #content_userDrawInfo { margin:10px auto; height:500px; width: 80%; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif;  font-size:0.9em; }
