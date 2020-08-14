@@ -146,7 +146,7 @@
 
 			<!-- 발매 정보 리스트 -->
 			<div id="content_sneakerInfo">
-			
+				
 				<!-- 한국 발매처 -->
 				<div id="grid-list">
 					<h4> 한국 발매 리스트 </h4>
@@ -222,8 +222,8 @@
 							int compare_w_month_start_result_kr = month_today.compareTo(p_date_start_time_kr);
 							int compare_w_month_end_result_kr = month_today.compareTo(p_date_end_time_kr);
 					%>
-						<div id="grid-wrapper">
-							<div class="grid-item">
+						<div class="grid-wrapper">
+							<div class="grid-item" id="grid-item-kr<%=i%>">
 								<!-- 진행중 마크 -->
 								<div class="grid-ing">
 									<!-- 응모 진행중 여부 -->
@@ -243,12 +243,18 @@
 										<%}%>
 									<%}%>
 								</div>
+								
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
 									<a href="<%=odto_kr.getOnline_link()%>" target="_blank" id="onlineLink_kr<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="100" height="100"> </a>	
 								</div>
 								
-								<!-- 발매 정보 느낌표 아이콘 -->
+								<!-- 수정 버튼 -->
+<%-- 								<div class="grid-edit" id="grid-edit-kr<%=i%>"> --%>
+<!-- 									<span> <i class="fas fa-pen"></i> </span> -->
+<!-- 								</div> -->
+								
+								<!-- 발매 정보 작성자 아이콘 -->
 								<div class="grid-info">
 									<span> <i class="fas fa-user"></i> </span>
 								</div>
@@ -575,6 +581,14 @@
 										<%}%>
 									</div>
 								</div>
+								
+								<!-- 바로가기 버튼 -->
+								<div class="grid-link">
+									<a href="<%=odto_kr.getOnline_link()%>" target="_blank" id="direct-link-kr<%=i%>" class="direct-link">
+										<span>  바로가기 </span>
+									</a>
+								</div>
+								
 								<!-- 관리자 권한 버튼 -->
 								<%if(usr_position.equals("admin")){%>
 									<div id="wrapper-admin">
@@ -589,8 +603,7 @@
 						} 
 					%>
 				</div>
-				
-				
+
 				
 				
 				
@@ -662,6 +675,47 @@
 
 	$(document).ready(function(){
 		
+		//image hover 했을시 해당 브랜드의 수정 아이콘 나타내기
+		$('.grid-item').hover(function(){
+			//grid-kitem-kr1
+			var countryi = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = countryi.split('-');
+			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//수정 버튼 나타내기
+			$('#grid-edit-' + lastElement).show();
+		}, function(){
+			//grid-kitem-kr1
+			var countryi = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = countryi.split('-');
+			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//수정 버튼 사라지게하기
+			$('#grid-edit-' + lastElement).hide();
+		});
+		
+		//수정버튼을 클릭했을시 로그인 체크하기
+		$(".grid-edit").on('click', function() {
+			
+			
+			
+			//로그인 체크
+			if($(".login_user").val() == "") {
+				var login_confirm = confirm("정보를 수정하시려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
+				if(login_confirm){
+					location.href="./MemberLogin.me";
+				}
+			}
+			else {
+// 				alert("수정할 수 있습니다.");
+			}
+		});
+		
+		
 		//온라인 한국 리스트
 		var onLineList_kr = [];
 		<c:forEach items="${onlineList_kr}" var="onLineList_kr">
@@ -678,20 +732,23 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_kr = document.getElementById('remain_time_status_kr'+i).innerText;
 			if(remain_time_status_kr.match("종료") || remain_time_status_kr.match("응모종료")){
-				var kr_drawRaw = $('#kr_drawRaw'+i);
-				kr_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				var kr_drawRaw = $('#grid-item-kr'+i);
+				kr_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var onlineLink_kr = $('a[id=onlineLink_kr' + i + ']');
-				onlineLink_kr.css({"pointer-events" : "visible"});
+				onlineLink_kr.css({"pointer-events" : "auto"});
 				
 				var drawCheckbox_kr = $('#drawCheckbox_kr' + i);
-				drawCheckbox_kr.css({"pointer-events" : "visible"});
+				drawCheckbox_kr.css({"pointer-events" : "auto"});
+				
+				var directLink_kr = $('#direct-link-kr' + i);
+				directLink_kr.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminModiBtn_kr' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_kr' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 			}
 		}
 		
@@ -711,20 +768,23 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_asia = document.getElementById('remain_time_status_asia'+i).innerText;
 			if(remain_time_status_asia.match("종료") || remain_time_status_asia.match("응모종료")){
-				var asia_drawRaw = $('#asia_drawRaw'+i);
-				asia_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				var asia_drawRaw = $('#grid-item-asia'+i);
+				asia_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var onlineLink_asia = $('a[id=onlineLink_asia' + i + ']');
-				onlineLink_asia.css({"pointer-events" : "visible"});
+				onlineLink_asia.css({"pointer-events" : "auto"});
 				
 				var drawCheckbox_asia = $('#drawCheckbox_asia' + i);
-				drawCheckbox_asia.css({"pointer-events" : "visible"});
+				drawCheckbox_asia.css({"pointer-events" : "auto"});
+				
+				var directLink_asia = $('#direct-link-asia' + i);
+				directLink_asia.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminModiBtn_asia' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_asia' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 			}
 		}
 		
@@ -744,20 +804,23 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_america = document.getElementById('remain_time_status_america'+i).innerText;
 			if(remain_time_status_america.match("종료") || remain_time_status_america.match("응모종료")){
-				var america_drawRaw = $('#america_drawRaw'+i);
-				america_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				var america_drawRaw = $('#grid-item-america'+i);
+				america_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var onlineLink_america = $('a[id=onlineLink_america' + i + ']');
-				onlineLink_america.css({"pointer-events" : "visible"});
+				onlineLink_america.css({"pointer-events" : "auto"});
 				
 				var drawCheckbox_america = $('#drawCheckbox_america' + i);
-				drawCheckbox_america.css({"pointer-events" : "visible"});
+				drawCheckbox_america.css({"pointer-events" : "auto"});
+				
+				var directLink_america = $('#direct-link-america' + i);
+				directLink_america.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminModiBtn_america' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_america' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 			}
 		}
 		
@@ -778,20 +841,23 @@
 			var remain_time_status_europe = document.getElementById('remain_time_status_europe'+i).innerText;
 			//alert(remain_time_status_europe);
 			if(remain_time_status_europe.match("종료") || remain_time_status_europe.match("응모종료")){
-				var europe_drawRaw = $('#europe_drawRaw'+i);
-				europe_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				var europe_drawRaw = $('#grid-item-europe'+i);
+				europe_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var onlineLink_europe = $('a[id=onlineLink_europe' + i + ']');
-				onlineLink_europe.css({"pointer-events" : "visible"});
+				onlineLink_europe.css({"pointer-events" : "auto"});
 				
 				var drawCheckbox_europe = $('#drawCheckbox_europe' + i);
-				drawCheckbox_europe.css({"pointer-events" : "visible"});
+				drawCheckbox_europe.css({"pointer-events" : "auto"});
+				
+				var directLink_europe = $('#direct-link-europe' + i);
+				directLink_europe.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminModiBtn_europe' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_europe' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 			}
 		}
 		
@@ -811,20 +877,23 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_etc = document.getElementById('remain_time_status_etc'+i).innerText;
 			if(remain_time_status_etc.match("종료") || remain_time_status_etc.match("응모종료")){
-				var etc_drawRaw = $('#etc_drawRaw'+i);
-				etc_drawRaw.css({"opacity" : "0.3", "pointer-events" : "none"});
+				var etc_drawRaw = $('#grid-item-etc'+i);
+				etc_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var onlineLink_etc = $('a[id=onlineLink_etc' + i + ']');
-				onlineLink_etc.css({"pointer-events" : "visible"});
+				onlineLink_etc.css({"pointer-events" : "auto"});
 				
 				var drawCheckbox_etc = $('#drawCheckbox_etc' + i);
-				drawCheckbox_etc.css({"pointer-events" : "visible"});
+				drawCheckbox_etc.css({"pointer-events" : "auto"});
+				
+				var directLink_etc = $('#direct-link-etc' + i);
+				directLink_etc.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminModiBtn_etc' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_etc' + i);
-				adminModiBtn.css({"pointer-events" : "visible"});
+				adminModiBtn.css({"pointer-events" : "auto"});
 			}
 		}
 
