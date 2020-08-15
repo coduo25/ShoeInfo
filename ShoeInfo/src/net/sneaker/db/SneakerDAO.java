@@ -129,6 +129,10 @@ public class SneakerDAO {
 	//신발정보 리스트로 가져오는 함수(월별로)
 	public ArrayList getSneakerList(String date, String release_status) {
 		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		
 		try {
 			con = getConnection();
 			sql = "select * from shoeinfo_sneakerlibrary where release_date like ? AND release_status = ? order by release_date, model_name";
@@ -148,6 +152,17 @@ public class SneakerDAO {
 				sdto.setModel_colorway(rs.getString("model_colorway"));
 				sdto.setPrice(rs.getInt("price"));
 				sdto.setRelease_date(rs.getString("release_date"));				
+				
+				//신발 응모링크수 가져오기
+				sql = "select count(*) from shoeinfo_onlineinfo where model_stylecode = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, sdto.getModel_stylecode());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					sdto.setCountLinks(rs2.getInt(1));
+				}else {
+					sdto.setCountLinks(0);
+				}
 				sneakerList.add(sdto);
 			}
 		} catch (Exception e) {
@@ -158,11 +173,29 @@ public class SneakerDAO {
 		return sneakerList;
 	}
 	
+	//조회수 올리는 함수
+	public void addViews(String model_stylecode) {
+		try {
+			con = getConnection();
+			sql = "update shoeinfo_sneakerlibrary set views = views + 1 where model_stylecode = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model_stylecode);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+		
+	
 	//신발 상세정보 가져오는 함수
 	public SneakerDTO getSneakerDetail(String model_stylecode) {
 		SneakerDTO sdto = null;
 		try {
 			con = getConnection();
+
+			//신발 정보 가져오기
 			sql = "select * from shoeinfo_sneakerlibrary where model_stylecode = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
@@ -183,6 +216,7 @@ public class SneakerDAO {
 				sdto.setPrice(rs.getInt("price"));
 				sdto.setRelease_date(rs.getString("release_date"));
 				sdto.setRelease_status(rs.getString("release_status"));
+				sdto.setViews(rs.getInt("views"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

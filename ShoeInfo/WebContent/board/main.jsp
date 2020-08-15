@@ -76,10 +76,25 @@
 						int compare_releaseTime_1 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_1" class="shoelist_image">
-						<div id="shoeList_1<%=i%>">
+						<div id="shoeList_1<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_1<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_1<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -110,10 +125,25 @@
 						int compare_releaseTime_2 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_2" class="shoelist_image">
-						<div id="shoeList_2<%=i%>">
+						<div id="shoeList_2<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_2<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_2<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -145,9 +175,26 @@
 				%>
 					<div id="shoeList_image_3" class="shoelist_image">
 						<div id="shoeList_3<%=i%>">
+							<div id="shoeList_3<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_3<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_3<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
+						</div>
 						</div>
 					</div>
 				<%	
@@ -178,10 +225,25 @@
 						int compare_releaseTime_4 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_4" class="shoelist_image">
-						<div id="shoeList_4<%=i%>">
+						<div id="shoeList_4<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_4<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_4<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -212,10 +274,25 @@
 						int compare_releaseTime_5 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_5" class="shoelist_image">
-						<div id="shoeList_5<%=i%>">
+						<div id="shoeList_5<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_5<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_5<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -246,10 +323,25 @@
 						int compare_releaseTime_6 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_6" class="shoelist_image">
-						<div id="shoeList_6<%=i%>">
+						<div id="shoeList_6<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_6<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_6<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -280,10 +372,25 @@
 						int compare_releaseTime_7 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_7" class="shoelist_image">
-						<div id="shoeList_7<%=i%>">
+						<div id="shoeList_7<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_7<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_7<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -314,11 +421,26 @@
 						int compare_releaseTime_8 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_8" class="shoelist_image">
-						<div id="shoeList_8<%=i%>">
+						<div id="shoeList_8<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_8<%=i%>_img" > <br>
 							</a>
-						</div>
+							
+							<!-- hover -->
+							<div id="shoeList_image_8<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
+						</div>	
 					</div>
 				<%	
 					}
@@ -348,10 +470,25 @@
 						int compare_releaseTime_9 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_9" class="shoelist_image">
-						<div id="shoeList_9<%=i%>">
+						<div id="shoeList_9<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_9<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_9<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -382,10 +519,25 @@
 						int compare_releaseTime_10 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_10" class="shoelist_image">
-						<div id="shoeList_10<%=i%>">
+						<div id="shoeList_10<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_10<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_10<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -416,10 +568,25 @@
 						int compare_releaseTime_11 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_11" class="shoelist_image">
-						<div id="shoeList_11<%=i%>">
+						<div id="shoeList_11<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_11<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_11<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -450,10 +617,25 @@
 						int compare_releaseTime_12 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_12" class="shoelist_image">
-						<div id="shoeList_12<%=i%>">
+						<div id="shoeList_12<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" > <br>
+		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_12<%=i%>_img" > <br>
 							</a>
+							
+							<!-- hover -->
+							<div id="shoeList_image_12<%=i%>_hover" class="shoeList_image_hover">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+									<!-- 링크 wrapper -->
+									<div id="link-wrapper">
+										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+									</div>	
+									
+									<!-- Quick view 단어 -->
+									<div id="qView-wrapper">
+										<span> Quick View </span>
+									</div>							
+								</a>
+							</div>
 						</div>
 					</div>
 				<%	
@@ -473,6 +655,43 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
+		//image hover 했을시 이미지 뜨게 하기
+		$('.shoelist_image_wrapper').hover(function() {
+			
+			//shoeList_80
+			var monthi = $(this).attr('id');
+			
+			//80 만 남기기
+			var splitArray = monthi.split('_');
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//shoeList_image_ + 80 + _hover
+			var shoeList_image_hover = 'shoeList_image_' + lastElement + '_hover';
+			
+			//뒷 배경 약간 투명하기 만들기
+			$('#' + 'shoeList_' + lastElement + '_img').css('opacity', '0.3');
+			
+			//hover 요소들 나타내기
+			$('#' + shoeList_image_hover).css('opacity', '1');
+			
+		}, function() {
+			//shoeList_80
+			var monthi = $(this).attr('id');
+			
+			//80 만 남기기
+			var splitArray = monthi.split('_');
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//shoeList_image_ + 80 + _hover
+			var shoeList_image_hover = 'shoeList_image_' + lastElement + '_hover';
+			
+			//뒷 배경 약간 투명 풀기
+			$('#' + 'shoeList_' + lastElement + '_img').css('opacity', '1');
+			
+			//hover 요소들 나타내기
+			$('#' + shoeList_image_hover).css('opacity', '0');
+		});
 		
 		var today = new Date();
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
@@ -505,7 +724,6 @@
 				$("#div_month_" + i).show();
 			}
 		}
-	
 		
 		//각 달별로 slide down 버튼을 눌렸을시
 		$(".month").click(function(){

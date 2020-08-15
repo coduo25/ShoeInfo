@@ -16,6 +16,8 @@ public class SneakerDTO {
 	private int price;
 	private String release_date;
 	private String release_status;
+	private int views;
+	private int countLinks;
 	
 	public int getNum() {
 		return num;
@@ -89,6 +91,18 @@ public class SneakerDTO {
 	}
 	public void setRelease_status(String release_status) {
 		this.release_status = release_status;
+	}
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
+	}
+	public int getCountLinks() {
+		return countLinks;
+	}
+	public void setCountLinks(int countLinks) {
+		this.countLinks = countLinks;
 	}
 	
 }

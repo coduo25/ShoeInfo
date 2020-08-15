@@ -39,6 +39,10 @@ public class SneakerDetailAction implements Action{
 		 * 신발 기본 정보 리스트 만들기
 		 ******************************************************/
 		SneakerDAO sdao = new SneakerDAO();
+		
+		//정보 가져오기 전에 조회수 1 올리기
+		sdao.addViews(model_stylecode);
+		
 		SneakerDTO sdto = sdao.getSneakerDetail(model_stylecode);
 		//request에 저장
 		request.setAttribute("sneakerDetail", sdto);
