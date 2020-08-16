@@ -698,30 +698,34 @@
 		
 		for(var i=1; i<13; i++){
 			
+			//지금 달 보다 전전달들 ex.현재 8월, 1~6월 사라지고 7월 slideDown 만 나타내기
 			if(i < month) {
 				
 				$("#month" + (i-1)).hide(); //2달 지나간 월들은 없애기
-				$("#div_month" + (i-1)).hide();
 				
 				$("#slide-up_" + i).hide();
 				$("#slide-down_" + i).show();
 				
 				$("#div_month_" + i).hide();
 			}
-			//미래의 월들은 나타내기
+			//지금 달부터 미래의 달부터 나타내기 8~12월
 			else if(i >= month) {
-				
-				//3개월 후까지만 나타내기
-				if((i+3) >= month) {
-					$("#month" + (i+3)).hide(); //3달 후 월들은 없애기
-					$("#div_month" + (i+3)).hide();
-					$("#no_info" + (i+3)).hide();
+
+				//4개월 후까지만 나타내기
+				var monthPlus4 = month + 4;
+
+				if(i >= monthPlus4) {
+					$("#month" + i).hide(); //4달 후 월들은 없애기
+					$("#no_info" + i).hide();
+					$("#div_month_" + i).hide();
+				}
+				else {
+					$("#slide-up_" + i).show();
+					$("#slide-down_" + i).hide();
+					
+					$("#div_month_" + i).show();
 				}
 				
-				$("#slide-up_" + i).show();
-				$("#slide-down_" + i).hide();
-				
-				$("#div_month_" + i).show();
 			}
 		}
 		
