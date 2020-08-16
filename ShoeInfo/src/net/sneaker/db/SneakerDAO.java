@@ -71,7 +71,7 @@ public class SneakerDAO {
 				num = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into shoeinfo_sneakerlibrary values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_sneakerlibrary values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, sdto.getBrand());
@@ -85,6 +85,7 @@ public class SneakerDAO {
 			pstmt.setInt(10, sdto.getPrice());
 			pstmt.setString(11, sdto.getRelease_date());
 			pstmt.setString(12, sdto.getRelease_status());
+			pstmt.setInt(13, sdto.getViews());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

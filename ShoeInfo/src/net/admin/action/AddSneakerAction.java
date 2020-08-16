@@ -89,6 +89,8 @@ public class AddSneakerAction implements Action {
 		
 		sdto.setRelease_status(multi.getParameter("release_status"));
 		
+		sdto.setViews(0);
+		
 		SneakerDAO asdao = new SneakerDAO();
 		asdao.insertSneaker(sdto);
 
