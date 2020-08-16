@@ -82,8 +82,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_1<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_1<%=i%>_hover" class="shoeList_image_hover">		
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -93,8 +93,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -131,8 +131,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_2<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_2<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -142,8 +142,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -174,15 +174,14 @@
 						int compare_releaseTime_3 = today.compareTo(original_release_date); //1이면 오늘보다 전 시간, -1이면 오늘보다 후 시간
 				%>
 					<div id="shoeList_image_3" class="shoelist_image">
-						<div id="shoeList_3<%=i%>">
-							<div id="shoeList_3<%=i%>" class="shoelist_image_wrapper">
+						<div id="shoeList_3<%=i%>" class="shoelist_image_wrapper">
 							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
 		  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_3<%=i%>_img" > <br>
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_3<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_3<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -192,9 +191,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
-						</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -231,8 +229,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_4<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_4<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -242,8 +240,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -280,8 +278,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_5<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_5<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -291,8 +289,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -329,8 +327,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_6<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_6<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -340,8 +338,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -378,8 +376,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_7<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_7<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -389,8 +387,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -427,8 +425,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_8<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_8<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -438,8 +436,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>	
 					</div>
 				<%	
@@ -476,8 +474,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_9<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_9<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -487,8 +485,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -525,8 +523,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_10<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
+								<div id="shoeList_image_10<%=i%>_hover" class="shoeList_image_hover">	
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -536,8 +534,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
@@ -574,8 +572,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_11<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">		
+								<div id="shoeList_image_11<%=i%>_hover" class="shoeList_image_hover">
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -585,8 +583,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>	
 						</div>
 					</div>
 				<%	
@@ -623,8 +621,8 @@
 							</a>
 							
 							<!-- hover -->
-							<div id="shoeList_image_12<%=i%>_hover" class="shoeList_image_hover">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">				
+							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
+								<div id="shoeList_image_12<%=i%>_hover" class="shoeList_image_hover">			
 									<!-- 링크 wrapper -->
 									<div id="link-wrapper">
 										<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
@@ -634,8 +632,8 @@
 									<div id="qView-wrapper">
 										<span> Quick View </span>
 									</div>							
-								</a>
-							</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				<%	
