@@ -7,24 +7,38 @@ body {font-size:1em; line-weight:1.4}
 .container { position: relative; width: 1200px; margin: 5px auto; }
 
 /* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
-#content_sneakerDetail{ margin-top: 20px; width: 100%; float: left; position: relative; z-index: 2; }
-#content_sneakerDetail table { margin-bottom: 80px; }
-#content_sneakerDetail table#sneaker_Detail{ width: 80%; margin: 20px auto; }
-#content_sneakerDetail table#sneakerOnlineInfo_table{ width: 100%; }
+#content_sneakerDetail{ width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; }
+#content_sneakerDetail div#sneaker_Detail{ width: 100%; padding: 0 5%; }
+#content_sneakerDetail div#sneakerOnlineInfo_table{ width: 100%; }
+
+	/* 카테고리 */
+	#content_sneakerDetail div#cate_Detail { width: 100%; line-height: 24px; padding: 2.5% 5% 0; font-size: 14px; }
+	#content_sneakerDetail div#cate_Detail span { color: #232323; }
+	.arrow { padding: 0 6px 0 8px; font-size: 0.9em; }
 
 	/* 신발 기본정보 */
-	.sneaker_option_wrapper { font-family: 'Nanum Gothic', sans-serif; }
+	.sneaker_image_wrapper { width: 100%; display: block; }
+	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; padding: 2.5% 0;}
+		/* 이미지 & 이름*/
+		.sneaker_image { text-align: center; }
+		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px}
+			/* 이름 */
+			.sneaker_image_wrapper div.sneaker_name { text-align: center; margin-bottom: 13px; }
+			.sneaker_name { line-height: 30px; text-transform: uppercase; font-size:20px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; color: #232323; }
 	
-	.detail_table div.sneaker_name{ margin: 20px 20px 20px 50px;}
-	.detail_table div.sneaker_option_info{margin-bottom: 15px; margin-left:50px;}
-	.sneaker_image {text-align: center;}
-	.sneaker_image>img, .sneaker_image_draw>img { width: 300px; height: 200px}
+		/* 내용 */
+		.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper { width: 50%; float: left; }
+		.cate_wrapper { width: 100%; float: left; }
+		.sneaker_cate { line-height: 30px; display: block; }
+		.sneaker_cate label { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 150px; }
+		.sneaker_cate span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 330px; }
+		
+		.rel_Btn { border: 1px solid #232323; padding: 4px; width: 70%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
+		.rel_Btn:hover { cursor: pointer; background-color: #232323; color: white; }
+		
+		#clickNum-wrapper { margin-top: 3%; } /* 조회수 */
 	
-	.sneaker_name {font-style:oblique; text-transform: uppercase; font-size:35px; font-family: 'Anton', sans-serif;}
-	
-	/* 	조회수 */
-	#clickNum-wrapper { color: #f47512; }
-	
+
 	/* 신발 온라인 정보 */
 /* 	#content_sneakerInfo table{ width:928px; text-align:center;} */
 /* 	#content_sneakerInfo table td { padding:10px 0; } */

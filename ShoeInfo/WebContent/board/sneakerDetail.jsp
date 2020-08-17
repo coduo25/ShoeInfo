@@ -92,39 +92,56 @@
 
 		<!-- content -->
 		<div id="content_sneakerDetail">
+			<!-- 카테고리 -->
+			<div id="cate_Detail">
+				<a href="./SneakerList.go"> <span> HOME </span> </a>
+				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
+				<span> <%=sdto.getModel_name() %></span>
+			</div>
+			<%	//관리자 권한일때 제품 기본정보 수정하는 페이지로 가는 버튼
+				if(usr_position.equals("admin")){
+			%>
+				<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
+			<%}%>
 			<!-- 신발 기본 정보 -->
-			<table id="sneaker_Detail">
-				<tr>
-					<td class="sneaker_image_table"> 
-						<div class="sneaker_image"> 
-							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
-						</div>
-					</td>
-					<td class="detail_table">
-						<%	//관리자 권한일때 제품 기본정보 수정하는 페이지로 가는 버튼
-							if(usr_position.equals("admin")){
-						%>
-							<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
-						<%}%>
-						<!-- 신발 이름 -->
-						<div class="sneaker_name">
-							<span><%=sdto.getModel_name() %></span>
-						</div>
+			<div id="sneaker_Detail">
+				<div class="sneaker_image_wrapper"> 
+					<div class="sneaker_image"> 
+						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
+					</div>
+					<!-- 신발 이름 -->
+					<div class="sneaker_name">
+						<span><%=sdto.getModel_name() %></span>
+					</div>
+				</div>
+					
+				<div class="detail_wrapper">
 						
+					<!-- 세부사항 -->					
+					<div class="desc_wrapper">
 						<div class="sneaker_option_wrapper">
-							<!-- stylecode -->
-							<div class="sneaker_option_info">
-								<span> 스타일코드 :  <%=sdto.getModel_stylecode() %></span>
+
+							<div class="sneaker_cate">
+								<label> <strong> STYLECODE </strong> </label>
+								<span> <%=sdto.getModel_stylecode() %> </span>
 							</div>
-							<!-- price -->
-							<div class="sneaker_option_info">
-								<span> 가격 : 
-								<%if(sdto.getPrice() == 0){%> 미정</span>
-								<%}else{%> <%=formatter.format(sdto.getPrice()) %>원 </span> <%}%>
+							<div class="sneaker_cate">
+								<label> <strong> COLORWAY </strong> </label>
+								<span> <%=sdto.getModel_colorway() %> </span>
 							</div>
-							<!-- relase_date -->
-							<div class="sneaker_option_info">
-								<span> 발매일(글로벌) :  
+							<div class="sneaker_cate">
+								<label> <strong> PRICE </strong> </label>
+								 
+								<%if(sdto.getPrice() == 0){%> 
+								<span> 미정 </span>
+								<%}else{%> 
+								<span> ₩ <%=formatter.format(sdto.getPrice())%> </span>
+								<%}%>
+								
+							</div>
+							<div class="sneaker_cate">
+								<label> <strong> RELEASE DATE </strong> </label>
+								<span> 
 								<%if(sdto.getRelease_date().contains("99")){%>
 									미정
 								<%}else{%>
@@ -132,19 +149,36 @@
 								<%}%>	
 								</span>
 							</div>
-							<!-- 조회수 -->
-							<div class="sneaker_option_info">
-								<span id="clickNum-wrapper"> <i class="fas fa-eye"></i> <%=sdto.getViews()%> </span>
-							</div>
 						</div>
-						
-					</td>
-				</tr>
-			</table>
+
+					</div>
+					
+					<!-- 발매정보 추가버튼 -->
+					<div class="relBtn_wrapper">
+						<div class="sneaker_cate">
+							<label> <strong> 발매정보: </strong> </label>
+						</div>
+						<!-- 추가하기 버튼 -->
+						<div class="sneaker_cate">
+							<button type="button" class="rel_Btn">
+								<span> 발매정보 추가하기 </span>
+							</button>
+						</div>
+						<!-- 조회수 -->
+						<div class="sneaker_cate" id="clickNum-wrapper">
+							<span> <i class="fas fa-eye"></i>&nbsp;&nbsp;<%=formatter.format(sdto.getViews())%> views </span>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		
 			<%	//관리자 권한일때 제품 발매정보 추가하는 페이지로 가는 버튼
 				if(usr_position.equals("admin")){
 			%>
-				<a href="./searchBrand.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="제품 발매 정보 추가하기" style="float: right;"></a>
+				<a href="./searchBrand.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="제품 발매 정보 추가하기"></a>
 			<%}%>
 			
 			<!-- 발매 정보 리스트 -->

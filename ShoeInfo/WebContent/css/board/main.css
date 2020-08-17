@@ -30,7 +30,7 @@ body {font-size:1em; line-weight:1.4}
 
 	/* 링크 wrapper */
 	#link-wrapper { border: 1px solid #232323; padding: 4px; width: 60%; background-color: white; font-weight: bold; margin: 25% auto 20% auto; transition: all 0.3s;}
-	#link-wrapper:hover { background-color: orange; color: white; }
+	#link-wrapper:hover { background-color: #232323; color: white; }
 	#link-wrapper i { padding-right: 2%; }
 	#link-wrapper span { font-size: 0.8em; }
 	
