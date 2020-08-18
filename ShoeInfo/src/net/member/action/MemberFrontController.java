@@ -216,6 +216,16 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		
+		//회원 발매정보 추가하는 페이지로 가기
+		else if(command.equals("/SearchBrand.me")){
+			action = new SearchBrand();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 		/************************************************************
 		 * 3. 실제 페이지 이동 동작 (redirect/forward)

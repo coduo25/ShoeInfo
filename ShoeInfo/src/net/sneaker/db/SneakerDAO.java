@@ -201,7 +201,7 @@ public class SneakerDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()){
 				//신발이 있으면
 				sdto = new SneakerDTO();

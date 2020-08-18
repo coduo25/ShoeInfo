@@ -78,9 +78,7 @@
 							<td> <input type="text" name="online_link"> </td>
 						</tr>
 						<tr>
-							<td id="category"> 
-								온라인 시간		
-							</td>
+							<td id="category"> 온라인 시간	</td>
 							<td> 
 								<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매방식이 선착일시, 시작시간만 작성하기 </span> 
 								<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매방식이 미정이고 발매날짜가 있을시, 시작시간에 입력 </span>

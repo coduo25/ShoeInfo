@@ -86,7 +86,31 @@ public class BrandDAO {
 		}
 	}
 	
-	//모든 브랜드 정보 리스트 가져오는 함수
+	//모든 브랜드 정보 리스트 가져오는 함수 (criteria 안쓰고 가져오기)
+		public ArrayList getAllBrandList() {
+			ArrayList<BrandDTO> brandList = new ArrayList<BrandDTO>();
+			try {
+				con = getConnection();
+				sql = "select * from shoeinfo_brand order by brand_name";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					BrandDTO bdto = new BrandDTO();
+					bdto.setCountry_name(rs.getString("country_name"));
+					bdto.setBrand_logo(rs.getString("brand_logo"));
+					bdto.setBrand_name(rs.getString("brand_name"));
+					bdto.setBrand_id(rs.getString("brand_id"));
+					brandList.add(bdto);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return brandList;
+		}
+	
+	//모든 브랜드 정보 리스트 가져오는 함수 (criteria 써서 가져오기)
 	public ArrayList getAllBrandList(Criteria cri) {
 		ArrayList<BrandDTO> brandList = new ArrayList<BrandDTO>();
 		try {

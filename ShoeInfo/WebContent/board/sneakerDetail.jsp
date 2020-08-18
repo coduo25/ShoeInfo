@@ -123,7 +123,7 @@
 
 							<div class="sneaker_cate">
 								<label> <strong> STYLECODE </strong> </label>
-								<span> <%=sdto.getModel_stylecode() %> </span>
+								<span id="model_stylecode"><%=sdto.getModel_stylecode()%></span>
 							</div>
 							<div class="sneaker_cate">
 								<label> <strong> COLORWAY </strong> </label>
@@ -2783,6 +2783,23 @@
 	}
 
 	$(document).ready(function(){
+		
+		var model_stylecode = document.getElementById('model_stylecode').innerHTML;
+		
+		//발매정보 추가하기 버튼 눌렸을시
+		$('.rel_Btn').click(function(){
+			//로그인 체크
+			if($(".login_user").val() == "") {
+				var login_confirm = confirm("발매정보는 회원만 추가할 수 있습니다. \n로그인 페이지로 가시겠습니까?");
+				if(login_confirm){
+					location.href="./MemberLogin.me";
+				}
+			}
+			else {
+				location.href="./SearchBrand.me?model_stylecode=" + model_stylecode;
+			}	
+		});
+	
 		
 		//image hover 했을시 해당 브랜드의 수정 아이콘 나타내기
 		$('.grid-item').hover(function(){

@@ -39,22 +39,7 @@ body {font-size:1em; line-weight:1.4}
 		#clickNum-wrapper { margin-top: 3%; } /* 조회수 */
 	
 
-	/* 신발 온라인 정보 */
-/* 	#content_sneakerInfo table{ width:928px; text-align:center;} */
-/* 	#content_sneakerInfo table td { padding:10px 0; } */
-	
-/* 	/* 테이블 css */ */
-/* 	#sneakerOnlineInfo_table tr.ta_release_info td{border-bottom: 1px solid #e0e0e0;} */
-	
 	.tooltip1 { position: relative; display: inline-block; border-bottom: 1px dotted black; }
-/* 	.tooltip1 .tooltiptext1 { visibility: hidden; width: 300%; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 150%; left: 20%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; }  */
-/* 	.tooltip1 .tooltiptext1::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent; } */
-/* 	.tooltip1:hover .tooltiptext1 { visibility: visible; opacity: 1;} */
-
-/* 	table#sneakerOnlineInfo_table td:nth-child(3) { text-align: left; padding-left: 15px; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(5) { display: none; } */
-
-
 
 
 /* 발매리스트 css -------------------------------------------------------------------------------------------------- */
@@ -113,6 +98,46 @@ body {font-size:1em; line-weight:1.4}
 
 	/* 관리자 버튼 */
 	#wrapper-admin { text-align: center; padding-bottom: 10%; }
+
+
+
+
+/* 사용자 발매정보 추가하는 페이지 -------------------------------------------------------------------------------------------- */
+.add_wrapper { overflow: auto; width: 100%; display: block; border-top: 2px solid #808080; border-bottom: 2px solid #808080; padding: 3% 2%; }
+
+.add_wrapper #category { display: block; font-weight: bold; padding-bottom: 1.5%; }
+.add_wrapper div{ padding-bottom: 5%; }
+input[type=text], input[type=button] { text-align: left; height: 35px; font-size: 15px; padding-left: 8px; }
+
+input[name=model_stylecode] { width: 20%; }
+input[name=online_link] { width: 70%; }
+input[type=date], input[type=time] { height: 35px; font-size: 15px; padding-left: 1%;}
+input[type=radio] { margin: 0 0.5%; }
+.add_wrapper label { margin-right: 7%; }
+.rel_Btn2 { border: 1px solid #232323; padding: 4px; width: 30%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
+.rel_Btn2:hover { cursor: pointer; background-color: #232323; color: white; }
+
+	/* 브랜드 검색 영역 */
+	.search-form { padding-bottom: 1% !important; }
+	.searched-form { display: none; padding: 1.5%; border: 1px solid #888888; width: 50%; position: absolute; background-color: white; height: 30%; overflow: scroll;}
+	
+	.brandList-wrapper { width: 25%; float: left; cursor: pointer; }
+	
+	#exit-form { width: 100%; display: block; padding: 0 1% 3% 0; text-align: right; font-size: 1.5em;}
+	
+	.searched-form img { width: 100%; border: 1px solid #dcdcdc; }
+	.brandList-wrapper { padding: 3% 1% !important; }
+	.brandList-wrapper:hover { opacity: 0.3; }
+	.searched-form div { padding: 1%; }
+	#brandList-name { text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.8em; }
+	#searchBtn { border: 1px solid #767676; padding: 4px 7px; }
+	
+	.picked-form { display: none; padding: 1%; width: 20%; padding-bottom: 1% !important;}
+	.picked-form img { width: 100%; border: 1px solid #dcdcdc; }
+	.picked-form div { text-align: center; }
+	
+	#nothingSearched { display: none; width: 100%; }
+	
 	
 
 /* 사용자 응모 여부 페이지 -------------------------------------------------------------------------------------------------- */
