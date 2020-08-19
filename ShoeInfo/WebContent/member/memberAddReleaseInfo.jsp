@@ -6,6 +6,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +65,7 @@
 					<form action="./AddOnlineInfoAction.ad" id="addOnlineForm" method="post">
 						<div id="stylecode-form">
 							<span id="category"> 스타일 코드* </span>
-							<input type="text" name="model_stylecode" value="<%=model_stylecode%>" required>
+							<input type="text" name="model_stylecode" value="<%=model_stylecode%>" readonly>
 						</div>
 						
 						<div id="brand-form">
@@ -75,13 +76,13 @@
 							</div>
 							<div class="searched-form">
 								<!-- form 끄는 버튼 -->
-								<span id="exit-form"> <i class="fas fa-times"></i> </span>
+								<span id="exit-form"> <i class="far fa-window-close"></i> </span>
 								
 								<%
 									for(int i=0; i<brandList.size(); i++) {
 										BrandDTO bdto = brandList.get(i);
 								%>
-									<div class="brandList-wrapper" onclick="addBrand(<%=i%>)"> 
+									<div class="brandList-wrapper" onclick="addBrand(<%=i%>)" id="brandList-wrapper<%=i%>">
 										<div>
 											<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>">
 										</div>
@@ -99,11 +100,14 @@
 								<!-- searched 안될때 -->
 								<div id="nothingSearched">
 									<span> 검색 결과가 없습니다. </span>
-									<div> 브랜드 등록 요청하기 </div>
+									<div class="request-Btn"> 브랜드 등록 요청하기 </div>
 								</div> 
 							</div>
 							
 							<div class="picked-form">
+								<span id="exit-form2">
+									<i class="fas fa-times" id="exit-icon"></i>
+								</span>
 								<div>
 									<img id="brandlogo_img" >
 								</div>
@@ -113,6 +117,10 @@
 								
 								<input type="hidden" id="country_name">
 								<input type="hidden" id="brand_name">
+							</div>
+							
+							<div class="request-form"> 
+								
 							</div>
 						</div>
 						
@@ -139,11 +147,24 @@
 						
 						<div id="buyMethod-form">
 							<span id="category"> 구매 방식* </span>
-							<input type="radio" id="buy_fcfs" name="buy_method" value="선착순 구매"> <label for="buy_fcfs">선착순 구매</label>
-							<input type="radio" id="buy_afCredit" name="buy_method" value="당첨 후 결제"> <label for="buy_afCredit">당첨 후 결제</label>
-							<input type="radio" id="buy_beCredit" name="buy_method" value="당첨 전 선결제"> <label for="buy_beCredit">당첨 전 선결제</label>
-							<input type="radio" id="buy_affcfs" name="buy_method" value="당첨자간 선착순 구매"> <label for="buy_affcfs">당첨자간 선착순 구매</label>
-							<input type="radio" id="buy_Undefined" name="buy_method" value="-"> <label for="buy_Undefined">미정</label>
+							
+							<div id="radio-wrapper">
+								<input type="radio" id="buy_fcfs" name="buy_method" value="선착순 구매"> <label for="buy_fcfs">선착순 구매</label>
+							</div>
+							
+							<div id="radio-wrapper">
+								<input type="radio" id="buy_afCredit" name="buy_method" value="당첨 후 결제"> <label for="buy_afCredit">당첨 후 결제</label>
+							</div>
+							<div id="radio-wrapper">
+								<input type="radio" id="buy_beCredit" name="buy_method" value="당첨 전 선결제"> <label for="buy_beCredit">당첨 전 선결제</label>
+							</div>
+							<div id="radio-wrapper">
+								<input type="radio" id="buy_affcfs" name="buy_method" value="당첨자간 선착순 구매"> <label for="buy_affcfs">당첨자간 선착순 구매</label>
+							</div>
+							<div id="radio-wrapper">
+								<input type="radio" id="buy_Undefined" name="buy_method" value="-"> <label for="buy_Undefined">미정</label>
+							</div>	
+							
 						</div>
 						
 						<div id="delivery_method-form">
@@ -179,7 +200,7 @@
 	$('#textBrand').focus(function(){
 		$('.searched-form').show();
 	});
-	$('#exit-form').click(function(){
+	$('.far').click(function(){
 		$('.searched-form').hide();
 	});
 	
@@ -190,22 +211,51 @@
 		var value = document.getElementById("textBrand").value.toUpperCase().trim();
 		var item = document.getElementsByClassName("brandList-wrapper");
 		
+		var test = item.length;
+		
 		for(i=0;i<item.length;i++){
         	name = item[i].getElementsByClassName("name");
         	
         	if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
-            	item[i].style.display = "inline-block";
+        		item[i].style.display = "inline-block";
+            	test = test + 1;
         	} else {
             	item[i].style.display = "none";
-          	} 
+            	test = test - 1;
+          	}
         	
-//         	if(item[i].style.display == 'none'){
-//         		$('#nothingSearched').show();
-//         	}else {
-//         		$('#nothingSearched').hide();
-//         	}
+        	//검색결과가 없을때
+        	if(test <= 0) {
+        		$('#nothingSearched').show();
+        	}else{
+        		$('#nothingSearched').hide();
+        	}
         	
         }
+		
+		$('.request-Btn').click(function(){
+			
+		});
+
+		
+// 		var isVisible = brandArray.some(brandArray[i].css("display") == "inline-block");
+		
+// 		for(i=0;i<item.length;i++){
+// 			name = item[i].getElementsByClassName("name");
+			
+// 			if(){
+// 				item.length - 1;
+// 			} else {
+// 				item.length 
+// 			}
+			
+			
+// 			if($('#brandList-wrapper' + i).css("display") == "inline-block"){
+// 				$('#nothingSearched').hide();
+//         	}else {
+//         		$('#nothingSearched').show();
+//         	}
+// 		}
 	}
 	
 	//브랜드를 클릭했을시
@@ -223,8 +273,14 @@
 		
 		$('#country_name').val(countryName);
 		$('#brand_name').val(brandName);
-		
 	}
+	
+	$('#exit-icon').click(function(){
+		$('.picked-form').hide();
+		
+		$('#country_name').val("");
+		$('#brand_name').val("");
+	});
 
 </script>
 
