@@ -759,6 +759,14 @@
 							
 							int compare_w_start_result_asia = today.compareTo(original_Online_start_time_asia);		//응모 시작하는 시간
 							int compare_w_end_result_asia = today.compareTo(original_Online_end_time_asia); 		//응모 끝나는 시간
+							
+							//앞에서 3글자 따오기
+							String splitWriter = odto_asia.getOnline_writer().substring(0, 4);
+							String X = "";
+							for(int j=0; j<(odto_asia.getOnline_writer().length()-4); j++){
+								X = X + "*";
+							}
+							String f_splitWriter = splitWriter.concat(X);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-asia<%=i%>">
@@ -793,7 +801,8 @@
 <!-- 								</div> -->
 								
 								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info">
+								<div class="grid-info-writer" id="grid-info-writer-asia<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+								<div class="grid-info" id="grid-info-asia<%=i%>">
 									<span> <i class="fas fa-user"></i> </span>
 								</div>
 								
@@ -1262,6 +1271,14 @@
 							
 							int compare_w_start_result_america = today.compareTo(original_Online_start_time_america);		//응모 시작하는 시간
 							int compare_w_end_result_america = today.compareTo(original_Online_end_time_america); 		//응모 끝나는 시간
+							
+							//앞에서 3글자 따오기
+							String splitWriter = odto_america.getOnline_writer().substring(0, 4);
+							String X = "";
+							for(int j=0; j<(odto_america.getOnline_writer().length()-4); j++){
+								X = X + "*";
+							}
+							String f_splitWriter = splitWriter.concat(X);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-america<%=i%>">
@@ -1296,7 +1313,8 @@
 <!-- 								</div> -->
 								
 								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info">
+								<div class="grid-info-writer" id="grid-info-writer-america<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+								<div class="grid-info" id="grid-info-america<%=i%>">
 									<span> <i class="fas fa-user"></i> </span>
 								</div>
 								
@@ -1764,6 +1782,14 @@
 							
 							int compare_w_start_result_europe = today.compareTo(original_Online_start_time_europe);		//응모 시작하는 시간
 							int compare_w_end_result_europe = today.compareTo(original_Online_end_time_europe); 		//응모 끝나는 시간
+							
+							//앞에서 3글자 따오기
+							String splitWriter = odto_europe.getOnline_writer().substring(0, 4);
+							String X = "";
+							for(int j=0; j<(odto_europe.getOnline_writer().length()-4); j++){
+								X = X + "*";
+							}
+							String f_splitWriter = splitWriter.concat(X);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-europe<%=i%>">
@@ -1798,7 +1824,8 @@
 <!-- 								</div> -->
 								
 								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info">
+								<div class="grid-info-writer" id="grid-info-writer-europe<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+								<div class="grid-info" id="grid-info-europe<%=i%>">
 									<span> <i class="fas fa-user"></i> </span>
 								</div>
 								
@@ -2267,6 +2294,14 @@
 							
 							int compare_w_start_result_etc = today.compareTo(original_Online_start_time_etc);		//응모 시작하는 시간
 							int compare_w_end_result_etc = today.compareTo(original_Online_end_time_etc); 		//응모 끝나는 시간
+							
+							//앞에서 3글자 따오기
+							String splitWriter = odto_etc.getOnline_writer().substring(0, 4);
+							String X = "";
+							for(int j=0; j<(odto_etc.getOnline_writer().length()-4); j++){
+								X = X + "*";
+							}
+							String f_splitWriter = splitWriter.concat(X);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-etc<%=i%>">
@@ -2301,7 +2336,8 @@
 <!-- 								</div> -->
 								
 								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info">
+								<div class="grid-info-writer" id="grid-info-writer-etc<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+								<div class="grid-info" id="grid-info-etc<%=i%>">
 									<span> <i class="fas fa-user"></i> </span>
 								</div>
 								
