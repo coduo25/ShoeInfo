@@ -71,7 +71,6 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setOnline_method(request.getParameter("online_method"));
 		odto.setBuy_method(request.getParameter("buy_method"));
 		odto.setDelivery_method(request.getParameter("delivery_method"));
-		odto.setDescription(request.getParameter("description"));
 		
 		OnlineDAO odao = new OnlineDAO();
 		

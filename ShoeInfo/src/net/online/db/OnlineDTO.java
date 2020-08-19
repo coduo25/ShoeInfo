@@ -15,7 +15,7 @@ public class OnlineDTO {
 	private String online_method;
 	private String buy_method;
 	private String delivery_method;
-	private String description;
+	private String online_writer;
 	
 	public int getOnline_num() {
 		return online_num;
@@ -95,10 +95,11 @@ public class OnlineDTO {
 	public void setDelivery_method(String delivery_method) {
 		this.delivery_method = delivery_method;
 	}
-	public String getDescription() {
-		return description;
+	public String getOnline_writer() {
+		return online_writer;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setOnline_writer(String online_writer) {
+		this.online_writer = online_writer;
 	}
+
 }

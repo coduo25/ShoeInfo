@@ -38,26 +38,27 @@ public class AddOnlineInfoAction implements Action{
 		//온라인 시작 시간
 		String online_date_start = request.getParameter("online_date_start");
 		String online_hour_start = request.getParameter("online_hour_start");
-		//null이면 9999-99-99, 99:99 으로 저장하기
 		if(online_date_start.equals("")){
 			online_date_start = "";
 		}
 		if(online_hour_start.equals("")){
 			online_hour_start = "";
 		}
+		
 		String online_start_date = online_date_start;
 		String online_start_time = online_hour_start;
 		
 		//온라인 끝나는 시간
 		String online_date_end = request.getParameter("online_date_end");
 		String online_hour_end = request.getParameter("online_hour_end");
-		//null이면9999-99-99, 99:99 으로 저장하기
+
 		if(online_date_end.equals("")){
 			online_date_end = "";
 		}
 		if(online_hour_end.equals("")){
 			online_hour_end = "";
 		}
+		
 		String online_end_date = online_date_end;
 		String online_end_time = online_hour_end;
 
@@ -90,7 +91,6 @@ public class AddOnlineInfoAction implements Action{
 		odto.setOnline_method(online_method);
 		odto.setBuy_method(buy_method);
 		odto.setDelivery_method(delivery_method);
-		odto.setDescription(description);
 		
 		OnlineDAO odao = new OnlineDAO();
 		int check = odao.insertOnlineInfo(odto);

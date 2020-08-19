@@ -83,7 +83,7 @@ public class OnlineDAO {
 				pstmt.setString(11, odto.getOnline_method());
 				pstmt.setString(12, odto.getBuy_method());
 				pstmt.setString(13, odto.getDelivery_method());
-				pstmt.setString(14, odto.getDescription());	
+				pstmt.setString(14, odto.getOnline_writer());
 				pstmt.executeUpdate();
 				check = 1;
 			}
@@ -153,7 +153,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setDescription(rs.getString("description"));
+				odto.setOnline_writer(rs.getString("online_writer"));
 				onlineInfoList_kr.add(odto);
 				
 				//한국 브랜드 정보 가져오기
@@ -225,7 +225,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setDescription(rs.getString("description"));
+				odto.setOnline_writer(rs.getString("online_writer"));
 				onlineInfoList_asia.add(odto);
 				
 				//아시아 브랜드 정보 가져오기
@@ -294,7 +294,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setDescription(rs.getString("description"));
+				odto.setOnline_writer(rs.getString("online_writer"));
 				onlineInfoList.add(odto);
 				
 				//아메리카 브랜드 정보 가져오기
@@ -355,7 +355,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setDescription(rs.getString("description"));
+				odto.setOnline_writer(rs.getString("online_writer"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -369,7 +369,7 @@ public class OnlineDAO {
 	public void updateOnlineinfo(OnlineDTO odto){
 		try {
 			con = getConnection();
-			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_date = ?, online_start_time = ?, online_end_date = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, description = ? where online_num = ?";
+			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_date = ?, online_start_time = ?, online_end_date = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, online_writer = ? where online_num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, odto.getModel_stylecode());
 			pstmt.setString(2, odto.getCountry_region());
@@ -383,8 +383,8 @@ public class OnlineDAO {
 			pstmt.setString(10, odto.getOnline_method());
 			pstmt.setString(11, odto.getBuy_method());
 			pstmt.setString(12, odto.getDelivery_method());
-			pstmt.setString(13, odto.getDescription());
-			pstmt.setInt(14, odto.getOnline_num());
+			pstmt.setInt(13, odto.getOnline_num());
+			pstmt.setString(14, odto.getOnline_writer());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

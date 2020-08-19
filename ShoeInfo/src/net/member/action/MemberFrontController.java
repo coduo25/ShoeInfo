@@ -225,6 +225,24 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//회원 브랜드 요청 처리
+		else if(command.equals("/addUserBrandRequest.me")){
+			action = new AddUserBrandRequestAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 발매 정보 추가하는 요청 처리
+		else if(command.equals("/AddMemberOnlineInfoAction.me")){
+			action = new AddMemberOnlineInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		/************************************************************

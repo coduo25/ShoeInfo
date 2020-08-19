@@ -613,5 +613,31 @@ public class MemberDAO {
 		return mdto;		
 	}
 	
+	//브랜드 요청 처리하는 함수
+	public void requestBrand(String brandName, String brandURL){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select max(req_num) from shoeinfo_memberBrandReq";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				num = rs.getInt(1) + 1;
+			}
+			
+			sql = "insert into shoeinfo_memberBrandReq values(?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, brandName);
+			pstmt.setString(3, brandURL);
+			pstmt.setString(4, "false");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+	
 	
 }

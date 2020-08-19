@@ -74,17 +74,12 @@
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		
-		SimpleDateFormat monthDate_format = new SimpleDateFormat("M/d");
-		
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
 		
 		// 오늘 날짜
 		Date currentTime = new Date();
 		String current = original_format.format(currentTime);
 		Date today = original_format.parse(current);
-		
-		String monthCurrent = monthDate_format.format(currentTime);
-		Date month_today = monthDate_format.parse(monthCurrent);
 	%>
 	<input type="hidden" class="login_user" value="<%=user%>">
 	
@@ -250,14 +245,16 @@
 							String new_date_start_time_kr = month_start + "/" + date_start;
 							String new_date_end_time_kr = month_end + "/" + date_end;
 							
-							Date p_date_start_time_kr = monthDate_format.parse(new_date_start_time_kr);
-							Date p_date_end_time_kr = monthDate_format.parse(new_date_end_time_kr);
-							
 							int compare_w_start_result_kr = today.compareTo(original_Online_start_time_kr);		//응모 시작하는 시간
 							int compare_w_end_result_kr = today.compareTo(original_Online_end_time_kr); 		//응모 끝나는 시간
-							// 오늘 하고 선착 시간 비교
-							int compare_w_month_start_result_kr = month_today.compareTo(p_date_start_time_kr);
-							int compare_w_month_end_result_kr = month_today.compareTo(p_date_end_time_kr);
+					
+							//앞에서 3글자 따오기
+							String splitWriter = odto_kr.getOnline_writer().substring(0, 4);
+							String X = "";
+							for(int j=0; j<(odto_kr.getOnline_writer().length()-4); j++){
+								X = X + "*";
+							}
+							String f_splitWriter = splitWriter.concat(X);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-kr<%=i%>">
@@ -292,7 +289,8 @@
 <!-- 								</div> -->
 								
 								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info">
+								<div class="grid-info-writer" id="grid-info-writer-kr<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+								<div class="grid-info" id="grid-info-kr<%=i%>">
 									<span> <i class="fas fa-user"></i> </span>
 								</div>
 								
@@ -405,9 +403,9 @@
 									<div id="remain-time">	
 										<%if(odto_kr.getOnline_method().contains("선착")){%>
 										<span id="remain_time_status_kr<%=i%>"> 
-											<!-- 시작 시간이 존재할때  -->
-											<%if(compare_w_month_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty()) {%>
-												
+											
+											<%if(compare_w_start_result_kr == -1 && !odto_kr.getOnline_start_date().isEmpty()) {%>
+												<!-- 시작 시간이 존재할때  -->
 												<div class="draw_count_result_wrapper">
 													<!-- 일 -->
 													<div class="draw_count_result">
@@ -446,8 +444,9 @@
 													</div>
 												</div>
 												
-											<!-- 시작시간이 오늘보다 지났을때 -->
-											<%}else if(compare_w_month_start_result_kr == 1 && !odto_kr.getOnline_start_date().isEmpty()) {%>
+											
+											<%}else if(compare_w_start_result_kr == 1 && !odto_kr.getOnline_start_date().isEmpty()) {%>
+												<!-- 시작시간이 오늘보다 지났을때 -->
 												<span id="final_count_Online_start_time_kr<%=i%>days" style="display:none;"></span>
 												<span id="final_count_Online_start_time_kr<%=i%>hours" style="display:none;"></span>
 												<span id="final_count_Online_start_time_kr<%=i%>minutes" style="display:none;"></span>
@@ -455,8 +454,8 @@
 												
 												<span class="draw_count_result" id="draw_count_result_yet"> 종료 </span>
 												
-											<!-- 시작 시간이 미정일때 -->
 											<%}else if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty()) {%>
+												<!-- 시작 시간이 미정일때 -->
 												<span id="final_count_Online_start_time_kr<%=i%>days" style="display:none;"></span>
 												<span id="final_count_Online_start_time_kr<%=i%>hours" style="display:none;"></span>
 												<span id="final_count_Online_start_time_kr<%=i%>minutes" style="display:none;"></span>
@@ -758,14 +757,8 @@
 							String new_date_start_time_asia = month_start + "/" + date_start;
 							String new_date_end_time_asia = month_end + "/" + date_end;
 							
-							Date p_date_start_time_asia = monthDate_format.parse(new_date_start_time_asia);
-							Date p_date_end_time_asia = monthDate_format.parse(new_date_end_time_asia);
-							
 							int compare_w_start_result_asia = today.compareTo(original_Online_start_time_asia);		//응모 시작하는 시간
 							int compare_w_end_result_asia = today.compareTo(original_Online_end_time_asia); 		//응모 끝나는 시간
-							// 오늘 하고 선착 시간 비교
-							int compare_w_month_start_result_asia = month_today.compareTo(p_date_start_time_asia);
-							int compare_w_month_end_result_asia = month_today.compareTo(p_date_end_time_asia);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-asia<%=i%>">
@@ -914,7 +907,7 @@
 										<%if(odto_asia.getOnline_method().contains("선착")){%>
 										<span id="remain_time_status_asia<%=i%>"> 
 											<!-- 시작 시간이 존재할때  -->
-											<%if(compare_w_month_start_result_asia == -1 && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty()) {%>
+											<%if(compare_w_start_result_asia == -1 && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty()) {%>
 												
 												<div class="draw_count_result_wrapper">
 													<!-- 일 -->
@@ -955,7 +948,7 @@
 												</div>
 												
 											<!-- 시작시간이 오늘보다 지났을때 -->
-											<%}else if(compare_w_month_start_result_asia == 1 && !odto_asia.getOnline_start_date().isEmpty()) {%>
+											<%}else if(compare_w_start_result_asia == 1 && !odto_asia.getOnline_start_date().isEmpty()) {%>
 												<span id="final_count_Online_start_time_asia<%=i%>days" style="display:none;"></span>
 												<span id="final_count_Online_start_time_asia<%=i%>hours" style="display:none;"></span>
 												<span id="final_count_Online_start_time_asia<%=i%>minutes" style="display:none;"></span>
@@ -1267,14 +1260,8 @@
 							String new_date_start_time_america = month_start + "/" + date_start;
 							String new_date_end_time_america = month_end + "/" + date_end;
 							
-							Date p_date_start_time_america = monthDate_format.parse(new_date_start_time_america);
-							Date p_date_end_time_america = monthDate_format.parse(new_date_end_time_america);
-							
 							int compare_w_start_result_america = today.compareTo(original_Online_start_time_america);		//응모 시작하는 시간
 							int compare_w_end_result_america = today.compareTo(original_Online_end_time_america); 		//응모 끝나는 시간
-							// 오늘 하고 선착 시간 비교
-							int compare_w_month_start_result_america = month_today.compareTo(p_date_start_time_america);
-							int compare_w_month_end_result_america = month_today.compareTo(p_date_end_time_america);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-america<%=i%>">
@@ -1423,7 +1410,7 @@
 										<%if(odto_america.getOnline_method().contains("선착")){%>
 										<span id="remain_time_status_america<%=i%>"> 
 											<!-- 시작 시간이 존재할때  -->
-											<%if(compare_w_month_start_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()) {%>
+											<%if(compare_w_start_result_america == -1 && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()) {%>
 												
 												<div class="draw_count_result_wrapper">
 													<!-- 일 -->
@@ -1464,7 +1451,7 @@
 												</div>
 												
 											<!-- 시작시간이 오늘보다 지났을때 -->
-											<%}else if(compare_w_month_start_result_america == 1 && !odto_america.getOnline_start_date().isEmpty()) {%>
+											<%}else if(compare_w_start_result_america == 1 && !odto_america.getOnline_start_date().isEmpty()) {%>
 												<span id="final_count_Online_start_time_america<%=i%>days" style="display:none;"></span>
 												<span id="final_count_Online_start_time_america<%=i%>hours" style="display:none;"></span>
 												<span id="final_count_Online_start_time_america<%=i%>minutes" style="display:none;"></span>
@@ -1775,14 +1762,8 @@
 							String new_date_start_time_europe = month_start + "/" + date_start;
 							String new_date_end_time_europe = month_end + "/" + date_end;
 							
-							Date p_date_start_time_europe = monthDate_format.parse(new_date_start_time_europe);
-							Date p_date_end_time_europe = monthDate_format.parse(new_date_end_time_europe);
-							
 							int compare_w_start_result_europe = today.compareTo(original_Online_start_time_europe);		//응모 시작하는 시간
 							int compare_w_end_result_europe = today.compareTo(original_Online_end_time_europe); 		//응모 끝나는 시간
-							// 오늘 하고 선착 시간 비교
-							int compare_w_month_start_result_europe = month_today.compareTo(p_date_start_time_europe);
-							int compare_w_month_end_result_europe = month_today.compareTo(p_date_end_time_europe);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-europe<%=i%>">
@@ -1932,7 +1913,7 @@
 										<%if(odto_europe.getOnline_method().contains("선착")){%>
 										<span id="remain_time_status_europe<%=i%>"> 
 											<!-- 시작 시간이 존재할때  -->
-											<%if(compare_w_month_start_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()) {%>
+											<%if(compare_w_start_result_europe == -1 && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()) {%>
 												
 												<div class="draw_count_result_wrapper">
 													<!-- 일 -->
@@ -1973,7 +1954,7 @@
 												</div>
 												
 											<!-- 시작시간이 오늘보다 지났을때 -->
-											<%}else if(compare_w_month_start_result_europe == 1 && !odto_europe.getOnline_start_date().isEmpty()) {%>
+											<%}else if(compare_w_start_result_europe == 1 && !odto_europe.getOnline_start_date().isEmpty()) {%>
 												<span id="final_count_Online_start_time_europe<%=i%>days" style="display:none;"></span>
 												<span id="final_count_Online_start_time_europe<%=i%>hours" style="display:none;"></span>
 												<span id="final_count_Online_start_time_europe<%=i%>minutes" style="display:none;"></span>
@@ -2284,14 +2265,8 @@
 							String new_date_start_time_etc = month_start + "/" + date_start;
 							String new_date_end_time_etc = month_end + "/" + date_end;
 							
-							Date p_date_start_time_etc = monthDate_format.parse(new_date_start_time_etc);
-							Date p_date_end_time_etc = monthDate_format.parse(new_date_end_time_etc);
-							
 							int compare_w_start_result_etc = today.compareTo(original_Online_start_time_etc);		//응모 시작하는 시간
 							int compare_w_end_result_etc = today.compareTo(original_Online_end_time_etc); 		//응모 끝나는 시간
-							// 오늘 하고 선착 시간 비교
-							int compare_w_month_start_result_etc = month_today.compareTo(p_date_start_time_etc);
-							int compare_w_month_end_result_etc = month_today.compareTo(p_date_end_time_etc);
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-etc<%=i%>">
@@ -2440,7 +2415,7 @@
 										<%if(odto_etc.getOnline_method().contains("선착")){%>
 										<span id="remain_time_status_etc<%=i%>"> 
 											<!-- 시작 시간이 존재할때  -->
-											<%if(compare_w_month_start_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()) {%>
+											<%if(compare_w_start_result_etc == -1 && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()) {%>
 												
 												<div class="draw_count_result_wrapper">
 													<!-- 일 -->
@@ -2481,7 +2456,7 @@
 												</div>
 												
 											<!-- 시작시간이 오늘보다 지났을때 -->
-											<%}else if(compare_w_month_start_result_etc == 1 && !odto_etc.getOnline_start_date().isEmpty()) {%>
+											<%}else if(compare_w_start_result_etc == 1 && !odto_etc.getOnline_start_date().isEmpty()) {%>
 												<span id="final_count_Online_start_time_etc<%=i%>days" style="display:none;"></span>
 												<span id="final_count_Online_start_time_etc<%=i%>hours" style="display:none;"></span>
 												<span id="final_count_Online_start_time_etc<%=i%>minutes" style="display:none;"></span>
@@ -2749,8 +2724,9 @@
 			var distDt = _vDate - now;
 			if (distDt < 0) {
 				clearInterval(timer);
-	//				document.getElementById(id).textContent = '종료'; 
+// 					document.getElementById(id).textContent = '종료'; 	
 	//				document.getElementById(drawstatus_id).textContent = '-';
+	
 				return; 
 			} 
 			var days = Math.floor(distDt / _day); 
@@ -2798,6 +2774,22 @@
 			else {
 				location.href="./SearchBrand.me?model_stylecode=" + model_stylecode;
 			}	
+		});
+		
+		//발매 정보 작성자 아이콘 눌렸을시
+		$('.grid-info').click(function(){
+			//아이디 값 가져오기
+			var gridInfoID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = gridInfoID.split('-');
+			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//작성자 div 나타내기
+			$('#grid-info-writer-' + lastElement).slideDown(300);
+			setTimeout(function() {
+				$('#grid-info-writer-' + lastElement).slideUp(300);
+			}, 4000);
 		});
 	
 		
@@ -2861,6 +2853,9 @@
 				var kr_drawRaw = $('#grid-item-kr'+i);
 				kr_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
+				var grid_info_writer_kr = $('#grid-info-kr' + i);
+				grid_info_writer_kr.css({"pointer-events" : "auto"});
+				
 				var onlineLink_kr = $('a[id=onlineLink_kr' + i + ']');
 				onlineLink_kr.css({"pointer-events" : "auto"});
 				
@@ -2897,6 +2892,9 @@
 				var asia_drawRaw = $('#grid-item-asia'+i);
 				asia_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
+				var grid_info_writer_asia = $('#grid-info-asia' + i);
+				grid_info_writer_asia.css({"pointer-events" : "auto"});
+				
 				var onlineLink_asia = $('a[id=onlineLink_asia' + i + ']');
 				onlineLink_asia.css({"pointer-events" : "auto"});
 				
@@ -2932,6 +2930,9 @@
 			if(remain_time_status_america.match("종료") || remain_time_status_america.match("응모종료")){
 				var america_drawRaw = $('#grid-item-america'+i);
 				america_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
+				var grid_info_writer_america = $('#grid-info-america' + i);
+				grid_info_writer_america.css({"pointer-events" : "auto"});
 				
 				var onlineLink_america = $('a[id=onlineLink_america' + i + ']');
 				onlineLink_america.css({"pointer-events" : "auto"});
@@ -2970,6 +2971,9 @@
 				var europe_drawRaw = $('#grid-item-europe'+i);
 				europe_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
+				var grid_info_writer_europe = $('#grid-info-europe' + i);
+				grid_info_writer_europe.css({"pointer-events" : "auto"});
+				
 				var onlineLink_europe = $('a[id=onlineLink_europe' + i + ']');
 				onlineLink_europe.css({"pointer-events" : "auto"});
 				
@@ -3005,6 +3009,9 @@
 			if(remain_time_status_etc.match("종료") || remain_time_status_etc.match("응모종료")){
 				var etc_drawRaw = $('#grid-item-etc'+i);
 				etc_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
+				var grid_info_writer_etc = $('#grid-info-etc' + i);
+				grid_info_writer_etc.css({"pointer-events" : "auto"});
 				
 				var onlineLink_etc = $('a[id=onlineLink_etc' + i + ']');
 				onlineLink_etc.css({"pointer-events" : "auto"});
