@@ -62,7 +62,7 @@
 			
 				<!-- 추가하는 form -->
 				<div class="add_wrapper">
-					<form action="./AddMemberOnlineInfoAction.me" id="addOnlineForm" method="post">
+					<form action="./AddOnlineInfoAction.me" id="addOnlineForm" method="post">
 						<div id="stylecode-form">
 							<span id="category"> 스타일 코드 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
 							<input type="text" name="model_stylecode" value="<%=model_stylecode%>" readonly>
@@ -298,11 +298,15 @@
 	
 		$.ajax({
 			type:'post',
-			url:'./addUserBrandRequest.me',
-			data:'brandName='+ $('#req-brandName').val() + '&brandURL=' + $('#req-brandURL').val(),
+			url:'./AddBrandRequest.me',
+			data:'brandName='+ $('#req-brandName').val() + '&brandURL=' + $('#req-brandURL').val() + '&model_stylecode=' + $('input[name=model_stylecode]').val(),
 			dataType: 'html',
 			success:function(data){
-				alert("해당 브랜드를 추가요청하였습니다. \n빠른시일내로 추가하도록 하겠습니다.");
+				if($.trim(data) == "reqExist"){
+					alert("이미 추가요청을 한 브랜드입니다.");
+				}else if($.trim(data) == "reqSuccess"){
+					alert("해당 브랜드를 추가요청하였습니다. \n빠른시일내로 추가하도록 하겠습니다.");
+				}
 			},error:function(request,status,error){
 			 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}

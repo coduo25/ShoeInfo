@@ -383,8 +383,8 @@ public class OnlineDAO {
 			pstmt.setString(10, odto.getOnline_method());
 			pstmt.setString(11, odto.getBuy_method());
 			pstmt.setString(12, odto.getDelivery_method());
-			pstmt.setInt(13, odto.getOnline_num());
-			pstmt.setString(14, odto.getOnline_writer());
+			pstmt.setString(13, odto.getOnline_writer());
+			pstmt.setInt(14, odto.getOnline_num());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

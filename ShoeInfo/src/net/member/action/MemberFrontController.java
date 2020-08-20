@@ -226,8 +226,8 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		//회원 브랜드 요청 처리
-		else if(command.equals("/addUserBrandRequest.me")){
-			action = new AddUserBrandRequestAction();
+		else if(command.equals("/AddBrandRequest.me")){
+			action = new AddBrandRequestAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -235,8 +235,26 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		//회원 발매 정보 추가하는 요청 처리
-		else if(command.equals("/AddMemberOnlineInfoAction.me")){
-			action = new AddMemberOnlineInfoAction();
+		else if(command.equals("/AddOnlineInfoAction.me")){
+			action = new AddOnlineInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 발매정보 수정 하는 페이지 처리
+		else if(command.equals("/UpdateDrawInfo.me")){
+			action = new UpdateDrawInfo();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 발매정보 수정하는 페이지 요청 처리
+		else if(command.equals("/UpdateDrawInfoAction.me")){
+			action = new UpdateDrawInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

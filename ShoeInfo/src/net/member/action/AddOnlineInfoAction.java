@@ -10,8 +10,8 @@ import net.country.db.CountryDAO;
 import net.online.db.OnlineDAO;
 import net.online.db.OnlineDTO;
 
-public class AddMemberOnlineInfoAction implements Action{
-	
+public class AddOnlineInfoAction implements Action{
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -24,6 +24,7 @@ public class AddMemberOnlineInfoAction implements Action{
 		String country_name = request.getParameter("country_name");
 		String brand_name = request.getParameter("brand_name");
 		String online_link = request.getParameter("online_link");
+		String online_method = request.getParameter("online_method");
 		
 		//온라인 시작 시간
 		String online_date_start = request.getParameter("online_date_start");
@@ -48,11 +49,14 @@ public class AddMemberOnlineInfoAction implements Action{
 		if(online_hour_end.equals("")){
 			online_hour_end = "";
 		}
+		if(online_method.equals("선착")){
+			online_date_end = "";
+			online_hour_end = "";
+		}
 		
 		String online_end_date = online_date_end;
 		String online_end_time = online_hour_end;
-
-		String online_method = request.getParameter("online_method");
+		
 		String buy_method = request.getParameter("buy_method");
 		String delivery_method = request.getParameter("delivery_method");
 
@@ -104,5 +108,5 @@ public class AddMemberOnlineInfoAction implements Action{
 		forward.setRedirect(true);
 		return forward;
 	}
-
+	
 }

@@ -101,5 +101,16 @@ public class OnlineDTO {
 	public void setOnline_writer(String online_writer) {
 		this.online_writer = online_writer;
 	}
+	@Override
+	public String toString() {
+		return "OnlineDTO [online_num=" + online_num + ", model_stylecode=" + model_stylecode + ", country_region="
+				+ country_region + ", country_name=" + country_name + ", brand_id=" + brand_id + ", online_link="
+				+ online_link + ", online_start_date=" + online_start_date + ", online_start_time=" + online_start_time
+				+ ", online_end_date=" + online_end_date + ", online_end_time=" + online_end_time + ", online_method="
+				+ online_method + ", buy_method=" + buy_method + ", delivery_method=" + delivery_method
+				+ ", online_writer=" + online_writer + "]";
+	}
+	
+	
 
 }

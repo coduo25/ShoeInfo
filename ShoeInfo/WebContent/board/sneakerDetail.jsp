@@ -27,7 +27,6 @@
 	<!-- Header -->	
 	<header> <jsp:include page="/include/header.jsp" /> </header>
 
-	<!-- Main Content -->
 	<%
 		request.setCharacterEncoding("UTF-8");
 		
@@ -44,9 +43,7 @@
 	
 		//신발 기본 정보 리스트
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
-	
-		//브랜드 정보 리스트
-		
+
 		// ---------- 온라인 정보 -----------
 		//대한민국
 		List<OnlineDTO> onlineList_kr = (List<OnlineDTO>) request.getAttribute("onlineList_kr");
@@ -69,8 +66,7 @@
 		List<BrandDTO> brandList_etc = (List<BrandDTO>) request.getAttribute("brandList_etc");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		
-// 		SimpleDateFormat new_format = new SimpleDateFormat("M/d a h:mm");
+
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		
@@ -168,14 +164,7 @@
 				</div>
 			</div>
 		</div>
-		
-		
-			<%	//관리자 권한일때 제품 발매정보 추가하는 페이지로 가는 버튼
-				if(usr_position.equals("admin")){
-			%>
-				<a href="./searchBrand.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="제품 발매 정보 추가하기"></a>
-			<%}%>
-			
+
 			<!-- 발매 정보 리스트 -->
 			<div id="content_sneakerInfo">
 				
@@ -281,24 +270,19 @@
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
 									<a href="<%=odto_kr.getOnline_link()%>" target="_blank" id="onlineLink_kr<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_kr.getBrand_logo()%>" width="100" height="100"> </a>	
+								
+									<!-- 발매 정보 작성자 아이콘 -->
+									<div class="grid-info-writer" id="grid-info-writer-kr<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+									<div class="grid-info" id="grid-info-kr<%=i%>">
+										<span> <i class="fas fa-user"></i> </span>
+									</div>
 								</div>
-								
-								<!-- 수정 버튼 -->
-<%-- 								<div class="grid-edit" id="grid-edit-kr<%=i%>"> --%>
-<!-- 									<span> <i class="fas fa-pen"></i> </span> -->
-<!-- 								</div> -->
-								
-								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info-writer" id="grid-info-writer-kr<%=i%>"> 작성자: <%=f_splitWriter%> </div>
-								<div class="grid-info" id="grid-info-kr<%=i%>">
-									<span> <i class="fas fa-user"></i> </span>
-								</div>
-								
+					
 								<!-- 응모 내용 -->
 								<div class="grid-content">
 									<!-- 이름 & 국기-->
 									<div id="wrapper-name">
-										<a href="<%=odto_kr.getOnline_link()%>" target="_blank" id="onlineLink_kr<%=i%>"> <span id="brand_name"> <%=bdto_kr.getBrand_name()%> </span> </a>
+										<a href="<%=odto_kr.getOnline_link()%>" target="_blank" id="onlineLink_kr<%=i%>"> <span id="brand_name"> <%=bdto_kr.getBrand_name()%> </span> </a>		
 										<span id="span-flag"> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto_kr.getCountry_flag()%>" width="22" height="15"> </span>
 									</div>
 									<!-- 기간 -->
@@ -311,9 +295,9 @@
 													<span> 추후공지예정 </span>
 												<!-- 날짜는 존재하고 시간이 미정일때 -->
 												<%}else if(!odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_kr%> 시간미정
+													<span class="start_time"> <%=new_date_start_time_kr%> 시간미정 </span>
 												<%}else{%>
-												 	<%=new_Online_start_time_kr%> 
+												 	<span class="start_time"> <%=new_Online_start_time_kr%> </span> 
 												<%}%>
 											<!-- 드로우 또는 미정일시 -->
 											<%}else if(odto_kr.getOnline_method().contains("드로우") || odto_kr.getOnline_method().contains("-")){%> 
@@ -322,20 +306,20 @@
 													<span> 추후공지예정 </span>
 												<!-- 시작시간이 없고 끝나는 시간만 존재할때 -->
 												<%}else if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty() && !odto_kr.getOnline_end_date().isEmpty() && !odto_kr.getOnline_end_time().isEmpty()){%>
-													~ <%=new_Online_end_time_kr%>
+													<span class="end_time"> ~ <%=new_Online_end_time_kr%> </span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty() && !odto_kr.getOnline_start_date().isEmpty() && !odto_kr.getOnline_start_time().isEmpty()){%>
-													<%=new_Online_start_time_kr%> ~
+													<span class="start_time"> <%=new_Online_start_time_kr%> ~ </span>
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_kr%> 시간미정
+													<span class="start_time"> <%=new_date_start_time_kr%> 시간미정 </span>
 												<!-- 시작시간은 없고 끝나는 시간의 시간은 없고 날짜만 존재할 경우 -->
 												<%}else if(odto_kr.getOnline_start_date().isEmpty() && odto_kr.getOnline_start_time().isEmpty() && !odto_kr.getOnline_end_date().isEmpty() && odto_kr.getOnline_end_time().isEmpty()){%>
-													~ <%=new_date_end_time_kr%> 시간미정
+													<span class="end_time"> ~ <%=new_date_end_time_kr%> 시간미정 </span>
 												<%}else if(odto_kr.getOnline_start_time().isEmpty() || odto_kr.getOnline_end_time().isEmpty()) {%>
 													<span> 추후공지예정 </span>
 												<%}else{%>
-													<span class="start_time"><%=new_Online_start_time_kr%></span> ~ <%=new_Online_end_time_kr%>
+													<span class="start_time"><%=new_Online_start_time_kr%></span> ~ <span class="end_time"><%=new_Online_end_time_kr%></span>
 												<%}%>
 											<%}%>
 										</span>
@@ -676,10 +660,25 @@
 									</a>
 								</div>
 								
+								<!-- 수정하기 버튼 toggle 바 -->
+								<div class="grid-toggle-Down" id="grid-toggle-Down-kr<%=i%>">
+									<span> <i class="fas fa-chevron-down"></i> </span>
+								</div>
+								
+								<div class="grid-toggle-Up" id="grid-toggle-Up-kr<%=i%>">
+									<span> <i class="fas fa-chevron-up"></i> </span>
+								</div>
+								
+								<!-- 수정 버튼 -->
+								<div class="grid-edit" id="grid-edit-kr<%=i%>">
+									<span> <i class="fas fa-pen"></i> 수정하기 </span>
+									<input type="hidden" id="modi_modelStylecode-kr<%=i%>" value="<%=odto_kr.getModel_stylecode()%>">
+									<input type="hidden" id="modi_brandId-kr<%=i%>" value="<%=odto_kr.getBrand_id()%>">
+								</div>
+								
 								<!-- 관리자 권한 버튼 -->
 								<%if(usr_position.equals("admin")){%>
 									<div id="wrapper-admin">
-										<input type="button" id="adminModiBtn_kr<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'"> 
 										<input type="button" id="adminDelBtn_kr<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_kr.getModel_stylecode()%>&brand_id=<%=odto_kr.getBrand_id()%>'">
 									</div>
 								<%}%>
@@ -793,17 +792,12 @@
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
 									<a href="<%=odto_asia.getOnline_link()%>" target="_blank" id="onlineLink_asia<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_asia.getBrand_logo()%>" width="100" height="100"> </a>	
-								</div>
 								
-								<!-- 수정 버튼 -->
-<%-- 								<div class="grid-edit" id="grid-edit-asia<%=i%>"> --%>
-<!-- 									<span> <i class="fas fa-pen"></i> </span> -->
-<!-- 								</div> -->
-								
-								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info-writer" id="grid-info-writer-asia<%=i%>"> 작성자: <%=f_splitWriter%> </div>
-								<div class="grid-info" id="grid-info-asia<%=i%>">
-									<span> <i class="fas fa-user"></i> </span>
+									<!-- 발매 정보 작성자 아이콘 -->
+									<div class="grid-info-writer" id="grid-info-writer-asia<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+									<div class="grid-info" id="grid-info-asia<%=i%>">
+										<span> <i class="fas fa-user"></i> </span>
+									</div>
 								</div>
 								
 								<!-- 응모 내용 -->
@@ -823,9 +817,9 @@
 													<span> 추후공지예정 </span>
 												<!-- 날짜는 존재하고 시간이 미정일때 -->
 												<%}else if(!odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_asia%> 시간미정
+													<span class="start_time"><%=new_date_start_time_asia%> 시간미정 </span>
 												<%}else{%>
-												 	<%=new_Online_start_time_asia%> 
+												 	<span class="start_time"><%=new_Online_start_time_asia%> </span>
 												<%}%>
 											<!-- 드로우 또는 미정일시 -->
 											<%}else if(odto_asia.getOnline_method().contains("드로우") || odto_asia.getOnline_method().contains("-")){%> 
@@ -834,20 +828,20 @@
 													<span> 추후공지예정 </span>
 												<!-- 시작시간이 없고 끝나는 시간만 존재할때 -->
 												<%}else if(odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty() && !odto_asia.getOnline_end_date().isEmpty() && !odto_asia.getOnline_end_time().isEmpty()){%>
-													~ <%=new_Online_end_time_asia%>
+													<span class="end_time">~ <%=new_Online_end_time_asia%></span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto_asia.getOnline_end_date().isEmpty() && odto_asia.getOnline_end_time().isEmpty() && !odto_asia.getOnline_start_date().isEmpty() && !odto_asia.getOnline_start_time().isEmpty()){%>
-													<%=new_Online_start_time_asia%> ~
+													<span class="start_time"><%=new_Online_start_time_asia%> ~ </span>
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_asia%> 시간미정
+													<span class="start_time"><%=new_date_start_time_asia%> 시간미정 </span>
 												<!-- 시작시간은 없고 끝나는 시간의 시간은 없고 날짜만 존재할 경우 -->
 												<%}else if(odto_asia.getOnline_start_date().isEmpty() && odto_asia.getOnline_start_time().isEmpty() && !odto_asia.getOnline_end_date().isEmpty() && odto_asia.getOnline_end_time().isEmpty()){%>
-													~ <%=new_date_end_time_asia%> 시간미정
+													<span class="end_time"> ~ <%=new_date_end_time_asia%> 시간미정 </span>
 												<%}else if(odto_asia.getOnline_start_time().isEmpty() || odto_asia.getOnline_end_time().isEmpty()) {%>
 													<span> 추후공지예정 </span>
 												<%}else{%>
-													<span class="start_time"><%=new_Online_start_time_asia%></span> ~ <%=new_Online_end_time_asia%>
+													<span class="start_time"><%=new_Online_start_time_asia%></span> ~ <span class="end_time"><%=new_Online_end_time_asia%></span>
 												<%}%>
 											<%}%>
 										</span>
@@ -1188,10 +1182,25 @@
 									</a>
 								</div>
 								
+								<!-- 수정하기 버튼 toggle 바 -->
+								<div class="grid-toggle-Down" id="grid-toggle-Down-asia<%=i%>">
+									<span> <i class="fas fa-chevron-down"></i> </span>
+								</div>
+								
+								<div class="grid-toggle-Up" id="grid-toggle-Up-asia<%=i%>">
+									<span> <i class="fas fa-chevron-up"></i> </span>
+								</div>
+								
+								<!-- 수정 버튼 -->
+								<div class="grid-edit" id="grid-edit-asia<%=i%>">
+									<span> <i class="fas fa-pen"></i> 수정하기 </span>
+									<input type="hidden" id="modi_modelStylecode-asia<%=i%>" value="<%=odto_asia.getModel_stylecode()%>">
+									<input type="hidden" id="modi_brandId-asia<%=i%>" value="<%=odto_asia.getBrand_id()%>">
+								</div>
+								
 								<!-- 관리자 권한 버튼 -->
 								<%if(usr_position.equals("admin")){%>
 									<div id="wrapper-admin">
-										<input type="button" id="adminModiBtn_asia<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'"> 
 										<input type="button" id="adminDelBtn_asia<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_asia.getModel_stylecode()%>&brand_id=<%=odto_asia.getBrand_id()%>'">
 									</div>
 								<%}%>
@@ -1305,19 +1314,14 @@
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
 									<a href="<%=odto_america.getOnline_link()%>" target="_blank" id="onlineLink_america<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_america.getBrand_logo()%>" width="100" height="100"> </a>	
+								
+									<!-- 발매 정보 작성자 아이콘 -->
+									<div class="grid-info-writer" id="grid-info-writer-america<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+									<div class="grid-info" id="grid-info-america<%=i%>">
+										<span> <i class="fas fa-user"></i> </span>
+									</div>
 								</div>
-								
-								<!-- 수정 버튼 -->
-<%-- 								<div class="grid-edit" id="grid-edit-america<%=i%>"> --%>
-<!-- 									<span> <i class="fas fa-pen"></i> </span> -->
-<!-- 								</div> -->
-								
-								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info-writer" id="grid-info-writer-america<%=i%>"> 작성자: <%=f_splitWriter%> </div>
-								<div class="grid-info" id="grid-info-america<%=i%>">
-									<span> <i class="fas fa-user"></i> </span>
-								</div>
-								
+	
 								<!-- 응모 내용 -->
 								<div class="grid-content">
 									<!-- 이름 & 국기-->
@@ -1335,9 +1339,9 @@
 													<span> 추후공지예정 </span>
 												<!-- 날짜는 존재하고 시간이 미정일때 -->
 												<%}else if(!odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_america%> 시간미정
+													<span class="start_time"><%=new_date_start_time_america%> 시간미정</span>
 												<%}else{%>
-												 	<%=new_Online_start_time_america%> 
+												 	<span class="start_time"><%=new_Online_start_time_america%></span>
 												<%}%>
 											<!-- 드로우 또는 미정일시 -->
 											<%}else if(odto_america.getOnline_method().contains("드로우") || odto_america.getOnline_method().contains("-")){%> 
@@ -1346,20 +1350,20 @@
 													<span> 추후공지예정 </span>
 												<!-- 시작시간이 없고 끝나는 시간만 존재할때 -->
 												<%}else if(odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty() && !odto_america.getOnline_end_date().isEmpty() && !odto_america.getOnline_end_time().isEmpty()){%>
-													~ <%=new_Online_end_time_america%>
+													<span class="end_time">~ <%=new_Online_end_time_america%></span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto_america.getOnline_end_date().isEmpty() && odto_america.getOnline_end_time().isEmpty() && !odto_america.getOnline_start_date().isEmpty() && !odto_america.getOnline_start_time().isEmpty()){%>
-													<%=new_Online_start_time_america%> ~
+													<span class="start_time"><%=new_Online_start_time_america%> ~</span>
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_america%> 시간미정
+													<span class="start_time"><%=new_date_start_time_america%> 시간미정</span>
 												<!-- 시작시간은 없고 끝나는 시간의 시간은 없고 날짜만 존재할 경우 -->
 												<%}else if(odto_america.getOnline_start_date().isEmpty() && odto_america.getOnline_start_time().isEmpty() && !odto_america.getOnline_end_date().isEmpty() && odto_america.getOnline_end_time().isEmpty()){%>
-													~ <%=new_date_end_time_america%> 시간미정
+													<span class="end_time">~ <%=new_date_end_time_america%> 시간미정</span>
 												<%}else if(odto_america.getOnline_start_time().isEmpty() || odto_america.getOnline_end_time().isEmpty()) {%>
 													<span> 추후공지예정 </span>
 												<%}else{%>
-													<span class="start_time"><%=new_Online_start_time_america%></span> ~ <%=new_Online_end_time_america%>
+													<span class="start_time"><%=new_Online_start_time_america%></span> ~ <span class="end_time"><%=new_Online_end_time_america%></span>
 												<%}%>
 											<%}%>
 										</span>
@@ -1699,10 +1703,25 @@
 									</a>
 								</div>
 								
+								<!-- 수정하기 버튼 toggle 바 -->
+								<div class="grid-toggle-Down" id="grid-toggle-Down-america<%=i%>">
+									<span> <i class="fas fa-chevron-down"></i> </span>
+								</div>
+								
+								<div class="grid-toggle-Up" id="grid-toggle-Up-america<%=i%>">
+									<span> <i class="fas fa-chevron-up"></i> </span>
+								</div>
+								
+								<!-- 수정 버튼 -->
+								<div class="grid-edit" id="grid-edit-america<%=i%>">
+									<span> <i class="fas fa-pen"></i> 수정하기 </span>
+									<input type="hidden" id="modi_modelStylecode-america<%=i%>" value="<%=odto_america.getModel_stylecode()%>">
+									<input type="hidden" id="modi_brandId-america<%=i%>" value="<%=odto_america.getBrand_id()%>">
+								</div>
+								
 								<!-- 관리자 권한 버튼 -->
 								<%if(usr_position.equals("admin")){%>
 									<div id="wrapper-admin">
-										<input type="button" id="adminModiBtn_america<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'"> 
 										<input type="button" id="adminDelBtn_america<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_america.getModel_stylecode()%>&brand_id=<%=odto_america.getBrand_id()%>'">
 									</div>
 								<%}%>
@@ -1816,17 +1835,12 @@
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
 									<a href="<%=odto_europe.getOnline_link()%>" target="_blank" id="onlineLink_europe<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_europe.getBrand_logo()%>" width="100" height="100"> </a>	
-								</div>
 								
-								<!-- 수정 버튼 -->
-<%-- 								<div class="grid-edit" id="grid-edit-europe<%=i%>"> --%>
-<!-- 									<span> <i class="fas fa-pen"></i> </span> -->
-<!-- 								</div> -->
-								
-								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info-writer" id="grid-info-writer-europe<%=i%>"> 작성자: <%=f_splitWriter%> </div>
-								<div class="grid-info" id="grid-info-europe<%=i%>">
-									<span> <i class="fas fa-user"></i> </span>
+									<!-- 발매 정보 작성자 아이콘 -->
+									<div class="grid-info-writer" id="grid-info-writer-europe<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+									<div class="grid-info" id="grid-info-europe<%=i%>">
+										<span> <i class="fas fa-user"></i> </span>
+									</div>
 								</div>
 								
 								<!-- 응모 내용 -->
@@ -1846,9 +1860,9 @@
 													<span> 추후공지예정 </span>
 												<!-- 날짜는 존재하고 시간이 미정일때 -->
 												<%}else if(!odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_europe%> 시간미정
+													<span class="start_time"><%=new_date_start_time_europe%> 시간미정</span>
 												<%}else{%>
-												 	<%=new_Online_start_time_europe%> 
+												 	<span class="start_time"><%=new_Online_start_time_europe%></span>
 												<%}%>
 											<!-- 드로우 또는 미정일시 -->
 											<%}else if(odto_europe.getOnline_method().contains("드로우") || odto_europe.getOnline_method().contains("-")){%> 
@@ -1857,20 +1871,20 @@
 													<span> 추후공지예정 </span>
 												<!-- 시작시간이 없고 끝나는 시간만 존재할때 -->
 												<%}else if(odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty() && !odto_europe.getOnline_end_date().isEmpty() && !odto_europe.getOnline_end_time().isEmpty()){%>
-													~ <%=new_Online_end_time_europe%>
+													<span class="end_time">~ <%=new_Online_end_time_europe%></span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto_europe.getOnline_end_date().isEmpty() && odto_europe.getOnline_end_time().isEmpty() && !odto_europe.getOnline_start_date().isEmpty() && !odto_europe.getOnline_start_time().isEmpty()){%>
-													<%=new_Online_start_time_europe%> ~
+													<span class="start_time"><%=new_Online_start_time_europe%> ~</span>
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_europe%> 시간미정
+													<span class="start_time"><%=new_date_start_time_europe%> 시간미정</span>
 												<!-- 시작시간은 없고 끝나는 시간의 시간은 없고 날짜만 존재할 경우 -->
 												<%}else if(odto_europe.getOnline_start_date().isEmpty() && odto_europe.getOnline_start_time().isEmpty() && !odto_europe.getOnline_end_date().isEmpty() && odto_europe.getOnline_end_time().isEmpty()){%>
-													~ <%=new_date_end_time_europe%> 시간미정
+													<span class="end_time">~ <%=new_date_end_time_europe%> 시간미정</span>
 												<%}else if(odto_europe.getOnline_start_time().isEmpty() || odto_europe.getOnline_end_time().isEmpty()) {%>
 													<span> 추후공지예정 </span>
 												<%}else{%>
-													<span class="start_time"><%=new_Online_start_time_europe%></span> ~ <%=new_Online_end_time_europe%>
+													<span class="start_time"><%=new_Online_start_time_europe%></span> ~ <span class="end_time"><%=new_Online_end_time_europe%></span>
 												<%}%>
 											<%}%>
 										</span>
@@ -2211,10 +2225,25 @@
 									</a>
 								</div>
 								
+								<!-- 수정하기 버튼 toggle 바 -->
+								<div class="grid-toggle-Down" id="grid-toggle-Down-europe<%=i%>">
+									<span> <i class="fas fa-chevron-down"></i> </span>
+								</div>
+								
+								<div class="grid-toggle-Up" id="grid-toggle-Up-europe<%=i%>">
+									<span> <i class="fas fa-chevron-up"></i> </span>
+								</div>
+								
+								<!-- 수정 버튼 -->
+								<div class="grid-edit" id="grid-edit-europe<%=i%>">
+									<span> <i class="fas fa-pen"></i> 수정하기 </span>
+									<input type="hidden" id="modi_modelStylecode-europe<%=i%>" value="<%=odto_europe.getModel_stylecode()%>">
+									<input type="hidden" id="modi_brandId-europe<%=i%>" value="<%=odto_europe.getBrand_id()%>">
+								</div>
+								
 								<!-- 관리자 권한 버튼 -->
 								<%if(usr_position.equals("admin")){%>
 									<div id="wrapper-admin">
-										<input type="button" id="adminModiBtn_europe<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'"> 
 										<input type="button" id="adminDelBtn_europe<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_europe.getModel_stylecode()%>&brand_id=<%=odto_europe.getBrand_id()%>'">
 									</div>
 								<%}%>
@@ -2328,18 +2357,13 @@
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
 									<a href="<%=odto_etc.getOnline_link()%>" target="_blank" id="onlineLink_etc<%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto_etc.getBrand_logo()%>" width="100" height="100"> </a>	
-								</div>
 								
-								<!-- 수정 버튼 -->
-<%-- 								<div class="grid-edit" id="grid-edit-etc<%=i%>"> --%>
-<!-- 									<span> <i class="fas fa-pen"></i> </span> -->
-<!-- 								</div> -->
-								
-								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info-writer" id="grid-info-writer-etc<%=i%>"> 작성자: <%=f_splitWriter%> </div>
-								<div class="grid-info" id="grid-info-etc<%=i%>">
-									<span> <i class="fas fa-user"></i> </span>
-								</div>
+									<!-- 발매 정보 작성자 아이콘 -->
+									<div class="grid-info-writer" id="grid-info-writer-etc<%=i%>"> 작성자: <%=f_splitWriter%> </div>
+									<div class="grid-info" id="grid-info-etc<%=i%>">
+										<span> <i class="fas fa-user"></i> </span>
+									</div>
+								</div>	
 								
 								<!-- 응모 내용 -->
 								<div class="grid-content">
@@ -2358,9 +2382,9 @@
 													<span> 추후공지예정 </span>
 												<!-- 날짜는 존재하고 시간이 미정일때 -->
 												<%}else if(!odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_etc%> 시간미정
+													<span class="start_time"><%=new_date_start_time_etc%> 시간미정</span>
 												<%}else{%>
-												 	<%=new_Online_start_time_etc%> 
+												 	<span class="start_time"><%=new_Online_start_time_etc%></span>
 												<%}%>
 											<!-- 드로우 또는 미정일시 -->
 											<%}else if(odto_etc.getOnline_method().contains("드로우") || odto_etc.getOnline_method().contains("-")){%> 
@@ -2369,20 +2393,20 @@
 													<span> 추후공지예정 </span>
 												<!-- 시작시간이 없고 끝나는 시간만 존재할때 -->
 												<%}else if(odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty() && !odto_etc.getOnline_end_date().isEmpty() && !odto_etc.getOnline_end_time().isEmpty()){%>
-													~ <%=new_Online_end_time_etc%>
+													<span class="end_time">~ <%=new_Online_end_time_etc%></span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto_etc.getOnline_end_date().isEmpty() && odto_etc.getOnline_end_time().isEmpty() && !odto_etc.getOnline_start_date().isEmpty() && !odto_etc.getOnline_start_time().isEmpty()){%>
-													<%=new_Online_start_time_etc%> ~
+													<span class="start_time"><%=new_Online_start_time_etc%> ~</span>
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty()){%>
-													<%=new_date_start_time_etc%> 시간미정
+													<span class="start_time"><%=new_date_start_time_etc%> 시간미정</span>
 												<!-- 시작시간은 없고 끝나는 시간의 시간은 없고 날짜만 존재할 경우 -->
 												<%}else if(odto_etc.getOnline_start_date().isEmpty() && odto_etc.getOnline_start_time().isEmpty() && !odto_etc.getOnline_end_date().isEmpty() && odto_etc.getOnline_end_time().isEmpty()){%>
-													~ <%=new_date_end_time_etc%> 시간미정
+													<span class="end_time">~ <%=new_date_end_time_etc%> 시간미정</span>
 												<%}else if(odto_etc.getOnline_start_time().isEmpty() || odto_etc.getOnline_end_time().isEmpty()) {%>
 													<span> 추후공지예정 </span>
 												<%}else{%>
-													<span class="start_time"><%=new_Online_start_time_etc%></span> ~ <%=new_Online_end_time_etc%>
+													<span class="start_time"><%=new_Online_start_time_etc%></span> ~ <span class="end_time"><%=new_Online_end_time_etc%></span>
 												<%}%>
 											<%}%>
 										</span>
@@ -2722,10 +2746,25 @@
 									</a>
 								</div>
 								
+								<!-- 수정하기 버튼 toggle 바 -->
+								<div class="grid-toggle-Down" id="grid-toggle-Down-etc<%=i%>">
+									<span> <i class="fas fa-chevron-down"></i> </span>
+								</div>
+								
+								<div class="grid-toggle-Up" id="grid-toggle-Up-etc<%=i%>">
+									<span> <i class="fas fa-chevron-up"></i> </span>
+								</div>
+								
+								<!-- 수정 버튼 -->
+								<div class="grid-edit" id="grid-edit-etc<%=i%>">
+									<span> <i class="fas fa-pen"></i> 수정하기 </span>
+									<input type="hidden" id="modi_modelStylecode-etc<%=i%>" value="<%=odto_etc.getModel_stylecode()%>">
+									<input type="hidden" id="modi_brandId-etc<%=i%>" value="<%=odto_etc.getBrand_id()%>">
+								</div>
+								
 								<!-- 관리자 권한 버튼 -->
 								<%if(usr_position.equals("admin")){%>
 									<div id="wrapper-admin">
-										<input type="button" id="adminModiBtn_etc<%=i%>" value="수정" onclick="location.href='./UpdateDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'"> 
 										<input type="button" id="adminDelBtn_etc<%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto_etc.getModel_stylecode()%>&brand_id=<%=odto_etc.getBrand_id()%>'">
 									</div>
 								<%}%>
@@ -2829,33 +2868,46 @@
 		});
 	
 		
-		//image hover 했을시 해당 브랜드의 수정 아이콘 나타내기
-		$('.grid-item').hover(function(){
-			//grid-kitem-kr1
-			var countryi = $(this).attr('id');
+		//toggle bar slideDown 했을시 해당 브랜드의 수정 아이콘 나타내기
+		$('.grid-toggle-Down').click(function(){
+			//grid-toggle-Down-kr1
+			var toggleDownID = $(this).attr('id');
 			// - 기준으로 자르기
-			var splitArray = countryi.split('-');
-			// 제일 마지막 kr1 만 가지고 오기
+			var splitArray = toggleDownID.split('-');
+ 			// 제일 마지막 kr1 만 가지고 오기
 			var lastElement = splitArray[splitArray.length - 1];
-			
-			//수정 버튼 나타내기
-			$('#grid-edit-' + lastElement).show();
-		}, function(){
-			//grid-kitem-kr1
-			var countryi = $(this).attr('id');
+ 			
+ 			//toggle down 없애고 toggle up 나타내기
+ 			$('#grid-toggle-Down-' + lastElement).hide();
+ 			$('#grid-toggle-Up-' + lastElement).show();
+ 			//수정하기 영역 나타내기
+ 			$('#grid-edit-' + lastElement).slideDown(300);
+		});
+		
+		//toggle bar slideUp 했을시 해당 브랜드의 수정 아이콘 나타내기
+		$('.grid-toggle-Up').click(function(){
+			//grid-toggle-Down-kr1
+			var toggleDownID = $(this).attr('id');
 			// - 기준으로 자르기
-			var splitArray = countryi.split('-');
-			// 제일 마지막 kr1 만 가지고 오기
+			var splitArray = toggleDownID.split('-');
+ 			// 제일 마지막 kr1 만 가지고 오기
 			var lastElement = splitArray[splitArray.length - 1];
-			
-			//수정 버튼 사라지게하기
-			$('#grid-edit-' + lastElement).hide();
+ 			
+ 			//toggle down 없애고 toggle up 나타내기
+ 			$('#grid-toggle-Down-' + lastElement).show();
+ 			$('#grid-toggle-Up-' + lastElement).hide();
+ 			//수정하기 영역 없애기
+ 			$('#grid-edit-' + lastElement).slideUp(200);
 		});
 		
 		//수정버튼을 클릭했을시 로그인 체크하기
 		$(".grid-edit").on('click', function() {
-			
-			
+			//grid-edit-kr1
+			var grid_editID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = grid_editID.split('-');
+ 			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
 			
 			//로그인 체크
 			if($(".login_user").val() == "") {
@@ -2865,7 +2917,10 @@
 				}
 			}
 			else {
-// 				alert("수정할 수 있습니다.");
+				var model_stylecode = $('#modi_modelStylecode-' + lastElement).val();
+				var brand_id = $('#modi_brandId-' + lastElement).val();
+				
+				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id;
 			}
 		});
 		
@@ -2887,7 +2942,7 @@
 			var remain_time_status_kr = document.getElementById('remain_time_status_kr'+i).innerText;
 			if(remain_time_status_kr.match("종료") || remain_time_status_kr.match("응모종료")){
 				var kr_drawRaw = $('#grid-item-kr'+i);
-				kr_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				kr_drawRaw.css({"opacity" : "0.1",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var grid_info_writer_kr = $('#grid-info-kr' + i);
 				grid_info_writer_kr.css({"pointer-events" : "auto"});
@@ -2901,8 +2956,13 @@
 				var directLink_kr = $('#direct-link-kr' + i);
 				directLink_kr.css({"pointer-events" : "auto"});
 				
-				var adminModiBtn = $('#adminModiBtn_kr' + i);
-				adminModiBtn.css({"pointer-events" : "auto"});
+				//수정파트
+				var toggleDown_kr = $('#grid-toggle-Down-kr' + i);
+				toggleDown_kr.css({"pointer-events" : "auto"});
+				var toggleUp_kr = $('#grid-toggle-Up-kr' + i);
+				toggleUp_kr.css({"pointer-events" : "auto"});
+				var editBtn_kr = $('#grid-edit-kr' + i);
+				editBtn_kr.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_kr' + i);
 				adminModiBtn.css({"pointer-events" : "auto"});
@@ -2926,7 +2986,7 @@
 			var remain_time_status_asia = document.getElementById('remain_time_status_asia'+i).innerText;
 			if(remain_time_status_asia.match("종료") || remain_time_status_asia.match("응모종료")){
 				var asia_drawRaw = $('#grid-item-asia'+i);
-				asia_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				asia_drawRaw.css({"opacity" : "0.1",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var grid_info_writer_asia = $('#grid-info-asia' + i);
 				grid_info_writer_asia.css({"pointer-events" : "auto"});
@@ -2940,8 +3000,13 @@
 				var directLink_asia = $('#direct-link-asia' + i);
 				directLink_asia.css({"pointer-events" : "auto"});
 				
-				var adminModiBtn = $('#adminModiBtn_asia' + i);
-				adminModiBtn.css({"pointer-events" : "auto"});
+				//수정파트
+				var toggleDown_asia = $('#grid-toggle-Down-asia' + i);
+				toggleDown_asia.css({"pointer-events" : "auto"});
+				var toggleUp_asia = $('#grid-toggle-Up-asia' + i);
+				toggleUp_asia.css({"pointer-events" : "auto"});
+				var editBtn_asia = $('#grid-edit-asia' + i);
+				editBtn_asia.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_asia' + i);
 				adminModiBtn.css({"pointer-events" : "auto"});
@@ -2965,7 +3030,7 @@
 			var remain_time_status_america = document.getElementById('remain_time_status_america'+i).innerText;
 			if(remain_time_status_america.match("종료") || remain_time_status_america.match("응모종료")){
 				var america_drawRaw = $('#grid-item-america'+i);
-				america_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				america_drawRaw.css({"opacity" : "0.1",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var grid_info_writer_america = $('#grid-info-america' + i);
 				grid_info_writer_america.css({"pointer-events" : "auto"});
@@ -2979,8 +3044,13 @@
 				var directLink_america = $('#direct-link-america' + i);
 				directLink_america.css({"pointer-events" : "auto"});
 				
-				var adminModiBtn = $('#adminModiBtn_america' + i);
-				adminModiBtn.css({"pointer-events" : "auto"});
+				//수정파트
+				var toggleDown_america = $('#grid-toggle-Down-america' + i);
+				toggleDown_america.css({"pointer-events" : "auto"});
+				var toggleUp_america = $('#grid-toggle-Up-america' + i);
+				toggleUp_america.css({"pointer-events" : "auto"});
+				var editBtn_america = $('#grid-edit-america' + i);
+				editBtn_america.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_america' + i);
 				adminModiBtn.css({"pointer-events" : "auto"});
@@ -3005,7 +3075,7 @@
 			//alert(remain_time_status_europe);
 			if(remain_time_status_europe.match("종료") || remain_time_status_europe.match("응모종료")){
 				var europe_drawRaw = $('#grid-item-europe'+i);
-				europe_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				europe_drawRaw.css({"opacity" : "0.1",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var grid_info_writer_europe = $('#grid-info-europe' + i);
 				grid_info_writer_europe.css({"pointer-events" : "auto"});
@@ -3019,8 +3089,13 @@
 				var directLink_europe = $('#direct-link-europe' + i);
 				directLink_europe.css({"pointer-events" : "auto"});
 				
-				var adminModiBtn = $('#adminModiBtn_europe' + i);
-				adminModiBtn.css({"pointer-events" : "auto"});
+				//수정파트
+				var toggleDown_europe = $('#grid-toggle-Down-europe' + i);
+				toggleDown_europe.css({"pointer-events" : "auto"});
+				var toggleUp_europe = $('#grid-toggle-Up-europe' + i);
+				toggleUp_europe.css({"pointer-events" : "auto"});
+				var editBtn_europe = $('#grid-edit-europe' + i);
+				editBtn_europe.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_europe' + i);
 				adminModiBtn.css({"pointer-events" : "auto"});
@@ -3044,7 +3119,7 @@
 			var remain_time_status_etc = document.getElementById('remain_time_status_etc'+i).innerText;
 			if(remain_time_status_etc.match("종료") || remain_time_status_etc.match("응모종료")){
 				var etc_drawRaw = $('#grid-item-etc'+i);
-				etc_drawRaw.css({"opacity" : "0.3",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				etc_drawRaw.css({"opacity" : "0.1",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
 				var grid_info_writer_etc = $('#grid-info-etc' + i);
 				grid_info_writer_etc.css({"pointer-events" : "auto"});
@@ -3058,8 +3133,13 @@
 				var directLink_etc = $('#direct-link-etc' + i);
 				directLink_etc.css({"pointer-events" : "auto"});
 				
-				var adminModiBtn = $('#adminModiBtn_etc' + i);
-				adminModiBtn.css({"pointer-events" : "auto"});
+				//수정파트
+				var toggleDown_etc = $('#grid-toggle-Down-etc' + i);
+				toggleDown_etc.css({"pointer-events" : "auto"});
+				var toggleUp_etc = $('#grid-toggle-Up-etc' + i);
+				toggleUp_etc.css({"pointer-events" : "auto"});
+				var editBtn_etc = $('#grid-edit-etc' + i);
+				editBtn_etc.css({"pointer-events" : "auto"});
 				
 				var adminModiBtn = $('#adminDelBtn_etc' + i);
 				adminModiBtn.css({"pointer-events" : "auto"});

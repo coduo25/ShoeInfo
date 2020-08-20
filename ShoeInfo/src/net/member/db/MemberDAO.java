@@ -614,29 +614,42 @@ public class MemberDAO {
 	}
 	
 	//브랜드 요청 처리하는 함수
-	public void requestBrand(String brandName, String brandURL){
+	public int requestBrand(String brandName, String brandURL, String user){
+		int check = -1;
 		int num = 0;
 		try {
 			con = getConnection();
-			sql = "select max(req_num) from shoeinfo_memberBrandReq";
+			//중복 브랜드 체크
+			sql = "select * from shoeinfo_memberBrandReq where req_brandName = ? and req_member = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, brandName);
+			pstmt.setString(2, user);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				num = rs.getInt(1) + 1;
+				check = 0;
+			}else {
+				sql = "select max(req_num) from shoeinfo_memberBrandReq";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					num = rs.getInt(1) + 1;
+				}
+				sql = "insert into shoeinfo_memberBrandReq values(?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				pstmt.setString(2, brandName);
+				pstmt.setString(3, brandURL);
+				pstmt.setString(4, "false");
+				pstmt.setString(5, user);
+				pstmt.executeUpdate();
+				check = 1;
 			}
-			
-			sql = "insert into shoeinfo_memberBrandReq values(?, ?, ?, ?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setString(2, brandName);
-			pstmt.setString(3, brandURL);
-			pstmt.setString(4, "false");
-			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
+		return check;
 	}
 	
 	
