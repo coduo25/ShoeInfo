@@ -18,7 +18,7 @@ body {font-size:1em; line-weight:1.4}
 
 	/* 신발 기본정보 */
 	.sneaker_image_wrapper { width: 100%; display: block; }
-	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; padding: 2.5% 0;}
+	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 2.5% 0;}
 		/* 이미지 & 이름*/
 		.sneaker_image { text-align: center; }
 		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px}
@@ -109,7 +109,7 @@ body {font-size:1em; line-weight:1.4}
 
 /* 사용자 발매정보 추가하는 페이지 -------------------------------------------------------------------------------------------- */
 .add_wrapper { overflow: auto; width: 100%; display: block; border-top: 2px solid #808080; border-bottom: 2px solid #808080; padding: 4% 15%; }
-#addOnlineForm, #updateOnlineForm { padding: 5%; border: 1px solid black; border-radius: 5px; background-color: #f7f7f787; }
+#addOnlineForm, #updateOnlineForm { padding: 5%; border: 1px solid black; border-radius: 5px; }
 
 #req_icon { font-size: 0.5em; color: #b50000; vertical-align: top; }
 .add_wrapper #category { display: block; font-weight: bold; padding-bottom: 2%; }

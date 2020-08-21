@@ -427,7 +427,7 @@ public class MemberDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select distinct model_stylecode from shoeinfo_memberdrawinfo where member_email = ? order by draw_count desc";
+			sql = "select distinct A.model_stylecode from shoeinfo_memberdrawinfo AS A JOIN shoeinfo_sneakerlibrary AS B ON A.model_stylecode = B.model_stylecode where member_email = ? order by (B.release_date);";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
@@ -443,12 +443,9 @@ public class MemberDAO {
 				rs2 = pstmt2.executeQuery();
 				
 				if(rs2.next()){
-
 					//가지고온 스니커 정보중에 release_date에 date가 포함되어있으면 list에 추가하기
 					if(rs2.getString("release_date").contains(date)){
-						
 						userDrawStylecodeList.add(mddto);
-						
 						//스니커 정보 DB에 해당 스니커가 저장되어있으면
 						SneakerDTO sdto = new SneakerDTO();
 						sdto.setModel_stylecode(rs2.getString("model_stylecode"));
