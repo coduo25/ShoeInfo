@@ -25,7 +25,8 @@ body {font-size:1em; line-weight:1.4}
 			/* 이름 */
 			.sneaker_image_wrapper div.sneaker_name { text-align: center; margin-bottom: 13px; }
 			.sneaker_name { line-height: 30px; text-transform: uppercase; font-size:20px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; color: #232323; }
-	
+			.sneaker_name span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 90%; }
+			
 		/* 내용 */
 		.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper { width: 50%; float: left; }
 		.cate_wrapper { width: 100%; float: left; }
@@ -38,12 +39,27 @@ body {font-size:1em; line-weight:1.4}
 		
 		#clickNum-wrapper { margin-top: 3%; } /* 조회수 */
 	
+/* 멤버 응모 여부 페이지 - 신발 상세정보 페이지 */
+#content_sneakerDetail_D{ width: 35%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 1.5% 1.5% 1.5%; border: 1px solid #c7c7c7; margin: 3% 0 30% 0; border-radius: 0.3rem; }
+#content_sneakerDetail_D div#sneaker_Detail_D{ width: 100%; padding: 0 5%; }
+#content_sneakerDetail_D .sneaker_image>img { width: 100%; height: 100%; }
+	
+	/* 신발 기본정보 */
+	.detail_wrapper_D { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; padding: 3%; }
+	.detail_wrapper_D div.desc_wrapper_D { width: 100%; float: left; }
+	
+	.sneaker_cate_D { line-height: 35px; display: block; }
+	.sneaker_cate_D label { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 40%; }
+	.sneaker_cate_D span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; float: right; text-align: right; width: 60%; }
+
+#content_sneakerInfo_D { margin-top: 3%; width: 65%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 1.5% 1.5% 1.5%; }
+
+
 
 	.tooltip1 { position: relative; display: inline-block; border-bottom: 1px dotted black; }
-
-
+	
 /* 발매리스트 css -------------------------------------------------------------------------------------------------- */
-#content_sneakerInfo {margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em;}
+#content_sneakerInfo { margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em; }
 #content_sneakerInfo h4, #content_userDrawInfo h4 { font-size: 1.7em; text-align: center; margin: 2%; }
 
 #grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 5%; }
@@ -163,18 +179,6 @@ input[type=radio] { margin: 0 0.5%; }
 	#request-form button { border: 1px solid #232323; width: 25%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
 	#request-form button:hover { background-color: #232323; color: white; }
 	
-	
-
-/* 사용자 응모 여부 페이지 -------------------------------------------------------------------------------------------------- */
-#content_userDrawInfo { margin:10px auto; height:500px; width: 80%; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif;  font-size:0.9em; }
-
-#drawInfoTable_kr, #drawInfoTable_etc { width: 40%; text-align: center; float: left; margin: 0 5%; }
-#drawInfoTable_kr th, #drawInfoTable_etc th { padding: 15px 0; }
-#drawInfoTable_kr td, #drawInfoTable_etc td { padding: 7px 0; }
-
-#drawInfoTable_kr td:nth-child(1), #drawInfoTable_etc td:nth-child(1) { width: 30%; padding-left: 1%; }
-#drawInfoTable_kr td:nth-child(2), #drawInfoTable_etc td:nth-child(2) { width: 45%; text-align: left; padding-left: 5%; }
-#drawInfoTable_kr td:nth-child(3), #drawInfoTable_etc td:nth-child(3) { width: 25%;  }
 
 /* 관리자 권한 버튼들 */
 input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; background-color: white; }

@@ -45,45 +45,63 @@
 		
 	%>
 	<div id="wrapper" class="container">
+	
+		<!-- content -->
+		<div id="content_sneakerDetail_D">
+
+			<!-- 신발 기본 정보 -->
+			<div id="sneaker_Detail_D">
+				<div class="sneaker_image_wrapper"> 
+					<div class="sneaker_image"> 
+						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
+					</div>
+					<!-- 신발 이름 -->
+					<div class="sneaker_name">
+						<span><%=sdto.getModel_name() %></span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="detail_wrapper_D">
+				<!-- 세부사항 -->					
+				<div class="desc_wrapper_D">
+					<div class="sneaker_option_wrapper">
+						<div class="sneaker_cate_D">
+							<label> <strong> STYLECODE </strong> </label>
+							<span id="model_stylecode"><%=sdto.getModel_stylecode()%></span>
+						</div>
+						<div class="sneaker_cate_D">
+							<label> <strong> COLORWAY </strong> </label>
+							<span> <%=sdto.getModel_colorway() %> </span>
+						</div>
+						<div class="sneaker_cate_D">
+							<label> <strong> PRICE </strong> </label>
+							 
+							<%if(sdto.getPrice() == 0){%> 
+							<span> 미정 </span>
+							<%}else{%> 
+							<span> ₩ <%=formatter.format(sdto.getPrice())%> </span>
+							<%}%>
+						</div>
+						<div class="sneaker_cate_D">
+							<label> <strong> RELEASE DATE </strong> </label>
+							<span> 
+							<%if(sdto.getRelease_date().contains("99")){%>
+								미정
+							<%}else{%>
+								<%=sdto.getRelease_date()%>
+							<%}%>	
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
 
 		<!-- content -->
-		<div id="content_sneakerDetail">
-			<!-- 신발 기본 정보 -->
-			<table id="sneaker_Detail" style="border-bottom: 1px solid #c3c3c3;">
-				<tr>
-					<td class="sneaker_image_table"> 
-						<div class="sneaker_image_draw"> 
-							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
-						</div>
-					</td>
-					<td class="detail_table">
-						<!-- 신발 이름 -->
-						<div class="sneaker_name">
-							<span> <%=sdto.getModel_name() %></span>
-						</div>
-						
-						<div class="sneaker_option_wrapper">
-							<!-- relase_date -->
-							<div class="sneaker_option_info">
-								<span> 발매일(글로벌) :  
-								<%if(sdto.getRelease_date().contains("99")){%>
-									미정
-								<%}else{%>
-									<%=sdto.getRelease_date()%>
-								<%}%>	
-								</span>
-							</div>
-							<!-- price -->
-							<div class="sneaker_option_info">
-								<span> 가격 : 
-								<%if(sdto.getPrice() == 0){%> <span>미정</span>
-								<%}else{%>  <%=formatter.format(sdto.getPrice()) %>원 </span> <%}%>
-							</div>
-						</div>
-						
-					</td>
-				</tr>
-			</table>
+		<div id="content_sneakerInfo_D">
+			
 			<!-- 응모한 브랜드 정보 보여주는 영역 -->
 			<div id="content_userDrawInfo">
 				<!-- 국내 응모 한 테이블 -->
