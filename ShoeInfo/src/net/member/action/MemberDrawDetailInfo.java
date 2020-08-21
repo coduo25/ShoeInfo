@@ -36,7 +36,6 @@ public class MemberDrawDetailInfo implements Action{
 		 ******************************************************/
 		SneakerDAO sdao = new SneakerDAO();
 		SneakerDTO sdto = sdao.getSneakerDetail(model_stylecode);
-		//request에 저장
 		request.setAttribute("sneakerDetail", sdto);
 		
 		/******************************************************
@@ -49,6 +48,8 @@ public class MemberDrawDetailInfo implements Action{
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) vec_draw_kr.get(0);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(1);
 		
+		System.out.println(vec_draw_kr);
+		
 		request.setAttribute("drawInfoList_kr", drawInfoList_kr);
 		request.setAttribute("brandList_kr", brandList_kr);
 		
@@ -56,6 +57,8 @@ public class MemberDrawDetailInfo implements Action{
 		Vector vec_draw_etc = mdao.getDrawInfo_etc(model_stylecode, user);
 		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec_draw_etc.get(0);
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(1);
+		
+		System.out.println(vec_draw_etc);
 		
 		request.setAttribute("drawInfoList_etc", drawInfoList_etc);
 		request.setAttribute("brandList_etc", brandList_etc);

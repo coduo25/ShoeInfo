@@ -70,7 +70,6 @@
 	<div id="wrapper" class="container">
 	
 		<div id="content_sneakerList">
-		
 			<!-- 1 ~ 12 월 응모내역 테이블  -->
 			<%
 				for(int z=1; z<13; z++){
@@ -112,7 +111,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 					%>
 						<div id="shoeList_image_<%=z%>" class="shoelist_image">
-							<div id="shoeList_<%=z%><%=i%>">
+							<div id="shoeList_<%=z%><%=i%>" class="shoeList">
 								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>">
 			  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
 								</a>
@@ -125,11 +124,8 @@
 			<%
 				}
 			%>
-
 		</div>
-		
 	</div>
-	
 	
 	<!-- FOOTER -->
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
@@ -138,14 +134,18 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		//image hover 했을시 이미지 opacity 흐리게 하기
+		$('.shoelist_image').hover(function(){
+			$(this).css('opacity', '0.3');
+		}, function() {
+			$(this).css('opacity', '1');
+		});
 		
 		var today = new Date();
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
 		
 		for(var i=1; i<13; i++){
-			
 			if(i < month) {
-				
 				$("#month" + (i-1)).hide(); //2달 지나간 월들은 없애기
 				$("#div_month" + (i-1)).hide();
 				
@@ -156,14 +156,12 @@
 			}
 			//미래의 월들은 나타내기
 			else if(i >= month) {
-				
 				//3개월 후까지만 나타내기
 				if((i+3) >= month) {
 					$("#month" + (i+3)).hide(); //3달 후 월들은 없애기
 					$("#div_month" + (i+3)).hide();
 					$("#no_info" + (i+3)).hide();
 				}
-				
 				$("#slide-up_" + i).show();
 				$("#slide-down_" + i).hide();
 				
@@ -171,12 +169,9 @@
 			}
 		}
 		
-		
 		//각 달별로 slide down 버튼을 눌렸을시
 		$(".month").click(function(){
-			
 			var month = $(this).attr('id').replace(/[^0-9]/g,''); //숫자만 추출
-			
 			//만약 신발 리스트가 닫혀있으면
 			if($("#div_month_" + month).css("display") == "none"){
 				$("#slide-up_" + month).show();
@@ -187,13 +182,9 @@
 				$("#slide-up_" + month).hide();
 				$("#slide-down_" + month).show();
 			}
-			
 			$("#div_month_" + month).slideToggle("slow");
 		});
-
-		
 	});
-
 
 </script>
 </html>

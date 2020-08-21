@@ -190,6 +190,13 @@ public class BrandDAO {
 					pstmt.setString(1, bdto.getBrand_id());
 					pstmt.setString(2, old_brand_id);
 					pstmt.executeUpdate();
+					
+					//memberdrawinfo table에 바뀐 brand_id 모두 바꾸기
+					sql = "update shoeinfo_memberdrawinfo set brand_id = ? where brand_id = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, bdto.getBrand_id());
+					pstmt.setString(2, old_brand_id);
+					pstmt.executeUpdate();
 				}
 			}
 		} catch (Exception e) {

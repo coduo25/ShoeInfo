@@ -126,7 +126,6 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		
 		//image hover 했을시 이미지 뜨게 하기
 		$('.shoelist_image_wrapper').hover(function() {
 			//shoeList_80
@@ -203,13 +202,12 @@
 			}
 			$("#div_month_" + month).slideToggle("slow");
 		});
-
 	});
 
 	<!-- 리포트2.0 로그분석코드 시작 -->
-	var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
-	var sTime = new Date().getTime();
-	document.write(unescape("%3Cscript id='log_script' src='" + JsHost + "coduo25.weblog.cafe24.com/weblog.js?uid=coduo25&t="+sTime+"' type='text/javascript'%3E%3C/script%3E"));
+		var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+		var sTime = new Date().getTime();
+		document.write(unescape("%3Cscript id='log_script' src='" + JsHost + "coduo25.weblog.cafe24.com/weblog.js?uid=coduo25&t="+sTime+"' type='text/javascript'%3E%3C/script%3E"));
 	<!-- 리포트2.0  로그분석코드 완료 -->
 
 </script>
