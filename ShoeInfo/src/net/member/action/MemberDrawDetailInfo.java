@@ -44,20 +44,24 @@ public class MemberDrawDetailInfo implements Action{
 		MemberDAO mdao = new MemberDAO();
 		
 		//국내 응모 한 곳
-		Vector vec_draw_kr = mdao.getDrawInfo_kr(model_stylecode, user);
+		Vector vec_draw_kr = mdao.getDrawInfo(model_stylecode, user, "대한민국");
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) vec_draw_kr.get(0);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(1);
+		ArrayList<BrandDTO> onlineinfoList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(2);
 		
 		request.setAttribute("drawInfoList_kr", drawInfoList_kr);
 		request.setAttribute("brandList_kr", brandList_kr);
+		request.setAttribute("onlineinfoList_kr", onlineinfoList_kr);
 		
 		//해외 응모 한곳
-		Vector vec_draw_etc = mdao.getDrawInfo_etc(model_stylecode, user);
+		Vector vec_draw_etc = mdao.getDrawInfo(model_stylecode, user, "해외");
 		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec_draw_etc.get(0);
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(1);
+		ArrayList<BrandDTO> onlineinfoList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(2);
 		
 		request.setAttribute("drawInfoList_etc", drawInfoList_etc);
 		request.setAttribute("brandList_etc", brandList_etc);
+		request.setAttribute("onlineinfoList_etc", onlineinfoList_etc);
 		
 		forward.setPath("./member/memberDrawDetailList.jsp");
 		forward.setRedirect(false);

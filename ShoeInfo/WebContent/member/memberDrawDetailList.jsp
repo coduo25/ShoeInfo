@@ -1,3 +1,4 @@
+<%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="net.brand.db.BrandDTO"%>
 <%@page import="java.util.List"%>
@@ -36,10 +37,12 @@
 		//국내 응모 정보
 		List<MemberDrawDTO> drawInfoList_kr = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
 		List<BrandDTO> brandList_kr = (List<BrandDTO>) request.getAttribute("brandList_kr");
+		List<OnlineDTO> onlineinfoList_kr = (List<OnlineDTO>) request.getAttribute("onlineinfoList_kr");
 		
 		//해외 응모 정보
 		List<MemberDrawDTO> drawInfoList_etc = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
 		List<BrandDTO> brandList_etc = (List<BrandDTO>) request.getAttribute("brandList_etc");
+		List<OnlineDTO> onlineinfoList_etc = (List<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
 
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
 		
@@ -105,43 +108,71 @@
 			<!-- 응모한 브랜드 정보 보여주는 영역 -->
 			<div id="content_userDrawInfo">
 				<!-- 국내 응모 한 테이블 -->
-				<table id="drawInfoTable_kr">
-					<tr>
-						<th colspan="3"> <h4>국내 응모 한 곳</h4> </th>
-					</tr>
+				<div id="dome-draw-wrapper">
+					<span> <h4> 국내 응모 한 곳 </h4></span>
 					<%
 						for(int i=0; i<drawInfoList_kr.size(); i++){
 							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(i);
 							BrandDTO bdto = (BrandDTO) brandList_kr.get(i);
+							OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(i);
 					%>
-						<tr>
-							<td> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="50" height="50"> </td>
-							<td> <%=bdto.getBrand_name()%></td>
-							<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" width="22" height="15"> </td>
-						</tr>
+						<div class="grid-wrapper_D">
+							<div class="grid-item_D">
+								<!-- 로고 -->
+								<div class="grid-logo">
+									<a href="<%=odto.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>"> </a>
+								</div>
+								<!-- 브랜드 내용 -->
+								<div class="grid-content">
+									<!-- 브랜드 이름 & 국기 -->
+									<div id="wrapper-name">
+										<span id="brand_name_D"><%=bdto.getBrand_name()%></span>
+									</div>
+									<!-- 구매방식 -->
+									<div id="wrapper-bmethod_D">
+										<span id="wrapper-content_D"><%=odto.getBuy_method()%></span>
+									</div>
+								</div>
+							</div>
+						</div>
 					<%
 						}
 					%>
-				</table>
+				</div>
+			
 				<!-- 해외 응모 한 테이블 -->
-				<table id="drawInfoTable_etc">
-					<tr>
-						<th colspan="3"> <h4>해외 응모 한 곳</h4> </th>
-					</tr>
+				<div id="inter-draw-wrapper">
+					<span> <h4> 해외 응모 한 곳 </h4></span>
 					<%
 						for(int i=0; i<drawInfoList_etc.size(); i++){
 							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_etc.get(i);
 							BrandDTO bdto = (BrandDTO) brandList_etc.get(i);
+							OnlineDTO odto = (OnlineDTO) onlineinfoList_etc.get(i);
 					%>
-						<tr>
-							<td> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="50" height="50"> </td>
-							<td> <%=bdto.getBrand_name()%></td>
-							<td> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" width="22" height="15"> </td>
-						</tr>
+						<div class="grid-wrapper_D">
+							<div class="grid-item_D">
+								<!-- 로고 -->
+								<div class="grid-logo">
+										<a href="<%=odto.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>"> </a>
+								</div>
+								<!-- 브랜드 내용 -->
+								<div class="grid-content">
+									<!-- 브랜드 이름 & 국기 -->
+									<div id="wrapper-name">
+										<span id="brand_name_D"><%=bdto.getBrand_name()%></span>
+									</div>
+									<!-- 구매방식 -->
+									<div id="wrapper-bmethod_D">
+										<span id="wrapper-content_D"><%=odto.getBuy_method()%></span>
+									</div>
+								</div>
+							</div>
+						</div>
 					<%
 						}
 					%>
-				</table>
+				</div>
+				
 			</div>
 		</div>	
 	</div>
