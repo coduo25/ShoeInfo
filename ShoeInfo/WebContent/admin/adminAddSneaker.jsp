@@ -67,10 +67,9 @@
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 스타일 코드 </td>
+						<td id="category" colspan="2"> 제품 스타일 코드* </td>
 						<td colspan="2">
 							<input type="text" name="model_stylecode">
-							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
 						</td>
 					</tr>
 					<tr>
@@ -178,7 +177,6 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-		
 		//모든 input 유효성 검사하는 함수
 		$('#addSneakerForm').submit(function(){
 			//브랜드가 빈칸이면
@@ -198,7 +196,12 @@
 				$('input[name=file1]').focus();
 				return false;
 			}
-			
+			//제품 스타일 코드를 안 넣을때
+			else if($('input[name=model_stylecode]').val() = ''){
+				alert("스타일 코드가 존재하는 제품만 등록할수 있습니다. \n스타일코드를 작성해주세요.");
+				$('input[name=model_stylecode]').focus();
+				return false;
+			}
 			//발매일이 빈칸일시
 			else if($('#sel_year').val() == 'default'){
 				alert("발매 년도를 선택해주세요.");
@@ -215,11 +218,9 @@
 				$('#sel_day').focus();
 				return false;
 			}
-			
 		});
 		
 	});
-
+	
 </script>
-
 </html>
