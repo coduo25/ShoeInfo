@@ -18,6 +18,7 @@ public class UpdateDrawInfoAction implements Action{
 		//넘어온 값 저장하기
 		OnlineDTO odto = new OnlineDTO();
 		odto.setOnline_num(Integer.parseInt(request.getParameter("online_num")));
+		odto.setModel_num(Integer.parseInt(request.getParameter("model_num")));
 		odto.setModel_stylecode(request.getParameter("model_stylecode"));
 		odto.setCountry_region(request.getParameter("country_region"));
 		odto.setCountry_name(request.getParameter("country_name"));
@@ -65,9 +66,9 @@ public class UpdateDrawInfoAction implements Action{
 		
 		OnlineDAO odao = new OnlineDAO();
 		odao.updateOnlineinfo(odto);
-
+		
 		// 페이지이동
-		forward.setPath("./SneakerDetail.go?model_stylecode="+odto.getModel_stylecode());
+		forward.setPath("./SneakerDetail.go?model_stylecode="+odto.getModel_stylecode()+"&num="+odto.getModel_num());
 		forward.setRedirect(true);
 		return forward;
 	}

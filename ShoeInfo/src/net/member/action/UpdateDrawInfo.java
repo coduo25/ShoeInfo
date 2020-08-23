@@ -20,6 +20,7 @@ public class UpdateDrawInfo implements Action{
 		ActionForward forward = new ActionForward();
 		
 		//넘어온 정보 가져오기(model_stylecode, brand_id)
+		int model_num = Integer.parseInt(request.getParameter("num"));
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		String brand_id = (String) request.getParameter("brand_id");
 		
@@ -30,7 +31,7 @@ public class UpdateDrawInfo implements Action{
 		
 		//신발 모델 정보 가져오기
 		SneakerDAO sdao = new SneakerDAO();
-		SneakerDTO sneakerDetail = sdao.getSneakerDetail(model_stylecode);
+		SneakerDTO sneakerDetail = sdao.getSneakerDetail(model_num, model_stylecode);
 		
 		request.setAttribute("sneakerDetail", sneakerDetail);
 		

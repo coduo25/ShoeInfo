@@ -4,6 +4,7 @@ package net.member.db;
 public class MemberDrawDTO {
 	
 	private String member_email;
+	private int model_num;
 	private String model_stylecode;
 	private String country_name;
 	private String brand_id;
@@ -14,6 +15,12 @@ public class MemberDrawDTO {
 	}
 	public void setMember_email(String member_email) {
 		this.member_email = member_email;
+	}
+	public int getModel_num() {
+		return model_num;
+	}
+	public void setModel_num(int model_num) {
+		this.model_num = model_num;
 	}
 	public String getModel_stylecode() {
 		return model_stylecode;

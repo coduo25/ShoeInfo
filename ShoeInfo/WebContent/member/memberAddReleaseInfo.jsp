@@ -28,7 +28,6 @@
 		if(user == null){
 			response.sendRedirect("./SneakerList.go");
 		}
-		
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		if(model_stylecode == null){
 			model_stylecode = "";
@@ -37,7 +36,6 @@
 		List<BrandDTO> brandList = (List<BrandDTO>) request.getAttribute("brandList");
 		
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
-	
 	%>
 
 	<!-- Header -->
@@ -47,6 +45,14 @@
 
 		<!-- content -->
 		<div id="content_sneakerDetail">
+			<!-- 카테고리 -->
+			<div id="cate_Detail">
+				<a href="./SneakerList.go"> <span> HOME </span> </a>
+				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
+				<a href="./SneakerDetail.go?model_stylecode=<%=model_stylecode%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name() %></span> </a>
+				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
+				<span> ADD INFO </span>
+			</div>
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail">
 				<div class="sneaker_image_wrapper"> 
@@ -63,6 +69,7 @@
 				<!-- 추가하는 form -->
 				<div class="add_wrapper">
 					<form action="./AddOnlineInfoAction.me" id="addOnlineForm" method="post">
+						<input type="hidden" name="model_num" value="<%=sdto.getNum()%>"> 
 						<div id="stylecode-form">
 							<span id="category"> 스타일 코드 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
 							<input type="text" name="model_stylecode" value="<%=model_stylecode%>" readonly>
@@ -72,7 +79,7 @@
 							<span id="category"> 브랜드 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
 							<div class="search-form">
 								<input type="text" placeholder="ex. END, SNS, ..." onkeyup="filter()" id="textBrand"> 
-								<input type="button" value="검색" id="searchBtn"> 					
+								<input type="button" value="검색" id="searchBtn">
 							</div>
 							<div class="searched-form">
 								<!-- form 끄는 버튼 -->

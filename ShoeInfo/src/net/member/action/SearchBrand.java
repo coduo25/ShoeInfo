@@ -24,6 +24,7 @@ public class SearchBrand implements Action {
 		if(model_stylecode == null){
 			model_stylecode = "";
 		}
+		int num = Integer.parseInt(request.getParameter("num")); 
 
 		//BrandDB로부터 모든 브랜드 가져오는 함수
 		BrandDAO bdao = new BrandDAO();
@@ -34,7 +35,7 @@ public class SearchBrand implements Action {
 
 		//신발 모델 정보 가져오기
 		SneakerDAO sdao = new SneakerDAO();
-		SneakerDTO sneakerDetail = sdao.getSneakerDetail(model_stylecode);
+		SneakerDTO sneakerDetail = sdao.getSneakerDetail(num, model_stylecode);
 		
 		request.setAttribute("sneakerDetail", sneakerDetail);
 		

@@ -59,10 +59,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 썸네일 이미지* </td>
-						<td colspan="2"> <input type="file" name="file0"> </td>
-					</tr>
-					<tr>
 						<td id="category" colspan="2"> 제품 이미지* </td>
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
@@ -186,11 +182,6 @@
 				return false;
 			}
 			//제품 이미지들 안 넣을때
-			else if($('input[name=file0]').val() == ''){
-				alert("썸네일 이미지를 넣어주세요.");
-				$('input[name=file0]').focus();
-				return false;
-			}
 			else if($('input[name=file1]').val() == ''){
 				alert("신발 이미지를 넣어주세요.");
 				$('input[name=file1]').focus();

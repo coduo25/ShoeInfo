@@ -78,6 +78,7 @@
 		Date today = original_format.parse(current);
 	%>
 	<input type="hidden" class="login_user" value="<%=user%>">
+	<input type="hidden" class="num" id="num" value="<%=sdto.getNum()%>">
 	
 	<div id="wrapper" class="container">
 
@@ -92,7 +93,7 @@
 			<%	//관리자 권한일때 제품 기본정보 수정하는 페이지로 가는 버튼
 				if(usr_position.equals("admin")){
 			%>
-				<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
+				<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
 			<%}%>
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail">
@@ -107,7 +108,6 @@
 				</div>
 					
 				<div class="detail_wrapper">
-						
 					<!-- 세부사항 -->					
 					<div class="desc_wrapper">
 						<div class="sneaker_option_wrapper">
@@ -152,7 +152,7 @@
 						<!-- 추가하기 버튼 -->
 						<div class="sneaker_cate">
 							<button type="button" class="rel_Btn">
-								<span> 발매정보 추가하기 </span>
+								<span id="rel_Btn_label"> 발매정보 추가하기 </span>
 							</button>
 						</div>
 						<!-- 조회수 -->
@@ -362,9 +362,9 @@
 											<span> <%=odto.getBuy_method()%> </span>
 										</span>
 									</div>
-									<!-- 직배여부 -->
+									<!-- 배송여부 -->
 									<div id="wrapper-ship">
-										<span> 직배여부 </span>
+										<span> 배송여부 </span>
 										<span id="wrapper-content">
 											<span> <%=odto.getDelivery_method()%> </span>
 										</span>
@@ -378,7 +378,7 @@
 												<span id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" style="width:16px; height:16px; vertical-align: middle;"> </span>
 											<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 											<%}else if(odto.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
-												<span id="draw-status_<%=country_name_eng%><%=i%>"> 
+												<span id="draw-status_<%=country_name_eng%><%=i%>">
 													<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 													<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 													<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
@@ -697,7 +697,7 @@
 								<!-- 관리자 권한 버튼 -->
 								<%if(usr_position.equals("admin")){%>
 									<div id="wrapper-admin">
-										<input type="button" id="adminDelBtn_<%=country_name_eng%><%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto.getModel_stylecode()%>&brand_id=<%=odto.getBrand_id()%>'">
+										<input type="button" id="adminDelBtn_<%=country_name_eng%><%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto.getModel_stylecode()%>&brand_id=<%=odto.getBrand_id()%>&model_num=<%=sdto.getNum()%>'">
 									</div>
 								<%}%>
 							</div>
@@ -757,6 +757,7 @@
 	$(document).ready(function(){
 		
 		var model_stylecode = document.getElementById('model_stylecode').innerHTML;
+		var num = $('.num').val();
 		
 		//발매정보 추가하기 버튼 눌렸을시
 		$('.rel_Btn').click(function(){
@@ -768,7 +769,7 @@
 				}
 			}
 			else {
-				location.href="./SearchBrand.me?model_stylecode=" + model_stylecode;
+				location.href="./SearchBrand.me?model_stylecode=" + model_stylecode + "&num=" + num;
 			}	
 		});
 		
@@ -838,10 +839,11 @@
 				}
 			}
 			else {
+				var model_num = $('#num').val()
 				var model_stylecode = $('#modi_modelStylecode-' + lastElement).val();
 				var brand_id = $('#modi_brandId-' + lastElement).val();
-				
-				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id;
+		
+				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id + "&num=" + model_num;
 			}
 		});
 		
@@ -1092,6 +1094,8 @@
 				//kr
 				var checkbox_country = checkbox_id_country_num.replace(/[0-9]/g,'');
 				
+				var num = $('.num').val();
+				
 				if($(this).is(":checked")==true){
 					//체크가 안된 상태에서 응모여부 물어보기
 					$(this).prop("checked", false);
@@ -1100,10 +1104,10 @@
 				   		$.ajax({
 				   			type:'get',
 				   			url:'./addUserDrawInfoAction.me',
-				   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+				   			data: 'model_num=' + num + '&model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
 				   			dataType: 'html',
 				   			success:function(data) {
-				   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");	
+// 				   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");	
 				   			},error:function(request,status,error){
 							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 							}
@@ -1122,10 +1126,10 @@
 				   		$.ajax({
 				   			type:'get',
 				   			url:'./deleteUserDrawInfoAction.me',
-				   			data: 'model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+				   			data: 'model_num=' + num + '&model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
 				   			dataType: 'html',
 				   			success:function(data) {
-				   				alert("응모여부를 취소하였습니다.");
+// 				   				alert("응모여부를 취소하였습니다.");
 				   			},error:function(request,status,error){
 							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 							}

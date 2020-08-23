@@ -71,21 +71,20 @@ public class SneakerDAO {
 				num = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into shoeinfo_sneakerlibrary values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_sneakerlibrary values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, sdto.getBrand());
 			pstmt.setString(3, sdto.getSub_brand());
 			pstmt.setString(4, sdto.getBrand_index());
-			pstmt.setString(5, sdto.getImage_thumb());
-			pstmt.setString(6, sdto.getImage());
-			pstmt.setString(7, sdto.getModel_stylecode());
-			pstmt.setString(8, sdto.getModel_name());
-			pstmt.setString(9, sdto.getModel_colorway());
-			pstmt.setInt(10, sdto.getPrice());
-			pstmt.setString(11, sdto.getRelease_date());
-			pstmt.setString(12, sdto.getRelease_status());
-			pstmt.setInt(13, sdto.getViews());
+			pstmt.setString(5, sdto.getImage());
+			pstmt.setString(6, sdto.getModel_stylecode());
+			pstmt.setString(7, sdto.getModel_name());
+			pstmt.setString(8, sdto.getModel_colorway());
+			pstmt.setInt(9, sdto.getPrice());
+			pstmt.setString(10, sdto.getRelease_date());
+			pstmt.setString(11, sdto.getRelease_status());
+			pstmt.setInt(12, sdto.getViews());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,7 +108,6 @@ public class SneakerDAO {
 				sdto.setBrand(rs.getString("brand"));
 				sdto.setSub_brand(rs.getString("sub_brand"));
 				sdto.setBrand_index(rs.getString("brand_index"));
-				sdto.setImage_thumb(rs.getString("image_thumb"));
 				sdto.setImage(rs.getString("image"));
 				sdto.setModel_stylecode(rs.getString("model_stylecode"));
 				sdto.setModel_name(rs.getString("model_name"));
@@ -143,10 +141,10 @@ public class SneakerDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				SneakerDTO sdto = new SneakerDTO();
+				sdto.setNum(rs.getInt("num"));
 				sdto.setBrand(rs.getString("brand"));
 				sdto.setSub_brand(rs.getString("sub_brand"));
 				sdto.setBrand_index(rs.getString("brand_index"));
-				sdto.setImage_thumb(rs.getString("image_thumb"));
 				sdto.setImage(rs.getString("image"));
 				sdto.setModel_stylecode(rs.getString("model_stylecode"));
 				sdto.setModel_name(rs.getString("model_name"));
@@ -175,12 +173,13 @@ public class SneakerDAO {
 	}
 	
 	//조회수 올리는 함수
-	public void addViews(String model_stylecode) {
+	public void addViews(int model_num, String model_stylecode) {
 		try {
 			con = getConnection();
-			sql = "update shoeinfo_sneakerlibrary set views = views + 1 where model_stylecode = ?";
+			sql = "update shoeinfo_sneakerlibrary set views = views + 1 where model_stylecode = ? and num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
+			pstmt.setInt(2, model_num);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -188,18 +187,18 @@ public class SneakerDAO {
 			closeDB();
 		}
 	}
-		
 	
 	//신발 상세정보 가져오는 함수
-	public SneakerDTO getSneakerDetail(String model_stylecode) {
+	public SneakerDTO getSneakerDetail(int num, String model_stylecode) {
 		SneakerDTO sdto = null;
 		try {
 			con = getConnection();
 
 			//신발 정보 가져오기
-			sql = "select * from shoeinfo_sneakerlibrary where model_stylecode = ?";
+			sql = "select * from shoeinfo_sneakerlibrary where model_stylecode = ? and num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
+			pstmt.setInt(2, num);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()){
@@ -209,7 +208,6 @@ public class SneakerDAO {
 				sdto.setBrand(rs.getString("brand"));
 				sdto.setSub_brand(rs.getString("sub_brand"));
 				sdto.setBrand_index(rs.getString("brand_index"));
-				sdto.setImage_thumb(rs.getString("image_thumb"));
 				sdto.setImage(rs.getString("image"));
 				sdto.setModel_name(rs.getString("model_name"));
 				sdto.setModel_colorway(rs.getString("model_colorway"));
@@ -231,26 +229,26 @@ public class SneakerDAO {
 	public void updateSneakerInfo(SneakerDTO sdto, String old_model_stylecode) {
 		try {
 			con = getConnection();
-			sql = "update shoeinfo_sneakerlibrary set brand = ?, sub_brand = ?, brand_index = ?, image_thumb = ?, image = ?, model_stylecode = ?, model_name = ?, model_colorway = ?, price = ?, release_date = ? where num = ?";
+			sql = "update shoeinfo_sneakerlibrary set brand = ?, sub_brand = ?, brand_index = ?, image = ?, model_stylecode = ?, model_name = ?, model_colorway = ?, price = ?, release_date = ? where num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sdto.getBrand());
 			pstmt.setString(2, sdto.getSub_brand());
 			pstmt.setString(3, sdto.getBrand_index());
-			pstmt.setString(4, sdto.getImage_thumb());
-			pstmt.setString(5, sdto.getImage());
-			pstmt.setString(6, sdto.getModel_stylecode());
-			pstmt.setString(7, sdto.getModel_name());
-			pstmt.setString(8, sdto.getModel_colorway());
-			pstmt.setInt(9, sdto.getPrice());
-			pstmt.setString(10, sdto.getRelease_date());
-			pstmt.setInt(11, sdto.getNum());
+			pstmt.setString(4, sdto.getImage());
+			pstmt.setString(5, sdto.getModel_stylecode());
+			pstmt.setString(6, sdto.getModel_name());
+			pstmt.setString(7, sdto.getModel_colorway());
+			pstmt.setInt(8, sdto.getPrice());
+			pstmt.setString(9, sdto.getRelease_date());
+			pstmt.setInt(10, sdto.getNum());
 			int check = pstmt.executeUpdate();
 			
 			if(check > 0) {
-				sql = "update shoeinfo_onlineinfo set model_stylecode = ? where model_stylecode = ?";
+				sql = "update shoeinfo_onlineinfo set model_stylecode = ? where model_stylecode = ? and model_num = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, sdto.getModel_stylecode());
 				pstmt.setString(2, old_model_stylecode);
+				pstmt.setInt(3, sdto.getNum());
 				pstmt.executeUpdate();
 			}
 		} catch (Exception e) {

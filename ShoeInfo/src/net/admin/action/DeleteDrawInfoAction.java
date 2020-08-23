@@ -30,12 +30,13 @@ public class DeleteDrawInfoAction implements Action{
 		//넘어온 값 저장하기
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		String brand_id = (String) request.getParameter("brand_id");
+		int model_num = Integer.parseInt(request.getParameter("model_num"));
 		
 		OnlineDAO odao = new OnlineDAO();
-		odao.deleteOnlineInfo(model_stylecode, brand_id);
+		odao.deleteOnlineInfo(model_stylecode, brand_id, model_num);
 		
 		//페이지이동
-		forward.setPath("./SneakerDetail.go?model_stylecode=" + model_stylecode);
+		forward.setPath("./SneakerDetail.go?model_stylecode=" + model_stylecode + "&num=" + model_num);
 		forward.setRedirect(true);
 		return forward;
 	}

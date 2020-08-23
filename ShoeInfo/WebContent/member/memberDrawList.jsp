@@ -110,11 +110,21 @@
 							
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 					%>
-						<div id="shoeList_image_<%=z%>" class="shoelist_image">
-							<div id="shoeList_<%=z%><%=i%>" class="shoeList">
-								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>">
-			  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
-								</a>
+						<div class="shoelist_content">
+							<div class="content_wrapper">
+								<!-- 이미지 -->
+								<div class="content_img">
+									<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+									</a>
+								</div>
+								<!-- brand & name -->
+								<div class="content_name" style="margin-bottom: 7%;">
+									<!-- model_name -->
+									<div class="model_name">
+										<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
+									</div>
+								</div>
 							</div>
 						</div>
 					<%	
@@ -135,7 +145,7 @@
 	
 	$(document).ready(function(){
 		//image hover 했을시 이미지 opacity 흐리게 하기
-		$('.shoelist_image').hover(function(){
+		$('.shoelist_content').hover(function(){
 			$(this).css('opacity', '0.3');
 		}, function() {
 			$(this).css('opacity', '1');
@@ -145,27 +155,31 @@
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
 		
 		for(var i=1; i<13; i++){
+			//지금 달 보다 전전달들 ex.현재 8월, 1~6월 사라지고 7월 slideDown 만 나타내기
 			if(i < month) {
 				$("#month" + (i-1)).hide(); //2달 지나간 월들은 없애기
-				$("#div_month" + (i-1)).hide();
 				
 				$("#slide-up_" + i).hide();
 				$("#slide-down_" + i).show();
 				
 				$("#div_month_" + i).hide();
 			}
-			//미래의 월들은 나타내기
+			//지금 달부터 미래의 달부터 나타내기 8~12월
 			else if(i >= month) {
-				//3개월 후까지만 나타내기
-				if((i+3) >= month) {
-					$("#month" + (i+3)).hide(); //3달 후 월들은 없애기
-					$("#div_month" + (i+3)).hide();
-					$("#no_info" + (i+3)).hide();
+				//4개월 후까지만 나타내기
+				var monthPlus4 = month + 4;
+
+				if(i >= monthPlus4) {
+					$("#month" + i).hide(); //4달 후 월들은 없애기
+					$("#no_info" + i).hide();
+					$("#div_month_" + i).hide();
 				}
-				$("#slide-up_" + i).show();
-				$("#slide-down_" + i).hide();
-				
-				$("#div_month_" + i).show();
+				else {
+					$("#slide-up_" + i).show();
+					$("#slide-down_" + i).hide();
+					
+					$("#div_month_" + i).show();
+				}
 			}
 		}
 		

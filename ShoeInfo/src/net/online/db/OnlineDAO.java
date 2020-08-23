@@ -48,10 +48,11 @@ public class OnlineDAO {
 			con = getConnection();
 			
 			//중복 데이터가 있는지 체크하기
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ? and model_num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, odto.getModel_stylecode());
 			pstmt.setString(2, odto.getBrand_id());
+			pstmt.setInt(3, odto.getModel_num());
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -68,22 +69,23 @@ public class OnlineDAO {
 					online_num = rs.getInt(1) + 1;
 				}
 				
-				sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, online_num);
-				pstmt.setString(2, odto.getModel_stylecode());
-				pstmt.setString(3, odto.getCountry_region());
-				pstmt.setString(4, odto.getCountry_name());
-				pstmt.setString(5, odto.getBrand_id());
-				pstmt.setString(6, odto.getOnline_link());
-				pstmt.setString(7, odto.getOnline_start_date());
-				pstmt.setString(8, odto.getOnline_start_time());
-				pstmt.setString(9, odto.getOnline_end_date());
-				pstmt.setString(10, odto.getOnline_end_time());
-				pstmt.setString(11, odto.getOnline_method());
-				pstmt.setString(12, odto.getBuy_method());
-				pstmt.setString(13, odto.getDelivery_method());
-				pstmt.setString(14, odto.getOnline_writer());
+				pstmt.setInt(2, odto.getModel_num());
+				pstmt.setString(3, odto.getModel_stylecode());
+				pstmt.setString(4, odto.getCountry_region());
+				pstmt.setString(5, odto.getCountry_name());
+				pstmt.setString(6, odto.getBrand_id());
+				pstmt.setString(7, odto.getOnline_link());
+				pstmt.setString(8, odto.getOnline_start_date());
+				pstmt.setString(9, odto.getOnline_start_time());
+				pstmt.setString(10, odto.getOnline_end_date());
+				pstmt.setString(11, odto.getOnline_end_time());
+				pstmt.setString(12, odto.getOnline_method());
+				pstmt.setString(13, odto.getBuy_method());
+				pstmt.setString(14, odto.getDelivery_method());
+				pstmt.setString(15, odto.getOnline_writer());
 				pstmt.executeUpdate();
 				check = 1;
 			}
@@ -118,7 +120,7 @@ public class OnlineDAO {
 	}
 
 	//대한민국 신발 온라인 정보 가져오는 함수(브랜드 정보 + 온라인 정보)
-	public Vector getOnlineInfo_kr(String model_stylecode) {
+	public Vector getOnlineInfo_kr(String model_stylecode, int model_num) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -134,10 +136,11 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ? order by online_method desc, online_end_date, online_end_time, online_start_date, online_start_time";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_name = ? AND model_num = ? order by online_method desc, online_end_date, online_end_time, online_start_date, online_start_time";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "대한민국");
+			pstmt.setInt(3, model_num);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OnlineDTO odto = new OnlineDTO();
@@ -189,7 +192,7 @@ public class OnlineDAO {
 	}
 	
 	//Asia(대한민국 빼고)지역 신발 온라인 정보 가져오는 함수(브랜드 정보 + 응모 정보)
-	public Vector getOnlineInfo_asia(String model_stylecode) {
+	public Vector getOnlineInfo_asia(String model_stylecode, int model_num) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -205,11 +208,12 @@ public class OnlineDAO {
 		
 		try {	
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND NOT country_name = ? order by online_method desc, online_end_date, online_end_time, online_start_date, online_start_time";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND model_num = ? AND NOT country_name = ? order by online_method desc, online_end_date, online_end_time, online_start_date, online_start_time";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, "아시아");
-			pstmt.setString(3, "대한민국");
+			pstmt.setInt(3, model_num);
+			pstmt.setString(4, "대한민국");
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OnlineDTO odto = new OnlineDTO();
@@ -261,7 +265,7 @@ public class OnlineDAO {
 		return vec;
 	}
 	
-	public Vector getOnlineInfo(String model_stylecode, String country_region) {
+	public Vector getOnlineInfo(String model_stylecode, String country_region, int model_num) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -275,10 +279,11 @@ public class OnlineDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? order by online_method desc, online_end_date, online_end_time, online_start_date, online_start_time";
+			sql = "select * from shoeinfo_onlineinfo where model_stylecode = ? AND country_region = ? AND model_num = ? order by online_method desc, online_end_date, online_end_time, online_start_date, online_start_time";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
 			pstmt.setString(2, country_region);
+			pstmt.setInt(3, model_num);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OnlineDTO odto = new OnlineDTO();
@@ -369,22 +374,23 @@ public class OnlineDAO {
 	public void updateOnlineinfo(OnlineDTO odto){
 		try {
 			con = getConnection();
-			sql = "update shoeinfo_onlineinfo set model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_date = ?, online_start_time = ?, online_end_date = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, online_writer = ? where online_num = ?";
+			sql = "update shoeinfo_onlineinfo set model_num = ?, model_stylecode = ?, country_region = ?, country_name = ?, brand_id = ?, online_link = ?, online_start_date = ?, online_start_time = ?, online_end_date = ?, online_end_time = ?, online_method = ?, buy_method = ?, delivery_method = ?, online_writer = ? where online_num = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, odto.getModel_stylecode());
-			pstmt.setString(2, odto.getCountry_region());
-			pstmt.setString(3, odto.getCountry_name());
-			pstmt.setString(4, odto.getBrand_id());
-			pstmt.setString(5, odto.getOnline_link());
-			pstmt.setString(6, odto.getOnline_start_date());
-			pstmt.setString(7, odto.getOnline_start_time());
-			pstmt.setString(8, odto.getOnline_end_date());
-			pstmt.setString(9, odto.getOnline_end_time());
-			pstmt.setString(10, odto.getOnline_method());
-			pstmt.setString(11, odto.getBuy_method());
-			pstmt.setString(12, odto.getDelivery_method());
-			pstmt.setString(13, odto.getOnline_writer());
-			pstmt.setInt(14, odto.getOnline_num());
+			pstmt.setInt(1, odto.getModel_num());
+			pstmt.setString(2, odto.getModel_stylecode());
+			pstmt.setString(3, odto.getCountry_region());
+			pstmt.setString(4, odto.getCountry_name());
+			pstmt.setString(5, odto.getBrand_id());
+			pstmt.setString(6, odto.getOnline_link());
+			pstmt.setString(7, odto.getOnline_start_date());
+			pstmt.setString(8, odto.getOnline_start_time());
+			pstmt.setString(9, odto.getOnline_end_date());
+			pstmt.setString(10, odto.getOnline_end_time());
+			pstmt.setString(11, odto.getOnline_method());
+			pstmt.setString(12, odto.getBuy_method());
+			pstmt.setString(13, odto.getDelivery_method());
+			pstmt.setString(14, odto.getOnline_writer());
+			pstmt.setInt(15, odto.getOnline_num());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -394,13 +400,14 @@ public class OnlineDAO {
 	}
 	
 	//신발 온라인 정보 삭제하는 함수
-	public void deleteOnlineInfo(String model_stylecode, String brand_id){
+	public void deleteOnlineInfo(String model_stylecode, String brand_id, int model_num){
 		try {
 			con = getConnection();
-			sql = "delete from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
+			sql = "delete from shoeinfo_onlineinfo where model_num = ? AND model_stylecode = ? AND brand_id = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, brand_id);
+			pstmt.setInt(1, model_num);
+			pstmt.setString(2, model_stylecode);
+			pstmt.setString(3, brand_id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

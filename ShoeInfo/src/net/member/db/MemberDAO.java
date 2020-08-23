@@ -359,14 +359,15 @@ public class MemberDAO {
 			if(rs.next()){
 				userDraw_count = rs.getInt(1) + 1;
 			}
-			sql = "insert into shoeinfo_memberdrawinfo values(?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_memberdrawinfo values(?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userDraw_num);
 			pstmt.setString(2, mddto.getMember_email());
-			pstmt.setString(3, mddto.getModel_stylecode());
-			pstmt.setString(4, mddto.getCountry_name());
-			pstmt.setString(5, mddto.getBrand_id());
-			pstmt.setInt(6, userDraw_count);
+			pstmt.setInt(3, mddto.getModel_num());
+			pstmt.setString(4, mddto.getModel_stylecode());
+			pstmt.setString(5, mddto.getCountry_name());
+			pstmt.setString(6, mddto.getBrand_id());
+			pstmt.setInt(7, userDraw_count);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -381,12 +382,13 @@ public class MemberDAO {
 		int userDraw_count = 0;
 		try {
 			con = getConnection();
-			sql = "delete from shoeinfo_memberdrawinfo where member_email = ? AND model_stylecode = ? AND brand_id = ? AND country_name = ?";
+			sql = "delete from shoeinfo_memberdrawinfo where member_email = ? AND model_num = ? AND model_stylecode = ? AND brand_id = ? AND country_name = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mddto.getMember_email());
-			pstmt.setString(2, mddto.getModel_stylecode());
-			pstmt.setString(3, mddto.getBrand_id());
-			pstmt.setString(4, mddto.getCountry_name());
+			pstmt.setInt(2, mddto.getModel_num());
+			pstmt.setString(3, mddto.getModel_stylecode());
+			pstmt.setString(4, mddto.getBrand_id());
+			pstmt.setString(5, mddto.getCountry_name());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -428,7 +430,7 @@ public class MemberDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select distinct A.model_stylecode from shoeinfo_memberdrawinfo AS A JOIN shoeinfo_sneakerlibrary AS B ON A.model_stylecode = B.model_stylecode where member_email = ? order by (B.release_date);";
+			sql = "select distinct A.model_stylecode, B.num from shoeinfo_memberdrawinfo AS A JOIN shoeinfo_sneakerlibrary AS B ON A.model_stylecode = B.model_stylecode where member_email = ? order by (B.release_date);";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
@@ -436,11 +438,13 @@ public class MemberDAO {
 			while(rs.next()){
 				MemberDrawDTO mddto = new MemberDrawDTO();
 				mddto.setModel_stylecode(rs.getString("model_stylecode"));
+				mddto.setModel_num(rs.getInt("num"));
 				
 				//해당 브랜드 정보 가져오기
-				sql = "select * from shoeinfo_sneakerlibrary where model_stylecode = ?";
+				sql = "select * from shoeinfo_sneakerlibrary where model_stylecode = ? and num = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, mddto.getModel_stylecode());
+				pstmt2.setInt(2, mddto.getModel_num());
 				rs2 = pstmt2.executeQuery();
 				
 				if(rs2.next()){
@@ -449,6 +453,9 @@ public class MemberDAO {
 						userDrawStylecodeList.add(mddto);
 						//스니커 정보 DB에 해당 스니커가 저장되어있으면
 						SneakerDTO sdto = new SneakerDTO();
+						sdto.setNum(rs2.getInt("num"));
+						sdto.setBrand(rs2.getString("brand"));
+						sdto.setModel_name(rs2.getString("model_name"));
 						sdto.setModel_stylecode(rs2.getString("model_stylecode"));
 						sdto.setImage(rs2.getString("image"));
 						sdto.setRelease_date(rs2.getString("release_date"));
@@ -467,7 +474,7 @@ public class MemberDAO {
 	}
 	
 	//사용자가 응모한 브랜드 정보 불러오는 함수
-	public Vector getDrawInfo(String model_stylecode, String email, String country) {
+	public Vector getDrawInfo(int model_num, String model_stylecode, String email, String country) {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -488,19 +495,21 @@ public class MemberDAO {
 		try {	
 			con = getConnection();
 			if(country.equals("대한민국")){
-				sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_email = ? AND country_name = ?";
+				sql = "select * from shoeinfo_memberdrawinfo where model_num = ? AND model_stylecode = ? AND member_email = ? AND country_name = ?";
 			}else if(country.equals("해외")){
-				sql = "select * from shoeinfo_memberdrawinfo where model_stylecode = ? AND member_email = ? AND not country_name = ? order by draw_count";
+				sql = "select * from shoeinfo_memberdrawinfo where model_num = ? AND model_stylecode = ? AND member_email = ? AND not country_name = ? order by draw_count";
 			}
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, model_stylecode);
-			pstmt.setString(2, email);
-			pstmt.setString(3, "대한민국");
+			pstmt.setInt(1, model_num);
+			pstmt.setString(2, model_stylecode);
+			pstmt.setString(3, email);
+			pstmt.setString(4, "대한민국");
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				MemberDrawDTO mddto = new MemberDrawDTO();
 				mddto.setBrand_id(rs.getString("brand_id"));
 				mddto.setModel_stylecode(rs.getString("model_stylecode"));
+				mddto.setModel_num(rs.getInt("model_num"));
 				drawInfoList_kr.add(mddto);
 				
 				//한국 브랜드 정보 가져오기

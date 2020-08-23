@@ -26,7 +26,8 @@ public class SneakerDetailAction implements Action{
 		
 		//넘어온 값 저장(model_stylecode)
 		String model_stylecode = (String) request.getParameter("model_stylecode");
-		
+		int num = Integer.parseInt(request.getParameter("num")); 
+				
 		/******************************************************
 		 * 사용자 응모한 브랜드 리스트 만들기
 		 ******************************************************/
@@ -41,9 +42,9 @@ public class SneakerDetailAction implements Action{
 		SneakerDAO sdao = new SneakerDAO();
 		
 		//정보 가져오기 전에 조회수 1 올리기
-		sdao.addViews(model_stylecode);
+		sdao.addViews(num, model_stylecode);
 		
-		SneakerDTO sdto = sdao.getSneakerDetail(model_stylecode);
+		SneakerDTO sdto = sdao.getSneakerDetail(num, model_stylecode);
 		//request에 저장
 		request.setAttribute("sneakerDetail", sdto);
 		
@@ -55,30 +56,30 @@ public class SneakerDetailAction implements Action{
 		OnlineDAO odao = new OnlineDAO();
 		
 		//대한민국
-		Vector vec_on_kr = odao.getOnlineInfo_kr(model_stylecode);
+		Vector vec_on_kr = odao.getOnlineInfo_kr(model_stylecode, num);
 		ArrayList<OnlineDTO> onlineList_kr = (ArrayList<OnlineDTO>) vec_on_kr.get(0);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec_on_kr.get(1);
 		
 		//아시아
-		Vector vec_on_asia = odao.getOnlineInfo_asia(model_stylecode);
+		Vector vec_on_asia = odao.getOnlineInfo_asia(model_stylecode, num);
 		ArrayList<OnlineDTO> onlineList_asia = (ArrayList<OnlineDTO>) vec_on_asia.get(0);
 		ArrayList<BrandDTO> brandList_asia = (ArrayList<BrandDTO>) vec_on_asia.get(1);
 		
 		//아메리카
 		String country_region_us = "아메리카";
-		Vector vec_on_america = odao.getOnlineInfo(model_stylecode, country_region_us);
+		Vector vec_on_america = odao.getOnlineInfo(model_stylecode, country_region_us, num);
 		ArrayList<OnlineDTO> onlineList_america = (ArrayList<OnlineDTO>) vec_on_america.get(0);
 		ArrayList<BrandDTO> brandList_america = (ArrayList<BrandDTO>) vec_on_america.get(1);
 		
 		//유럽
 		String country_region_eu = "유럽";
-		Vector vec_on_europe = odao.getOnlineInfo(model_stylecode, country_region_eu);;
+		Vector vec_on_europe = odao.getOnlineInfo(model_stylecode, country_region_eu, num);
 		ArrayList<OnlineDTO> onlineList_europe = (ArrayList<OnlineDTO>) vec_on_europe.get(0);
 		ArrayList<BrandDTO> brandList_europe = (ArrayList<BrandDTO>) vec_on_europe.get(1);
 		
 		//기타지역
 		String country_region_etc = "기타";
-		Vector vec_on_etc = odao.getOnlineInfo(model_stylecode, country_region_etc);
+		Vector vec_on_etc = odao.getOnlineInfo(model_stylecode, country_region_etc, num);
 		ArrayList<OnlineDTO> onlineList_etc = (ArrayList<OnlineDTO>) vec_on_etc.get(0);
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_on_etc.get(1);
 		

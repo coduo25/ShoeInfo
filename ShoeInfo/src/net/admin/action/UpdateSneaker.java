@@ -22,8 +22,10 @@ public class UpdateSneaker implements Action{
 		}
 		
 		String model_stylecode = (String) request.getParameter("model_stylecode");
+		int num = Integer.parseInt(request.getParameter("num")); 
+		
 		SneakerDAO sdao = new SneakerDAO();
-		SneakerDTO sneakerInfo = sdao.getSneakerDetail(model_stylecode);
+		SneakerDTO sneakerInfo = sdao.getSneakerDetail(num, model_stylecode);
 		
 		request.setAttribute("sneakerInfo", sneakerInfo);
 		

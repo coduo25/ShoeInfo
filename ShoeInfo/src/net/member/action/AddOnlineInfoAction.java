@@ -20,6 +20,7 @@ public class AddOnlineInfoAction implements Action{
 		ActionForward forward = new ActionForward();
 		
 		//넘어온 정보들 값 
+		int model_num = Integer.parseInt(request.getParameter("model_num"));
 		String model_stylecode = request.getParameter("model_stylecode");
 		String country_name = request.getParameter("country_name");
 		String brand_name = request.getParameter("brand_name");
@@ -75,6 +76,7 @@ public class AddOnlineInfoAction implements Action{
 		//넘어온 값 DrawDTO 객체에 담기
 		OnlineDTO odto = new OnlineDTO();
 		
+		odto.setModel_num(model_num);
 		odto.setModel_stylecode(model_stylecode);
 		odto.setCountry_region(country_region);
 		odto.setCountry_name(country_name);
@@ -104,7 +106,7 @@ public class AddOnlineInfoAction implements Action{
 		}
 		
 		//페이지이동
-		forward.setPath("./SneakerDetail.go?model_stylecode="+odto.getModel_stylecode());
+		forward.setPath("./SneakerDetail.go?model_stylecode="+odto.getModel_stylecode()+"&num="+odto.getModel_num());
 		forward.setRedirect(true);
 		return forward;
 	}

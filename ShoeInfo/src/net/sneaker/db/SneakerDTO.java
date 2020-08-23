@@ -8,7 +8,6 @@ public class SneakerDTO {
 	private String brand;
 	private String sub_brand;
 	private String brand_index;
-	private String image_thumb;
 	private String image;
 	private String model_stylecode;
 	private String model_name;
@@ -42,13 +41,6 @@ public class SneakerDTO {
 	}
 	public void setBrand_index(String brand_index) {
 		this.brand_index = brand_index;
-	}
-	
-	public String getImage_thumb() {
-		return image_thumb;
-	}
-	public void setImage_thumb(String image_thumb) {
-		this.image_thumb = image_thumb;
 	}
 	public String getImage() {
 		return image;

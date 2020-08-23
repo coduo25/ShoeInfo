@@ -21,7 +21,7 @@ body {font-size:1em; line-weight:1.4}
 	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 2.5% 0;}
 		/* 이미지 & 이름*/
 		.sneaker_image { text-align: center; }
-		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px; margin-top: -5%; }
+		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px; margin-top: -2%; }
 			/* 이름 */
 			.sneaker_image_wrapper div.sneaker_name { text-align: center; margin-bottom: 13px; }
 			.sneaker_name { line-height: 30px; text-transform: uppercase; font-size:20px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; color: #232323; }
@@ -31,16 +31,17 @@ body {font-size:1em; line-weight:1.4}
 		.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper { width: 50%; float: left; }
 		.cate_wrapper { width: 100%; float: left; }
 		.sneaker_cate { line-height: 30px; display: block; }
-		.sneaker_cate label { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 150px; }
-		.sneaker_cate span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 330px; }
+		.sneaker_cate label { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 120px; }
+		.sneaker_cate span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 240px; }
 		
 		.rel_Btn { border: 1px solid #232323; padding: 4px; width: 70%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
 		.rel_Btn:hover { cursor: pointer; background-color: #232323; color: white; }
+		#rel_Btn_label { min-width: 100%; } 
 		
 		#clickNum-wrapper { margin-top: 3%; } /* 조회수 */
 	
 /* 멤버 응모 여부 페이지 - 신발 상세정보 페이지 */
-#content_sneakerDetail_D { width: 35%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 1% 1% 1%; margin: 0 0 30% 0; }
+#content_sneakerDetail_D { width: 35%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 1% 1% 1%; margin: 4% 0 30% 0; }
 #content_sneakerDetail_D div#sneaker_Detail_D{ width: 100%; padding: 0 5%; }
 #content_sneakerDetail_D .sneaker_image>img { width: 100%; height: 100%; }
 	
@@ -132,7 +133,7 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* 사용자 발매정보 추가하는 페이지 -------------------------------------------------------------------------------------------- */
-.add_wrapper { overflow: auto; width: 100%; display: block; border-top: 2px solid #808080; border-bottom: 2px solid #808080; padding: 4% 15%; }
+.add_wrapper { overflow: auto; width: 100%; display: block; border-top: 2px solid #808080; border-bottom: 2px solid #808080; padding: 4% 15%; margin-bottom: 5%; }
 #addOnlineForm, #updateOnlineForm { padding: 5%; border: 1px solid black; border-radius: 5px; }
 
 #req_icon { font-size: 0.5em; color: #b50000; vertical-align: top; }
@@ -200,189 +201,69 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 90%;
 	}
 	.sneaker_image img, .sneaker_image_draw img{
-		width: 100%;
-		height: 100%;
+		width: 50%;
+		height: 50%;
 	}
-	.detail_table div span{
+	.sneaker_cate label, .sneaker_cate span {
+		font-size: 0.8em;
+	}
+	#rel_Btn_label {
+		font-size: 1em !important;
+	}
+	.grid-wrapper {
+		min-width:23%;
+	}
+	.grid-wrapper span {
 		font-size: 0.9em;
 	}
+	.grid-info {
+		top: 167px;
+	}
+	.grid-info span {
+		font-size: 1.1em !important;
+	}
+	
 }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	#content_sneakerDetail, #content_userDrawInfo {
-		width: 100%;
+	.grid-wrapper {
+		min-width:31.33%;
 	}
-	#content_userDrawInfo {
-		margin-top: 8%;
-	}
-	#content_sneakerDetail table#sneaker_Detail{ 
-		width: 90%; 
-		margin: 10px auto; 
-	}
-	#content_sneakerDetail table { 
-		margin-bottom: 50px; 
-	}
-	.sneaker_image_table, .detail_table {
-		float: left;
-		width: 100%;
-	}
-	.detail_table div.sneaker_name {
-		margin: 20px auto;
-		text-align: center;
-		font-size: 2.5em;
-	}
-	.detail_table div span{
-		font-size: 1.2em;
-	}
-	.detail_table div.sneaker_option_wrapper{
-		margin: 0 0 0 30%;
-	}
-	.detail_table div.sneaker_option_info {
-		margin-bottom: 15px;
-		margin-right: auto;
-		margin-left: auto;
-	}
-	
-	/* 발매처 table 수정하기 */
-	#content_sneakerInfo table td { padding: 2%; }
-	
-	table#sneakerOnlineInfo_table { border-spacing: 0 20px; }
-	
-	table#sneakerOnlineInfo_table .ta_release_info { display: none; }
-	table#sneakerOnlineInfo_table td { display: block; font-size: 1.2em; }
-	
-	table#sneakerOnlineInfo_table #no_info_tr { width: 100%; }
-	table#sneakerOnlineInfo_table #no_info { display: contents; font-size: 1.2em; }
-	
-	/* 온라인 테이블 수정 ------------------------------------------------------------------------------------- */
-/* 	table#sneakerOnlineInfo_table tr { width: 31.333%; float: left; background-color: #F2F2F2; padding: 4% 0; margin: 2% 1%; border-radius: 3%; } */
-/* 	table#sneakerOnlineInfo_table tr.no_info_tr { width: 100%; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(1) img { width: 50%; height: 50%; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(2) { text-align: center; padding-left: 0; font-weight: bold;  margin: 0 auto; text-overflow: ellipsis; width: 90%; overflow: hidden; white-space: nowrap; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(3) { display: none; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(4) { margin: 5% auto; font-size: 1.2em; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(4) span.start_time { display: none; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(5) { font-size: 1.2em; font-weight: bold; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(5) .draw_count_result { display: block; padding: 7% 2% 0 2%; } */
-/* 	span#draw_count_result_ing { font-size: 0.8em; position: absolute; transform: translateX(-60%); } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(6) { margin-top: 15%; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(6) .tooltip1 .tooltiptext1 { font-size: 0.8em; left:20%; } */
-	
-/* 	table#sneakerOnlineInfo_table td:last-child { margin: 0 auto; } */
-
-	/* 사용자 응모 페이지 */
-	#drawInfoTable_kr, #drawInfoTable_etc {
-		width: 100%;
-		margin: 0;
-	}
-
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	#content_sneakerDetail, #content_userDrawInfo {
+	
+	#content_sneakerDetail div#cate_Detail {
+		padding: 2.5% 0 0;
+		font-size: 0.6em;
+	}
+	#content_sneakerDetail div#sneaker_Detail {
+		padding: 0;
+	}
+	.sneaker_image img, .sneaker_image_draw img{
+		width: 70%;
+		height: 70%;
+	}
+	.sneaker_name {
+		font-size: 0.7em;
+		line-height: unset;
+	}
+	.detail_wrapper {
+		padding: 2.5%;
+	}
+	.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper {
 		width: 100%;
 	}
-	#content_userDrawInfo {
-		margin-top: 8%;
+	.sneaker_cate label {
+		min-width: 100px;
 	}
-	#content_sneakerDetail table#sneaker_Detail{ 
-		width: 90%; 
-		margin: 10px auto; 
-	}
-	#content_sneakerDetail table { 
-		margin-bottom: 50px; 
-	}
-	.sneaker_image_table, .detail_table {
-		float: left;
-		width: 100%;
-	}
-	.detail_table div span{
-		font-size: 1em;
-	}
-	.detail_table div.sneaker_option_wrapper{
-		margin: 0 0 0 10%;
-	}
-	.detail_table div.sneaker_name {
-		margin: 20px auto;
-		text-align: center;
-		font-size: 1.5em;
+	.desc_wrapper .sneaker_cate span {
+		text-align: right;
+		min-width: 216px;
 	}
 	
-	/* 발매처 table 수정하기 */
-/* 	#content_sneakerInfo table td { padding: 2%; } */
 	
-	table#sneakerOnlineInfo_table { border-spacing: 0 20px; }
-	
-	table#sneakerOnlineInfo_table .ta_release_info { display: none; }
-	table#sneakerOnlineInfo_table td { display: block; font-size: 1.2em; }
-	
-	table#sneakerOnlineInfo_table #no_info_tr { width: 100%; }
-	table#sneakerOnlineInfo_table #no_info { display: inline-table; }
-
-	/* 온라인 테이블 수정 ------------------------------------------------------------------------------------- */
-	table#sneakerOnlineInfo_table tr { width: 100%; float: left; background-color: #F4F4F4; padding: 2% 4% 2% 4%; margin: 2% 1%; border-radius: 3%; }
-	table#sneakerOnlineInfo_table tr.no_info_tr { width: 100%; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(1) { display: none; }
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(1) { position:absolute; left: 83%; padding: 0; padding-top: 3%; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(1) span { font-size: 0.7em; } */
-	
-	table#sneakerOnlineInfo_table td:nth-child(2) { display: inline-block; text-align: left; width: 20%; }
-	table#sneakerOnlineInfo_table td:nth-child(2) img { width: 50px; height: 50px; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(3) { display: inline-block; text-align: left; width: 55%; font-weight: bold; }
-	table#sneakerOnlineInfo_table td:nth-child(3) a { border-bottom: 1px dotted black; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(4) { display: none; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(5) { display: inline-block; width: 20%; }
-	table#sneakerOnlineInfo_table td:nth-child(5) span { font-size: 0.7em; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(6) { display: block; width: 30%; text-align: left; width: 100%; }
-	table#sneakerOnlineInfo_table td:nth-child(6) span.start_time { display: none; }
-	table#sneakerOnlineInfo_table td:nth-child(6):before { content: "응모기간"; padding-right: 7%; color: #737373; }
-	table#sneakerOnlineInfo_table td:nth-child(6):after { content: "까지"; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(7) { display: block; width: 100%; text-align: left; }
-	table#sneakerOnlineInfo_table td:nth-child(7):before { content: "남은시간"; padding-right: 7%; color: #737373; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(8) { display: inline-block; text-align: left; width: 100%; }
-	table#sneakerOnlineInfo_table td:nth-child(8):before { content: "응모방식"; padding-right: 7%; color: #737373; }
-	
-	table#sneakerOnlineInfo_table td:nth-child(9) { display: inline-block; text-align: left; width: 100%; }
-	table#sneakerOnlineInfo_table td:nth-child(9):before { content: "응모여부"; padding-right: 7%; color: #737373; }
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(1) img { width: 50%; height: 50%; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(2) { text-align: center; padding-left: 0; font-weight: bold; margin: 0 auto; text-overflow: ellipsis; width: 90%; overflow: hidden; white-space: nowrap; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(3) { display: none; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(4) { margin: 5% auto; font-size: 1.2em; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(4) span.start_time { display: none; } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(5) { font-size: 1em; font-weight: bold; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(5) .draw_count_result { display: block; padding: 7% 2% 0 2%; } */
-/* 	span#draw_count_result_ing { font-size: 0.8em; position: absolute; transform: translateX(-60%); } */
-	
-/* 	table#sneakerOnlineInfo_table td:nth-child(6) { margin-top: 15%; } */
-/* 	table#sneakerOnlineInfo_table td:nth-child(6) .tooltip1 .tooltiptext1 { font-size: 0.8em; left:20%; } */
-	
-/* 	table#sneakerOnlineInfo_table td:last-child { margin: 0 auto; } */
-
-	/* 사용자 응모 페이지 */
-	#drawInfoTable_kr, #drawInfoTable_etc {
-		width: 100%;
-		margin: 0;
-	}
 }
 	

@@ -100,6 +100,7 @@
 				<div class="add_wrapper" style="margin-bottom: 5%;">
 					<form action="./UpdateDrawInfoAction.me" id="updateOnlineForm" method="post">
 						<input type="hidden" name="online_num" value="<%=onlineDrawInfo.getOnline_num()%>">
+						<input type="hidden" name="model_num" value="<%=sdto.getNum()%>">
 						<input type="hidden" name="country_region" value="<%=onlineDrawInfo.getCountry_region()%>">
 						<input type="hidden" name="brand_id" value="<%=onlineDrawInfo.getBrand_id()%>">
 						<div id="stylecode-form">

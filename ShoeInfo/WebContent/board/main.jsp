@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -39,6 +40,9 @@
 		ArrayList<SneakerDTO> sneakerList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList12");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat new_format = new SimpleDateFormat("M월 d일");
+		
+		SimpleDateFormat month_format = new SimpleDateFormat("M월");
 		
 		//오늘날짜
 		Date currentTime = new Date();
@@ -90,24 +94,59 @@
 						}
 						for (int i = 0; i <new_sneakerList.size(); i++) {
 							SneakerDTO sdto = new_sneakerList.get(i);
+							
+							Date month_date_type = null;
+							
+							if(sdto.getRelease_date().contains("99")){
+								String month_str_date = sdto.getRelease_date();
+								month_str_date = month_str_date.replace("99", "01");
+								month_date_type = original_format.parse(month_str_date);
+							}
+							
+							String ty_str_date = sdto.getRelease_date();
+							Date date_type = original_format.parse(ty_str_date);
 					%>
-						<div id="shoeList_image_<%=z%>" class="shoelist_image">
-							<div id="shoeList_<%=z%><%=i%>" class="shoelist_image_wrapper">
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">
-			  						<img src="./sneaker_img_upload/<%=sdto.getImage_thumb().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" > <br>
-								</a>
+						<div class="shoelist_content">
+							<!-- 발매일 -->
+							<div class="release_date">
+								<span>
+									<i class="far fa-calendar"></i>
+									&nbsp;
+									<% if(sdto.getRelease_date().contains("99")){%>
+										<%=month_format.format(month_date_type)%> &nbsp;–&nbsp;일
+									<%} else {%>
+										<%=new_format.format(date_type)%>
+									<%}%>
+								</span>
+							</div>
+							<div class="content_wrapper">
+								<!-- 이미지 -->
+								<div class="content_img">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" > <br>
+									</a>
+								</div>
+								<!-- brand & name -->
+								<div class="content_name">
+									<!-- model_name -->
+									<div class="model_name">
+										<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
+									</div>
+								</div>
 								
-								<!-- hover -->
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>">	
-									<div id="shoeList_image_<%=z%><%=i%>_hover" class="shoeList_image_hover">		
+								<!-- links -->
+								<div class="content_links">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">			
 										<!-- 링크 wrapper -->
 										<div id="link-wrapper">
-											<i class="fas fa-link"></i> <%=sdto.getCountLinks() %> <span>LINKS</span>
+											<%=sdto.getCountLinks()%>
 										</div>							
-									</div>
-								</a>
+									</a>
+								</div>
 							</div>
+
 						</div>
+
 					<%	
 						}
 					%>
@@ -126,35 +165,23 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		//image hover 했을시 이미지 뜨게 하기
-		$('.shoelist_image_wrapper').hover(function() {
-			//shoeList_80
-			var monthi = $(this).attr('id');
-			//80 만 남기기
-			var splitArray = monthi.split('_');
-			var lastElement = splitArray[splitArray.length - 1];
-			//shoeList_image_ + 80 + _hover
-			var shoeList_image_hover = 'shoeList_image_' + lastElement + '_hover';
-			
-			//뒷 배경 약간 투명하기 만들기
-			$('#' + 'shoeList_' + lastElement + '_img').css('opacity', '0.3');
-			//hover 요소들 나타내기
-			$('#' + shoeList_image_hover).css('opacity', '1');
-		}, function() {
-			//shoeList_80
-			var monthi = $(this).attr('id');
-			//80 만 남기기
-			var splitArray = monthi.split('_');
-			var lastElement = splitArray[splitArray.length - 1];
-			//shoeList_image_ + 80 + _hover
-			var shoeList_image_hover = 'shoeList_image_' + lastElement + '_hover';
-			
-			//뒷 배경 약간 투명 풀기
-			$('#' + 'shoeList_' + lastElement + '_img').css('opacity', '1');
-			//hover 요소들 나타내기
-			$('#' + shoeList_image_hover).css('opacity', '0');
-		});
 		
+		var filter = "win16|win32|win64|mac|macintel";
+
+		if(navigator.platform) {
+			
+			//모바일로 접속했을시
+			if (filter.indexOf( navigator.platform.toLowerCase() ) < 0) {
+				
+			}
+			
+			//데스크탑으로 접속했을시
+			else { 
+				
+			}
+		}
+		
+
 		var today = new Date();
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
 		
@@ -202,13 +229,12 @@
 			}
 			$("#div_month_" + month).slideToggle("slow");
 		});
+
 	});
 
-	<!-- 리포트2.0 로그분석코드 시작 -->
-		var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
-		var sTime = new Date().getTime();
-		document.write(unescape("%3Cscript id='log_script' src='" + JsHost + "coduo25.weblog.cafe24.com/weblog.js?uid=coduo25&t="+sTime+"' type='text/javascript'%3E%3C/script%3E"));
-	<!-- 리포트2.0  로그분석코드 완료 -->
+	var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+	var sTime = new Date().getTime();
+	document.write(unescape("%3Cscript id='log_script' src='" + JsHost + "coduo25.weblog.cafe24.com/weblog.js?uid=coduo25&t="+sTime+"' type='text/javascript'%3E%3C/script%3E"));
 
 </script>
 </html>

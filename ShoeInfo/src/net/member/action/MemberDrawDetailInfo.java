@@ -30,12 +30,13 @@ public class MemberDrawDetailInfo implements Action{
 		
 		//넘어온 값 받기
 		String model_stylecode = (String) request.getParameter("model_stylecode");
+		int model_num= Integer.parseInt(request.getParameter("num"));
 		
 		/******************************************************
 		 * 신발 기본 정보 리스트 만들기
 		 ******************************************************/
 		SneakerDAO sdao = new SneakerDAO();
-		SneakerDTO sdto = sdao.getSneakerDetail(model_stylecode);
+		SneakerDTO sdto = sdao.getSneakerDetail(model_num, model_stylecode);
 		request.setAttribute("sneakerDetail", sdto);
 		
 		/******************************************************
@@ -44,7 +45,7 @@ public class MemberDrawDetailInfo implements Action{
 		MemberDAO mdao = new MemberDAO();
 		
 		//국내 응모 한 곳
-		Vector vec_draw_kr = mdao.getDrawInfo(model_stylecode, user, "대한민국");
+		Vector vec_draw_kr = mdao.getDrawInfo(model_num, model_stylecode, user, "대한민국");
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) vec_draw_kr.get(0);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(1);
 		ArrayList<BrandDTO> onlineinfoList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(2);
@@ -54,7 +55,7 @@ public class MemberDrawDetailInfo implements Action{
 		request.setAttribute("onlineinfoList_kr", onlineinfoList_kr);
 		
 		//해외 응모 한곳
-		Vector vec_draw_etc = mdao.getDrawInfo(model_stylecode, user, "해외");
+		Vector vec_draw_etc = mdao.getDrawInfo(model_num, model_stylecode, user, "해외");
 		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec_draw_etc.get(0);
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(1);
 		ArrayList<BrandDTO> onlineinfoList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(2);

@@ -23,12 +23,14 @@ public class AddUserDrawInfoAction implements Action{
 		}
 		
 		//넘어온값 받기(model_stylecode, brand_id)
+		int model_num = Integer.parseInt(request.getParameter("model_num"));
 		String model_stylecode = request.getParameter("model_stylecode");
 		String brand_id = request.getParameter("brand_id");
 		String country_name = request.getParameter("country_name");
 			
 		MemberDrawDTO mddto = new MemberDrawDTO();
 		
+		mddto.setModel_num(model_num);
 		mddto.setCountry_name(country_name);
 		mddto.setBrand_id(brand_id);
 		mddto.setMember_email(user);
@@ -38,7 +40,7 @@ public class AddUserDrawInfoAction implements Action{
 		mdao.insertUserDrawInfo(mddto);
 		
 		//페이지이동
-		forward.setPath("./SneakerDetail.go?model_stylecode="+model_stylecode);
+		forward.setPath("./SneakerDetail.go?model_stylecode="+model_stylecode+"&num="+model_num);
 		forward.setRedirect(true);
 		return forward;
 	}
