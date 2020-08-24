@@ -77,6 +77,9 @@ body {font-size:1em; line-weight:1.4}
 	#link-wrapper {
 		font-size: 0.6em;
 	}
+	.no_info {
+		margin:8% 1%;
+	}
 }
 
 

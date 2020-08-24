@@ -174,10 +174,22 @@
 						
 						<div id="delivery_method-form">
 							<span id="category"> 배송 여부 <span id="req_icon"><i class="fas fa-asterisk"></i></span></span>
-							<input type="radio" id="can" name="delivery_method" value="직배가능" <%if(onlineDrawInfo.getDelivery_method().equals("직배가능")){%>checked<%}%>> <label for="can">직배가능</label>
-							<input type="radio" id="cant" name="delivery_method" value="배대지" <%if(onlineDrawInfo.getDelivery_method().equals("배대지")){%>checked<%}%>> <label for="cant">배대지</label>
-							<input type="radio" id="domestic" name="delivery_method" value="국내배송" <%if(onlineDrawInfo.getDelivery_method().equals("국내배송")){%>checked<%}%>> <label for="domestic">국내배송</label>
-							<input type="radio" id="instore" name="delivery_method" value="매장수령" <%if(onlineDrawInfo.getDelivery_method().equals("매장수령")){%>checked<%}%>> <label for="instore">매장수령</label>
+							
+							<div style="padding:0;">
+								<div id="del-radio-wrapper">
+									<input type="radio" id="can" name="delivery_method" value="직배가능" <%if(onlineDrawInfo.getDelivery_method().equals("직배가능")){%>checked<%}%>> <label for="can">직배가능</label>
+								</div>
+								<div id="del-radio-wrapper">
+									<input type="radio" id="cant" name="delivery_method" value="배대지" <%if(onlineDrawInfo.getDelivery_method().equals("배대지")){%>checked<%}%>> <label for="cant">배대지</label>
+								</div>
+								<div id="del-radio-wrapper">
+									<input type="radio" id="domestic" name="delivery_method" value="국내배송" <%if(onlineDrawInfo.getDelivery_method().equals("국내배송")){%>checked<%}%>> <label for="domestic">국내배송</label>
+								</div>
+								<div id="del-radio-wrapper">
+									<input type="radio" id="instore" name="delivery_method" value="매장수령" <%if(onlineDrawInfo.getDelivery_method().equals("매장수령")){%>checked<%}%>> <label for="instore">매장수령</label>
+								</div>
+							</div>
+							
 						</div>
 						
 						<input type="hidden" name="online_writer" value="<%=onlineDrawInfo.getOnline_writer()%>" id="online_writer">

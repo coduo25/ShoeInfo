@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@CHARSET "UTF-8";@CHARSET "UTF-8";
 
 * {margin:0; padding:0; box-sizing: border-box;}
 body {font-size:1em; line-weight:1.4}
@@ -41,7 +41,7 @@ body {font-size:1em; line-weight:1.4}
 		#clickNum-wrapper { margin-top: 3%; } /* 조회수 */
 	
 /* 멤버 응모 여부 페이지 - 신발 상세정보 페이지 */
-#content_sneakerDetail_D { width: 35%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 1% 1% 1%; margin: 4% 0 30% 0; }
+#content_sneakerDetail_D { width: 35%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 1% 1% 1%; margin: 4% 0 30% 0; height: 500px; }
 #content_sneakerDetail_D div#sneaker_Detail_D{ width: 100%; padding: 0 5%; }
 #content_sneakerDetail_D .sneaker_image>img { width: 100%; height: 100%; }
 	
@@ -75,73 +75,9 @@ body {font-size:1em; line-weight:1.4}
 #content_sneakerInfo { margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em; }
 #content_sneakerInfo h4 { font-size: 1.7em; text-align: center; margin: 2%; }
 
-/* 스위치 */
-.switch-wrapper { display: none; }
-.switch {
- 	position: relative;
- 	display: inline-block;
-	width: 10%;
-    height: 15%;
-    font-size: 0.9em;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 80%;
-  width: 40%;
-  left: 4px;
-  bottom: 10%;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #00a756;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #00a756;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  transform: translateX(100%);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
 #grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 5%; }
 .grid-wrapper { margin: 1.5% 1%; width: 18%; float: left; display: block; height: 600px; }
 .grid-item { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
-.grid-logo { position: relative; }
 .grid-logo img { width: 100%; height: 100%; }
 .grid-content { padding: 5%; }
 .grid-content div { margin-bottom: 8%; }
@@ -151,18 +87,13 @@ input:checked + .slider:before {
 	#no-info-label { display: inline-block; padding: 1%; }
 
 	/* 진행중 마크 */
-	.grid-ing { position: absolute; top: 6px; left: 79%; width: 30%; }
+	.grid-ing { position: absolute; top: 0.8%; left: 79%; width: 30%; }
 	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.5em; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; padding: 1px 2px; }
 	
 	/* 작성자 마크 */
 	.grid-info-writer { display: none; position: absolute; top: 0; left: 0; padding: 2% 4%; z-index: 5; background-color: white; font-size: 0.9em; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-bottom: 1px solid #dcdcdc; border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem; }
-	.grid-info { position: absolute; top: 6.5px; left:4%; z-index: 3; }
+	.grid-info { position: absolute; top: 1.2%; left:4%; z-index: 3; }
 	.grid-info span { color: #b3b3b37d; }
-	
-	/* 모바일 버전 toggle down/up 버튼 */
-	/* toggle 바 */
-	.mobile-toggle-down { display: none; font-size: 0.9em; text-align: center; width: 100%; padding: 3% 1%; }
-	.mobile-toggle-up { display: none; font-size: 0.9em; text-align: center; width: 100%; padding: 3% 1%; }
 	
 	/* 발매 내용 파트 */
 	.grid-content span { font-size: 0.95em; }
@@ -304,10 +235,23 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 0.7em;
 	}
 	.grid-ing {
-    	left: 77%;
+		top: 1.3%;
+		left: 76%;
 	}
 	.searched-form {
 		width: 70%;
+	}
+	
+	/* 멤버 응모 영역 */
+	#content_sneakerDetail_D{
+		font-size:0.9em;
+	}
+	.sneaker_name {
+		font-size:0.9em;
+		line-height: 20px;
+	}
+	#dome-draw-wrapper, #inter-draw-wrapper {
+		font-size: 0.8em;
 	}
 }
 
@@ -323,8 +267,8 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 0.9em;
 	}
 	#content_sneakerDetail div#cate_Detail {
-		padding: 5% 0 0;
-		font-size: 0.8em;
+		padding: 2.5% 0 0;
+		font-size: 0.6em;
 	}
 	#content_sneakerDetail div#sneaker_Detail {
 		padding: 0;
@@ -340,26 +284,29 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 1em !important;
 	}
 	.grid-ing {
-    	left: 79%;
+		top: 1.5%;
+		left: 77%;
 	}
+	
+	/* 멤버 응모 영역 */
 	#nothingSearched div {
 		width: 60%;
 	}
+	#content_sneakerDetail_D{
+		font-size:0.65em;
+	}
+	.sneaker_name {
+		font-size:0.8em;
+		line-height: 20px;
+	}
+	#dome-draw-wrapper, #inter-draw-wrapper {
+		font-size: 0.6em;
+	}
+	
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	/* 스위치 */
-	.switch-wrapper { 
-		width: 100%;
-	    display: block;
-	    position: relative;
-	    float: left;
-	    text-align: right;
-	    margin-top: 6%;
-	    padding-right: 3%;
-	}
-	
 	.sneaker_image img, .sneaker_image_draw img{
 		width: 70%;
 		height: 70%;
@@ -373,9 +320,6 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper {
 		width: 100%;
-	}
-	.detail_wrapper div.relBtn_wrapper {
-    	margin-top: 6%;
 	}
 	.sneaker_cate label {
 		width: 36%;
@@ -403,16 +347,16 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size:0.8em;
 	}
 	.grid-ing {
- 		left: 72%;
+		top: 1.5%;
+		left: 72%;
 	}
 	.draw_count_result_wrapper {
     	font-size: 0.85em !important;
 	}	
-	.grid-info-writer { padding: 3% 4%;}
 	
 	/* 발매 추가 영역 */
 	.add_wrapper #category {
-		font-size: 0.7em;
+		font-size: 0.9em;
 		padding-bottom: 3%;
 	}
 	input[name=model_stylecode] {
@@ -426,14 +370,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		margin-bottom: 2%;
 	}
 	label {
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 	#del-radio-wrapper {
 		display: block;
 		padding: 1% 0 3% 0;
-	}
-	input[type=radio] {
-		height: 1em;
 	}
 	.searched-form {
     	width: 80%;
@@ -441,37 +382,26 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#brandList-name {
 		font-size: 0.5em;
 	}
-	#grid-list h4 {
-		font-size: 1.3em;
+	
+	/* 멤버 응모 영역 */
+	.no_info {
+		margin: 8% 1%;
 	}
-	#nothingSearched div {
-    	font-size: 0.7em;
-    	padding: 2%;
-	}
-	#request-form {
-		font-size: 0.8em;
-	}
-	#request-form button {
-		font-size: 0.7em;
-    	width: 30%;
-    	padding: 3%;
-	}
-	#brand-form, #link-form, #online_method-form, #onlineTime-form, #buyMethod-form, #delivery_method-form {
-   		padding-bottom: 12%;
-	}
-	.rel_Btn2 {
+	#content_sneakerDetail_D {
 		width: 100%;
+    	float: left;
+    	height: unset;
+    	margin: 4% 0;
+    	font-size: 0.8em;
 	}
-	.brandList-wrapper {
-		width: 33%;
+	#content_sneakerInfo_D {
+		width: 100%;
+		padding: 0;
 	}
-	.picked-form {
-    	width: 50%;
+	.grid-wrapper_D {
+		width: 31.3%;
 	}
 	
-	.mobile-toggle-down { display: inline-block; }
-	/* 상세페이지 */
-	.detail_area { display: none; }
 	
 	
 }

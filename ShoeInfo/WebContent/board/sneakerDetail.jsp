@@ -164,10 +164,18 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="switch-wrapper">
+			정보 ON/OFF
+			<label class="switch">
+				<input type="checkbox" class="info_switch" name="info_switch">
+				<span class="slider round"></span>
+			</label>
+		</div>
 
 		<!-- 발매 정보 리스트 -->
 		<div id="content_sneakerInfo">
-		
+			
 			<%
 				for(int z=0; z<=4; z++){
 						ArrayList<OnlineDTO> new_onlineList = new ArrayList<OnlineDTO>();
@@ -265,6 +273,18 @@
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-<%=country_name_eng%><%=i%>">
+							
+								<!-- 로고 사진 -->
+								<div class="grid-logo">
+									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="100" height="100"> </a>	
+								</div>
+								
+								<!-- 발매 정보 작성자 아이콘 -->
+								<div class="grid-info-writer" id="grid-info-writer-<%=country_name_eng%><%=i%>"> 작성자: <%=f_splitWriter%> </div>
+								<div class="grid-info" id="grid-info-<%=country_name_eng%><%=i%>">
+									<span> <i class="fas fa-user"></i> </span>
+								</div>
+								
 								<!-- 진행중 마크 -->
 								<div class="grid-ing">
 									<!-- 응모 진행중 여부 -->
@@ -285,16 +305,16 @@
 									<%}%>
 								</div>
 								
-								<!-- 로고 사진 -->
-								<div class="grid-logo">
-									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="100" height="100"> </a>	
-								
-									<!-- 발매 정보 작성자 아이콘 -->
-									<div class="grid-info-writer" id="grid-info-writer-<%=country_name_eng%><%=i%>"> 작성자: <%=f_splitWriter%> </div>
-									<div class="grid-info" id="grid-info-<%=country_name_eng%><%=i%>">
-										<span> <i class="fas fa-user"></i> </span>
-									</div>
+								<!-- 모바일 버전 toggle down/up 버튼 -->
+								<div class="mobile-toggle-down" id="mobile-toggle-Down-<%=country_name_eng%><%=i%>">
+									<span> <i class="fas fa-chevron-down"></i> </span>
 								</div>
+								<div class="mobile-toggle-up" id="mobile-toggle-Up-<%=country_name_eng%><%=i%>">
+									<span> <i class="fas fa-chevron-up"></i> </span>
+								</div>
+								
+								<div class="detail_area" id="detail_area<%=country_name_eng%><%=i%>">
+								
 					
 								<!-- 응모 내용 -->
 								<div class="grid-content">
@@ -343,9 +363,9 @@
 										</span>
 									</div>
 									<!-- 방식 -->
-									<div id="wrapper-method">
-										<span> 방식 </span>
-										<span id="wrapper-content">
+									<div class="wrapper-content">
+										<div> <span> 방식 </span> </div>
+										<div>
 											<%if(odto.getOnline_method().contains("선착")){%> 
 												<span style="color:#ff6600; font-weight: bold;"> <%=odto.getOnline_method()%> </span>
 											<%}else if(odto.getOnline_method().contains("드로우")) {%>
@@ -353,36 +373,32 @@
 											<%}else if(odto.getOnline_method().contains("-")) {%>
 												<span> 미정 </span>
 											<%}%>
-										</span>
+										</div>
 									</div>
 									<!-- 구매방식 -->
-									<div id="wrapper-bmethod">
-										<span> 구매방식 </span>
-										<span id="wrapper-content">
-											<span> <%=odto.getBuy_method()%> </span>
-										</span>
+									<div class="wrapper-content">
+										<div> <span> 구매방식 </span> </div>
+										<div> <span> <%=odto.getBuy_method()%> </span> </div>
 									</div>
 									<!-- 배송여부 -->
-									<div id="wrapper-ship">
-										<span> 배송여부 </span>
-										<span id="wrapper-content">
-											<span> <%=odto.getDelivery_method()%> </span>
-										</span>
+									<div class="wrapper-content">
+										<div> <span> 배송여부 </span> </div>
+										<div> <span> <%=odto.getDelivery_method()%> </span> </div>
 									</div>
 									<!-- 응모여부 -->
-									<div id="wrapper-check">
-										<span> 응모여부 </span>
-										<span id="wrapper-content">
+									<div class="wrapper-content">
+										<div> <span> 응모여부 </span> </div>
+										<div>
 											<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 											<%if(odto.getOnline_method().contains("드로우") && user.equals("")){%>
-												<span id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" style="width:16px; height:16px; vertical-align: middle;"> </span>
+												<span id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox" style="width:16px; height:16px; vertical-align: middle;"> </span>
 											<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 											<%}else if(odto.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
 												<span id="draw-status_<%=country_name_eng%><%=i%>">
 													<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 													<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 													<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
-													<input type="checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;">
+													<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;">
 												</span>
 											<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
 											<%}else if(odto.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto.getBrand_id())){%>
@@ -390,12 +406,12 @@
 													<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 													<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 													<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
-													<input type="checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;" checked>
+													<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;" checked>
 												</span>
 											<%}else {%>
 												<span id="draw-status_<%=country_name_eng%><%=i%>"> - </span>
 											<%}%>
-										</span>
+										</div>
 									</div>
 								</div>
 								<!-- 남은 시간 -->
@@ -701,6 +717,8 @@
 									</div>
 								<%}%>
 							</div>
+							
+							</div>
 						</div>
 					<% 
 							}
@@ -759,6 +777,23 @@
 		var model_stylecode = document.getElementById('model_stylecode').innerHTML;
 		var num = $('.num').val();
 		
+		//정보 on/off 토클 선택했을시
+		$('.info_switch').click(function(){
+			if($(this).is(":checked") == true) {
+				$(this).prop("checked", true);
+				//toggle down 없애고 toggle up 나타내기
+				$('.mobile-toggle-down').hide();
+				$('.mobile-toggle-up').show();
+				$('.detail_area').show();
+			}else{
+				$(this).prop("checked", false);
+				//toggle down 없애고 toggle up 나타내기
+				$('.mobile-toggle-down').show();
+				$('.mobile-toggle-up').hide();
+				$('.detail_area').hide();
+			}
+		});
+		
 		//발매정보 추가하기 버튼 눌렸을시
 		$('.rel_Btn').click(function(){
 			//로그인 체크
@@ -787,6 +822,38 @@
 			setTimeout(function() {
 				$('#grid-info-writer-' + lastElement).slideUp(300);
 			}, 4000);
+		});
+		
+		//mobile-toggle bar slideDown 했을시 해당 브랜드 상세 영역 나타내기
+		$('.mobile-toggle-down').click(function(){
+			//mobile-toggle-Down-kr1
+			var toggleDownID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = toggleDownID.split('-');
+ 			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//toggle down 없애고 toggle up 나타내기
+			$('#mobile-toggle-Down-' + lastElement).hide();
+			$('#mobile-toggle-Up-' + lastElement).show();
+			//상세영역 나타내기
+			$('#detail_area' + lastElement).slideDown(300);
+		});
+		
+		//mobile-toggle bar slideUp 했을시 해당 브랜드 상세 영역 나타내기
+		$('.mobile-toggle-up').click(function(){
+			//mobile-toggle-Down-kr1
+			var toggleDownID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = toggleDownID.split('-');
+ 			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//toggle down 없애고 toggle up 나타내기
+			$('#mobile-toggle-Down-' + lastElement).show();
+			$('#mobile-toggle-Up-' + lastElement).hide();
+			//상세영역 접기
+			$('#detail_area' + lastElement).slideUp(200);
 		});
 	
 		
@@ -867,6 +934,11 @@
 				var kr_drawRaw = $('#grid-item-kr'+i);
 				kr_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
+				var mobile_toggle_Down_kr = $('#mobile-toggle-Down-kr' + i);
+				mobile_toggle_Down_kr.css({"pointer-events" : "auto"});
+				var mobile_toggle_Up_kr = $('#mobile-toggle-Up-kr' + i);
+				mobile_toggle_Up_kr.css({"pointer-events" : "auto"});
+				
 				var grid_info_writer_kr = $('#grid-info-kr' + i);
 				grid_info_writer_kr.css({"pointer-events" : "auto"});
 				
@@ -911,6 +983,11 @@
 				var asia_drawRaw = $('#grid-item-asia'+i);
 				asia_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
+				var mobile_toggle_Down_asia = $('#mobile-toggle-Down-asia' + i);
+				mobile_toggle_Down_asia.css({"pointer-events" : "auto"});
+				var mobile_toggle_Up_asia = $('#mobile-toggle-Up-asia' + i);
+				mobile_toggle_Up_asia.css({"pointer-events" : "auto"});
+				
 				var grid_info_writer_asia = $('#grid-info-asia' + i);
 				grid_info_writer_asia.css({"pointer-events" : "auto"});
 				
@@ -954,6 +1031,11 @@
 			if(remain_time_status_america.match("종료") || remain_time_status_america.match("응모종료")){
 				var america_drawRaw = $('#grid-item-america'+i);
 				america_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
+				var mobile_toggle_Down_america = $('#mobile-toggle-Down-america' + i);
+				mobile_toggle_Down_america.css({"pointer-events" : "auto"});
+				var mobile_toggle_Up_america = $('#mobile-toggle-Up-america' + i);
+				mobile_toggle_Up_america.css({"pointer-events" : "auto"});
 				
 				var grid_info_writer_america = $('#grid-info-america' + i);
 				grid_info_writer_america.css({"pointer-events" : "auto"});
@@ -1000,6 +1082,11 @@
 				var europe_drawRaw = $('#grid-item-europe'+i);
 				europe_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
+				var mobile_toggle_Down_europe = $('#mobile-toggle-Down-europe' + i);
+				mobile_toggle_Down_europe.css({"pointer-events" : "auto"});
+				var mobile_toggle_Up_europe = $('#mobile-toggle-Up-europe' + i);
+				mobile_toggle_Up_europe.css({"pointer-events" : "auto"});
+				
 				var grid_info_writer_europe = $('#grid-info-europe' + i);
 				grid_info_writer_europe.css({"pointer-events" : "auto"});
 				
@@ -1044,6 +1131,11 @@
 				var etc_drawRaw = $('#grid-item-etc'+i);
 				etc_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
 				
+				var mobile_toggle_Down_etc = $('#mobile-toggle-Down-etc' + i);
+				mobile_toggle_Down_etc.css({"pointer-events" : "auto"});
+				var mobile_toggle_Up_etc = $('#mobile-toggle-Up-etc' + i);
+				mobile_toggle_Up_etc.css({"pointer-events" : "auto"});
+				
 				var grid_info_writer_etc = $('#grid-info-etc' + i);
 				grid_info_writer_etc.css({"pointer-events" : "auto"});
 				
@@ -1071,7 +1163,7 @@
 
 		
 		// 응모 여부 체크박스 클릭했을시 -----------------------------------------------
-		$("input:checkbox").on('click', function() {
+		$(".draw_checkbox").on('click', function() {
 			
 			//로그인 체크
 			if($(".login_user").val() == "") {
