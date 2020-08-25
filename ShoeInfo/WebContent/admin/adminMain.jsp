@@ -69,9 +69,6 @@
 							<span> <a href="./AddSneaker.ad"> 새로운 신발 추가하기 <i class="fas fa-exclamation-circle"></i> </a> </span>
 						</li>
 						<li>
-							<span> <a href="./searchBrand.ad"> 발매 정보 추가하기 <i class="fas fa-exclamation-circle" style="color:red;"></i> </a> </span>
-						</li>
-						<li>
 							<span> <a href="./SneakerList.ad"> 전체 목록보기 </a> </span>
 						</li>
 					</ul>

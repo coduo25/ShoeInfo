@@ -60,30 +60,46 @@ public class BrandDAO {
 	}
 	
 	//새로운 브랜드 저장하는 함수
-	public void insertNewBrand(BrandDTO bdto) {
+	public int insertNewBrand(BrandDTO bdto) {
+		int check = -1;
 		int num = 0;
 		try {
 			con = getConnection();
-			sql = "select Max(brand_num) from shoeinfo_brand";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if(rs.next()){
-				num = rs.getInt(1) + 1;
-			}
 			
-			sql = "insert into shoeinfo_brand values(?, ?, ?, ?, ?)";
+			//중복 데이터 있는지 체크하기
+			sql = "select * from shoeinfo_brand where country_name = ? and brand_name = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setString(2, bdto.getCountry_name());
-			pstmt.setString(3, bdto.getBrand_logo());
-			pstmt.setString(4, bdto.getBrand_name());
-			pstmt.setString(5, bdto.getBrand_id());
-			pstmt.executeUpdate();
+			pstmt.setString(1, bdto.getCountry_name());
+			pstmt.setString(2, bdto.getBrand_name());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				check = 0; //중복 데이터 있음
+			}
+			else {
+				sql = "select Max(brand_num) from shoeinfo_brand";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					num = rs.getInt(1) + 1;
+				}
+				
+				sql = "insert into shoeinfo_brand values(?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				pstmt.setString(2, bdto.getCountry_name());
+				pstmt.setString(3, bdto.getBrand_logo());
+				pstmt.setString(4, bdto.getBrand_name());
+				pstmt.setString(5, bdto.getBrand_id());
+				pstmt.executeUpdate();
+				check = 1;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
+		return check;
 	}
 	
 	//모든 브랜드 정보 리스트 가져오는 함수 (criteria 안쓰고 가져오기)

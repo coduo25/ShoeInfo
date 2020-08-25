@@ -1,5 +1,7 @@
 package net.admin.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,11 +58,22 @@ public class AddBrandAction implements Action{
 		bdto.setBrand_id(brand_id);
 		
 		BrandDAO bdao = new BrandDAO();
-		bdao.insertNewBrand(bdto);
+		int check = bdao.insertNewBrand(bdto);
+		
+		if(check == 0){
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('이미 존재하는 브랜드입니다.');");
+			out.print("location.href=history.back()");
+			out.print("</script>");
+			out.close();
+			return null;
+		}
 		
 		// ---------------------------------------------------------------------------------------------------------------------------
 		// 3. 페이지이동
-		forward.setPath("./searchBrand.ad");
+		forward.setPath("./Main.ad");
 		forward.setRedirect(true);
 		return forward;
 	}

@@ -153,9 +153,10 @@ public class SneakerDAO {
 				sdto.setRelease_date(rs.getString("release_date"));				
 				
 				//신발 응모링크수 가져오기
-				sql = "select count(*) from shoeinfo_onlineinfo where model_stylecode = ?";
+				sql = "select count(*) from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, sdto.getModel_stylecode());
+				pstmt2.setInt(2, sdto.getNum());
 				rs2 = pstmt2.executeQuery();
 				if(rs2.next()){
 					sdto.setCountLinks(rs2.getInt(1));

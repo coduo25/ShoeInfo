@@ -102,24 +102,6 @@ public class AdminFrontController extends HttpServlet{
 			}
 		}
 		
-		//신발 발매 정보 수정하는 페이지로 가기
-		else if(command.equals("/UpdateDrawInfo.ad")){
-			action = new UpdateDrawInfo();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		//신발 발매 정보 수정하는 페이지 처리하기
-		else if(command.equals("/UpdateDrawInfoAction.ad")){
-			action = new UpdateDrawInfoAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 		//신발 발매 정보 삭제하는 페이지 처리하기
 		else if(command.equals("/DeleteDrawInfo.ad")){
 			action = new DeleteDrawInfoAction();
@@ -189,15 +171,6 @@ public class AdminFrontController extends HttpServlet{
 		//발매정보 추가하는 페이지 가기전 국가 정보 가져오는 처리페이지로 가기
 		else if(command.equals("/searchBrand.ad")) {
 			action = new searchBrandAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		//온라인 정보 입력 처리 페이지
-		else if(command.equals("/AddOnlineInfoAction.ad")) {
-			action = new AddOnlineInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
