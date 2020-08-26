@@ -19,7 +19,8 @@
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
-		if(user == null){
+	
+		if(user == null || !usr_position.equals("admin")){
 			response.sendRedirect("./SneakerList.go");
 		}
 	
@@ -66,7 +67,7 @@
 							<td> <input type="file" name="brand_logo"> </td>
 						</tr>
 						<tr>
-							<td id="category"> 브랜드 이름 </td>
+							<td id="category"> 브랜드 이름 <span style="display:block; font-size:0.8em; font-weight: normal; padding-top:2%;"> <a href="./BrandList.ad"> 전체 브랜드 보기 </a> </span> </td>
 							<td> <input type="text" name="brand_name"> </td>
 						</tr>
 					

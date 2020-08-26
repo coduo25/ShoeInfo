@@ -93,6 +93,36 @@ public class SneakerDAO {
 		}
 	}
 	
+	public ArrayList getAllSneakerList() {
+		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_sneakerlibrary order by release_date;";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SneakerDTO sdto = new SneakerDTO();
+				sdto.setNum(rs.getInt("num"));
+				sdto.setBrand(rs.getString("brand"));
+				sdto.setSub_brand(rs.getString("sub_brand"));
+				sdto.setBrand_index(rs.getString("brand_index"));
+				sdto.setImage(rs.getString("image"));
+				sdto.setModel_stylecode(rs.getString("model_stylecode"));
+				sdto.setModel_name(rs.getString("model_name"));
+				sdto.setModel_colorway(rs.getString("model_colorway"));
+				sdto.setPrice(rs.getInt("price"));
+				sdto.setRelease_date(rs.getString("release_date"));
+				sdto.setRelease_status(rs.getString("release_status"));
+				sneakerList.add(sdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return sneakerList;
+	}
+	
 	//모든 신발 정보 리스트 가져오는 함수
 	public ArrayList getAllSneakerList(Criteria cri) {
 		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
@@ -105,6 +135,7 @@ public class SneakerDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				SneakerDTO sdto = new SneakerDTO();
+				sdto.setNum(rs.getInt("num"));
 				sdto.setBrand(rs.getString("brand"));
 				sdto.setSub_brand(rs.getString("sub_brand"));
 				sdto.setBrand_index(rs.getString("brand_index"));

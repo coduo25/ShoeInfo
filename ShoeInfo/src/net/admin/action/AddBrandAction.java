@@ -45,6 +45,13 @@ public class AddBrandAction implements Action{
 		BrandDTO bdto = new BrandDTO();
 		
 		//넘어온 값 저장하기
+		int req_num;
+		if(multi.getParameter("req_num") == null){
+			req_num = 0;
+		}else {
+			 req_num = Integer.parseInt(multi.getParameter("req_num"));
+		}
+		
 		String country_name = multi.getParameter("country_name");
 		String brand_logo = multi.getFilesystemName("brand_logo");
 		String brand_name = multi.getParameter("brand_name");
@@ -57,8 +64,15 @@ public class AddBrandAction implements Action{
 		bdto.setBrand_name(brand_name);
 		bdto.setBrand_id(brand_id);
 		
+		//만약 브랜드 요청이 아닌 그냥 추가하는 거라면 = req_num == 0, 요청일시 req_num 값이 존재
 		BrandDAO bdao = new BrandDAO();
-		int check = bdao.insertNewBrand(bdto);
+		int check = -1;
+		if(req_num == 0){
+			check = bdao.insertNewBrand(bdto);
+		}
+		else {
+			check = bdao.insertReqBrand(bdto, req_num);
+		}
 		
 		if(check == 0){
 			response.setContentType("text/html;charset=UTF-8");
@@ -71,8 +85,6 @@ public class AddBrandAction implements Action{
 			return null;
 		}
 		
-		// ---------------------------------------------------------------------------------------------------------------------------
-		// 3. 페이지이동
 		forward.setPath("./Main.ad");
 		forward.setRedirect(true);
 		return forward;

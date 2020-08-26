@@ -98,13 +98,14 @@ public class OnlineDAO {
 	}
 	
 	//신발 삭제하는 함수
-	public void deleteSneaker(String model_stylecode){
+	public void deleteSneaker(String model_stylecode, int num){
 		int check = 0;
 		try {
 			con = getConnection();
-			sql = "delete from shoeinfo_sneakerlibrary where model_stylecode = ?";
+			sql = "delete from shoeinfo_sneakerlibrary where model_stylecode = ? and num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, model_stylecode);
+			pstmt.setInt(2, num);
 			check = pstmt.executeUpdate();
 			if(check>0){
 				sql = "delete from shoeinfo_onlineinfo where model_stylecode = ?";

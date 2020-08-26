@@ -30,34 +30,11 @@ public class BrandListAction implements Action{
 		//total 게시판 글 수 
 		int total = 0;
 		
-		// ------- 페이징 처리 ---------
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null){
-			pageNum = "1";
-		}
-		int currentPage = Integer.parseInt(pageNum);
-		
-		int pageSize = 10;
-		
-		Criteria cri = new Criteria();
-		
-		cri.setPage(currentPage);
-		cri.setPerpageNum(pageSize);
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		
 		BrandDAO bdao = new BrandDAO();
 		
-		List<BrandDTO> admin_brandList = bdao.getAllBrandList(cri);
-		
-		total = bdao.countBrand();
-		pageMaker.setTotalCount(total);
+		List<BrandDTO> admin_brandList = bdao.getAllBrandList();
 		
 		request.setAttribute("admin_brandList", admin_brandList);
-		request.setAttribute("cri", cri);
-		request.setAttribute("pageMaker", pageMaker);
-		request.setAttribute("pageNum", currentPage);
 		
 		forward.setPath("./admin/admin_brandList.jsp");
 		forward.setRedirect(false);

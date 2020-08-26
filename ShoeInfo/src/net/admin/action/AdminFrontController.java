@@ -166,6 +166,24 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//사용자 브랜드 요청 페이지 가기
+		else if(command.equals("/BrandRequest.ad")){
+			action = new BrandRequest();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//사용자 브랜드 요청 처리
+		else if(command.equals("/AddReqBrand.ad")){
+			action = new searchBrandAction3();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		// ---------------온라인 발매정보 추가-------------------
 		//발매정보 추가하는 페이지 가기전 국가 정보 가져오는 처리페이지로 가기

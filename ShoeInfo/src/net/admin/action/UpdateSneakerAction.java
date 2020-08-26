@@ -87,7 +87,7 @@ public class UpdateSneakerAction implements Action{
 		asdao.updateSneakerInfo(sdto, old_model_stylecode);
 		
 		//페이지이동
-		forward.setPath("./SneakerDetail.go?model_stylecode="+sdto.getModel_stylecode());
+		forward.setPath("./SneakerDetail.go?model_stylecode="+sdto.getModel_stylecode()+"&num="+sdto.getNum());
 		forward.setRedirect(true);
 		return forward;
 	}

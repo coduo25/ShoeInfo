@@ -75,6 +75,16 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 #content_admin_countryList input#modi_btn,
 #content_admin_memberList input#modif_btn { border: 1px solid #c0c0c0; padding: 4px; background-color: white; }
 
+.search-bar { text-align: center; }
+#textSneaker, #textBrand { text-align: left; height: 35px; font-size: 15px; padding-left: 8px; width: 25%; }
+.searched-form { display: inline-block; padding: 1.5%; border: 1px solid #888888; width: 100%; background-color: white; float: left; margin: 2% 0; }
+.searched-form div { padding: 1%; }
+.sneakerList-wrapper { width: 20% !important;}
+.sneakerList-wrapper, .brandList-wrapper { width: 10%; float: left; cursor: pointer; }
+.searched-form img { width: 100%; border: 1px solid #dcdcdc; }
+#sneakerList-name { width: 200px; }
+#sneakerList-name, #brandList-name { text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.8em; }
+
 	/* 페이징 처리 영역 */
 	#content_admin_sneakerList .page_Area, #content_admin_brandList .page_Area, #content_admin_countryList .page_Area, #content_admin_memberList .page_Area { height: 100px; }
 	#content_admin_sneakerList #pageList, #content_admin_brandList #pageList, #content_admin_countryList #pageList, #content_admin_memberList #pageList { list-style: none; margin: 1em auto; padding: 0; max-width: fit-content; }
@@ -86,7 +96,7 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 
 
 /* 검색하는 영역 */
-.search_wrapper { float: right; margin: 1% 0 1% 1%; }
+.search_wrapper { float: right; margin: 1% 0 1% 1%; width: 100%; }
 .search_wrapper div { float: left; }
 .input_wrapper { margin: 0 10px; height: 30px; }
 .btn_wrapper { width: 50px; height: 30px; }

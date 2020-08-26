@@ -35,11 +35,14 @@ public class GetAllInfoAction implements Action{
 		
 		int memberDrawNum = mdao.countTotalDraw();
 		
+		int memberReqBrandNum = bdao.countMemberBrandReq();
+		
 		//전체 회원수, 브랜드, 신발, 응모한 수
 		request.setAttribute("memberNum", memberNum);
 		request.setAttribute("brandNum", brandNum);
 		request.setAttribute("sneakerNum", sneakerNum);
 		request.setAttribute("memberDrawNum", memberDrawNum);
+		request.setAttribute("memberReqBrandNum", memberReqBrandNum);
 		
 		forward.setPath("./admin/adminMain.jsp");
 		forward.setRedirect(false);

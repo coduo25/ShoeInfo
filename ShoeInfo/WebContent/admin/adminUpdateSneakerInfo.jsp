@@ -14,6 +14,13 @@
 </head>
 <body>
 	<%
+		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
+	
+		if(user == null || !usr_position.equals("admin")){
+			response.sendRedirect("./SneakerList.go");
+		}
+	
 		//넘어온 기본정보 객체 받기
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerInfo");
 
@@ -172,7 +179,7 @@
 					</tr>
 					<tr>
 						<td colspan="3">
-							<input type="submit" id="submit_btn" value="수정하기">
+							<input type="submit" id="submit_btn" value="수정하기"> <a href="./DeleteSneaker.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> 삭제하기 </a>
 						</td>
 					</tr>
 				</table>

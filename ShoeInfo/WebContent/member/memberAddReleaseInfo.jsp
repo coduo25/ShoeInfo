@@ -248,7 +248,7 @@
 	
 	function filter(){
 		
-		var test, i, name;
+		var i, name;
 		
 		var value = document.getElementById("textBrand").value.toUpperCase().trim();
 		var item = document.getElementsByClassName("brandList-wrapper");

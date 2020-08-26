@@ -13,13 +13,20 @@
 <body>
 
 	<%
-	
 		request.setCharacterEncoding("UTF-8");
+	
+		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
+	
+		if(user == null || !usr_position.equals("admin")){
+			response.sendRedirect("./SneakerList.go");
+		}
 	
 		int memberNum = (int) request.getAttribute("memberNum");
 		int brandNum = (int) request.getAttribute("brandNum");
 		int sneakerNum = (int) request.getAttribute("sneakerNum");
 		int memberDrawNum = (int) request.getAttribute("memberDrawNum");
+		int memberReqBrandNum = (int) request.getAttribute("memberReqBrandNum");
 		
 	%>
 
@@ -56,6 +63,10 @@
 						<span class="total_subTit"> 회원 총 응모 횟수 </span>
 						<span class="total_main"> <%=memberDrawNum%> 개 </span>
 					</li>
+					<li>
+						<span class="total_subTit"> 브랜드 요청 수 </span>
+						<span class="total_main"> <a href="./BrandRequest.ad" style="color:red"> <%=memberReqBrandNum%> 개 </a></span>
+					</li>
 				</ul>
 			</div>
 			
@@ -81,6 +92,9 @@
 						</li>
 						<li>
 							<span> <a href="./BrandList.ad"> 전체 목록보기 </a> </span>
+						</li>
+						<li>
+							<span> <a href="./BrandRequest.ad"> 브랜드 요청 목록보기  <i class="fas fa-exclamation-triangle"></i> </a> </span>
 						</li>
 					</ul>
 				</div>

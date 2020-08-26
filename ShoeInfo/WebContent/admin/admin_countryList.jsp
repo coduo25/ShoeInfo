@@ -21,7 +21,8 @@
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
-		if(user == null){
+	
+		if(user == null || !usr_position.equals("admin")){
 			response.sendRedirect("./SneakerList.go");
 		}
 		

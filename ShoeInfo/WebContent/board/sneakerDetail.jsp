@@ -421,9 +421,9 @@
 									<div id="remain-time">	
 										<%if(odto.getOnline_method().contains("선착")){%>
 										<span id="remain_time_status_<%=country_name_eng%><%=i%>"> 
-											
-											<%if(compare_w_start_result == -1 && !odto.getOnline_start_date().isEmpty()) {%>
-												<!-- 시작 시간이 존재할때  -->
+											<!-- 시작 시간이 존재할때  -->
+											<%if(compare_w_start_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()) {%>
+												
 												<div class="draw_count_result_wrapper">
 													<!-- 일 -->
 													<div class="draw_count_result">
@@ -460,8 +460,7 @@
 														<span id="final_count_Online_start_time_<%=country_name_eng%><%=i%>seconds"></span>
 														<span id="time-label"> secs </span>
 													</div>
-												</div>
-												
+												</div>		
 											
 											<%}else if(compare_w_start_result == 1 && !odto.getOnline_start_date().isEmpty()) {%>
 												<!-- 시작시간이 오늘보다 지났을때 -->

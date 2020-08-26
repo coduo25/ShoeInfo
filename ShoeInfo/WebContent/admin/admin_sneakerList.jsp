@@ -21,15 +21,12 @@
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
-		if(user == null){
+	
+		if(user == null || !usr_position.equals("admin")){
 			response.sendRedirect("./SneakerList.go");
 		}
 		
 		List<SneakerDTO> admin_sneakerList = (List<SneakerDTO>) request.getAttribute("admin_sneakerList");
-		
-		PageMaker pageMaker = (PageMaker) request.getAttribute("pageMaker");
-		Criteria cri = (Criteria) request.getAttribute("cri");
-		int pageNum = (int) request.getAttribute("pageNum");
 	%>
 
 	<!-- Header -->
@@ -43,93 +40,31 @@
 			<!-- 전체 신발 리스트 -->
 			<div>
 				<h3> 전체 신발 리스트 </h3>
+				<div class="search-bar">
+					<input type="text" placeholder="ex. Jordan 1, Adidas Yeezy" onkeyup="filter()" id="textSneaker"> 
+				</div>
 				
 				<!-- 검색하는 input 창 -->
 				<div class="search_wrapper">
-					<div class="input_wrapper">
-						<input class="search_input" id="model_name" type="text" size="20" onkeyup="searchFunction()">
-					</div>
-					<div class="btn_wrapper">
-						<button class="search_btn"> 검색 </button>
+					<div class="searched-form">
+						<%
+							for( int i=0; i<admin_sneakerList.size(); i++){
+								SneakerDTO sdto = admin_sneakerList.get(i);
+						%>
+							<div class="sneakerList-wrapper" onclick="location.href='./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>'">
+								<div>
+									<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
+								</div>
+								<div id="sneakerList-name">
+									<span class="name"><%=sdto.getModel_name()%></span>
+								</div>
+							</div>
+						<%
+							}
+						%>
 					</div>
 				</div>
-				
-				<table>
-					<thead>
-						<tr>
-							<th style="width:10%;"> 이미지 </th>
-							<th style="width:35%;"> 이름 </th>
-							<th style="width:13%;"> 스타일 코드 </th>
-							<th style="width:11%;"> 가격 </th>
-							<th style="width:11%;"> 출시일 </th>
-							<th style="width:9%;"> 발매방식 </th>
-							<th style="width:11%;"> 수정/삭제 </th>
-						</tr>
-					</thead>
-<!-- 					<tbody id="ajaxTable"> -->
-<!-- 						<tr> -->
-<!-- 							<td> 테스트 </td> -->
-<!-- 							<td> 테스트 </td> -->
-<!-- 							<td> 테스트 </td> -->
-<!-- 							<td> 테스트 </td> -->
-<!-- 							<td> 테스트 </td> -->
-<!-- 							<td> 테스트 </td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-					<%
-						for( int i=0; i<admin_sneakerList.size(); i++){
-							SneakerDTO sdto = admin_sneakerList.get(i);
-					%>
-					<tbody>
-						<tr>
-							<td> <a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>"> <img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>"> </a> </td>
-							<td> <%=sdto.getModel_name() %> </td>
-							<td> <%=sdto.getModel_stylecode() %>  </td>
-							<td> <%=sdto.getPrice() %> 원  </td>
-							<td> <%=sdto.getRelease_date() %>  </td>
-							<td> 
-								<%if(sdto.getRelease_status().equals("planned")){ %>
-									정식발매
-								<%} else if(sdto.getRelease_status().equals("planned")){%>
-									기습발매
-								<%}%>
-							</td>
-							<td> 
-							<input type="button" id="modi_btn" onclick="location.href='./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>'" value="수정"> 
-							/ 
-							<input type="button" id="modi_btn" onclick="location.href='./DeleteSneaker.ad?model_stylecode=<%=sdto.getModel_stylecode()%>'" value="삭제"> </td>
-						</tr>
-					</tbody>
-					<%}%>
-				</table>
-			</div>
-			
-			<!-- 페이징 처리 영역 -->
-			<div class="page_Area">
-				<ul id="pageList">
-					<%if(pageMaker.isPrev()) {%>
-						<li onclick="location.href='./SneakerList.ad?pageNum=<%=pageMaker.getStartPage()-1 %> '">
-							<i class="fas fa-angle-double-left"></i>
-						</li>
-					<%} if(pageNum != 1) {%>
-						<li onclick="location.href='./SneakerList.ad?pageNum=<%=pageNum-1%>'">
-							<i class="fas fa-angle-left"></i>
-						</li>
-					<%} for(int i = pageMaker.getStartPage(); i<=pageMaker.getEndPage(); i++){ %>
-						<li onclick="location.href='./SneakerList.ad?pageNum=<%=i%>'" <%if(pageNum == i) {%> style="font-weight: bold" <%}%>>
-							<%=i%>
-						</li>
-					<%} if(pageNum != pageMaker.getEndPage()) {
-					%>
-						<li onclick="location.href='./SneakerList.ad?pageNum=<%=pageNum+1%>'">
-							<i class="fas fa-angle-right"></i>
-						</li>
-					<%} if(pageMaker.isNext() && pageMaker.getEndPage() > 0){ %>
-						<li onclick="location.href='./SneakerList.ad?&pageNum=<%=pageMaker.getEndPage()+1%>'">
-							<i class="fas fa-angle-double-right"></i>
-						</li>
-					<%} %>
-				</ul>
+
 			</div>
 			
 		</div>
@@ -141,36 +76,27 @@
 </body>
 <script type="text/javascript">
 
-	var request = new XMLHttpRequest();
-	
-	function searchFunction(){
-		request.open("Post", "./SneakerSearchServlet?model_name=" + encodeURIComponent(document.getElementById("model_name").value), true);
-		request.onreadystatechange = searchProcess;
-		request.send(null);
-	}
-	
-	function searchProcess() {
-		var table = document.getElementById("ajaxTable");
-		table.innerHTML = "";
-		if(request.readyState == 4 && request.status == 200) {
-// 			var object = "(" + request.responseText + ")";
-			//여기서 막혔다.
-			//https://www.youtube.com/watch?v=Wn8GT7Uxuds&list=PLRx0vPvlEmdD2mcWus8hakX103PwcSJe8&index=5
-			var object = eval("(" + request.responseText + ")");
-			var result = object.result;
+	function filter() {
+		var i, name;
+		
+		var value = document.getElementById("textSneaker").value.toUpperCase().trim();
+		var item = document.getElementsByClassName("sneakerList-wrapper");
+		
+		var length = item.length;
+		
+		for(i=0;i<item.length;i++){
+			name = item[i].getElementsByClassName("name");
 			
-			for(var i = 0; i<result.length; i++){
-				var row = table.insertRow(0);
-				for(var j=0; j<result[i].length; j++) {
-					var cell = row.insertCell(j);
-					cell.innerHTML = result[i][j].value;
-				}
-			}
+			if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+	    		item[i].style.display = "inline-block";
+	    		length = length + 1;
+	    	} else {
+	        	item[i].style.display = "none";
+	        	length = length - 1;
+	      	}
 		}
+		
 	}
-// 	window.onload = function() {
-// 		searchFunction();
-// 	}
 
 </script>
 </html>

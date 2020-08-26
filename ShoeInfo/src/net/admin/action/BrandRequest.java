@@ -1,19 +1,18 @@
 package net.admin.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.online.db.OnlineDAO;
+import net.brand.db.BrandDAO;
+import net.brand.db.BrandReqDTO;
 
-public class DeleteSneaker implements Action{
-
+public class BrandRequest implements Action{
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		response.setContentType("text/html;charset=UTF-8");
-		
-		request.setCharacterEncoding("UTF-8");
 		
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
@@ -26,16 +25,17 @@ public class DeleteSneaker implements Action{
 			return forward;
 		}
 		
-		//넘어온 값 저장하기
-		String model_stylecode = (String) request.getParameter("model_stylecode");
-		int num = Integer.parseInt(request.getParameter("num"));
+		//사용자 요청 DB로 가서 브랜드 리스트 가져오기
+		BrandDAO bdao = new BrandDAO();
 		
-		OnlineDAO odao = new OnlineDAO();
-		odao.deleteSneaker(model_stylecode, num);
+		List<BrandReqDTO> brandReqList = bdao.getBrandRequestList();
 		
-		forward.setPath("./SneakerList.ad");
-		forward.setRedirect(true);
+		request.setAttribute("brandReqList", brandReqList);
+		
+		
+		forward.setPath("./admin/admin_brandReqList.jsp");
+		forward.setRedirect(false);
 		return forward;
 	}
-	
+
 }
