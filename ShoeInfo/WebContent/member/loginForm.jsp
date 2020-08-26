@@ -78,16 +78,6 @@
 						<div class="fm_phone">
 							<input type="text" name="phone" id="fm_phone_join" placeholder="휴대폰번호( '-' 제외)" maxlength="13" pattern="\d*">
 						</div>
-	
-						<!-- 개인정보 처리방침 & 이용약관 동의 체크박스 -->
-	<!-- 					<div class="fm_Agree"> -->
-	<!-- 						<div> -->
-	<!-- 							<input type="checkbox"> <span> <a href="#">개인정보처리방침</a>을 모두 읽었으며, 이에 동의합니다. </span> -->
-	<!-- 						</div> -->
-	<!-- 						<div> -->
-	<!-- 							<input type="checkbox"> <span> <a href="#">이용약관</a>을 모두 읽었으며, 이에 동의합니다. </span> -->
-	<!-- 						</div> -->
-	<!-- 					</div> -->
 						
 						<!-- 가입하기 버튼 -->
 						<div class="fm_submitBtn">

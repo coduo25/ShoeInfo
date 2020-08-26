@@ -19,6 +19,12 @@
 </head>
 <body>
 	<%
+		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
+		if(user == null){
+			response.sendRedirect("./SneakerList.go");
+		}
+	
 		ArrayList<MemberDrawDTO> userDrawStylecodeList1 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList1");
 		ArrayList<SneakerDTO> sneakerInfoList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList1");	
 		

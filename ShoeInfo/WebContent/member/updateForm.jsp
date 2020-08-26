@@ -16,6 +16,12 @@
 <body>
 
 	<%
+		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
+		if(user == null){
+			response.sendRedirect("./SneakerList.go");
+		}
+		
 		MemberDTO mdto = (MemberDTO) session.getAttribute("mdto");
 	%>
 

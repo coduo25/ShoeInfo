@@ -25,7 +25,11 @@
 	<%
 	
 		String user = (String) session.getAttribute("email");
-	
+		String usr_position = (String) session.getAttribute("usr_position");
+		if(user == null){
+			response.sendRedirect("./SneakerList.go");
+		}
+		
 		//신발정보
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail"); 
 		

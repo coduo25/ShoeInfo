@@ -18,8 +18,12 @@ public class AddBrandRequestAction implements Action{
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email");
-		
 		ActionForward forward = new ActionForward();
+		if(user == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		//넘어온 값 받기
 		String brandName = request.getParameter("brandName");

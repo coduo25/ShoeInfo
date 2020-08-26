@@ -40,7 +40,7 @@ public class DeleteUserDrawInfoAction implements Action{
 		mdao.deleteUserDrawInfo(mddto);
 		
 		//페이지이동
-		forward.setPath("./SneakerDetail.go?model_stylecode="+model_stylecode);
+		forward.setPath("./SneakerDetail.go?model_stylecode="+model_stylecode+"&num="+model_num);
 		forward.setRedirect(true);
 		return forward;
 	}

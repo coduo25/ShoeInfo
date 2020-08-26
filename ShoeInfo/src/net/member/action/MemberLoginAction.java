@@ -57,23 +57,25 @@ public class MemberLoginAction implements Action{
 
 			return null;
 		}
-	
 		//로그인 성공시
-	
-		// request 객체를 사용해서 세션 객체를 생성
-		HttpSession session = request.getSession();
-		session.setAttribute("email", email);
+		else if(check == 1){
+			// request 객체를 사용해서 세션 객체를 생성
+			HttpSession session = request.getSession();
+			session.setAttribute("email", email);
+			
+			//로그인 성공했을시 해당 유저의 position이 뭔지 알아내기
+			String usr_position = mdao.positionCheck(email);
+			
+			session.setAttribute("usr_position", usr_position);
+			
+			// 페이지 이동(메인페이지)
+			ActionForward forward = new ActionForward();
+			forward.setPath("./SneakerList.go");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
-		//로그인 성공했을시 해당 유저의 position이 뭔지 알아내기
-		String usr_position = mdao.positionCheck(email);
-		
-		session.setAttribute("usr_position", usr_position);
-		
-		// 페이지 이동(메인페이지)
-		ActionForward forward = new ActionForward();
-		forward.setPath("./Main.bo");
-		forward.setRedirect(true);
-		return forward;
+		return null;
 	}
 
 }

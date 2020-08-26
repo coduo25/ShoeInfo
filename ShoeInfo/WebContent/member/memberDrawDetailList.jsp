@@ -25,10 +25,10 @@
 	<%
 		request.setCharacterEncoding("UTF-8");
 		
-		//로그인한 사용자가 체크
 		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
 		if(user == null){
-			user = "";
+			response.sendRedirect("./SneakerList.go");
 		}
 	
 		//신발 기본 정보 리스트

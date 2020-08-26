@@ -2,6 +2,7 @@ package net.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.brand.db.BrandDAO;
 import net.brand.db.BrandDTO;
@@ -17,7 +18,15 @@ public class UpdateDrawInfo implements Action{
 	
 		request.setCharacterEncoding("UTF-8");
 		
+		//로그인 정보 가져오기
+		HttpSession session = request.getSession();
+		String user = (String) session.getAttribute("email");
 		ActionForward forward = new ActionForward();
+		if(user == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		//넘어온 정보 가져오기(model_stylecode, brand_id)
 		int model_num = Integer.parseInt(request.getParameter("num"));

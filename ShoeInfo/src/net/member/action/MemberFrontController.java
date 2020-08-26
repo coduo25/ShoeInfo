@@ -31,30 +31,16 @@ public class MemberFrontController extends HttpServlet{
 		 * 1. 가상 주소 계산
 		 *************************************************************/
 		String requestURI = request.getRequestURI();
-		//System.out.println("URI: " + requestURI);
 		
 		String contextPath = request.getContextPath();
-		//System.out.println("ContextPath(프로젝트명): " + contextPath);
 		
 		String command = requestURI.substring(contextPath.length());
-		//System.out.println("command : " + command);
-		
-		//System.out.println("-------페이지 주소 계산 완료-------------");
-		
-		/************************************************************
-		 * 2. 계산된 주소를 사용해서 페이지 형태구분(View/Model)
-		 *************************************************************/
-		//System.out.println("-------페이지 구분 (view/model)-------------");
 		
 		Action action = null;
 		ActionForward forward = null;
 		
 		//회원가입 처리페이지(/MemberJoin.me)
 		if(command.equals("/MemberJoin.me")){
-			// 회원가입처리 페이지로 바로 이동
-			//System.out.println("/MemberJoin.me 주소요청 ");
-			
-			// ActionForward 객체 생성
 			forward = new ActionForward();
 			forward.setPath("./member/joinForm.jsp");
 			forward.setRedirect(false);	

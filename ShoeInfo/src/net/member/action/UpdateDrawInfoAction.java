@@ -2,6 +2,7 @@ package net.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.online.db.OnlineDAO;
 import net.online.db.OnlineDTO;
@@ -13,7 +14,15 @@ public class UpdateDrawInfoAction implements Action{
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		//로그인 정보 가져오기
+		HttpSession session = request.getSession();
+		String user = (String) session.getAttribute("email");
 		ActionForward forward = new ActionForward();
+		if(user == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		//넘어온 값 저장하기
 		OnlineDTO odto = new OnlineDTO();

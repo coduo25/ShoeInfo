@@ -1,15 +1,16 @@
 package net.sneaker.action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.brand.db.BrandDTO;
 import net.member.db.MemberDAO;
-import net.member.db.MemberDrawDTO;
 import net.online.db.OnlineDAO;
 import net.online.db.OnlineDTO;
 import net.sneaker.db.SneakerDAO;
@@ -28,31 +29,48 @@ public class SneakerDetailAction implements Action{
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		int num = Integer.parseInt(request.getParameter("num")); 
 				
-		/******************************************************
-		 * 사용자 응모한 브랜드 리스트 만들기
-		 ******************************************************/
 		MemberDAO mdao = new MemberDAO();
 		ArrayList<String> userDrawBrandList = mdao.searchDrawBrandInfo(user, model_stylecode);
-		//request에 저장
+
 		request.setAttribute("userDrawBrandList", userDrawBrandList);
-		
-		/******************************************************
-		 * 신발 기본 정보 리스트 만들기
-		 ******************************************************/
+
 		SneakerDAO sdao = new SneakerDAO();
 		
-		//정보 가져오기 전에 조회수 1 올리기
-		sdao.addViews(num, model_stylecode);
+		//저장된 쿠키 불러오기, https://drsggg.tistory.com/216
+		Cookie[] cookieFromRequest = request.getCookies();
+		if(cookieFromRequest == null){
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("location.reload()");
+			out.print("</script>");
+			out.close();
+			return null;
+		}
+		
+		String cookieValue = null;
+		for(int i=0; i<cookieFromRequest.length; i++){
+			cookieValue = cookieFromRequest[0].getValue();
+		}
+		
+		//쿠기 세션 입력
+		if(session.getAttribute(num+":cookie") == null){
+			session.setAttribute(num+":cookie", num + ":" + cookieValue);
+		}else {
+			session.setAttribute(num+":cookie ex", session.getAttribute(num+":cookie"));
+			if(!session.getAttribute(num+":cookie").equals(num+":"+ cookieValue)){
+				session.setAttribute(num+":cookie", num + ":" + cookieValue);
+			}
+		}
+		
+		if(!session.getAttribute(num+":cookie").equals(session.getAttribute(num+":cookie ex"))){
+			//정보 가져오기 전에 조회수 1 올리기
+			sdao.addViews(num, model_stylecode);
+		}
 		
 		SneakerDTO sdto = sdao.getSneakerDetail(num, model_stylecode);
-		//request에 저장
 		request.setAttribute("sneakerDetail", sdto);
 		
-		/******************************************************
-		 * 신발 발매 정보 리스트 만들기
-		 ******************************************************/
-		
-		//-----------온라인-------------
 		OnlineDAO odao = new OnlineDAO();
 		
 		//대한민국
@@ -83,7 +101,6 @@ public class SneakerDetailAction implements Action{
 		ArrayList<OnlineDTO> onlineList_etc = (ArrayList<OnlineDTO>) vec_on_etc.get(0);
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_on_etc.get(1);
 		
-		//request에 저장
 		request.setAttribute("onlineList_kr", onlineList_kr);
 		request.setAttribute("brandList_kr", brandList_kr);
 		

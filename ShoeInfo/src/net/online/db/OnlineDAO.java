@@ -410,6 +410,13 @@ public class OnlineDAO {
 			pstmt.setString(2, model_stylecode);
 			pstmt.setString(3, brand_id);
 			pstmt.executeUpdate();
+			
+			sql = "delete from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and brand_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, model_num);
+			pstmt.setString(2, model_stylecode);
+			pstmt.setString(3, brand_id);
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
