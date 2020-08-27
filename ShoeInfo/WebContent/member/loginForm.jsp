@@ -346,7 +346,23 @@
 				return false;
 			}
 			
-			$('#loginForm').submit();
+			$.ajax({
+				type:"post",
+				url:"./MemberLoginAction.me",
+				data: 'email=' + $('#fm_email_login').val() + '&pass=' + $('#fm_pass_login').val(),
+				success:function(data) {
+					if($.trim(data) == "NOEMAIL"){
+						alert("존재하지 않는 이메일입니다.");
+					}else if($.trim(data) == "WRONGPASS"){
+						alert("비밀번호가 올바르지 않습니다.");
+						$('#fm_pass_login').focus();
+					}else if($.trim(data) == "SUCCESS"){
+						location.href="./SneakerList.go";
+					}
+				},error:function(request,status,error){
+				 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
 			
 		});
 		

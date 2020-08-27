@@ -16,13 +16,13 @@
 			<nav class="footer-nav">
 				<ul>
 					<li>
-						<a href="#"> 이용약관 </a>
+						<span> 이용약관 </span>
 					</li>
 					<li>
-						<a href="#"> 개인정보이용방침 </a>
+						<span onclick="openPrivacy()"> 개인정보처리방침 </span>
 					</li>
 					<li>
-						<a href="#"> <i class="fab fa-instagram"></i> </a>
+						<span> <i class="fab fa-instagram"></i> </span>
 					</li>
 				</ul>
 			</nav>
@@ -30,4 +30,11 @@
 		
 	</div>
 </body>
+<script type="text/javascript">
+
+	function openPrivacy() {
+		window.open("./include/privacy.html", "a", "width=550, height=500, left=100, top=50");
+	}
+
+</script>
 </html>

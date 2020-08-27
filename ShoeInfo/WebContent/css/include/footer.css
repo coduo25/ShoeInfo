@@ -3,7 +3,6 @@
 #footer {
 	position: relative;
 	z-index: 1000;
-/* 	margin-top: 50px; */
 	width: 100%;
 	bottom: 0;
 	clear: both;
@@ -29,8 +28,8 @@
 	text-align: right;
 }
 .footer-nav ul { list-style: none; }
-.footer-nav ul li { display: inline-block; }
-.footer-nav ul li a { color: white; }
+.footer-nav ul li { display: inline; }
+.footer-nav ul li span { color: white; cursor: pointer; }
 .footer-nav ul li:not(:first-child):before { content: '|'; padding: 0.3em; color: white; }
 
 
@@ -39,6 +38,7 @@
 @media screen and (max-width: 1220px){
 	#footer-wrapper {
 		width: 90%;
+		font-size:0.9em;
 	}
 }
 
