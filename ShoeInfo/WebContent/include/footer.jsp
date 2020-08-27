@@ -16,7 +16,7 @@
 			<nav class="footer-nav">
 				<ul>
 					<li>
-						<span> 이용약관 </span>
+						<span onclick="openJoin_term()"> 이용약관 </span>
 					</li>
 					<li>
 						<span onclick="openPrivacy()"> 개인정보처리방침 </span>
@@ -31,6 +31,10 @@
 	</div>
 </body>
 <script type="text/javascript">
+
+	function openJoin_term() {
+		window.open("./include/join_terms.html", "a", "width=550, height=500, left=100, top=50");
+	}
 
 	function openPrivacy() {
 		window.open("./include/privacy.html", "a", "width=550, height=500, left=100, top=50");
