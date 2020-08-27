@@ -79,6 +79,14 @@
 							<input type="text" name="phone" id="fm_phone_join" placeholder="휴대폰번호( '-' 제외)" maxlength="13" pattern="\d*">
 						</div>
 						
+						<!-- 이용약관 & 개인정보정책 동의란 -->
+						<p style="margin:4% 0 1.5% 0;">
+							<input type="checkbox" name="privacy" id="fm_privacy"> (필수) <span id="privacy_label"> 이용약관 <span id="popup_privacy" onclick="openJoin_term()" >전체보기</span></span>
+						</p>
+						<p style="margin:1.5% 0 4% 0;">
+							<input type="checkbox" name="privacy" id="fm_join_term"> (필수) <span id="privacy_label"> 개인정보정책 <span id="popup_privacy" onclick="openPrivacy()">전체보기</span> </span>
+						</p>
+						
 						<!-- 가입하기 버튼 -->
 						<div class="fm_submitBtn">
 							<button type="button" class="join_submitBtn">
@@ -125,12 +133,20 @@
 </body>
 
 <script type="text/javascript">
+
+	function openJoin_term() {
+		window.open("./include/join_terms.html", "a", "width=550, height=500, left=100, top=50");
+	}
+	
+	function openPrivacy() {
+		window.open("./include/privacy.html", "a", "width=550, height=500, left=100, top=50");
+	}
 	
 	$(document).ready(function(){
 		
 		//회원가입 form을 클릭했을시
 		$('.signup-toggle').click(function(){
-			$('#content_login').css("height", "550px");
+			$('#content_login').css("height", "630px");
 			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
 			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
 			$('#loginForm').hide();
@@ -311,6 +327,15 @@
 			else if($('#fm_phone_join').val() == ''){
 				alert("휴대폰을 입력해주세요.");
 				$('#fm_phone_join').focus();
+				return false;
+			}
+			//이용약관 개인정보정책 동의 체크하기
+			else if($("#fm_privacy").is(":checked") == false){
+				alert("이용약관에 동의를 해주세요.");
+				return false;
+			}
+			else if($("#fm_join_term").is(":checked") == false){
+				alert("개인정보정책에 동의를 해주세요.");
 				return false;
 			}
 			
