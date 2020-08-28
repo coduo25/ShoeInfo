@@ -134,32 +134,26 @@
 
 <script type="text/javascript">
 
-	function openJoin_term() {
-		window.open("./include/join_terms.html", "a", "width=550, height=500, left=100, top=50");
-	}
-	
-	function openPrivacy() {
-		window.open("./include/privacy.html", "a", "width=550, height=500, left=100, top=50");
-	}
-	
 	$(document).ready(function(){
 		
 		//회원가입 form을 클릭했을시
 		$('.signup-toggle').click(function(){
-			$('#content_login').css("height", "630px");
+			$('#content_login').css("height", "650px");
 			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
 			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
-			$('#loginForm').hide();
-			$('#joinForm').show();
-		});
+			$('#loginForm').css("display", "none");
+			$('#joinForm').css("display", "inline-block");
+		});	
 		
+		//로그인 form을 클릭했을시
 		$('.login-toggle').click(function(){
 			$('#content_login').css("height", "350px");
 			$('.signup-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
 			$('.login-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
-			$('#joinForm').hide();
-			$('#loginForm').show();
+			$('#joinForm').css("display", "none");
+			$('#loginForm').css("display", "inline-block");
 		});
+		
 		
 		// ---------------- 회원가입 Form 관련 유효성 검사 --------------------
 		
@@ -391,7 +385,15 @@
 			
 		});
 		
-		
 	});
+	
+	function openJoin_term() {
+		window.open("./include/join_terms.html", "a", "width=550, height=500, left=100, top=50");
+	}
+	
+	function openPrivacy() {
+		window.open("./include/privacy.html", "a", "width=550, height=500, left=100, top=50");
+	}
+	
 </script>
 </html>

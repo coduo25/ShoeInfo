@@ -157,7 +157,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setOnline_writer(rs.getString("online_writer"));
+				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
 				onlineInfoList_kr.add(odto);
 				
 				//한국 브랜드 정보 가져오기
@@ -230,7 +230,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setOnline_writer(rs.getString("online_writer"));
+				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
 				onlineInfoList_asia.add(odto);
 				
 				//아시아 브랜드 정보 가져오기
@@ -300,7 +300,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setOnline_writer(rs.getString("online_writer"));
+				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
 				onlineInfoList.add(odto);
 				
 				//아메리카 브랜드 정보 가져오기

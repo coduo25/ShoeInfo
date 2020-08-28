@@ -5,18 +5,26 @@ import java.sql.Timestamp;
 public class MemberDTO {
 	
 	private String email;
+	private String email_BySHA;
 	private String pass;
 	private String name;
 	private String phone;
 	private Timestamp reg_date;
 	private String position;
 	private String salt;
+	private String salt_id;
 
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getEmail_BySHA() {
+		return email_BySHA;
+	}
+	public void setEmail_BySHA(String email_BySHA) {
+		this.email_BySHA = email_BySHA;
 	}
 	public String getPass() {
 		return pass;
@@ -53,6 +61,12 @@ public class MemberDTO {
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	public String getSalt_id() {
+		return salt_id;
+	}
+	public void setSalt_id(String salt_id) {
+		this.salt_id = salt_id;
 	}
 	
 }

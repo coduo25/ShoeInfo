@@ -188,9 +188,12 @@ public class MemberFrontController extends HttpServlet{
 		}
 		//회원 비밀번호 바꾸는 페이지로 이동하기
 		else if(command.equals("/ChangePass.me")){
-			forward = new ActionForward();
-			forward.setPath("./member/changePass.jsp");
-			forward.setRedirect(false);
+			action = new MemberChangePass();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		//회원 비밀번호 변경 처리하기
 		else if(command.equals("/MemberChangePassAction.me")){
@@ -241,6 +244,16 @@ public class MemberFrontController extends HttpServlet{
 		//회원 발매정보 수정하는 페이지 요청 처리
 		else if(command.equals("/UpdateDrawInfoAction.me")){
 			action = new UpdateDrawInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//회원 삭제(탈퇴) 페이지 요청 처리
+		else if(command.equals("/MemberDeleteAction.me")){
+			action = new MemberDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

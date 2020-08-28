@@ -39,7 +39,7 @@
 	<div id="wrapper" class="container">
 		<div class="component-page">
 			<!-- content -->
-			<div id="content_modify">
+			<div id="content_modify" style="margin:100px auto 20px auto;">
 	
 				<h3>회원정보 수정</h3>
 	
@@ -85,13 +85,15 @@
 							<button type="button" class="modi_submitBtn">
 								<span id="join_text">수정하기</span>
 							</button>
-<!-- 							<input type="button" value="수정하기" class="modi_submitBtn"> -->
 						</div>
 					</div>
-	
-					
 				</form>
 			</div>
+			
+			<div id="content_modify" style="margin:20px auto 100px auto; height: 50px; display: table;">
+				<div id="delete_text" style="display:table-cell; font-weight: normal; vertical-align: middle; font-size: 0.9em; color: #8d8d8d; cursor: pointer;"> 회원정보탈퇴신청 </div>
+			</div>
+			
 		</div>
 	</div>
 
@@ -240,6 +242,27 @@
 			});
 			
 			
+		});
+		
+		//탈퇴신청 문구 클릭했을시
+		$('#delete_text').click(function(){
+			 var confirm_delete = confirm("회원탈퇴를 하시겠습니까? (철회불가) \n탈퇴시 모든 나의 정보가 삭제됩니다.");
+			 if(confirm_delete) {
+				$.ajax({
+					type:"post",
+					url:"./MemberDeleteAction.me",
+					data:{"email":$("input[name=email]").val()},
+					success:function(data){
+						if($.trim(data) == "SUCCESS"){
+							alert("성공적으로 탈퇴 하였습니다.");
+							location.href="./MemberLogin.me";
+						}
+					},
+					error:function(request,status,error){
+					 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+					}
+				});
+			 }
 		});
 		
 	});

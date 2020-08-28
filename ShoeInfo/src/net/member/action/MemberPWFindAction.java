@@ -27,7 +27,6 @@ public class MemberPWFindAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		String checkEmail = mdao.findPW(name, email);
 		
-		// 응답정보의 타입을 html 형식으로 응답
 		response.setContentType("text/html; charset=UTF-8");
 	
 		// 출력객체를 생성(response객체의 정보를 가지고 생성)
@@ -39,7 +38,11 @@ public class MemberPWFindAction implements Action{
 		}
 		//이메일이 DB에 있으면
 		else{
-			out.print(checkEmail);
+			out.print("CHECKEMAIL");
+			
+			String salt_id = mdao.getSalt_idByEmail(email);
+			
+			String email_BySHA = SHA256Util.getEncrypt(email, salt_id);
 			
 			// 운영자 메일로 사용자 이메일에 비밀번호 재설정하는 링크 보내기
 			String host = "smtp.gmail.com";
@@ -67,11 +70,11 @@ public class MemberPWFindAction implements Action{
 	
 				// Text
 				message.setText("\n"
-						+ checkEmail + "님, 안녕하세요. \n"
+						+ checkEmail + "님, 안녕하세요. SHOEINFO 입니다.\n"
 						+ "\n"
 						+ "SHOINFO를 이용하시려면 비밀번호를 재설정 해주세요. \n"
 						+ "\n"
-						+ "http://localhost:8080/ShoeInfo/ChangePass.me?email=" + checkEmail);
+						+ "http://localhost:8080/ShoeInfo/ChangePass.me?email=" + email_BySHA);
 				
 				// send the message
 				Transport.send(message);

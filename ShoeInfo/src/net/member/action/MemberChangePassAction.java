@@ -21,8 +21,6 @@ public class MemberChangePassAction implements Action{
 		
 		int check = mdao.changePass(email, pass);
 		
-		System.out.println(check);
-		
 		// 출력객체를 생성(response객체의 정보를 가지고 생성)
 		PrintWriter out = response.getWriter();
 		

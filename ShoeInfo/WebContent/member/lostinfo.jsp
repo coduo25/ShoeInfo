@@ -32,7 +32,7 @@
 			<div id="content_idpwfind">
 			
 				<div class="pre-page">
-					<p> <a href="./MemberLogin.me"> <i class="fas fa-angle-left" id="pre-page-icon"></i> </a> </p>
+					<p> <a href="./MemberLogin.me" style="font-size: 1.5em;"> <i class="fas fa-angle-left" id="pre-page-icon"></i> </a> </p>
 				</div>
 			
 				<div class="change_form">
@@ -98,7 +98,7 @@
 							<!-- 비밀번호 찾기 -->
 							<div class="fm_idpwsubmitBtn">
 								<button type="button" class="pwfind_btn">
-									<span id="join_text">비밀번호 찾기</span>
+									<span id="join_text">비밀번호 찾기</span>&nbsp;<span id="loading" style="display:none; font-size: 1.1em;"><i class="fa fa-spinner fa-spin"></i> </span>
 								</button>
 							</div>
 						</div>
@@ -121,16 +121,16 @@
 		$('.signup-toggle').click(function(){
 			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
 			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
-			$('#idfind_wrap').hide();
-			$('#pwfind_wrap').show();
+			$('#idfind_wrap').css("display", "none");
+			$('#pwfind_wrap').css("display", "inline-block");
 		});
 		
 		//아이디 찾기를 눌렸을시
 		$('.login-toggle').click(function(){
 			$('.signup-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
 			$('.login-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
-			$('#pwfind_wrap').hide();
-			$('#idfind_wrap').show();
+			$('#pwfind_wrap').css("display", "none");
+			$('#idfind_wrap').css("display", "inline-block");
 		});
 		
 		//이름 input에 한글,영어만 입력하도록 하는 함수
@@ -143,6 +143,22 @@
 		$("input[name=phone]").keyup(function(event){
 			var inputNum = $(this).val();
 			$(this).val(inputNum.replace(/[^0-9]/gi,''));
+		});
+		
+		//아이디 찾기 form 에서 enter 키를 눌렸을시
+		$('#idfind_name, #idfind_phone').keypress(function(event){
+			if(event.which == 13){
+				$(".idfind_btn").click();
+				return false;
+			}
+		});
+		
+		//비밀번호 찾기 form 에서 enter 키를 눌렸을시
+		$('#pwfind_name, #pwfind_email').keypress(function(event){
+			if(event.which == 13){
+				$(".pwfind_btn").click();
+				return false;
+			}
 		});
 		
 		//이메일 찾기 버튼 눌렸을시
@@ -200,6 +216,8 @@
 				return false;
 			}
 			
+			$('#loading').show();
+			
 			$.ajax({
 				type:"post",
 				url:"./MemberPWFindAction.me",
@@ -211,7 +229,8 @@
 						$("#pwfind_name").focus();
 					}
 					//가입된 메일이면
-					else {
+					else if($.trim(data) == "CHECKEMAIL"){
+						$('#loading').hide();
 						alert("인증메일이 발송되었습니다. 메일을 확인해주세요.");
 					}
 				},

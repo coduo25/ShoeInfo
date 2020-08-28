@@ -119,16 +119,18 @@ public class MemberDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into shoeinfo_member(count, email, pass, name, phone, reg_date, position, salt) values(?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into shoeinfo_member(count, email, email_BySHA, pass, name, phone, reg_date, position, salt_id, salt) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, count);
 			pstmt.setString(2, mdto.getEmail());
-			pstmt.setString(3, mdto.getPass());
-			pstmt.setString(4, mdto.getName());
-			pstmt.setString(5, mdto.getPhone());
-			pstmt.setTimestamp(6, mdto.getReg_date());
-			pstmt.setString(7, "user");
-			pstmt.setString(8, mdto.getSalt());
+			pstmt.setString(3, mdto.getEmail_BySHA());
+			pstmt.setString(4, mdto.getPass());
+			pstmt.setString(5, mdto.getName());
+			pstmt.setString(6, mdto.getPhone());
+			pstmt.setTimestamp(7, mdto.getReg_date());
+			pstmt.setString(8, "user");
+			pstmt.setString(9, mdto.getSalt_id());
+			pstmt.setString(10, mdto.getSalt());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -155,6 +157,26 @@ public class MemberDAO {
 			closeDB();
 		}
 		return salt;
+	}
+	
+	//이메일에 해당하는 salt_id 값 가져오는 함수
+	public String getSalt_idByEmail(String email){
+		String salt_id = "";
+		try {
+			con = getConnection();
+			sql = "select salt_id from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				salt_id = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return salt_id;
 	}
 	
 	//회원가입 할때 이메일 중복 체크하는 함수
@@ -288,6 +310,26 @@ public class MemberDAO {
 			closeDB();
 		}
 		return checkEmail;
+	}
+	
+	//암호화된 이메일로 실제 이메일 찾는 함수
+	public String findEmailbySHA(String email_BySHA) {
+		String email = "";
+		try {
+			con = getConnection();
+			sql = "select email from shoeinfo_member where email_BySHA = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_BySHA);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				email = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return email;
 	}
 	
 	//회원 비밀번호 재설정 하는 함수
@@ -612,6 +654,40 @@ public class MemberDAO {
 				pstmt.executeUpdate();
 				check = 1;
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
+	//계정 삭제하는 함수
+	public int deleteMemberInfo(String email){
+		int check = -1;
+		try {
+			con = getConnection();
+			
+			sql = "delete from shoeinfo_member where email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			
+			sql = "delete from shoeinfo_memberdrawinfo where member_email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			
+			sql = "delete from shoeinfo_memberBrandReq where req_member = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			
+			sql = "delete from shoeinfo_onlineinfo where online_writer = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			check = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

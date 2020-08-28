@@ -72,7 +72,7 @@ public class AddOnlineInfoAction implements Action{
 
 		String online_writer = request.getParameter("online_writer");
 		//@ 앞부분을 추출
-		String writer = online_writer.substring(0, online_writer.indexOf("@"));
+//		String writer = online_writer.substring(0, online_writer.indexOf("@"));
 		
 		//country_region 값 찾아오기
 		CountryDAO cdao = new CountryDAO();
@@ -98,7 +98,7 @@ public class AddOnlineInfoAction implements Action{
 		odto.setOnline_method(online_method);
 		odto.setBuy_method(buy_method);
 		odto.setDelivery_method(delivery_method);
-		odto.setOnline_writer(writer);
+		odto.setOnline_writer(online_writer);
 		
 		OnlineDAO odao = new OnlineDAO();
 		int check = odao.insertOnlineInfo(odto);
