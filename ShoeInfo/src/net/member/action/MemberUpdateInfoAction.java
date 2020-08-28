@@ -14,6 +14,16 @@ public class MemberUpdateInfoAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		//로그인 정보 가져오기
+		HttpSession session = request.getSession();
+		String user = (String) session.getAttribute("email");
+		ActionForward forward = new ActionForward();
+		if(user == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
+		
 		// 넘어온 값 받기
 		MemberDTO mdto = new MemberDTO();
 		
@@ -37,8 +47,6 @@ public class MemberUpdateInfoAction implements Action{
 
 		// 출력객체를 생성(response객체의 정보를 가지고 생성)
 		PrintWriter out = response.getWriter();
-		
-		HttpSession session = request.getSession();
 		
 		// DB에 존재하지 않는 아이디 이면
 		if(check == 0) {

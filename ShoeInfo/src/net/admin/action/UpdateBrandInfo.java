@@ -20,8 +20,8 @@ public class UpdateBrandInfo implements Action{
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
 		ActionForward forward = new ActionForward();
-		if(!usr_position.equals("admin")){
-			forward.setPath("./Main.bo");
+		if(user == null || !usr_position.equals("admin")){
+			forward.setPath("./SneakerList.go");
 			forward.setRedirect(true);
 			return forward;
 		}

@@ -66,6 +66,8 @@
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) request.getAttribute("brandList_etc");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat original_format2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat date_format = new SimpleDateFormat("yyyy년 M월 d일");
 
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
@@ -76,6 +78,10 @@
 		Date currentTime = new Date();
 		String current = original_format.format(currentTime);
 		Date today = original_format.parse(current);
+		
+		String ty_str_date = sdto.getRelease_date();
+		Date date_type = original_format2.parse(ty_str_date);
+		
 	%>
 	<input type="hidden" class="login_user" value="<%=user%>">
 	<input type="hidden" class="num" id="num" value="<%=sdto.getNum()%>">
@@ -136,7 +142,7 @@
 								<%if(sdto.getRelease_date().contains("99")){%>
 									미정
 								<%}else{%>
-									<%=sdto.getRelease_date()%>
+									<%=date_format.format(date_type)%>
 								<%}%>	
 								</span>
 							</div>

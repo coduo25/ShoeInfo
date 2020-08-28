@@ -2,6 +2,7 @@ package net.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.member.db.MemberDAO;
 
@@ -16,7 +17,7 @@ public class MemberChangePass implements Action{
 		//암호화된 아이디 값을 가지고 실제 아이디 값 가져오기
 		MemberDAO mdao = new MemberDAO();
 		String email = mdao.findEmailbySHA(email_BySHA);
-		
+
 		ActionForward forward = new ActionForward();
 		forward.setPath("./member/changePass.jsp?email="+email);
 		forward.setRedirect(false);		

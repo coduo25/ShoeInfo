@@ -72,7 +72,7 @@
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 스타일 코드* </td>
+						<td id="category" colspan="2"> 제품 스타일 코드 </td>
 						<td colspan="2">
 							<input type="text" name="model_stylecode">
 						</td>

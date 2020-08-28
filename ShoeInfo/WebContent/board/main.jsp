@@ -107,9 +107,14 @@
 							Date date_type = original_format.parse(ty_str_date);
 							
 							Date original_rel = original_format.parse(sdto.getRelease_date());
+							int compare_w_rel;
 							
 							//현재와 발매날짜와 비교하기 (1이면 발매후, 0이면 오늘 발매일, -1이면  발매전)
-							int compare_w_rel = today.compareTo(original_rel);
+							if(sdto.getRelease_date().contains("99")){
+								compare_w_rel = -1; 
+							}else {
+								compare_w_rel = today.compareTo(original_rel);	
+							}
 					%>
 						<div class="shoelist_content" <%if(compare_w_rel == 1) {%> style="opacity:0.5;" <%}%>  >
 							<!-- 발매일 -->

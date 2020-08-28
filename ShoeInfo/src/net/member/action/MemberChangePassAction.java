@@ -24,8 +24,6 @@ public class MemberChangePassAction implements Action{
 		// 출력객체를 생성(response객체의 정보를 가지고 생성)
 		PrintWriter out = response.getWriter();
 		
-		HttpSession session = request.getSession();
-		
 		// DB에 존재하지 않는 회원이면
 		if(check == 0) {
 			out.print("NO");

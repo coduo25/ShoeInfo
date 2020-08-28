@@ -86,28 +86,28 @@
 					<tr>
 						<td id="category" colspan="2"> 제품 스타일 코드  </td>
 						<td colspan="2"> 
-							<input type="text" name="model_stylecode" value="<%=sdto.getModel_stylecode()%>"> 
+							<input type="text" name="model_stylecode" <%if(sdto.getModel_stylecode().equals("UNKNOWN")){%>value=""<%}else{%>value="<%=sdto.getModel_stylecode()%> <%}%>"> 
 							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
 						</td>
 					</tr>
 					<tr>
 						<td id="category" colspan="2"> 제품명 </td>
 						<td colspan="2">
-							<input type="text" name="model_name" value="<%=sdto.getModel_name()%>">
+							<input type="text" name="model_name" <%if(sdto.getModel_name().equals("UNKNOWN")){%>value=""<%}else{%>value="<%=sdto.getModel_name()%> <%}%>">
 							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
 						</td>
 					</tr>
 					<tr>
 						<td id="category" colspan="2"> 제품 컬러 웨이 </td>
 						<td colspan="2">
-							<input type="text" name="model_colorway" value="<%=sdto.getModel_colorway()%>">
+							<input type="text" name="model_colorway" <%if(sdto.getModel_colorway().equals("UNKNOWN")){%>value=""<%}else{%> value="<%=sdto.getModel_colorway()%> <%}%>">
 							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span> 
 						</td>
 					</tr>
 					<tr>
 						<td id="category" colspan="2"> 가격 </td>
 						<td colspan="2">
-							<input type="text" name="price" value="<%=sdto.getPrice()%>">원
+							<input type="text" name="price" <%if(sdto.getPrice() == 0){%>value=""<%}else{%>value="<%=sdto.getPrice()%> <%}%>">원
 							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 한국기준 가격이 미정일시, 빈칸유지 </span> 	
 						</td>
 					</tr>

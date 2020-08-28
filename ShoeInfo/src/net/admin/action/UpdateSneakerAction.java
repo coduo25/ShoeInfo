@@ -20,11 +20,13 @@ public class UpdateSneakerAction implements Action{
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
 		ActionForward forward = new ActionForward();
-		if(!usr_position.equals("admin")){
-			forward.setPath("./Main.bo");
+		if(user == null || !usr_position.equals("admin")){
+			forward.setPath("./SneakerList.go");
 			forward.setRedirect(true);
 			return forward;
 		}
+		
+		 request.setCharacterEncoding("UTF-8");
 		
 		//넘어온 새로운 정보 저장하기
 		ServletContext context = request.getServletContext();
@@ -47,7 +49,7 @@ public class UpdateSneakerAction implements Action{
 		
 		//model_stylecode
 		if(multi.getParameter("model_stylecode") == null || multi.getParameter("model_stylecode").isEmpty()){
-			sdto.setModel_stylecode("미정");
+			sdto.setModel_stylecode("UNKNOWN");
 		}else {
 			sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
 		}
@@ -61,7 +63,7 @@ public class UpdateSneakerAction implements Action{
 		
 		//model_colorway
 		if(multi.getParameter("model_colorway") == null || multi.getParameter("model_colorway").isEmpty()){
-			sdto.setModel_colorway("미정");
+			sdto.setModel_colorway("UNKNOWN");
 		}else {
 			sdto.setModel_colorway(multi.getParameter("model_colorway"));
 		}
