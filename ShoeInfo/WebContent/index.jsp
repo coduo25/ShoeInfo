@@ -11,7 +11,7 @@
 
 	<%	
 		//ShoeInfo 메인페이지
-		response.sendRedirect("./SneakerList.go");
+		response.sendRedirect("./Main.bo");
 	%>
 
 </body>
