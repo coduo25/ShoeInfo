@@ -210,6 +210,9 @@
 								<div id="del-radio-wrapper">
 									<input type="radio" id="instore" name="delivery_method" value="매장수령"> <label for="instore">매장수령</label>
 								</div>
+								<div id="del-radio-wrapper">
+									<input type="radio" id="onlyLocal" name="delivery_method" value="직배x배대지x"> <label for="onlyLocal">직배x 배대지x</label>
+								</div>
 							</div>
 							
 						</div>

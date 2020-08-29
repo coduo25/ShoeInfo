@@ -353,17 +353,17 @@
 													<span class="end_time"> ~ <%=new_Online_end_time%> </span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()){%>
-													<span class="start_time"> <%=new_Online_start_time%> ~ 추후공지 </span>
+													<span class="start_time" id="start_time2"> <%=new_Online_start_time%> ~ 추후공지 </span>
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()){%>
-													<span class="start_time"> <%=new_date_start_time%> 시간미정 </span>
+													<span class="start_time" id="start_time2"> <%=new_date_start_time%> 시간미정 </span>
 												<!-- 시작시간은 없고 끝나는 시간의 시간은 없고 날짜만 존재할 경우 -->
 												<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty()){%>
 													<span class="end_time"> ~ <%=new_date_end_time%> 시간미정 </span>
 												<%}else if(odto.getOnline_start_time().isEmpty() || odto.getOnline_end_time().isEmpty()) {%>
 													<span> 추후공지예정 </span>
 												<%}else{%>
-													<span class="start_time"><%=new_Online_start_time%></span> ~ <span class="end_time"><%=new_Online_end_time%></span>
+													<span class="start_time" id="start_time2"><%=new_Online_start_time%></span> ~ <span class="end_time"><%=new_Online_end_time%></span>
 												<%}%>
 											<%}%>
 										</span>

@@ -46,8 +46,8 @@ public class MemberPWFindAction implements Action{
 			
 			// 운영자 메일로 사용자 이메일에 비밀번호 재설정하는 링크 보내기
 			String host = "smtp.gmail.com";
-			final String user = "shoeinfoshoeinfo";
-			final String password = "dhfpswl@7695!";
+			final String user = "shoeinfo.official";
+			final String password = "agyyxslsqqlmtiof";
 			
 			//세션
 			Properties props = new Properties();
@@ -72,9 +72,9 @@ public class MemberPWFindAction implements Action{
 				message.setText("\n"
 						+ checkEmail + "님, 안녕하세요. SHOEINFO 입니다.\n"
 						+ "\n"
-						+ "SHOINFO를 이용하시려면 비밀번호를 재설정 해주세요. \n"
+						+ "비밀번호를 재설정 해주세요. \n"
 						+ "\n"
-						+ "http://localhost:8080/ShoeInfo/ChangePass.me?email=" + email_BySHA);
+						+ "http://shoeinfo.co.kr/ShoeInfo/ChangePass.me?email=" + email_BySHA);
 				
 				// send the message
 				Transport.send(message);

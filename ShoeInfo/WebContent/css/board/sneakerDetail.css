@@ -206,7 +206,7 @@ input:checked + .slider:before {
 
 
 /* 사용자 발매정보 추가하는 페이지 -------------------------------------------------------------------------------------------- */
-.add_wrapper { overflow: auto; width: 100%; display: block; border-top: 2px solid #808080; border-bottom: 2px solid #808080; padding: 4% 15%; margin-bottom: 5%; }
+.add_wrapper { overflow: auto; width: 100%; display: block; padding: 4% 15%; margin-bottom: 5%; }
 #addOnlineForm, #updateOnlineForm { padding: 5%; border: 1px solid black; border-radius: 5px; }
 
 #req_icon { font-size: 0.5em; color: #b50000; vertical-align: top; }
@@ -221,7 +221,7 @@ input[type=date], input[type=time] { height: 35px; font-size: 15px; padding-left
 input[type=radio] { margin: 0 0.5%; }
 #radio-wrapper { padding: 1% 0 3% 0; }
 #radio-wrapper:last-child { padding: 1% 0 0 0; }
-.add_wrapper label { margin-right: 7%; }
+.add_wrapper label { margin-right: 5%; }
 .rel_Btn2 { border: 1px solid #232323; width: 50%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
 .rel_Btn2:hover { cursor: pointer; background-color: #232323; color: white; }
 #submitBtn-form { padding: 3% 0; }
@@ -345,6 +345,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#nothingSearched div {
 		width: 60%;
 	}
+	#del-radio-wrapper {
+    	display: block;
+    	padding: 1% 0 3% 0;
+	}
 }
 
 /* 0 ~ 468px */
@@ -392,7 +396,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	margin: 2%;
     	height: unset;
 	}
-	.start_time {
+	#start_time2 {
 		display: none;
 	}
 	#wrapper-period span {
@@ -415,7 +419,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	/* 발매 추가 영역 */
 	.add_wrapper #category {
-		font-size: 0.7em;
+		font-size: 0.9em;
 		padding-bottom: 3%;
 	}
 	input[name=model_stylecode] {
@@ -429,7 +433,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		margin-bottom: 2%;
 	}
 	label {
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 	#del-radio-wrapper {
 		display: block;
@@ -476,6 +480,18 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	/* 상세페이지 */
 	.detail_area { display: none; }
 	
+	#radio-wrapper {
+	    padding: 1% 0 7% 0;
+	}
+	#radio-wrapper:last-child {
+   		padding: 1% 0 0 0;
+	}
+	#del-radio-wrapper {
+    	padding: 1% 0 7% 0;
+	}
 	
+	.add_wrapper label {
+		vertical-align: middle;
+	}
 }
 	

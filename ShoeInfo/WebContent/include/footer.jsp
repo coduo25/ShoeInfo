@@ -12,7 +12,12 @@
 <body>
 	<div id="footer">
 		<div id="footer-wrapper">
-			<span id="copyright"> Copyright 2020 (C) SHOEINFO. All rights reserved. </span>
+			<div id="copyright"> Copyright 2020 (C) SHOEINFO. All rights reserved. </div>
+			
+			<div id="div"> | </div>
+			
+			<div id="info">Contact : info@shoeinfo.co.kr</div>
+			
 			<nav class="footer-nav">
 				<ul>
 					<li>
@@ -22,12 +27,11 @@
 						<span onclick="openPrivacy()"> 개인정보처리방침 </span>
 					</li>
 					<li>
-						<span> <i class="fab fa-instagram"></i> </span>
+						<span> <a href="https://www.instagram.com/shoeinfo.official/" target="_blank"><i class="fab fa-instagram"></i></a> </span>
 					</li>
 				</ul>
 			</nav>
 		</div>
-		
 	</div>
 </body>
 <script type="text/javascript">
