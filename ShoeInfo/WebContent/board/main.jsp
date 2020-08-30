@@ -246,9 +246,9 @@
 
 	});
 
-	var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
 	var sTime = new Date().getTime();
-	document.write(unescape("%3Cscript id='log_script' src='" + JsHost + "coduo25.weblog.cafe24.com/weblog.js?uid=coduo25&t="+sTime+"' type='text/javascript'%3E%3C/script%3E"));
+	(function(i,s,o,g,r,a,m){i['webObject']=g;i['webUid']=r;a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})
+	(window,document,'script','//coduo25.weblog.cafe24.com/weblog.js?v='+sTime,'coduo25_1');
 
 </script>
 </html>
