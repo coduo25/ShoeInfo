@@ -11,6 +11,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="naver-site-verification" content="1f84b34b248bbb6ede2e4bc541314b75b85ad622" />
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
