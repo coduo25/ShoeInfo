@@ -150,7 +150,7 @@
 							<input type="date" name="online_date_end" id="input_date" value="<%=new_Online_end_date%>">
 							<input type="time" name="online_hour_end" id="input_date" value="<%=new_Online_end_hour%>">
 							
-							<span id="warn_label"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 날짜와 시간이 없을시, 빈칸으로 놔두기! </span>
+							<span id="warn_label"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 날짜와 시간이 없을시, 빈칸으로 놔두기(지우기)! </span>
 							
 						</div>
 						
