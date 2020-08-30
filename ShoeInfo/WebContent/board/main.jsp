@@ -15,11 +15,6 @@
 <meta name="description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트">
 <meta name="Keywords" content="스니커즈응모, 프리미엄신발, 발매일정, 발매응모">
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="SHOEINFO">
-<meta property="og:description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트">
-<meta property="og:url" content="http://www.shoeinfo.co.kr">
-
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
