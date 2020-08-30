@@ -193,7 +193,7 @@
 									<input type="radio" id="instore" name="delivery_method" value="매장수령" <%if(onlineDrawInfo.getDelivery_method().equals("매장수령")){%>checked<%}%>> <label for="instore">매장수령</label>
 								</div>
 								<div id="del-radio-wrapper">
-									<input type="radio" id="onlyLocal" name="delivery_method" value="직배x배대지x" <%if(onlineDrawInfo.getDelivery_method().equals("직배x배대지x")){%>checked<%}%>> <label for="onlyLocal">매장수령</label>
+									<input type="radio" id="onlyLocal" name="delivery_method" value="직배x배대지x" <%if(onlineDrawInfo.getDelivery_method().equals("직배x배대지x")){%>checked<%}%>> <label for="onlyLocal">직배x 배대지x</label>
 								</div>
 							</div>
 							
