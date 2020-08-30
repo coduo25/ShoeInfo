@@ -20,8 +20,6 @@
 <meta property="og:description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트">
 <meta property="og:url" content="http://www.shoeinfo.co.kr">
 
-
-
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
