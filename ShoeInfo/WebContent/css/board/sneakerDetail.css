@@ -225,7 +225,7 @@ input[type=radio] { margin: 0 0.5%; }
 .rel_Btn2 { border: 1px solid #232323; width: 50%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
 .rel_Btn2:hover { cursor: pointer; background-color: #232323; color: white; }
 #submitBtn-form { padding: 3% 0; }
-#del-radio-wrapper { display: inline; padding: 0;}
+#onlineM-radio-wrapper, #del-radio-wrapper { display: inline; padding: 0;}
 
 	/* 브랜드 검색 영역 */
 	.search-form { padding-bottom: 1% !important; }
@@ -492,6 +492,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	.add_wrapper label {
 		vertical-align: middle;
+	}
+	
+	#onlineM-radio-wrapper {
+    	display: block;
+    	padding: 1% 0 7% 0;
 	}
 }
 	

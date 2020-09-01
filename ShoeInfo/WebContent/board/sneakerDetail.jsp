@@ -296,7 +296,7 @@
 									<!-- 응모 진행중 여부 -->
 									<%if(odto.getOnline_method().contains("선착")){%>
 											<span></span>
-									<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("-")){%>
+									<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
 										<%if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
 											<span id="draw_count_result_ing">진행중</span>
 										<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
@@ -344,7 +344,7 @@
 												 	<span class="start_time"> <%=new_Online_start_time%> </span> 
 												<%}%>
 											<!-- 드로우 또는 미정일시 -->
-											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("-")){%> 
+											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%> 
 												<!-- 시간시간에 날짜와 시간, 끝나는 시간 날짜와 시간이 모두 없을때 -->
 												<%if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty()){%>
 													<span> 추후공지예정 </span>
@@ -374,7 +374,7 @@
 										<div>
 											<%if(odto.getOnline_method().contains("선착")){%> 
 												<span style="color:#ff6600; font-weight: bold;"> <%=odto.getOnline_method()%> </span>
-											<%}else if(odto.getOnline_method().contains("드로우")) {%>
+											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) {%>
 												<span style="color:#006600; font-weight: bold;"> <%=odto.getOnline_method()%> </span> 
 											<%}else if(odto.getOnline_method().contains("-")) {%>
 												<span> 미정 </span>
@@ -396,10 +396,10 @@
 										<div> <span> 응모여부 </span> </div>
 										<div>
 											<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
-											<%if(odto.getOnline_method().contains("드로우") && user.equals("")){%>
+											<%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user.equals("")){%>
 												<span id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox" style="width:16px; height:16px; vertical-align: middle;"> </span>
 											<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
-											<%}else if(odto.getOnline_method().contains("드로우") && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
+											<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
 												<span id="draw-status_<%=country_name_eng%><%=i%>">
 													<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 													<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
@@ -407,7 +407,7 @@
 													<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;">
 												</span>
 											<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
-											<%}else if(odto.getOnline_method().contains("드로우") && user != null && userDrawBrandList.contains(odto.getBrand_id())){%>
+											<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && userDrawBrandList.contains(odto.getBrand_id())){%>
 												<span id="draw-status_<%=country_name_eng%><%=i%>"> 
 													<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 													<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
@@ -494,7 +494,7 @@
 												<span class="draw_count_result" id="draw_count_result_yet"> - </span>
 											<%} %>
 										</span>
-										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("-")){%>
+										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
 										<span id="remain_time_status_<%=country_name_eng%><%=i%>">
 											<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
 											<%if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty()) {%>

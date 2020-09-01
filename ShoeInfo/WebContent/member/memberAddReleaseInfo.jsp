@@ -154,9 +154,27 @@
 						
 						<div id="online_method-form">
 							<span id="category"> 발매 방식 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
-							<input type="radio" id="fcfs" name="online_method" value="선착"> <label for="fcfs">선착</label>
-							<input type="radio" id="draw" name="online_method" value="드로우"> <label for="draw">드로우</label>
-							<input type="radio" id="Undefined" name="online_method" value="-"> <label for="Undefined">미정</label>
+							
+							<div id="onlineM-radio-wrapper">
+								<input type="radio" id="fcfs" name="online_method" value="선착"> <label for="fcfs">선착</label>
+							</div>
+							
+							<div id="onlineM-radio-wrapper">
+								<input type="radio" id="draw" name="online_method" value="드로우"> <label for="draw">드로우</label>
+							</div>
+							
+							<div id="onlineM-radio-wrapper">
+								<input type="radio" id="instadraw" name="online_method" value="인스타라플"> <label for="instadraw">인스타라플</label>
+							</div>
+							
+							<div id="onlineM-radio-wrapper">
+								<input type="radio" id="emaildraw" name="online_method" value="이메일라플"> <label for="emaildraw">이메일라플</label>
+							</div>
+							
+							<div id="onlineM-radio-wrapper">
+								<input type="radio" id="Undefined" name="online_method" value="-"> <label for="Undefined">미정</label>
+							</div>
+							
 						</div>
 						
 						<div id="onlineTime-form">
@@ -365,7 +383,7 @@
 		}
 		
 		//드로우일시 그대로 놔두기
-		if(online_method == '드로우'){
+		if(online_method == '드로우' || online_method == '인스타라플' || online_method == '이메일라플'){
 			$('input[name=online_date_start]').show();
 			$('input[name=online_hour_start]').show();
 			$('#tilde').show();
