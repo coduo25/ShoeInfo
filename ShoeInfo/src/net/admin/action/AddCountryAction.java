@@ -1,5 +1,7 @@
 package net.admin.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,16 +31,12 @@ public class AddCountryAction implements Action{
 		// 1. 파일 업로드 (이미지)
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/countryflag_img_upload");
-		//System.out.println("파일이 저장되는곳 (서버의 HDD) :" + realPath);
 		
-		//파일 크기 지정
 		int maxSize = 30 * 1024 * 1024; //30MB
 		
 		//파일 업로드(cos.jar)
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8");
-		System.out.println(multi.getParameter("country_flag"));
-		// ---------------------------------------------------------------------------------------------------------------------------
-		// 2. BrandDTO 객체 생성 (전달받은 정보를 저장)
+
 		CountryDTO cdto = new CountryDTO();
 		cdto.setCountry_region(multi.getParameter("country_region"));
 		cdto.setCountry_name(multi.getParameter("country_name"));
@@ -47,11 +45,30 @@ public class AddCountryAction implements Action{
 		cdto.setCountry_flag(image);
 		
 		CountryDAO cdao = new CountryDAO();
-		cdao.insertNewCountry(cdto);
+		int check = -1;
+		check = cdao.insertNewCountry(cdto);
 		
-		// ---------------------------------------------------------------------------------------------------------------------------
-		// 3. 페이지이동
-		forward.setPath("./searchBrand.ad");
+		if(check == 0){
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('이미 존재하는 국가입니다.');");
+			out.print("location.href=history.back()");
+			out.print("</script>");
+			out.close();
+			return null;
+		} else if(check == -1){
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('국가 추가 실패');");
+			out.print("location.href=history.back()");
+			out.print("</script>");
+			out.close();
+			return null;
+		}
+
+		forward.setPath("./Main.ad");
 		forward.setRedirect(true);
 		return forward;
 	}

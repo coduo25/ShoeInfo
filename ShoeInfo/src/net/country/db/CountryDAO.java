@@ -59,21 +59,34 @@ public class CountryDAO {
 	}
 	
 	//새로운 나라 추가하는 함수
-	public void insertNewCountry(CountryDTO ctdo){
+	public int insertNewCountry(CountryDTO cdto){
+		int check = -1;
 		try {
 			con = getConnection();
-			sql = "insert into shoeinfo_country values(?, ?, ?, ?)";
+			//중복 국가 데이터 체크
+			sql = "select * from shoeinfo_country where country_code = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, ctdo.getCountry_region());
-			pstmt.setString(2, ctdo.getCountry_name());
-			pstmt.setString(3, ctdo.getCountry_code());
-			pstmt.setString(4, ctdo.getCountry_flag());
-			pstmt.executeUpdate();
+			pstmt.setString(1, cdto.getCountry_code());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				check = 0;
+			}
+			else{
+				sql = "insert into shoeinfo_country values(?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, cdto.getCountry_region());
+				pstmt.setString(2, cdto.getCountry_name());
+				pstmt.setString(3, cdto.getCountry_code());
+				pstmt.setString(4, cdto.getCountry_flag());
+				pstmt.executeUpdate();
+				check = 1;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
+		return check;
 	}
 	
 	//관리자 권한 모든 국가 리스트 가져오는 함수
