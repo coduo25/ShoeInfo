@@ -119,6 +119,24 @@
 							}else {
 								compare_w_rel = today.compareTo(original_rel);	
 							}
+							
+							//오늘 날짜와 최신 온라인 등록 날짜와 비교해서 이틀 안에 등록 된거면 빨간색 점 나타내기, 등록하고 이틀이 지나거나 아예 등록정보가 없다면 빨간색 점 나타내기
+							// diffDay가 -2보다 적으면 빨간색 사라지게 하고 -2보다 크면 빨간색 띄우기
+							int recentChk = -1;
+							
+							if(sdto.getReg_date() != null){
+								//Timestamp -> date
+								Date recent_RegDate = new Date(sdto.getReg_date().getTime());
+								//recent_RegDate - Today 
+								long diffDay = (recent_RegDate.getTime() - today.getTime()) / (24*60*60*1000);
+								if(diffDay <= -3){
+									recentChk = -1;
+								}else if(diffDay > -3) {
+									recentChk = 1;
+								}
+							}else if(sdto.getReg_date() == null){
+								recentChk = -1;
+							}
 					%>
 						<div class="shoelist_content" <%if(compare_w_rel == 1) {%> style="opacity:0.5;" <%}%>  >
 							<!-- 발매일 -->
@@ -150,9 +168,15 @@
 								
 								<!-- links -->
 								<div class="content_links">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">			
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
+										
 										<!-- 링크 wrapper -->
 										<div id="link-wrapper">
+											<% if(recentChk == 1){ %>
+												<div id="recent-dot">
+													<i class="fas fa-exclamation-circle"></i>
+												</div>
+											<%} %>
 											<%=sdto.getCountLinks()%>
 										</div>							
 									</a>

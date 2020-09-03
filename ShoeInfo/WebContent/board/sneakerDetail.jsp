@@ -276,40 +276,65 @@
 								X = X + "*";
 							}
 							String f_splitWriter = splitWriter.concat(X);
+							
+							//오늘 날짜와 최신 온라인 등록 날짜와 비교해서 이틀 안에 등록 된거면 빨간색 점 나타내기, 등록하고 이틀이 지나거나 아예 등록정보가 없다면 빨간색 점 나타내기
+							// diffDay가 -2보다 적으면 빨간색 사라지게 하고 -2보다 크면 빨간색 띄우기
+							int recentChk = -1;
+							
+							if(odto.getReg_date() != null){
+								//Timestamp -> date
+								Date recent_RegDate = new Date(odto.getReg_date().getTime());
+								//recent_RegDate - Today 
+								long diffDay = (recent_RegDate.getTime() - today.getTime()) / (24*60*60*1000);
+								if(diffDay <= -3){
+									recentChk = -1;
+								}else if(diffDay > -3) {
+									recentChk = 1;
+								}
+							}else if(odto.getReg_date() == null){
+								recentChk = -1;
+							}
 					%>
 						<div class="grid-wrapper">
 							<div class="grid-item" id="grid-item-<%=country_name_eng%><%=i%>">
 							
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
-									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="100" height="100"> </a>	
-								</div>
-								
-								<!-- 발매 정보 작성자 아이콘 -->
-								<div class="grid-info-writer" id="grid-info-writer-<%=country_name_eng%><%=i%>"> 작성자: <%=f_splitWriter%> </div>
-								<div class="grid-info" id="grid-info-<%=country_name_eng%><%=i%>">
-									<span> <i class="fas fa-user"></i> </span>
-								</div>
-								
-								<!-- 진행중 마크 -->
-								<div class="grid-ing">
-									<!-- 응모 진행중 여부 -->
-									<%if(odto.getOnline_method().contains("선착")){%>
-											<span></span>
-									<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
-										<%if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
-											<span id="draw_count_result_ing">진행중</span>
-										<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
-										<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && compare_w_end_result == -1){%>
-											<span id="draw_count_result_ing">진행중</span>
-										<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
-										<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == 1){%>
-											<span id="draw_count_result_ing">진행중</span>
-										<%}else{ %>
-											<span></span>
+									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="100" height="100"> </a>
+									
+									<% if(recentChk == 1){ %>
+										<div class="ribbon-wrapper">
+											<div class="ribbon">NEW</div>
+										</div>
+									<%} %>
+									
+									<!-- 진행중 마크 -->
+									<div class="grid-ing">
+										<!-- 응모 진행중 여부 -->
+										<%if(odto.getOnline_method().contains("선착")){%>
+												<span></span>
+										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
+											<%if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
+												<span id="draw_count_result_ing">진행중</span>
+											<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
+											<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && compare_w_end_result == -1){%>
+												<span id="draw_count_result_ing">진행중</span>
+											<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
+											<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == 1){%>
+												<span id="draw_count_result_ing">진행중</span>
+											<%}else{ %>
+												<span></span>
+											<%}%>
 										<%}%>
-									<%}%>
+									</div>
+									
+									<!-- 발매 정보 작성자 아이콘 -->
+									<div class="grid-info-writer" id="grid-info-writer-<%=country_name_eng%><%=i%>"> 작성자: <%=f_splitWriter%> </div>
+									<div class="grid-info" id="grid-info-<%=country_name_eng%><%=i%>">
+										<span> <i class="fas fa-user"></i> </span>
+									</div>	
 								</div>
+
 								
 								<!-- 모바일 버전 toggle down/up 버튼 -->
 								<div class="mobile-toggle-down" id="mobile-toggle-Down-<%=country_name_eng%><%=i%>">

@@ -186,7 +186,7 @@
 								<input type="radio" id="buy_beCredit" name="buy_method" value="당첨 전 선결제" <%if(onlineDrawInfo.getBuy_method().equals("당첨 전 선결제")){%>checked<%}%>> <label for="buy_beCredit">당첨 전 선결제</label>
 							</div>
 							<div id="radio-wrapper" class="buy_affcfs">
-								<input type="radio" id="buy_affcfs" name="buy_method" value="당첨자간 선착순 구매" <%if(onlineDrawInfo.getBuy_method().equals("당첨자간 선착순 구매")){%>checked<%}%>> <label for="buy_affcfs">당첨자간 선착순 구매</label>
+								<input type="radio" id="buy_affcfs" name="buy_method" value="당첨후 선착구매" <%if(onlineDrawInfo.getBuy_method().equals("당첨후 선착구매")){%>checked<%}%>> <label for="buy_affcfs">당첨후 선착구매</label>
 							</div>
 							<div id="radio-wrapper" class="buy_Undefined">
 								<input type="radio" id="buy_Undefined" name="buy_method" value="-" <%if(onlineDrawInfo.getBuy_method().equals("-")){%>checked<%}%>> <label for="buy_Undefined">미정</label>

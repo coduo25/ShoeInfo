@@ -69,7 +69,7 @@ public class OnlineDAO {
 					online_num = rs.getInt(1) + 1;
 				}
 				
-				sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				sql = "insert into shoeinfo_onlineinfo values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, online_num);
 				pstmt.setInt(2, odto.getModel_num());
@@ -86,6 +86,7 @@ public class OnlineDAO {
 				pstmt.setString(13, odto.getBuy_method());
 				pstmt.setString(14, odto.getDelivery_method());
 				pstmt.setString(15, odto.getOnline_writer());
+				pstmt.setTimestamp(16, odto.getReg_date());
 				pstmt.executeUpdate();
 				check = 1;
 			}
@@ -158,6 +159,7 @@ public class OnlineDAO {
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
 				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
+				odto.setReg_date(rs.getTimestamp("reg_date"));
 				onlineInfoList_kr.add(odto);
 				
 				//한국 브랜드 정보 가져오기
@@ -231,6 +233,7 @@ public class OnlineDAO {
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
 				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
+				odto.setReg_date(rs.getTimestamp("reg_date"));
 				onlineInfoList_asia.add(odto);
 				
 				//아시아 브랜드 정보 가져오기
@@ -301,6 +304,7 @@ public class OnlineDAO {
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
 				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
+				odto.setReg_date(rs.getTimestamp("reg_date"));
 				onlineInfoList.add(odto);
 				
 				//아메리카 브랜드 정보 가져오기

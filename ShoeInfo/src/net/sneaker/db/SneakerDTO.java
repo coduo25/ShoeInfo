@@ -1,6 +1,6 @@
 package net.sneaker.db;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class SneakerDTO {
 
@@ -17,6 +17,7 @@ public class SneakerDTO {
 	private String release_status;
 	private int views;
 	private int countLinks;
+	private Timestamp reg_date;
 	
 	public int getNum() {
 		return num;
@@ -95,6 +96,12 @@ public class SneakerDTO {
 	}
 	public void setCountLinks(int countLinks) {
 		this.countLinks = countLinks;
+	}
+	public Timestamp getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
 	}
 	
 }

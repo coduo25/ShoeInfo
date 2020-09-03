@@ -15,7 +15,6 @@ public class SneakerListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//AdminSneakerDAO() 객체 생성
 		SneakerDAO sdao = new SneakerDAO();
 		
 		List<SneakerDTO> sneakerList1 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-01" + "%" , "planned");
@@ -30,8 +29,7 @@ public class SneakerListAction implements Action {
 		List<SneakerDTO> sneakerList10 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-10" + "%" , "planned");
 		List<SneakerDTO> sneakerList11 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-11" + "%" , "planned");
 		List<SneakerDTO> sneakerList12 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-12" + "%" , "planned");
-		
-		//request객체에 정보 담기
+
 		request.setAttribute("sneakerList1", sneakerList1);
 		request.setAttribute("sneakerList2", sneakerList2);
 		request.setAttribute("sneakerList3", sneakerList3);

@@ -163,6 +163,9 @@ public class SneakerDAO {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
 		
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
+		
 		try {
 			con = getConnection();
 			sql = "select * from shoeinfo_sneakerlibrary where release_date like ? AND release_status = ? order by release_date, model_name";
@@ -193,6 +196,16 @@ public class SneakerDAO {
 					sdto.setCountLinks(rs2.getInt(1));
 				}else {
 					sdto.setCountLinks(0);
+				}
+				
+				//신발 온라인정보 최신 등록날짜 가져오기
+				sql = "select max(reg_date) from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ?";
+				pstmt3 = con.prepareStatement(sql);
+				pstmt3.setString(1, sdto.getModel_stylecode());
+				pstmt3.setInt(2, sdto.getNum());
+				rs3 = pstmt3.executeQuery();
+				if(rs3.next()){
+					sdto.setReg_date(rs3.getTimestamp(1));
 				}
 				sneakerList.add(sdto);
 			}

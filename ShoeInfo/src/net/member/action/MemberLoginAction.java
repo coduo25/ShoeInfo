@@ -25,7 +25,6 @@ public class MemberLoginAction implements Action{
 		int check = mdao.loginEmailCheck(email, pass);
 		String str = "";
 		
-		// 출력객체를 생성(response객체의 정보를 가지고 생성)
 		PrintWriter out = response.getWriter();
 		
 		//비밀번호 오류

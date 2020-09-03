@@ -1,5 +1,7 @@
 package net.online.db;
 
+import java.sql.Timestamp;
+
 public class OnlineDTO {
 
 	private int online_num;
@@ -17,6 +19,7 @@ public class OnlineDTO {
 	private String buy_method;
 	private String delivery_method;
 	private String online_writer;
+	private Timestamp reg_date;
 	
 	public int getOnline_num() {
 		return online_num;
@@ -107,5 +110,11 @@ public class OnlineDTO {
 	}
 	public void setOnline_writer(String online_writer) {
 		this.online_writer = online_writer;
+	}
+	public Timestamp getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
 	}
 }

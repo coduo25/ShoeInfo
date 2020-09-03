@@ -1,6 +1,7 @@
 package net.member.action;
 
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -99,6 +100,7 @@ public class AddOnlineInfoAction implements Action{
 		odto.setBuy_method(buy_method);
 		odto.setDelivery_method(delivery_method);
 		odto.setOnline_writer(online_writer);
+		odto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		OnlineDAO odao = new OnlineDAO();
 		int check = odao.insertOnlineInfo(odto);

@@ -151,12 +151,16 @@ input:checked + .slider:before {
 	#no-info-label { display: inline-block; padding: 1%; }
 
 	/* 진행중 마크 */
-	.grid-ing { position: absolute; top: 6px; left: 79%; width: 30%; }
+	.grid-ing { position: absolute; top: 2.8%; left: 79%; width: 30%; }
 	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.5em; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; padding: 1px 2px; }
+	
+	/* new 리본 */
+	.ribbon-wrapper { width: 85px; height: 88px; overflow: hidden; position: absolute; top: -0.5%; left: -0.5%; }
+  	.ribbon { font: bold 10px sans-serif; color: #333; text-align: center; -webkit-transform: rotate(-45deg); -moz-transform:    rotate(-45deg); -ms-transform:     rotate(-45deg); -o-transform:      rotate(-45deg); position: relative; padding: 3px 0; top: 15px; left: -30px; width: 110px; background-color: #ffbf34; color: #fff; }
 	
 	/* 작성자 마크 */
 	.grid-info-writer { display: none; position: absolute; top: 0; left: 0; padding: 2% 4%; z-index: 5; background-color: white; font-size: 0.9em; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-bottom: 1px solid #dcdcdc; border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem; }
-	.grid-info { position: absolute; top: 6.5px; left:4%; z-index: 3; }
+	.grid-info { position: absolute; top:88%; left:4%; z-index: 3; }
 	.grid-info span { color: #b3b3b37d; }
 	
 	/* 모바일 버전 toggle down/up 버튼 */
@@ -349,6 +353,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	display: block;
     	padding: 1% 0 3% 0;
 	}
+	.grid-info {
+		top: 84%;
+	}
 }
 
 /* 0 ~ 468px */
@@ -389,7 +396,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 62%;
 	}
 	#no-info-wrapper {
-		padding: 10%;
+		padding: 7%;
 	}	
 	.grid-wrapper {
 		width: 46%;
@@ -411,6 +418,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.grid-ing {
  		left: 74%;
+ 		top: 4%;
 	}
 	.draw_count_result_wrapper {
     	font-size: 0.85em !important;
@@ -448,8 +456,13 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#brandList-name {
 		font-size: 0.5em;
 	}
+	#content_sneakerInfo #grid-list:first-child h4{
+		font-size: 1.3em;
+		margin: 2% 0 7% 0;
+	}
 	#grid-list h4 {
 		font-size: 1.3em;
+		margin: 10% 0 7% 0;
 	}
 	#nothingSearched div {
     	font-size: 0.7em;
@@ -497,6 +510,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#onlineM-radio-wrapper {
     	display: block;
     	padding: 1% 0 7% 0;
+	}
+	.grid-info {
+		left: 5%;
 	}
 }
 	

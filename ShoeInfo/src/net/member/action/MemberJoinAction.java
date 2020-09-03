@@ -1,6 +1,5 @@
 package net.member.action;
 
-
 import java.sql.Timestamp;
 import java.util.Properties;
 
