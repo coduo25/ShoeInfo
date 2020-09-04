@@ -55,7 +55,7 @@
 			online_start_date = onlineDrawInfo.getOnline_start_date();
 		}
 		if(onlineDrawInfo.getOnline_start_time().isEmpty()){
-			online_start_time = "00:00";
+			online_start_time = "99:99";
 		}else {
 			online_start_time = onlineDrawInfo.getOnline_start_time();
 		}
@@ -65,7 +65,7 @@
 			online_end_date = onlineDrawInfo.getOnline_end_date();
 		}
 		if(onlineDrawInfo.getOnline_end_time().isEmpty()){
-			online_end_time = "00:00";
+			online_end_time = "99:99";
 		}else {
 			online_end_time = onlineDrawInfo.getOnline_end_time();
 		}
