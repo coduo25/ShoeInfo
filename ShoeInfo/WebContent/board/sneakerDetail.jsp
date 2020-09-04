@@ -736,16 +736,16 @@
 								<!-- 수정 버튼 -->
 								<div class="grid-edit" id="grid-edit-<%=country_name_eng%><%=i%>">
 									<span> <i class="fas fa-pen"></i> 수정하기 </span>
+									<!-- 관리자 권한 버튼 -->
+									<%if(usr_position.equals("admin")){%>
+									<span class="admin_btn">
+										<a id="adminDelBtn_<%=country_name_eng%><%=i%>" href="./DeleteDrawInfo.ad?model_stylecode=<%=odto.getModel_stylecode()%>&brand_id=<%=odto.getBrand_id()%>&model_num=<%=sdto.getNum()%>">삭제</a>
+									</span>
+									<%}%>
 									<input type="hidden" id="modi_modelStylecode-<%=country_name_eng%><%=i%>" value="<%=odto.getModel_stylecode()%>">
 									<input type="hidden" id="modi_brandId-<%=country_name_eng%><%=i%>" value="<%=odto.getBrand_id()%>">
 								</div>
 								
-								<!-- 관리자 권한 버튼 -->
-								<%if(usr_position.equals("admin")){%>
-									<div id="wrapper-admin">
-										<input type="button" id="adminDelBtn_<%=country_name_eng%><%=i%>" value="삭제" onclick="location.href='./DeleteDrawInfo.ad?model_stylecode=<%=odto.getModel_stylecode()%>&brand_id=<%=odto.getBrand_id()%>&model_num=<%=sdto.getNum()%>'">
-									</div>
-								<%}%>
 							</div>
 							
 							</div>

@@ -204,7 +204,7 @@ input:checked + .slider:before {
 	.grid-edit span { color: #888888; }
 
 	/* 관리자 버튼 */
-	#wrapper-admin { text-align: center; padding-bottom: 10%; }
+	.admin_btn { text-align: center; margin-left: 15%; }
 
 
 

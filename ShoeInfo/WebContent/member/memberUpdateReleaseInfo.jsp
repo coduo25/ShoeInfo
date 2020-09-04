@@ -55,7 +55,7 @@
 			online_start_date = onlineDrawInfo.getOnline_start_date();
 		}
 		if(onlineDrawInfo.getOnline_start_time().isEmpty()){
-			online_start_time = "99:99";
+			online_start_time = "12:34";
 		}else {
 			online_start_time = onlineDrawInfo.getOnline_start_time();
 		}
@@ -65,7 +65,7 @@
 			online_end_date = onlineDrawInfo.getOnline_end_date();
 		}
 		if(onlineDrawInfo.getOnline_end_time().isEmpty()){
-			online_end_time = "99:99";
+			online_end_time = "12:34";
 		}else {
 			online_end_time = onlineDrawInfo.getOnline_end_time();
 		}
@@ -242,13 +242,20 @@
 
 	$(document).ready(function(){
 		
-		//온라인 시간 안에 10007이 포함되어있으면 delete 하게 만들기
+		//온라인 날짜 안에 10007이 포함되어있으면 delete 하게 만들기
 		if($('input[name=online_date_start]').val().match("10007")){
 			$('input[name=online_date_start]').val('');
 			$('input[name=online_hour_start]').val('');
 		}
 		if($('input[name=online_date_end]').val().match("10007")){
 			$('input[name=online_date_end]').val('');
+			$('input[name=online_hour_end]').val('');
+		}
+		//온라인 시간 안에 12:34가 포함되어있으면 delete 하게 만들기
+		if($('input[name=online_hour_start]').val().match("12:34")){
+			$('input[name=online_hour_start]').val('');
+		}
+		if($('input[name=online_hour_end]').val().match("12:34")){
 			$('input[name=online_hour_end]').val('');
 		}
 		
