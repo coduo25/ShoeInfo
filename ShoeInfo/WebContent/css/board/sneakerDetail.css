@@ -139,7 +139,7 @@ input:checked + .slider:before {
 }
 
 #grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 5%; }
-.grid-wrapper { margin: 1.5%; width: 17%; float: left; display: block; height: 580px; }
+.grid-wrapper { margin: 1.5%; width: 17%; float: left; display: block; height: 570px; }
 .grid-item { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
 .grid-logo { position: relative; }
 .grid-logo img { width: 100%; height: 100%; }
