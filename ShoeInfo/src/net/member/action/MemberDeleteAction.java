@@ -37,6 +37,7 @@ public class MemberDeleteAction implements Action{
 		if(check == 1){
 			str = "SUCCESS";
 			out.print(str);
+			session.invalidate();
 		}
 		
 		return null;
