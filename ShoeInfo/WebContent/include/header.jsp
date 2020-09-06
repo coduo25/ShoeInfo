@@ -67,7 +67,7 @@
 		
 		<!-- 나의 드로우 -->
 		<ul class="navbar_userlinks">
-			<li class="pc_icon"> <a href="./MemberDrawInfo.me"> MY DRAW </a> </li>
+			<li class="pc_icon"> <a href="./MemberDrawInfo.me"> <i class="far fa-calendar-check"></i>  MY DRAW </a> </li>
 			<%
 				if(user == null){
 			%>

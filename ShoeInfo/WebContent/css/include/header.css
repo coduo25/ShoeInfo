@@ -128,12 +128,12 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 .navbar_userlinks {
 	display: flex;
 	list-style: none;
-	font-size: 0.9em;
+	font-size: 1em;
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .navbar_userlinks li {
-	border: 1px solid #c0c0c0;
+/* 	border: 1px solid #c0c0c0; */
 	padding: 4px;
 	margin: 0 7px;
 }
