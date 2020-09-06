@@ -15,66 +15,77 @@
 </head>
 <body>
 
+	<nav class="acc_navbar">
+		<div class="acc_wrapper">
+			<!-- 인스타  -->
+			<div class="insta-icon">
+				<span> <a href="https://www.instagram.com/shoeinfo.official/" target="_blank"><i class="fab fa-instagram"></i> <i class="fas fa-caret-left"></i> visit ShoeInfo.official Instagram </a> </span>
+			</div>
+			<!-- 로그인/회원가입 -->
+			<div class="login-wrapper">
+					<%
+						//로그인 되었는지	
+						String user = (String) session.getAttribute("email");
+						//로그인 된 사용자의 position 가져오기
+						String usr_position = (String) session.getAttribute("usr_position");
+						if(usr_position == null){
+							usr_position = "";
+						}
+						
+						if(user == null){
+					%>
+						<span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
+					<%
+						}else if(usr_position.equals("admin")){ 
+					%>
+						<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
+						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span> 
+						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span>
+					<% 
+						}else{ 
+					%>
+						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span>
+						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
+					<% } %>
+			</div>
+		</div>
+	</nav>
+
 	<nav class="navbar">
-	
 		<!-- 로고 -->
 		<div class="navbar_logo">
-			<a href="./SneakerList.go"> SHOE Info. </a>
+			<div>
+				<a href="./SneakerList.go"> SHOE Info. </a>
+			</div>
 		</div>
 	
 		<!-- 메인메뉴  -->
 		<ul class="navbar_menu">
 			<li> <a href="./SneakerList.go"> <span id="cal_icon"><i class="fas fa-calendar"></i></span> 런칭 캘린더 </a> </li>
+			<li> <a href="./AllSneaker.go"> <span id="all_icon"><i class="fas fa-calendar-alt"></i></span> 전체 보기 </a>
 		</ul>
 		
-		<!-- 로그인, 마이페이지, 로그아웃 링크 -->
+		<!-- 나의 드로우 -->
 		<ul class="navbar_userlinks">
+			<li class="pc_icon"> <a href="./MemberDrawInfo.me"> MY DRAW </a> </li>
 			<%
-				//로그인 되었는지	
-				String user = (String) session.getAttribute("email");
-				//로그인 된 사용자의 position 가져오기
-				String usr_position = (String) session.getAttribute("usr_position");
-				if(usr_position == null){
-					usr_position = "";
-				}
-				
 				if(user == null){
 			%>
-				<li> <a href="./MemberLogin.me"> <span id="user_icon"><i class="fas fa-user"></i></span> LOGIN </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberLogin.me"> <div id="user_icon"><i class="fas fa-user"></i> <div> LOGIN </div> </div> </a> </li>
 			<%
 				}else if(usr_position.equals("admin")){ 
 			%>
-				<li> <a href="./Main.ad"> <span id="user_icon"> <i class="fas fa-tools"></i> </span> ADMIN PAGE </a> </li>
-				<div class="mypage_btn"> 
-					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
-					<div class="dropdown_mymenu">
-						<a href="./MemberInfoCheck.me"> MY INFO </a>
-						<a href="./MemberDrawInfo.me"> MY DRAW </a>
-					</div>
-				</div>
+				<li class="mypage_btn_mobile"> <a href="./Main.ad"> <div id="user_icon"> <i class="fas fa-tools"></i> <div>ADMIN PAGE</div>   </div> </a> </li>
 
-				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <span id="user_icon"> <i class="fas fa-calendar-check"></i> </span> MY DRAW  </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <span id="logout_icon"> <i class="fas fa-sign-out-alt"></i> </span>  LOGOUT </a> </li>
-				
-				<li class="logout"> <a href="./MemberLogout.me"> LOGOUT </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <div id="user_icon"> <i class="fas fa-user"></i> <div id="user_label" > <%=user%> </div> </div>  </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div> LOGOUT</div>  </div> </a> </li>
 			<% 
 				}else{ 
 			%>
-				<div class="mypage_btn"> 
-					<li> MYPAGE <i class="fas fa-caret-down"></i> </li> 
-					<div class="dropdown_mymenu">
-						<a href="./MemberInfoCheck.me"> MY INFO </a>
-						<a href="./MemberDrawInfo.me"> MY DRAW </a>
-					</div>
-				</div>
-				
-				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <span id="user_icon"> <i class="fas fa-user"></i> </span> <%=user%> </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <span id="user_icon"> <i class="fas fa-calendar-check"></i> </span> MY DRAW  </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <span id="logout_icon"> <i class="fas fa-sign-out-alt"></i> </span>  LOGOUT </a> </li>
-				
-				<li class="logout"> <a href="./MemberLogout.me"> LOGOUT </a> </li>
-				
+				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <div id="user_icon"> <i class="fas fa-user"></i>  <div id="user_label" ><%=user%></div> </div> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div>  </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div>LOGOUT</div> </div> </a> </li>			
 			<% 
 				} 
 			%> 
@@ -140,25 +151,16 @@
 		}
 		
 		init();
-	
-	
-// 		if($(".navbar_toggleBtn").css("display") == "none"){
-// 			$(".navbar_menu").css("display", "flex");
-// 			$(".navbar_userlinks").css("display", "flex");
-// 		}
-	
 
 		$(".navbar_toggleBtn").click(function(){
-			if($(".navbar_menu").css("display") == "none"){
-				$(".navbar_menu").slideDown();
-				$(".navbar_userlinks").slideDown();
-			}
-			else if($(".navbar_menu").css("display") == "block"){
+			if($(".navbar_menu").is(":visible")){
 				$(".navbar_menu").slideUp();
 				$(".navbar_userlinks").slideUp();
 			}
-//	 		$(".navbar_menu").slideToggle("fast");
-//	 		$(".navbar_userlinks").slideToggle("fast");
+			else if(!$(".navbar_menu").is(":visible")){
+				$(".navbar_menu").slideDown();
+				$(".navbar_userlinks").slideDown();
+			}
 		});
 
 		//헤더 스크롤 내려도 메뉴바 상단에 고정시키는 스크립트

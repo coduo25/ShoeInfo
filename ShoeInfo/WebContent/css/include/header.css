@@ -47,6 +47,42 @@ a {
 }
 
 /* 헤더 전체 적용 */
+.acc_navbar {
+	display: block;
+	align-items:center;
+	border-bottom: 1px solid #e5e5e5;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.acc_wrapper {
+	display: flex;
+	max-width: 1200px;
+	margin: 5px auto;
+	padding: 1px 5px;
+	color: #8d8d8d;
+	align-items: center;
+    justify-content: space-between;
+    height: 23px;
+}
+
+.insta-icon {
+	display:inline-block;
+	text-align: left;
+	font-size:12px;
+}
+.insta-icon i { vertical-align: middle; }
+
+.insta-icon a, .login-wrapper a { color: #8d8d8d; }
+
+.login-wrapper {
+	display:inline-block;
+	font-size: 12px;
+	float: right;
+	padding-right: 4px;
+}
+.acc_list { padding-right: 12px; }
+
+/* ----------------------------------- */
+
 .navbar {
 	display: flex;
 	justify-content: space-between;
@@ -59,28 +95,29 @@ a {
 /* 로고 */
 .navbar_logo {
 	z-index: 1;
-	font-size: 50px;
+	font-size: 45px;
 	font-family: 'Anton', sans-serif;
 }
 
 /* 메뉴 */
 .navbar_menu {
-	display: flex;
+	display:flex;
 	list-style: none;
 	padding-left: 0;
-	font-size: 18px;
+	font-size: 16.5px;
 	font-family: 'Nanum Gothic', sans-serif;
-	margin: 0 auto;
 	font-weight: bold;
+	padding-right: 10%;
 }
 
-span#cal_icon, span#user_icon, span#logout_icon {
+span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	display: none;
 	padding-right: 12px;
 }
 
 .navbar_menu li {
-	padding: 8px 20px;
+	padding: 8px 25px;
+	float: left; 
 }
 
 .navbar_menu li a:hover, .navbar_userlinks li a:hover {
@@ -146,7 +183,7 @@ span#cal_icon, span#user_icon, span#logout_icon {
 /* media Query */
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px) {
-	.navbar {
+	.acc_navbar, .navbar {
 		width: 100%;
 		padding: 0 40px;
 	}
@@ -160,6 +197,9 @@ span#cal_icon, span#user_icon, span#logout_icon {
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px) {
+	.acc_navbar, .pc_icon{
+		display:none;
+	}
 	/* 헤더 전체 적용 */
 	.navbar {
 		padding: 0;
@@ -173,7 +213,7 @@ span#cal_icon, span#user_icon, span#logout_icon {
 	.navbar_logo {
 		padding: 0 20px;
 	}
-	span#cal_icon, span#user_icon, span#logout_icon {
+	span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 		display: inline-block;
 	}
 
@@ -183,26 +223,30 @@ span#cal_icon, span#user_icon, span#logout_icon {
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
-		font-size: 22px;
+		font-size: 20px;
 		border-top: 1px solid #ececec;
+		background-color: white;
+    	z-index: 50;
 	}
 	.navbar_menu li {
 		width: 100%;
-		padding: 19px 20px;
+		padding: 15px 20px;
 	}
 
 	.navbar_userlinks {
 		width: 100%;
 		display: none;
 		justify-content: center;
+		background-color: white;
+    	z-index: 50;
 	}
 	.navbar_userlinks li {
 		width: 100%;
 		float: right;
-		padding: 12px 20px;
+		padding: 10px 20px;
 		border: 0;
 		margin: 0;
-		font-size: 22px;
+		font-size: 18px;
 		text-transform: uppercase;
 		font-weight: bold;
 		border-top: 1px solid #ececec;
@@ -222,6 +266,9 @@ span#cal_icon, span#user_icon, span#logout_icon {
 		display: block;
 		margin-top: 20px;
 	}
+	
+	#user_icon>i, #logout_icon>i { float: left; padding-top: 0.4%; }
+	#user_icon>div, #logout_icon>div { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 300px; padding-left: 20px; }
 }
 
 /* 0 ~ 468px */
@@ -239,7 +286,7 @@ span#cal_icon, span#user_icon, span#logout_icon {
 	.navbar_logo {
 		padding: 0 20px;
 	}
-	span#cal_icon, span#user_icon, span#logout_icon {
+	span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 		display: inline-block;
 	}
 
@@ -249,12 +296,12 @@ span#cal_icon, span#user_icon, span#logout_icon {
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
-		font-size: 22px;
+		font-size: 20px;
 		border-top: 1px solid #ececec;
 	}
 	.navbar_menu li {
 		width: 100%;
-		padding: 19px 20px;
+		padding: 15px 20px;
 	}
 
 	.navbar_userlinks {
@@ -265,10 +312,10 @@ span#cal_icon, span#user_icon, span#logout_icon {
 	.navbar_userlinks li {
 		width: 100%;
 		float: right;
-		padding: 12px 20px;
+		padding: 10px 20px;
 		border: 0;
 		margin: 0;
-		font-size: 22px;
+		font-size: 18px;
 		text-transform: uppercase;
 		font-weight: bold;
 		border-top: 1px solid #ececec;
@@ -288,4 +335,6 @@ span#cal_icon, span#user_icon, span#logout_icon {
 		display: block;
 		margin-top: 20px;
 	}
+	
+	#user_icon>i, #logout_icon>i { float: left; padding-top: 1%; }
 }

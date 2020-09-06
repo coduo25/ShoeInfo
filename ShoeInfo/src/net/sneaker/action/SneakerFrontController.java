@@ -62,6 +62,15 @@ public class SneakerFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//신발 전체 리스트 보여주는 페이지 처리
+		else if(command.equals("/AllSneaker.go")){
+			action = new AllSneakerAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		/************************************************************
 		 * 3. 실제 페이지 이동 동작 (redirect/forward)
