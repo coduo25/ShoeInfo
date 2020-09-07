@@ -72,7 +72,7 @@ public class UpdateSneakerAction implements Action{
 		if(multi.getParameter("price") == null || multi.getParameter("price").isEmpty()){
 			sdto.setPrice(0);
 		}else{
-			sdto.setPrice(Integer.parseInt(multi.getParameter("price")));
+			sdto.setPrice(Integer.parseInt(multi.getParameter("price").trim()));
 		}
 		
 		//출시일자
