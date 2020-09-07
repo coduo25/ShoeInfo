@@ -107,6 +107,8 @@
 		</nav>
 	</div>
 	
+	<!-- top link -->
+	<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-caret-up"></i></button>
 
 </body>
 <script type="text/javascript">
@@ -162,17 +164,34 @@
 				$(".navbar_userlinks").slideDown();
 			}
 		});
+		
+		
+		function topFunction() {
+			$('html,body').animate({ scrollTop: 0 }, 'fast');
+// 			document.body.scrollTop = 0;
+// 			document.documentElement.scrollTop = 0;
+		}
 
 		//헤더 스크롤 내려도 메뉴바 상단에 고정시키는 스크립트
 		window.onscroll = function() {myFunction()};
-			var navbar = document.getElementById("datebar_div");
-			var sticky = navbar.offsetTop;
-			function myFunction() {
+		
+		var navbar = document.getElementById("datebar_div");
+		var sticky = navbar.offsetTop;
+		var mybutton = document.getElementById("myBtn");
+		
+		function myFunction() {
 		  	if (window.pageYOffset >= sticky) {
-		  	  navbar.classList.add("sticky")
+		  		navbar.classList.add("sticky")
 		  	}else {
-		  	  navbar.classList.remove("sticky");
+		  		navbar.classList.remove("sticky");
 		 	}
+	  	
+		  	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+		  		$('#myBtn').fadeIn();
+			} else {
+				$('#myBtn').hide();
+			}
+		  	
 		}
 </script>
 </html>

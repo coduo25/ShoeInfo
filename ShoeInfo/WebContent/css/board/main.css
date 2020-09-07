@@ -45,6 +45,7 @@ body {font-size:1em; line-weight:1.4}
 	#link-wrapper { position:relative; padding: 2%; font-weight: bold; margin: 8% auto; transition: all 0.3s; font-size: 0.8em; border: 1px solid #949494; border-radius: 13px; width: 40px; color: #2d2d2d; }
 	#link-wrapper:hover { color: white; background-color: orange; }
 	
+
 /* media Query */
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){

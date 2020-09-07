@@ -195,12 +195,19 @@
 		</div>
 	</div>
 	
+	
+	
 	<!-- FOOTER -->
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 
 </body>
 
 <script type="text/javascript">
+
+	
+	
+	
+	
 	
 	$(document).ready(function(){
 		

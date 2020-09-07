@@ -512,10 +512,19 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#onlineM-radio-wrapper {
     	display: block;
-    	padding: 1% 0 7% 0;
+    	padding: 1% 0 5% 0;
 	}
 	.grid-info {
 		left: 5%;
 	}
+	#addOnlineForm, #updateOnlineForm {
+    	padding: 5%;
+	}
+	.add_wrapper div {
+    	padding-bottom: 12%;
+	}
+	#req_icon {
+	    vertical-align: middle;
+	}	
 }
 	

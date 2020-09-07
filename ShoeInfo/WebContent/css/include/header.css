@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+html {
+	scroll-behavior: smooth;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -180,9 +184,35 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	font-size: 24px;
 }
 
+/* top link */
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 5%;
+  right: 2%;
+  z-index: 1001;
+  font-size: 2.4em;
+  border: none;
+  outline: none;
+  background-color: #cccccc;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+  width: 52px;
+  height: 52px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
 /* media Query */
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px) {
+	
+	#myBtn { visibility: hidden; }
+	
 	.acc_navbar, .navbar {
 		width: 100%;
 		padding: 0 40px;
