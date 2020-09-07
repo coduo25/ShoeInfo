@@ -171,12 +171,15 @@ input:checked + .slider:before {
 	/* 발매 내용 파트 */
 	.grid-content span { font-size: 0.95em; }
 	#brandlogo_img { vertical-align: middle; border-bottom: 1px solid #e2e2e2; border-radius: 0.3rem;}
-	#country_flag_img {border: 0.5px solid #D9D9D9; vertical-align: bottom;}
+	#country_flag_img {border: 0.5px solid #D9D9D9; margin-top:2.5px; }
 	
-	#wrapper-name { margin-bottom: 1%; font-size: 1.2em; font-weight: bold; }
+	#wrapper-name { margin-bottom: 1%; font-size: 1.2em; font-weight: bold; position: relative;}
+	.country_name_label { display:none; width: 100px; background-color: white; border: 1px solid gainsboro; text-align: center; border-radius: 5px; padding: 2%; font-weight: normal; font-size: 0.8em !important; position:absolute; top: 90%; right: 0; z-index: 100;}
+/* 	#span-flag:hover + .country_name_label { visibility: visible; } */
+	
 	#wrapper-name a { vertical-align: middle; }
 	#brand_name { display: inline-block; width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-	#span-flag, #wrapper-content { float: right; }
+	.span-flag, #wrapper-content { float: right; }
 	#wrapper-period { margin-bottom: 15%; color: #dc5757; font-weight: bold; }
 	
 	/* 남은 시간 파트 */
@@ -285,7 +288,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 0.8em;
 	}
 	#rel_Btn_label {
-		font-size: 1em !important;
+		font-size: 1.1em !important;
 	}
 	.grid-wrapper {
 		width:22%;
@@ -375,7 +378,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		height: 70%;
 	}
 	.sneaker_name {
-		font-size: 0.7em;
+		font-size: 0.8em;
 		line-height: unset;
 	}
 	.detail_wrapper {
@@ -411,9 +414,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#country_flag_img {
 		width: 20px;
    		height: 13px;
+   		margin-top: 5px;
 	}
 	.wrapper-content span {
-		font-size:0.8em;
+		font-size:0.9em;
 	}
 	.grid-ing {
  		left: 74%;

@@ -328,11 +328,14 @@
 										<%}%>
 									</div>
 									
+									<span class="country_name_label" id="country-name-label-<%=country_name_eng%><%=i%>"><%=bdto.getCountry_name()%></span>
+									
 									<!-- 발매 정보 작성자 아이콘 -->
 									<div class="grid-info-writer" id="grid-info-writer-<%=country_name_eng%><%=i%>"> 작성자: <%=f_splitWriter%> </div>
 									<div class="grid-info" id="grid-info-<%=country_name_eng%><%=i%>">
 										<span> <i class="fas fa-user"></i> </span>
 									</div>	
+									
 								</div>
 
 								
@@ -352,7 +355,7 @@
 									<!-- 이름 & 국기-->
 									<div id="wrapper-name">
 										<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> <span id="brand_name"> <%=bdto.getBrand_name()%> </span> </a>		
-										<span id="span-flag"> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" width="22" height="15"> </span>
+										<span class="span-flag" id="span-flag-<%=country_name_eng%><%=i%>"> <img id="country_flag_img" src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" width="22" height="15"> </span>
 									</div>
 									<!-- 기간 -->
 									<div id="wrapper-period">
@@ -854,6 +857,22 @@
 			}, 4000);
 		});
 		
+		//국기를 클릭했을시
+		$('.span-flag').click(function(){
+			//아이디 값 가져오기
+			var flagID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = flagID.split('-');
+			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//국가 이름 나타내기
+			$('#country-name-label-' + lastElement).slideDown(300);
+			setTimeout(function() {
+				$('#country-name-label-' + lastElement).slideUp(300);
+			}, 4000);
+		});
+		
 		//mobile-toggle bar slideDown 했을시 해당 브랜드 상세 영역 나타내기
 		$('.mobile-toggle-down').click(function(){
 			//mobile-toggle-Down-kr1
@@ -1263,7 +1282,6 @@
 				}
 			}
 
-			
 		});
 		
 	});

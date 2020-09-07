@@ -31,7 +31,8 @@ body {font-size:1em; line-weight:1.4}
 .content_wrapper div { display: block; }
 
 	/* 이미지 */
-	.content_img { margin-top: 5%; }
+	.content_img { margin-top: 5%; position: relative; }
+	
 	/* 이름 */
 	.content_name { margin-top: 5%; }
 	.content_name .model_name { font-size: 12px; height: 27px; }

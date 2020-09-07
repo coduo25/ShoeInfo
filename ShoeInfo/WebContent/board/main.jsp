@@ -155,13 +155,8 @@
 								<!-- 이미지 -->
 								<div class="content_img">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" > <br>
+				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" > 
 									</a>
-									
-									<!-- 불꽃 아이콘 -->
-									<div>
-										<i class="fas fa-burn"></i>
-									</div>
 								</div>
 								<!-- brand & name -->
 								<div class="content_name">
