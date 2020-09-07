@@ -184,7 +184,8 @@ public class SneakerDAO {
 				sdto.setModel_name(rs.getString("model_name"));
 				sdto.setModel_colorway(rs.getString("model_colorway"));
 				sdto.setPrice(rs.getInt("price"));
-				sdto.setRelease_date(rs.getString("release_date"));				
+				sdto.setRelease_date(rs.getString("release_date"));	
+				sdto.setViews(rs.getInt("views"));
 				
 				//신발 응모링크수 가져오기
 				sql = "select count(*) from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ?";
