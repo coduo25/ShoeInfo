@@ -300,14 +300,17 @@
 							
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
-									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="100" height="100"> </a>
+									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> 
 									
-									<% if(recentChk == 1){ %>
-										<div class="ribbon-wrapper">
-											<div class="ribbon">NEW</div>
-										</div>
-									<%} %>
+										<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="100" height="100">
 									
+										<% if(recentChk == 1){ %>
+											<div class="ribbon-wrapper">
+												<div class="ribbon">NEW</div>
+											</div>
+										<%} %>
+										
+									</a>
 									<!-- 진행중 마크 -->
 									<div class="grid-ing">
 										<!-- 응모 진행중 여부 -->
