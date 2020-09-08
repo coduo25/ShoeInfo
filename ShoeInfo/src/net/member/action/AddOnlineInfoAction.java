@@ -34,7 +34,13 @@ public class AddOnlineInfoAction implements Action{
 		String model_stylecode = request.getParameter("model_stylecode");
 		String country_name = request.getParameter("country_name");
 		String brand_name = request.getParameter("brand_name");
+		
 		String online_link = request.getParameter("online_link");
+		//만약 온라인 링크 안에 < , >가 포함되어있으면 replace하기
+		if(online_link.contains("<") || online_link.contains(">")){
+			online_link = online_link.replaceAll("<", "&lt;").replaceAll(">", "&gt;").trim();
+		}
+		
 		String online_method = request.getParameter("online_method");
 		
 		//온라인 시작 시간

@@ -37,7 +37,7 @@ public class UpdateBrandInfoAction implements Action{
 		
 		String country_name = multi.getParameter("country_name");
 		String brand_logo = multi.getFilesystemName("brand_logo");
-		String brand_name = multi.getParameter("brand_name");
+		String brand_name = multi.getParameter("brand_name").trim();
 		int brand_num = Integer.parseInt(multi.getParameter("brand_num"));
 		
 		//예전 brand_id

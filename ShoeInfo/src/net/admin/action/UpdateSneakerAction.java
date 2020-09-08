@@ -41,9 +41,9 @@ public class UpdateSneakerAction implements Action{
 		sdto.setNum(Integer.parseInt(multi.getParameter("num")));
 		String old_model_stylecode = multi.getParameter("old_model_stylecode");
 		
-		sdto.setBrand(multi.getParameter("brand"));
-		sdto.setSub_brand(multi.getParameter("sub_brand"));
-		sdto.setBrand_index(multi.getParameter("brand_index"));
+		sdto.setBrand(multi.getParameter("brand").trim());
+		sdto.setSub_brand(multi.getParameter("sub_brand").trim());
+		sdto.setBrand_index(multi.getParameter("brand_index").trim());
 		String image1 = multi.getFilesystemName("file1");
 		sdto.setImage(image1);
 		
@@ -51,21 +51,21 @@ public class UpdateSneakerAction implements Action{
 		if(multi.getParameter("model_stylecode") == null || multi.getParameter("model_stylecode").isEmpty()){
 			sdto.setModel_stylecode("UNKNOWN");
 		}else {
-			sdto.setModel_stylecode(multi.getParameter("model_stylecode"));
+			sdto.setModel_stylecode(multi.getParameter("model_stylecode").trim());
 		}
 		
 		//model_name
 		if(multi.getParameter("model_name") == null || multi.getParameter("model_name").isEmpty()){
 			sdto.setModel_name("UNKNOWN");
 		}else {
-			sdto.setModel_name(multi.getParameter("model_name"));
+			sdto.setModel_name(multi.getParameter("model_name").trim());
 		}
 		
 		//model_colorway
 		if(multi.getParameter("model_colorway") == null || multi.getParameter("model_colorway").isEmpty()){
 			sdto.setModel_colorway("UNKNOWN");
 		}else {
-			sdto.setModel_colorway(multi.getParameter("model_colorway"));
+			sdto.setModel_colorway(multi.getParameter("model_colorway").trim());
 		}
 		
 		//price

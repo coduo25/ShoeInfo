@@ -39,8 +39,8 @@ public class AddCountryAction implements Action{
 
 		CountryDTO cdto = new CountryDTO();
 		cdto.setCountry_region(multi.getParameter("country_region"));
-		cdto.setCountry_name(multi.getParameter("country_name"));
-		cdto.setCountry_code(multi.getParameter("country_code"));
+		cdto.setCountry_name(multi.getParameter("country_name").trim());
+		cdto.setCountry_code(multi.getParameter("country_code").trim());
 		String image = multi.getFilesystemName("country_flag");
 		cdto.setCountry_flag(image);
 		
