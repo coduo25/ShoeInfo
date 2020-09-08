@@ -8,17 +8,17 @@ body {font-size:1em; line-weight:1.4}
 
 /* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
 #content_sneakerDetail{ width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; }
-#content_sneakerDetail div#sneaker_Detail{ width: 100%; padding: 0 5%; }
+#content_sneakerDetail div#sneaker_Detail{ width: 100%; padding: 0 0.5%; }
 #content_sneakerDetail div#sneakerOnlineInfo_table{ width: 100%; }
 
 	/* 카테고리 */
-	#content_sneakerDetail div#cate_Detail { width: 100%; line-height: 24px; padding: 2.5% 5% 0; font-size: 14px; }
+	#content_sneakerDetail div#cate_Detail { width: 100%; line-height: 24px; padding: 2.5% 0.5% 0; font-size: 14px; }
 	#content_sneakerDetail div#cate_Detail span { color: #232323; }
 	.arrow { padding: 0 6px 0 8px; font-size: 0.9em; }
 
 	/* 신발 기본정보 */
 	.sneaker_image_wrapper { width: 100%; display: block; }
-	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 2.5% 0;}
+	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 2.5% 1%;}
 		/* 이미지 & 이름*/
 		.sneaker_image { text-align: center; }
 		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px; margin-top: -2%; }
@@ -32,7 +32,7 @@ body {font-size:1em; line-weight:1.4}
 		.cate_wrapper { width: 100%; float: left; }
 		.sneaker_cate { line-height: 30px; display: block; }
 		.sneaker_cate label { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 120px; }
-		.sneaker_cate span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 320px; }
+		.sneaker_cate span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 300px; }
 		
 		.rel_Btn { border: 1px solid #232323; padding: 4px; width: 70%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
 		.rel_Btn:hover { cursor: pointer; background-color: #232323; color: white; }
@@ -285,7 +285,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		height: 50%;
 	}
 	.sneaker_cate label, .sneaker_cate span {
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 	#rel_Btn_label {
 		font-size: 1.1em !important;
@@ -313,6 +313,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.searched-form {
 		width: 70%;
+	}
+	.rel_Btn{
+		width: 100%;
 	}
 }
 

@@ -54,7 +54,7 @@
 			</div>
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail">
-				<div class="sneaker_image_wrapper"> 
+				<div class="sneaker_image_wrapper" style="border-bottom: 1px solid #b7b7b7;"> 
 					<div class="sneaker_image"> 
 						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 					</div>

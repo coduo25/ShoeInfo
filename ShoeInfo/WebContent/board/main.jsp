@@ -138,7 +138,7 @@
 								recentChk = -1;
 							}
 					%>
-						<div class="shoelist_content" <%if(compare_w_rel == 1 && recentChk == -1) {%> style="opacity:0.5;" <%}%>  >
+						<div class="shoelist_content" <%if(compare_w_rel == 1 && recentChk == -1) {%> style="opacity:0.3;" <%}%>  >
 							<!-- 발매일 -->
 							<div class="release_date">
 								<span>
