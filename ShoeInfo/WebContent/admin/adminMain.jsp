@@ -113,7 +113,7 @@
 		
 			<!-- 회원 관리 영역 -->
 			<h4> 회원 <i class="fas fa-user-friends"></i> </h4>
-			<div id="Member_wrapper">
+			<div id="Member_wrapper" style=" margin-bottom: 50px; ">
 				<div id="Member_menu"> 
 					<ul>
 						<li>

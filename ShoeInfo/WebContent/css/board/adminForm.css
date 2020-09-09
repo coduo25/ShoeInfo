@@ -105,6 +105,39 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 .btn_wrapper button { border: 1px solid #c0c0c0; padding: 4px; background-color: white; }
 
 
+/* media Query */
+/* 0 ~ 1220px */
+@media screen and (max-width: 1220px){
+	.container {
+		width: 90%;
+	}
+	#total_infoTable li {
+		padding: 2px 20px;
+	}
+}
+
+/* 0 ~ 768px */
+@media screen and (max-width: 768px){
+	.container {
+		font-size: 0.9em;
+	}
+	#total_infoTable {
+    	padding: 0 0 20px 0;
+    }
+    #Sneaker_wrapper div {
+    	display: block;
+    	border-right: 0;
+    	width: 100%;
+    }
+}
+	
+	/* 0 ~ 468px */
+@media screen and (max-width: 468px){
+	#total_infoTable li {
+		display: block;
+	}
+}
+
 
 
 
