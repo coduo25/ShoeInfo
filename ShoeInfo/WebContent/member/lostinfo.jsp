@@ -226,6 +226,7 @@
 					//가입 되어 있지 않은 이메일이면
 					if($.trim(data) == "NOEMAIL") {
 						alert("회원 정보가 일치 하지 않습니다.");
+						$('#loading').hide();
 						$("#pwfind_name").focus();
 					}
 					//가입된 메일이면
