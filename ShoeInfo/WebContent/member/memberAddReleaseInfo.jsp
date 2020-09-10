@@ -198,13 +198,13 @@
 							</div>
 							
 							<div id="radio-wrapper" class=buy_afCredit>
-								<input type="radio" id="buy_afCredit" name="buy_method" value="당첨 후 결제" disabled> <label for="buy_afCredit">당첨 후 결제</label>
+								<input type="radio" id="buy_afCredit" name="buy_method" value="당첨후 결제" disabled> <label for="buy_afCredit">당첨후 결제</label>
 							</div>
 							<div id="radio-wrapper" class="buy_beCredit">
-								<input type="radio" id="buy_beCredit" name="buy_method" value="당첨 전 선결제" disabled> <label for="buy_beCredit">당첨 전 선결제</label>
+								<input type="radio" id="buy_beCredit" name="buy_method" value="당첨전 선결제" disabled> <label for="buy_beCredit">당첨전 선결제</label>
 							</div>
 							<div id="radio-wrapper" class="buy_affcfs">
-								<input type="radio" id="buy_affcfs" name="buy_method" value="당첨후 선착구매" disabled> <label for="buy_affcfs">당첨 후 선착구매</label>
+								<input type="radio" id="buy_affcfs" name="buy_method" value="당첨후 선착구매" disabled> <label for="buy_affcfs">당첨후 선착구매</label>
 							</div>
 							<div id="radio-wrapper" class="buy_Undefined">
 								<input type="radio" id="buy_Undefined" name="buy_method" value="-" disabled> <label for="buy_Undefined">미정</label>

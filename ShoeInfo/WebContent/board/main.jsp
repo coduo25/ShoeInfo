@@ -129,9 +129,9 @@
 								Date recent_RegDate = new Date(sdto.getReg_date().getTime());
 								//recent_RegDate - Today 
 								long diffDay = (recent_RegDate.getTime() - today.getTime()) / (24*60*60*1000);
-								if(diffDay <= -2){
+								if(diffDay <= -1){
 									recentChk = -1;
-								}else if(diffDay > -2) {
+								}else if(diffDay > -1) {
 									recentChk = 1;
 								}
 							}else if(sdto.getReg_date() == null){

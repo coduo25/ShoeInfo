@@ -286,9 +286,9 @@
 								Date recent_RegDate = new Date(odto.getReg_date().getTime());
 								//recent_RegDate - Today 
 								long diffDay = (recent_RegDate.getTime() - today.getTime()) / (24*60*60*1000);
-								if(diffDay <= -2){
+								if(diffDay <= -1){
 									recentChk = -1;
-								}else if(diffDay > -2) {
+								}else if(diffDay > -1) {
 									recentChk = 1;
 								}
 							}else if(odto.getReg_date() == null){
@@ -414,17 +414,17 @@
 									</div>
 									<!-- 구매방식 -->
 									<div class="wrapper-content">
-										<div> <span> 구매방식 </span> </div>
+										<div> <span> 구매 </span> </div>
 										<div> <span> <%=odto.getBuy_method()%> </span> </div>
 									</div>
 									<!-- 배송여부 -->
 									<div class="wrapper-content">
-										<div> <span> 배송여부 </span> </div>
+										<div> <span> 배송 </span> </div>
 										<div> <span> <%=odto.getDelivery_method()%> </span> </div>
 									</div>
 									<!-- 응모여부 -->
 									<div class="wrapper-content">
-										<div> <span> 응모여부 </span> </div>
+										<div> <span> 응모 </span> </div>
 										<div>
 											<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 											<%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user.equals("")){%>

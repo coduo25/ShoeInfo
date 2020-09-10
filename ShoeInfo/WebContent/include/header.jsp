@@ -19,7 +19,7 @@
 		<div class="acc_wrapper">
 			<!-- 인스타  -->
 			<div class="insta-icon">
-				<span> <a href="https://www.instagram.com/shoeinfo_official/" target="_blank"><i class="fab fa-instagram"></i> <i class="fas fa-caret-left"></i> visit ShoeInfo.official Instagram </a> </span>
+				<span> <a href="https://www.instagram.com/shoeinfo_official/" target="_blank"><i class="fab fa-instagram"></i> <i class="fas fa-caret-left"></i> visit ShoeInfo_official Instagram </a> </span>
 			</div>
 			<!-- 로그인/회원가입 -->
 			<div class="login-wrapper">
