@@ -37,7 +37,7 @@ public class MemberListAction implements Action{
 		}
 		int currentPage = Integer.parseInt(pageNum);
 		
-		int pageSize = 15;
+		int pageSize = 50;
 		
 		Criteria cri = new Criteria();
 		
@@ -58,7 +58,7 @@ public class MemberListAction implements Action{
 		request.setAttribute("cri", cri);
 		request.setAttribute("pageMaker", pageMaker);
 		request.setAttribute("pageNum", currentPage);
-		
+
 		forward.setPath("./admin/admin_memberList.jsp");
 		forward.setRedirect(false);
 		return forward;

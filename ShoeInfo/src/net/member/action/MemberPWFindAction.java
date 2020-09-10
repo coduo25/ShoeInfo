@@ -74,7 +74,7 @@ public class MemberPWFindAction implements Action{
 						+ "\n"
 						+ "비밀번호를 재설정 해주세요. \n"
 						+ "\n"
-						+ "http://shoeinfo.co.kr/ShoeInfo/ChangePass.me?email=" + email_BySHA);
+						+ "http://www.shoeinfo.co.kr/ShoeInfo/ChangePass.me?email=" + email_BySHA);
 				
 				// send the message
 				Transport.send(message);

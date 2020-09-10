@@ -18,11 +18,6 @@
 		String email = request.getParameter("email");
 	%>
 	
-	<!-- Header -->
-<!-- 	<header> -->
-<%-- 		<jsp:include page="/include/header.jsp" /> --%>
-<!-- 	</header> -->
-	
 	<div class="mem_header">
 		<!-- 로고 -->
 		<div class="navbar_logo">
@@ -41,7 +36,7 @@
 					
 						<!-- 이메일 -->
 						<div class="fm_email">
-							<input type="email" name="email" placeholder="이메일" value="<%=email%>" disabled> 
+							<input type="text" name="email" placeholder="이메일" value="<%=email%>" readonly> 
 						</div>
 	
 						<!-- 비밀번호 -->
@@ -74,11 +69,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- FOOTER -->
-<!-- 	<footer> -->
-<%-- 		<jsp:include page="/include/footer.jsp" /> --%>
-<!-- 	</footer> -->
 
 </body>
 

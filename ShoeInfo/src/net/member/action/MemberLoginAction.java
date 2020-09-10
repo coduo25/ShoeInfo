@@ -34,7 +34,7 @@ public class MemberLoginAction implements Action{
 		} 
 		//이메일 없음
 		else if (check == -1) {
-			str = "WRONGPASS";
+			str = "NOEMAIL";
 			out.print(str);
 		}
 		//로그인 성공시

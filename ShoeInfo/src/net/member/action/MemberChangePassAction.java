@@ -15,11 +15,14 @@ public class MemberChangePassAction implements Action{
 		
 		// 넘어온 값 받기
 		String email = request.getParameter("email");
-		String pass = request.getParameter("pass");
+		
+		// 비밀번호 암호화
+		String salt = SHA256Util.generateSalt();
+		String newpass = SHA256Util.getEncrypt(request.getParameter("pass"), salt);
 		
 		MemberDAO mdao = new MemberDAO();
 		
-		int check = mdao.changePass(email, pass);
+		int check = mdao.changePass(email, newpass, salt);
 		
 		// 출력객체를 생성(response객체의 정보를 가지고 생성)
 		PrintWriter out = response.getWriter();

@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class MemberDTO {
 	
+	private int count;
 	private String email;
 	private String email_BySHA;
 	private String pass;
@@ -14,6 +15,12 @@ public class MemberDTO {
 	private String salt;
 	private String salt_id;
 
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getEmail() {
 		return email;
 	}

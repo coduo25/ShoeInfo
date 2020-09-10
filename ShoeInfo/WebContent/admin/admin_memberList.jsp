@@ -67,7 +67,7 @@
 					%>
 					<tbody>
 						<tr>
-							<td> <%=i+1%> </td>
+							<td> <%=mdto.getCount()%> </td>
 							<td> <%=mdto.getEmail()%> </td>
 							<td> <%=mdto.getName()%> </td>
 							<td> <%=mdto.getPhone()%> </td>

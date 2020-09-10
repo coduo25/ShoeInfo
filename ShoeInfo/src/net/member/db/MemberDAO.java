@@ -67,11 +67,14 @@ public class MemberDAO {
 		ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_member order by count";
+			sql = "select * from shoeinfo_member order by count desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cri.getPageStart());
+			pstmt.setInt(2, cri.getPerpageNum());
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				MemberDTO mdto = new MemberDTO();
+				mdto.setCount(rs.getInt("count"));
 				mdto.setEmail(rs.getString("email"));
 				mdto.setPass(rs.getString("pass"));
 				mdto.setName(rs.getString("name"));
@@ -333,7 +336,7 @@ public class MemberDAO {
 	}
 	
 	//회원 비밀번호 재설정 하는 함수
-	public int changePass(String email, String pass){
+	public int changePass(String email, String pass, String salt){
 		int check = -1; 
 		try {
 			con = getConnection();
@@ -343,10 +346,11 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				sql = "update shoeinfo_member set pass = ? where email = ?";
+				sql = "update shoeinfo_member set pass = ?, salt = ? where email = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, pass);
-				pstmt.setString(2, email);
+				pstmt.setString(2, salt);
+				pstmt.setString(3, email);
 				pstmt.executeUpdate();	
 				check = 1;
 			}
