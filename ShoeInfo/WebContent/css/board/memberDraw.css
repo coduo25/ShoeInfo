@@ -55,7 +55,7 @@ body {font-size:1em; line-weight:1.4}
 
 #content_sneakerInfo_D { margin-top: 1.5%; width: 65%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 0 5% 3%; }
 #content_userDrawInfo { margin: 0 2%; }
-#content_userDrawInfo h4 { font-size: 1.7em; margin: 3% 0; text-align: center; padding-top: 1%;}
+#content_userDrawInfo h4 { font-size: 1.5em; margin: 3% 0; text-align: center; padding-top: 1%;}
 /* 국내 응모 && 해외 응모 */
 #dome-draw-wrapper, #inter-draw-wrapper { display: block; float: left; width: 100%; margin-bottom: 10%; }
 .grid-wrapper_D { margin: 1.5% 1%; width: 23%; float: left; display: block; }
@@ -296,7 +296,6 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size:0.65em;
 	}
 	.sneaker_name {
-		font-size:0.8em;
 		line-height: 20px;
 	}
 	#dome-draw-wrapper, #inter-draw-wrapper {
@@ -312,7 +311,6 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		height: 70%;
 	}
 	.sneaker_name {
-		font-size: 0.7em;
 		line-height: unset;
 	}
 	.detail_wrapper {
@@ -327,6 +325,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.desc_wrapper .sneaker_cate span {
 		text-align: right;
 		width: 62%;
+	}
+	#content_userDrawInfo h4 {
+    	font-size: 1.5em;
+    	margin: 3% 0 5% 0;
+    	text-align: center;
+    	padding-top: 1%;
 	}
 	#no-info-wrapper {
 		padding: 10%;
@@ -352,7 +356,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.draw_count_result_wrapper {
     	font-size: 0.85em !important;
-	}	
+	}
+	#dome-draw-wrapper, #inter-draw-wrapper {
+		font-size: 0.7em;
+	}
 	
 	/* 발매 추가 영역 */
 	.add_wrapper #category {

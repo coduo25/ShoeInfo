@@ -150,13 +150,7 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		//image hover 했을시 이미지 opacity 흐리게 하기
-		$('.shoelist_content').hover(function(){
-			$(this).css('opacity', '0.3');
-		}, function() {
-			$(this).css('opacity', '1');
-		});
-		
+
 		var today = new Date();
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
 		
