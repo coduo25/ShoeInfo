@@ -33,6 +33,10 @@ body {font-size:1em; line-weight:1.4}
 	/* 이미지 */
 	.content_img { margin-top: 5%; position: relative; }
 	
+	/* 디데이라벨 */
+	#dd-label-wrapper { position: absolute; top: 0; right: 4%; width: 30%; text-align: right; }
+	#dd-label { font-size: 12px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 6%; border-radius: 3px; }
+	
 	/* 이름 */
 	.content_name { margin-top: 5%; }
 	.content_name .model_name { font-size: 12px; height: 27px; }
@@ -65,6 +69,9 @@ body {font-size:1em; line-weight:1.4}
 	.shoelist_content {
 		width: 31.3%;
 	}
+	#dd-label {
+		font-size: 0.8em;
+	}
 }
 
 /* 0 ~ 468px */
@@ -90,6 +97,9 @@ body {font-size:1em; line-weight:1.4}
 	}
 	#recent-dot i {
 		font-size: 1em;
+	}
+	#dd-label {
+		font-size: 0.7em;
 	}
 }
 

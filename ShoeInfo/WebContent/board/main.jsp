@@ -137,6 +137,22 @@
 							}else if(sdto.getReg_date() == null){
 								recentChk = -1;
 							}
+							
+							//오늘 날짜와 발매날짜와 비교해서 D-Day ~ D-7 이면 디데이 라벨 나타내기, 만약 발매일에 일이 없으면 -1
+							int ddayCount = -1;
+							
+							if(sdto.getRelease_date().contains("99")){
+								ddayCount = -1;
+							} else {
+// 								(original_rel.getTime() - today.getTime()) / (24*60*60*1000)
+								if((original_rel.getTime() - today.getTime()) / (24*60*60*1000) >= 0 && (original_rel.getTime() - today.getTime()) / (24*60*60*1000) <= 7){
+									long count = (original_rel.getTime() - today.getTime()) / (24*60*60*1000);
+									ddayCount = (int) count;
+								} else{
+									ddayCount = -1;
+								}
+							}
+							
 					%>
 						<div class="shoelist_content" <%if(compare_w_rel == 1 && recentChk == -1) {%> style="opacity:0.3;" <%}%>  >
 							<!-- 발매일 -->
@@ -155,7 +171,13 @@
 								<!-- 이미지 -->
 								<div class="content_img">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" > 
+				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" >
+				  						<%if(ddayCount>=0 && ddayCount<=7){%> 
+											<!-- dday label -->
+											<div id="dd-label-wrapper">
+												<span id="dd-label">D–<%if(ddayCount==0){%>DAY<%}else if(ddayCount>0 && ddayCount<=7){%><%=ddayCount%><%}%></span>
+											</div>								
+										<%}%>	
 									</a>
 								</div>
 								<!-- brand & name -->
