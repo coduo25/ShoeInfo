@@ -111,6 +111,12 @@
 				<div id="dome-draw-wrapper">
 					<span> <h4> 국내 응모 한 곳 </h4></span>
 					<%
+						if(drawInfoList_kr.isEmpty()){
+					%>
+						<div id="no-draw-wrapper">
+							<span> 응모한 곳이 없습니다. </span>
+						</div>
+					<% } else {
 						for(int i=0; i<drawInfoList_kr.size(); i++){
 							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(i);
 							BrandDTO bdto = (BrandDTO) brandList_kr.get(i);
@@ -130,13 +136,14 @@
 									</div>
 									<!-- 구매방식 -->
 									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D"><%=odto.getBuy_method()%></span>
+										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span>
 									</div>
 								</div>
 							</div>
 						</div>
 					<%
 						}
+					}
 					%>
 				</div>
 			
@@ -144,6 +151,12 @@
 				<div id="inter-draw-wrapper">
 					<span> <h4> 해외 응모 한 곳 </h4></span>
 					<%
+						if(drawInfoList_etc.isEmpty()){
+					%>
+						<div id="no-draw-wrapper">
+							<span> 응모한 곳이 없습니다. </span>
+						</div>
+					<% } else {
 						for(int i=0; i<drawInfoList_etc.size(); i++){
 							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_etc.get(i);
 							BrandDTO bdto = (BrandDTO) brandList_etc.get(i);
@@ -163,13 +176,14 @@
 									</div>
 									<!-- 구매방식 -->
 									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D"><%=odto.getBuy_method()%></span>
+										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span>
 									</div>
 								</div>
 							</div>
 						</div>
 					<%
 						}
+					}
 					%>
 				</div>
 				

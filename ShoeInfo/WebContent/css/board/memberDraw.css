@@ -57,7 +57,10 @@ body {font-size:1em; line-weight:1.4}
 #content_userDrawInfo { margin: 0 2%; }
 #content_userDrawInfo h4 { font-size: 1.5em; margin: 3% 0; text-align: center; padding-top: 1%;}
 /* 국내 응모 && 해외 응모 */
-#dome-draw-wrapper, #inter-draw-wrapper { display: block; float: left; width: 100%; margin-bottom: 10%; }
+#dome-draw-wrapper, #inter-draw-wrapper { display: block; float: left; width: 100%; margin-bottom: 7%; }
+
+#no-draw-wrapper { text-align:center; width: 100%; padding: 15px; }
+
 .grid-wrapper_D { margin: 1.5% 1%; width: 23%; float: left; display: block; }
 .grid-wrapper_D:hover { opacity: 0.3; }
 .grid-item_D { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
