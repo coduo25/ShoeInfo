@@ -135,6 +135,8 @@
 								<option value="10" <%if(month.equals("10")){%> selected <%}%>> 10 </option>
 								<option value="11" <%if(month.equals("11")){%> selected <%}%>> 11 </option>
 								<option value="12" <%if(month.equals("12")){%> selected <%}%>> 12 </option>
+								<option value="default" disabled> ---- </option>
+								<option value="99" <%if(month.equals("99")){%> selected <%}%>> 99 </option>
 							</select>
 							월
 							<select name="day" id="sel_day">

@@ -122,6 +122,8 @@
 								<option value="10"> 10 </option>
 								<option value="11"> 11 </option>
 								<option value="12"> 12 </option>
+								<option value="default" disabled> ---- </option>
+								<option value="99"> 99 </option>
 							</select>
 							월
 							<select name="day" id="sel_day">
