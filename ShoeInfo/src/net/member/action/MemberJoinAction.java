@@ -26,10 +26,10 @@ public class MemberJoinAction implements Action{
 		MemberDTO mdto = new MemberDTO();
 		// 전달된 파라미터정보를 저장 
 		String email = request.getParameter("email");
-		
+
 		mdto.setEmail(email);
 		
-		String salt_id =  SHA256Util.generateSalt();
+		String salt_id = SHA256Util.generateSalt();
 		String newID = SHA256Util.getEncrypt(request.getParameter("email"), salt_id);
 		
 		mdto.setEmail_BySHA(newID);
@@ -49,7 +49,8 @@ public class MemberJoinAction implements Action{
 		mdao.insertMember(mdto);
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberLogin.me");
+				
+		forward.setPath("./MemberLogin.me?url=");
 		forward.setRedirect(true);		
 		return forward;
 	}

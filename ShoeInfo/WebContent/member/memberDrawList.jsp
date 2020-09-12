@@ -21,7 +21,7 @@
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
-		if(user == null){
+		if(user == null || user == "" || user.isEmpty()){
 			response.sendRedirect("./SneakerList.go");
 		}
 	

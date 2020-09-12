@@ -21,7 +21,7 @@ public class MemberDrawInfo implements Action{
 		String user = (String) session.getAttribute("email");
 		ActionForward forward = new ActionForward();
 		if(user == null){
-			forward.setPath("./MemberLogin.me");
+			forward.setPath("./MemberLogin.me?label="+"memDrawList");
 			forward.setRedirect(true);
 			return forward;
 		}

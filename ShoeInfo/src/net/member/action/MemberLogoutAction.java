@@ -11,6 +11,8 @@ public class MemberLogoutAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		String prev_url = request.getHeader("referer");
+		
 		//로그인 정보 가져오기
 		HttpSession session = request.getSession();
 		session.invalidate();
@@ -19,7 +21,7 @@ public class MemberLogoutAction implements Action{
 		PrintWriter out = response.getWriter();
 		
 		out.print("<script>");
-		out.print(" location.href='./Main.bo'; ");
+		out.print(" location.href=' " + prev_url +  " '; ");
 		out.print("</script>");
 		
 		out.close();

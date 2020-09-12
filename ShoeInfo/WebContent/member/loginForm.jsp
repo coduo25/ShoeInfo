@@ -14,8 +14,30 @@
 </head>
 <body>
 
-	<!-- Header -->
-<%-- 	<header> <jsp:include page="/include/header.jsp" /> </header> --%>
+	<%
+		String user = (String) session.getAttribute("email");
+		if(user != null){
+			response.sendRedirect("./SneakerList.go");
+		}
+	
+		String prev_url = "";
+		
+		String label = request.getParameter("label");
+		if(label == null){
+			label = "";
+		}
+		
+		if(label.equals("memDrawList")){
+			prev_url = "http://www.shoeinfo.co.kr/MemberDrawInfo.me";
+		}else {
+			
+			prev_url = request.getHeader("referer");
+			
+			if(prev_url.isEmpty() || prev_url == null || prev_url == ""){
+				prev_url = "";
+			}
+		}
+	%>
 	
 	<div class="mem_header">
 		<!-- 로고 -->
@@ -41,6 +63,7 @@
 				
 				<!-- 회원가입 form -->
 				<form action="./MemberJoinAction.me" method="post" name="joinForm" id="joinForm">
+				
 					<div class="join-form">
 					
 						<!-- 이메일 -->
@@ -101,6 +124,8 @@
 				<form action="./MemberLoginAction.me" method="post" id="loginForm">
 					<div class="login-form">
 					
+						<input type="hidden" name="referer" id="fm_url_login" value="<%=prev_url%>" />
+					
 						<!-- 이메일 -->
 						<div class="fm_email">
 							<input type="email" name="email" id="fm_email_login" placeholder="이메일" id="email">
@@ -126,9 +151,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- FOOTER -->
-<%-- 	<footer> <jsp:include page="/include/footer.jsp"/> </footer> --%>
 	
 </body>
 
@@ -365,10 +387,16 @@
 				return false;
 			}
 			
+			var url = $('#fm_url_login').val();
+			
+			if(url.indexOf("&")){
+				url = url.replace('&', '%26');
+			}
+			
 			$.ajax({
 				type:"post",
 				url:"./MemberLoginAction.me",
-				data: 'email=' + $('#fm_email_login').val() + '&pass=' + $('#fm_pass_login').val(),
+				data: 'email=' + $('#fm_email_login').val() + '&pass=' + $('#fm_pass_login').val() + '&url=' + url,
 				success:function(data) {
 					if($.trim(data) == "NOEMAIL"){
 						alert("존재하지 않는 이메일입니다.");
@@ -377,6 +405,8 @@
 						$('#fm_pass_login').focus();
 					}else if($.trim(data) == "SUCCESS"){
 						location.href="./SneakerList.go";
+					}else {
+						location.href=$.trim(data);
 					}
 				},error:function(request,status,error){
 				 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);

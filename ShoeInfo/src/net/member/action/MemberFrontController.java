@@ -44,7 +44,7 @@ public class MemberFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setPath("./member/joinForm.jsp");
 			forward.setRedirect(false);	
-		} 
+		}
 		
 		//회원가입 처리페이지2(/MemberJoinAction.me)
 		else if(command.equals("/MemberJoinAction.me")){

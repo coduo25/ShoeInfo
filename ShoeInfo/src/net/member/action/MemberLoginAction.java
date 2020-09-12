@@ -13,6 +13,8 @@ public class MemberLoginAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		//전달 받은 정보 저장
 		String email = request.getParameter("email");
 		
@@ -24,6 +26,8 @@ public class MemberLoginAction implements Action{
 		
 		int check = mdao.loginEmailCheck(email, pass);
 		String str = "";
+		
+		String url = request.getParameter("url");
 		
 		PrintWriter out = response.getWriter();
 		
@@ -47,8 +51,15 @@ public class MemberLoginAction implements Action{
 			String usr_position = mdao.positionCheck(email);
 			session.setAttribute("usr_position", usr_position);
 			
-			str = "SUCCESS";
-			out.print(str);
+			if(url == null || url == "" || url.isEmpty()){
+				str = "SUCCESS";
+				out.print(str);
+			}
+			else {
+				str = url;
+				out.print(str);
+			}
+			
 		}
 		return null;
 	}
