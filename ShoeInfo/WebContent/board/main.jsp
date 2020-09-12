@@ -221,7 +221,7 @@
 			<p class="month">
 				2020 발매예정.
 			</p>
-			<div class="div_month">
+			<div class="div_month" style="margin-bottom: 50px;">
 				<%
 					if(sneakerList2020.size() == 0){
 				%>
