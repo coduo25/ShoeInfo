@@ -43,6 +43,8 @@
 		ArrayList<SneakerDTO> sneakerList11 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList11");
 		ArrayList<SneakerDTO> sneakerList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList12");
 		
+		ArrayList<SneakerDTO> sneakerList2020 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2020");
+		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat new_format = new SimpleDateFormat("M월 d일");
 		
@@ -214,6 +216,63 @@
 			<%
 				}
 			%>
+			
+			<!-- 2020 Sneaker Release -->
+			<p class="month">
+				2020 발매예정.
+			</p>
+			<div class="div_month">
+				<%
+					if(sneakerList2020.size() == 0){
+				%>
+					<div class="no_info">
+						<span> 2020년 발매예정 제품이 없습니다. </span>
+					</div>
+				<%
+					} 
+					for(int j=0; j<sneakerList2020.size(); j++) {
+						SneakerDTO sdto = sneakerList2020.get(j);
+				%>
+					<div class="shoelist_content">
+						<!-- 발매일 -->
+						<div class="release_date">
+							<span>
+								<i class="far fa-calendar"></i>
+								&nbsp;
+								&nbsp;–&nbsp;월
+								&nbsp;–&nbsp;일
+							</span>
+						</div>
+						
+						<div class="content_wrapper">
+								<!-- 이미지 -->
+								<div class="content_img">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">	
+									</a>
+								</div>
+								<!-- brand & name -->
+								<div class="content_name">
+									<!-- model_name -->
+									<div class="model_name">
+										<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
+									</div>
+								</div>
+								
+								<!-- links -->
+								<div class="content_links">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
+										<!-- 링크 wrapper -->
+										<div id="link-wrapper">
+											<%=sdto.getCountLinks()%>
+										</div>							
+									</a>
+								</div>
+							</div>
+					</div>
+				<%} %>
+			</div>
+			
 		</div>
 	</div>
 	

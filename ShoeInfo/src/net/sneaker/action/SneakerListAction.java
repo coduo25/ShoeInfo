@@ -29,6 +29,8 @@ public class SneakerListAction implements Action {
 		List<SneakerDTO> sneakerList10 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-10" + "%" , "planned");
 		List<SneakerDTO> sneakerList11 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-11" + "%" , "planned");
 		List<SneakerDTO> sneakerList12 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-12" + "%" , "planned");
+		
+		List<SneakerDTO> sneakerList2020 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2020-99" + "%" , "planned");
 
 		request.setAttribute("sneakerList1", sneakerList1);
 		request.setAttribute("sneakerList2", sneakerList2);
@@ -42,6 +44,8 @@ public class SneakerListAction implements Action {
 		request.setAttribute("sneakerList10", sneakerList10);
 		request.setAttribute("sneakerList11", sneakerList11);
 		request.setAttribute("sneakerList12", sneakerList12);
+		
+		request.setAttribute("sneakerList2020", sneakerList2020);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./board/main.jsp");
