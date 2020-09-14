@@ -1,5 +1,7 @@
 package net.member.action;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -80,6 +82,7 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setBuy_method(request.getParameter("buy_method"));
 		odto.setDelivery_method(request.getParameter("delivery_method"));
 		odto.setOnline_writer(request.getParameter("online_writer"));
+		odto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		OnlineDAO odao = new OnlineDAO();
 		odao.updateOnlineinfo(odto);
