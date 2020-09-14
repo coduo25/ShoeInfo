@@ -155,12 +155,12 @@ input:checked + .slider:before {
 	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.5em; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; padding: 1px 2px; }
 	
 	/* new 리본 */
-	.ribbon-wrapper { width: 85px; height: 88px; overflow: hidden; position: absolute; top: -0.5%; left: -0.5%; }
+	.ribbon-wrapper { width: 85px; height: 88px; overflow: hidden; position: absolute; top: 0; left: -0.5%; }
   	.ribbon { font: bold 10px sans-serif; color: #333; text-align: center; -webkit-transform: rotate(-45deg); -moz-transform:    rotate(-45deg); -ms-transform:     rotate(-45deg); -o-transform:      rotate(-45deg); position: relative; padding: 3px 0; top: 15px; left: -30px; width: 110px; background-color: #ffbf34; color: #fff; }
 	
 	/* 작성자 마크 */
 	.grid-info-writer { display: none; position: absolute; top: 0; left: 0; padding: 2% 4%; z-index: 5; background-color: white; font-size: 0.9em; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-bottom: 1px solid #dcdcdc; border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem; }
-	.grid-info { position: absolute; top:88%; left:4%; z-index: 3; }
+	.grid-info { position: absolute; top:88%; right:4%; z-index: 3; }
 	.grid-info span { color: #b3b3b37d; }
 	
 	/* 모바일 버전 toggle down/up 버튼 */
@@ -174,9 +174,8 @@ input:checked + .slider:before {
 	#country_flag_img {border: 0.5px solid #D9D9D9; margin-top:2.5px; }
 	
 	#wrapper-name { margin-bottom: 1%; font-size: 1.2em; font-weight: bold; position: relative;}
-	.country_name_label { display:none; width: 100px; background-color: white; border: 1px solid gainsboro; text-align: center; border-radius: 5px; padding: 2%; font-weight: normal; font-size: 0.8em !important; position:absolute; top: 90%; right: 0; z-index: 100;}
-/* 	#span-flag:hover + .country_name_label { visibility: visible; } */
-	
+	.country_name_label { display:none; width: 100px; background-color: white; border: 1px solid gainsboro; text-align: center; border-radius: 5px; padding: 2%; font-weight: normal; font-size: 0.8em !important; position:absolute; top: 88%; right: 0; z-index: 100;}
+
 	#wrapper-name a { vertical-align: middle; }
 	#brand_name { display: inline-block; width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 	.span-flag, #wrapper-content { float: right; }
@@ -317,6 +316,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.rel_Btn{
 		width: 100%;
 	}
+	.grid-info {
+		top: 86%;
+	}
 }
 
 /* 0 ~ 768px */
@@ -359,7 +361,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	padding: 1% 0 3% 0;
 	}
 	.grid-info {
-		top: 84%;
+		top: 87%;
 	}
 }
 
@@ -367,8 +369,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 @media screen and (max-width: 468px){
 	/* 스위치 */
 	.switch-wrapper { 
+		display: none;
 		width: 100%;
-	    display: block;
+/* 	    display: block; */
 	    position: relative;
 	    float: left;
 	    text-align: right;
@@ -411,6 +414,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#start_time2 {
 		display: none;
 	}
+	#wrapper-period {
+		margin-bottom: 7%;
+	}
+	.grid-content div {
+    	margin-bottom: 5%;
+	}
 	#wrapper-period span {
 		font-size: 0.9em;
 	}
@@ -426,10 +435,22 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
  		left: 74%;
  		top: 4%;
 	}
+	.grid-time {
+    	height: 40px;
+    	margin: 3% 0;
+	}
 	.draw_count_result_wrapper {
     	font-size: 0.85em !important;
 	}	
 	.grid-info-writer { padding: 3% 4%;}
+	
+	.grid-link {
+		display: none;
+	}
+	.grid-content {
+    	padding: 3% 5% 1% 5%;
+	}
+	
 	
 	/* 발매 추가 영역 */
 	.add_wrapper #category {
@@ -495,9 +516,13 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	width: 50%;
 	}
 	
-	.mobile-toggle-down { display: inline-block; }
+	.mobile-toggle-down { 
+/* 		display: inline-block;  */
+		display: none;
+	}
+	
 	/* 상세페이지 */
-	.detail_area { display: none; }
+/* 	.detail_area { display: none; } */
 	
 	#radio-wrapper {
 	    padding: 1% 0 7% 0;
@@ -518,7 +543,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	padding: 1% 0 5% 0;
 	}
 	.grid-info {
-		left: 5%;
+		display: none;
+		right: 5%;
+		top: 84%;
 	}
 	#addOnlineForm, #updateOnlineForm {
     	padding: 5%;
