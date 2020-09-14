@@ -422,14 +422,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	margin-bottom: 5%;
 	}
 	
-	.detail_area {
-		font-size: 0.9em;
-	}
-	
 	#wrapper-period span {
 		font-size: 0.9em;
 	}
-	
 	
 	#country_flag_img {
 		width: 20px;
@@ -457,6 +452,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.grid-content {
     	padding: 3% 5% 1% 5%;
+    	font-size: 0.9em;
 	}
 	
 	
