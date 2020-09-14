@@ -388,6 +388,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		line-height: unset;
 	}
 	.detail_wrapper {
+		font-size: 0.9em;
 		padding: 2.5%;
 	}
 	.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper {
@@ -420,9 +421,16 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-content div {
     	margin-bottom: 5%;
 	}
+	
+	.detail_area {
+		font-size: 0.9em;
+	}
+	
 	#wrapper-period span {
 		font-size: 0.9em;
 	}
+	
+	
 	#country_flag_img {
 		width: 20px;
    		height: 13px;
@@ -484,11 +492,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 0.5em;
 	}
 	#content_sneakerInfo #grid-list:first-child h4{
-		font-size: 1.3em;
+		font-size: 1.2em;
 		margin: 2% 0 7% 0;
 	}
 	#grid-list h4 {
-		font-size: 1.3em;
+		font-size: 1.2em;
 		margin: 10% 0 7% 0;
 	}
 	#nothingSearched div {
