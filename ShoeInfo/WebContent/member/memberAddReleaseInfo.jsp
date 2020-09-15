@@ -231,6 +231,9 @@
 								<div id="del-radio-wrapper">
 									<input type="radio" id="onlyLocal" name="delivery_method" value="직배x배대지x"> <label for="onlyLocal">직배x 배대지x</label>
 								</div>
+								<div id="del-radio-wrapper">
+									<input type="radio" id="etc" name="delivery_method"> <label for="etc" style="margin-right: 1%;"> 기타: </label> <input type="text" id="delivery_etc" maxlength="10" disabled>
+								</div>
 							</div>
 							
 						</div>
@@ -446,6 +449,25 @@
 	});
 	
 	
+	//배송방식을 클릭했을시
+	$('input:radio[name=delivery_method]').click(function(){
+		if($('#etc').is(":checked") == true) {
+			$('#delivery_etc').attr("disabled", false);
+		}else {
+			$('#delivery_etc').attr("disabled", true);
+		}
+	});
+	
+	//기타 배송방식 값이 변경되었을시
+	$('#delivery_etc').change(function(){
+		$('#etc').val($('#delivery_etc').val());
+	});
+	//기타 배송방식 input을 다시 클릭했을시
+	$('#delivery_etc').click(function(){
+		$('#etc').val($('#delivery_etc').val());
+	});
+	
+	
 	//모든 input 유효성 검사
 	//온라인 발매 정보 추가하는  form 태그 검사
 	$('.rel_Btn2').click(function(){
@@ -481,6 +503,12 @@
 		//배송 여부를 선택 안했을시
 		else if(!$('input:radio[name=delivery_method]').is(':checked')) {
 			alert("배송 여부를 선택해주세요.");
+			return false;
+		}
+		//배송 여부 중 기타란을 선택했을시 input 태그에 값을 넣기
+		else if($('#etc').is(":checked") == true && $('#delivery_etc').val() == '') {
+			alert("기타 배송방식을 입력해주세요.");
+			$('#delivery_etc').focus();
 			return false;
 		}
 		//유저 이름 확인란

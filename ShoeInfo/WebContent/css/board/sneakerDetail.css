@@ -139,7 +139,7 @@ input:checked + .slider:before {
 }
 
 #grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 5%; }
-.grid-wrapper { margin: 1.5%; width: 17%; float: left; display: block; height: 570px; }
+.grid-wrapper { margin: 1.5%; width: 17%; float: left; display: block; height: 490px; }
 .grid-item { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
 .grid-logo { position: relative; }
 .grid-logo img { width: 100%; height: 100%; }
@@ -182,7 +182,7 @@ input:checked + .slider:before {
 	#wrapper-period { margin-bottom: 15%; color: #dc5757; font-weight: bold; }
 	
 	/* 남은 시간 파트 */
-	.grid-time { height:60px; display: block; margin: 5% 0; }
+	.grid-time { height:55px; display: block; margin: 3% 0; }
 	#remain-time { text-align: center; }
 	.time-label-wrapper { display: block; font-size: 0.6em; }
 	.draw_count_result_wrapper { display: block; font-size: 0.85em; }
@@ -192,10 +192,10 @@ input:checked + .slider:before {
 	#time-colon { font-size: 0.8em; padding: 0;}
 
 	/* 바로가기 버튼 */
-	.grid-link { display: flex; padding: 7% 5%; font-size: 0.9em;}
-	.direct-link { border: 1px solid #c0c0c0; padding: 2.5%; width: 100%; text-align: center; letter-spacing: 3px; }
-	.direct-link:hover { background-color: #3a3a3a; }
-	.direct-link:hover > span { color: white; font-weight: bold; }
+/* 	.grid-link { display: flex; padding: 7% 5%; font-size: 0.9em;} */
+/* 	.direct-link { border: 1px solid #c0c0c0; padding: 2.5%; width: 100%; text-align: center; letter-spacing: 3px; } */
+/* 	.direct-link:hover { background-color: #3a3a3a; } */
+/* 	.direct-link:hover > span { color: white; font-weight: bold; } */
 
 	/* toggle 바 */
 	.grid-toggle-Down { display: inline-block; font-size: 0.7em; text-align: center; width: 100%; padding: 3% 1%; }
@@ -231,7 +231,9 @@ input[type=radio] { margin: 0 0.5%; }
 .rel_Btn2 { border: 1px solid #232323; width: 50%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
 .rel_Btn2:hover { cursor: pointer; background-color: #232323; color: white; }
 #submitBtn-form { padding: 3% 0; }
-#onlineM-radio-wrapper, #del-radio-wrapper { display: inline; padding: 0;}
+#onlineM-radio-wrapper { display: inline; padding: 0;}
+
+ #del-radio-wrapper { padding: 1% 0 3% 0; }
 
 	/* 브랜드 검색 영역 */
 	.search-form { padding-bottom: 1% !important; }
@@ -267,6 +269,8 @@ input[type=radio] { margin: 0 0.5%; }
 	#request-form button { border: 1px solid #232323; width: 25%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
 	#request-form button:hover { background-color: #232323; color: white; }
 	
+	#delivery_etc { width: 170px; height: 25px; }
+	
 
 /* 관리자 권한 버튼들 */
 input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; background-color: white; }
@@ -291,7 +295,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.grid-wrapper {
 		width:22%;
-		height: 600px;
+		height: 500px;
 	}
 	.grid-info span {
 		font-size: 1.1em !important;
@@ -319,13 +323,16 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-info {
 		top: 86%;
 	}
+	#start_time2 {
+		display: none;
+	}
 }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
 	.grid-wrapper {
 		width:30.33%;
-		height: 620px;
+		height: 540px;
 	}
 	.rel_Btn{
 		width: 100%;
@@ -362,6 +369,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.grid-info {
 		top: 87%;
+	}
+	#wrapper-period {
+    	margin-bottom: 10%;
+	}
+	.grid-content div {
+    	margin-bottom: 5%;
 	}
 }
 
@@ -408,15 +421,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		padding: 7%;
 	}
 	.grid-wrapper {
-		width: 46%;
-    	margin: 2%;
+		width: 44%;
+    	margin: 3%;
     	height: unset;
 	}
-	#start_time2 {
-		display: none;
-	}
 	#wrapper-period {
-		margin-bottom: 7%;
+		margin-bottom: 8%;
 	}
 	.grid-content div {
     	margin-bottom: 5%;
@@ -429,7 +439,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#country_flag_img {
 		width: 20px;
    		height: 13px;
-   		margin-top: 5px;
+   		margin-top: 3.2px;
 	}
 	.wrapper-content span {
 		font-size:0.9em;
@@ -443,15 +453,15 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	margin: 3% 0;
 	}
 	.draw_count_result_wrapper {
-    	font-size: 0.85em !important;
+    	font-size: 0.8em !important;
 	}	
 	.grid-info-writer { padding: 3% 4%;}
 	
-	.grid-link {
-		display: none;
-	}
+/* 	.grid-link { */
+/* 		display: none; */
+/* 	} */
 	.grid-content {
-    	padding: 3% 5% 1% 5%;
+    	padding: 3% 6% 1% 6%;
     	font-size: 0.9em;
 	}
 	

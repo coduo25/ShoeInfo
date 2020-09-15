@@ -423,7 +423,7 @@
 										<div> <span> <%=odto.getDelivery_method()%> </span> </div>
 									</div>
 									<!-- 응모여부 -->
-									<div class="wrapper-content">
+									<div class="wrapper-content" style="margin-bottom: 5%;">
 										<div> <span> 응모 </span> </div>
 										<div>
 											<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -724,11 +724,11 @@
 								</div>
 								
 								<!-- 바로가기 버튼 -->
-								<div class="grid-link">
-									<a href="<%=odto.getOnline_link()%>" target="_blank" id="direct-link-<%=country_name_eng%><%=i%>" class="direct-link">
-										<span> 바로가기 </span>
-									</a>
-								</div>
+<!-- 								<div class="grid-link"> -->
+<%-- 									<a href="<%=odto.getOnline_link()%>" target="_blank" id="direct-link-<%=country_name_eng%><%=i%>" class="direct-link"> --%>
+<!-- 										<span> 바로가기 </span> -->
+<!-- 									</a> -->
+<!-- 								</div> -->
 								
 								<!-- 수정하기 버튼 toggle 바 -->
 								<div class="grid-toggle-Down" id="grid-toggle-Down-<%=country_name_eng%><%=i%>">
