@@ -80,7 +80,16 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setOnline_end_time(online_end_time);
 		
 		odto.setBuy_method(request.getParameter("buy_method"));
-		odto.setDelivery_method(request.getParameter("delivery_method"));
+		
+		String delivery_method = request.getParameter("delivery_method");
+		System.out.println(delivery_method);
+		//만약 배송방식 안에 < , >가 포함되어있으면 replace하기
+		if(delivery_method.contains("<") || delivery_method.contains(">")){
+			delivery_method = delivery_method.replaceAll("<", "&lt;").replaceAll(">", "&gt;").trim();
+		}
+		
+		odto.setDelivery_method(delivery_method);
+		
 		odto.setOnline_writer(request.getParameter("online_writer"));
 		odto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
