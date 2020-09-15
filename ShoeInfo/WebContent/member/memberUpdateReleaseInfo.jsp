@@ -214,11 +214,9 @@
 									<input type="radio" id="onlyLocal" name="delivery_method" value="직배x배대지x" <%if(onlineDrawInfo.getDelivery_method().equals("직배x배대지x")){%>checked<%}%>> <label for="onlyLocal">직배x 배대지x</label>
 								</div>
 								<div id="del-radio-wrapper">
-									<input type="radio" id="etc" name="delivery_method" <%if(!onlineDrawInfo.getDelivery_method().equals("직배가능") && !onlineDrawInfo.getDelivery_method().equals("배대지") && !onlineDrawInfo.getDelivery_method().equals("국내배송") && !onlineDrawInfo.getDelivery_method().equals("매장수령") && !onlineDrawInfo.getDelivery_method().equals("직배x배대지x")){%>checked<%}%>> 
-									기타: 
-									<label for="etc"> 
-										<input type="text" id="delivery_etc" maxlength="10" <%if(!onlineDrawInfo.getDelivery_method().equals("직배가능") && !onlineDrawInfo.getDelivery_method().equals("배대지") && !onlineDrawInfo.getDelivery_method().equals("국내배송") && !onlineDrawInfo.getDelivery_method().equals("매장수령") && !onlineDrawInfo.getDelivery_method().equals("직배x배대지x")){%> value="<%=onlineDrawInfo.getDelivery_method()%>" <%} else {%> disabled <%}%>>
-									</label>
+									<input type="radio" id="etc" name="delivery_method" <%if(!onlineDrawInfo.getDelivery_method().equals("직배가능") && !onlineDrawInfo.getDelivery_method().equals("배대지") && !onlineDrawInfo.getDelivery_method().equals("국내배송") && !onlineDrawInfo.getDelivery_method().equals("매장수령") && !onlineDrawInfo.getDelivery_method().equals("직배x배대지x")){%> value="<%=onlineDrawInfo.getDelivery_method()%>" checked<%}%>> 
+									<label for="etc" style="margin-right: 1%;"> 기타: </label>
+									<input type="text" id="delivery_etc" maxlength="10" <%if(!onlineDrawInfo.getDelivery_method().equals("직배가능") && !onlineDrawInfo.getDelivery_method().equals("배대지") && !onlineDrawInfo.getDelivery_method().equals("국내배송") && !onlineDrawInfo.getDelivery_method().equals("매장수령") && !onlineDrawInfo.getDelivery_method().equals("직배x배대지x")){%> value="<%=onlineDrawInfo.getDelivery_method()%>" <%} else {%> disabled <%}%>>
 								</div>
 							</div>
 							

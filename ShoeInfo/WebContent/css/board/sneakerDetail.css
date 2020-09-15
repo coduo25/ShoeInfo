@@ -66,8 +66,8 @@ body {font-size:1em; line-weight:1.4}
 #wrapper-content_D { display: inline-block; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .wrapper-content { margin-bottom: 5%; }
-.wrapper-content div:first-child { width:35%; float:left; margin-bottom: 0; }
-.wrapper-content div:last-child { width: 65%; display: inline-block; text-align: right; margin-bottom: 0; }
+.wrapper-content div:first-child { width:25%; float:left; margin-bottom: 0; }
+.wrapper-content div:last-child { width: 75%; display: inline-block; text-align: right; margin-bottom: 0; }
 
 	.tooltip1 { position: relative; display: inline-block; border-bottom: 1px dotted black; }
 	
@@ -503,7 +503,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	#grid-list h4 {
 		font-size: 1.2em;
-		margin: 10% 0 7% 0;
+		margin: 10% 0 4% 0;
 	}
 	#nothingSearched div {
     	font-size: 0.7em;

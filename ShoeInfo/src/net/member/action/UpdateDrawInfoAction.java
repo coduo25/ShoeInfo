@@ -82,7 +82,6 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setBuy_method(request.getParameter("buy_method"));
 		
 		String delivery_method = request.getParameter("delivery_method");
-		System.out.println(delivery_method);
 		//만약 배송방식 안에 < , >가 포함되어있으면 replace하기
 		if(delivery_method.contains("<") || delivery_method.contains(">")){
 			delivery_method = delivery_method.replaceAll("<", "&lt;").replaceAll(">", "&gt;").trim();
