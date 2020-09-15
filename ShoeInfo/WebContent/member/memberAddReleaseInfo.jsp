@@ -518,7 +518,13 @@
 			return false;
 		}
 		else {
-			var submitConfirm = confirm("추가하실 발매정보는 수정은 가능하나 삭제는 불가합니다. \n발매정보를 추가하시겠습니까?");
+			var submitConfirm = confirm("스타일코드: " + $('input[name=model_stylecode]').val()
+										+ "\n브랜드: " + $('#brand_name').val()
+										+ "\n발매방식: " + $('input:radio[name=online_method]:checked').val()
+										+ "\n발매시간: " + $('input[name=online_date_start]').val() + " "+ $('input[name=online_hour_start]').val() + "~" + $('input[name="online_date_end"]').val() + " " + $('input[name=online_hour_end]').val()
+										+ "\n구매방식: " + $('input:radio[name=buy_method]:checked').val()
+										+ "\n배송여부: " + $('input:radio[name=delivery_method]:checked').val()
+										+ "\n\n추가하실 발매정보는 수정은 가능하나 삭제는 불가합니다. \n발매정보를 추가하시겠습니까?");
 			if(submitConfirm){
 				$('#addOnlineForm').submit();
 			}else{

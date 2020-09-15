@@ -420,7 +420,7 @@
 									<!-- 배송여부 -->
 									<div class="wrapper-content">
 										<div> <span> 배송 </span> </div>
-										<div> <span> <%=odto.getDelivery_method()%> </span> </div>
+										<div> <span <%if(odto.getDelivery_method().equals("매장수령")){%> style="color: #ff7600;" <%}%>> <%=odto.getDelivery_method()%> </span> </div>
 									</div>
 									<!-- 응모여부 -->
 									<div class="wrapper-content" style="margin-bottom: 5%;">
