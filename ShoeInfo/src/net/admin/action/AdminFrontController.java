@@ -229,7 +229,14 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
+		else if(command.equals("/MemberDrawList.ad")) {
+			action = new MemberDrawListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

@@ -64,7 +64,13 @@ public class MemberDAO {
 	
 	//모든 회원 리스트 불러오는 함수
 	public List<MemberDTO> getAllMemberList(Criteria cri){
+		int count = 0;
+		
 		ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		
 		try {
 			con = getConnection();
 			sql = "select * from shoeinfo_member order by count desc limit ?, ?";
@@ -81,6 +87,14 @@ public class MemberDAO {
 				mdto.setPhone(rs.getString("phone"));
 				mdto.setReg_date(rs.getTimestamp("reg_date"));
 				mdto.setPosition(rs.getString("position"));
+				sql = "select max(draw_count) from shoeinfo_memberdrawinfo where member_email = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, mdto.getEmail());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					count = rs2.getInt(1) + 1;
+				}
+				mdto.setDraw_count(count);
 				memberList.add(mdto);
 			}
 		} catch (Exception e) {
@@ -89,6 +103,70 @@ public class MemberDAO {
 			closeDB();
 		}
 		return memberList;
+	}
+	
+	//모든 회원 응모 리스트 불러오는 함수
+	public Vector getAllMemberDrawList(Criteria cri){
+		Vector vec = new Vector();
+		
+		ArrayList memberDrawList = new ArrayList();
+		ArrayList sneakerInfoList = new ArrayList();
+		ArrayList brandInfoList = new ArrayList();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
+		
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_memberdrawinfo order by userDraw_num desc limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cri.getPageStart());
+			pstmt.setInt(2, cri.getPerpageNum());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				MemberDrawDTO mddto = new MemberDrawDTO();
+				mddto.setUserDraw_num(rs.getInt("userDraw_num"));
+				mddto.setMember_email(rs.getString("member_email"));
+				mddto.setModel_num(rs.getInt("model_num"));
+				mddto.setModel_stylecode(rs.getString("model_stylecode"));
+				mddto.setCountry_name(rs.getString("country_name"));
+				mddto.setBrand_id(rs.getString("brand_id"));
+				mddto.setDraw_count(rs.getInt("draw_count"));
+				memberDrawList.add(mddto);
+				
+				sql = "select * from shoeinfo_sneakerlibrary where num = ? and model_stylecode = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setInt(1, mddto.getModel_num());
+				pstmt2.setString(2, mddto.getModel_stylecode());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					SneakerDTO sdto = new SneakerDTO();
+					sdto.setImage(rs2.getString("image"));
+					sneakerInfoList.add(sdto);
+					
+					sql="select * from shoeinfo_brand where brand_id = ?";
+					pstmt3 = con.prepareStatement(sql);
+					pstmt3.setString(1, mddto.getBrand_id());
+					rs3 = pstmt3.executeQuery();
+					if(rs3.next()){
+						BrandDTO bdto = new BrandDTO();
+						bdto.setBrand_logo(rs3.getString("brand_logo"));
+						bdto.setBrand_name(rs3.getString("brand_name"));
+						brandInfoList.add(bdto);
+					}
+				}
+			}
+			vec.add(memberDrawList);
+			vec.add(sneakerInfoList);
+			vec.add(brandInfoList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return vec;
 	}
 	
 	//모든 회원이 응모한 횟수 계산하는 함수

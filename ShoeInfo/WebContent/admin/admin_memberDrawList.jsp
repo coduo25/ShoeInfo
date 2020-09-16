@@ -1,3 +1,6 @@
+<%@page import="net.brand.db.BrandDTO"%>
+<%@page import="net.sneaker.db.SneakerDTO"%>
+<%@page import="net.member.db.MemberDrawDTO"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="net.board.action.Criteria"%>
@@ -28,15 +31,15 @@
 			response.sendRedirect("./SneakerList.go");
 		}
 		
-		List<MemberDTO> admin_memberList = (List<MemberDTO>) request.getAttribute("admin_memberList");
+		List<MemberDrawDTO> memberDrawList = (List<MemberDrawDTO>) request.getAttribute("memberDrawList");
+		List<SneakerDTO> sneakerInfoList = (List<SneakerDTO>) request.getAttribute("sneakerInfoList");
+		List<BrandDTO> brandInfoList = (List<BrandDTO>) request.getAttribute("brandInfoList");
 		
 		PageMaker pageMaker = (PageMaker) request.getAttribute("pageMaker");
 		Criteria cri = (Criteria) request.getAttribute("cri");
 		int pageNum = (int) request.getAttribute("pageNum");
-		
-		SimpleDateFormat new_format = new SimpleDateFormat ( "yyyy년 MM월 dd일");
 	%>
-
+	
 	<!-- Header -->	
 	<header> <jsp:include page="/include/header.jsp" /> </header>
 
@@ -47,35 +50,38 @@
 			
 			<!-- 전체 멤버 리스트 -->
 			<div>
-				<h3> 전체 멤버 리스트 </h3>
+				<h3> 전체 멤버 응모 리스트 </h3>
 				<table>
 					<thead>
 						<tr>
 							<th style="width:5%;"> 번호 </th>
-							<th style="width:21%;"> 이메일 </th>
-							<th style="width:13%;"> 이름 </th>
-							<th style="width:10%;"> 휴대폰번호 </th>
-							<th style="width:7%;"> 드로우횟수 </th>
-							<th style="width:13%;"> 가입날짜 </th>
-							<th style="width:7%;"> 포지션 </th>
-							<th style="width:10%;"> 수정/삭제 </th>
+							<th style="width:5%;"> 신발 </th>
+							<th style="width:15%;"> 멤버 </th>
+							<th style="width:8%;"> 브랜드이미지 </th>
+							<th style="width:15%;"> 브랜드 </th>
+							<th style="width:10%;"> 드로우횟수 </th>
 						</tr>
 					</thead>
 					<%
-						for( int i=0; i<admin_memberList.size(); i++){
-							MemberDTO mdto = admin_memberList.get(i);
-							String reg_date = new_format.format(mdto.getReg_date());
+						for( int i=0; i<memberDrawList.size(); i++){
+							MemberDrawDTO mddto = memberDrawList.get(i);
+							SneakerDTO sdto = sneakerInfoList.get(i);
+							BrandDTO bdto = brandInfoList.get(i);
 					%>
 					<tbody>
 						<tr>
-							<td> <%=mdto.getCount()%> </td>
-							<td> <%=mdto.getEmail()%> </td>
-							<td> <%=mdto.getName()%> </td>
-							<td> <%=mdto.getPhone()%> </td>
-							<td> <%=mdto.getDraw_count()%> </td>
-							<td> <%=reg_date%> </td>
-							<td> <%=mdto.getPosition()%> </td>
-							<td> <input type="button" id="modi_btn" onclick="location.href='./UpdateSneakerInfo.ad?model_stylecode='" value="수정"> / <input type="button" id="modi_btn" value="삭제"> </td>
+							<td> <%=mddto.getUserDraw_num()%> </td>
+							<td> 
+								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="70"> <br>
+								</a>
+							</td>
+							<td> <%=mddto.getMember_email()%> </td>
+							<td> 
+								<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>" width="50">
+							</td>
+							<td> <%=bdto.getBrand_name()%> </td>
+							<td> <%=mddto.getDraw_count()%> </td>
 						</tr>
 					</tbody>
 					<%}%>
@@ -86,24 +92,24 @@
 			<div class="page_Area">
 				<ul id="pageList">
 					<%if(pageMaker.isPrev()) {%>
-						<li onclick="location.href='./MemberList.ad?pageNum=<%=pageMaker.getStartPage()-1 %> '">
+						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=pageMaker.getStartPage()-1 %> '">
 							<i class="fas fa-angle-double-left"></i>
 						</li>
 					<%} if(pageNum != 1) {%>
-						<li onclick="location.href='./MemberList.ad?pageNum=<%=pageNum-1%>'">
+						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=pageNum-1%>'">
 							<i class="fas fa-angle-left"></i>
 						</li>
 					<%} for(int i = pageMaker.getStartPage(); i<=pageMaker.getEndPage(); i++){ %>
-						<li onclick="location.href='./MemberList.ad?pageNum=<%=i%>'" <%if(pageNum == i) {%> style="font-weight: bold" <%}%>>
+						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=i%>'" <%if(pageNum == i) {%> style="font-weight: bold" <%}%>>
 							<%=i%>
 						</li>
 					<%} if(pageNum != pageMaker.getEndPage()) {
 					%>
-						<li onclick="location.href='./MemberList.ad?pageNum=<%=pageNum+1%>'">
+						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=pageNum+1%>'">
 							<i class="fas fa-angle-right"></i>
 						</li>
 					<%} if(pageMaker.isNext() && pageMaker.getEndPage() > 0){ %>
-						<li onclick="location.href='./MemberList.ad?&pageNum=<%=pageMaker.getEndPage()+1%>'">
+						<li onclick="location.href='./MemberDrawList.ad?&pageNum=<%=pageMaker.getEndPage()+1%>'">
 							<i class="fas fa-angle-double-right"></i>
 						</li>
 					<%} %>

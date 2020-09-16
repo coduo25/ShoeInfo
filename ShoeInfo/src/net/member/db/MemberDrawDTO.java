@@ -3,6 +3,7 @@ package net.member.db;
 
 public class MemberDrawDTO {
 	
+	private int userDraw_num;
 	private String member_email;
 	private int model_num;
 	private String model_stylecode;
@@ -10,6 +11,12 @@ public class MemberDrawDTO {
 	private String brand_id;
 	private int draw_count;
 	
+	public int getUserDraw_num() {
+		return userDraw_num;
+	}
+	public void setUserDraw_num(int userDraw_num) {
+		this.userDraw_num = userDraw_num;
+	}
 	public String getMember_email() {
 		return member_email;
 	}

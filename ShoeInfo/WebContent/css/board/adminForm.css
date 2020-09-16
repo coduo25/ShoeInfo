@@ -47,7 +47,7 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 #content_admin_sneakerList table th, #content_admin_sneakerList table td, 
 #content_admin_brandList table th, #content_admin_brandList table td,
 #content_admin_countryList table th, #content_admin_countryList table td,
-#content_admin_memberList table th, #content_admin_memberList table td { padding: 1.5%; }
+#content_admin_memberList table th, #content_admin_memberList table td { padding: 0.5%; }
 
 #content_adminAddSneaker #cate_ref { display: block; font-weight: normal; font-size: 0.8em; padding-top: 2%; color: green; }
 

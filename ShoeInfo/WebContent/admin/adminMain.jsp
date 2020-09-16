@@ -61,7 +61,7 @@
 					</li>
 					<li>
 						<span class="total_subTit"> 회원 총 응모 횟수 </span>
-						<span class="total_main"> <%=memberDrawNum%> 개 </span>
+						<span class="total_main"> <a href="./MemberDrawList.ad"> <%=memberDrawNum%> 개 </a> </span>
 					</li>
 					<li>
 						<span class="total_subTit"> 브랜드 요청 수 </span>

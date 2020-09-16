@@ -14,6 +14,7 @@ public class MemberDTO {
 	private String position;
 	private String salt;
 	private String salt_id;
+	private int draw_count;
 
 	public int getCount() {
 		return count;
@@ -74,6 +75,12 @@ public class MemberDTO {
 	}
 	public void setSalt_id(String salt_id) {
 		this.salt_id = salt_id;
+	}
+	public int getDraw_count() {
+		return draw_count;
+	}
+	public void setDraw_count(int draw_count) {
+		this.draw_count = draw_count;
 	}
 	
 }
