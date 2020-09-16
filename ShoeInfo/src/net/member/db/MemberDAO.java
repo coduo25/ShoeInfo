@@ -92,7 +92,9 @@ public class MemberDAO {
 				pstmt2.setString(1, mdto.getEmail());
 				rs2 = pstmt2.executeQuery();
 				if(rs2.next()){
-					count = rs2.getInt(1) + 1;
+					count = rs2.getInt(1);
+				}else{
+					count = 0;
 				}
 				mdto.setDraw_count(count);
 				memberList.add(mdto);

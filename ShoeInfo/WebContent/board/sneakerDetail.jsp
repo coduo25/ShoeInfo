@@ -70,6 +70,7 @@
 		SimpleDateFormat date_format = new SimpleDateFormat("yyyy년 M월 d일");
 
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
+		SimpleDateFormat newList_format = new SimpleDateFormat("M월 d일 a h:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
@@ -172,14 +173,281 @@
 		</div>
 		
 		<div class="switch-wrapper">
-			정보 ON/OFF
-			<label class="switch">
-				<input type="checkbox" class="info_switch" name="info_switch">
-				<span class="slider round"></span>
-			</label>
+			<div>
+				<span id="reload" style="font-size: 1.3em;"> <i class="fas fa-sync-alt"></i> </span>
+				<span style="font-size: 1.3em; vertical-align: top; color: #e6e6e6;"> | </span>
+				<span id="list-icon" style="color: #00cc00;"> <i class="fas fa-th-list"></i> </span>
+				<span id="large-icon"> <i class="fas fa-th-large"></i> </span>
+			</div>
+		</div>
+		
+		<!-- 밟매 정보 리스트 (List Ui) -->
+		<div id="content_sneakerInfo_list">
+			<%
+				for(int z=0; z<=4; z++){
+						ArrayList<OnlineDTO> new_onlineList = new ArrayList<OnlineDTO>();
+						ArrayList<BrandDTO> new_brandList = new ArrayList<BrandDTO>();
+						String country_name_eng = "";
+						String country_name_kr = "";
+						//kr
+						if(z==0) { new_onlineList = onlineList_kr; new_brandList = brandList_kr; country_name_eng = "kr"; country_name_kr = "한국"; }
+						//asia
+						if(z==1) { new_onlineList = onlineList_asia; new_brandList = brandList_asia; country_name_eng = "asia"; country_name_kr = "아시아"; }
+						//america
+						if(z==2) { new_onlineList = onlineList_america; new_brandList = brandList_america; country_name_eng = "america"; country_name_kr = "북미"; }
+						//europe
+						if(z==3) { new_onlineList = onlineList_europe; new_brandList = brandList_europe; country_name_eng = "europe"; country_name_kr = "유럽"; }
+						//etc
+						if(z==4) { new_onlineList = onlineList_etc; new_brandList = brandList_etc; country_name_eng = "etc"; country_name_kr = "기타"; }
+			%>
+			
+				<!-- 국가 발매처 -->
+				<div id="grid-list-list">
+					<h4> <%=country_name_kr%> 발매 리스트 <i class="fas fa-caret-down"></i> </h4>
+					
+					<%
+						if(new_onlineList.isEmpty()){
+					%>
+						<div id="no-info-wrapper">
+							<div id="no-info-label"> 아직 온라인 발매 정보가 없습니다. </div>
+						</div> 
+					<% } else { 
+						for(int i=0; i<new_onlineList.size(); i++) {
+							OnlineDTO odto = (OnlineDTO) new_onlineList.get(i);
+							BrandDTO bdto = (BrandDTO) new_brandList.get(i);
+							
+							String online_start_date = "";
+							String online_start_time = "";
+							String online_end_date = "";
+							String online_end_time = "";
+							
+							if((odto.getOnline_start_date().isEmpty())){
+								online_start_date = "0000-00-00";
+							} else{
+								online_start_date = odto.getOnline_start_date();
+							}
+							
+							if((odto.getOnline_start_time().isEmpty())){
+								online_start_time = "24:00";
+							} else{
+								online_start_time = odto.getOnline_start_time();
+							}
+							
+							if((odto.getOnline_end_date().isEmpty())){
+								online_end_date = "0000-00-00";
+							} else{
+								online_end_date = odto.getOnline_end_date();
+							}
+							
+							if((odto.getOnline_end_time().isEmpty())){
+								online_end_time = "24:00";
+							} else{
+								online_end_time = odto.getOnline_end_time();
+							}
+							
+							//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+							// 2020-04-18 10:00
+							Date original_Online_start_time = original_format.parse(online_start_date + " " + online_start_time);
+							Date original_Online_end_time = original_format.parse(online_end_date + " " + online_end_time);
+							// 04/18 10:00
+							String new_Online_start_time = new_format.format(original_Online_start_time);
+							String new_Online_end_time = new_format.format(original_Online_end_time);
+							
+							//4월 18일 오전 10시
+							String newlist_Online_start_time = newList_format.format(original_Online_start_time);
+							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
+							
+							// 04/18/2020 10:00
+							String count_Online_start_time = count_format.format(original_Online_start_time);
+							String count_Online_end_time = count_format.format(original_Online_end_time);
+							
+							// 04/18
+							String[] start_time_Arr = online_start_date.split("-");
+							String[] end_time_Arr = online_end_date.split("-");
+							int month_start = Integer.parseInt(start_time_Arr[1]);
+							int date_start = Integer.parseInt(start_time_Arr[2]);
+							int month_end = Integer.parseInt(end_time_Arr[1]);
+							int date_end = Integer.parseInt(end_time_Arr[2]);
+							
+							String new_date_start_time = month_start + "/" + date_start;
+							String new_date_end_time = month_end + "/" + date_end;
+							
+							int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
+							int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
+					
+							//앞에서 3글자 따오기
+							String splitWriter = odto.getOnline_writer().substring(0, 4);
+							String X = "";
+							for(int j=0; j<(odto.getOnline_writer().length()-4); j++){
+								X = X + "*";
+							}
+							String f_splitWriter = splitWriter.concat(X);
+							
+							//오늘 날짜와 최신 온라인 등록 날짜와 비교해서 이틀 안에 등록 된거면 빨간색 점 나타내기, 등록하고 이틀이 지나거나 아예 등록정보가 없다면 빨간색 점 나타내기
+							// diffDay가 -2보다 적으면 빨간색 사라지게 하고 -2보다 크면 빨간색 띄우기
+							int recentChk = -1;
+							
+							if(odto.getReg_date() != null){
+								//Timestamp -> date
+								Date recent_RegDate = new Date(odto.getReg_date().getTime());
+								//recent_RegDate - Today 
+								long diffDay = (recent_RegDate.getTime() - today.getTime()) / (24*60*60*1000);
+								if(diffDay <= -1){
+									recentChk = -1;
+								}else if(diffDay > -1) {
+									recentChk = 1;
+								}
+							}else if(odto.getReg_date() == null){
+								recentChk = -1;
+							}
+					%>
+						<div class="grid-wrapper-list">
+							<div class="grid-item-list" id="grid-item-list-<%=country_name_eng%><%=i%>">
+							
+								<!-- 로고 -->
+								<div class="grid-logo-list">
+									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>">
+										<img id="brandlogo_img_list" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="80" height="80">
+									
+										<% if(recentChk == 1){ %>
+											<div class="ribbon-wrapper">
+												<div class="ribbon">NEW</div>
+											</div>
+										<%} %>
+									</a>
+								</div>
+								
+								<!-- 응모내용 -->
+								<div class="grid-content-list">
+									<!-- 이름 & 국가 -->
+									<div id="wrapper-name">
+										<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>">
+											<span id="brand_name-list"> <%=bdto.getBrand_name()%> </span>
+										</a>		
+										
+										<div class="span-flag-list" id="span-flag-<%=country_name_eng%><%=i%>"> <img id="country_flag_img-list" src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" width="22" height="15"> </div>
+										
+										<span class="country_name_label_list" id="country-name-label-list-<%=country_name_eng%><%=i%>"><%=bdto.getCountry_name()%></span>
+										
+										<div class="grid-ing-list"> 
+											<!-- 응모 진행중 여부 -->
+											<%if(odto.getOnline_method().contains("선착")){%>
+													<span></span>
+											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
+												<%if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
+													<span id="draw_count_result_ing">진행중</span>
+												<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
+												<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && compare_w_end_result == -1){%>
+													<span id="draw_count_result_ing">진행중</span>
+												<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
+												<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == 1){%>
+													<span id="draw_count_result_ing">진행중</span>
+												<%}else{ %>
+													<span></span>
+												<%}%>
+											<%}%>
+										</div>
+									</div>
+									<!-- 기간 -->
+									<div id="wrapper-period-list">
+										<span>
+											<!-- 선착일시 -->
+											<%if(odto.getOnline_method().contains("선착")){%>
+												<!-- 시작시간이 아직 미정일때 -->
+												<%if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()){%>
+													<span> 추후공지예정 </span>
+												<!-- 날짜는 존재하고 시간이 미정일때 -->
+												<%}else if(!odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()){%>
+													<span class="start_time"> <%=new_date_start_time%> 시간미정 </span>
+												<%}else{%>
+												 	<span class="start_time"> <%=new_Online_start_time%> </span> 
+												<%}%>
+											<!-- 드로우 또는 미정일시 -->
+											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%> 
+												<!-- 시간시간에 날짜와 시간, 끝나는 시간 날짜와 시간이 모두 없을때 -->
+												<%if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty()){%>
+													<span> 추후공지예정 </span>
+												<!-- 시작시간이 없고 끝나는 시간만 존재할때 -->
+												<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
+													<span class="end_time"> ~ <%=newlist_Online_end_time%> </span>
+												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
+												<%}else if(odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()){%>
+													<span class="start_time" id="start_time2"> <%=newlist_Online_start_time%> ~ 추후공지 </span>
+												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
+												<%}else if(!odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()){%>
+													<span class="start_time" id="start_time2"> <%=newlist_Online_start_time%> 시간미정 </span>
+												<!-- 시작시간은 없고 끝나는 시간의 시간은 없고 날짜만 존재할 경우 -->
+												<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty()){%>
+													<span class="end_time"> ~ <%=new_date_end_time%> 시간미정 </span>
+												<%}else if(odto.getOnline_start_time().isEmpty() || odto.getOnline_end_time().isEmpty()) {%>
+													<span> 추후공지예정 </span>
+												<%}else{%>
+													<span class="start_time" id="start_time2"><%=newlist_Online_start_time%></span> ~ <span class="end_time"><%=newlist_Online_end_time%></span>
+												<%}%>
+											<%}%>
+										</span>
+									</div>
+									
+									<!-- 기타 설명들 -->
+									<div id="wrapper-desc">
+										<%if(odto.getOnline_method().contains("선착")){%> 
+											<span style="color:#ff6600; font-weight: bold;"> <%=odto.getOnline_method()%> </span>
+										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) {%>
+											<span style="color:#006600; font-weight: bold;"> <%=odto.getOnline_method()%> </span> 
+										<%}else if(odto.getOnline_method().contains("-")) {%>
+											<span> 미정 </span>
+										<%}%>
+										
+										<span id="slide"> | </span>
+										
+										<span> <%=odto.getBuy_method()%> </span>
+										
+										<span id="slide"> | </span>
+										
+										<span <%if(odto.getDelivery_method().equals("매장수령")){%> style="color: #ff7600;" <%}%>> <%=odto.getDelivery_method()%> </span>
+											
+										<span id="slide"> | </span>
+										
+										<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
+										<%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user.equals("")){%>
+											<span id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox" style="width:16px; height:16px; vertical-align: middle;"> </span>
+										<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
+										<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
+											<span id="draw-status_<%=country_name_eng%><%=i%>">
+												<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
+												<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
+												<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
+												<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;">
+											</span>
+										<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
+										<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && userDrawBrandList.contains(odto.getBrand_id())){%>
+											<span id="draw-status_<%=country_name_eng%><%=i%>"> 
+												<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
+												<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
+												<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
+												<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;" checked>
+											</span>
+										<%}else {%>
+											<span id="draw-status_<%=country_name_eng%><%=i%>"> - </span>
+										<%}%>
+										
+										<span id="count_Online_start_time_<%=country_name_eng%><%=i%>" style="display:none;"> <%=count_Online_start_time%> </span>
+										<span id="count_Online_end_time_<%=country_name_eng%><%=i%>" style="display:none;"> <%=count_Online_end_time%> </span>
+
+									</div>
+								</div>
+							
+							</div>
+						</div>
+					<%
+							}
+						}
+					%>
+				</div>			
+			<%}%>
 		</div>
 
-		<!-- 발매 정보 리스트 -->
+		<!-- 발매 정보 리스트 (Large UI) -->
 		<div id="content_sneakerInfo">
 			
 			<%
@@ -202,7 +470,7 @@
 				
 				<!-- 국가 발매처 -->
 				<div id="grid-list">
-					<h4> <%=country_name_kr%> 발매 리스트 </h4>
+					<h4> <%=country_name_kr%> 발매 리스트 <i class="fas fa-caret-down"></i> </h4>
 					<%
 						if(new_onlineList.isEmpty()){
 					%>
@@ -423,7 +691,7 @@
 										<div> <span <%if(odto.getDelivery_method().equals("매장수령")){%> style="color: #ff7600;" <%}%>> <%=odto.getDelivery_method()%> </span> </div>
 									</div>
 									<!-- 응모여부 -->
-									<div class="wrapper-content" style="margin-bottom: 5%;">
+									<div class="wrapper-content" id="last-wrapper-content" >
 										<div> <span> 응모 </span> </div>
 										<div>
 											<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
@@ -810,6 +1078,24 @@
 
 	$(document).ready(function(){
 		
+		$('#reload').click(function(){
+			location.reload();
+		});
+		
+		$('#list-icon').click(function(){
+			$('#content_sneakerInfo').hide();
+			$('#content_sneakerInfo_list').show();
+			$('#list-icon').css("color","#00cc00");
+			$('#large-icon').css("color","#000000");
+		});
+		
+		$('#large-icon').click(function(){
+			$('#content_sneakerInfo_list').hide();
+			$('#content_sneakerInfo').show();
+			$('#list-icon').css("color","#000000");
+			$('#large-icon').css("color","#00cc00");
+		});
+		
 		var model_stylecode = document.getElementById('model_stylecode').innerHTML;
 		var num = $('.num').val();
 		
@@ -873,6 +1159,20 @@
 			$('#country-name-label-' + lastElement).slideDown(300);
 			setTimeout(function() {
 				$('#country-name-label-' + lastElement).slideUp(300);
+			}, 4000);
+		});
+		$('.span-flag-list').click(function(){
+			//아이디 값 가져오기
+			var flagID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = flagID.split('-');
+			// 제일 마지막 kr1 만 가지고 오기
+			var lastElement = splitArray[splitArray.length - 1];
+			
+			//국가 이름 나타내기
+			$('#country-name-label-list-' + lastElement).slideDown(300);
+			setTimeout(function() {
+				$('#country-name-label-list-' + lastElement).slideUp(300);
 			}, 4000);
 		});
 		
@@ -983,13 +1283,11 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_kr = document.getElementById('remain_time_status_kr'+i).innerText;
 			if(remain_time_status_kr.match("종료") || remain_time_status_kr.match("응모종료")){
+				var kr_drawRaw_list = $('#grid-item-list-kr'+i);
+				kr_drawRaw_list.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
 				var kr_drawRaw = $('#grid-item-kr'+i);
 				kr_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
-				
-				var mobile_toggle_Down_kr = $('#mobile-toggle-Down-kr' + i);
-				mobile_toggle_Down_kr.css({"pointer-events" : "auto"});
-				var mobile_toggle_Up_kr = $('#mobile-toggle-Up-kr' + i);
-				mobile_toggle_Up_kr.css({"pointer-events" : "auto"});
 				
 				var grid_info_writer_kr = $('#grid-info-kr' + i);
 				grid_info_writer_kr.css({"pointer-events" : "auto"});
@@ -1032,13 +1330,11 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_asia = document.getElementById('remain_time_status_asia'+i).innerText;
 			if(remain_time_status_asia.match("종료") || remain_time_status_asia.match("응모종료")){
+				var asia_drawRaw_list = $('#grid-item-list-asia'+i);
+				asia_drawRaw_list.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
 				var asia_drawRaw = $('#grid-item-asia'+i);
 				asia_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
-				
-				var mobile_toggle_Down_asia = $('#mobile-toggle-Down-asia' + i);
-				mobile_toggle_Down_asia.css({"pointer-events" : "auto"});
-				var mobile_toggle_Up_asia = $('#mobile-toggle-Up-asia' + i);
-				mobile_toggle_Up_asia.css({"pointer-events" : "auto"});
 				
 				var grid_info_writer_asia = $('#grid-info-asia' + i);
 				grid_info_writer_asia.css({"pointer-events" : "auto"});
@@ -1081,13 +1377,11 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_america = document.getElementById('remain_time_status_america'+i).innerText;
 			if(remain_time_status_america.match("종료") || remain_time_status_america.match("응모종료")){
+				var america_drawRaw_list = $('#grid-item-list-america'+i);
+				america_drawRaw_list.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
 				var america_drawRaw = $('#grid-item-america'+i);
 				america_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
-				
-				var mobile_toggle_Down_america = $('#mobile-toggle-Down-america' + i);
-				mobile_toggle_Down_america.css({"pointer-events" : "auto"});
-				var mobile_toggle_Up_america = $('#mobile-toggle-Up-america' + i);
-				mobile_toggle_Up_america.css({"pointer-events" : "auto"});
 				
 				var grid_info_writer_america = $('#grid-info-america' + i);
 				grid_info_writer_america.css({"pointer-events" : "auto"});
@@ -1131,13 +1425,11 @@
 			var remain_time_status_europe = document.getElementById('remain_time_status_europe'+i).innerText;
 			//alert(remain_time_status_europe);
 			if(remain_time_status_europe.match("종료") || remain_time_status_europe.match("응모종료")){
+				var europe_drawRaw_list = $('#grid-item-list-europe'+i);
+				europe_drawRaw_list.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
 				var europe_drawRaw = $('#grid-item-europe'+i);
 				europe_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
-				
-				var mobile_toggle_Down_europe = $('#mobile-toggle-Down-europe' + i);
-				mobile_toggle_Down_europe.css({"pointer-events" : "auto"});
-				var mobile_toggle_Up_europe = $('#mobile-toggle-Up-europe' + i);
-				mobile_toggle_Up_europe.css({"pointer-events" : "auto"});
 				
 				var grid_info_writer_europe = $('#grid-info-europe' + i);
 				grid_info_writer_europe.css({"pointer-events" : "auto"});
@@ -1180,13 +1472,11 @@
 			//남은시간란이 '응모종료'이면 해당 브랜드 줄 투명, 클릭x 바꾸기
 			var remain_time_status_etc = document.getElementById('remain_time_status_etc'+i).innerText;
 			if(remain_time_status_etc.match("종료") || remain_time_status_etc.match("응모종료")){
+				var etc_drawRaw_list = $('#grid-item-list-etc'+i);
+				etc_drawRaw_list.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
+				
 				var etc_drawRaw = $('#grid-item-etc'+i);
 				etc_drawRaw.css({"opacity" : "0.2",  "border" : "1px solid rgb(212 212 212)", "pointer-events" : "none"});
-				
-				var mobile_toggle_Down_etc = $('#mobile-toggle-Down-etc' + i);
-				mobile_toggle_Down_etc.css({"pointer-events" : "auto"});
-				var mobile_toggle_Up_etc = $('#mobile-toggle-Up-etc' + i);
-				mobile_toggle_Up_etc.css({"pointer-events" : "auto"});
 				
 				var grid_info_writer_etc = $('#grid-info-etc' + i);
 				grid_info_writer_etc.css({"pointer-events" : "auto"});
@@ -1240,10 +1530,15 @@
 				
 				var num = $('.num').val();
 				
+				var brand_id = $('#'+checkbox_country +'_brand_id'+checkbox_id_num).val();
+				
+				var idx2 = brand_id.indexOf("_");
+				var brand = brand_id.substring(idx2+1);
+
 				if($(this).is(":checked")==true){
 					//체크가 안된 상태에서 응모여부 물어보기
 					$(this).prop("checked", false);
-					var draw_confirm_yes = confirm("해당 사이트를 응모 하셨습니까?");
+					var draw_confirm_yes = confirm(brand + " 사이트에서 신발을 응모 하셨습니까?");
 				   	if(draw_confirm_yes){
 				   		$.ajax({
 				   			type:'get',

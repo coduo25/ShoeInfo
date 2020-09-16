@@ -18,7 +18,7 @@ body {font-size:1em; line-weight:1.4}
 
 	/* 신발 기본정보 */
 	.sneaker_image_wrapper { width: 100%; display: block; }
-	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 2.5% 1%;}
+	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 1.5% 4%;}
 		/* 이미지 & 이름*/
 		.sneaker_image { text-align: center; }
 		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px; margin-top: -2%; }
@@ -66,92 +66,62 @@ body {font-size:1em; line-weight:1.4}
 #wrapper-content_D { display: inline-block; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .wrapper-content { margin-bottom: 5%; }
+#last-wrapper-content { margin-bottom: 0; }
 .wrapper-content div:first-child { width:25%; float:left; margin-bottom: 0; }
 .wrapper-content div:last-child { width: 75%; display: inline-block; text-align: right; margin-bottom: 0; }
 
 	.tooltip1 { position: relative; display: inline-block; border-bottom: 1px dotted black; }
 	
 /* 발매리스트 css -------------------------------------------------------------------------------------------------- */
-#content_sneakerInfo { margin-top: 40px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em; }
-#content_sneakerInfo h4 { font-size: 1.7em; text-align: center; margin: 2%; }
+#content_sneakerInfo { display: none; }
+#content_sneakerInfo, #content_sneakerInfo_list { margin-top: 10px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em; }
+#content_sneakerInfo h4, #content_sneakerInfo_list h4 { font-size: 1.7em; text-align: left; margin: 1% 0; }
 
-/* 스위치 */
-.switch-wrapper { display: none; }
-.switch {
- 	position: relative;
- 	display: inline-block;
-	width: 10%;
-    height: 15%;
-    font-size: 0.9em;
+.switch-wrapper{
+	display: inline-block;
+	width: 100%;
+	margin: 1% 0;
+}
+.switch-wrapper div{
+	text-align: right;
+	padding: 0 2%;
+}
+.switch-wrapper div span {
+	padding-left: 1%;
+	font-size: 1.5em;
+	cursor: pointer;
+	color: #d4d4d4;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 80%;
-  width: 40%;
-  left: 4px;
-  bottom: 10%;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+/* list 양식 */
+#grid-list-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 4%; }
+.grid-wrapper-list { margin: 1% 1.25%; width: 47.5%; float:left; display: block; }
+.grid-item-list { padding: 2%; position: relative; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); background-color: #f3f3f380; display: flex; }
+.grid-logo-list { display: inline-block; }
+#brandlogo_img_list { vertical-align: middle; border: 1px solid #e2e2e2; border-radius: 0.3rem; }
+.grid-content-list { display: inline-block; width: 100%; padding: 0.5% 1.5% 0.5% 3%; }
 
-input:checked + .slider {
-  background-color: #00a756;
-}
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #00a756;
-}
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  transform: translateX(100%);
-}
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-#grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 5%; }
-.grid-wrapper { margin: 1.5%; width: 17%; float: left; display: block; height: 490px; }
+/* large 양식 */
+#grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 4%; }
+.grid-wrapper { margin: 1.5%; width: 17%; float: left; display: block; height: 470px; }
 .grid-item { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
 .grid-logo { position: relative; }
 .grid-logo img { width: 100%; height: 100%; }
 .grid-content { padding: 5%; }
-.grid-content div { margin-bottom: 8%; }
+.grid-content div { margin-bottom: 5%; }
 
 	/* 발매 정보가 없을경우 */
-	#no-info-wrapper { width: 100%; text-align: center; padding: 3%; }
+	#no-info-wrapper { width: 100%; text-align: center; padding: 0.5%; }
 	#no-info-label { display: inline-block; padding: 1%; }
 
 	/* 진행중 마크 */
 	.grid-ing { position: absolute; top: 2.8%; left: 77%; width: 30%; }
+	.grid-ing-list { float: right; position: absolute; right:0; display: inline-block; width: 30%; text-align: right; }
 	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.5em; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; padding: 1px 2px; }
 	
 	/* new 리본 */
@@ -171,15 +141,21 @@ input:checked + .slider:before {
 	/* 발매 내용 파트 */
 	.grid-content span { font-size: 0.95em; }
 	#brandlogo_img { vertical-align: middle; border-bottom: 1px solid #e2e2e2; border-radius: 0.3rem;}
-	#country_flag_img {border: 0.5px solid #D9D9D9; margin-top:2.5px; }
+	#country_flag_img { border: 0.5px solid #D9D9D9; margin-top:2.5px; }
+	#country_flag_img-list { border: 0.5px solid #D9D9D9; margin-left: 4px; margin-bottom: -1.3px; }
 	
 	#wrapper-name { margin-bottom: 1%; font-size: 1.2em; font-weight: bold; position: relative;}
 	.country_name_label { display:none; width: 100px; background-color: white; border: 1px solid gainsboro; text-align: center; border-radius: 5px; padding: 2%; font-weight: normal; font-size: 0.8em !important; position:absolute; top: 88%; right: 0; z-index: 100;}
+	.country_name_label_list { display:none; padding: 0.5% 0 1% 1%; font-weight: normal; font-size: 0.8em !important; position:absolute; z-index: 100;}
 
 	#wrapper-name a { vertical-align: middle; }
 	#brand_name { display: inline-block; width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	#brand_name-list { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 	.span-flag, #wrapper-content { float: right; }
-	#wrapper-period { margin-bottom: 15%; color: #dc5757; font-weight: bold; }
+	.span-flag-list { display:inline-block; }
+	#wrapper-period { margin-bottom: 10%; color: #dc5757; font-weight: bold; }
+	#wrapper-period-list { margin-bottom: 3%; color: black; }
+	#slide { margin: 0 1.5%; font-size: 0.9em; color: #b1b1b1; }
 	
 	/* 남은 시간 파트 */
 	.grid-time { height:55px; display: block; margin: 3% 0; }
@@ -190,12 +166,6 @@ input:checked + .slider:before {
 	#draw_count_result_yet { font-size: 1em; font-weight: normal; padding-top: 8%;}
 	#time-label{ display: block; font-size: 0.6em; font-weight: normal; padding-top: 20%; }
 	#time-colon { font-size: 0.8em; padding: 0;}
-
-	/* 바로가기 버튼 */
-/* 	.grid-link { display: flex; padding: 7% 5%; font-size: 0.9em;} */
-/* 	.direct-link { border: 1px solid #c0c0c0; padding: 2.5%; width: 100%; text-align: center; letter-spacing: 3px; } */
-/* 	.direct-link:hover { background-color: #3a3a3a; } */
-/* 	.direct-link:hover > span { color: white; font-weight: bold; } */
 
 	/* toggle 바 */
 	.grid-toggle-Down { display: inline-block; font-size: 0.7em; text-align: center; width: 100%; padding: 3% 1%; }
@@ -326,6 +296,18 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#start_time2 {
 		display: none;
 	}
+	#grid-list, #grid-list-list {
+		padding: 0 1%;
+	}
+	.grid-wrapper-list {
+		font-size: 0.9em;
+	}
+	#content_sneakerInfo h4, #content_sneakerInfo_list h4 {
+		font-size: 1.4em;
+	}
+	.detail_wrapper {
+		padding: 1.5% 1%;
+	}
 }
 
 /* 0 ~ 768px */
@@ -348,11 +330,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		padding: 0;
 	}
 	.detail_wrapper {
-		padding: 2.5% 2%;
+		padding: 1.5% 2%;
 	}
 	#grid-list {
-		padding: 0;
-		margin-bottom: 10%;
+		padding: 0 1%;
+/* 		margin-bottom: 10%; */
 	}
 	.draw_count_result_wrapper {
 		font-size: 1em !important;
@@ -376,15 +358,24 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-content div {
     	margin-bottom: 5%;
 	}
+	.grid-wrapper-list {
+		font-size: 0.8em;
+	}
+	#wrapper-name {
+		margin-bottom: 2%;
+	}
+	.grid-wrapper {
+    	height: 500px;
+	}
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
 	/* 스위치 */
 	.switch-wrapper { 
-		display: none;
+/* 		display: none; */
 		width: 100%;
-/* 	    display: block; */
+	    display: block;
 	    position: relative;
 	    float: left;
 	    text-align: right;
@@ -445,7 +436,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size:0.9em;
 	}
 	.grid-ing {
- 		left: 74%;
+ 		left: 72%;
  		top: 4%;
 	}
 	.grid-time {
@@ -497,14 +488,14 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#brandList-name {
 		font-size: 0.5em;
 	}
-	#content_sneakerInfo #grid-list:first-child h4{
-		font-size: 1.2em;
-		margin: 2% 0 7% 0;
-	}
-	#grid-list h4 {
-		font-size: 1.2em;
-		margin: 10% 0 4% 0;
-	}
+/* 	#content_sneakerInfo #grid-list:first-child h4{ */
+/* 		font-size: 1.2em; */
+/* 		margin: 2% 0 7% 0; */
+/* 	} */
+/* 	#grid-list h4 { */
+/* 		font-size: 1.2em; */
+/* 		margin: 10% 0 4% 0; */
+/* 	} */
 	#nothingSearched div {
     	font-size: 0.7em;
     	padding: 2%;
@@ -531,12 +522,8 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	
 	.mobile-toggle-down { 
-/* 		display: inline-block;  */
 		display: none;
 	}
-	
-	/* 상세페이지 */
-/* 	.detail_area { display: none; } */
 	
 	#radio-wrapper {
 	    padding: 1% 0 7% 0;
@@ -570,5 +557,33 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#req_icon {
 	    vertical-align: middle;
 	}	
-}
+	.grid-wrapper-list {
+		width: 98%;
+		margin: 2% 1.25%;
+	}
+	
+	#country_flag_img-list {
+		width: 15px;
+    	height: 10px;
+	}
+	#brandlogo_img_list {
+		width: 60px;
+		height: 60px;
+	}
+	
+	#grid-list, #grid-list-list {
+		margin-bottom: 10%;
+	}
+	
+	#last-wrapper-content {
+		margin-bottom: 3%;
+	}
+	
+	#slide {
+		margin: 0;
+	}
+	
+	#content_sneakerInfo h4, #content_sneakerInfo_list h4 {
+    	font-size: 1.2em;
+	}
 	
