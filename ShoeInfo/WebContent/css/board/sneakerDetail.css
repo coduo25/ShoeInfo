@@ -75,7 +75,7 @@ body {font-size:1em; line-weight:1.4}
 /* 발매리스트 css -------------------------------------------------------------------------------------------------- */
 #content_sneakerInfo { display: none; }
 #content_sneakerInfo, #content_sneakerInfo_list { margin-top: 10px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em; }
-#content_sneakerInfo h4, #content_sneakerInfo_list h4 { font-size: 1.7em; text-align: left; margin: 1% 0; }
+#content_sneakerInfo h4, #content_sneakerInfo_list h4 { font-size: 1.7em; text-align: center; margin: 1% 0; }
 
 .switch-wrapper{
 	display: inline-block;
@@ -98,7 +98,7 @@ body {font-size:1em; line-weight:1.4}
 /* list 양식 */
 #grid-list-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 4%; }
 .grid-wrapper-list { margin: 1% 1.25%; width: 47.5%; float:left; display: block; }
-.grid-item-list { padding: 2%; position: relative; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); background-color: #f3f3f380; display: flex; }
+.grid-item-list { padding: 2%; position: relative; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); background-color: #f3f3f357; display: flex; }
 .grid-logo-list { display: inline-block; }
 #brandlogo_img_list { vertical-align: middle; border: 1px solid #e2e2e2; border-radius: 0.3rem; }
 .grid-content-list { display: inline-block; width: 100%; padding: 0.5% 1.5% 0.5% 3%; }
@@ -116,7 +116,7 @@ body {font-size:1em; line-weight:1.4}
 .grid-content div { margin-bottom: 5%; }
 
 	/* 발매 정보가 없을경우 */
-	#no-info-wrapper { width: 100%; text-align: center; padding: 0.5%; }
+	#no-info-wrapper { width: 100%; text-align: center; padding: 1%; }
 	#no-info-label { display: inline-block; padding: 1%; }
 
 	/* 진행중 마크 */

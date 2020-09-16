@@ -1086,13 +1086,13 @@
 			$('#content_sneakerInfo').hide();
 			$('#content_sneakerInfo_list').show();
 			$('#list-icon').css("color","#00cc00");
-			$('#large-icon').css("color","#000000");
+			$('#large-icon').css("color","#d4d4d4");
 		});
 		
 		$('#large-icon').click(function(){
 			$('#content_sneakerInfo_list').hide();
 			$('#content_sneakerInfo').show();
-			$('#list-icon').css("color","#000000");
+			$('#list-icon').css("color","#d4d4d4");
 			$('#large-icon').css("color","#00cc00");
 		});
 		
