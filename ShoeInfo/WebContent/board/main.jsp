@@ -274,10 +274,11 @@
 								<!-- links -->
 								<div class="content_links">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
-										<!-- 링크 wrapper -->
+<!-- 										링크 wrapper -->
 										<div id="link-wrapper">
-											<%=sdto.getCountLinks()%>
-										</div>							
+<%-- 											<%=sdto.getCountLinks()%> --%>
+											응모하기
+										</div>
 									</a>
 								</div>
 							</div>
