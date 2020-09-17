@@ -379,7 +379,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	    position: relative;
 	    float: left;
 	    text-align: right;
-	    margin-top: 6%;
+	    margin: 6% 0;
 	    padding-right: 3%;
 	}
 	
@@ -417,10 +417,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	height: unset;
 	}
 	#wrapper-period {
-		margin-bottom: 8%;
+		margin-bottom: 6%;
 	}
 	.grid-content div {
-    	margin-bottom: 5%;
+    	margin-bottom: 3%;
 	}
 	
 	#wrapper-period span {
