@@ -156,7 +156,18 @@
 							}
 							
 					%>
-						<div class="shoelist_content" <%if(compare_w_rel == 1 && recentChk == -1) {%> style="opacity:0.3;" <%}%>  >
+<%-- 						<%if(compare_w_rel == 1 && recentChk == -1) {%> style="opacity:0.3;" <%}%>   --%>
+						<div class="shoelist_content">
+							<%if(compare_w_rel == 1 && recentChk == -1) {%>
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+									<div class="opac_background">
+										<span> &nbsp; </span>
+									</div>
+									<div class="rel_finish">
+										<div class="rel_finish_label"> 발매완료 </div>
+									</div>
+								</a>
+							<%}%>
 							<!-- 발매일 -->
 							<div class="release_date">
 								<span>
@@ -195,13 +206,14 @@
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
 										
 										<!-- 링크 wrapper -->
-										<div id="link-wrapper">
-											<% if(recentChk == 1){ %>
-												<div id="recent-dot">
-													<i class="fas fa-exclamation-circle"></i>
-												</div>
-											<%} %>
-											<%=sdto.getCountLinks()%>
+										<div id="link-wrapper" style="pointer-events: auto;">
+<%-- 											<% if(recentChk == 1){ %> --%>
+<!-- 												<div id="recent-dot"> -->
+<!-- 													<i class="fas fa-exclamation-circle"></i> -->
+<!-- 												</div> -->
+<%-- 											<%} %> --%>
+<%-- 											<%=sdto.getCountLinks()%> --%>
+											응모하기
 										</div>							
 									</a>
 								</div>

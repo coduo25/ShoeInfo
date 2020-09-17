@@ -579,5 +579,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	font-size: 1.2em;
     	margin: 1% 0 2% 0;
 	}
+	
+	.ribbon {
+		top: 8px;
+    	left: -33px;
+    	width: 95px;
+    	padding: 1px 0;
+	}
 }
 	

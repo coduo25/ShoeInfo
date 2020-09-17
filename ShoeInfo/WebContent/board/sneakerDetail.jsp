@@ -608,18 +608,6 @@
 									</div>	
 									
 								</div>
-
-								
-								<!-- 모바일 버전 toggle down/up 버튼 -->
-								<div class="mobile-toggle-down" id="mobile-toggle-Down-<%=country_name_eng%><%=i%>">
-									<span> <i class="fas fa-chevron-down"></i> </span>
-								</div>
-								<div class="mobile-toggle-up" id="mobile-toggle-Up-<%=country_name_eng%><%=i%>">
-									<span> <i class="fas fa-chevron-up"></i> </span>
-								</div>
-								
-								<div class="detail_area" id="detail_area<%=country_name_eng%><%=i%>">
-								
 					
 								<!-- 응모 내용 -->
 								<div class="grid-content">
@@ -991,13 +979,6 @@
 									</div>
 								</div>
 								
-								<!-- 바로가기 버튼 -->
-<!-- 								<div class="grid-link"> -->
-<%-- 									<a href="<%=odto.getOnline_link()%>" target="_blank" id="direct-link-<%=country_name_eng%><%=i%>" class="direct-link"> --%>
-<!-- 										<span> 바로가기 </span> -->
-<!-- 									</a> -->
-<!-- 								</div> -->
-								
 								<!-- 수정하기 버튼 toggle 바 -->
 								<div class="grid-toggle-Down" id="grid-toggle-Down-<%=country_name_eng%><%=i%>">
 									<span> <i class="fas fa-chevron-down"></i> </span>
@@ -1022,7 +1003,6 @@
 								
 							</div>
 							
-							</div>
 						</div>
 					<% 
 							}
@@ -1502,7 +1482,6 @@
 				adminModiBtn.css({"pointer-events" : "auto"});
 			}
 		}
-
 		
 		// 응모 여부 체크박스 클릭했을시 -----------------------------------------------
 		$(".draw_checkbox").on('click', function() {
