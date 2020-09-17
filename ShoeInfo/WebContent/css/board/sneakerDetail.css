@@ -75,7 +75,7 @@ body {font-size:1em; line-weight:1.4}
 /* 발매리스트 css -------------------------------------------------------------------------------------------------- */
 #content_sneakerInfo { display: none; }
 #content_sneakerInfo, #content_sneakerInfo_list { margin-top: 10px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em; }
-#content_sneakerInfo h4, #content_sneakerInfo_list h4 { font-size: 1.7em; text-align: center; margin: 1% 0; }
+#content_sneakerInfo h4, #content_sneakerInfo_list h4 { font-size: 1.7em; text-align: center; margin: 1%; }
 
 .switch-wrapper{
 	display: inline-block;
@@ -488,14 +488,6 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#brandList-name {
 		font-size: 0.5em;
 	}
-/* 	#content_sneakerInfo #grid-list:first-child h4{ */
-/* 		font-size: 1.2em; */
-/* 		margin: 2% 0 7% 0; */
-/* 	} */
-/* 	#grid-list h4 { */
-/* 		font-size: 1.2em; */
-/* 		margin: 10% 0 4% 0; */
-/* 	} */
 	#nothingSearched div {
     	font-size: 0.7em;
     	padding: 2%;
@@ -585,5 +577,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#content_sneakerInfo h4, #content_sneakerInfo_list h4 {
     	font-size: 1.2em;
+    	margin: 1% 0 2% 0;
 	}
+}
 	
