@@ -1,6 +1,4 @@
-
-<%@page import="org.jsoup.nodes.Document"%>
-<%@page import="org.jsoup.Jsoup"%>
+<%@page import="java.io.IOException"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
@@ -49,6 +47,7 @@
 		ArrayList<SneakerDTO> sneakerList2020 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2020");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		SimpleDateFormat new_format = new SimpleDateFormat("M월 d일");
 		
 		SimpleDateFormat month_format = new SimpleDateFormat("M월");
@@ -56,7 +55,11 @@
 		//오늘날짜
 		Date currentTime = new Date();
 		String current = original_format.format(currentTime);
+		
+		String compare_Today = format.format(currentTime);
+		
 		Date today = original_format.parse(current);
+		Date compareToday = format.parse(compare_Today);
 	%>
 
 	<!-- Header -->
@@ -149,7 +152,6 @@
 							if(sdto.getRelease_date().contains("99")){
 								ddayCount = -1;
 							} else {
-// 								(original_rel.getTime() - today.getTime()) / (24*60*60*1000)
 								if((original_rel.getTime() - today.getTime()) / (24*60*60*1000) >= 0 && (original_rel.getTime() - today.getTime()) / (24*60*60*1000) <= 7){
 									long count = (original_rel.getTime() - today.getTime()) / (24*60*60*1000);
 									ddayCount = (int) count;
@@ -158,12 +160,29 @@
 								}
 							}
 							
-							Document doc = Jsoup.connect("http://localhost:8080/ShoeInfo/SneakerDetail.go?model_stylecode=" + sdto.getModel_stylecode() + "&num=" + sdto.getNum());
+							int openChk = -1;
+							
+							if(sdto.getMaxDate().contains("1234-12-34 12:34")){
+								openChk = -1;
+							} else {
+								Date maxDate = format.parse(sdto.getMaxDate());
+								//maxDate 랑 compareToday 비교
+								int compare = maxDate.compareTo(compareToday);
+								
+								if(compare > 0){
+									openChk = 1;
+								}
+								else if(compare < 0){
+									openChk = -1;
+								}
+								else {
+									openChk = 1;
+								}
+							}
 							
 					%>
-<%-- 						<%if(compare_w_rel == 1 && recentChk == -1) {%> style="opacity:0.3;" <%}%>   --%>
 						<div class="shoelist_content">
-							<%if(compare_w_rel == 1 && recentChk == -1) {%>
+							<%if(compare_w_rel > 0 && openChk == -1) {%>
 								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
 									<div class="opac_background">
 										<span> &nbsp; </span>
@@ -212,11 +231,11 @@
 										
 										<!-- 링크 wrapper -->
 										<div id="link-wrapper" style="pointer-events: auto;">
-<%-- 											<% if(recentChk == 1){ %> --%>
-<!-- 												<div id="recent-dot"> -->
-<!-- 													<i class="fas fa-exclamation-circle"></i> -->
-<!-- 												</div> -->
-<%-- 											<%} %> --%>
+											<% if(recentChk == 1){ %>
+												<div id="recent-dot">
+													<i class="fas fa-exclamation-circle"></i>
+												</div>
+											<%} %>
 <%-- 											<%=sdto.getCountLinks()%> --%>
 											응모하기
 										</div>							

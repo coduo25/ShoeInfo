@@ -17,6 +17,7 @@ public class SneakerDTO {
 	private String release_status;
 	private int views;
 	private int countLinks;
+	private String maxDate;
 	private Timestamp reg_date;
 	
 	public int getNum() {
@@ -102,6 +103,12 @@ public class SneakerDTO {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
+	}
+	public String getMaxDate() {
+		return maxDate;
+	}
+	public void setMaxDate(String maxDate) {
+		this.maxDate = maxDate;
 	}
 	
 }

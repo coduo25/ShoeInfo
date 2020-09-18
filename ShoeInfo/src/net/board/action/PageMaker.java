@@ -8,7 +8,7 @@ public class PageMaker {
 	private int endPage;
 	private boolean prev;
 	private boolean next;
-	private int displayPageNum = 5;
+	private int displayPageNum = 10;
 
 	// 현재 페이지 번호
 	public Criteria getCri() {

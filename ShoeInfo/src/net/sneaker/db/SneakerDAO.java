@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -166,6 +168,12 @@ public class SneakerDAO {
 		PreparedStatement pstmt3 = null;
 		ResultSet rs3 = null;
 		
+		PreparedStatement pstmt4 = null;
+		ResultSet rs4 = null;
+		
+		PreparedStatement pstmt5 = null;
+		ResultSet rs5 = null;
+		
 		try {
 			con = getConnection();
 			sql = "select * from shoeinfo_sneakerlibrary where release_date like ? AND release_status = ? order by release_date, model_name";
@@ -208,6 +216,98 @@ public class SneakerDAO {
 				if(rs3.next()){
 					sdto.setReg_date(rs3.getTimestamp(1));
 				}
+				
+				String maxStart = "";
+				
+				String maxStartDate = "";
+				String maxStartTime = "";
+				
+				String maxEnd = "";
+				
+				String maxEndDate = "";
+				String maxEndTime = "";
+				
+				//신발 온라인세부정보 끝나는 시간 가져오기
+				sql = "select online_start_date, online_start_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_start_date desc limit 1";
+				pstmt4 = con.prepareStatement(sql);
+				pstmt4.setString(1, sdto.getModel_stylecode());
+				pstmt4.setInt(2, sdto.getNum());
+				rs4 = pstmt4.executeQuery();
+				if(rs4.next()){
+					
+					if(rs4.getString("online_start_date").isEmpty() || rs4.getString("online_start_date") == "" ||  rs4.getString("online_start_date") == null){
+						maxStartDate = "1234-12-34";
+					}else {
+						maxStartDate = rs4.getString("online_start_date");
+					}
+					
+					if(rs4.getString("online_start_time").isEmpty() || rs4.getString("online_start_time") == "" ||  rs4.getString("online_start_time") == null){
+						maxStartTime = "12:34";
+					}else {
+						maxStartTime = rs4.getString("online_start_time");
+					}
+					
+					maxStart = maxStartDate + " " + maxStartTime;
+					
+				}else{
+					maxStart = "1234-12-34 12:34";
+				}
+				
+				sql = "select online_end_date, online_end_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_end_date desc limit 1";
+				pstmt5 = con.prepareStatement(sql);
+				pstmt5.setString(1, sdto.getModel_stylecode());
+				pstmt5.setInt(2, sdto.getNum());
+				rs5 = pstmt5.executeQuery();
+				if(rs5.next()){
+					
+					if(rs5.getString("online_end_date").isEmpty() || rs5.getString("online_end_date") == "" ||  rs5.getString("online_end_date") == null){
+						maxEndDate = "1234-12-34";
+					}else {
+						maxEndDate = rs5.getString("online_end_date");
+					}
+					
+					if(rs5.getString("online_end_time").isEmpty() || rs5.getString("online_end_time") == "" ||  rs5.getString("online_end_time") == null){
+						maxEndTime = "12:34";
+					}else {
+						maxEndTime = rs5.getString("online_end_time");
+					}
+					
+					maxEnd = maxEndDate + " " + maxEndTime;
+					
+				}else {
+					maxEnd = "1234-12-34 12:34";
+				}
+				
+				if(maxStart.contains("1234-12-34") && maxStart.contains("12:34") && maxEnd.contains("1234-12-34") && maxEnd.contains("12:34")){
+					sdto.setMaxDate("1234-12-34 12:34");
+				}
+				else if(maxStart.contains("1234-12-34") || maxStart.contains("12:34")){
+					sdto.setMaxDate(maxEnd);
+				}
+				else if(maxEnd.contains("1234-12-34") || maxEnd.contains("12:34")){
+					sdto.setMaxDate(maxStart);
+				}
+				else if(!maxStart.contains("1234-12-34") && !maxStart.contains("12:34") && !maxEnd.contains("1234-12-34") && !maxEnd.contains("12:34")){
+					// maxStart 와 maxEnd 비교
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					Date startDate = format.parse(maxStart);
+					Date endDate = format.parse(maxEnd);
+					
+					int compare = startDate.compareTo(endDate);
+					
+					if(compare > 0){
+						sdto.setMaxDate(maxStart);
+					}
+					else if(compare < 0) {
+						sdto.setMaxDate(maxEnd);
+					}
+					else {
+						sdto.setMaxDate(maxEnd);
+					}
+				}	
+				
+//				System.out.println(maxStart + " " + maxEnd + "   " + sdto.getMaxDate() + " " + sdto.getModel_stylecode());
+
 				sneakerList.add(sdto);
 			}
 		} catch (Exception e) {

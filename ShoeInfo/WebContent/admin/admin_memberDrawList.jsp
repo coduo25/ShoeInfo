@@ -95,15 +95,15 @@
 						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=pageMaker.getStartPage()-1 %> '">
 							<i class="fas fa-angle-double-left"></i>
 						</li>
-					<%} if(pageNum != 1) {%>
+					<%} if(pageMaker.isPrev()) {%>
 						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=pageNum-1%>'">
 							<i class="fas fa-angle-left"></i>
 						</li>
-					<%} for(int i = pageMaker.getStartPage(); i<=pageMaker.getEndPage()+1; i++){ %>
+					<%} for(int i = pageMaker.getStartPage(); i<=pageMaker.getEndPage(); i++){ %>
 						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=i%>'" <%if(pageNum == i) {%> style="font-weight: bold" <%}%>>
 							<%=i%>
 						</li>
-					<%} if(pageNum != pageMaker.getEndPage()+1) {
+					<%} if(pageMaker.isNext() && pageMaker.getEndPage() > 0) {
 					%>
 						<li onclick="location.href='./MemberDrawList.ad?pageNum=<%=pageNum+1%>'">
 							<i class="fas fa-angle-right"></i>
