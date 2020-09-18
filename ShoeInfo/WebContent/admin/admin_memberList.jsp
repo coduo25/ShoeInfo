@@ -85,7 +85,7 @@
 			<!-- 페이징 처리 영역 -->
 			<div class="page_Area">
 				<ul id="pageList">
-					<%if(pageMaker.isPrev()) {%>
+					<%if(pageNum > 1) {%>
 						<li onclick="location.href='./MemberList.ad?pageNum=<%=pageMaker.getStartPage()-1 %> '">
 							<i class="fas fa-angle-double-left"></i>
 						</li>
@@ -93,16 +93,16 @@
 						<li onclick="location.href='./MemberList.ad?pageNum=<%=pageNum-1%>'">
 							<i class="fas fa-angle-left"></i>
 						</li>
-					<%} for(int i = pageMaker.getStartPage(); i<=pageMaker.getEndPage(); i++){ %>
+					<%} for(int i = pageMaker.getStartPage(); i<=pageMaker.getEndPage()+1; i++){ %>
 						<li onclick="location.href='./MemberList.ad?pageNum=<%=i%>'" <%if(pageNum == i) {%> style="font-weight: bold" <%}%>>
 							<%=i%>
 						</li>
-					<%} if(pageNum != pageMaker.getEndPage()) {
+					<%} if(pageNum != pageMaker.getEndPage()+1) {
 					%>
 						<li onclick="location.href='./MemberList.ad?pageNum=<%=pageNum+1%>'">
 							<i class="fas fa-angle-right"></i>
 						</li>
-					<%} if(pageMaker.isNext() && pageMaker.getEndPage() > 0){ %>
+					<%} if(pageNum != pageMaker.getEndPage()+1 && pageMaker.getEndPage() > 0){ %>
 						<li onclick="location.href='./MemberList.ad?&pageNum=<%=pageMaker.getEndPage()+1%>'">
 							<i class="fas fa-angle-double-right"></i>
 						</li>

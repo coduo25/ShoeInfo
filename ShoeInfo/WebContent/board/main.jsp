@@ -1,3 +1,6 @@
+
+<%@page import="org.jsoup.nodes.Document"%>
+<%@page import="org.jsoup.Jsoup"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
@@ -154,6 +157,8 @@
 									ddayCount = -1;
 								}
 							}
+							
+							Document doc = Jsoup.connect("http://localhost:8080/ShoeInfo/SneakerDetail.go?model_stylecode=" + sdto.getModel_stylecode() + "&num=" + sdto.getNum());
 							
 					%>
 <%-- 						<%if(compare_w_rel == 1 && recentChk == -1) {%> style="opacity:0.3;" <%}%>   --%>
