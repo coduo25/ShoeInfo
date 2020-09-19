@@ -551,8 +551,15 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}	
 	.grid-wrapper-list {
 		width: 98%;
-		margin: 2% 1.25%;
+		margin: 2.5% 1%;
 	}
+	.grid-ing-list {
+		right: -1%;
+	}
+	
+	#draw_count_result_ing {
+    	font-size: 0.5em;
+	}	
 	
 	#country_flag_img-list {
 		width: 15px;
