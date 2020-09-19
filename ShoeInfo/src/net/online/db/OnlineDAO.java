@@ -11,7 +11,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.board.action.Criteria;
 import net.brand.db.BrandDTO;
+import net.sneaker.db.SneakerDTO;
 
 public class OnlineDAO {
 	
@@ -37,6 +39,25 @@ public class OnlineDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//모든 온라인정보수 계산하는 함수
+	public int countOnlineInfo(){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select online_link from shoeinfo_onlineinfo";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				num += 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
 	}
 	
 	//신발 온라인 정보 저장하는 함수
@@ -121,6 +142,76 @@ public class OnlineDAO {
 		}
 	}
 
+	//모든 온라인 info 가져오는 함수
+	public Vector getAllOnlineInfo(Criteria cri) {
+		Vector vec = new Vector();
+		
+		ArrayList onlineInfoList = new ArrayList();
+		ArrayList sneakerInfoList = new ArrayList();
+		ArrayList brandInfoList = new ArrayList();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
+		
+		try{
+			con = getConnection();
+			sql = "select * from shoeinfo_onlineinfo order by online_num desc limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cri.getPageStart());
+			pstmt.setInt(2, cri.getPerpageNum());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				OnlineDTO odto = new OnlineDTO();
+				odto.setBrand_id(rs.getString("brand_id"));
+				odto.setBuy_method(rs.getString("buy_method"));
+				odto.setCountry_name(rs.getString("country_name"));
+				odto.setCountry_region(rs.getString("country_region"));
+				odto.setDelivery_method(rs.getString("delivery_method"));
+				odto.setModel_num(rs.getInt("model_num"));
+				odto.setModel_stylecode(rs.getString("model_stylecode"));
+				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_method(rs.getString("online_method"));
+				odto.setOnline_num(rs.getInt("online_num"));
+				odto.setOnline_writer(rs.getString("online_writer"));
+				odto.setReg_date(rs.getTimestamp("reg_date"));
+				onlineInfoList.add(odto);
+				
+				sql = "select * from shoeinfo_sneakerlibrary where num = ? and model_stylecode = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setInt(1, odto.getModel_num());
+				pstmt2.setString(2, odto.getModel_stylecode());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					SneakerDTO sdto = new SneakerDTO();
+					sdto.setImage(rs2.getString("image"));
+					sneakerInfoList.add(sdto);
+					
+					sql="select * from shoeinfo_brand where brand_id = ?";
+					pstmt3 = con.prepareStatement(sql);
+					pstmt3.setString(1, odto.getBrand_id());
+					rs3 = pstmt3.executeQuery();
+					if(rs3.next()){
+						BrandDTO bdto = new BrandDTO();
+						bdto.setBrand_logo(rs3.getString("brand_logo"));
+						bdto.setBrand_name(rs3.getString("brand_name"));
+						brandInfoList.add(bdto);
+					}
+				}
+			}
+			vec.add(onlineInfoList);
+			vec.add(sneakerInfoList);
+			vec.add(brandInfoList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return vec;
+	}
+	
+	
 	//대한민국 신발 온라인 정보 가져오는 함수(브랜드 정보 + 온라인 정보)
 	public Vector getOnlineInfo_kr(String model_stylecode, int model_num) {
 		Vector vec = new Vector();

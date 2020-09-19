@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import net.brand.db.BrandDAO;
 import net.member.db.MemberDAO;
+import net.online.db.OnlineDAO;
 import net.sneaker.db.SneakerDAO;
 
 public class GetAllInfoAction implements Action{
@@ -37,12 +38,16 @@ public class GetAllInfoAction implements Action{
 		
 		int memberReqBrandNum = bdao.countMemberBrandReq();
 		
+		OnlineDAO odao = new OnlineDAO();
+		int onlineInfoNum = odao.countOnlineInfo();
+		
 		//전체 회원수, 브랜드, 신발, 응모한 수
 		request.setAttribute("memberNum", memberNum);
 		request.setAttribute("brandNum", brandNum);
 		request.setAttribute("sneakerNum", sneakerNum);
 		request.setAttribute("memberDrawNum", memberDrawNum);
 		request.setAttribute("memberReqBrandNum", memberReqBrandNum);
+		request.setAttribute("onlineInfoNum", onlineInfoNum);
 		
 		forward.setPath("./admin/adminMain.jsp");
 		forward.setRedirect(false);

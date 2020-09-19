@@ -27,6 +27,7 @@
 		int sneakerNum = (int) request.getAttribute("sneakerNum");
 		int memberDrawNum = (int) request.getAttribute("memberDrawNum");
 		int memberReqBrandNum = (int) request.getAttribute("memberReqBrandNum");
+		int onlineInfoNum = (int) request.getAttribute("onlineInfoNum");
 		
 	%>
 
@@ -50,6 +51,10 @@
 					<li>
 						<span class="total_subTit"> 총 회원 수 </span>
 						<span class="total_main"> <a href="./MemberList.ad"> <%=memberNum%> 명 </a> </span>
+					</li>
+					<li>
+						<span class="total_subTit"> 총 응모현황 </span>
+						<span class="total_main"> <a href="./OnlineInfoList.ad"> <%=onlineInfoNum%> 개 </a> </span>
 					</li>
 					<li>
 						<span class="total_subTit"> 총 브랜드 수 </span>
