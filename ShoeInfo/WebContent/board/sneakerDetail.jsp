@@ -70,7 +70,7 @@
 		SimpleDateFormat date_format = new SimpleDateFormat("yyyy년 M월 d일");
 
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
-		SimpleDateFormat newList_format = new SimpleDateFormat("M월 d일 a h:mm");
+		SimpleDateFormat newList_format = new SimpleDateFormat("M월 d일(E) a h:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
