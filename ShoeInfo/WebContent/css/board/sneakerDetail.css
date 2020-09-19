@@ -122,7 +122,7 @@ body {font-size:1em; line-weight:1.4}
 	/* 진행중 마크 */
 	.grid-ing { position: absolute; top: 2.8%; left: 77%; width: 30%; }
 	.grid-ing-list { float: right; position: absolute; right:0; display: inline-block; width: 30%; text-align: right; }
-	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.5em; font-weight: bold; border: 1px solid #58af58; border-radius: 5px; padding: 1px 2px; }
+	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.5em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 1px 2px; }
 	
 	/* new 리본 */
 	.ribbon-wrapper { width: 85px; height: 88px; overflow: hidden; position: absolute; top: 0; left: -0.5%; }
@@ -359,7 +359,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	margin-bottom: 5%;
 	}
 	.grid-wrapper-list {
-		font-size: 0.8em;
+		font-size: 1em;
+		margin: 1.25%;
+		width: 97%;
 	}
 	#wrapper-name {
 		margin-bottom: 2%;
@@ -367,6 +369,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-wrapper {
     	height: 500px;
 	}
+	.grid-item-list {
+    	padding: 1.5%;
+	}
+	
 }
 
 /* 0 ~ 468px */
@@ -550,8 +556,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	    vertical-align: middle;
 	}	
 	.grid-wrapper-list {
+		font-size: 0.7em;
 		width: 98%;
-		margin: 2.5% 1%;
+		margin: 2.5% 0.5%;
 	}
 	.grid-ing-list {
 		right: -1%;
@@ -593,5 +600,6 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	width: 95px;
     	padding: 1px 0;
 	}
+	
 }
 	
