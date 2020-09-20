@@ -194,6 +194,7 @@ public class OnlineDAO {
 					rs3 = pstmt3.executeQuery();
 					if(rs3.next()){
 						BrandDTO bdto = new BrandDTO();
+						bdto.setBrand_id(rs3.getString("brand_id"));
 						bdto.setBrand_logo(rs3.getString("brand_logo"));
 						bdto.setBrand_name(rs3.getString("brand_name"));
 						brandInfoList.add(bdto);

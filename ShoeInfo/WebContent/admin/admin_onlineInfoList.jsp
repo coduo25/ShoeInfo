@@ -61,6 +61,7 @@
 							<th style="width:8%;"> 브랜드이미지 </th>
 							<th style="width:10%;"> 브랜드 </th>
 							<th style="width:10%;"> 등록날짜 </th>
+							<th style="width:10%;"> 수정/삭제 </th>
 						</tr>
 					</thead>
 					<%
@@ -73,7 +74,7 @@
 						<tr>
 							<td> <%=odto.getOnline_num()%> </td>
 							<td> 
-								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+								<a href="./SneakerDetail.go?model_stylecode=<%=odto.getModel_stylecode()%>&num=<%=odto.getModel_num()%>">
 		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="70"> <br>
 								</a>
 							</td>
@@ -83,6 +84,11 @@
 							</td>
 							<td> <%=bdto.getBrand_name()%> </td>
 							<td> <%=odto.getReg_date()%> </td>
+							<td>
+								<a href="./UpdateDrawInfo.me?model_stylecode=<%=odto.getModel_stylecode()%>&brand_id=<%=bdto.getBrand_id()%>&num=<%=odto.getModel_num()%>">수정</a>
+								/
+								<a href="./DeleteDrawInfo.ad?model_stylecode=<%=odto.getModel_stylecode()%>&brand_id=<%=odto.getBrand_id()%>&model_num=<%=sdto.getNum()%>">삭제</a>
+							</td>
 						</tr>
 					</tbody>
 					<%}%>

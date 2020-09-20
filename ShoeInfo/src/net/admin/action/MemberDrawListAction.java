@@ -40,7 +40,7 @@ public class MemberDrawListAction implements Action{
 		}
 		int currentPage = Integer.parseInt(pageNum);
 		
-		int pageSize = 10;
+		int pageSize = 50;
 		
 		Criteria cri = new Criteria();
 		
