@@ -55,7 +55,7 @@
 					</li>
 					<li>
 						<span class="total_subTit"> 등업신청 </span>
-						<span class="total_main"> <a href="#"> <%=memberPosReqNum%> 명 </a> </span>
+						<span class="total_main"> <a href="#" style="color:green"> <%=memberPosReqNum%> 명 </a> </span>
 					</li>
 					<li>
 						<span class="total_subTit"> 응모등록 </span>

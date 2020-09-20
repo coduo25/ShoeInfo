@@ -38,12 +38,16 @@
 					<%
 						}else if(usr_position.equals("admin")){ 
 					%>
+						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%} else if(usr_position.equals("admin")){%>관리자<%}%></span>
+						
 						<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span> 
 						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span>
 					<% 
 						}else{ 
 					%>
+						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%}%></span>
+					
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span>
 						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
 					<% } %>
@@ -81,7 +85,7 @@
 				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div> </a> </li>
 				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div> LOGOUT</div>  </div> </a> </li>
 			<% 
-				}else{ 
+				}else{
 			%>
 				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <div id="user_icon"> <i class="fas fa-user"></i>  <div id="user_label" ><%=user%></div> </div> </a> </li>
 				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div>  </a> </li>

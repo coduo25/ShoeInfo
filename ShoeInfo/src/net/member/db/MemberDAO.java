@@ -731,6 +731,11 @@ public class MemberDAO {
 							OnlineDTO odto = new OnlineDTO();
 							odto.setOnline_link(rs4.getString("online_link"));
 							odto.setBuy_method(rs4.getString("buy_method"));
+							if(rs4.getString("winner_time") == null){
+								odto.setWinner_time("-");
+							}else{
+								odto.setWinner_time(rs4.getString("winner_time"));
+							}
 							onlineinfoList_kr.add(odto);
 						}
 					}

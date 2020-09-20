@@ -130,14 +130,19 @@
 								</div>
 								<!-- 브랜드 내용 -->
 								<div class="grid-content">
+								
 									<!-- 브랜드 이름 & 국기 -->
 									<div id="wrapper-name">
-										<span id="brand_name_D"><%=bdto.getBrand_name()%></span>
+										<span id="brand_name_D"><%=bdto.getBrand_name()%> </span>
 									</div>
+									
 									<!-- 구매방식 -->
 									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span>
+										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>>
+											<span id="method"><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>시간미정<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
+										</span>
 									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -166,18 +171,23 @@
 							<div class="grid-item_D">
 								<!-- 로고 -->
 								<div class="grid-logo">
-										<a href="<%=odto.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>"> </a>
+									<a href="<%=odto.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>"> </a>
 								</div>
 								<!-- 브랜드 내용 -->
 								<div class="grid-content">
+								
 									<!-- 브랜드 이름 & 국기 -->
 									<div id="wrapper-name">
-										<span id="brand_name_D"><%=bdto.getBrand_name()%></span>
+										<span id="brand_name_D"><%=bdto.getBrand_name()%> </span>
 									</div>
+									
 									<!-- 구매방식 -->
 									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span>
+										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>>
+											<span id="method"><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>시간미정<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
+										</span>
 									</div>
+									
 								</div>
 							</div>
 						</div>

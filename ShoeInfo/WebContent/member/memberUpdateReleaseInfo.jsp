@@ -222,6 +222,16 @@
 							
 						</div>
 						
+						<div id="winner_time">
+							<span id="category"> 당첨자 발표 시간 (옵션)  </span>
+							
+							<div style="padding-bottom: 1.5%;">
+								<input type="text" name="winner_time" value="<%=onlineDrawInfo.getWinner_time()%>" maxlength="25"> 
+							</div>
+							
+							<span id="example"> ex. 마감후 2시간이내, O월 OO일 오후 4시 이후 문자발송 </span>
+						</div>
+						
 						<input type="hidden" name="online_writer" value="<%=onlineDrawInfo.getOnline_writer()%>" id="online_writer">
 						
 						<div id="submitBtn-form">

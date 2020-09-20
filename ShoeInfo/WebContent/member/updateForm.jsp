@@ -228,7 +228,7 @@
 					//정보 수정했을시
 					if($.trim(data) == "YES"){
 						alert("회원 정보가 수정되었습니다.");
-						location.href="./MemberLogin.me";
+						location.href="./Main.bo";
 					}
 					//가입되어 있지 않은 이메일이면
 					else if($.trim(data) == "NO"){
@@ -255,7 +255,7 @@
 					success:function(data){
 						if($.trim(data) == "SUCCESS"){
 							alert("성공적으로 탈퇴 하였습니다.");
-							location.href="./MemberLogin.me";
+							location.href="./Main.bo";
 						}
 					},
 					error:function(request,status,error){

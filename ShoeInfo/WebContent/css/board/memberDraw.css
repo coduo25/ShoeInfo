@@ -61,12 +61,14 @@ body {font-size:1em; line-weight:1.4}
 
 #no-draw-wrapper { text-align:center; width: 100%; padding: 15px; }
 
-.grid-wrapper_D { margin: 1.5% 1%; width: 23%; float: left; display: block; }
-.grid-wrapper_D:hover { opacity: 0.3; }
-.grid-item_D { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
-#brand_name_D { display: inline-block; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-#wrapper-bmethod_D { margin-top: 5%; margin-bottom: 1%; color: #6b6b6b; }
-#wrapper-content_D { display: inline-block; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.grid-wrapper_D { margin: 1%; width: 98%; float: left; display: block; }
+.grid-wrapper_D:hover { opacity: 0.5; }
+.grid-item_D { position: relative; display: flex; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); padding: 1%; }
+#brand_name_D { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.95em; }
+#wrapper-bmethod_D { color: #6b6b6b; display: inline-block; width: 450px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 1% !important;}
+#wrapper-content_D { padding: 1% 0; }
+#sep { margin:0 1.5%; font-size: 0.85em; color: #dadada; font-weight: normal !important; }
+#wrapper-winnerTime { margin-bottom: 3%; font-size: 1em; }
 
 .wrapper-content { margin-bottom: 5%; }
 .wrapper-content div:first-child { width:35%; float:left; margin-bottom: 0; }
@@ -81,8 +83,8 @@ body {font-size:1em; line-weight:1.4}
 #grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 5%; }
 .grid-wrapper { margin: 1.5% 1%; width: 18%; float: left; display: block; height: 600px; }
 .grid-item { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
-.grid-logo img { width: 100%; height: 100%; }
-.grid-content { padding: 5%; }
+.grid-logo img { width: 65px; }
+.grid-content { display: inline-block; float: left; padding: 0 1.5%; width: 100%; }
 .grid-content div { margin-bottom: 8%; }
 
 	/* 발매 정보가 없을경우 */
@@ -99,15 +101,15 @@ body {font-size:1em; line-weight:1.4}
 	.grid-info span { color: #b3b3b37d; }
 	
 	/* 발매 내용 파트 */
-	.grid-content span { font-size: 0.95em; }
-	#brandlogo_img { vertical-align: middle; border-bottom: 1px solid #e2e2e2; border-radius: 0.3rem;}
-	#country_flag_img {border: 0.5px solid #D9D9D9; vertical-align: middle;}
+	#brandlogo_img { border: 1px solid #e2e2e2; border-radius: 0.3rem; }
+	#country_flag_img { border: 0.5px solid #D9D9D9; vertical-align: middle;}
 	
-	#wrapper-name { margin-bottom: 1%; font-size: 1.2em; font-weight: bold; }
+	#wrapper-name { margin: 1.5% 0; font-size: 1.2em; font-weight: bold; }
 	#wrapper-name a { vertical-align: middle; }
 	#brand_name { display: inline-block; width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 	#span-flag, #wrapper-content { float: right; }
 	#wrapper-period { margin-bottom: 15%; color: #dc5757; font-weight: bold; }
+	
 	
 	/* 남은 시간 파트 */
 	.grid-time { height:60px; display: block; margin: 5% 0; }
@@ -260,6 +262,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
+	
+	#content_sneakerDetail_D {
+		width: 100%;
+		font-size: 1em;
+		margin: 1% 0 20% 0;
+	}
 	.grid-wrapper {
 		width:31.33%;
 	}
@@ -292,17 +300,15 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	
 	/* 멤버 응모 영역 */
+	#content_sneakerInfo_D {
+		width: 100%;
+		padding: 0;
+	}
 	#nothingSearched div {
 		width: 60%;
 	}
-	#content_sneakerDetail_D{
-		font-size:0.65em;
-	}
 	.sneaker_name {
 		line-height: 20px;
-	}
-	#dome-draw-wrapper, #inter-draw-wrapper {
-		font-size: 0.6em;
 	}
 	
 }
@@ -330,8 +336,8 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 62%;
 	}
 	#content_userDrawInfo h4 {
-    	font-size: 1.5em;
-    	margin: 3% 0 5% 0;
+    	font-size: 1.25em;
+    	margin: 3% 0;
     	text-align: center;
     	padding-top: 1%;
 	}
@@ -408,11 +414,38 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 100%;
 		padding: 0;
 	}
-	.grid-wrapper_D {
-		width: 31.3%;
+	
+	#content_userDrawInfo {
+	    margin: 0;
 	}
 	
+	.grid-logo img {
+    	width: 60px;
+	}
 	
+	#wrapper-bmethod_D {
+		width: 250px; 
+	}
 	
+	#sep { display: none; }
+	#method, #winner_time { 
+		display: block; 
+		padding: 1% 0; 
+	}
+	.grid-item_D {
+		padding: 2%;
+	}
+	
+	.sneaker_cate_D {
+    	line-height: 25px;
+	}
+	
+	#time{
+		display: none;
+	}
+	
+	.grid-content {
+		padding: 0 0 0 3%;
+	}
 }
 	

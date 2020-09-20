@@ -20,6 +20,7 @@ public class OnlineDTO {
 	private String delivery_method;
 	private String online_writer;
 	private Timestamp reg_date;
+	private String winner_time;
 	
 	public int getOnline_num() {
 		return online_num;
@@ -117,4 +118,11 @@ public class OnlineDTO {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
+	public String getWinner_time() {
+		return winner_time;
+	}
+	public void setWinner_time(String winner_time) {
+		this.winner_time = winner_time;
+	}
+	
 }

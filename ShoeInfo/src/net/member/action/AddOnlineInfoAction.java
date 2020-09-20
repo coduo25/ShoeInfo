@@ -82,8 +82,11 @@ public class AddOnlineInfoAction implements Action{
 		}
 
 		String online_writer = request.getParameter("online_writer");
-		//@ 앞부분을 추출
-//		String writer = online_writer.substring(0, online_writer.indexOf("@"));
+		
+		String winner_time = request.getParameter("winner_time");
+		if(winner_time.equals("") || winner_time == null){
+			winner_time = "-";
+		}
 		
 		//country_region 값 찾아오기
 		CountryDAO cdao = new CountryDAO();
@@ -111,6 +114,7 @@ public class AddOnlineInfoAction implements Action{
 		odto.setDelivery_method(delivery_method);
 		odto.setOnline_writer(online_writer);
 		odto.setReg_date(new Timestamp(System.currentTimeMillis()));
+		odto.setWinner_time(winner_time);
 		
 		OnlineDAO odao = new OnlineDAO();
 		int check = odao.insertOnlineInfo(odto);

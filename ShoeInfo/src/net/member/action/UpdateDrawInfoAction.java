@@ -92,6 +92,13 @@ public class UpdateDrawInfoAction implements Action{
 		odto.setOnline_writer(request.getParameter("online_writer"));
 		odto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
+		String winner_time = request.getParameter("winner_time");
+		if(winner_time.equals("") || winner_time == null){
+			winner_time = "-";
+		}
+		
+		odto.setWinner_time(winner_time);
+		
 		OnlineDAO odao = new OnlineDAO();
 		odao.updateOnlineinfo(odto);
 		
