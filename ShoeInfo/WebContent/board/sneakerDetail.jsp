@@ -84,7 +84,8 @@
 		Date date_type = original_format2.parse(ty_str_date);
 		
 	%>
-	<input type="hidden" class="login_user" value="<%=user%>">
+	<input type="hidden" class="login_user" id="login_user" value="<%=user%>">
+	<input type="hidden" class="login_user_position" id="login_user_position" value="<%=usr_position%>">
 	<input type="hidden" class="num" id="num" value="<%=sdto.getNum()%>">
 	
 	<div id="wrapper" class="container">
@@ -1099,10 +1100,14 @@
 		//발매정보 추가하기 버튼 눌렸을시
 		$('.rel_Btn').click(function(){
 			//로그인 체크
-			if($(".login_user").val() == "") {
-				var login_confirm = confirm("발매정보는 회원만 추가할 수 있습니다. \n로그인 페이지로 가시겠습니까?");
-				if(login_confirm){
-					location.href="./MemberLogin.me";
+			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {
+				location.href="./MemberLogin.me";
+			}
+			//열심회원 체크
+			else if($("#login_user_position").val() == "general"){
+				var upPosition_confirm = confirm("발매정보는 열심회원만 추가할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
+				if(upPosition_confirm){
+					location.href="./RequestUpPos.me?email="+$("#login_user").val();
 				}
 			}
 			else {
@@ -1229,12 +1234,16 @@
 			var splitArray = grid_editID.split('-');
  			// 제일 마지막 kr1 만 가지고 오기
 			var lastElement = splitArray[splitArray.length - 1];
-			
+ 			
 			//로그인 체크
-			if($(".login_user").val() == "") {
-				var login_confirm = confirm("정보를 수정하시려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
-				if(login_confirm){
-					location.href="./MemberLogin.me";
+			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {
+				location.href="./MemberLogin.me";
+			}
+			//열심회원 체크
+			else if($("#login_user_position").val() == "general"){
+				var upPosition_confirm = confirm("발매정보는 열심회원만 수정할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
+				if(upPosition_confirm){
+					location.href="./RequestUpPos.me?email="+$("#login_user").val();
 				}
 			}
 			else {

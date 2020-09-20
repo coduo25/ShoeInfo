@@ -55,7 +55,7 @@ body {font-size:1em; line-weight:1.4}
 
 #content_sneakerInfo_D { margin-top: 1.5%; width: 65%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 0 5% 3%; }
 #content_userDrawInfo { margin: 0 2%; }
-#content_userDrawInfo h4 { font-size: 1.7em; margin: 3% 0; text-align: left; padding-top: 1%;}
+#content_userDrawInfo h4 { font-size: 1.7em; margin: 3% 0; text-align: center; padding-top: 1%;}
 /* 국내 응모 && 해외 응모 */
 #dome-draw-wrapper, #inter-draw-wrapper { display: block; float: left; width: 100%; margin-bottom: 10%; }
 .grid-wrapper_D { margin: 1.5% 1%; width: 23%; float: left; display: block; }
@@ -75,7 +75,7 @@ body {font-size:1em; line-weight:1.4}
 /* 발매리스트 css -------------------------------------------------------------------------------------------------- */
 #content_sneakerInfo { display: none; }
 #content_sneakerInfo, #content_sneakerInfo_list { margin-top: 10px; width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; font-size:0.9em; }
-#content_sneakerInfo h4, #content_sneakerInfo_list h4 { font-size: 1.7em; text-align: center; margin: 1%; }
+#content_sneakerInfo h4, #content_sneakerInfo_list h4 { font-size: 1.7em; text-align: left; margin: 1%; }
 
 .switch-wrapper{
 	display: inline-block;

@@ -24,9 +24,10 @@
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
-		if(user == null){
+		if(user == null || usr_position.equals("general")){
 			response.sendRedirect("./SneakerList.go");
 		}
+		
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		if(model_stylecode == null){
 			model_stylecode = "";

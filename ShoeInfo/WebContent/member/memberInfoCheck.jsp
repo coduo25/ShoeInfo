@@ -46,7 +46,7 @@
 					
 						<!-- 이메일 -->
 						<div class="fm_email">
-							<input type="email" name="email" id="fm_email_login" placeholder="이메일" id="email" value="<%=email%>" readonly>
+							<input type="text" name="email" id="fm_email_login" placeholder="이메일" id="email" value="<%=email%>" readonly>
 						</div>
 						
 						<!-- 비밀번호 -->

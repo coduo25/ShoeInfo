@@ -261,6 +261,24 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}
 		
+		//회원 등업 요청 페이지가기
+		else if(command.equals("/RequestUpPos.me")){
+			action = new MemberRequestUpPos();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//회원 등업 요청 처리
+		else if(command.equals("/RequestUpPosAction.me")){
+			action = new MemberRequestUpPosAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		/************************************************************
 		 * 3. 실제 페이지 이동 동작 (redirect/forward)

@@ -23,6 +23,7 @@
 		}
 	
 		int memberNum = (int) request.getAttribute("memberNum");
+		int memberPosReqNum = (int) request.getAttribute("memberPosReqNum");
 		int brandNum = (int) request.getAttribute("brandNum");
 		int sneakerNum = (int) request.getAttribute("sneakerNum");
 		int memberDrawNum = (int) request.getAttribute("memberDrawNum");
@@ -49,27 +50,31 @@
 			<div id="total_infoTable">
 				<ul>
 					<li>
-						<span class="total_subTit"> 총 회원 수 </span>
+						<span class="total_subTit"> 총 회원 </span>
 						<span class="total_main"> <a href="./MemberList.ad"> <%=memberNum%> 명 </a> </span>
 					</li>
 					<li>
-						<span class="total_subTit"> 총 응모현황 </span>
+						<span class="total_subTit"> 등업신청 </span>
+						<span class="total_main"> <a href="#"> <%=memberPosReqNum%> 명 </a> </span>
+					</li>
+					<li>
+						<span class="total_subTit"> 응모등록 </span>
 						<span class="total_main"> <a href="./OnlineInfoList.ad"> <%=onlineInfoNum%> 개 </a> </span>
 					</li>
 					<li>
-						<span class="total_subTit"> 총 브랜드 수 </span>
+						<span class="total_subTit"> 브랜드 수 </span>
 						<span class="total_main"> <a href="./BrandList.ad"> <%=brandNum%> 개 </a></span>
 					</li>
 					<li>
-						<span class="total_subTit"> 총 신발 수 </span>
+						<span class="total_subTit"> 신발 수 </span>
 						<span class="total_main"> <a href="./SneakerList.ad"> <%=sneakerNum%> 개 </a></span>
 					</li>
 					<li>
-						<span class="total_subTit"> 회원 총 응모 횟수 </span>
+						<span class="total_subTit"> 회원 응모 횟수 </span>
 						<span class="total_main"> <a href="./MemberDrawList.ad"> <%=memberDrawNum%> 개 </a> </span>
 					</li>
 					<li>
-						<span class="total_subTit"> 브랜드 요청 수 </span>
+						<span class="total_subTit"> 브랜드 요청 </span>
 						<span class="total_main"> <a href="./BrandRequest.ad" style="color:red"> <%=memberReqBrandNum%> 개 </a></span>
 					</li>
 				</ul>

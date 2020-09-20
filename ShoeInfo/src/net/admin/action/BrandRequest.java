@@ -32,7 +32,6 @@ public class BrandRequest implements Action{
 		
 		request.setAttribute("brandReqList", brandReqList);
 		
-		
 		forward.setPath("./admin/admin_brandReqList.jsp");
 		forward.setRedirect(false);
 		return forward;

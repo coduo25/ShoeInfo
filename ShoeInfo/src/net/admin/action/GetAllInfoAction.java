@@ -28,6 +28,8 @@ public class GetAllInfoAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		int memberNum = mdao.countMember();
 		
+		int memberPosReqNum = mdao.countMemberPosReq();
+		
 		BrandDAO bdao = new BrandDAO();
 		int brandNum = bdao.countBrand();
 		
@@ -41,8 +43,10 @@ public class GetAllInfoAction implements Action{
 		OnlineDAO odao = new OnlineDAO();
 		int onlineInfoNum = odao.countOnlineInfo();
 		
+		
 		//전체 회원수, 브랜드, 신발, 응모한 수
 		request.setAttribute("memberNum", memberNum);
+		request.setAttribute("memberPosReqNum", memberPosReqNum);
 		request.setAttribute("brandNum", brandNum);
 		request.setAttribute("sneakerNum", sneakerNum);
 		request.setAttribute("memberDrawNum", memberDrawNum);

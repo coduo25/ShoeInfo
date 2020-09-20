@@ -62,6 +62,25 @@ public class MemberDAO {
 		return num;
 	}
 	
+	//모든 회원 등업 신청 수 계산하는 함수
+	public int countMemberPosReq(){
+		int num = 0;
+		try {
+			con = getConnection();
+			sql = "select req_email from shoeinfo_memberPositionReq";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				num += 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
+	
 	//모든 회원 리스트 불러오는 함수
 	public List<MemberDTO> getAllMemberList(Criteria cri){
 		int count = 0;
@@ -211,7 +230,7 @@ public class MemberDAO {
 			pstmt.setString(5, mdto.getName());
 			pstmt.setString(6, mdto.getPhone());
 			pstmt.setTimestamp(7, mdto.getReg_date());
-			pstmt.setString(8, "user");
+			pstmt.setString(8, "general");
 			pstmt.setString(9, mdto.getSalt_id());
 			pstmt.setString(10, mdto.getSalt());
 			pstmt.executeUpdate();
@@ -466,6 +485,50 @@ public class MemberDAO {
 		return position;
 	}
 	
+	//호원 등업 신청 추가하는 함수
+	public int insertMemberReqPos(MemberPosReqDTO mprdto){
+		int check = -1;
+		int req_num = 0;
+		try {
+			con = getConnection();
+			//중복 신청 있는지 체크하기
+			sql = "select * from shoeinfo_memberPositionReq where req_email = ? and req_name = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mprdto.getReq_email());
+			pstmt.setString(2, mprdto.getReq_name());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				check = 0;
+			}
+			//중복 데이터가 없으면
+			else {
+				sql = "select max(req_num) from shoeinfo_memberPositionReq";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					req_num = rs.getInt(1) + 1;
+				}else {
+					req_num = 0;
+				}
+				
+				sql = "insert into shoeinfo_memberPositionReq values(?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, req_num);
+				pstmt.setString(2, mprdto.getReq_email());
+				pstmt.setString(3, mprdto.getReq_name());
+				pstmt.setString(4, mprdto.getReq_reason());
+				pstmt.setTimestamp(5, mprdto.getReq_time());
+				pstmt.executeUpdate();
+				check = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
 	//회원 응모 정보 추가하는 함수
 	public void insertUserDrawInfo(MemberDrawDTO mddto){
 		int userDraw_num = 0;
@@ -698,6 +761,8 @@ public class MemberDAO {
 				mdto.setEmail(email);
 				mdto.setName(rs.getString("name"));
 				mdto.setPhone(rs.getString("phone"));
+				mdto.setPosition(rs.getString("position"));
+				mdto.setReg_date(rs.getTimestamp("reg_date"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
