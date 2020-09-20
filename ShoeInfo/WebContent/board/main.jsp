@@ -233,7 +233,7 @@
 										<div id="link-wrapper" style="pointer-events: auto;">
 											<% if(recentChk == 1){ %>
 												<div id="recent-dot">
-													new
+													NEW
 												</div>
 											<%} %>
 <%-- 											<%=sdto.getCountLinks()%> --%>
