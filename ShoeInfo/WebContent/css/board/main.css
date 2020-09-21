@@ -34,11 +34,11 @@ body {font-size:1em; line-weight:1.4}
 	.content_img { margin-top: 3%; position: relative; }
 	
 	/* 디데이라벨 */
-	#dd-label-wrapper { position: absolute; top: 0; right: 4%; width: 30%; text-align: right; margin-top: 1%; }
+	#dd-label-wrapper { position: absolute; top: 3%; right: 5%; width: 30%; text-align: right; margin-top: 1%; }
 	#dd-label { font-size: 12px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 3% 7%; border-radius: 3px; }
 	
 	/* 이름 */
-	.content_name { margin-top: 5%; }
+	.content_name { margin-top: 1%; }
 	.content_name .model_name { font-size: 12px; height: 27px; padding: 0 1%; }
 	
 	/* 최신 dot */
@@ -127,13 +127,13 @@ body {font-size:1em; line-weight:1.4}
    		margin: 2% 2%;
 	}
 	.release_date{
-		font-size: 0.95em;
+		font-size: 0.9em;
 	}
 	.content_links{
 		margin-top:12%;
 	}
 	#link-wrapper {
-		font-size: 0.6em;
+		font-size: 0.75em;
 	}
 	.no_info {
 		margin:8% 1%;
