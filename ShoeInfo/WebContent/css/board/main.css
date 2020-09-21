@@ -42,7 +42,7 @@ body {font-size:1em; line-weight:1.4}
 	.content_name .model_name { font-size: 12px; height: 27px; padding: 0 1%; }
 	
 	/* 최신 dot */
-	#recent-dot { position: absolute; top: -2%; left: 62%; color: #00c300; font-size: 0.75em; }
+	#recent-dot { position: absolute; top: 13%; left: 63%; color: #00c300; font-size: 0.75em; }
 /* 	#recent-dot i{  background-color: white; border-radisus: 50%; } */
 	
 	/* 링크 */
