@@ -96,7 +96,7 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* list 양식 */
-#grid-list-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 4%; }
+#grid-list-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; }
 .grid-wrapper-list { margin: 1% 1.25%; width: 47.5%; float:left; display: block; }
 .grid-item-list { padding: 2%; position: relative; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); background-color: #f3f3f357; display: flex; }
 .grid-logo-list { display: inline-block; }
@@ -107,8 +107,8 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* large 양식 */
-#grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; padding: 0 4%; }
-.grid-wrapper { margin: 1.5%; width: 17%; float: left; display: block; height: 470px; }
+#grid-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; }
+.grid-wrapper { margin: 2%; width: 16%; float: left; display: block; height: 470px; }
 .grid-item { position: relative; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); }
 .grid-logo { position: relative; }
 .grid-logo img { width: 100%; height: 100%; }
@@ -120,9 +120,10 @@ body {font-size:1em; line-weight:1.4}
 	#no-info-label { display: inline-block; padding: 1%; }
 
 	/* 진행중 마크 */
-	.grid-ing { position: absolute; top: 2.8%; left: 77%; width: 30%; }
+	.grid-ing { position: absolute; top: 5%; left: 73%; width: 30%; }
 	.grid-ing-list { float: right; position: absolute; right:0; display: inline-block; width: 30%; text-align: right; }
-	#draw_count_result_ing{background-color: #58af58; color: white; font-size: 0.7em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 2.5px 3.5px; }
+	#draw_count_result_ing{ background-color: #58af58; color: white; font-size: 0.9em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 2px 3px; }
+	#draw_count_result_ing_list { background-color: #58af58; color: white; font-size: 0.7em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 2px 3px; }
 	
 	/* new 리본 */
 	.ribbon-wrapper { width: 85px; height: 88px; overflow: hidden; position: absolute; top: 0; left: -0.5%; }
@@ -144,7 +145,7 @@ body {font-size:1em; line-weight:1.4}
 	#country_flag_img { border: 0.5px solid #D9D9D9; margin-top:2.5px; }
 	#country_flag_img-list { border: 0.5px solid #D9D9D9; margin-left: 4px; margin-bottom: -1.3px; }
 	
-	#wrapper-name { margin-bottom: 1%; font-size: 1.2em; font-weight: bold; position: relative;}
+	#wrapper-name { margin-bottom: 1%; font-size: 1.4em; font-weight: bold; position: relative;}
 	.country_name_label { display:none; width: 100px; background-color: white; border: 1px solid gainsboro; text-align: center; border-radius: 5px; padding: 2%; font-weight: normal; font-size: 0.8em !important; position:absolute; top: 88%; right: 0; z-index: 100;}
 	.country_name_label_list { display:none; padding: 0.5% 0 1% 1%; font-weight: normal; font-size: 0.8em !important; position:absolute; z-index: 100;}
 
@@ -154,7 +155,7 @@ body {font-size:1em; line-weight:1.4}
 	.span-flag, #wrapper-content { float: right; }
 	.span-flag-list { display:inline-block; }
 	#wrapper-period { margin-bottom: 10%; color: #dc5757; font-weight: bold; }
-	#wrapper-period-list { margin-bottom: 3%; color: black; }
+	#wrapper-period-list { margin-bottom: 3%; color: black; font-size: 0.9em; }
 	#slide { margin: 0 1.5%; font-size: 0.9em; color: #b1b1b1; }
 	
 	/* 남은 시간 파트 */
@@ -266,7 +267,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 1.1em !important;
 	}
 	.grid-wrapper {
-		width:22%;
+		width:21%;
 		height: 500px;
 	}
 	.grid-info span {
@@ -284,7 +285,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	
 	#draw_count_result_ing {
-		font-size: 0.7em;
+		font-size: 0.85em;
 	}
 	.searched-form {
 		width: 70%;
@@ -298,9 +299,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#start_time2 {
 		display: none;
 	}
-	#grid-list, #grid-list-list {
-		padding: 0 1%;
-	}
+/* 	#grid-list, #grid-list-list { */
+/* 		padding: 0 1%; */
+/* 	} */
 	.grid-wrapper-list {
 		font-size: 0.9em;
 	}
@@ -335,14 +336,14 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		padding: 1.5% 2%;
 	}
 	#grid-list {
-		padding: 0 1%;
+/* 		padding: 0 1%; */
 /* 		margin-bottom: 10%; */
 	}
 	.draw_count_result_wrapper {
 		font-size: 1em !important;
 	}
 	.grid-ing {
-    	left: 80%;
+    	left: 74%;
 	}
 	#nothingSearched div {
 		width: 60%;
@@ -444,7 +445,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size:0.9em;
 	}
 	.grid-ing {
- 		left: 72%;
+ 		left: 70.5%;
  		top: 4%;
 	}
 	.grid-time {
@@ -566,9 +567,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		right: -1%;
 	}
 	
-	#draw_count_result_ing {
-    	font-size: 0.5em;
-    	padding: 1.5px 2.5px;
+	#draw_count_result_ing_list ,#draw_count_result_ing {
+    	font-size: 0.7em;
+    	padding: 1px 2px;
 	}	
 	
 	#country_flag_img-list {
