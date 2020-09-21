@@ -145,7 +145,7 @@ body {font-size:1em; line-weight:1.4}
 	#country_flag_img { border: 0.5px solid #D9D9D9; margin-top:2.5px; }
 	#country_flag_img-list { border: 0.5px solid #D9D9D9; margin-left: 4px; margin-bottom: -1.3px; }
 	
-	#wrapper-name { margin-bottom: 1%; font-size: 1.4em; font-weight: bold; position: relative;}
+	#wrapper-name { margin-bottom: 0.5%; font-size: 1.4em; font-weight: bold; position: relative;}
 	.country_name_label { display:none; width: 100px; background-color: white; border: 1px solid gainsboro; text-align: center; border-radius: 5px; padding: 2%; font-weight: normal; font-size: 0.8em !important; position:absolute; top: 88%; right: 0; z-index: 100;}
 	.country_name_label_list { display:none; padding: 0.5% 0 1% 1%; font-weight: normal; font-size: 0.8em !important; position:absolute; z-index: 100;}
 
