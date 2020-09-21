@@ -539,7 +539,13 @@
 							int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
 					
 							//앞에서 3글자 따오기
-							String splitWriter = odto.getOnline_writer().substring(0, 4);
+							//odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
+							
+							//coduo25
+							String writer = odto.getOnline_writer().substring(0, odto.getOnline_writer().indexOf("@"));
+							
+							//coxxxxxxx
+							String splitWriter = writer.substring(0, 4);
 							String X = "";
 							for(int j=0; j<(odto.getOnline_writer().length()-4); j++){
 								X = X + "*";
@@ -603,6 +609,7 @@
 									<span class="country_name_label" id="country-name-label-<%=country_name_eng%><%=i%>"><%=bdto.getCountry_name()%></span>
 									
 									<!-- 발매 정보 작성자 아이콘 -->
+									<input type="hidden" id="writer" value="<%=odto.getOnline_writer()%>"> 
 									<div class="grid-info-writer" id="grid-info-writer-<%=country_name_eng%><%=i%>"> 작성자: <%=f_splitWriter%> </div>
 									<div class="grid-info" id="grid-info-<%=country_name_eng%><%=i%>">
 										<span> <i class="fas fa-user"></i> </span>
@@ -1239,12 +1246,17 @@
 			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {
 				location.href="./MemberLogin.me";
 			}
-			//열심회원 체크
-			else if($("#login_user_position").val() == "general"){
-				var upPosition_confirm = confirm("발매정보는 열심회원만 수정할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
-				if(upPosition_confirm){
-					location.href="./RequestUpPos.me?email="+$("#login_user").val();
-				}
+			else if($('#login_user_position').val() == 'admin'){
+				var model_num = $('#num').val()
+				var model_stylecode = $('#modi_modelStylecode-' + lastElement).val();
+				var brand_id = $('#modi_brandId-' + lastElement).val();
+		
+				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id + "&num=" + model_num;
+			}
+			//작성자와 같은지 체크
+			else if($('#login_usr').val() != $('#writer').val() && $('#login_user_position').val() != 'prime'){
+				alert("해당 발매정보는 작성자만 수정할 수 있습니다.");
+				return false;
 			}
 			else {
 				var model_num = $('#num').val()

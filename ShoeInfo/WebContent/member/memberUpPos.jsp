@@ -65,7 +65,7 @@
 						
 						<!-- 열심회원 신청이유 -->
 						<div class="fm_label">
-							<span> 열심회원 신청 이유? </span>
+							<span> 열심회원 신청 이유? (타당하지 않은 이유는 등업을 못하실 수 있습니다.) </span>
 						</div>
 						<div class="fm_reason">
 							<textarea id="reason" name="reason" rows="5" cols="30"></textarea>

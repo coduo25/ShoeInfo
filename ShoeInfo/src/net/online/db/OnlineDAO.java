@@ -251,7 +251,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
+				odto.setOnline_writer(rs.getString("online_writer"));
 				odto.setReg_date(rs.getTimestamp("reg_date"));
 				onlineInfoList_kr.add(odto);
 				
@@ -325,7 +325,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
+				odto.setOnline_writer(rs.getString("online_writer"));
 				odto.setReg_date(rs.getTimestamp("reg_date"));
 				onlineInfoList_asia.add(odto);
 				
@@ -396,7 +396,7 @@ public class OnlineDAO {
 				odto.setOnline_method(rs.getString("online_method"));
 				odto.setBuy_method(rs.getString("buy_method"));
 				odto.setDelivery_method(rs.getString("delivery_method"));
-				odto.setOnline_writer(rs.getString("online_writer").substring(0, rs.getString("online_writer").indexOf("@")));
+				odto.setOnline_writer(rs.getString("online_writer"));
 				odto.setReg_date(rs.getTimestamp("reg_date"));
 				onlineInfoList.add(odto);
 				

@@ -69,8 +69,12 @@
 				<!-- 추가하는 form -->
 				<div class="add_wrapper">
 					<form action="./AddOnlineInfoAction.me" id="addOnlineForm" method="post">
+					
+						<span id="category"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매정보는 SHOEINFO를 이용하는 모든 이용자들이 보는 정보입니다. </span>
+						<span id="category" style="padding-bottom: 3%; border-bottom: 1px solid #9e9e9e"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 허위 사실을 작성 및 수정 했을시 활동정지가 되실 수 있습니다. </span>
+					
 						<input type="hidden" name="model_num" value="<%=sdto.getNum()%>"> 
-						<div id="stylecode-form">
+						<div id="stylecode-form" style="padding-top: 5%;">
 							<span id="category"> 스타일 코드 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
 							<input type="text" name="model_stylecode" value="<%=model_stylecode%>" readonly>
 						</div>
@@ -249,7 +253,12 @@
 							<span id="example"> ex. 마감후 2시간이내, O월 OO일 오후 4시 이후 문자발송 </span>
 						</div>
 						
-						<input type="hidden" name="online_writer" value="<%=user%>" id="online_writer">
+						<div id="online_writer" style="padding-bottom: 0 !important;">
+							<span id="category"> 작성자 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
+							<div>
+								<input type="text" name="online_writer" value="<%=user%>" id="online_writer" readonly style="width: 50%;">
+							</div>
+						</div>
 						
 						<div id="submitBtn-form">
 							<button type="button" class="rel_Btn2"> 
@@ -523,7 +532,7 @@
 			return false;
 		}
 		//유저 이름 확인란
-		else if($('#online_writer').val() == ''){
+		else if($('input[name=online_writer]').val() == ''){
 			alert("로그인을 해주세요.");
 			location.href="./MemberLogin.me";
 			return false;
