@@ -275,14 +275,6 @@
 							
 							int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
 							int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
-					
-							//앞에서 3글자 따오기
-							String splitWriter = odto.getOnline_writer().substring(0, 4);
-							String X = "";
-							for(int j=0; j<(odto.getOnline_writer().length()-4); j++){
-								X = X + "*";
-							}
-							String f_splitWriter = splitWriter.concat(X);
 							
 							//오늘 날짜와 최신 온라인 등록 날짜와 비교해서 이틀 안에 등록 된거면 빨간색 점 나타내기, 등록하고 이틀이 지나거나 아예 등록정보가 없다면 빨간색 점 나타내기
 							// diffDay가 -2보다 적으면 빨간색 사라지게 하고 -2보다 크면 빨간색 띄우기
@@ -547,7 +539,7 @@
 							//coxxxxxxx
 							String splitWriter = writer.substring(0, 4);
 							String X = "";
-							for(int j=0; j<(odto.getOnline_writer().length()-4); j++){
+							for(int j=0; j<(writer.length()-4); j++){
 								X = X + "*";
 							}
 							String f_splitWriter = splitWriter.concat(X);
@@ -609,7 +601,8 @@
 									<span class="country_name_label" id="country-name-label-<%=country_name_eng%><%=i%>"><%=bdto.getCountry_name()%></span>
 									
 									<!-- 발매 정보 작성자 아이콘 -->
-									<input type="hidden" id="writer" value="<%=odto.getOnline_writer()%>"> 
+									<input type="hidden" id="logined" value="<%=user%>">
+									<input type="hidden" id="writer-<%=country_name_eng%><%=i%>" value="<%=odto.getOnline_writer()%>"> 
 									<div class="grid-info-writer" id="grid-info-writer-<%=country_name_eng%><%=i%>"> 작성자: <%=f_splitWriter%> </div>
 									<div class="grid-info" id="grid-info-<%=country_name_eng%><%=i%>">
 										<span> <i class="fas fa-user"></i> </span>
@@ -1242,6 +1235,8 @@
  			// 제일 마지막 kr1 만 가지고 오기
 			var lastElement = splitArray[splitArray.length - 1];
  			
+ 			var writer = $('#writer-' + lastElement).val();
+ 			
 			//로그인 체크
 			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {
 				location.href="./MemberLogin.me";
@@ -1254,11 +1249,11 @@
 				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id + "&num=" + model_num;
 			}
 			//작성자와 같은지 체크
-			else if($('#login_usr').val() != $('#writer').val() && $('#login_user_position').val() != 'prime'){
+			else if($('#logined').val() != writer || $('#login_user_position').val() == 'general'){
 				alert("해당 발매정보는 작성자만 수정할 수 있습니다.");
 				return false;
 			}
-			else {
+			else if($('#login_user_position').val() == 'admin' || ($('#login_user_position').val() == 'prime' && $('#logined').val() == writer)){
 				var model_num = $('#num').val()
 				var model_stylecode = $('#modi_modelStylecode-' + lastElement).val();
 				var brand_id = $('#modi_brandId-' + lastElement).val();
