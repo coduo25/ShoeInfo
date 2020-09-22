@@ -100,7 +100,7 @@ body {font-size:1em; line-weight:1.4}
 		width: 23%;
 	}
 	#recent-dot {
-		left: 64%;
+		left: 63%;
 	}
 }
 
@@ -153,6 +153,9 @@ body {font-size:1em; line-weight:1.4}
 	}
 	.rel_finish_label {
 		padding-top: 60%;
+	}
+	#recent-dot {
+    	left: 67%;
 	}
 }
 
