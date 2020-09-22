@@ -21,7 +21,7 @@ body {font-size:1em; line-weight:1.4}
 	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 1.5% 4%;}
 		/* 이미지 & 이름*/
 		.sneaker_image { text-align: center; }
-		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px; margin-top: -2%; }
+		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px; }
 			/* 이름 */
 			.sneaker_image_wrapper div.sneaker_name { text-align: center; margin-bottom: 13px; }
 			.sneaker_name { line-height: 30px; text-transform: uppercase; font-size:20px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; color: #232323; }

@@ -69,10 +69,11 @@
 	<div id="wrapper" class="container">
 	
 		<div id="content_sneakerList">
-		
-			<!-- 1~12월 발매 테이블 -->
 			<%
-				for(int z=1; z<13; z++){
+				Calendar cal = Calendar.getInstance();
+				int month = cal.get(Calendar.MONTH);
+				
+				for(int z=month; z<(month+3); z++){
 					ArrayList<SneakerDTO> new_sneakerList = new ArrayList<SneakerDTO>();
 					String month_label = "";
 					if(z==1){ new_sneakerList = sneakerList1; month_label = "Jan."; }
@@ -322,28 +323,20 @@
 
 <script type="text/javascript">
 
-	
-	
-	
-	
-	
 	$(document).ready(function(){
 		
 		var filter = "win16|win32|win64|mac|macintel";
 
 		if(navigator.platform) {
-			
 			//모바일로 접속했을시
 			if (filter.indexOf( navigator.platform.toLowerCase() ) < 0) {
 				
 			}
-			
 			//데스크탑으로 접속했을시
 			else { 
 				
 			}
 		}
-		
 
 		var today = new Date();
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다

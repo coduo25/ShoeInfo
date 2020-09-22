@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.member.db.MemberDAO;
 
@@ -11,6 +12,19 @@ public class MemberInfoCheckAction implements Action{
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		// 한글처리 
+		request.setCharacterEncoding("UTF-8");
+		
+		//로그인 정보 가져오기
+		HttpSession session = request.getSession();
+		String user = (String) session.getAttribute("email");
+		ActionForward forward = new ActionForward();
+		if(user == null || user.length() == 0){
+			forward.setPath("./Main.bo");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		//전달 받은 정보 저장
 		String email = request.getParameter("email");
@@ -58,7 +72,6 @@ public class MemberInfoCheckAction implements Action{
 		}
 
 		// 비밀번호 맞았을시 페이지 이동(수정페이지)
-		ActionForward forward = new ActionForward();
 		forward.setPath("./MemberUpdateInfo.me");
 		forward.setRedirect(true);
 		return forward;

@@ -22,20 +22,10 @@
 	
 		String prev_url = "";
 		
-		String label = request.getParameter("label");
-		if(label == null){
-			label = "";
-		}
+		prev_url = request.getHeader("referer");
 		
-		if(label.equals("memDrawList")){
-			prev_url = "http://www.shoeinfo.co.kr/MemberDrawInfo.me";
-		}else {
-			
-			prev_url = request.getHeader("referer");
-			
-			if(prev_url.isEmpty() || prev_url == null || prev_url == ""){
-				prev_url = "";
-			}
+		if(prev_url.isEmpty() || prev_url == null || prev_url == ""){
+			prev_url = "";
 		}
 	%>
 	

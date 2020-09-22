@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="net.sneaker.db.SneakerDTO"%>
@@ -21,7 +22,7 @@
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
-		if(user == null || user == "" || user.isEmpty()){
+		if(user == null){
 			response.sendRedirect("./SneakerList.go");
 		}
 	
@@ -76,9 +77,11 @@
 	<div id="wrapper" class="container">
 	
 		<div id="content_sneakerList">
-			<!-- 1 ~ 12 월 응모내역 테이블  -->
 			<%
-				for(int z=1; z<13; z++){
+				Calendar cal = Calendar.getInstance();
+				int month = cal.get(Calendar.MONTH);
+		
+				for(int z=month; z<(month+3); z++){
 					ArrayList<MemberDrawDTO> new_userDrawStylecodeList = new ArrayList();
 					ArrayList<SneakerDTO> new_sneakerInfoList = new ArrayList();
 					

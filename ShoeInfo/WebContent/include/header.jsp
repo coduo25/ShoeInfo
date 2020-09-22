@@ -24,15 +24,20 @@
 			<!-- 로그인/회원가입 -->
 			<div class="login-wrapper">
 					<%
-						//로그인 되었는지	
+						request.setCharacterEncoding("UTF-8");
+					
+						//로그인한 사용자가 체크
 						String user = (String) session.getAttribute("email");
 						//로그인 된 사용자의 position 가져오기
 						String usr_position = (String) session.getAttribute("usr_position");
+						if(user == null){
+							user = "";
+						}
 						if(usr_position == null){
 							usr_position = "";
 						}
 						
-						if(user == null){
+						if(user == null || user.length() == 0){
 					%>
 						<span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
 					<%
@@ -55,6 +60,8 @@
 		</div>
 	</nav>
 
+	<input type="hidden" class="user" id="user" value="<%=user%>">
+		
 	<nav class="navbar">
 		<!-- 로고 -->
 		<div class="navbar_logo">
@@ -71,9 +78,9 @@
 		
 		<!-- 나의 드로우 -->
 		<ul class="navbar_userlinks">
-			<li class="pc_icon"> <a href="./MemberDrawInfo.me"> <i class="far fa-calendar-check"></i>  MY DRAW </a> </li>
+			<li class="pc_icon"> <span id="myDrawBtn" style="cursor: pointer;"> <i class="far fa-calendar-check"></i>  MY DRAW </span> </li>
 			<%
-				if(user == null){
+				if(user == null || user.length() == 0){
 			%>
 				<li class="mypage_btn_mobile"> <a href="./MemberLogin.me"> <div id="user_icon"><i class="fas fa-user"></i> <div> LOGIN </div> </div> </a> </li>
 			<%
@@ -116,6 +123,16 @@
 
 </body>
 <script type="text/javascript">
+
+		//마이드로우 눌렸을시
+		$('#myDrawBtn').click(function(){
+			//로그인 체크
+			if($(".user").val() == "" || $(".user").val() == "undefined" || $(".user").val() == null) {
+				location.href="./MemberLogin.me";
+			}else {
+				location.href="./MemberDrawInfo.me";
+			}
+		});	
 
 		//현재 시간 계산해주는 함수
 		function getTime(){

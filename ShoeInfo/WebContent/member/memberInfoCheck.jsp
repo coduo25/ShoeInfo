@@ -15,9 +15,10 @@
 <body>
 	
 	<%
-		String email = (String) session.getAttribute("email");
-		if(email == null || email == ""){
-			response.sendRedirect("./MemberLogin.me");
+		String user = (String) session.getAttribute("email");
+		String usr_position = (String) session.getAttribute("usr_position");
+		if(user == null){
+			response.sendRedirect("./SneakerList.go");
 		}
 	%>
 
@@ -46,7 +47,7 @@
 					
 						<!-- 이메일 -->
 						<div class="fm_email">
-							<input type="text" name="email" id="fm_email_login" placeholder="이메일" id="email" value="<%=email%>" readonly>
+							<input type="text" name="email" id="fm_email_login" placeholder="이메일" id="email" value="<%=user%>" readonly>
 						</div>
 						
 						<!-- 비밀번호 -->

@@ -22,8 +22,8 @@ public class MemberDrawDetailInfo implements Action{
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email");
 		ActionForward forward = new ActionForward();
-		if(user == null){
-			forward.setPath("./MemberLogin.me");
+		if(user == null || user.length() == 0){
+			forward.setPath("./Main.bo");
 			forward.setRedirect(true);
 			return forward;
 		}
