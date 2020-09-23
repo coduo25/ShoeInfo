@@ -12,9 +12,12 @@ body {font-size:1em; line-weight:1.4}
 #content_sneakerDetail div#sneakerOnlineInfo_table{ width: 100%; }
 
 	/* 카테고리 */
-	#cate_Detail { width: 100%; line-height: 24px; padding: 2.5% 1% 0 1%; font-size: 14px; font-family: 'Nanum Gothic', sans-serif; }
+	#cate_Detail { width: 100%; line-height: 24px; padding: 2.5% 0.5% 0 0.5%; font-size: 14px; font-family: 'Nanum Gothic', sans-serif; }
 	#cate_Detail span { color: #232323; }
 	.arrow { padding: 0 6px 0 8px; font-size: 0.9em; }
+
+	/* 제목 */
+	#title { width: 100%; padding: 1% 0.5% 0 0.5%; font-size: 50px; font-weight: bold; font-family: 'Roboto', sans-serif; color: #333; }
 
 	/* 신발 기본정보 */
 	.sneaker_image_wrapper { width: 100%; display: block; }
@@ -65,7 +68,7 @@ body {font-size:1em; line-weight:1.4}
 .grid-wrapper_D:hover { opacity: 0.5; }
 .grid-item_D { position: relative; display: flex; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); padding: 1%; }
 #brand_name_D { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.95em; }
-#wrapper-bmethod_D { color: #6b6b6b; display: inline-block; width: 450px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 1% !important;}
+#wrapper-bmethod_D { color: #1b1b1b; display: inline-block; width: 450px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 1% !important;}
 #wrapper-content_D { padding: 1% 0; }
 #sep { margin:0 1.5%; font-size: 0.85em; color: #dadada; font-weight: normal !important; }
 #wrapper-winnerTime { margin-bottom: 3%; font-size: 1em; }
@@ -450,7 +453,20 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#cate_Detail {
 		padding: 4% 1% 0 1%;
-    	font-size: 0.8em;
+    	font-size: 0.7em;
+	}
+	
+	#title {
+		font-size: 2em;
+	}
+	
+	.arrow {
+    	padding: 0 2px 0 4px;
+    	font-size: 0.5em;
+	}
+	
+	#method {
+		font-size:0.9em;
 	}
 }
 	

@@ -14,6 +14,8 @@
 <title>SHOE INFO.</title>
 <link href="./css/board/memberDraw.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
@@ -57,6 +59,11 @@
 			<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
 			<span> <%=sdto.getModel_name() %></span>
 		</div>
+		
+		<!-- 제목 -->
+		<div id="title">
+			<span> <%=sdto.getModel_name()%></span>
+		</div>
 	
 		<!-- content -->
 		<div id="content_sneakerDetail_D">
@@ -68,7 +75,7 @@
 						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 					</div>
 					<!-- 신발 이름 -->
-					<div class="sneaker_name">
+					<div class="sneaker_name" style="display:none;">
 						<span><%=sdto.getModel_name() %></span>
 					</div>
 				</div>
