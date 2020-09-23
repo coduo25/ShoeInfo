@@ -35,7 +35,7 @@ body {font-size:1em; line-weight:1.4}
 	
 	/* 디데이라벨 */
 	#dd-label-wrapper { position: absolute; top: 3%; right: 5%; width: 30%; text-align: right; margin-top: 1%; }
-	#dd-label { font-size: 12px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 3% 7%; border-radius: 3px; }
+	#dd-label { font-size: 15px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 3% 7%; border-radius: 3px; }
 	
 	/* 이름 */
 	.content_name { margin-top: 1%; }
@@ -113,7 +113,7 @@ body {font-size:1em; line-weight:1.4}
 		width: 31.3%;
 	}
 	#dd-label {
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 }
 
@@ -142,7 +142,7 @@ body {font-size:1em; line-weight:1.4}
 		font-size: 1em;
 	}
 	#dd-label {
-		font-size: 0.7em;
+		font-size: 0.8em;
 		padding: 2% 7%;
 	}
 	#dd-label-wrapper {
@@ -155,7 +155,7 @@ body {font-size:1em; line-weight:1.4}
 		padding-top: 60%;
 	}
 	#recent-dot {
-    	left: 67%;
+    	left: 68%;
 	}
 }
 
