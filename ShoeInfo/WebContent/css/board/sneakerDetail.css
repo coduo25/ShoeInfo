@@ -16,9 +16,12 @@ body {font-size:1em; line-weight:1.4}
 	#content_sneakerDetail div#cate_Detail span { color: #232323; }
 	.arrow { padding: 0 6px 0 8px; font-size: 0.9em; }
 
+	/* 제목 */
+	#title { width: 100%; padding: 1% 0.5% 0 0.5%; font-size: 50px; font-weight: bold; font-family: 'Roboto', sans-serif; color: #333; }
+
 	/* 신발 기본정보 */
 	.sneaker_image_wrapper { width: 100%; display: block; }
-	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 1.5% 4%;}
+	.detail_wrapper { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 1.5% 2%;}
 		/* 이미지 & 이름*/
 		.sneaker_image { text-align: center; }
 		.sneaker_image>img, .sneaker_image_draw>img { width: 500px; height: 340px; }
@@ -143,7 +146,7 @@ body {font-size:1em; line-weight:1.4}
 	.grid-content span { font-size: 0.95em; }
 	#brandlogo_img { vertical-align: middle; border-bottom: 1px solid #e2e2e2; border-radius: 0.3rem;}
 	#country_flag_img { border: 0.5px solid #D9D9D9; margin-top:2.5px; }
-	#country_flag_img-list { border: 0.5px solid #D9D9D9; margin-left: 4px; margin-bottom: -1.3px; }
+	#country_flag_img-list { border: 0.5px solid #D9D9D9; margin-left: 4px; }
 	
 	#wrapper-name { margin-bottom: 0.5%; font-size: 1.4em; font-weight: bold; position: relative;}
 	.country_name_label { display:none; width: 100px; background-color: white; border: 1px solid gainsboro; text-align: center; border-radius: 5px; padding: 2%; font-weight: normal; font-size: 0.8em !important; position:absolute; top: 88%; right: 0; z-index: 100;}
@@ -258,8 +261,8 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 90%;
 	}
 	.sneaker_image img, .sneaker_image_draw img{
-		width: 50%;
-		height: 50%;
+		width: 70%;
+		height: 70%;
 	}
 	.sneaker_cate label, .sneaker_cate span {
 		font-size: 0.9em;
@@ -311,6 +314,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.detail_wrapper {
 		padding: 1.5% 1%;
+	}
+	
+	#title {
+		padding: 2% 0 0 0;
 	}
 }
 
@@ -435,6 +442,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#wrapper-period span {
 		font-size: 0.9em;
+	}
+	#title {
+		font-size: 1.5em;
 	}
 	
 	#country_flag_img {
@@ -576,6 +586,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#country_flag_img-list {
 		width: 15px;
     	height: 10px;
+    	margin-bottom: -1.3px;
 	}
 	#brandlogo_img_list {
 		width: 60px;

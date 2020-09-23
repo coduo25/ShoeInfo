@@ -19,6 +19,7 @@
 <title>SHOE INFO.</title>
 <link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -92,17 +93,25 @@
 
 		<!-- content -->
 		<div id="content_sneakerDetail">
+		
 			<!-- 카테고리 -->
 			<div id="cate_Detail">
 				<a href="./SneakerList.go"> <span> HOME </span> </a>
 				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
 				<span> <%=sdto.getModel_name() %></span>
 			</div>
+			
 			<%	//관리자 권한일때 제품 기본정보 수정하는 페이지로 가는 버튼
 				if(usr_position.equals("admin")){
 			%>
-				<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"><input type="button" value="기본정보 수정하기" style="float: right;"></a>
+				<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"><input type="button" value="기본정보 수정하기" style="position:absolute; right: 0; "></a>
 			<%}%>
+			
+			<!-- 제목 -->
+			<div id="title">
+				<span> <%=sdto.getModel_name()%></span>
+			</div>
+			
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail">
 				<div class="sneaker_image_wrapper"> 
@@ -110,7 +119,7 @@
 						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 					</div>
 					<!-- 신발 이름 -->
-					<div class="sneaker_name">
+					<div class="sneaker_name" style="display:none;">
 						<span><%=sdto.getModel_name() %></span>
 					</div>
 				</div>

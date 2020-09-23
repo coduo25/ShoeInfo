@@ -73,7 +73,7 @@
 							<td> <%=mddto.getUserDraw_num()%> </td>
 							<td> 
 								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="70"> <br>
+		  							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="70"> <br>
 								</a>
 							</td>
 							<td> <%=mddto.getMember_email()%> </td>
