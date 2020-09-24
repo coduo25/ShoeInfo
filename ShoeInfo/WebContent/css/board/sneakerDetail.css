@@ -380,9 +380,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-wrapper {
     	height: 500px;
 	}
-	.grid-item-list {
-    	padding: 1.5%;
-	}
+/* 	.grid-item-list { */
+/*     	padding: 1.5%; */
+/* 	} */
 	
 }
 
@@ -410,7 +410,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.detail_wrapper {
 		font-size: 0.9em;
-		padding: 2.5%;
+		padding: 2.5% 0;
 	}
 	.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper {
 		width: 100%;
@@ -572,7 +572,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-wrapper-list {
 		font-size: 0.7em;
 		width: 98%;
-		margin: 2.5% 0.5%;
+		margin: 2.5% 0;
 	}
 	.grid-ing-list {
 		right: -1%;

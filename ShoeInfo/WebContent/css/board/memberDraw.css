@@ -472,5 +472,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#method {
 		font-size:0.9em;
 	}
+	
+	.detail_wrapper_D {
+		padding: 3% 0;
+	}
 }
 	

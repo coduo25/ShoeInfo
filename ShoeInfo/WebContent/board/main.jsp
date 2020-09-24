@@ -69,7 +69,7 @@
 	<div id="wrapper" class="container">
 		
 		<div id="showAllChk">
-			<span id="before">발매전</span>
+			<span id="before">발매예정</span>
 			<span id="after">발매완료</span>
 		</div>
 	
@@ -346,15 +346,15 @@
 		//발매전을 눌렸을시
 		$('#before').click(function(){
 			$('[id=content_after]').hide();
-			$('#before').css({"background-color" : "#08a05c", "color" : "white", "font-weight" : "bold"});
-			$('#after').css({"background-color" : "white", "color" : "#868686", "font-weight" : "normal"});
+			$('#before').css({"background-color" : "#bfbfbf"});
+			$('#after').css({"background-color" : "#f2f2f2"});
 		});
 		
 		//발매완료를 눌렸을시
 		$('#after').click(function(){
 			$('[id=content_after]').show();
-			$('#before').css({"background-color" : "white", "color" : "#868686", "font-weight" : "normal"});
-			$('#after').css({"background-color" : "#868686", "color" : "white", "font-weight" : "bold"});
+			$('#before').css({"background-color" : "#f2f2f2"});
+			$('#after').css({"background-color" : "#bfbfbf"});
 		});
 
 		var today = new Date();
