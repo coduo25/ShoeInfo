@@ -353,7 +353,7 @@
 		//발매완료를 눌렸을시
 		$('#after').click(function(){
 			$('[id=content_after]').show();
-			$('#before').css({"background-color" : "white", "color" : "#08a05c", "font-weight" : "normal"});
+			$('#before').css({"background-color" : "white", "color" : "#868686", "font-weight" : "normal"});
 			$('#after').css({"background-color" : "#868686", "color" : "white", "font-weight" : "bold"});
 		});
 
