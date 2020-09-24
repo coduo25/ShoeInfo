@@ -59,7 +59,6 @@
 							<th style="width:15%;"> 멤버 </th>
 							<th style="width:8%;"> 브랜드이미지 </th>
 							<th style="width:15%;"> 브랜드 </th>
-							<th style="width:10%;"> 드로우횟수 </th>
 						</tr>
 					</thead>
 					<%
@@ -73,15 +72,14 @@
 							<td> <%=mddto.getUserDraw_num()%> </td>
 							<td> 
 								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-		  							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="70"> <br>
+		  							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="50"> <br>
 								</a>
 							</td>
 							<td> <%=mddto.getMember_email()%> </td>
 							<td> 
-								<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>" width="50">
+								<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>" width="30">
 							</td>
 							<td> <%=bdto.getBrand_name()%> </td>
-							<td> <%=mddto.getDraw_count()%> </td>
 						</tr>
 					</tbody>
 					<%}%>

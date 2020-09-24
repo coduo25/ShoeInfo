@@ -57,11 +57,11 @@
 						<tr>
 							<th style="width:5%;"> 번호 </th>
 							<th style="width:5%;"> 신발 </th>
-							<th style="width:15%;"> 등록자 </th>
-							<th style="width:8%;"> 브랜드이미지 </th>
+							<th style="width:10%;"> 등록자 </th>
+							<th style="width:5%;"> 브랜드이미지 </th>
 							<th style="width:10%;"> 브랜드 </th>
 							<th style="width:10%;"> 등록날짜 </th>
-							<th style="width:10%;"> 수정/삭제 </th>
+							<th style="width:5%;"> 수정/삭제 </th>
 						</tr>
 					</thead>
 					<%
@@ -75,12 +75,12 @@
 							<td> <%=odto.getOnline_num()%> </td>
 							<td> 
 								<a href="./SneakerDetail.go?model_stylecode=<%=odto.getModel_stylecode()%>&num=<%=odto.getModel_num()%>">
-		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="70"> <br>
+		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="50"> <br>
 								</a>
 							</td>
 							<td> <%=odto.getOnline_writer()%> </td>
 							<td> 
-								<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>" width="50">
+								<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>" width="30">
 							</td>
 							<td> <%=bdto.getBrand_name()%> </td>
 							<td> <%=odto.getReg_date()%> </td>

@@ -52,10 +52,10 @@
 					<thead>
 						<tr>
 							<th style="width:5%;"> 번호 </th>
-							<th style="width:21%;"> 이메일 </th>
-							<th style="width:13%;"> 이름 </th>
+							<th style="width:20%;"> 이메일 </th>
+							<th style="width:5%;"> 이름 </th>
 							<th style="width:10%;"> 휴대폰번호 </th>
-							<th style="width:7%;"> 드로우횟수 </th>
+							<th style="width:5%;"> 드로우횟수 </th>
 							<th style="width:13%;"> 가입날짜 </th>
 							<th style="width:7%;"> 포지션 </th>
 							<th style="width:10%;"> 수정/삭제 </th>
