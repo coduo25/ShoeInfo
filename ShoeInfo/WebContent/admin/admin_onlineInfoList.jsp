@@ -72,7 +72,7 @@
 					%>
 					<tbody>
 						<tr>
-							<td> <%=odto.getOnline_num()%> </td>
+							<td> <%=odto.getOnline_num()%> </td> 
 							<td> 
 								<a href="./SneakerDetail.go?model_stylecode=<%=odto.getModel_stylecode()%>&num=<%=odto.getModel_num()%>">
 		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" width="50"> <br>
