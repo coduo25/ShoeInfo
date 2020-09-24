@@ -67,6 +67,11 @@
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
+		
+		<div id="showAllChk">
+			<span id="before">발매전</span>
+			<span id="after">발매완료</span>
+		</div>
 	
 		<div id="content_sneakerList">
 			<%
@@ -182,7 +187,7 @@
 							}
 							
 					%>
-						<div class="shoelist_content">
+						<div class="shoelist_content" <%if(compare_w_rel > 0 && openChk == -1){%> id="content_after" style="display:none;"<%}%> id="content_before">
 							<%if(compare_w_rel > 0 && openChk == -1) {%>
 								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
 									<div class="opac_background">
@@ -337,6 +342,20 @@
 				
 			}
 		}
+		
+		//발매전을 눌렸을시
+		$('#before').click(function(){
+			$('[id=content_after]').hide();
+			$('#before').css({"background-color" : "#08a05c", "color" : "white", "font-weight" : "bold"});
+			$('#after').css({"background-color" : "white", "color" : "#868686", "font-weight" : "normal"});
+		});
+		
+		//발매완료를 눌렸을시
+		$('#after').click(function(){
+			$('[id=content_after]').show();
+			$('#before').css({"background-color" : "white", "color" : "#08a05c", "font-weight" : "normal"});
+			$('#after').css({"background-color" : "#868686", "color" : "white", "font-weight" : "bold"});
+		});
 
 		var today = new Date();
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다

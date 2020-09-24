@@ -10,8 +10,14 @@ body {font-size:1em; line-weight:1.4}
 #content_adminAddSneaker { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align: center;}
 #content_adminAddSneaker table{ margin-left:auto; margin-right:auto;}
 
+/* 발매완료 숨기기 버튼 */
+#showAllChk { width: 100%; text-align: left; padding: 25px 5px 0 5px; font-family: 'Nanum Gothic', sans-serif; }
+#showAllChk span { cursor: pointer; }
+#before { background-color: #08a05c; color: white; font-size: 1em; font-weight: bold; border: 1px solid #08a05c; border-radius: 3px; padding: 3px 10px; }
+#after { background-color: white; color: #868686; font-size: 1em; font-weight: normal; border: 1px solid #868686; border-radius: 3px; padding: 3px 10px; }
+
 /* 신발 리스트 페이지 ------------------------------------------------------------------------------------------------------------ */
-#content_sneakerList { margin-top: 20px; width: 100%; height: 800px; z-index: 2; padding-bottom: 2.5rem; }
+#content_sneakerList { margin-top: 0; width: 100%; height: 800px; z-index: 2; padding-bottom: 2.5rem; }
 .month { width: 100%;  text-align: right; border-bottom: 1px solid #e6e6e6; font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: bold; padding:5px;}
 .month span { font-size: 20px; margin: 0 5px;}
 .div_month { position: relative; width: 100%; float: left; margin-bottom: 20px; }
@@ -42,7 +48,7 @@ body {font-size:1em; line-weight:1.4}
 	.content_name .model_name { font-size: 12px; height: 27px; padding: 0 1%; }
 	
 	/* 최신 dot */
-	#recent-dot { position: absolute; top: 13%; left: 63%; color: #00c300; font-size: 0.75em; }
+	#recent-dot { position: absolute; top: 13%; left: 64.5%; color: #00c300; font-size: 0.75em; }
 /* 	#recent-dot i{  background-color: white; border-radisus: 50%; } */
 	
 	/* 링크 */
@@ -55,7 +61,7 @@ body {font-size:1em; line-weight:1.4}
 	    font-weight: bold;
 	    margin: 8% 0 0 0;
 	    transition: all 0.3s;
-	    font-size: 0.8em;
+	    font-size: 0.9em;
 	    width: 100%;
 	    color: #2d2d2d;
 	    border-top: 1px solid #dedede;
@@ -100,7 +106,7 @@ body {font-size:1em; line-weight:1.4}
 		width: 23%;
 	}
 	#recent-dot {
-		left: 63%;
+		left: 65%;
 	}
 }
 
@@ -114,6 +120,9 @@ body {font-size:1em; line-weight:1.4}
 	}
 	#dd-label {
 		font-size: 0.9em;
+	}
+	#showAllChk {
+		text-align: center;
 	}
 }
 
@@ -156,6 +165,9 @@ body {font-size:1em; line-weight:1.4}
 	}
 	#recent-dot {
     	left: 68%;
+	}
+	#showAllChk {
+		padding: 17px 0 10px 0;
 	}
 }
 
