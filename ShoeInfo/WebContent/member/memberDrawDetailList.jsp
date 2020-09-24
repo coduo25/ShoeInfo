@@ -59,14 +59,14 @@
 			<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
 			<span> <%=sdto.getModel_name() %></span>
 		</div>
-		
-		<!-- 제목 -->
-		<div id="title">
-			<span> <%=sdto.getModel_name()%></span>
-		</div>
-	
+
 		<!-- content -->
 		<div id="content_sneakerDetail_D">
+		
+			<!-- 제목 -->
+			<div id="title">
+				<span> <%=sdto.getModel_name()%></span>
+			</div>
 
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail_D">

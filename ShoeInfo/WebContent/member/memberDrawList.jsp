@@ -76,7 +76,7 @@
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 	
-		<div id="content_sneakerList">
+		<div id="content_sneakerList" style="margin-top: 20px;">
 			<%
 				Calendar cal = Calendar.getInstance();
 				int month = cal.get(Calendar.MONTH);
