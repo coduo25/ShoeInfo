@@ -159,18 +159,24 @@ body {font-size:1em; line-weight:1.4}
 	.span-flag-list { display:inline-block; }
 	#wrapper-period { margin-bottom: 10%; color: #dc5757; font-weight: bold; }
 	#wrapper-period-list { margin-bottom: 2.5%; color: black; font-size: 0.9em; }
+	#wrapper-desc { position:relative; }
 	#slide { margin: 0 1.5%; font-size: 0.9em; color: #b1b1b1; }
 	
 	
 	/* 남은 시간 파트 */
 	.grid-time { height:55px; display: block; margin: 3% 0; }
+	#remain-time-list { text-align: center; right:0; position:absolute; display:inline-block; width: 30%; text-align: right; top: -15%; }
 	#remain-time { text-align: center; }
 	.time-label-wrapper { display: block; font-size: 0.6em; }
+	.draw_count_result_wrapper_list { display: inline-block; font-size: 1em; font-family: 'Oswald', sans-serif; }
 	.draw_count_result_wrapper { display: block; font-size: 0.85em; }
+	.draw_count_result_list { display: inline-grid; font-size: 1em; font-weight: normal; }
 	.draw_count_result { display: inline-grid; font-size: 1.6em; font-weight: bold; }
 	#draw_count_result_yet { font-size: 1em; font-weight: normal; padding-top: 8%;}
 	#time-label{ display: block; font-size: 0.6em; font-weight: normal; padding-top: 20%; }
+	#time-colon-list { font-size: 1em; padding:0; }
 	#time-colon { font-size: 0.8em; padding: 0;}
+	
 
 	/* toggle 바 */
 	.grid-toggle-Down { display: inline-block; font-size: 0.7em; text-align: center; width: 100%; padding: 3% 1%; }
@@ -375,7 +381,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 97%;
 	}
 	#wrapper-name {
-		margin-bottom: 2%;
+		margin-bottom: 1.5%;
 	}
 	.grid-wrapper {
     	height: 500px;
@@ -383,7 +389,21 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 /* 	.grid-item-list { */
 /*     	padding: 1.5%; */
 /* 	} */
+
+	.grid-item-list {
+    	padding: 1.5%;
+	}
+	.grid-content-list {
+		padding: 0% 1.5% 0% 3%;
+	}
 	
+	#wrapper-period-list {
+    	margin-bottom: 2%;
+	}
+	
+	#country_flag_img-list {
+		vertical-align: middle;
+	}
 }
 
 /* 0 ~ 468px */
@@ -571,7 +591,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}	
 	.grid-wrapper-list {
 		font-size: 0.7em;
-		width: 98%;
+		width: 100%;
 		margin: 2.5% 0;
 	}
 	.grid-ing-list {
@@ -617,5 +637,18 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	padding: 1px 0;
 	}
 	
+	.grid-item-list {
+    	padding: 2%;
+	}
+	#wrapper-name {
+    	margin: 1% 0 2% 0;
+	}
+	#wrapper-period-list {
+		font-size: 0.95em;
+    	margin-bottom: 2.5%;
+	}
+	#remain-time-list {
+		top: -3%;
+	}
 }
 	

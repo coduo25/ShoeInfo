@@ -19,7 +19,7 @@
 <title>SHOE INFO.</title>
 <link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -412,7 +412,7 @@
 										
 										<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 										<%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user.equals("")){%>
-											<span class="draw_chkBtn" id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox" style="width:15px; height:15px; vertical-align: middle; margin-bottom: 0.5px;"> </span>
+											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox" style="width:15px; height:15px; vertical-align: middle; margin-bottom: 0.5px;"> </span>
 										<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 										<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
 											<span class="draw_chkBtn" id="draw-status_<%=country_name_eng%><%=i%>">
@@ -423,18 +423,209 @@
 											</span>
 										<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
 										<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && userDrawBrandList.contains(odto.getBrand_id())){%>
-											<span class="draw_chkBtn" id="draw-status_<%=country_name_eng%><%=i%>"> 
+											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> 
 												<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 												<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 												<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
 												<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:15px; height:15px; vertical-align: middle; margin-bottom: 0.5px;" checked>
 											</span>
 										<%}else {%>
-											<span class="draw_chkBtn" id="draw-status_<%=country_name_eng%><%=i%>"> - </span>
+											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> - </span>
 										<%}%>
 										
-										<span id="count_Online_start_time_<%=country_name_eng%><%=i%>" style="display:none;"> <%=count_Online_start_time%> </span>
-										<span id="count_Online_end_time_<%=country_name_eng%><%=i%>" style="display:none;"> <%=count_Online_end_time%> </span>
+										<!-- 남은시간 -->
+										<span id="count_Online_start_time_list_<%=country_name_eng%><%=i%>" style="display:none;"> <%=count_Online_start_time%> </span>
+										<span id="count_Online_end_time_list_<%=country_name_eng%><%=i%>" style="display:none;"> <%=count_Online_end_time%> </span>
+											<div id="remain-time-list">	
+												<%if(odto.getOnline_method().contains("선착")){%>
+												<span id="remain_time_status_<%=country_name_eng%><%=i%>"> 
+													<!-- 시작 시간이 존재할때  -->
+													<%if(compare_w_start_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()) {%>
+														
+														<div class="draw_count_result_wrapper_list">
+															<!-- 일 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days"></span>
+															</div>
+															<!-- 시 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours"></span>
+															</div>
+															<!-- 분 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes"></span>
+															</div>	
+															<!-- 초 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds"></span>
+															</div>
+														</div>		
+													
+													<%}else if(compare_w_start_result == 1 && !odto.getOnline_start_date().isEmpty()) {%>
+														<!-- 시작시간이 오늘보다 지났을때 -->
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> 종료 </span>
+														
+													<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()) {%>
+														<!-- 시작 시간이 미정일때 -->
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> 미정 </span>
+													<%}else {%>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> - </span>
+													<%} %>
+												</span>
+												<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
+												<span id="remain_time_status_<%=country_name_eng%><%=i%>">
+													<!-- 시작 시간과 끝나는 시간이 아직 미정일때 -->
+													<%if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty()) {%>
+														<span class="draw_count_result_list" id="draw_count_result_yet"> - </span>
+													<!-- 시작 시간 또는 끝나는 시간안에 날짜는 있지만 시간이 없을때 -->
+													<%}else if(odto.getOnline_start_time().isEmpty() && odto.getOnline_end_time().isEmpty()) {%>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> 미정 </span>
+														
+													<!-- 오늘이 시작시간 전이고 시작시간과 끝나는 시간이 모두 존재할때-->
+													<%}else if(compare_w_start_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>			
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+		
+														<div class="draw_count_result_wrapper_list">
+															<!-- 일 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>days"></span>
+															</div>
+															<!-- 시 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>hours"></span>
+															</div>
+															<!-- 분 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>minutes"></span>
+															</div>	
+															<!-- 초 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>seconds"></span>
+															</div>
+														</div>
+													<!-- 시작시간과 끝나는 시간이 모두 존재하고 지금시간이 응모시간 사이일때 -->
+													<%}else if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<div class="draw_count_result_wrapper_list">
+															<!-- 일 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>days"></span>
+															</div>
+															<!-- 시 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>hours"></span>
+															</div>
+															<!-- 분 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>minutes"></span>
+															</div>
+															<!-- 초 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>seconds"></span>
+															</div>
+														</div>	
+														
+													<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
+													<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && compare_w_end_result == -1){%>
+														<div class="draw_count_result_wrapper_list">
+															<!-- 일 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>days"></span>
+															</div>
+															<!-- 시 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>hours"></span>
+															</div>
+															<!-- 분 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>minutes"></span>
+															</div>
+															<!-- 초 -->
+															<div class="draw_count_result_list">
+																<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>seconds"></span>
+															</div>
+														</div>
+													<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
+													<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == 1){%>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> 미정 </span>
+														
+													<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 전일때 -->
+													<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == -1) {%>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> 미정 </span>
+														
+													<!-- 시작시간과 끝나는 시간이 모두 존재하고 오늘이 끝나는 시간을 지났을때 -->
+													<%}else if(compare_w_end_result == 1 && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> 응모종료 </span>
+														
+													<%}else{%>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_start_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>days" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>hours" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>minutes" style="display:none;"></span>
+														<span id="final_count_Online_end_time_list_<%=country_name_eng%><%=i%>seconds" style="display:none;"></span>
+														
+														<span class="draw_count_result_list" id="draw_count_result_yet"> - </span>
+														
+													<%}%>
+												</span>
+												<%}%>
+											</div>
 										
 									</div>
 								</div>
@@ -1051,11 +1242,18 @@
 			var minutes = Math.floor((distDt % _hour) / _minute); 
 			var seconds = Math.floor((distDt % _minute) / _second); 
 			
-			if(days <= 9) { days = '0' + days; }
-			if(hours <= 9) { hours = '0' + hours; }
-			if(minutes <= 9) { minutes = '0' + minutes; }
-			if(seconds <= 9) { seconds = '0' + seconds; }
-			
+			if(!id.includes('list')){
+				if(days <= 9) { days = '0' + days; }
+				if(hours <= 9) { hours = '0' + hours; }
+				if(minutes <= 9) { minutes = '0' + minutes; }
+				if(seconds <= 9) { seconds = '0' + seconds; }
+			}else {
+				days = days + 'd';
+				hours = hours + 'h';
+				minutes = minutes + 'm';
+				seconds = seconds + 's';
+			}
+
 			if(days || hours || minutes || seconds){
 				document.getElementById(id + 'days').textContent = days; 
 				document.getElementById(id + 'hours').textContent = hours; 
@@ -1278,7 +1476,16 @@
 			onLineList_kr.push("${onLineList_kr}");
 		</c:forEach>
 		//onLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
-		for(var i=0; i<onLineList_kr.length; i++) {		
+		for(var i=0; i<onLineList_kr.length; i++) {
+			
+			//list
+			var count_span_start_list = document.getElementById("count_Online_start_time_list_kr"+i).innerText;
+			var count_span_list = document.getElementById("count_Online_end_time_list_kr"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_list_kr'+i, count_span_start_list, 'draw-status_list_kr'+i);
+			countDownTimer('final_count_Online_end_time_list_kr'+i, count_span_list, 'draw-status_list_kr'+i);
+	
+			//grid
 			var count_span_start = document.getElementById("count_Online_start_time_kr"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_kr"+i).innerText;
 			
@@ -1325,7 +1532,16 @@
 			onLineList_asia.push("${onLineList_asia}");
 		</c:forEach>
 		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
-		for(var i=0; i<onLineList_asia.length; i++) {		
+		for(var i=0; i<onLineList_asia.length; i++) {	
+			
+			//list
+			var count_span_start_list = document.getElementById("count_Online_start_time_list_asia"+i).innerText;
+			var count_span_list = document.getElementById("count_Online_end_time_list_asia"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_list_asia'+i, count_span_start_list, 'draw-status_list_asia'+i);
+			countDownTimer('final_count_Online_end_time_list_asia'+i, count_span_list, 'draw-status_list_asia'+i);
+	
+			//grid
 			var count_span_start = document.getElementById("count_Online_start_time_asia"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_asia"+i).innerText;
 			
@@ -1373,6 +1589,15 @@
 		</c:forEach>
 		//onLineList_america 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_america.length; i++) {
+			
+			//list
+			var count_span_start_list = document.getElementById("count_Online_start_time_list_america"+i).innerText;
+			var count_span_list = document.getElementById("count_Online_end_time_list_america"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_list_america'+i, count_span_start_list, 'draw-status_list_america'+i);
+			countDownTimer('final_count_Online_end_time_list_america'+i, count_span_list, 'draw-status_list_america'+i);
+	
+			//grid
 			var count_span_start = document.getElementById("count_Online_start_time_america"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_america"+i).innerText;
 			
@@ -1420,6 +1645,15 @@
 		</c:forEach>
 		//onLineList_europe 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_europe.length; i++) {		
+			
+			//list
+			var count_span_start_list = document.getElementById("count_Online_start_time_list_europe"+i).innerText;
+			var count_span_list = document.getElementById("count_Online_end_time_list_europe"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_list_europe'+i, count_span_start_list, 'draw-status_list_europe'+i);
+			countDownTimer('final_count_Online_end_time_list_europe'+i, count_span_list, 'draw-status_list_europe'+i);
+			
+			//grid
 			var count_span_start = document.getElementById("count_Online_start_time_europe"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_europe"+i).innerText;
 			
@@ -1468,6 +1702,15 @@
 		</c:forEach>
 		//onLineList_etc 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_etc.length; i++) {		
+			
+			//list
+			var count_span_start_list = document.getElementById("count_Online_start_time_list_etc"+i).innerText;
+			var count_span_list = document.getElementById("count_Online_end_time_list_etc"+i).innerText;
+			
+			countDownTimer('final_count_Online_start_time_list_etc'+i, count_span_start_list, 'draw-status_list_etc'+i);
+			countDownTimer('final_count_Online_end_time_list_etc'+i, count_span_list, 'draw-status_list_etc'+i);
+	
+			//grid
 			var count_span_start = document.getElementById("count_Online_start_time_etc"+i).innerText;
 			var count_span = document.getElementById("count_Online_end_time_etc"+i).innerText;
 			

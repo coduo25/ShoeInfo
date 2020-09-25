@@ -125,7 +125,7 @@
 			<div id="content_userDrawInfo">
 				<!-- 국내 응모 한 테이블 -->
 				<div id="dome-draw-wrapper">
-					<span> <h4> 국내 응모 한 곳 </h4></span>
+					<span> <h4> 국내 응모 한 곳 <i class="fas fa-caret-down"></i> </h4> </span>
 					<%
 						if(drawInfoList_kr.isEmpty()){
 					%>
@@ -170,7 +170,7 @@
 			
 				<!-- 해외 응모 한 테이블 -->
 				<div id="inter-draw-wrapper">
-					<span> <h4> 해외 응모 한 곳 </h4></span>
+					<span> <h4> 해외 응모 한 곳 <i class="fas fa-caret-down"></i> </h4></span>
 					<%
 						if(drawInfoList_etc.isEmpty()){
 					%>

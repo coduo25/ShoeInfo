@@ -16,6 +16,10 @@
 <meta name="google-site-verification" content="uyV__fKW-YmjcHKhP2X068ZRP_lGPkqQrOP_hHaopq0" />
 <meta name="description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트, 국내 발매 정보 응모하기, 해외 발매 정보 응모하기, 나의 응모 현황 정리" />
 
+<meta property="og:type" content="website">
+<meta property="og:description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트, 국내 발매 정보 응모하기, 해외 발매 정보 응모하기, 나의 응모 현황 정리">
+<meta property="og:url" content="http://www.shoeinfo.co.kr">
+
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
