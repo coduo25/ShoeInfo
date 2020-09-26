@@ -162,7 +162,7 @@ body {font-size:1em; line-weight:1.4}
 	#wrapper-desc { position:relative; }
 	#slide { margin: 0 1.5%; font-size: 0.9em; color: #b1b1b1; }
 	
-	.draw_checkbox { width:15px; height:15px; vertical-align: middle; margin-bottom: 0.5px; }
+	.draw_checkbox { width:16px; height:16px; vertical-align: middle; margin-bottom: 0.5px; }
 	
 	/* 남은 시간 파트 */
 	.grid-time { height:55px; display: block; margin: 3% 0; }
