@@ -411,14 +411,14 @@
 										
 										<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 										<%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user.equals("")){%>
-											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox" style="width:15px; height:15px; vertical-align: middle; margin-bottom: 0.5px;"> </span>
+											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox"> </span>
 										<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 										<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
 											<span class="draw_chkBtn" id="draw-status_<%=country_name_eng%><%=i%>">
 												<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 												<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 												<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
-												<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:15px; height:15px; vertical-align: middle; margin-bottom: 0.5px;">
+												<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>">
 											</span>
 										<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
 										<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && userDrawBrandList.contains(odto.getBrand_id())){%>
@@ -426,7 +426,7 @@
 												<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 												<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 												<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
-												<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:15px; height:15px; vertical-align: middle; margin-bottom: 0.5px;" checked>
+												<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" checked>
 											</span>
 										<%}else {%>
 											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> - </span>
@@ -884,14 +884,14 @@
 										<div>
 											<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 											<%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user.equals("")){%>
-												<span id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox" style="width:16px; height:16px; vertical-align: middle;"> </span>
+												<span id="draw-status_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox"> </span>
 											<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 											<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
 												<span id="draw-status_<%=country_name_eng%><%=i%>">
 													<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 													<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 													<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
-													<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;">
+													<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>">
 												</span>
 											<!-- 온라인 방식이 '드로우'이고  응모완료 했으면 -->
 											<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && userDrawBrandList.contains(odto.getBrand_id())){%>
@@ -899,7 +899,7 @@
 													<input type="hidden" id="<%=country_name_eng%>_model_stylecode<%=i%>" value="<%=odto.getModel_stylecode()%>">
 													<input type="hidden" id="<%=country_name_eng%>_brand_id<%=i%>" value="<%=odto.getBrand_id()%>">
 													<input type="hidden" id="<%=country_name_eng%>_country_name<%=i%>" value="<%=odto.getCountry_name()%>">
-													<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" style="width:16px; height:16px; vertical-align: middle;" checked>
+													<input type="checkbox" class="draw_checkbox" id="drawCheckbox_<%=country_name_eng%><%=i%>" checked>
 												</span>
 											<%}else {%>
 												<span id="draw-status_<%=country_name_eng%><%=i%>"> - </span>

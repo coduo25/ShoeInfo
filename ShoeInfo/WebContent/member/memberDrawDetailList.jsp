@@ -154,8 +154,8 @@
 									
 									<!-- 구매방식 -->
 									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>>
-											<span id="method"><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
+										<span id="wrapper-content_D">
+											<span id="method" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
 										</span>
 									</div>
 									
@@ -199,8 +199,8 @@
 									
 									<!-- 구매방식 -->
 									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>>
-											<span id="method"><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
+										<span id="wrapper-content_D">
+											<span id="method" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
 										</span>
 									</div>
 									
