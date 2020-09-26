@@ -210,7 +210,6 @@
 						//etc
 						if(z==4) { new_onlineList = onlineList_etc; new_brandList = brandList_etc; country_name_eng = "etc"; country_name_kr = "기타"; }
 			%>
-			
 				<!-- 국가 발매처 -->
 				<div id="grid-list-list">
 					<h4> <%=country_name_kr%> 발매 리스트 <i class="fas fa-caret-down"></i> </h4>
@@ -374,7 +373,7 @@
 													<span class="end_time"> ~ <%=newlist_Online_end_time%> </span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()){%>
-													<span class="start_time" id="start_time2"> <%=newlist_Online_start_time%> ~ 추후공지 </span>
+													<span class="start_time" id="start_time2"> <%=newlist_Online_start_time%> </span> ~ 추후공지
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()){%>
 													<span class="start_time" id="start_time2"> <%=newlist_Online_start_time%> 시간미정 </span>
@@ -841,7 +840,7 @@
 													<span class="end_time"> ~ <%=new_Online_end_time%> </span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()){%>
-													<span class="start_time" id="start_time2"> <%=new_Online_start_time%> ~ 추후공지 </span>
+													<span class="start_time" id="start_time2"> <%=new_Online_start_time%> </span> ~ 추후공지
 												<!-- 시작시간의 날짜만 있고 시간이 없을경우 -->
 												<%}else if(!odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()){%>
 													<span class="start_time" id="start_time2"> <%=new_date_start_time%> 시간미정 </span>
