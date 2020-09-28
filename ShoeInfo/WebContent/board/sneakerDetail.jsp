@@ -114,6 +114,7 @@
 			
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail">
+				
 				<div class="sneaker_image_wrapper"> 
 					<div class="sneaker_image"> 
 						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
@@ -123,7 +124,16 @@
 						<span><%=sdto.getModel_name() %></span>
 					</div>
 				</div>
-					
+				
+				<div class="draw_status">
+					<div onclick="fnMove('0')">
+						<span id="dome_label">국내 발매처 <span id="countDome"></span> </span>
+					</div>
+					<div onclick="fnMove('1')">
+						<span id="inter_label">해외 발매처 <span id="countInte"></span></span>
+					</div>
+				</div>
+				
 				<div class="detail_wrapper">
 					<!-- 세부사항 -->					
 					<div class="desc_wrapper">
@@ -212,7 +222,7 @@
 			%>
 				<!-- 국가 발매처 -->
 				<div id="grid-list-list">
-					<h4> <%=country_name_kr%> 발매 리스트 <i class="fas fa-caret-down"></i> </h4>
+					<h4 id="h4title<%=z%>"> <%=country_name_kr%> 발매 리스트 <i class="fas fa-caret-down"></i> </h4>
 					
 					<%
 						if(new_onlineList.isEmpty()){
@@ -1262,8 +1272,17 @@
 		} 
 		timer = setInterval(showRemaining, 1000); 
 	}
+	
+	function fnMove(seq){
+		var offset = $("#h4title" + seq).offset();
+        $('html, body').animate({scrollTop : offset.top-100}, 400);
+	}
 
 	$(document).ready(function(){
+		
+		//국내진행중 해외진행중
+		var countDome = 0;
+		var countInte = 0;
 		
 		$('#reload').click(function(){
 			location.reload();
@@ -1477,6 +1496,8 @@
 		//onLineList_kr 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_kr.length; i++) {
 			
+			countDome = countDome + 1;
+			
 			//list
 			var count_span_start_list = document.getElementById("count_Online_start_time_list_kr"+i).innerText;
 			var count_span_list = document.getElementById("count_Online_end_time_list_kr"+i).innerText;
@@ -1531,7 +1552,9 @@
 			onLineList_asia.push("${onLineList_asia}");
 		</c:forEach>
 		//onLineList_asia 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
-		for(var i=0; i<onLineList_asia.length; i++) {	
+		for(var i=0; i<onLineList_asia.length; i++) {
+			
+			countInte = countInte + 1;
 			
 			//list
 			var count_span_start_list = document.getElementById("count_Online_start_time_list_asia"+i).innerText;
@@ -1589,6 +1612,8 @@
 		//onLineList_america 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_america.length; i++) {
 			
+			countInte = countInte + 1;
+			
 			//list
 			var count_span_start_list = document.getElementById("count_Online_start_time_list_america"+i).innerText;
 			var count_span_list = document.getElementById("count_Online_end_time_list_america"+i).innerText;
@@ -1644,6 +1669,8 @@
 		</c:forEach>
 		//onLineList_europe 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_europe.length; i++) {		
+			
+			countInte = countInte + 1;
 			
 			//list
 			var count_span_start_list = document.getElementById("count_Online_start_time_list_europe"+i).innerText;
@@ -1702,6 +1729,8 @@
 		//onLineList_etc 리스트를 자바로부터 받아와 리스트 길이만큼 남은시간 정보 뿌려주기
 		for(var i=0; i<onLineList_etc.length; i++) {		
 			
+			countInte = countInte + 1;
+			
 			//list
 			var count_span_start_list = document.getElementById("count_Online_start_time_list_etc"+i).innerText;
 			var count_span_list = document.getElementById("count_Online_end_time_list_etc"+i).innerText;
@@ -1749,6 +1778,17 @@
 				adminModiBtn.css({"pointer-events" : "auto"});
 			}
 		}
+		
+		//countDome
+		//countInte
+		if(countDome > 0){
+			$('#countDome').css('color', '#08a05c');
+		}
+		if(countInte > 0){
+			$('#countInte').css('color', '#08a05c');
+		}
+		$('#countDome').text(countDome);
+		$('#countInte').text(countInte);
 		
 		// 응모 여부 체크박스 클릭했을시 -----------------------------------------------
 		$(".draw_checkbox").on('click', function() {
@@ -1826,7 +1866,7 @@
 				}
 			}
 
-		});
+		});	
 		
 	});
 	

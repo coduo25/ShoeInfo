@@ -30,6 +30,14 @@ body {font-size:1em; line-weight:1.4}
 			.sneaker_name { line-height: 30px; text-transform: uppercase; font-size:20px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; color: #232323; }
 			.sneaker_name span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 90%; }
 			
+		/* 국내 발매처 & 해외 발매처 갯수 */
+		.draw_status { width: 100%; display: flex; text-align: center; justify-content: center; align-items: center; margin: 0 auto 2.5% auto; }	
+		.draw_status div { float: left; padding: 10px 0; width: 14%; border: 1px solid #c1c1c1; border-radius: 30px; margin: 0 15px; cursor: pointer; }
+		.draw_status div:hover { opacity: 0.5; }
+
+		.draw_status div span { font-size: 1.1em; color: #999; font-weight: bold; }
+		#countDome, #countInte { padding-left: 4px; }
+			
 		/* 내용 */
 		.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper { width: 50%; float: left; }
 		.cate_wrapper { width: 100%; float: left; }
@@ -37,7 +45,7 @@ body {font-size:1em; line-weight:1.4}
 		.sneaker_cate label { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 120px; }
 		.sneaker_cate span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 300px; }
 		
-		.rel_Btn { border: 1px solid #232323; padding: 4px; width: 70%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 15px 7px; font-family: 'Nanum Gothic', sans-serif; }
+		.rel_Btn { display: flex; border: 1px solid #232323; width: 70%; background-color: white; font-weight: bold; transition: all 0.3s; color: #232323; padding: 11px 0; font-family: 'Nanum Gothic', sans-serif; }
 		.rel_Btn:hover { cursor: pointer; background-color: #232323; color: white; }
 		#rel_Btn_label { width: 100%; } 
 		
@@ -267,6 +275,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.container {
 		width: 90%;
 	}
+	.draw_status {
+		font-size: 0.9em;
+	}
 	.sneaker_image img, .sneaker_image_draw img{
 		width: 70%;
 		height: 70%;
@@ -321,6 +332,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.detail_wrapper {
 		padding: 1.5% 1%;
+	}
+	
+	.draw_status div {
+		width: 20%;
 	}
 	
 	#title {
@@ -387,10 +402,6 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-wrapper {
     	height: 500px;
 	}
-/* 	.grid-item-list { */
-/*     	padding: 1.5%; */
-/* 	} */
-
 	.grid-item-list {
     	padding: 1.5%;
 	}
@@ -404,6 +415,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#country_flag_img-list {
 		vertical-align: middle;
+	}
+	.draw_status {
+		margin: 0 auto 5% auto;
+	}
+	.draw_status div {
+		width: 25%;
 	}
 }
 
@@ -465,7 +482,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 0.9em;
 	}
 	#title {
-		font-size: 2em;
+		font-size: 1.8em;
 	}
 	
 	#country_flag_img {
@@ -655,6 +672,14 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 13px;
 		height: 13px;
 		margin-bottom: 0;
+	}
+	.draw_status {
+		font-size: 0.6em;
+	}
+	.draw_status div {
+		width: 35%;
+		margin: 0 8px;
+		padding: 7px 0;
 	}
 }
 	
