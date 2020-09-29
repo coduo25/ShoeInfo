@@ -25,23 +25,23 @@ public class MemberJoinAction implements Action{
 		
 		MemberDTO mdto = new MemberDTO();
 		// 전달된 파라미터정보를 저장 
-		String email = request.getParameter("email");
+		String email = request.getParameter("email").trim();
 
 		mdto.setEmail(email);
 		
 		String salt_id = SHA256Util.generateSalt();
-		String newID = SHA256Util.getEncrypt(request.getParameter("email"), salt_id);
+		String newID = SHA256Util.getEncrypt(request.getParameter("email").trim(), salt_id);
 		
 		mdto.setEmail_BySHA(newID);
 		mdto.setSalt_id(salt_id);
 			
 		String salt = SHA256Util.generateSalt();
-		String newpass = SHA256Util.getEncrypt(request.getParameter("pass"), salt);
+		String newpass = SHA256Util.getEncrypt(request.getParameter("pass").trim(), salt);
 		
 		mdto.setPass(newpass);
 		
-		mdto.setName(request.getParameter("name"));
-		mdto.setPhone(request.getParameter("phone"));
+		mdto.setName(request.getParameter("name").trim());
+		mdto.setPhone(request.getParameter("phone").trim());
 		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		mdto.setSalt(salt);
 		

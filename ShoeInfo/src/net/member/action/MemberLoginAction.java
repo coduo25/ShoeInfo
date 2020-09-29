@@ -16,13 +16,13 @@ public class MemberLoginAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		//전달 받은 정보 저장
-		String email = request.getParameter("email");
+		String email = request.getParameter("email").trim();
 		
 		//MemberDB에 들어가서 이메일에 해당하는 salt값 가져오기
 		MemberDAO mdao = new MemberDAO();
 		String salt = mdao.getSaltByEmail(email);
 		
-		String pass = SHA256Util.getEncrypt(request.getParameter("pass"), salt);
+		String pass = SHA256Util.getEncrypt(request.getParameter("pass").trim(), salt);
 		
 		int check = mdao.loginEmailCheck(email, pass);
 		String str = "";
