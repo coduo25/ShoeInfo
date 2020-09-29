@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="net.brand.db.BrandDTO"%>
@@ -47,7 +49,11 @@
 		List<OnlineDTO> onlineinfoList_etc = (List<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
 
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
+		SimpleDateFormat date_format = new SimpleDateFormat("yyyy년 M월 d일");
+		SimpleDateFormat original_format2 = new SimpleDateFormat("yyyy-MM-dd");
 		
+		String ty_str_date = sdto.getRelease_date();
+		Date date_type = original_format2.parse(ty_str_date);
 	%>
 	<div id="wrapper" class="container">
 	
@@ -108,7 +114,7 @@
 							<%if(sdto.getRelease_date().contains("99")){%>
 								미정
 							<%}else{%>
-								<%=sdto.getRelease_date()%>
+								<%=date_format.format(date_type)%>
 							<%}%>	
 							</span>
 						</div>

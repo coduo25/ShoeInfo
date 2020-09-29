@@ -371,7 +371,7 @@
 												<%}else if(!odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty()){%>
 													<span class="start_time"> <%=new_date_start_time%> 시간미정 </span>
 												<%}else{%>
-												 	<span class="start_time"> <%=new_Online_start_time%> </span> 
+												 	<span class="start_time"> <%=newlist_Online_start_time%> </span> 
 												<%}%>
 											<!-- 드로우 또는 미정일시 -->
 											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%> 
