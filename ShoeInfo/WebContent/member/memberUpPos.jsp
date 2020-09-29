@@ -11,6 +11,7 @@
 <link href="./css/board/member.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
@@ -47,6 +48,15 @@
 				<!-- 등업 신청 form -->
 				<form action="#" method="post" id="upPosForm">
 					<div class="up-form">
+					
+						<!-- 주의 문구 -->
+						<div class="fm_warn">
+							<span><i class="fas fa-exclamation-triangle"></i> &nbsp;열심회원은 일반회원과 달리 <span style="padding-bottom:0.2%; border-bottom: 1.8px solid green;">발매정보를 추가</span> 할 수 있습니다. </span>
+						</div>
+						<div class="fm_warn" style="margin: 10px 2px 30px 2px !important;">
+							<span><i class="fas fa-exclamation-triangle"></i> &nbsp;신청사유가 타당하지 않을시 등업신청이 거부될 수 있습니다. </span>
+						</div>
+
 						<!-- 이메일 -->
 						<div class="fm_label">	
 							<span> 이메일 </span>
@@ -65,18 +75,10 @@
 						
 						<!-- 열심회원 신청이유 -->
 						<div class="fm_label">
-							<span> 열심회원 신청 이유? (타당하지 않은 이유는 등업을 못하실 수 있습니다.) </span>
+							<span> 열심회원 신청 사유 </span>
 						</div>
 						<div class="fm_reason">
 							<textarea id="reason" name="reason" rows="5" cols="30"></textarea>
-						</div>
-						
-						<!-- 주의 문구 -->
-						<div class="fm_warn">
-							<span><i class="fas fa-exclamation-triangle"></i> 발매정보 추가시, 정확한 정보를 바탕으로 입력 해주셔야 합니다. </span>
-						</div>
-						<div class="fm_warn" style="margin: 10px 2px 25px 2px !important;">
-							<span><i class="fas fa-exclamation-triangle"></i> 발매정보와 관련없는 정보를 추가했을시 활동정지가 될수도 있습니다. </span>
 						</div>
 						
 						<!-- 신청하기 -->

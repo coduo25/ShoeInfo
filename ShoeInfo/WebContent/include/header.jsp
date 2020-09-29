@@ -39,7 +39,7 @@
 						
 						if(user == null || user.length() == 0){
 					%>
-						<span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
+						<span class="acc_pos">비회원</span><span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
 					<%
 						}else if(usr_position.equals("admin")){ 
 					%>
@@ -59,6 +59,61 @@
 			</div>
 		</div>
 	</nav>
+	
+	<!-- 회원등급별표 -->
+	<div id="memberChart">
+		<div id="mc_title">
+			<span>
+				현재&nbsp;
+				<span id="current_rank">
+					<%if(user == null || user.length() == 0){%>
+						
+						비회원
+					
+					<%}else if(usr_position.equals("general")){%>
+					
+						일반회원
+						
+					<%}else if(usr_position.equals("prime")){%>
+					
+						열심회원
+						
+					<%}else if(usr_position.equals("admin")){%>
+					
+						관리자
+						
+					<%}%>
+				</span> 
+				&nbsp;입니다
+			</span>
+		</div>
+		<div id="memberRank-wrapper">
+			<div id="rank-wrapper">
+				<div id="rank_label">비회원</div>
+				<div id="stars"><i class="fas fa-star"></i></div>
+				<div id="rank_content"> 
+					<p>발매정보 보기</p> 
+				</div>
+			</div>
+			<div id="rank-wrapper">
+				<div id="rank_label">일반회원</div>
+				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+				<div id="rank_content"> 
+					<p>발매정보 보기</p>
+					<p><i class="far fa-calendar-check"></i> MYDRAW 관리</p>
+				</div>
+			</div>
+			<div id="rank-wrapper">
+				<div id="rank_label">열심회원</div>
+				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+				<div id="rank_content"> 
+					<p>발매정보 보기</p>
+					<p><i class="far fa-calendar-check"></i> MYDRAW 관리</p>
+					<p><i class="far fa-edit"></i> 발매정보 추가</p>			 
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<input type="hidden" class="user" id="user" value="<%=user%>">
 		
@@ -123,6 +178,12 @@
 
 </body>
 <script type="text/javascript">
+
+		$('.acc_pos').hover(function(){
+			$('#memberChart').slideDown(200);
+		}, function(){
+			$('#memberChart').slideUp(200);
+		});	
 
 		//마이드로우 눌렸을시
 		$('#myDrawBtn').click(function(){

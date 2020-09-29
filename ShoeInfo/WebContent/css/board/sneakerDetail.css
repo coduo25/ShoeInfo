@@ -32,10 +32,10 @@ body {font-size:1em; line-weight:1.4}
 			
 		/* 국내 발매처 & 해외 발매처 갯수 */
 		.draw_status { width: 100%; display: flex; text-align: center; justify-content: center; align-items: center; margin: 0 auto 2.5% auto; }	
-		.draw_status div { float: left; padding: 10px 0; width: 14%; border: 1px solid #c1c1c1; border-radius: 30px; margin: 0 15px; cursor: pointer; }
+		.draw_status div { float: left; padding: 10px 0; width: 14%; border: 1px solid #7b7b7b; border-radius: 30px; margin: 0 15px; cursor: pointer; }
 		.draw_status div:hover { opacity: 0.5; }
 
-		.draw_status div span { font-size: 1.1em; color: #999; font-weight: bold; }
+		.draw_status div span { font-size: 1.1em; color: #7b7b7b; font-weight: bold; }
 		#countDome, #countInte { padding-left: 4px; }
 			
 		/* 내용 */
@@ -108,7 +108,7 @@ body {font-size:1em; line-weight:1.4}
 
 /* list 양식 */
 #grid-list-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; }
-.grid-wrapper-list { margin: 1% 1.25%; width: 47.5%; float:left; display: block; }
+.grid-wrapper-list { margin: 1.25%; width: 47.5%; float:left; display: block; }
 .grid-item-list { padding: 2%; position: relative; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); background-color: #f3f3f357; display: flex; }
 .grid-logo-list { display: inline-block; }
 #brandlogo_img_list { vertical-align: middle; border: 1px solid #e2e2e2; border-radius: 0.3rem; }
@@ -628,7 +628,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-wrapper-list {
 		font-size: 0.7em;
 		width: 100%;
-		margin: 2.5% 0;
+		margin: 3% 0;
 	}
 	.grid-ing-list {
 		right: -1%;
@@ -699,7 +699,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		margin: 1% auto 7% auto;
 	}
 	.draw_status div {
-		width: 35%;
+		width: 37%;
 		margin: 0 8px;
 		padding: 7px 0;
 	}

@@ -53,16 +53,22 @@
 				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
 				<span> ADD INFO </span>
 			</div>
+			
+			<!-- 제목 -->
+			<div id="title">
+				<span> <%=sdto.getModel_name()%></span>
+			</div>
+			
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail">
 				<div class="sneaker_image_wrapper" style="border-bottom: 1px solid #b7b7b7;"> 
 					<div class="sneaker_image"> 
 						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 					</div>
-					<!-- 신발 이름 -->
-					<div class="sneaker_name">
-						<span><%=sdto.getModel_name() %></span>
-					</div>
+<!-- 					신발 이름 -->
+<!-- 					<div class="sneaker_name"> -->
+<%-- 						<span><%=sdto.getModel_name() %></span> --%>
+<!-- 					</div> -->
 				</div>
 
 			
@@ -71,7 +77,7 @@
 					<form action="./AddOnlineInfoAction.me" id="addOnlineForm" method="post">
 					
 						<span id="category"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매정보는 SHOEINFO를 이용하는 모든 이용자들이 보는 정보입니다. </span>
-						<span id="category" style="padding-bottom: 3%; border-bottom: 1px solid #9e9e9e"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 허위 사실을 작성 및 수정 했을시 활동정지가 되실 수 있습니다. </span>
+						<span id="category" style="padding-bottom: 3%; border-bottom: 1px solid #9e9e9e"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 허위로 작성하거나 수정했을시 활동이 정지될 수 있습니다. </span>
 					
 						<input type="hidden" name="model_num" value="<%=sdto.getNum()%>"> 
 						<div id="stylecode-form" style="padding-top: 5%;">

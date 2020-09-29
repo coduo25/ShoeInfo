@@ -175,4 +175,15 @@ input:focus::placeholder { color: transparent; }
 	#content_idpwfind p {
 		font-size: 0.7em;
 	}
+	.fm_warn {
+		font-size: 0.8em;
+	}
+	.fm_label {
+		margin: 15px 0 8px 0 !important;
+	}
+	.confirmMsg1:not(.join-form), .confirmMsg2:not(.join-form) {
+		font-size: 0.7em;
+		padding-left: 5px;
+	}
+
 }

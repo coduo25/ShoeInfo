@@ -222,7 +222,7 @@
 				  						<%if(ddayCount>=0 && ddayCount<=7){%> 
 											<!-- dday label -->
 											<div id="dd-label-wrapper">
-												<span id="dd-label">D–<%if(ddayCount==0){%>DAY<%}else if(ddayCount>0 && ddayCount<=7){%><%=ddayCount%><%}%></span>
+												<span id="dd-label">D–<%if(ddayCount==0){%>day<%}else if(ddayCount>0 && ddayCount<=7){%><%=ddayCount%><%}%></span>
 											</div>								
 										<%}%>	
 									</a>
