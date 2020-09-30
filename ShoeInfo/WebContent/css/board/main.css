@@ -41,7 +41,7 @@ body {font-size:1em; line-weight:1.4}
 	
 	/* 디데이라벨 */
 	#dd-label-wrapper { position: absolute; top: 3%; right: 5%; width: 30%; text-align: right; margin-top: 1%; }
-	#dd-label { font-size: 15px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 3% 7%; border-radius: 3px; }
+	#dd-label { font-size: 15px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 5% 7%; border-radius: 3px; }
 	
 	/* 이름 */
 	.content_name { margin-top: 1%; }
