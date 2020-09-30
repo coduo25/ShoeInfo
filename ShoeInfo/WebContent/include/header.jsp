@@ -180,9 +180,9 @@
 <script type="text/javascript">
 
 		$('.acc_pos').hover(function(){
-			$('#memberChart').slideDown(200);
+			$('#memberChart').slideDown(400);
 		}, function(){
-			$('#memberChart').slideUp(200);
+			$('#memberChart').slideUp(400);
 		});	
 
 		//마이드로우 눌렸을시

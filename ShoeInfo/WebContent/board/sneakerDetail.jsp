@@ -127,10 +127,10 @@
 				
 				<div class="draw_status">
 					<div onclick="fnMove('0')">
-						<span id="dome_label">국내 발매처 <span id="countDome"></span> </span>
+						<span id="dome_label">국내 발매처</span> <span id="divide">|</span> <span id="countDome"></span>
 					</div>
 					<div onclick="fnMove('1')">
-						<span id="inter_label">해외 발매처 <span id="countInte"></span></span>
+						<span id="inter_label">해외 발매처</span> <span id="divide">|</span> <span id="countInte"></span>
 					</div>
 				</div>
 				

@@ -32,11 +32,11 @@ body {font-size:1em; line-weight:1.4}
 			
 		/* 국내 발매처 & 해외 발매처 갯수 */
 		.draw_status { width: 100%; display: flex; text-align: center; justify-content: center; align-items: center; margin: 0 auto 2.5% auto; }	
-		.draw_status div { float: left; padding: 10px 0; width: 14%; border: 1px solid #7b7b7b; border-radius: 30px; margin: 0 15px; cursor: pointer; }
+		.draw_status div { float: left; padding: 9.5px 0; width: 14.5%; border: 1px solid #7b7b7b; border-radius: 5px; margin: 0 15px; cursor: pointer; }
 		.draw_status div:hover { opacity: 0.5; }
-
+		
 		.draw_status div span { font-size: 1.1em; color: #7b7b7b; font-weight: bold; }
-		#countDome, #countInte { padding-left: 4px; }
+		#divide { padding: 0 7px; font-weight: normal; font-size: 1.1em; color: #7b7b7bc7; }
 			
 		/* 내용 */
 		.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper { width: 50%; float: left; }
@@ -709,6 +709,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.grid-content-list {
     	padding: 0% 1% 0% 2.5%;
+	}
+	#divide {
+    	padding: 0 5px;
 	}
 }
 	

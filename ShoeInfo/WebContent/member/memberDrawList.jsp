@@ -120,7 +120,7 @@
 							Date original_release_date = original_format.parse(sdto.getRelease_date());
 					%>
 						<div class="shoelist_content">
-							<div class="content_wrapper">
+							<div class="content_wrapper_draw">
 								<!-- 이미지 -->
 								<div class="content_img">
 									<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
