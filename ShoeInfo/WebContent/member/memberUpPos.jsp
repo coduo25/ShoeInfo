@@ -51,10 +51,13 @@
 					
 						<!-- 주의 문구 -->
 						<div class="fm_warn">
-							<span><i class="fas fa-exclamation-triangle"></i> &nbsp;열심회원은 일반회원과 달리 <span style="padding-bottom:0.2%; border-bottom: 1.8px solid green;">발매정보를 추가</span> 할 수 있습니다. </span>
+							<span style="color:#424242;"><i class="fas fa-exclamation-triangle"></i> &nbsp;열심회원은 일반회원과 달리 <span style="padding-bottom:0.2%; border-bottom: 1.8px solid green; color: green;">발매정보를 추가</span> 할 수 있습니다. </span>
+						</div>
+						<div class="fm_warn">
+							<span style="color:#424242;"><i class="fas fa-exclamation-triangle"></i> &nbsp;발매정보를 <span style="padding-bottom:0.2%; border-bottom: 1.8px solid red; color:red; ">주기적으로 추가 안할시 일반회원으로 될 수 있습니다.</span> </span>
 						</div>
 						<div class="fm_warn" style="margin: 10px 2px 30px 2px !important;">
-							<span><i class="fas fa-exclamation-triangle"></i> &nbsp;신청사유가 타당하지 않을시 등업신청이 거부될 수 있습니다. </span>
+							<span style="color:#424242;"><i class="fas fa-exclamation-triangle"></i> &nbsp;신청사유가 타당하지 않을시 등업신청이 거부될 수 있습니다. </span>
 						</div>
 
 						<!-- 이메일 -->
