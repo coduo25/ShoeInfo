@@ -25,7 +25,7 @@
 		
 		prev_url = request.getHeader("referer");
 		
-		if(prev_url.isEmpty() || prev_url == null || prev_url == ""){
+		if(prev_url == null || prev_url.length() == 0){
 			prev_url = "";
 		}
 	%>
@@ -151,7 +151,7 @@
 		
 		//회원가입 form을 클릭했을시
 		$('.signup-toggle').click(function(){
-			$('#content_login').css("height", "650px");
+			$('#content_login').css("height", "550px");
 			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
 			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
 			$('#loginForm').css("display", "none");
@@ -231,7 +231,6 @@
 			} else{
 				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다. (8~16 영문/숫자 포함)').css({'color':'#af0000'});
 				$('.confirmMsg1').show("fast");
-				$('#fm_pass_join').focus();
 			}
 		});
 		
@@ -247,13 +246,11 @@
 			if($("#fm_pass_join").val() == ''){
 				alert("비밀번호를 작성해주세요.");
 				$("#fm_passChk_join").val('');
-				$("#fm_pass_join").focus();
 				return false;
 			}
 			else if(document.joinForm.pass.value != document.joinForm.pass2.value){
 				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
 				$('.confirmMsg2').show("fast");
-				$('#fm_passChk_join').focus();
 			} else{
 				$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
 				$('.confirmMsg2').show("fast");

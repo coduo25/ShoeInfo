@@ -48,7 +48,7 @@ input[name=privacy] { height: unset; width: 10%; height: 20px; vertical-align: m
 
 /* 중복체크 버튼*/
 /* .checkEmail { position: absolute; float: right; height: 40px; width: 20%; margin-top: 5px; margin-left: 10px; border: 1px solid #000000; background-color: white; font-size: 15px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold;} */
-.checkEmail { display: table; float: right; height: 40px; width: 100%; position: relative; margin-top: 0; margin-bottom: 5px; border: 1px solid black; background-color: white; font-size: 15px; font-weight: bold;}
+.checkEmail { display: table; float: right; height: 40px; width: 100%; position: relative; margin-top: 0; margin-bottom: 5px; border: 1px solid black; background-color: white; font-size: 15px; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; }
 .checkEmail:hover { background-color: black; color: white; }
 
 /* 비밀번호 확인하는 div 태그 */
@@ -106,13 +106,16 @@ input:focus::placeholder { color: transparent; }
 		width: 100%;
 		height: 100%;
 	}
+	.confirmMsg1:not(.join-form), .confirmMsg2:not(.join-form) {
+		font-size: 0.8em;
+	}
 }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
 	#content_login, #content_register, #content_modify, #content_idpwfind, #content_upPos{
 		margin: 50px auto;
-		width: 90%;
+		width: 80%;
 	}
 	.container {
 		width: 100%;

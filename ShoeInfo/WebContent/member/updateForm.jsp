@@ -116,7 +116,6 @@
 			} else{
 				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다. (8~16 영문/숫자 포함)').css({'color':'#af0000'});
 				$('.confirmMsg1').show("fast");
-				$('input[name=pass]').focus();
 			}
 		});
 		
@@ -132,13 +131,11 @@
 			if($("input[name=pass]").val() == ''){
 				alert("비밀번호를 작성해주세요.");
 				$("input[name=pass2]").val('');
-				$("input[name=pass]").focus();
 				return false;
 			}
 			else if(document.modiForm.pass.value != document.modiForm.pass2.value){
 				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
 				$('.confirmMsg2').show("fast");
-				$('input[name=pass2]').focus();
 			} else{
 				$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
 				$('.confirmMsg2').show("fast");

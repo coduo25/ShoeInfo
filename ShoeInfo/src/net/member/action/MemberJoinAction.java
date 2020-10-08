@@ -40,8 +40,8 @@ public class MemberJoinAction implements Action{
 		
 		mdto.setPass(newpass);
 		
-		mdto.setName(request.getParameter("name").trim());
-		mdto.setPhone(request.getParameter("phone").trim());
+		mdto.setName(request.getParameter("name"));
+		mdto.setPhone(request.getParameter("phone"));
 		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		mdto.setSalt(salt);
 		

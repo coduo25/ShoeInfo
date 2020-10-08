@@ -10,6 +10,7 @@
 <link href="./css/board/member.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
@@ -37,7 +38,7 @@
 			
 				<div class="change_form">
 					<div class="login-toggle">
-						<span> 아이디 찾기 </span>
+						<span> 이메일 찾기 </span>
 					</div>
 					<div class="signup-toggle">
 						<span> 비밀번호 찾기  </span>
@@ -47,7 +48,7 @@
 			
 				<div id="idfind_wrap">
 					
-					<p> 회원가입 시, 입력하신 이름 + 전화번호로 이메일을 확인하실 수 있습니다. </p> 	
+					<p> 회원가입 시, 입력하신 이름 + 전화번호로 이메일을 확인할 수 있습니다. </p> 	
 	
 					<div class="idfind-form">
 					
@@ -81,7 +82,7 @@
 				
 				<div id="pwfind_wrap">
 					
-					<p> 이름과 가입하신 이메일을 통해 비밀번호를 재설정 하실 수 있습니다. </p> 	
+					<p> 이름과 가입하신 이메일을 통해 비밀번호를 재설정 할수 있습니다. </p> 	
 					
 						<div class="pwfind-form">
 						
