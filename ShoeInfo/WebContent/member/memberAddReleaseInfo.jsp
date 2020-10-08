@@ -76,8 +76,8 @@
 				<div class="add_wrapper">
 					<form action="./AddOnlineInfoAction.me" id="addOnlineForm" method="post">
 					
-						<span id="category"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매정보는 SHOEINFO를 이용하는 모든 이용자들이 보는 정보입니다. </span>
-						<span id="category" style="padding-bottom: 3%; border-bottom: 1px solid #9e9e9e"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 허위로 작성하거나 수정했을시 활동이 정지될 수 있습니다. </span>
+						<span id="category_warn"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매정보는 SHOEINFO를 이용하는 모든 이용자들이 보는 정보입니다. </span>
+						<span id="category_warn" style="padding-bottom: 4%; border-bottom: 1px solid #9e9e9e"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 허위로 작성하거나 수정했을시 활동이 정지될 수 있습니다. </span>
 					
 						<input type="hidden" name="model_num" value="<%=sdto.getNum()%>"> 
 						<div id="stylecode-form" style="padding-top: 5%;">

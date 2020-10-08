@@ -13,7 +13,7 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 
 .search-bar { text-align: center; }
 #textSneaker, #textBrand { text-align: left; height: 35px; font-size: 15px; padding-left: 8px; width: 35%; }
-.searched-form { display: inline-block; padding: 1.5%; width: 100%; background-color: white; float: left;  }
+.searched-form { display: inline-block; width: 100%; background-color: white; float: left;  }
 .searched-form div { padding: 1%; }
 .search-bar { padding: 2% !important;}
 
@@ -30,7 +30,7 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){
 	.container { 
-		width: 90%;
+		width: 95%;
 	}
 	.sneakerList-wrapper {
 		width: 23%;
@@ -39,9 +39,6 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	.container {
-		width: 90%;
-	}
 	.sneakerList-wrapper {
 		width: 31.3%;
 	}
@@ -52,9 +49,6 @@ h3, h4 { margin: 5% 0 3% 0; font-family: 'Nanum Gothic', sans-serif; }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	.container {
-		width: 90%;
-	}
 	.sneakerList-wrapper {
 		width: 46%;
    		margin: 2% 2%;

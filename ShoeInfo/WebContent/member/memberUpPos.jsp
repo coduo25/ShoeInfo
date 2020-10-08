@@ -37,7 +37,7 @@
 	<div id="wrapper" class="container">
 		<div class="component-page">
 			<!-- content -->
-			<div id="content_upPos" style="height: 650px;">
+			<div id="content_upPos" style="height: 690px;">
 				
 				<div class="change_form">
 					<div class="up-toggle" style="font-size: 1.1em;">

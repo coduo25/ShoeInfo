@@ -151,7 +151,7 @@
 		
 		//회원가입 form을 클릭했을시
 		$('.signup-toggle').click(function(){
-			$('#content_login').css("height", "550px");
+			$('#content_login').css("height", "650px");
 			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
 			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
 			$('#loginForm').css("display", "none");

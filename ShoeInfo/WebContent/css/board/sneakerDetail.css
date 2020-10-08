@@ -168,7 +168,7 @@ body {font-size:1em; line-weight:1.4}
 	#wrapper-period { margin-bottom: 9%; color: #dc5757; font-weight: bold; }
 	#wrapper-period-list { margin-bottom: 2.3%; color: black; font-size: 0.8em; }
 	#wrapper-desc { position:relative; }
-	#slide { margin: 0 1.5%; font-size: 0.9em; color: #b1b1b1; }
+	#slide { margin: 0 1%; font-size: 0.9em; color: #b1b1b1; }
 	
 	.draw_checkbox { width:16px; height:16px; vertical-align: middle; margin-bottom: 0.5px; }
 	
@@ -206,7 +206,7 @@ body {font-size:1em; line-weight:1.4}
 #addOnlineForm, #updateOnlineForm { padding: 5%; border: 1px solid black; border-radius: 5px; }
 
 #req_icon { font-size: 0.5em; color: #b50000; vertical-align: top; }
-.add_wrapper #category { display: block; font-weight: bold; padding-bottom: 2%; }
+.add_wrapper #category_warn, .add_wrapper #category { display: block; font-weight: bold; padding-bottom: 3%; }
 .add_wrapper #warn_label { padding-top: 3%; display: block; font-size: 0.9em; color: green; }
 .add_wrapper div{ padding-bottom: 9%; }
 input[type=text], input[type=button] { text-align: left; height: 35px; font-size: 15px; padding-left: 8px; }
@@ -273,7 +273,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){
 	.container {
-		width: 90%;
+		width: 92%;
 	}
 	.draw_status {
 		font-size: 0.9em;
@@ -300,7 +300,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	/* 발매 정보 추가하는 영역 */
 	.add_wrapper {
-		padding: 2%;
+		padding: 2% 0;
 	}
 	#addOnlineForm, #updateOnlineForm {
 		padding: 4%;
@@ -534,9 +534,16 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	
 	/* 발매 추가 영역 */
+	.add_wrapper #category_warn {
+		font-size: 0.7em;
+		padding-bottom: 4%;
+	}
 	.add_wrapper #category {
 		font-size: 0.9em;
 		padding-bottom: 3%;
+	}
+	.add_wrapper #example {
+		font-size: 0.8em;
 	}
 	input[name=model_stylecode] {
     	width: 50%;
