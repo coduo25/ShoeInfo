@@ -372,7 +372,7 @@
 				$("#slide-up_" + i).hide();
 				$("#slide-down_" + i).show();
 				
-				$("#div_month_" + i).hide();
+				$("#div_month_" + i).show();
 			}
 			//지금 달부터 미래의 달부터 나타내기 8~12월
 			else if(i >= month) {
