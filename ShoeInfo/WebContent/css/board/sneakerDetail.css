@@ -274,7 +274,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){
 	.container {
-		width: 92%;
+		width: 93%;
 	}
 	.draw_status {
 		font-size: 0.9em;
@@ -478,8 +478,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		line-height: unset;
 	}
 	#no-info-wrapper {
-		padding: 7%;
+		margin: 5% 0 0 0;
 		font-size: 0.9em;
+	}
+	#no-info-label {
+		padding: 10% 0;	
 	}
 	.grid-wrapper {
 		width: 44%;
