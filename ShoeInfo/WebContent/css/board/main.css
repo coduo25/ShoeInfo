@@ -25,9 +25,30 @@ body {font-size:1em; line-weight:1.4}
 .no_info { text-align: center; margin: 3% 1%; }
 
 /* 리스트 한칸 */
-.shoelist_content { z-index:8; position:relative; float: left; text-align: center; width: 23%; margin: 1%; border-radius: 0.3rem; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); font-family: 'Nanum Gothic', sans-serif; border: 1px solid rgb(222 222 222); transition: all 0.3s; }
+.shoelist_content { z-index:8; position:relative; float: left; text-align: center; width: 23%; margin: 1.5% 1%; border-radius: 0.3rem; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); font-family: 'Nanum Gothic', sans-serif; border: 1px solid rgb(222 222 222); transition: all 0.3s; }
 .shoelist_content img { width:180px; height:130px; width: 95%; height: 95%; transform:scale(1.0); transition: transform.5s; }
 .shoelist_content:hover .content_img img{ transform:scale(1.05); transition: transform.5s; }
+
+/* 응모 중 리본 */
+#ing_status_wrapper { 
+	position: absolute;
+    width: 30%;
+    background-color: #ffffff;
+    z-index: 50;
+    top: 3.5%; 
+    right: 4.5%;
+    text-align:right;
+    margin-top: 1%;
+}
+
+#ing_status {
+	padding: 5% 7%;
+	font-size: 17px;
+    font-weight: bold;
+	border: 1px solid #da585870;
+	color: #da5858;
+	border-radius: 3px;
+}
 
 /* 발매일 */
 .release_date { font-size: 1.15em; font-weight: bold; background-color: #2d2d2d; padding: .5rem 1rem; color: white; border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem; }
@@ -41,7 +62,7 @@ body {font-size:1em; line-weight:1.4}
 	.content_img { margin-top: 3%; position: relative; }
 	
 	/* 디데이라벨 */
-	#dd-label-wrapper { position: absolute; top: 3%; right: 5%; width: 30%; text-align: right; margin-top: 1%; }
+	#dd-label-wrapper { display: none; position: absolute; top: 3%; right: 5%; width: 30%; text-align: right; margin-top: 1%; }
 	#dd-label { font-size: 18px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 5% 7%; border-radius: 3px; }
 	
 	/* 이름 */
@@ -120,6 +141,9 @@ body {font-size:1em; line-weight:1.4}
 	#dd-label {
 		font-size: 1em;
 	}
+	#ing_status {
+		font-size: 1em;
+	}
 	#showAllChk {
 		text-align: center;
 	}
@@ -132,7 +156,7 @@ body {font-size:1em; line-weight:1.4}
 @media screen and (max-width: 468px){
 	.shoelist_content {
 		width: 46%;
-   		margin: 2.5% 2%;
+   		margin: 3% 2%;
    		font-size: 1em;
 	}
 	.release_date{
@@ -152,6 +176,13 @@ body {font-size:1em; line-weight:1.4}
 	}
 	#recent-dot i {
 		font-size: 1em;
+	}
+	#ing_status_wrapper {
+		width: 50%;
+	}
+	#ing_status {
+		font-size: 0.75em;
+		padding: 2% 7%;
 	}
 	#dd-label {
 		font-size: 0.8em;
@@ -178,6 +209,9 @@ body {font-size:1em; line-weight:1.4}
 	#showAllChk span{
 		font-size:0.8em;
 		letter-spacing: .125rem;
+	}
+	.div_month {
+		margin-bottom: 40px;
 	}
 }
 

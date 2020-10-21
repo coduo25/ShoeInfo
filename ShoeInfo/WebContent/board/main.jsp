@@ -215,8 +215,17 @@
 								</span>
 							</div>
 							<div class="content_wrapper">
+								
 								<!-- 이미지 -->
 								<div class="content_img">
+								
+									<!-- 응모중 리본 -->
+									<%if(openChk == 1){%>
+										<div id="ing_status_wrapper">
+											<span id="ing_status">응모중</span>
+										</div>
+									<%}%>
+								
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
 				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" >
 				  						<%if(ddayCount>=0 && ddayCount<=7){%> 

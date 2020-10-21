@@ -71,15 +71,17 @@
 		
 			<!-- 제목 -->
 			<div id="title">
-				<span> <%=sdto.getModel_name()%></span>
+				<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
 			</div>
 
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail_D">
 				<div class="sneaker_image_wrapper"> 
-					<div class="sneaker_image"> 
-						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
-					</div>
+					<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+						<div class="sneaker_image"> 
+							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
+						</div>
+					</a>
 					<!-- 신발 이름 -->
 					<div class="sneaker_name" style="display:none;">
 						<span><%=sdto.getModel_name() %></span>
@@ -131,7 +133,7 @@
 			<div id="content_userDrawInfo">
 				<!-- 국내 응모 한 테이블 -->
 				<div id="dome-draw-wrapper">
-					<span> <h4> 국내 응모 한 곳 <i class="fas fa-caret-down"></i> </h4> </span>
+					<span> <h4> 국내 응모내역 <i class="fas fa-caret-down"></i> </h4> </span>
 					<%
 						if(drawInfoList_kr.isEmpty()){
 					%>
@@ -176,7 +178,7 @@
 			
 				<!-- 해외 응모 한 테이블 -->
 				<div id="inter-draw-wrapper">
-					<span> <h4> 해외 응모 한 곳 <i class="fas fa-caret-down"></i> </h4></span>
+					<span> <h4> 해외 응모내역 <i class="fas fa-caret-down"></i> </h4></span>
 					<%
 						if(drawInfoList_etc.isEmpty()){
 					%>

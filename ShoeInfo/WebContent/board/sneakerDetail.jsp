@@ -344,18 +344,23 @@
 											<!-- 응모 진행중 여부 -->
 											<%if(odto.getOnline_method().contains("선착")){%>
 													<span></span>
-											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
+											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") ){%>
 												<%if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
-													<span id="draw_count_result_ing_list">진행중</span>
+													<span id="draw_count_result_ing_list">응모중</span>
 												<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 												<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && compare_w_end_result == -1){%>
-													<span id="draw_count_result_ing_list">진행중</span>
+													<span id="draw_count_result_ing_list">응모중</span>
 												<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 												<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == 1){%>
-													<span id="draw_count_result_ing_list">진행중</span>
+													<span id="draw_count_result_ing_list">응모중</span>
+												<!-- 시작시간은 있고 지금시간이 시작시간 전일때 -->
+												<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && compare_w_start_result == -1){%>
+													<span id="draw_count_result_before_list">응모전</span>
 												<%}else{ %>
 													<span></span>
 												<%}%>
+											<%}else if(odto.getOnline_method().contains("-")){%>
+												<span></span>
 											<%}%>
 										</div>
 									</div>
@@ -792,18 +797,23 @@
 										<!-- 응모 진행중 여부 -->
 										<%if(odto.getOnline_method().contains("선착")){%>
 												<span></span>
-										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") || odto.getOnline_method().contains("-")){%>
+										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")){%>
 											<%if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
-												<span id="draw_count_result_ing">진행중</span>
+												<span id="draw_count_result_ing">응모중</span>
 											<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 											<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && compare_w_end_result == -1){%>
-												<span id="draw_count_result_ing">진행중</span>
+												<span id="draw_count_result_ing">응모중</span>
 											<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 											<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == 1){%>
-												<span id="draw_count_result_ing">진행중</span>
+												<span id="draw_count_result_ing">응모중</span>
+											<!-- 시작시간은 있고 지금시간이 시작시간 전일때 -->
+											<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && compare_w_start_result == -1){%>
+												<span id="draw_count_result_before">응모전</span>
 											<%}else{ %>
 												<span></span>
 											<%}%>
+										<%}else if(odto.getOnline_method().contains("-")){%>
+											<span></span>
 										<%}%>
 									</div>
 									

@@ -133,7 +133,11 @@ body {font-size:1em; line-weight:1.4}
 	/* 진행중 마크 */
 	.grid-ing { position: absolute; top: 6%; left: 65.5%; width: 30%; text-align: right; }
 	.grid-ing-list { float: right; position: absolute; right:0; display: inline-block; width: 30%; text-align: right; }
+	
+	#draw_count_result_before{ background-color: #a2a2a2; color: white; font-size: 0.9em; font-weight: bold; border: 1px solid #a2a2a2; border-radius: 3px; padding: 2px 3px; }
 	#draw_count_result_ing{ background-color: #58af58; color: white; font-size: 0.9em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 2px 3px; }
+	
+	#draw_count_result_before_list { background-color: #a2a2a2; color: white; font-size: 0.7em; font-weight: bold; border: 1px solid #a2a2a2; border-radius: 3px; padding: 2px 3px; }
 	#draw_count_result_ing_list { background-color: #58af58; color: white; font-size: 0.7em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 2px 3px; }
 	
 	/* new 리본 */
@@ -307,7 +311,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		padding: 4%;
 	}
 	
-	#draw_count_result_ing {
+	#draw_count_result_ing, #draw_count_result_before {
 		font-size: 0.85em;
 	}
 	.searched-form {
@@ -645,7 +649,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		right: -1%;
 	}
 	
-	#draw_count_result_ing_list ,#draw_count_result_ing {
+	#draw_count_result_ing_list ,#draw_count_result_ing, #draw_count_result_before, #draw_count_result_before_list {
     	font-size: 0.7em;
     	padding: 1px 2px;
 	}	
