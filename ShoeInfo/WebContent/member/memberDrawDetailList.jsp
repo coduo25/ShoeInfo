@@ -145,7 +145,7 @@
 							OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(i);
 					%>
 						<div class="grid-wrapper_D">
-							<div class="grid-item_D">
+							<div class="grid-item_D" onclick="window.open('<%=odto.getOnline_link()%>');">
 								<!-- 로고 -->
 								<div class="grid-logo">
 									<a href="<%=odto.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>"> </a>
