@@ -30,7 +30,7 @@ body {font-size:1em; line-weight:1.4}
 .shoelist_content:hover .content_img img{ transform:scale(1.05); transition: transform.5s; }
 
 /* 응모 중 리본 */
-#ing_status_wrapper { 
+#ing_status_wrapper {
 	position: absolute;
     width: 30%;
     background-color: #ffffff;

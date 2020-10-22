@@ -39,11 +39,11 @@
 						
 						if(user == null || user.length() == 0){
 					%>
-						<span class="acc_pos">비회원</span><span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
+						<span class="acc_pos">비회원&nbsp;<i class="far fa-question-circle"></i></span><span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
 					<%
 						}else if(usr_position.equals("admin")){ 
 					%>
-						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%} else if(usr_position.equals("admin")){%>관리자<%}%></span>
+						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%} else if(usr_position.equals("admin")){%>관리자<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
 						
 						<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span> 
@@ -51,7 +51,7 @@
 					<% 
 						}else{ 
 					%>
-						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%}%></span>
+						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
 					
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span>
 						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
@@ -86,30 +86,33 @@
 				</span> 
 				&nbsp;입니다
 			</span>
+			<span id="mc_exit">
+				<i class="fas fa-times"></i>
+			</span>
 		</div>
 		<div id="memberRank-wrapper">
 			<div id="rank-wrapper">
 				<div id="rank_label">비회원</div>
 				<div id="stars"><i class="fas fa-star"></i></div>
 				<div id="rank_content"> 
-					<p>발매정보 보기</p> 
+					<p onclick="location.href='./Main.bo'">발매정보 보기</p>
 				</div>
 			</div>
 			<div id="rank-wrapper">
 				<div id="rank_label">일반회원</div>
 				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
 				<div id="rank_content"> 
-					<p>발매정보 보기</p>
-					<p><i class="far fa-calendar-check"></i> MYDRAW 관리</p>
+					<p onclick="location.href='./Main.bo'">발매정보 보기</p>
+					<p id="myDrawBtn2"><i class="far fa-calendar-check"></i> MYDRAW 관리 </p>
 				</div>
 			</div>
 			<div id="rank-wrapper">
 				<div id="rank_label">열심회원</div>
 				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
 				<div id="rank_content"> 
-					<p>발매정보 보기</p>
-					<p><i class="far fa-calendar-check"></i> MYDRAW 관리</p>
-					<p><i class="far fa-edit"></i> 발매정보 추가</p>			 
+					<p onclick="location.href='./Main.bo'">발매정보 보기</p>
+					<p id="myDrawBtn2"><i class="far fa-calendar-check"></i> MYDRAW 관리</p>
+					<p id="addDrawInfo"><i class="far fa-edit"></i> 발매정보 추가</p>			 
 				</div>
 			</div>
 		</div>
@@ -179,22 +182,32 @@
 </body>
 <script type="text/javascript">
 
-		$('.acc_pos').hover(function(){
-			$('#memberChart').slideDown(400);
-		}, function(){
-			$('#memberChart').slideUp(400);
-		});	
+	$(document).ready(function(){
 
+		$('.acc_pos').click(function(){
+			$('#memberChart').slideDown(400);
+		});	
+		
+		$('#mc_exit').click(function(){
+			$('#memberChart').slideUp(400);
+		});
+		
 		//마이드로우 눌렸을시
-		$('#myDrawBtn').click(function(){
+		$('#myDrawBtn, #myDrawBtn2').click(function(){
 			//로그인 체크
 			if($(".user").val() == "" || $(".user").val() == "undefined" || $(".user").val() == null) {
 				location.href="./MemberLogin.me";
 			}else {
 				location.href="./MemberDrawInfo.me";
 			}
-		});	
-
+		});
+		
+		$('#addDrawInfo').click(function(){
+			alert("발매정보 추가는 신발 상세 페이지에서 확인 할 수 있습니다.");
+		});
+		
+	});
+		
 		//현재 시간 계산해주는 함수
 		function getTime(){
 			

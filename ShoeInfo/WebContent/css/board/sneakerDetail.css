@@ -140,6 +140,14 @@ body {font-size:1em; line-weight:1.4}
 	#draw_count_result_before_list { background-color: #a2a2a2; color: white; font-size: 0.7em; font-weight: bold; border: 1px solid #a2a2a2; border-radius: 3px; padding: 2px 3px; }
 	#draw_count_result_ing_list { background-color: #58af58; color: white; font-size: 0.7em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 2px 3px; }
 	
+	/* 응모완료  status */
+	.md-status-wrapper, .md-status-wrapper-list { width: 80px; height: 80px; overflow: hidden; position: absolute; z-index: 0; display: table; text-align: center; }
+	.checkbg, .checkbg_list { position: absolute; width: 80px; height: 80px; background-color: white; opacity: 0.7; z-index: -1; }
+	.checkicon, .checkicon_list { display:table-cell; font-size: 2.7em; color: #000000; z-index: 1; opacity: 0.75; vertical-align: middle; }
+	
+	.md-status-wrapper, .checkbg, .checkicon { width: 100% !important; height: 100% !important; }
+	.checkicon { font-size: 4em !important; }
+	
 	/* new 리본 */
 	.ribbon-wrapper { width: 85px; height: 88px; overflow: hidden; position: absolute; top: 0; left: -0.5%; }
   	.ribbon { font: bold 10px sans-serif; color: #333; text-align: center; -webkit-transform: rotate(-45deg); -moz-transform:    rotate(-45deg); -ms-transform:     rotate(-45deg); -o-transform:      rotate(-45deg); position: relative; padding: 3px 0; top: 15px; left: -30px; width: 110px; background-color: #ffbf34; color: #fff; }
@@ -728,5 +736,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#divide {
     	padding: 0 5px;
 	}
+	.checkbg_list, .md-status-wrapper-list {
+		width: 60px;
+		height: 60px;
+	}
+	
+	
+	
 }
 	

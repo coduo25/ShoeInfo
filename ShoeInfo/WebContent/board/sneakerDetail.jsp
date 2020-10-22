@@ -317,7 +317,14 @@
 							
 								<!-- 로고 -->
 								<div class="grid-logo-list">
+
 									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>">
+										
+										<div class="md-status-wrapper-list" id="md-status-wrapper-list-<%=country_name_eng%><%=i%>" <%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && userDrawBrandList.contains(odto.getBrand_id())){%> style="display:table;" <%} else {%> style="display:none;" <%}%>>
+											<div class="checkbg_list"> <span> &nbsp; </span> </div>
+											<div class="checkicon_list"><i class="fas fa-check-circle"></i></div>
+										</div>					
+										
 										<img id="brandlogo_img_list" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="80" height="80">
 									
 										<% if(recentChk == 1){ %>
@@ -347,17 +354,22 @@
 											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플") ){%>
 												<%if(compare_w_start_result == 1 && compare_w_end_result == -1 && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
 													<span id="draw_count_result_ing_list">응모중</span>
+													<input type="hidden" id="hidden_ing_<%=country_name_eng%><%=i%>" value="1">
 												<!-- 시작시간이 없고 끝나는 시간만 존재하고 지금시간이 응모 끝나는 시간보다 전일때 -->
 												<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && compare_w_end_result == -1){%>
 													<span id="draw_count_result_ing_list">응모중</span>
+													<input type="hidden" id="hidden_ing_<%=country_name_eng%><%=i%>" value="1">
 												<!-- 시작시간은 있고 끝나는 시간이 없고 오늘이 시작시간 후일때 -->
 												<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && compare_w_start_result == 1){%>
 													<span id="draw_count_result_ing_list">응모중</span>
+													<input type="hidden" id="hidden_ing_<%=country_name_eng%><%=i%>" value="1">
 												<!-- 시작시간은 있고 지금시간이 시작시간 전일때 -->
 												<%}else if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty() && compare_w_start_result == -1){%>
 													<span id="draw_count_result_before_list">응모전</span>
+													<input type="hidden" id="hidden_ing_<%=country_name_eng%><%=i%>" value="-1">
 												<%}else{ %>
 													<span></span>
+													<input type="hidden" id="hidden_ing_<%=country_name_eng%><%=i%>" value="0">
 												<%}%>
 											<%}else if(odto.getOnline_method().contains("-")){%>
 												<span></span>
@@ -782,6 +794,11 @@
 								<!-- 로고 사진 -->
 								<div class="grid-logo">
 									<a href="<%=odto.getOnline_link()%>" target="_blank" id="onlineLink_<%=country_name_eng%><%=i%>"> 
+									
+										<div class="md-status-wrapper" id="md-status-wrapper-<%=country_name_eng%><%=i%>" <%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && userDrawBrandList.contains(odto.getBrand_id())){%> style="display:table;" <%} else {%> style="display:none;" <%}%>>
+											<div class="checkbg"> <span> &nbsp; </span> </div>
+											<div class="checkicon"><i class="fas fa-check-circle"></i></div>
+										</div>
 									
 										<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="100" height="100">
 									
@@ -1824,56 +1841,71 @@
 				//kr
 				var checkbox_country = checkbox_id_country_num.replace(/[0-9]/g,'');
 				
-				var num = $('.num').val();
-				
-				var brand_id = $('#'+checkbox_country +'_brand_id'+checkbox_id_num).val();
-				
-				var idx2 = brand_id.indexOf("_");
-				var brand = brand_id.substring(idx2+1);
+				//응모시간 전이면 alert 띄우기
+				var hidden_ing = $('#hidden_ing_' + checkbox_country + checkbox_id_num).val();
+				if(hidden_ing < 0){
+					alert("아직 응모 전입니다. 응모기간에 응모여부를 체크 할 수 있습니다.");
+					return false;
+				}
+				else {
+					var num = $('.num').val();
+					
+					var brand_id = $('#'+checkbox_country +'_brand_id'+checkbox_id_num).val();
+					
+					var idx2 = brand_id.indexOf("_");
+					var brand = brand_id.substring(idx2+1);
 
-				if($(this).is(":checked")==true){
-					//체크가 안된 상태에서 응모여부 물어보기
-					$(this).prop("checked", false);
-					var draw_confirm_yes = confirm(brand + " 사이트에서 신발을 응모 하셨습니까?");
-				   	if(draw_confirm_yes){
-				   		$.ajax({
-				   			type:'get',
-				   			url:'./addUserDrawInfoAction.me',
-				   			data: 'model_num=' + num + '&model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
-				   			dataType: 'html',
-				   			success:function(data) {
-// 				   				alert("해당 사이트를 나의 페이지에 저장하였습니다.");	
-				   			},error:function(request,status,error){
-							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-							}
-				   		});
-				   		$(this).prop("checked", true);
-				   		$(this).css({'color':'green', 'font-size':16});
-				   	}else {
-				   		$(this).prop("checked", false);
-				   	}
+					if($(this).is(":checked")==true){
+						//체크가 안된 상태에서 응모여부 물어보기
+						$(this).prop("checked", false);
+						var draw_confirm_yes = confirm("<응모여부체크>\n- " + brand + " 사이트에서 신발을 응모 하셨습니까?");
+					   	if(draw_confirm_yes){
+					   		$.ajax({
+					   			type:'get',
+					   			url:'./addUserDrawInfoAction.me',
+					   			data: 'model_num=' + num + '&model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+					   			dataType: 'html',
+					   			success:function(data) {
+									
+					   			},error:function(request,status,error){
+								 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+								}
+					   		});
+					   		$('#md-status-wrapper-list-'+ checkbox_country + checkbox_id_num).fadeIn(400);
+							$('#md-status-wrapper-'+ checkbox_country + checkbox_id_num).fadeIn(400);
+							
+					   		$(this).prop("checked", true);
+					   		$(this).css({'color':'green', 'font-size':16});
+					   	}else {
+					   		$(this).prop("checked", false);
+					   	}
+					}
+					else if($(this).is(":not(:checked)")==true){
+						//체크가 된 상태에서 응모여부 물어보기
+						$(this).prop("checked", true);
+						var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
+					   	if(draw_confirm_no){
+					   		$.ajax({
+					   			type:'get',
+					   			url:'./deleteUserDrawInfoAction.me',
+					   			data: 'model_num=' + num + '&model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
+					   			dataType: 'html',
+					   			success:function(data) {
+					   				
+					   			},error:function(request,status,error){
+								 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+								}
+					   		});
+					   		$(this).prop("checked", false);	
+					   		$('#md-status-wrapper-list-'+ checkbox_country + checkbox_id_num).fadeOut(400);
+			   				$('#md-status-wrapper-'+ checkbox_country + checkbox_id_num).fadeOut(400);
+					   	}else {
+					   		$(this).prop("checked", true);
+					   	}
+					}
+					
 				}
-				else if($(this).is(":not(:checked)")==true){
-					//체크가 된 상태에서 응모여부 물어보기
-					$(this).prop("checked", true);
-					var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
-				   	if(draw_confirm_no){
-				   		$.ajax({
-				   			type:'get',
-				   			url:'./deleteUserDrawInfoAction.me',
-				   			data: 'model_num=' + num + '&model_stylecode='+$('#'+checkbox_country +'_model_stylecode'+checkbox_id_num).val()+'&brand_id='+$('#'+checkbox_country +'_brand_id'+checkbox_id_num).val()+'&country_name='+$('#'+checkbox_country +'_country_name'+checkbox_id_num).val(),
-				   			dataType: 'html',
-				   			success:function(data) {
-// 				   				alert("응모여부를 취소하였습니다.");
-				   			},error:function(request,status,error){
-							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-							}
-				   		});
-				   		$(this).prop("checked", false);	
-				   	}else {
-				   		$(this).prop("checked", true);
-				   	}
-				}
+				
 			}
 
 		});	
