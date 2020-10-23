@@ -124,6 +124,10 @@
 				</div>
 			</div>
 			
+			<div class="direct_detail" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>'">
+				<span>제품 상세보기</span>
+			</div>
+			
 		</div>
 
 		<!-- content -->

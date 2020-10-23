@@ -127,7 +127,7 @@ body {font-size:1em; line-weight:1.4}
 .grid-content div { margin-bottom: 5%; }
 
 	/* 발매 정보가 없을경우 */
-	#no-info-wrapper { width: 100%; text-align: center; margin: 2% 1% 1% 1%; }
+	#no-info-wrapper { text-align: center; margin: 2% 1% 1% 1%; }
 	#no-info-label { display: inline-block; padding: 5% 0; font-size: 1.1em; background-color: #f1f1f154; border-radius: 5px; width: 100%; }
 
 	/* 진행중 마크 */

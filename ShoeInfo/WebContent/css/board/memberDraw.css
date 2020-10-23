@@ -49,24 +49,28 @@ body {font-size:1em; line-weight:1.4}
 #content_sneakerDetail_D .sneaker_image>img { width: 100%; height: 100%; }
 	
 	/* 신발 기본정보 */
-	.detail_wrapper_D { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; padding: 3%; }
+	.detail_wrapper_D { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; padding: 3% 1%; }
 	.detail_wrapper_D div.desc_wrapper_D { width: 100%; float: left; }
 	
 	.sneaker_cate_D { line-height: 35px; display: block; }
 	.sneaker_cate_D label { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 40%; }
 	.sneaker_cate_D span { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; float: right; text-align: right; width: 60%; }
 
+	.direct_detail { padding: 2.3% 0; text-align: center; border: 1px solid #888888; border-radius: 5px; margin: 2% 1% 0 1%; }
+	.direct_detail:hover { color: #c0c0c0; }
+
 #content_sneakerInfo_D { width: 65%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; padding: 0 0 5% 3%; }
 #content_userDrawInfo { margin: 0 2%; }
-#content_userDrawInfo h4 { font-size: 1.5em; margin: 3% 0; text-align: center; }
+#content_userDrawInfo h4 { font-size: 1.4em; margin: 3% 0 1.5% 0; text-align: right; border-bottom: 1px solid #d8d8d8; padding-bottom: 10px; }
 /* 국내 응모 && 해외 응모 */
 #dome-draw-wrapper, #inter-draw-wrapper { display: block; float: left; width: 100%; margin-bottom: 7%; }
 
-#no-draw-wrapper { text-align:center; width: 100%; padding: 15px; }
+#no-draw-wrapper { text-align:center; }
+#no-draw-wrapper span { display: inline-block; padding: 7% 0; font-size: 1.1em; background-color: #f1f1f154; border-radius: 5px; width: 100%; }
 
 .grid-wrapper_D { margin: 1%; width: 98%; float: left; display: block; }
 .grid-wrapper_D:hover { opacity: 0.5; }
-.grid-item_D { position: relative; display: flex; background: #ffffff; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); padding: 1%; }
+.grid-item_D { position: relative; display: flex; background-color: #f3f3f357; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); padding: 1%; }
 #brand_name_D { display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.95em; }
 #wrapper-bmethod_D { color: #1b1b1b; display: inline-block; width: 450px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 1% !important;}
 #wrapper-content_D { padding: 1% 0; }
@@ -210,7 +214,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){
 	.container {
-		width: 92%;
+		width: 93%;
 	}
 	.sneaker_image img, .sneaker_image_draw img{
 		width: 50%;
@@ -318,6 +322,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size: 50px;
 	}
 	
+	.direct_detail {
+		margin-bottom: 4%;
+	}
+	
 }
 
 /* 0 ~ 468px */
@@ -343,10 +351,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 62%;
 	}
 	#content_userDrawInfo h4 {
-    	font-size: 1.25em;
-    	margin: 3% 0;
     	text-align: center;
-    	padding-top: 1%;
+    	padding-top: 4%;
+    	border: 0;
 	}
 	#no-info-wrapper {
 		padding: 10%;
@@ -474,7 +481,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	
 	.detail_wrapper_D {
-		padding: 3% 0;
+		padding: 3% 1%;
 	}
+	
+	.grid-wrapper_D {
+		padding-bottom: 2%;
+	}
+
 }
 	

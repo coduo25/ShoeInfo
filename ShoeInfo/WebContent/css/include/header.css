@@ -228,9 +228,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 /* media Query */
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px) {
-	
-	#myBtn { visibility: hidden; }
-	
+
 	.acc_navbar, .navbar {
 		width: 100%;
 		padding: 0 40px;
@@ -385,4 +383,9 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	}
 	
 	#user_icon>i, #logout_icon>i { float: left; padding-top: 1%; }
+	
+	#myBtn {
+		width: 45px;
+		height: 45px;
+	}
 }
