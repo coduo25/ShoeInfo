@@ -697,6 +697,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
     	left: -33px;
     	width: 95px;
     	padding: 1px 0;
+    	font-size: 10px;
 	}
 	
 	.grid-item-list {
