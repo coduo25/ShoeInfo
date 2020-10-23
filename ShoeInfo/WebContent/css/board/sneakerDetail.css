@@ -530,7 +530,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		font-size:0.9em;
 	}
 	.grid-ing {
- 		top: 4%;
+ 		top: 6%;
+    	width: 40%;
+    	left: 54%;
 	}
 	.grid-time {
     	height: 40px;
@@ -655,11 +657,12 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	.grid-ing-list {
 		right: -1%;
+		top: 15%;
 	}
 	
 	#draw_count_result_ing_list ,#draw_count_result_ing, #draw_count_result_before, #draw_count_result_before_list {
-    	font-size: 0.7em;
-    	padding: 1px 2px;
+    	font-size: 0.8em;
+    	padding: 2px 3px;
 	}	
 	
 	#country_flag_img-list {
