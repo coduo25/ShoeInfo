@@ -131,14 +131,14 @@ body {font-size:1em; line-weight:1.4}
 	#no-info-label { display: inline-block; padding: 5% 0; font-size: 1.1em; background-color: #f1f1f154; border-radius: 5px; width: 100%; }
 
 	/* 진행중 마크 */
-	.grid-ing { position: absolute; top: 8%; left: 65%; width: 30%; text-align: right; }
+	.grid-ing { position: absolute; top: 8%; left: 65%; text-align: right; }
 	.grid-ing-list { float: right; position: absolute; right:0; display: inline-block; width: 30%; text-align: right; }
 	
-	#draw_count_result_before{ background-color: #a2a2a2; color: white; font-size: 1em; font-weight: bold; border: 1px solid #a2a2a2; border-radius: 3px; padding: 3px 4px; }
-	#draw_count_result_ing{ background-color: #58af58; color: white; font-size: 1em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 3px 4px; }
+	#draw_count_result_before{ background-color: #a2a2a2; color: white; font-size: 1em; font-weight: bold; border: 1px solid #a2a2a2; border-radius: 3px; padding: 4px 5px; }
+	#draw_count_result_ing{ background-color: #58af58; color: white; font-size: 1em; font-weight: bold; border: 1px solid #58af58; border-radius: 3px; padding: 4px 5px; }
 	
-	#draw_count_result_before_list { background-color: white; color: #a2a2a2; font-size: 0.8em; font-weight: bold; border: 1px solid #a2a2a2c7; border-radius: 3px; padding: 3px 4px; }
-	#draw_count_result_ing_list { background-color: white; color: #58af58;; font-size: 0.8em; font-weight: bold; border: 1px solid #58af58b0; border-radius: 3px; padding: 3px 4px; }
+	#draw_count_result_before_list { background-color: white; color: #a2a2a2; font-size: 0.8em; font-weight: bold; border: 1px solid #a2a2a2c7; border-radius: 3px; padding: 4px 5px; }
+	#draw_count_result_ing_list { background-color: white; color: #58af58;; font-size: 0.8em; font-weight: bold; border: 1px solid #58af58b0; border-radius: 3px; padding: 4px 5px; }
 	
 	/* 응모완료  status */
 	.md-status-wrapper, .md-status-wrapper-list { width: 80px; height: 80px; overflow: hidden; position: absolute; z-index: 0; display: table; text-align: center; }

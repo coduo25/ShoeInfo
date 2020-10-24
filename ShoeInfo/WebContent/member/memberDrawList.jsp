@@ -127,12 +127,13 @@
 		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
 									</a>
 								</div>
-								<!-- brand & name -->
-								<div class="content_name" style="margin-bottom: 7%;">
-									<!-- model_name -->
-									<div class="model_name">
-										<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
-									</div>
+								<!-- links -->
+								<div class="content_links">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
+										<div id="link-wrapper" style="pointer-events: auto;">
+											<%=sdto.getModel_name()%>
+										</div>
+									</a>
 								</div>
 							</div>
 						</div>

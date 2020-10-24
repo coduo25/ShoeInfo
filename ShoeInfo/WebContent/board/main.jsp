@@ -218,14 +218,6 @@
 								
 								<!-- 이미지 -->
 								<div class="content_img">
-								
-									<!-- 응모중 리본 -->
-									<%if(openChk == 1){%>
-										<div id="ing_status_wrapper">
-											<span id="ing_status">응모중</span>
-										</div>
-									<%}%>
-								
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
 				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=z%><%=i%>_img" >
 				  						<%if(ddayCount>=0 && ddayCount<=7){%> 
@@ -235,29 +227,30 @@
 											</div>								
 										<%}%>	
 									</a>
-								</div>
-								<!-- brand & name -->
-								<div class="content_name">
-									<!-- model_name -->
-									<div class="model_name">
-										<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
+									
+									<div id="alarm-wrapper">
+										<!-- 응모중 리본 -->
+										<%if(openChk == 1){%>
+											<div id="ing_status_wrapper">
+												<span id="ing_status">응모중</span>
+											</div>
+										<%}%>
+										
+										<%if(recentChk == 1){ %>
+											<div id="recent-dot">
+												<span>NEW</span>
+											</div>
+										<%}%>
 									</div>
+	
 								</div>
 								
 								<!-- links -->
 								<div class="content_links">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
-										
-										<!-- 링크 wrapper -->
 										<div id="link-wrapper" style="pointer-events: auto;">
-											<% if(recentChk == 1){ %>
-												<div id="recent-dot">
-													NEW
-												</div>
-											<%} %>
-<%-- 											<%=sdto.getCountLinks()%> --%>
-											응모하기
-										</div>							
+											<%=sdto.getModel_name()%>
+										</div>
 									</a>
 								</div>
 							</div>
@@ -305,22 +298,14 @@
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
 				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">	
 									</a>
-								</div>
-								<!-- brand & name -->
-								<div class="content_name">
-									<!-- model_name -->
-									<div class="model_name">
-										<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
-									</div>
+
 								</div>
 								
 								<!-- links -->
 								<div class="content_links">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
-<!-- 										링크 wrapper -->
-										<div id="link-wrapper">
-<%-- 											<%=sdto.getCountLinks()%> --%>
-											응모하기
+										<div id="link-wrapper" style="pointer-events: auto;">
+											<%=sdto.getModel_name()%>
 										</div>
 									</a>
 								</div>

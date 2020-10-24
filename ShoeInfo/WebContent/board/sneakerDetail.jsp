@@ -159,6 +159,7 @@
 							</div>
 							<div class="sneaker_cate">
 								<label> <strong> RELEASE DATE </strong> </label>
+								<input type="hidden" id="release_date_val" value="<%=sdto.getRelease_date()%>">
 								<span> 
 								<%if(sdto.getRelease_date().contains("99")){%>
 									미정
@@ -1363,7 +1364,16 @@
 				}
 			}
 			else {
-				location.href="./SearchBrand.me?model_stylecode=" + model_stylecode + "&num=" + num;
+				
+				var release_date_val = $('#release_date_val').val();
+				var null_date = '99-99';
+				
+				if(release_date_val.indexOf(null_date) > -1){
+					alert("발매일이 미정인 제품입니다.");
+					return false;
+				}else {
+					location.href="./SearchBrand.me?model_stylecode=" + model_stylecode + "&num=" + num;
+				}
 			}	
 		});
 		

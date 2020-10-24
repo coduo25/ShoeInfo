@@ -25,33 +25,12 @@ body {font-size:1em; line-weight:1.4}
 .no_info { text-align: center; margin: 3% 1%; }
 
 /* 리스트 한칸 */
-.shoelist_content { z-index:8; position:relative; float: left; text-align: center; width: 23%; margin: 1.5% 1%; border-radius: 0.3rem; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); font-family: 'Nanum Gothic', sans-serif; border: 1px solid rgb(222 222 222); transition: all 0.3s; }
+.shoelist_content { z-index:8; position:relative; float: left; text-align: center; width: 23%; margin: 1.5% 1%; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); font-family: 'Nanum Gothic', sans-serif; border: 1px solid rgb(222 222 222); transition: all 0.3s; /* border-radius: 0.3rem;*/ }
 .shoelist_content img { width:180px; height:130px; width: 95%; height: 95%; transform:scale(1.0); transition: transform.5s; }
 .shoelist_content:hover .content_img img{ transform:scale(1.05); transition: transform.5s; }
 
-/* 응모 중 리본 */
-#ing_status_wrapper {
-	position: absolute;
-    width: 30%;
-    background-color: #ffffff;
-    z-index: 50;
-    top: 3.5%; 
-    right: 4.5%;
-    text-align:right;
-    margin-top: 1%;
-}
-
-#ing_status {
-	padding: 5% 7%;
-	font-size: 17px;
-    font-weight: bold;
-	border: 1px solid #da585870;
-	color: #da5858;
-	border-radius: 3px;
-}
-
 /* 발매일 */
-.release_date { font-size: 1.15em; font-weight: bold; background-color: #2d2d2d; padding: .5rem 1rem; color: white; border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem; }
+.release_date { font-size: 1.15em; font-weight: bold; background-color: #2d2d2d; padding: .5rem 1rem; color: white; /*border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem;*/ }
 
 /* 메인 내용 */
 .content_wrapper { padding: 1%; }
@@ -59,34 +38,61 @@ body {font-size:1em; line-weight:1.4}
 .content_wrapper div, .content_wrapper_draw div { display: block; }
 
 	/* 이미지 */
-	.content_img { margin-top: 3%; position: relative; }
+	.content_img { position: relative; border-bottom: 1px solid #dedede; padding: 11% 0 9% 0; }
 	
 	/* 디데이라벨 */
 	#dd-label-wrapper { display: none; position: absolute; top: 3%; right: 5%; width: 30%; text-align: right; margin-top: 1%; }
 	#dd-label { font-size: 18px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 5% 7%; border-radius: 3px; }
 	
+	/* 알람 알리는 줄 */
+	#alarm-wrapper { position: absolute; width: 100%; text-align: left; padding-left: 10px; bottom: -4%; }
+	#alarm-wrapper div { margin-right: 1%; }
+
+	/* 응모중 알람 */
+	#ing_status_wrapper {
+	    border: 1px solid #dc4343c9;
+	    background-color: #ffffff;
+	    z-index: 50;
+	    padding: 1.5% 2.5%;
+	    color: #dc4343;
+	    display: inline-block;
+	}
+	#ing_status { font-size: 15px; }
+
+	/* New 알람 */
+	#recent-dot { 
+	    border: 1px solid #00c300a6;
+	    background-color: white;
+	    z-index: 50;
+	    padding: 1.5% 2.5%;
+	    color: #00c300;	
+	    display: inline-block;
+	}
+	#recent-dot span { font-size: 15px; }
+	
 	/* 이름 */
 	.content_name { margin-top: 1%; }
 	.content_name .model_name { font-size: 14.5px; height: 27px; padding: 0 1.5%; }
-	
-	/* 최신 dot */
-	#recent-dot { position: absolute; top: 13%; left: 64.5%; color: #00c300; font-size: 0.75em; }
-/* 	#recent-dot i{  background-color: white; border-radisus: 50%; } */
-	
-	/* 링크 */
-/* 	#link-wrapper { position:relative; padding: 2%; font-weight: bold; margin: 8% auto; transition: all 0.3s; font-size: 0.8em; border: 1px solid #949494; border-radius: 13px; width: 40px; color: #2d2d2d; } */
-/* 	#link-wrapper:hover { color: white; background-color: orange; } */
+
+
+	.content_links { padding: 8% 4% 9% 4%; }
 	
 	#link-wrapper {
 	    position: relative;
-	    padding: 3% 0;
-	    font-weight: bold;
-	    margin: 8% 0 0 0;
 	    transition: all 0.3s;
 	    font-size: 1.05em;
+	    font-weight: bold;
 	    width: 100%;
-	    color: #2d2d2d;
-	    border-top: 1px solid #dedede;
+	    color: #000000;
+	    text-align: left !important;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    word-wrap: break-word;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
+	    line-height: 1.2em;
+		height: 40px;
 	}
 	#link-wrapper:hover { color: #939393; }
 	
