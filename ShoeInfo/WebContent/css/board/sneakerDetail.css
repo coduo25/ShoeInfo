@@ -17,7 +17,8 @@ body {font-size:1em; line-weight:1.4}
 	.arrow { padding: 0 6px 0 8px; font-size: 0.9em; }
 
 	/* 제목 */
-	#title { width: 100%; padding: 1% 0.5% 0 0.5%; font-size: 50px; font-weight: bold; font-family: 'Roboto', sans-serif; color: #333; letter-spacing: -0.5px; }
+	#title { width: 100%; padding: 0.8% 0.5% 0 0.5%; font-size: 48px; font-weight: bold; font-family: 'Roboto', sans-serif; color: #000; letter-spacing: -0.5px; }
+	#title_kr { width: 100%; padding: 1% 0.5% 0 0.5%; font-size: 25px; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; color: #000; }
 
 	/* 신발 기본정보 */
 	.sneaker_image_wrapper { width: 100%; display: block; }
@@ -299,7 +300,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 /* 		font-size: 0.9em; */
 /* 	} */
 	#rel_Btn_label {
-		font-size: 1.1em !important;
+		font-size: 1em !important;
 	}
 	.grid-wrapper {
 		width:21%;
@@ -372,6 +373,9 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
+	.container {
+		width: 95%;
+	}
 	.grid-wrapper {
 		width:29.33%;
 		height: 540px;
@@ -463,10 +467,20 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.grid-content {
    		padding: 3% 5% 5% 5%;
 	}
+	
+	#title {
+		font-size: 2.3em;
+	}
+	#title_kr {
+		font-size: 1.5em;
+	}
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
+	.container {
+		width: 93%;
+	}
 	/* 스위치 */
 	.switch-wrapper { 
 /* 		display: none; */
@@ -517,8 +531,13 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	.arrow {
     	padding: 0 3px 0 4px;
 	}
+	
 	#title {
-		font-size: 1.8em;
+		font-size: 1.5em;
+	}
+	#title_kr {
+		font-size: 0.8em;
+		padding: 2% 0.5% 3% 0.5%;
 	}
 	
 	#country_flag_img {

@@ -71,7 +71,15 @@
 		
 			<!-- 제목 -->
 			<div id="title">
-				<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name()%></span> </a>
+				<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> 
+					<span> <%=sdto.getModel_name()%></span> 
+				</a>
+			</div>
+			<!-- 제목 -->
+			<div id="title_kr">
+				<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> 
+					<span> <%=sdto.getModel_name_kr()%></span> 
+				</a>
 			</div>
 
 			<!-- 신발 기본 정보 -->
@@ -82,10 +90,6 @@
 							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 						</div>
 					</a>
-					<!-- 신발 이름 -->
-					<div class="sneaker_name" style="display:none;">
-						<span><%=sdto.getModel_name() %></span>
-					</div>
 				</div>
 			</div>
 			

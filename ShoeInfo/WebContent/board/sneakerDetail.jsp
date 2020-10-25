@@ -20,6 +20,7 @@
 <link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -110,6 +111,11 @@
 			<!-- 제목 -->
 			<div id="title">
 				<span> <%=sdto.getModel_name()%></span>
+			</div>
+			
+			<!-- 제목(한국어) -->
+			<div id="title_kr">
+				<span> <%=sdto.getModel_name_kr() %> </span>
 			</div>
 			
 			<!-- 신발 기본 정보 -->

@@ -63,6 +63,13 @@ public class AddSneakerAction implements Action {
 			sdto.setModel_name(multi.getParameter("model_name").trim());
 		}
 		
+		//model_name_kr
+		if(multi.getParameter("model_name_kr") == null || multi.getParameter("model_name_kr").isEmpty()){
+			sdto.setModel_name_kr("UNKNOWN");
+		}else {
+			sdto.setModel_name_kr(multi.getParameter("model_name_kr").trim());
+		}
+		
 		//model_colorway
 		if(multi.getParameter("model_colorway") == null || multi.getParameter("model_colorway").isEmpty()){
 			sdto.setModel_colorway("UNKNOWN");

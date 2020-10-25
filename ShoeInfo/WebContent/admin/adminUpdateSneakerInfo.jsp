@@ -98,6 +98,13 @@
 						</td>
 					</tr>
 					<tr>
+						<td id="category" colspan="2"> 제품명(한국어) </td>
+						<td colspan="2">
+							<input type="text" name="model_name_kr" <%if(sdto.getModel_name_kr().equals("UNKNOWN")){%>value=""<%}else{%>value="<%=sdto.getModel_name_kr()%> <%}%>">
+							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span>
+						</td>
+					</tr>
+					<tr>
 						<td id="category" colspan="2"> 제품 컬러 웨이 </td>
 						<td colspan="2">
 							<input type="text" name="model_colorway" <%if(sdto.getModel_colorway().equals("UNKNOWN")){%>value=""<%}else{%> value="<%=sdto.getModel_colorway()%> <%}%>">

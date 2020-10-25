@@ -25,6 +25,7 @@
 <title>SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
@@ -232,13 +233,13 @@
 										<!-- 응모중 리본 -->
 										<%if(openChk == 1){%>
 											<div id="ing_status_wrapper">
-												<span id="ing_status">응모중</span>
+												<p id="ing_status">응모중</p>
 											</div>
 										<%}%>
 										
 										<%if(recentChk == 1){ %>
-											<div id="recent-dot">
-												<span>NEW</span>
+											<div id="recent-dot-wrapper">
+												<p id="recent-dot">업데이트</p>
 											</div>
 										<%}%>
 									</div>
@@ -249,7 +250,7 @@
 								<div class="content_links">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
 										<div id="link-wrapper" style="pointer-events: auto;">
-											<%=sdto.getModel_name()%>
+											<%=sdto.getModel_name_kr()%>
 										</div>
 									</a>
 								</div>
@@ -305,7 +306,7 @@
 								<div class="content_links">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
 										<div id="link-wrapper" style="pointer-events: auto;">
-											<%=sdto.getModel_name()%>
+											<%=sdto.getModel_name_kr()%>
 										</div>
 									</a>
 								</div>

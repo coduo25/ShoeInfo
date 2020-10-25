@@ -47,7 +47,7 @@
 									<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 								</div>
 								<div id="sneakerList-name">
-									<span class="name"><%=sdto.getModel_name()%></span>
+									<span class="name"><%=sdto.getModel_name_kr()%></span>
 								</div>
 							</div>
 						<%

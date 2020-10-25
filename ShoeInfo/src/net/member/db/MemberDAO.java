@@ -645,6 +645,7 @@ public class MemberDAO {
 						sdto.setNum(rs2.getInt("num"));
 						sdto.setBrand(rs2.getString("brand"));
 						sdto.setModel_name(rs2.getString("model_name"));
+						sdto.setModel_name_kr(rs2.getString("model_name_kr"));
 						sdto.setModel_stylecode(rs2.getString("model_stylecode"));
 						sdto.setImage(rs2.getString("image"));
 						sdto.setRelease_date(rs2.getString("release_date"));

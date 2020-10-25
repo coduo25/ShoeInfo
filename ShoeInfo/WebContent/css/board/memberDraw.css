@@ -17,7 +17,8 @@ body {font-size:1em; line-weight:1.4}
 	.arrow { padding: 0 6px 0 8px; font-size: 0.9em; }
 
 	/* 제목 */
-	#title { width: 100%; font-size: 30px; font-weight: bold; font-family: 'Roboto', sans-serif; color: #333; }
+	#title { width: 100%; font-size: 25px; font-weight: bold; font-family: 'Roboto', sans-serif; color: #000; }
+	#title_kr { width: 100%; font-size: 18px; font-weight: bold; font-family: 'Nanum Gothic', sans-serif; color: #000; padding: 1.5% 0 0 0; }
 
 	/* 신발 기본정보 */
 	.sneaker_image_wrapper { width: 100%; display: block; }
@@ -271,6 +272,10 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
 	
+	.container {
+		width: 95%;
+	}
+	
 	#content_sneakerDetail_D {
 		width: 100%;
 		font-size: 1em;
@@ -320,17 +325,32 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		line-height: 20px;
 	}
 	#title {
-		font-size: 50px;
+		font-size: 2.3em;
+	}
+	#title_kr {
+		font-size: 1.5em;
 	}
 	
 	.direct_detail {
 		margin-bottom: 4%;
 	}
 	
+	#cate_Detail {
+	    padding: 5% 0 0;
+		font-size: 1em;
+	}
+	
+	#content_userDrawInfo {
+    	margin: 0;
+	}
+	
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
+	.container {
+		width: 93%;
+	}
 	.sneaker_image img, .sneaker_image_draw img{
 		width: 70%;
 		height: 70%;
@@ -465,11 +485,15 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#cate_Detail {
 		padding: 4% 0 0 0;
-    	font-size: 0.7em;
+    	font-size: 0.8em;
 	}
 	
 	#title {
 		font-size: 2em;
+	}
+	#title_kr {
+		font-size: 1em;
+		padding: 2% 0.5% 3% 0.5%;
 	}
 	
 	.arrow {

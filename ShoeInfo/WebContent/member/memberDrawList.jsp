@@ -131,7 +131,7 @@
 								<div class="content_links">
 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
 										<div id="link-wrapper" style="pointer-events: auto;">
-											<%=sdto.getModel_name()%>
+											<%=sdto.getModel_name_kr()%>
 										</div>
 									</a>
 								</div>

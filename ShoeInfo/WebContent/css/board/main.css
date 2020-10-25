@@ -13,8 +13,8 @@ body {font-size:1em; line-weight:1.4}
 /* 발매완료 숨기기 버튼 */
 #showAllChk { width: 30%; text-align: center; padding: 35px 5px 0 5px; font-family: 'Nanum Gothic', sans-serif; display: flex; margin: 0 auto; }
 #showAllChk span { cursor: pointer; }
-#before { width: 50%; font-size: 1em; font-weight: bold; border-top-left-radius: 3px; border-bottom-left-radius: 3px; padding: .75rem 1.5rem; display: inline-block; text-align: center; letter-spacing: .3rem; background-color: #bfbfbf; color: #000; }
-#after { width: 50%; font-size: 1em; font-weight: bold; border-top-right-radius: 3px; border-bottom-right-radius: 3px; padding: .75rem 1.5rem; display: inline-block; text-align: center; letter-spacing: .3rem; background-color: #f2f2f2; color: #000; }
+#before { width: 50%; font-size: 1em; font-weight: bold; padding: .75rem 1.5rem; display: inline-block; text-align: center; letter-spacing: .3rem; background-color: #bfbfbf; color: #000; }
+#after { width: 50%; font-size: 1em; font-weight: bold; padding: .75rem 1.5rem; display: inline-block; text-align: center; letter-spacing: .3rem; background-color: #f2f2f2; color: #000; }
 
 /* 신발 리스트 페이지 ------------------------------------------------------------------------------------------------------------ */
 #content_sneakerList { margin-top: 0; width: 100%; height: 800px; z-index: 2; padding-bottom: 2.5rem; }
@@ -38,50 +38,46 @@ body {font-size:1em; line-weight:1.4}
 .content_wrapper div, .content_wrapper_draw div { display: block; }
 
 	/* 이미지 */
-	.content_img { position: relative; border-bottom: 1px solid #dedede; padding: 11% 0 9% 0; }
+	.content_img { position: relative; border-bottom: 1px solid #dedede; padding: 14% 0 12% 0; }
 	
 	/* 디데이라벨 */
 	#dd-label-wrapper { display: none; position: absolute; top: 3%; right: 5%; width: 30%; text-align: right; margin-top: 1%; }
 	#dd-label { font-size: 18px; font-weight: bold; color: #da5858; border: 1px solid rgb(226 226 226); padding: 5% 7%; border-radius: 3px; }
 	
 	/* 알람 알리는 줄 */
-	#alarm-wrapper { position: absolute; width: 100%; text-align: left; padding-left: 10px; bottom: -4%; }
-	#alarm-wrapper div { margin-right: 1%; }
+	#alarm-wrapper { position: absolute; width: 100%; text-align: left; padding-left: 4%; bottom: -3.5%; }
+	#alarm-wrapper div { margin-right: 1%; display: inline-block; }
 
 	/* 응모중 알람 */
 	#ing_status_wrapper {
-	    border: 1px solid #dc4343c9;
-	    background-color: #ffffff;
+	    border: 1px solid #58af58;
+	    background-color: #58af58;
 	    z-index: 50;
-	    padding: 1.5% 2.5%;
-	    color: #dc4343;
-	    display: inline-block;
+	    color: white;
+	    text-align: center;
 	}
-	#ing_status { font-size: 15px; }
-
 	/* New 알람 */
-	#recent-dot { 
-	    border: 1px solid #00c300a6;
+	#recent-dot-wrapper { 
+	    border: 1px solid #e05757;
 	    background-color: white;
 	    z-index: 50;
-	    padding: 1.5% 2.5%;
-	    color: #00c300;	
-	    display: inline-block;
+	    color: #e05757;	
+	    text-align: center;
 	}
-	#recent-dot span { font-size: 15px; }
+	#ing_status, #recent-dot { font-size: 15px; font-weight: bold; padding: 4px 5px; }
 	
 	/* 이름 */
 	.content_name { margin-top: 1%; }
 	.content_name .model_name { font-size: 14.5px; height: 27px; padding: 0 1.5%; }
 
 
-	.content_links { padding: 8% 4% 9% 4%; }
+	.content_links { padding: 8% 4% 7.5% 4%; }
 	
 	#link-wrapper {
 	    position: relative;
 	    transition: all 0.3s;
 	    font-size: 1.05em;
-	    font-weight: bold;
+	    font-weight: normal;
 	    width: 100%;
 	    color: #000000;
 	    text-align: left !important;
@@ -156,13 +152,16 @@ body {font-size:1em; line-weight:1.4}
 	#showAllChk {
     	width: 60%;
 	}
+	#ing_status, #recent-dot { 
+		font-size: 13px;
+	}
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
 	.shoelist_content {
-		width: 46%;
-   		margin: 3% 2%;
+		width: 48%;
+   		margin: 3% 1%;
    		font-size: 1em;
 	}
 	.release_date{
@@ -170,9 +169,6 @@ body {font-size:1em; line-weight:1.4}
 	}
 	.content_name .model_name {
 		font-size: 0.75em;
-	}
-	.content_links{
-		margin-top:12%;
 	}
 	#link-wrapper {
 		font-size: 0.75em;
@@ -182,13 +178,6 @@ body {font-size:1em; line-weight:1.4}
 	}
 	#recent-dot i {
 		font-size: 1em;
-	}
-	#ing_status_wrapper {
-		width: 50%;
-	}
-	#ing_status {
-		font-size: 0.75em;
-		padding: 2% 7%;
 	}
 	#dd-label {
 		font-size: 0.8em;
@@ -215,6 +204,20 @@ body {font-size:1em; line-weight:1.4}
 	#showAllChk span{
 		font-size:0.8em;
 		letter-spacing: .125rem;
+	}
+	.content_img {
+		padding: 16% 0 14% 0;
+	}
+	#ing_status, #recent-dot{ 
+		font-size: 0.7em;
+		padding: 2px 3px;
+	}
+
+	#link-wrapper {
+		height: 30px;
+	}
+	.content_links {
+    	padding: 10% 4% 11% 4%;
 	}
 }
 

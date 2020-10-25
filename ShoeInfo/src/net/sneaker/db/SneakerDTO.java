@@ -11,6 +11,7 @@ public class SneakerDTO {
 	private String image;
 	private String model_stylecode;
 	private String model_name;
+	private String model_name_kr;
 	private String model_colorway;
 	private int price;
 	private String release_date;
@@ -61,6 +62,12 @@ public class SneakerDTO {
 	}
 	public void setModel_name(String model_name) {
 		this.model_name = model_name;
+	}
+	public String getModel_name_kr() {
+		return model_name_kr;
+	}
+	public void setModel_name_kr(String model_name_kr) {
+		this.model_name_kr = model_name_kr;
 	}
 	public String getModel_colorway() {
 		return model_colorway;
