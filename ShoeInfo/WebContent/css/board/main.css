@@ -109,14 +109,14 @@ body {font-size:1em; line-weight:1.4}
 		width: 100%;
 		height: 100%;
 		display: table;
-		font-size: 1.4em;
 		font-weight: bold;
 		z-index: 10;
 		opacity: 0.5;
 	}
 	.rel_finish_label {
-		padding-top: 50%;
+		padding-top: 60%;
     	z-index: 11;
+    	font-size: 2em;
 	}
 	
 
@@ -190,7 +190,8 @@ body {font-size:1em; line-weight:1.4}
 		font-size: 1.2em;
 	}
 	.rel_finish_label {
-		padding-top: 60%;
+		padding-top: 70%;
+		font-size: 1.2em;
 	}
 	#recent-dot {
     	left: 68%;
