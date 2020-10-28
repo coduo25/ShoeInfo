@@ -404,7 +404,7 @@
 													<span> 추후공지예정 </span>
 												<!-- 시작시간이 없고 끝나는 시간만 존재할때 -->
 												<%}else if(odto.getOnline_start_date().isEmpty() && odto.getOnline_start_time().isEmpty() && !odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()){%>
-													<span class="end_time"> ~ <%=newlist_Online_end_time%> </span>
+													<span class="end_time"> ~ <%=newlist_Online_end_time%> 까지 </span>
 												<!-- 끝나는 시간이 없고 시작시작만 존재할때 -->
 												<%}else if(odto.getOnline_end_date().isEmpty() && odto.getOnline_end_time().isEmpty() && !odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()){%>
 													<span class="start_time" id="start_time2"> <%=newlist_Online_start_time%> </span> ~ 추후공지
@@ -417,7 +417,7 @@
 												<%}else if(odto.getOnline_start_time().isEmpty() || odto.getOnline_end_time().isEmpty()) {%>
 													<span> 추후공지예정 </span>
 												<%}else{%>
-													<span class="start_time" id="start_time2"><%=newlist_Online_start_time%></span> ~ <span class="end_time"><%=newlist_Online_end_time%></span>
+													<span class="start_time" id="start_time2"><%=newlist_Online_start_time%></span> ~ <span class="end_time"><%=newlist_Online_end_time%> 까지 </span>
 												<%}%>
 											<%}%>
 										</span>
@@ -1838,7 +1838,7 @@
 			
 			//로그인 체크
 			if($(".login_user").val() == "") {
-				var login_confirm = confirm("응모여부를 체크하시려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
+				var login_confirm = confirm("응모여부를 체크할려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
 				if(login_confirm){
 					location.href="./MemberLogin.me";
 					$(this).prop("checked", false);
@@ -1874,7 +1874,7 @@
 					if($(this).is(":checked")==true){
 						//체크가 안된 상태에서 응모여부 물어보기
 						$(this).prop("checked", false);
-						var draw_confirm_yes = confirm("<응모여부체크>\n- " + brand + " 사이트에서 신발을 응모 하셨습니까?");
+						var draw_confirm_yes = confirm("<응모여부체크>\n- " + brand + " 사이트에서 신발을 응모 했습니까?");
 					   	if(draw_confirm_yes){
 					   		$.ajax({
 					   			type:'get',
@@ -1899,7 +1899,7 @@
 					else if($(this).is(":not(:checked)")==true){
 						//체크가 된 상태에서 응모여부 물어보기
 						$(this).prop("checked", true);
-						var draw_confirm_no = confirm("해당 사이트 응모를 취소하셨습니까?");
+						var draw_confirm_no = confirm("해당 사이트 응모를 취소했습니까?");
 					   	if(draw_confirm_no){
 					   		$.ajax({
 					   			type:'get',
