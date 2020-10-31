@@ -125,13 +125,9 @@
 					<div class="sneaker_image"> 
 						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 					</div>
-					<!-- 신발 이름 -->
-					<div class="sneaker_name" style="display:none;">
-						<span><%=sdto.getModel_name() %></span>
-					</div>
 				</div>
 				
-				<div class="draw_status">
+				<div class="draw_status" style="display:none;">
 					<div onclick="fnMove('0')">
 						<span id="dome_label">국내 발매처</span> <span id="divide">|</span> <span id="countDome"></span>
 					</div>
@@ -229,7 +225,7 @@
 			%>
 				<!-- 국가 발매처 -->
 				<div id="grid-list-list">
-					<h4 id="h4title<%=z%>"> <%=country_name_kr%> 발매 리스트 <i class="fas fa-caret-down"></i> </h4>
+					<h4 id="h4title<%=z%>"> <%=country_name_kr%> 발매처  </h4>
 					
 					<%
 						if(new_onlineList.isEmpty()){
@@ -696,7 +692,7 @@
 				
 				<!-- 국가 발매처 -->
 				<div id="grid-list">
-					<h4> <%=country_name_kr%> 발매 리스트 <i class="fas fa-caret-down"></i> </h4>
+					<h4> <%=country_name_kr%> 발매처 </h4>
 					<%
 						if(new_onlineList.isEmpty()){
 					%>
