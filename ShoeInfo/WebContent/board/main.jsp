@@ -266,10 +266,10 @@
 			%>
 			
 			<!-- 2020 Sneaker Release -->
-			<p class="month">
+			<p class="month" id="month_2020">
 				2020 발매예정.
 			</p>
-			<div class="div_month" style="margin-bottom: 50px;">
+			<div class="div_month" id="div_month_2020" style="margin-bottom: 50px;">
 				<%
 					if(sneakerList2020.size() == 0){
 				%>
@@ -281,7 +281,7 @@
 					for(int j=0; j<sneakerList2020.size(); j++) {
 						SneakerDTO sdto = sneakerList2020.get(j);
 				%>
-					<div class="shoelist_content">
+					<div class="shoelist_content" id="shoelist_content_2020">
 						<!-- 발매일 -->
 						<div class="release_date">
 							<span>
@@ -329,28 +329,33 @@
 	$(document).ready(function(){
 		
 		var filter = "win16|win32|win64|mac|macintel";
-
 		if(navigator.platform) {
 			//모바일로 접속했을시
-			if (filter.indexOf( navigator.platform.toLowerCase() ) < 0) {
-				
+			if (filter.indexOf( navigator.platform.toLowerCase() ) < 0) {	
 			}
 			//데스크탑으로 접속했을시
 			else { 
-				
 			}
 		}
 		
 		//발매전을 눌렸을시
 		$('#before').click(function(){
+			$('[id=content_before]').show();
 			$('[id=content_after]').hide();
+			$('#month_2020').show();
+			$('#month_div_2020').show();
+			$('[id=shoelist_content_2020]').show();
 			$('#before').css({"background-color" : "#bfbfbf"});
 			$('#after').css({"background-color" : "#f2f2f2"});
 		});
 		
 		//발매완료를 눌렸을시
 		$('#after').click(function(){
+			$('[id=content_before]').hide();
 			$('[id=content_after]').show();
+			$('#month_2020').hide();
+			$('#month_div_2020').hide();
+			$('[id=shoelist_content_2020]').hide();
 			$('#before').css({"background-color" : "#f2f2f2"});
 			$('#after').css({"background-color" : "#bfbfbf"});
 		});
