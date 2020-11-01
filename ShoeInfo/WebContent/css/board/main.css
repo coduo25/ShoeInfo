@@ -102,7 +102,7 @@ body {font-size:1em; line-weight:1.4}
 		font-weight: bold;
 		background-color: white;
 		z-index: 9;
-		opacity: 0.6;
+		opacity: 0.4;
 	}
 	.rel_finish {
 		position:absolute;
@@ -116,7 +116,7 @@ body {font-size:1em; line-weight:1.4}
 	.rel_finish_label {
 		padding-top: 60%;
     	z-index: 11;
-    	font-size: 2em;
+    	font-size: 1.7em;
 	}
 	
 
@@ -187,7 +187,7 @@ body {font-size:1em; line-weight:1.4}
 		width: 50%;
 	}
 	.rel_finish {
-		font-size: 1.2em;
+		font-size: 1em;
 	}
 	.rel_finish_label {
 		padding-top: 70%;
