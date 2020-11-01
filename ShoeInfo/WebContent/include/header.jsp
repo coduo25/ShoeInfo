@@ -132,6 +132,7 @@
 		<ul class="navbar_menu">
 			<li> <a href="./SneakerList.go"> <span id="cal_icon"><i class="fas fa-calendar"></i></span> 런칭 캘린더 </a> </li>
 			<li> <a href="./AllSneaker.go"> <span id="all_icon"><i class="fas fa-calendar-alt"></i></span> 전체 보기 </a>
+			<li class="mypage_btn_mobile" id="myDrawBtn_mobile"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div> </li>
 		</ul>
 		
 		<!-- 나의 드로우 -->
@@ -140,21 +141,18 @@
 			<%
 				if(user == null || user.length() == 0){
 			%>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogin.me"> <div id="user_icon"><i class="fas fa-user"></i> <div> LOGIN </div> </div> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberLogin.me"> <div id="user_icon"><i class="fas fa-user"></i> <div> 로그인 </div> </div> </a> </li>
 			<%
 				}else if(usr_position.equals("admin")){ 
 			%>
 				<li class="mypage_btn_mobile"> <a href="./Main.ad"> <div id="user_icon"> <i class="fas fa-tools"></i> <div>ADMIN PAGE</div>   </div> </a> </li>
-
 				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <div id="user_icon"> <i class="fas fa-user"></i> <div id="user_label" > <%=user%> </div> </div>  </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div> </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div> LOGOUT</div>  </div> </a> </li>
+				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div> 로그아웃 </div>  </div> </a> </li>
 			<% 
 				}else{
 			%>
 				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <div id="user_icon"> <i class="fas fa-user"></i>  <div id="user_label" ><%=user%></div> </div> </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberDrawInfo.me"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div>  </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div>LOGOUT</div> </div> </a> </li>			
+				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div>로그아웃</div> </div> </a> </li>			
 			<% 
 				} 
 			%> 
@@ -193,7 +191,7 @@
 		});
 		
 		//마이드로우 눌렸을시
-		$('#myDrawBtn, #myDrawBtn2').click(function(){
+		$('#myDrawBtn, #myDrawBtn2, #myDrawBtn_mobile').click(function(){
 			//로그인 체크
 			if($(".user").val() == "" || $(".user").val() == "undefined" || $(".user").val() == null) {
 				location.href="./MemberLogin.me";

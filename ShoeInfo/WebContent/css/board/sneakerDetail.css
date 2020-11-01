@@ -106,16 +106,13 @@ body {font-size:1em; line-weight:1.4}
 }
 
 
-
 /* list 양식 */
 #grid-list-list { width: 100%;  display: block; height: auto; overflow:hidden; margin-bottom: 5%; }
 .grid-wrapper-list { margin: 1.25%; width: 47.5%; float:left; display: block; }
-.grid-item-list { padding: 2%; position: relative; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); background-color: #f3f3f3; display: flex; }
+.grid-item-list { padding: 2%; position: relative; border: 0.3px solid #dcdcdc; border-radius: 0.3rem; z-index: 3; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); background-color: #f5f5f5e8; display: flex; }
 .grid-logo-list { display: inline-block; }
 #brandlogo_img_list { vertical-align: middle; border: 1px solid #e2e2e2; border-radius: 0.3rem; }
 .grid-content-list { display: inline-block; width: 100%; padding: 0.5% 0.5% 0.5% 3%; }
-
-
 
 
 /* large 양식 */
@@ -129,7 +126,7 @@ body {font-size:1em; line-weight:1.4}
 
 	/* 발매 정보가 없을경우 */
 	#no-info-wrapper { text-align: center; margin: 2% 1% 1% 1%; }
-	#no-info-label { display: inline-block; padding: 5% 0; font-size: 1.1em; background-color: #f1f1f1d6; border-radius: 5px; width: 100%; }
+	#no-info-label { display: inline-block; padding: 5% 0; font-size: 1.1em; background-color: #f5f5f5e8; border-radius: 5px; width: 100%; }
 
 	/* 진행중 마크 */
 	.grid-ing { position: absolute; top: 8%; left: 65%; text-align: right; }

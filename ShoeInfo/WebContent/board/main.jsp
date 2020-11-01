@@ -190,7 +190,6 @@
 									openChk = 1;
 								}
 							}
-							
 					%>
 						<div class="shoelist_content" <%if(compare_w_rel > 0 && openChk == -1){%> id="content_after" style="display:none;"<%}%> id="content_before">
 							<%if(compare_w_rel > 0 && openChk == -1) {%>
