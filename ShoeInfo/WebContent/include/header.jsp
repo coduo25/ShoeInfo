@@ -137,7 +137,7 @@
 		
 		<!-- 나의 드로우 -->
 		<ul class="navbar_userlinks">
-			<li class="pc_icon"> <span id="myDrawBtn" style="cursor: pointer;"> <i class="far fa-calendar-check"></i>  MY DRAW </span> </li>
+			<li class="pc_icon"> <span id="myDrawBtn" style="cursor: pointer; font-family: 'Source Sans Pro', sans-serif;"> <i class="far fa-calendar-check"></i>  MY DRAW </span> </li>
 			<%
 				if(user == null || user.length() == 0){
 			%>
