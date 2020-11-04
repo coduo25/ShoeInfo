@@ -1358,15 +1358,15 @@
 			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {
 				location.href="./MemberLogin.me";
 			}
-			//발매정보원 체크
+			//열심회원 체크
 			else if($("#login_user_position").val() == "general"){
-				var upPosition_confirm = confirm("발매정보는 발매정보원만 추가할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
-				if(upPosition_confirm){
-					location.href="./RequestUpPos.me?email="+$("#login_user").val();
-				}
+				alert("현재 등업 시스템 점검중입니다. \n서비스 이용에 불편을 드려 죄송합니다.");
+// 				var upPosition_confirm = confirm("발매정보는 열심회원원만 추가할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
+// 				if(upPosition_confirm){
+// 					location.href="./RequestUpPos.me?email="+$("#login_user").val();
+// 				}
 			}
 			else {
-				
 				var release_date_val = $('#release_date_val').val();
 				var null_date = '99-99';
 				
