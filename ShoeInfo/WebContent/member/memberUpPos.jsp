@@ -41,7 +41,7 @@
 				
 				<div class="change_form">
 					<div class="up-toggle" style="font-size: 1.1em;">
-						<span> 열심회원 등업신청 </span>
+						<span> 발매정보원 등업신청 </span>
 					</div>
 				</div>
 	
@@ -51,7 +51,7 @@
 					
 						<!-- 주의 문구 -->
 						<div class="fm_warn">
-							<span style="color:#424242;"><i class="fas fa-exclamation-triangle"></i> &nbsp;열심회원은 일반회원과 달리 <span style="padding-bottom:0.2%; border-bottom: 1.8px solid green; color: green;">발매정보를 추가</span> 할 수 있습니다. </span>
+							<span style="color:#424242;"><i class="fas fa-exclamation-triangle"></i> &nbsp;발매정보원은 일반회원과 달리 <span style="padding-bottom:0.2%; border-bottom: 1.8px solid green; color: green;">발매정보를 추가</span> 할 수 있습니다. </span>
 						</div>
 						<div class="fm_warn">
 							<span style="color:#424242;"><i class="fas fa-exclamation-triangle"></i> &nbsp;발매정보를 <span style="padding-bottom:0.2%; border-bottom: 1.8px solid red; color:red; ">주기적으로 추가 안할시 일반회원으로 될 수 있습니다.</span> </span>
@@ -76,9 +76,9 @@
 							<input type="text" name="name" id="fm_name_login" id="name" value="<%=mdto.getName()%>" readonly>
 						</div>
 						
-						<!-- 열심회원 신청이유 -->
+						<!-- 발매정보원 신청이유 -->
 						<div class="fm_label">
-							<span> 열심회원 신청 사유 </span>
+							<span> 발매정보원 신청 사유 </span>
 						</div>
 						<div class="fm_reason">
 							<textarea id="reason" name="reason" rows="5" cols="30"></textarea>
@@ -112,7 +112,7 @@
 	$('.request_submitBtn').click(function(){
 		//textarea 란이 비어있으면
 		if($('#reason').val() == ''){
-			alert("등업신청 이유를 작성해주세요.");
+			alert("등업신청 사유를 작성해주세요.");
 			$('#reason').focus();
 			return false;
 		}

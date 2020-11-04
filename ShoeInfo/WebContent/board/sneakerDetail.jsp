@@ -1358,9 +1358,9 @@
 			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {
 				location.href="./MemberLogin.me";
 			}
-			//열심회원 체크
+			//발매정보원 체크
 			else if($("#login_user_position").val() == "general"){
-				var upPosition_confirm = confirm("발매정보는 열심회원만 추가할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
+				var upPosition_confirm = confirm("발매정보는 발매정보원만 추가할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
 				if(upPosition_confirm){
 					location.href="./RequestUpPos.me?email="+$("#login_user").val();
 				}

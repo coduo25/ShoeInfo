@@ -43,7 +43,7 @@
 					<%
 						}else if(usr_position.equals("admin")){ 
 					%>
-						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%} else if(usr_position.equals("admin")){%>관리자<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
+						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>발매정보원<%} else if(usr_position.equals("admin")){%>관리자<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
 						
 						<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span> 
@@ -51,7 +51,7 @@
 					<% 
 						}else{ 
 					%>
-						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
+						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>발매정보원<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
 					
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span>
 						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
@@ -76,7 +76,7 @@
 						
 					<%}else if(usr_position.equals("prime")){%>
 					
-						열심회원
+						발매정보원
 						
 					<%}else if(usr_position.equals("admin")){%>
 					
@@ -107,8 +107,8 @@
 				</div>
 			</div>
 			<div id="rank-wrapper">
-				<div id="rank_label">열심회원</div>
-				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+				<div id="rank_label">발매정보원</div>
+				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
 				<div id="rank_content"> 
 					<p onclick="location.href='./Main.bo'">발매정보 보기</p>
 					<p id="myDrawBtn2"><i class="far fa-calendar-check"></i> MYDRAW 관리</p>
