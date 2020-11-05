@@ -153,7 +153,7 @@
 								<label> <strong> PRICE </strong> </label>
 								 
 								<%if(sdto.getPrice() == 0){%> 
-								<span> 미정 </span>
+								<span> - </span>
 								<%}else{%> 
 								<span> ₩ <%=formatter.format(sdto.getPrice())%> </span>
 								<%}%>
@@ -1856,7 +1856,7 @@
 				//응모시간 전이면 alert 띄우기
 				var hidden_ing = $('#hidden_ing_' + checkbox_country + checkbox_id_num).val();
 				if(hidden_ing < 0){
-					alert("아직 응모 전입니다. 응모기간에 응모여부를 체크 할 수 있습니다.");
+					alert("아직 응모 전입니다. \n응모기간에 응모여부를 체크 할 수 있습니다.");
 					return false;
 				}
 				else {

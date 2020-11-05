@@ -103,7 +103,7 @@
 							<label> <strong> PRICE </strong> </label>
 							 
 							<%if(sdto.getPrice() == 0){%> 
-							<span> 미정 </span>
+							<span> - </span>
 							<%}else{%> 
 							<span> ₩ <%=formatter.format(sdto.getPrice())%> </span>
 							<%}%>

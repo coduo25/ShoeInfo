@@ -244,7 +244,7 @@
 		
 		//탈퇴신청 문구 클릭했을시
 		$('#delete_text').click(function(){
-			 var confirm_delete = confirm("회원탈퇴를 하시겠습니까? (철회불가) \n탈퇴시 모든 나의 정보가 삭제됩니다.");
+			 var confirm_delete = confirm("회원탈퇴를 하시겠습니까? (철회불가) \n탈퇴시 모든 정보가 삭제됩니다.");
 			 if(confirm_delete) {
 				$.ajax({
 					type:"post",

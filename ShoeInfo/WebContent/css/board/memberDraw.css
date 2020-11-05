@@ -46,8 +46,8 @@ body {font-size:1em; line-weight:1.4}
 	
 /* 멤버 응모 여부 페이지 - 신발 상세정보 페이지 */
 #content_sneakerDetail_D { width: 35%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; margin: 1% 0 30% 0; height: 500px; }
-#content_sneakerDetail_D div#sneaker_Detail_D{ width: 100%; padding: 0 5%; }
-#content_sneakerDetail_D .sneaker_image>img { width: 100%; height: 100%; }
+#content_sneakerDetail_D div#sneaker_Detail_D{ width: 100%; padding: 0 5%; margin-bottom: 1%; }
+#content_sneakerDetail_D .sneaker_image>img { width: 90%; height: 90%; }
 	
 	/* 신발 기본정보 */
 	.detail_wrapper_D { overflow: auto; width: 100%; display: block; border-top: 1px solid #b7b7b7; padding: 3% 1%; }
@@ -351,8 +351,8 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 93%;
 	}
 	.sneaker_image img, .sneaker_image_draw img{
-		width: 70% !important;
-		height: 70% !important;
+		width: 80% !important;
+		height: 80% !important;
 	}
 	.sneaker_name {
 		line-height: unset;

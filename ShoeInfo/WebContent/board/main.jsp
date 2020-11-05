@@ -347,6 +347,15 @@
 			$('[id=shoelist_content_2020]').show();
 			$('#before').css({"background-color" : "#bfbfbf"});
 			$('#after').css({"background-color" : "#f2f2f2"});
+			
+			for(var i=1; i<13; i++){
+				if(i < month) {
+					$("#slide-up_" + i).hide();
+					$("#slide-down_" + i).show();
+					
+					$("#div_month_" + i).hide();
+				}
+			}
 		});
 		
 		//발매완료를 눌렸을시
@@ -358,6 +367,13 @@
 			$('[id=shoelist_content_2020]').hide();
 			$('#before').css({"background-color" : "#f2f2f2"});
 			$('#after').css({"background-color" : "#bfbfbf"});
+			
+			for(var i=1; i<13; i++){
+				$("#slide-up_" + i).hide();
+				$("#slide-down_" + i).show();
+				
+				$("#div_month_" + i).show();
+			}
 		});
 
 		var today = new Date();
@@ -371,7 +387,7 @@
 				$("#slide-up_" + i).hide();
 				$("#slide-down_" + i).show();
 				
-				$("#div_month_" + i).show();
+				$("#div_month_" + i).hide();
 			}
 			//지금 달부터 미래의 달부터 나타내기 8~12월
 			else if(i >= month) {
