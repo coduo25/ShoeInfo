@@ -58,38 +58,32 @@
 	<div id="wrapper" class="container">
 	
 		<!-- 카테고리 -->
-		<div id="cate_Detail">
-			<a href="./SneakerList.go"> <span> HOME </span> </a>
-			<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
-			<a href="./MemberDrawInfo.me"> <span> MY DRAW </span></a>
-			<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
-			<span> <%=sdto.getModel_name() %></span>
-		</div>
+<!-- 		<div id="cate_Detail"> -->
+<!-- 			<a href="./SneakerList.go"> <span> HOME </span> </a> -->
+<!-- 			<span class="arrow"> <i class="fas fa-angle-right"></i> </span> -->
+<!-- 			<a href="./MemberDrawInfo.me"> <span> MY DRAW </span></a> -->
+<!-- 			<span class="arrow"> <i class="fas fa-angle-right"></i> </span> -->
+<%-- 			<span> <%=sdto.getModel_name() %></span> --%>
+<!-- 		</div> -->
 
 		<!-- content -->
 		<div id="content_sneakerDetail_D">
 		
 			<!-- 제목 -->
 			<div id="title">
-				<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> 
-					<span> <%=sdto.getModel_name()%></span> 
-				</a>
+				<span> <%=sdto.getModel_name()%></span> 
 			</div>
 			<!-- 제목 -->
 			<div id="title_kr">
-				<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> 
-					<span> <%=sdto.getModel_name_kr()%></span> 
-				</a>
+				<span> <%=sdto.getModel_name_kr()%></span> 
 			</div>
 
 			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail_D">
 				<div class="sneaker_image_wrapper"> 
-					<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-						<div class="sneaker_image"> 
-							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
-						</div>
-					</a>
+					<div class="sneaker_image"> 
+						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
+					</div>
 				</div>
 			</div>
 			

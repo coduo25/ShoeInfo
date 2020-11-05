@@ -4,7 +4,7 @@
 body {font-size:1em; line-weight:1.4}
 
 /* 모든 페이지 공통 부분 */
-.container { position: relative; width: 1200px; margin: 5px auto; }
+.container { position: relative; width: 1200px; margin: 1.5% auto; }
 
 /* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
 #content_sneakerDetail{ width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; }
@@ -279,7 +279,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 100%;
 		font-size: 1em;
 		height: 100%;
-    	margin: 1% 0 0 0;
+    	margin: 2% 0 0 0;
 	}
 	.grid-wrapper {
 		width:31.33%;
@@ -351,8 +351,8 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 93%;
 	}
 	.sneaker_image img, .sneaker_image_draw img{
-		width: 70%;
-		height: 70%;
+		width: 70% !important;
+		height: 70% !important;
 	}
 	.sneaker_name {
 		line-height: unset;
@@ -441,7 +441,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 100%;
     	float: left;
     	height: unset;
-    	margin: 1.5% 0;
+    	margin: 5% 0 1.5% 0;
     	font-size: 0.8em;
 	}
 	#content_sneakerInfo_D {
@@ -461,17 +461,19 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 		width: 250px; 
 	}
 	
-	#sep { display: none; }
+	#sep { 
+		display: none; 
+	}
+	
 	#method, #winner_time { 
 		display: block; 
-		padding: 1% 0; 
 	}
 	.grid-item_D {
 		padding: 2%;
 	}
 	
 	.sneaker_cate_D {
-    	line-height: 25px;
+    	line-height: 30px;
 	}
 	
 	#time{
@@ -488,11 +490,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	
 	#title {
-		font-size: 2em;
+		font-size: 1.8em;
 	}
 	#title_kr {
-		font-size: 1em;
-		padding: 2% 0.5% 3% 0.5%;
+		font-size: 1.2em;
+    	padding: 2% 0.5% 3% 0.5%;
 	}
 	
 	.arrow {
@@ -501,7 +503,8 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	}
 	
 	#method {
-		font-size:0.9em;
+		margin: 1% 0 2.5% 0;
+		font-size: 1em;
 	}
 	
 	.detail_wrapper_D {
@@ -510,6 +513,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	.grid-wrapper_D {
 		padding-bottom: 2%;
+	}
+	
+	#wrapper-name {
+    	margin: 0.5% 0 1.5% 0;
+    	font-size: 1.4em;
 	}
 
 }
