@@ -70,11 +70,20 @@ public class MemberPWFindAction implements Action{
 	
 				// Text
 				message.setText("\n"
-						+ checkEmail + "님, 안녕하세요. SHOEINFO 입니다.\n"
+						+ "안녕하세요 " + name + "님, SHOEInfo 입니다.\n"
 						+ "\n"
 						+ "비밀번호를 재설정 해주세요. \n"
 						+ "\n"
-						+ "http://www.shoeinfo.co.kr/ShoeInfo/ChangePass.me?email=" + email_BySHA);
+						+ "http://www.shoeinfo.co.kr/ChangePass.me?email=" + email_BySHA + " \n"
+						+ "\n"
+						+ "SHOEInfo. 를 이용해주셔서 감사드리며, \n"
+						+ "앞으로 더 좋은 서비스를 만들기 위하여 노력하겠습니다. \n" 
+						+ "\n"
+						+ "감사합니다. \n"
+						+ "\n"
+						+ "SHOEInfo. 고객센터 드림"
+						
+						);
 				
 				// send the message
 				Transport.send(message);

@@ -222,8 +222,15 @@
 			});
 		});
 		
+		//비밀번호 input를 클릭했을시
+		$("#fm_pass_join").click(function(){
+			this.value = '';
+			$('#pwConfirmMsg').text('');
+			$('.confirmMsg1').hide("fast");
+		});
+		
 		//비밀번호 유효성 검사
-		$("#fm_pass_join").change(function(){
+		$("#fm_pass_join").on("propertychange change keyup paste input", function(){
 			//비밀번호 조건(8~16자, 영문/숫자 포함)
 			if(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/.test($(this).val())){
 				$('#pwConfirmMsg').text('사용할 수 있는 비밀번호 입니다.').css({'color':'#009c00'});
@@ -232,17 +239,23 @@
 				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다. (8~16 영문/숫자 포함)').css({'color':'#af0000'});
 				$('.confirmMsg1').show("fast");
 			}
-		});
-		
-		//비밀번호 input를 다시 클릭했을시
-		$("#fm_pass_join").click(function(){
-			this.value = '';
-			$('#pwConfirmMsg').text('');
-			$('.confirmMsg1').hide("fast");
+			
+			if(document.joinForm.pass2.value.length != 0){
+				
+				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
+				
+				if(document.joinForm.pass.value != document.joinForm.pass2.value){
+					$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
+					$('.confirmMsg2').show("fast");
+				} else{
+					$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
+					$('.confirmMsg2').show("fast");
+				}
+			}
 		});
 		
 		//비밀번호 확인란 체크하기
-		$("#fm_passChk_join").change(function(){
+		$("#fm_passChk_join").on("propertychange change keyup paste input", function(){
 			if($("#fm_pass_join").val() == ''){
 				alert("비밀번호를 작성해주세요.");
 				$("#fm_passChk_join").val('');

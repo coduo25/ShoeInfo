@@ -99,7 +99,7 @@
 							<!-- 비밀번호 찾기 -->
 							<div class="fm_idpwsubmitBtn">
 								<button type="button" class="pwfind_btn">
-									<span id="join_text">비밀번호 찾기</span>&nbsp;<span id="loading" style="display:none; font-size: 1.1em;"><i class="fa fa-spinner fa-spin"></i> </span>
+									<span id="pass_text">비밀번호 찾기</span>&nbsp;<span id="loading" style="display:none; font-size: 1.1em;"><i class="fa fa-spinner fa-spin"></i> </span>
 								</button>
 							</div>
 						</div>
@@ -217,31 +217,35 @@
 				return false;
 			}
 			
-			alert("비밀번호 찾기란은 현재 준비중입니다.\ninfo@shoeinfo.co.kr로 문의주시면 감사하겠습니다.")
+// 			alert("비밀번호 찾기란은 현재 준비중입니다.\ninfo@shoeinfo.co.kr로 문의주시면 감사하겠습니다.")
 			
-// 			$('#loading').show();
+			$('#pass_text').hide();
+			$('#loading').show();
 			
-// 			$.ajax({
-// 				type:"post",
-// 				url:"./MemberPWFindAction.me",
-// 				data:{"name":$("#pwfind_name").val(), "email":$("#pwfind_email").val()},
-// 				success:function(data) {
-// 					//가입 되어 있지 않은 이메일이면
-// 					if($.trim(data) == "NOEMAIL") {
-// 						alert("회원 정보가 일치 하지 않습니다.");
-// 						$('#loading').hide();
-// 						$("#pwfind_name").focus();
-// 					}
-// 					//가입된 메일이면
-// 					else if($.trim(data) == "CHECKEMAIL"){
-// 						$('#loading').hide();
-// 						alert("인증메일이 발송되었습니다. 메일을 확인해주세요.");
-// 					}
-// 				},
-// 				error:function(request,status,error){
-// 				 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-// 				}
-// 			});
+			$.ajax({
+				type:"post",
+				url:"./MemberPWFindAction.me",
+				data:{"name":$("#pwfind_name").val(), "email":$("#pwfind_email").val()},
+				success:function(data) {
+					//가입 되어 있지 않은 이메일이면
+					if($.trim(data) == "NOEMAIL") {
+						alert("회원 정보가 일치 하지 않습니다.");
+						$('#loading').hide();
+						$('#pass_text').show();
+						$("#pwfind_name").focus();
+					}
+					//가입된 메일이면
+					else if($.trim(data) == "CHECKEMAIL"){
+						$('#loading').hide();
+						$('#pass_text').show();
+						alert("인증메일이 발송되었습니다. 메일을 확인해주세요.");
+						location.href="./MemberLogin.me";
+					}
+				},
+				error:function(request,status,error){
+				 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
 			
 		});
 		

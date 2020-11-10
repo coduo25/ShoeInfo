@@ -75,6 +75,8 @@ input:focus::placeholder { color: transparent; }
 
 .fm_find { font-size: 0.8em; margin: 0; text-align: right; }
 
+#idfind_wrap, #pwfind_wrap { width: 100%; }
+
 /* media Query */
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){
@@ -149,7 +151,7 @@ input:focus::placeholder { color: transparent; }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	#content_login, #content_register, #content_modify, #content_idpwfind, #content_upPos{
+	#content_login, #content_register, #content_modify, #content_idpwfind, #content_upPos, #content_modifyPW{
 		margin: 40px auto;
 		width: 90%;
 	}

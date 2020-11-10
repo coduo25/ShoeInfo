@@ -30,7 +30,7 @@ body {font-size:1em; line-weight:1.4}
 .shoelist_content:hover .content_img img{ transform:scale(1.05); transition: transform.5s; }
 
 /* 발매일 */
-.release_date { font-size: 1.15em; font-weight: bold; background-color: #2d2d2d; padding: .5rem 1rem; color: white; /*border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem;*/ }
+.release_date { font-size: 1.3em; font-weight: bold; background-color: #2d2d2d; padding: .5rem 1rem; color: white; /*border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem;*/ }
 
 /* 메인 내용 */
 .content_wrapper { padding: 1%; }

@@ -107,8 +107,15 @@
 	
 	$(document).ready(function(){
 		
+		//비밀번호 input를 클릭했을시
+		$("input[name=pass]").click(function(){
+			this.value = '';
+			$('#pwConfirmMsg').text('');
+			$('.confirmMsg1').hide("fast");
+		});
+		
 		//비밀번호 유효성 검사
-		$("input[name=pass]").change(function(){
+		$("input[name=pass]").on("propertychange change keyup paste input", function(){
 			//비밀번호 조건(8~16자, 영문/숫자 포함)
 			if(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/.test($(this).val())){
 				$('#pwConfirmMsg').text('사용할 수 있는 비밀번호 입니다.').css({'color':'#009c00'});
@@ -117,17 +124,23 @@
 				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다. (8~16 영문/숫자 포함)').css({'color':'#af0000'});
 				$('.confirmMsg1').show("fast");
 			}
-		});
-		
-		//비밀번호 input를 다시 클릭했을시
-		$("input[name=pass]").click(function(){
-			this.value = '';
-			$('#pwConfirmMsg').text('');
-			$('.confirmMsg1').hide("fast");
+			
+			if(document.modiForm.pass2.value.length != 0){
+				
+				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
+				
+				if(document.modiForm.pass.value != document.modiForm.pass2.value){
+					$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
+					$('.confirmMsg2').show("fast");
+				} else{
+					$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
+					$('.confirmMsg2').show("fast");
+				}
+			}
 		});
 		
 		//비밀번호 확인란 체크하기
-		$("input[name=pass2]").change(function(){
+		$("input[name=pass2]").on("propertychange change keyup paste input", function(){
 			if($("input[name=pass]").val() == ''){
 				alert("비밀번호를 작성해주세요.");
 				$("input[name=pass2]").val('');

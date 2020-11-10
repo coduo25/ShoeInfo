@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
 <link href="./css/board/member.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -76,8 +78,15 @@
 	
 	$(document).ready(function(){
 		
+		//비밀번호 input를 클릭했을시
+		$("input[name=pass]").click(function(){
+			this.value = '';
+			$('#pwConfirmMsg1').text('');
+			$('.confirmMsg1').hide("fast");
+		});
+		
 		//비밀번호 유효성 검사
-		$("input[name=pass]").change(function(){
+		$("input[name=pass]").on("propertychange change keyup paste input", function(){
 			//비밀번호 조건(8~16자, 영문/숫자 포함)
 			if(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/.test($(this).val())){
 				$('#pwConfirmMsg1').text('사용할 수 있는 비밀번호 입니다.').css({'color':'#009c00'});
@@ -87,17 +96,23 @@
 				$('.confirmMsg1').show("fast");
 				$('input[name=pass]').focus();
 			}
+			
+			if(document.modiForm.pass2.value.length != 0){
+				
+				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
+				
+				if(document.modiForm.pass.value != document.modiForm.pass2.value){
+					$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
+					$('.confirmMsg2').show("fast");
+				} else{
+					$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
+					$('.confirmMsg2').show("fast");
+				}
+			}
 		});
-		
-		//비밀번호 input를 다시 클릭했을시
-		$("input[name=pass]").click(function(){
-			this.value = '';
-			$('#pwConfirmMsg1').text('');
-			$('.confirmMsg1').hide("fast");
-		});
-		
+
 		//비밀번호 확인란 체크하기
-		$("input[name=pass2]").change(function(){
+		$("input[name=pass2]").on("propertychange change keyup paste input", function(){
 			if($("input[name=pass]").val() == ''){
 				alert("비밀번호를 작성해주세요.");
 				$("input[name=pass2]").val('');
@@ -131,8 +146,14 @@
 		
 		$(".modi_submitBtn").click(function(){
 			
+			//이메일 값이 빈칸이면
+			if($('input[name=email]').val() == ''){
+				alert("이메일이 없습니다.");
+				location.href="./MemberLogin.me";
+				return false;
+			}
 			//비밀번호 빈칸이면
-			if($('input[name=pass]').val() == ''){
+			else if($('input[name=pass]').val() == ''){
 				alert("비밀번호를 입력해주세요.");
 				$('input[name=pass]').focus();
 				return false;
