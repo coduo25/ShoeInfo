@@ -175,6 +175,10 @@
 							</div>
 							
 							<div id="onlineM-radio-wrapper">
+								<input type="radio" id="offdraw" name="online_method" value="오프라인라플"> <label for="offdraw">오프라인라플</label>
+							</div>
+							
+							<div id="onlineM-radio-wrapper">
 								<input type="radio" id="instadraw" name="online_method" value="인스타라플"> <label for="instadraw">인스타라플</label>
 							</div>
 							
@@ -412,7 +416,7 @@
 		}
 		
 		//드로우일시 그대로 놔두기
-		if(online_method == '드로우' || online_method == '인스타라플' || online_method == '이메일라플'){
+		if(online_method == '드로우' || online_method == '오프라인라플' || online_method == '인스타라플' || online_method == '이메일라플'){
 			$('input[name=online_date_start]').show();
 			$('input[name=online_hour_start]').show();
 			$('#tilde').show();
