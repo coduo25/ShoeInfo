@@ -1,91 +1,45 @@
 @CHARSET "UTF-8";
 
-html {
-	scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-	font-size: 1em;
-	line-weight: 1.4;
-}
+body { font-size: 1em; line-weight: 1.4; }
 
-a {
-	text-decoration: none;
-	color: #000000;
-}
+a { text-decoration: none; color: #000000; }
 
 /* 오늘 날짜 헤더 */
-#datebar_div {
-	width: 100%;
-	background-color: black;
-}
+#datebar_div { width: 100%; background-color: black; }
 
-.sticky {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 10;
-}
+.sticky { position: fixed; top: 0; width: 100%; z-index: 10; }
 
-.datebar {
-	display: flex;
-	max-width: 1200px;
-	margin: 5px auto 0 auto;
-	padding: 0 5px;
-}
+.datebar { display: flex; max-width: 100%; padding: 0 5px; }
 
-.today_date {
-	width: 100%;
-	text-align: center;
-	font-size: 15px;
-	font-family: 'Noto Sans KR', sans-serif;
-	color: white;
-	margin: 4px 0;
-	padding-right: 7px;
-}
+.today_date { width: 100%; text-align: center; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; color: white; margin: 5px 0; }
 
 /* 헤더 전체 적용 */
-.acc_navbar {
-	display: block;
-	align-items:center;
-	border-bottom: 1px solid #d6d6d6;
-	font-family: 'Nanum Gothic', sans-serif;
-}
+.acc_navbar { display: block; align-items:center; border-bottom: 1px solid #d6d6d6; font-family: 'Nanum Gothic', sans-serif; }
+
 .acc_wrapper {
 	display: flex;
-	max-width: 1200px;
+	max-width: 80%;
 	margin: 5px auto;
 	padding: 1px 5px;
 	color: #8d8d8d;
 	align-items: center;
     justify-content: space-between;
-    height: 23px;
+    height: 27px;
 }
 
-.insta-icon {
-	display:inline-block;
-	text-align: left;
-	font-size:12px;
-}
+.insta-icon { display:inline-block; text-align: left; font-size:12px; }
 .insta-icon i { vertical-align: middle; }
 
 .insta-icon a, .login-wrapper a { color: #8d8d8d; }
 .acc_wrapper a:hover { color: #1a1a1a; }
 
-.login-wrapper {
-	display:inline-block;
-	font-size: 12px;
-	float: right;
-	padding-right: 4px;
-}
-.acc_pos { margin-right: 20px; border: 1px solid #e5e5e5; padding: 3px 7px; border-radius: 3px; cursor: pointer; }
+.login-wrapper { display:inline-block; font-size: 12px; float: right; padding-right: 4px; }
 
+.acc_pos { margin-right: 20px; border: 1px solid #e5e5e5; padding: 3px 7px; border-radius: 3px; cursor: pointer; }
 .acc_list { padding-right: 12px; }
 
 /* ----------------------------------- */
@@ -111,7 +65,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 1200px;
+	max-width: 80%;
 	margin: 5px auto;
 	padding: 0 5px;
 }
@@ -231,11 +185,18 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 #myDrawBtn:hover { color: #7f7f7f; }
 
 /* media Query */
+@media screen and (max-width: 1440px){
+	.acc_wrapper, .navbar {
+		width: 90%;
+		max-width: 90%;
+	}
+}
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px) {
 
-	.acc_navbar, .navbar {
+	.acc_wrapper, .navbar {
 		width: 100%;
+		max-width: 100%;
 		padding: 0 40px;
 	}
 	.navbar_menu {
@@ -243,6 +204,9 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	}
 	.navbar_userlinks {
 		display: flex;
+	}
+	#showAllChk {
+    	width: 30%;
 	}
 }
 
@@ -278,10 +242,12 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 		border-top: 1px solid #ececec;
 		background-color: white;
     	z-index: 50;
+		padding-right: unset !important;
 	}
 	.navbar_menu li {
 		width: 100%;
-		padding: 15px 20px;
+		padding: 10px 20px;
+		border-bottom: 1px solid #ececec;
 	}
 
 	.navbar_userlinks {
@@ -316,6 +282,10 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	.navbar_toggleBtn {
 		display: block;
 		margin-top: 20px;
+	}
+	
+	#showAllChk {
+    	width: 60%;
 	}
 	
 	#user_icon>i, #logout_icon>i { float: left; padding-top: 0.4%; }
@@ -393,5 +363,9 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	#myBtn {
 		width: 45px;
 		height: 45px;
+	}
+	
+	.today_date{
+		font-size: 1em;
 	}
 }

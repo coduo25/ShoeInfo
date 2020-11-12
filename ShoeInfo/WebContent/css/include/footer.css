@@ -14,7 +14,7 @@
 }
 
 #footer-wrapper{
-	max-width: 1200px;
+	max-width: 80%;
 	margin: 0 auto;
 }
 
@@ -38,6 +38,12 @@
 .footer-nav ul li:not(:first-child):before { content: '|'; padding: 0.3em; color: white; }
 
 /* media Query */
+@media screen and (max-width: 1440px){
+	#footer-wrapper{
+		max-width: 90%;
+	}
+}
+
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){
 	#footer-wrapper {

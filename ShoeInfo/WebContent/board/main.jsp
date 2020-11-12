@@ -18,7 +18,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트, 국내 발매 정보 응모하기, 해외 발매 정보 응모하기, 나의 응모 현황 정리">
-<meta property="og:url" content="http://www.shoeinfo.co.kr">
+<meta property="og:url" content="https://www.shoeinfo.co.kr">
 
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
@@ -26,6 +26,9 @@
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
@@ -101,7 +104,7 @@
 			%>
 				<!-- <%=z%>월 발매 테이블 -->
 				<p id="month<%=z%>" class="month"> 
-					<%=z%>월 <%=month_label%>
+<%-- 					<%=z%>월 <%=month_label%> --%>
 					<span id="slide-down_<%=z%>"> <i class="fas fa-caret-down"></i> </span>
 					<span id="slide-up_<%=z%>"> <i class="fas fa-caret-up"></i> </span>
 				</p>
@@ -114,7 +117,15 @@
 							<span> <%=z%>월 발매 정보가 없습니다. </span>
 						</div>
 					<%
-						}
+						}else{
+					%> 
+						<div class="shoelist_content_month">
+							<p><span><%=z%></span>&nbsp;<%=month_label%> </p>
+							<p> 발매리스트  </p>
+							<p> <i class="far fa-arrow-alt-circle-right"></i> </p>
+						</div>
+					<%
+					
 						for (int i = 0; i <new_sneakerList.size(); i++) {
 							SneakerDTO sdto = new_sneakerList.get(i);
 							
@@ -258,6 +269,7 @@
 						</div>
 
 					<%	
+							}
 						}
 					%>
 				</div>
@@ -267,7 +279,8 @@
 			
 			<!-- 2020 Sneaker Release -->
 			<p class="month" id="month_2020">
-				2020 발매예정.
+<!-- 				2020 발매예정. -->
+				&nbsp;
 			</p>
 			<div class="div_month" id="div_month_2020" style="margin-bottom: 50px;">
 				<%
@@ -277,7 +290,16 @@
 						<span> 2020년 발매예정 제품이 없습니다. </span>
 					</div>
 				<%
-					} 
+					} else {
+						
+					
+				%>
+					<div class="shoelist_content_month">
+							<p> <span id="release_2020">2020</span> </p>
+							<p style="position: relative !important; top: 5px !important;"> 발매예정작 </p>
+							<p style="position: relative !important; top: 5px !important;"> <i class="far fa-arrow-alt-circle-right"></i> </p>
+					</div>
+				<%
 					for(int j=0; j<sneakerList2020.size(); j++) {
 						SneakerDTO sdto = sneakerList2020.get(j);
 				%>
@@ -311,7 +333,10 @@
 								</div>
 							</div>
 					</div>
-				<%} %>
+				<%
+						} 
+					}
+				%>
 			</div>
 			
 		</div>
@@ -344,7 +369,7 @@
 			$('[id=content_after]').hide();
 			$('#month_2020').show();
 			$('#month_div_2020').show();
-			$('[id=shoelist_content_2020]').show();
+			$('[id=div_month_2020]').show();
 			$('#before').css({"background-color" : "#bfbfbf"});
 			$('#after').css({"background-color" : "#f2f2f2"});
 			
@@ -364,13 +389,13 @@
 			$('[id=content_after]').show();
 			$('#month_2020').hide();
 			$('#month_div_2020').hide();
-			$('[id=shoelist_content_2020]').hide();
+			$('[id=div_month_2020]').hide();
 			$('#before').css({"background-color" : "#f2f2f2"});
 			$('#after').css({"background-color" : "#bfbfbf"});
 			
 			for(var i=1; i<13; i++){
-				$("#slide-up_" + i).hide();
-				$("#slide-down_" + i).show();
+				$("#slide-up_" + i).show();
+				$("#slide-down_" + i).hide();
 				
 				$("#div_month_" + i).show();
 			}
@@ -411,17 +436,23 @@
 		//각 달별로 slide down 버튼을 눌렸을시
 		$(".month").click(function(){
 			var month = $(this).attr('id').replace(/[^0-9]/g,''); //숫자만 추출
-			//만약 신발 리스트가 닫혀있으면
-			if($("#div_month_" + month).css("display") == "none"){
-				$("#slide-up_" + month).show();
-				$("#slide-down_" + month).hide();
+			
+			if(month == '2020'){
+				return false;
 			}
-			//신발 리스트가 열려있으면
 			else {
-				$("#slide-up_" + month).hide();
-				$("#slide-down_" + month).show();
+				//만약 신발 리스트가 닫혀있으면
+				if($("#div_month_" + month).css("display") == "none"){
+					$("#slide-up_" + month).show();
+					$("#slide-down_" + month).hide();
+				}
+				//신발 리스트가 열려있으면
+				else {
+					$("#slide-up_" + month).hide();
+					$("#slide-down_" + month).show();
+				}
+				$("#div_month_" + month).slideToggle("slow");
 			}
-			$("#div_month_" + month).slideToggle("slow");
 		});
 
 	});

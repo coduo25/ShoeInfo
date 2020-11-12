@@ -168,14 +168,14 @@
 		});
 		
 		//이름 input에 한글,영어만 입력하도록 하는 함수
-		$("input[name=name]").keyup(function(event){
+		$("input[name=name]").on("propertychange change keyup paste input", function(){
 			var inputName = $(this).val();
 			$(this).val(inputName.replace(/[^ㄱ-힣a-zA-Z\u119E\u11A2]/gi,''));
 		});
 	
 		
 		//휴대폰번호 input에 숫자만 입력하도록 하는 함수
-		$("input[name=phone]").keyup(function(event){
+		$("input[name=phone]").on("propertychange change keyup paste input", function(){
 			var inputNum = $(this).val();
 			$(this).val(inputNum.replace(/[^0-9]/gi,''));
 		});
