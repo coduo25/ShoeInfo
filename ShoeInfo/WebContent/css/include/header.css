@@ -82,10 +82,9 @@ a { text-decoration: none; color: #000000; }
 	display:flex;
 	list-style: none;
 	padding-left: 0;
-	font-size: 16.5px;
+	font-size: 17px;
 	font-family: 'Nanum Gothic', sans-serif;
-/* 	font-family:'Malgun Gothic'; */
-	font-weight: bold;
+/* 	font-weight: bold; */
 	padding-right: 6%;
 }
 
@@ -107,7 +106,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 .navbar_userlinks {
 	display: flex;
 	list-style: none;
-	font-size: 1em;
+	font-size: 1.1em;
 	font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -265,7 +264,6 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 		margin: 0;
 		font-size: 18px;
 		text-transform: uppercase;
-		font-weight: bold;
 		border-top: 1px solid #ececec;
 	}
 	.navbar_userlinks li.logout {
@@ -339,7 +337,6 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 		margin: 0;
 		font-size: 15px;
 		text-transform: unset;
-		font-weight: bold;
 		border-bottom: 1px solid #ececec;
 	}
 	.navbar_userlinks li.logout {

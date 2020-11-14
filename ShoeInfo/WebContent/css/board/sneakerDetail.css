@@ -523,8 +523,11 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	#wrapper-period span {
 		font-size: 0.9em;
 	}
-	#content_sneakerDetail div#cate_Detail {
-		font-size: 0.8em;
+/* 	#content_sneakerDetail div#cate_Detail { */
+/* 		font-size: 0.8em; */
+/* 	} */
+	#cate_Detail {
+		display:none;
 	}
 	.arrow {
     	padding: 0 3px 0 4px;
@@ -532,6 +535,7 @@ input[type=button] { border: 1px solid #c0c0c0; padding: 4px; margin: 0 7px; bac
 	
 	#title {
 		font-size: 1.5em;
+		padding: 3.5% 0 0 0;
 	}
 	#title_kr {
 		font-size: 0.9em;

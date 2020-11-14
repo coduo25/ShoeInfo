@@ -26,6 +26,9 @@
 					<%
 						request.setCharacterEncoding("UTF-8");
 					
+						//현재 페이지 이름, main.jsp or sneakerDetail.jsp
+						String pageName = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1);
+					
 						//로그인한 사용자가 체크
 						String user = (String) session.getAttribute("email");
 						//로그인 된 사용자의 position 가져오기
@@ -130,8 +133,8 @@
 	
 		<!-- 메인메뉴  -->
 		<ul class="navbar_menu">
-			<li> <a href="./SneakerList.go"> <span id="cal_icon"><i class="fas fa-calendar"></i></span> 런칭 캘린더 </a> </li>
-			<li> <a href="./AllSneaker.go"> <span id="all_icon"><i class="fas fa-calendar-alt"></i></span> 전체 보기 </a>
+			<li <%if(pageName.equals("main.jsp") || pageName.equals("sneakerDetail.jsp")) {%> style="font-weight:bold;"<%}%>> <a href="./SneakerList.go"> <span id="cal_icon"><i class="fas fa-calendar"></i></span> 런칭 캘린더 </a> </li>
+			<li <%if(pageName.equals("allSneaker.jsp")) {%> style="font-weight:bold;"<%}%>> <a href="./AllSneaker.go"> <span id="all_icon"><i class="fas fa-calendar-alt"></i></span> 전체 보기 </a>
 			<li class="mypage_btn_mobile" id="myDrawBtn_mobile"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div> </li>
 		</ul>
 		
@@ -214,13 +217,15 @@
 			//요일
 			var week = new Array('일', '월', '화', '수', '목', '금', '토'); 
 			
-			var currentDate = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월 " +  date.getDate() + "일 " + "(" + week[date.getDay()] +")"; 
+// 			date.getFullYear() + "년 " + 
+			
+			var currentDate = (date.getMonth() + 1) + "월 " +  date.getDate() + "일" + "(" + week[date.getDay()] +")"; 
 			
 			var hours = date.getHours();
 			var minutes = date.getMinutes();
 			var seconds = date.getSeconds();
 			//오전/오후 표시하기
-			var AMorPM = date.getHours() < 12 ? "AM" : "PM";
+			var AMorPM = date.getHours() < 12 ? "오전" : "오후";
 			
 			//오후시간일때 12시간 빼기
 			if(hours > 12) {
@@ -231,8 +236,8 @@
 			if(hours < 10){ hours = "0" + hours; }
 			if(minutes < 10){ minutes = "0" + minutes; }
 			if(seconds < 10){ seconds = "0" + seconds; }
-			
-			var currentTime = hours + ":" + minutes + ":" + seconds  + " " + AMorPM;
+	
+			var currentTime = AMorPM + " " + hours + ":" + minutes + ":" + seconds  + "";
 			
 			var result = document.getElementById("today_date_val");
 			

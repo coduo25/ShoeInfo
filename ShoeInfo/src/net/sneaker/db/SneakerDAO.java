@@ -232,7 +232,7 @@ public class SneakerDAO {
 				String maxEndTime = "";
 				
 				//신발 온라인세부정보 끝나는 시간 가져오기
-				sql = "select online_start_date, online_start_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_start_date desc limit 1";
+				sql = "select online_start_date, online_start_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_start_date desc, online_start_time desc limit 1";
 				pstmt4 = con.prepareStatement(sql);
 				pstmt4.setString(1, sdto.getModel_stylecode());
 				pstmt4.setInt(2, sdto.getNum());
@@ -257,7 +257,7 @@ public class SneakerDAO {
 					maxStart = "1234-12-34 12:34";
 				}
 				
-				sql = "select online_end_date, online_end_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_end_date desc limit 1";
+				sql = "select online_end_date, online_end_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_end_date desc, online_end_time desc limit 1";
 				pstmt5 = con.prepareStatement(sql);
 				pstmt5.setString(1, sdto.getModel_stylecode());
 				pstmt5.setInt(2, sdto.getNum());
