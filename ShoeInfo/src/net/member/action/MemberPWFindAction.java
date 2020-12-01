@@ -47,8 +47,8 @@ public class MemberPWFindAction implements Action{
 			// 운영자 메일로 사용자 이메일에 비밀번호 재설정하는 링크 보내기
 			String host = "smtp.gmail.com";
 			final String user = "shoeinfo.official";
-			final String password = "agyyxslsqqlmtiof";
-			
+			final String password = "zdyiziqjynjcagfe";
+
 			//세션
 			Properties props = new Properties();
 			props.put("mail.smtp.host", host);
