@@ -81,7 +81,7 @@
 				Calendar cal = Calendar.getInstance();
 				int month = cal.get(Calendar.MONTH);
 		
-				for(int z=month; z<(month+3); z++){
+				for(int z=month; z<13; z++){
 					ArrayList<MemberDrawDTO> new_userDrawStylecodeList = new ArrayList();
 					ArrayList<SneakerDTO> new_sneakerInfoList = new ArrayList();
 					
