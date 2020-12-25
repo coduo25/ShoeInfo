@@ -60,7 +60,10 @@
 		ArrayList<SneakerDTO> sneakerInfoList11 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList11");	
 		
 		ArrayList<MemberDrawDTO> userDrawStylecodeList12 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList12");
-		ArrayList<SneakerDTO> sneakerInfoList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList12");	
+		ArrayList<SneakerDTO> sneakerInfoList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList12");
+		
+		ArrayList<MemberDrawDTO> userDrawStylecodeList2021_1 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList2021_1");
+		ArrayList<SneakerDTO> sneakerInfoList2021_1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList2021_1");	
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -105,6 +108,66 @@
 				</p>
 			
 				<div id="div_month_<%=z%>" class="div_month">
+					<%
+						if(new_userDrawStylecodeList.size() == 0){
+					%>
+						<div class="no_info" id="no_info<%=z%>">
+							<span> <%=z%>월 응모한 내역이 없습니다. </span>
+						</div>
+					<%
+						}
+						for (int i = 0; i <new_userDrawStylecodeList.size(); i++) {
+							MemberDrawDTO mddto = new_userDrawStylecodeList.get(i);
+							SneakerDTO sdto = new_sneakerInfoList.get(i);
+							
+							Date original_release_date = original_format.parse(sdto.getRelease_date());
+					%>
+						<div class="shoelist_content">
+							<div class="content_wrapper_draw">
+								<!-- 이미지 -->
+								<div class="content_img">
+									<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
+									</a>
+								</div>
+								<!-- links -->
+								<div class="content_links">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
+										<div id="link-wrapper" style="pointer-events: auto;">
+											<%=sdto.getModel_name_kr()%>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					<%	
+						}
+					%>
+				</div>
+			<%
+				}
+			%>
+		</div>
+	</div>
+	
+	<!-- 2021 Main Content -->
+	<div id="wrapper" class="container">
+	
+		<div id="content_sneakerList" style="margin-top: 20px;">
+			<%
+				for(int z=1; z<2; z++){
+					ArrayList<MemberDrawDTO> new_userDrawStylecodeList = new ArrayList();
+					ArrayList<SneakerDTO> new_sneakerInfoList = new ArrayList();
+					
+					if(z==1){ new_userDrawStylecodeList = userDrawStylecodeList2021_1; new_sneakerInfoList = sneakerInfoList2021_1;}
+			%>
+				<p id="month2021<%=z%>" class="month"> 
+					<%=z%>월 응모내역. 
+					<span id="slide-down_<%=z%>"> <i class="fas fa-caret-down"></i> </span>
+					<span id="slide-up_<%=z%>"> <i class="fas fa-caret-up"></i> </span>
+				</p>
+			
+				<div id="div_month_2021<%=z%>" class="div_month">
 					<%
 						if(new_userDrawStylecodeList.size() == 0){
 					%>
