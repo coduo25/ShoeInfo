@@ -86,7 +86,7 @@
 				Calendar cal = Calendar.getInstance();
 				int month = cal.get(Calendar.MONTH);
 				
-				for(int z=month; z<13; z++){
+				for(int z=month+1; z<13; z++){
 					ArrayList<SneakerDTO> new_sneakerList = new ArrayList<SneakerDTO>();
 					String month_label = "";
 					if(z==1){ new_sneakerList = sneakerList1; month_label = "Jan."; }
