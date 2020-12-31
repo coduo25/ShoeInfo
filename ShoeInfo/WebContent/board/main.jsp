@@ -52,21 +52,6 @@
 		ArrayList<SneakerDTO> sneakerList11 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList11");
 		ArrayList<SneakerDTO> sneakerList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList12");
 		
-		ArrayList<SneakerDTO> sneakerList2020 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2020");
-		
-		ArrayList<SneakerDTO> sneakerList21_1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_1");
-		ArrayList<SneakerDTO> sneakerList21_2 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_2");
-		ArrayList<SneakerDTO> sneakerList21_3 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_3");
-		ArrayList<SneakerDTO> sneakerList21_4 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_4");
-		ArrayList<SneakerDTO> sneakerList21_5 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_5");
-		ArrayList<SneakerDTO> sneakerList21_6 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_6");
-		ArrayList<SneakerDTO> sneakerList21_7 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_7");
-		ArrayList<SneakerDTO> sneakerList21_8 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_8");
-		ArrayList<SneakerDTO> sneakerList21_9 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_9");
-		ArrayList<SneakerDTO> sneakerList21_10 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_10");
-		ArrayList<SneakerDTO> sneakerList21_11 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_11");
-		ArrayList<SneakerDTO> sneakerList21_12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList21_12");
-		
 		ArrayList<SneakerDTO> sneakerList2021 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2021");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
@@ -292,264 +277,7 @@
 				}
 			%>
 			
-			<!-- 2020 Sneaker Release -->
-<!-- 			<p class="month" id="month_2020"> -->
-<!-- 				2020 발매예정. -->
-<!-- 				&nbsp; -->
-<!-- 			</p> -->
-<!-- 			<div class="div_month" id="div_month_2020" style="margin-bottom: 50px;"> -->
-<%-- 				<% --%>
-<!-- // 					if(sneakerList2020.size() == 0){ -->
-<%-- 				%> --%>
-<!-- 					<div class="no_info"> -->
-<!-- 						<span> 2020년 발매예정 제품이 없습니다. </span> -->
-<!-- 					</div> -->
-<%-- 				<% --%>
-<!-- // 					} else { -->
-						
-					
-<%-- 				%> --%>
-<!-- 					<div class="shoelist_content_month"> -->
-<!-- 							<p> <span id="release_2020">2020</span> </p> -->
-<!-- 							<p style="position: relative !important; top: 5px !important;"> 발매예정작 </p> -->
-<!-- 							<p style="position: relative !important; top: 5px !important;"> <i class="far fa-arrow-alt-circle-right"></i> </p> -->
-<!-- 					</div> -->
-<%-- 				<% --%>
-<!-- // 					for(int j=0; j<sneakerList2020.size(); j++) { -->
-<!-- // 						SneakerDTO sdto = sneakerList2020.get(j); -->
-<%-- 				%> --%>
-<!-- 					<div class="shoelist_content" id="shoelist_content_2020"> -->
-<!-- 						발매일 -->
-<!-- 						<div class="release_date"> -->
-<!-- 							<span> -->
-<!-- 								<i class="far fa-calendar"></i> -->
-<!-- 								&nbsp; -->
-<!-- 								&nbsp;–&nbsp;월 -->
-<!-- 								&nbsp;–&nbsp;일 -->
-<!-- 							</span> -->
-<!-- 						</div> -->
-						
-<!-- 						<div class="content_wrapper"> -->
-<!-- 								이미지 -->
-<!-- 								<div class="content_img"> -->
-<%-- 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"> --%>
-<%-- 				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">	 --%>
-<!-- 									</a> -->
-
-<!-- 								</div> -->
-								
-<!-- 								links -->
-<!-- 								<div class="content_links"> -->
-<%-- 									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	 --%>
-<!-- 										<div id="link-wrapper" style="pointer-events: auto;"> -->
-<%-- 											<%=sdto.getModel_name_kr()%> --%>
-<!-- 										</div> -->
-<!-- 									</a> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 					</div> -->
-<%-- 				<% --%>
-<!-- // 						}  -->
-<!-- // 					} -->
-<%-- 				%> --%>
-<!-- 			</div> -->
-		</div>
-		
-		<!-- 2021년 발매 리스트 -->
-		<div id="content_sneakerList">
-			<%
-				for(int j=1; j<13; j++){
-					ArrayList<SneakerDTO> new_sneakerList2021 = new ArrayList<SneakerDTO>();
-					String month_label = "";
-					if(j==1){ new_sneakerList2021 = sneakerList21_1; month_label = "Jan."; }
-					if(j==2){ new_sneakerList2021 = sneakerList21_2; month_label = "Feb."; }
-					if(j==3){ new_sneakerList2021 = sneakerList21_3; month_label = "Mar."; }
-					if(j==4){ new_sneakerList2021 = sneakerList21_4; month_label = "Apr."; }
-					if(j==5){ new_sneakerList2021 = sneakerList21_5; month_label = "May."; }
-					if(j==6){ new_sneakerList2021 = sneakerList21_6; month_label = "June."; }
-					if(j==7){ new_sneakerList2021 = sneakerList21_7; month_label = "July."; }
-					if(j==8){ new_sneakerList2021 = sneakerList21_8; month_label = "Aug."; }
-					if(j==9){ new_sneakerList2021 = sneakerList21_9; month_label = "Sept."; }
-					if(j==10){ new_sneakerList2021 = sneakerList21_10; month_label = "Oct."; }
-					if(j==11){ new_sneakerList2021 = sneakerList21_11; month_label = "Nov."; }
-					if(j==12){ new_sneakerList2021 = sneakerList21_12; month_label = "Dec."; }
-			%>
-			<!-- <%=j%>월 발매 테이블 -->
-				<p id="month2021<%=j%>" class="month"> 
-<%-- 					<%=j%>월 <%=month_label%> --%>
-					<span id="slide-down_<%=j%>"> <i class="fas fa-caret-down"></i> </span>
-					<span id="slide-up_<%=j%>"> <i class="fas fa-caret-up"></i> </span>
-				</p>
-				
-				<div id="div_month_2021<%=j%>" class="div_month">
-					<%
-						if(new_sneakerList2021.size() == 0){
-					%>
-						<div class="no_info2021" id="no_info<%=j%>">
-							<span> <%=j%>월 발매 정보가 없습니다. </span>
-						</div>
-					<%
-						}else{
-					%> 
-						<div class="shoelist_content_month">
-							<p><span><%=j%></span>&nbsp;<%=month_label%> </p>
-							<p> 발매리스트  </p>
-							<p> <i class="far fa-arrow-alt-circle-right"></i> </p>
-						</div>
-					<%
-					
-						for (int i = 0; i <new_sneakerList2021.size(); i++) {
-							SneakerDTO sdto = new_sneakerList2021.get(i);
-							
-							Date month_date_type = null;
-							
-							if(sdto.getRelease_date().contains("99")){
-								String month_str_date = sdto.getRelease_date();
-								month_str_date = month_str_date.replace("99", "01");
-								month_date_type = original_format.parse(month_str_date);
-							}
-							
-							String ty_str_date = sdto.getRelease_date();
-							Date date_type = original_format.parse(ty_str_date);
-							
-							Date original_rel = original_format.parse(sdto.getRelease_date());
-							int compare_w_rel;
-							
-							//현재와 발매날짜와 비교하기 (1이면 발매후, 0이면 오늘 발매일, -1이면  발매전)
-							if(sdto.getRelease_date().contains("99")){
-								compare_w_rel = -1; 
-							}else {
-								compare_w_rel = today.compareTo(original_rel);	
-							}
-							
-							//오늘 날짜와 최신 온라인 등록 날짜와 비교해서 이틀 안에 등록 된거면 빨간색 점 나타내기, 등록하고 이틀이 지나거나 아예 등록정보가 없다면 빨간색 점 나타내기
-							// diffDay가 -2보다 적으면 빨간색 사라지게 하고 -2보다 크면 빨간색 띄우기
-							int recentChk = -1;
-							
-							if(sdto.getReg_date() != null){
-								//Timestamp -> date
-								Date recent_RegDate = new Date(sdto.getReg_date().getTime());
-								//recent_RegDate - Today 
-								long diffDay = (recent_RegDate.getTime() - today.getTime()) / (24*60*60*1000);
-								if(diffDay <= -1){
-									recentChk = -1;
-								}else if(diffDay > -1) {
-									recentChk = 1;
-								}
-							}else if(sdto.getReg_date() == null){
-								recentChk = -1;
-							}
-							
-							//오늘 날짜와 발매날짜와 비교해서 D-Day ~ D-7 이면 디데이 라벨 나타내기, 만약 발매일에 일이 없으면 -1
-							int ddayCount = -1;
-							
-							if(sdto.getRelease_date().contains("99")){
-								ddayCount = -1;
-							} else {
-								if((original_rel.getTime() - today.getTime()) / (24*60*60*1000) >= 0 && (original_rel.getTime() - today.getTime()) / (24*60*60*1000) <= 7){
-									long count = (original_rel.getTime() - today.getTime()) / (24*60*60*1000);
-									ddayCount = (int) count;
-								} else{
-									ddayCount = -1;
-								}
-							}
-							
-							int openChk = -1;
-							
-							if(sdto.getMaxDate().contains("1234-12-34 12:34")){
-								openChk = -1;
-							} else {
-								Date maxDate = format.parse(sdto.getMaxDate());
-								//maxDate 랑 compareToday 비교
-								int compare = maxDate.compareTo(compareToday);
-								
-								if(compare > 0){
-									openChk = 1;
-								}
-								else if(compare < 0){
-									openChk = -1;
-								}
-								else {
-									openChk = 1;
-								}
-							}
-					%>
-						<div class="shoelist_content" <%if(compare_w_rel > 0 && openChk == -1){%> id="content_after" style="display:none;"<%}%> id="content_before">
-							<%if(compare_w_rel > 0 && openChk == -1) {%>
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-									<div class="opac_background">
-										<span> &nbsp; </span>
-									</div>
-									<div class="rel_finish">
-										<div class="rel_finish_label"> 발매완료 </div>
-									</div>
-								</a>
-							<%}%>
-							<!-- 발매일 -->
-							<div class="release_date">
-								<span>
-									<i class="far fa-calendar"></i>
-									&nbsp;
-									<% if(sdto.getRelease_date().contains("99")){%>
-										<%=month_format.format(month_date_type)%> &nbsp;–&nbsp;일
-									<%} else {%>
-										<%=new_format.format(date_type)%>
-									<%}%>
-								</span>
-							</div>
-							<div class="content_wrapper">
-								
-								<!-- 이미지 -->
-								<div class="content_img">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-				  						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" id="shoeList_<%=j%><%=i%>_img" >
-				  						<%if(ddayCount>=0 && ddayCount<=7){%> 
-											<!-- dday label -->
-											<div id="dd-label-wrapper">
-												<span id="dd-label">D–<%if(ddayCount==0){%>day<%}else if(ddayCount>0 && ddayCount<=7){%><%=ddayCount%><%}%></span>
-											</div>								
-										<%}%>	
-									</a>
-									
-									<div id="alarm-wrapper">
-										<!-- 응모중 리본 -->
-										<%if(openChk == 1){%>
-											<div id="ing_status_wrapper">
-												<p id="ing_status">응모중</p>
-											</div>
-										<%}%>
-										
-										<%if(recentChk == 1){ %>
-											<div id="recent-dot-wrapper">
-												<p id="recent-dot">업데이트</p>
-											</div>
-										<%}%>
-									</div>
-	
-								</div>
-								
-								<!-- links -->
-								<div class="content_links">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
-										<div id="link-wrapper" style="pointer-events: auto;">
-											<%=sdto.getModel_name_kr()%>
-										</div>
-									</a>
-								</div>
-							</div>
-
-						</div>
-
-					<%	
-							}
-						}
-					%>
-				</div>
-			<%
-				}
-			%>
-		
-		<!-- 2021 Sneaker Release -->
+			<!-- 2021 Sneaker Release -->
 			<p class="month" id="month_2021">
 <!-- 				2021 발매예정. -->
 				&nbsp;
@@ -613,8 +341,6 @@
 		</div>
 	</div>
 	
-	
-	
 	<!-- FOOTER -->
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 
@@ -638,9 +364,9 @@
 		$('#before').click(function(){
 			$('[id=content_before]').show();
 			$('[id=content_after]').hide();
-			$('#month_2020').show();
-			$('#month_div_2020').show();
-			$('[id=div_month_2020]').show();
+			$('#month_2021').show();
+			$('#month_div_2021').show();
+			$('[id=div_month_2021]').show();
 			$('#before').css({"background-color" : "#bfbfbf"});
 			$('#after').css({"background-color" : "#f2f2f2"});
 			
@@ -672,9 +398,9 @@
 		$('#after').click(function(){
 			$('[id=content_before]').hide();
 			$('[id=content_after]').show();
-			$('#month_2020').hide();
-			$('#month_div_2020').hide();
-			$('[id=div_month_2020]').hide();
+			$('#month_2021').hide();
+			$('#month_div_2021').hide();
+			$('[id=div_month_2021]').hide();
 			$('#before').css({"background-color" : "#f2f2f2"});
 			$('#after').css({"background-color" : "#bfbfbf"});
 			
@@ -724,20 +450,6 @@
 				}
 			}
 		}
-		
-		for(var j=1; j<13; j++){
-			if(j<4){
-				$("#month2021" + j).show();
-				$("#no_info2021" + j).show();
-				$("#div_month_2021" + j).show();	
-			}
-			else{
-				$("#month2021" + j).hide();
-				$("#no_info2021" + j).hide();
-				$("#div_month_2021" + j).hide();	
-			}
-		}
-		
 
 		//각 달별로 slide down 버튼을 눌렸을시
 		$(".month").click(function(){
