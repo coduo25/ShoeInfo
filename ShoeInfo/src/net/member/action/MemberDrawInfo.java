@@ -29,20 +29,18 @@ public class MemberDrawInfo implements Action{
 		//디비가서 내가 응모한 브랜드 정보 가져오기
 		MemberDAO mdao = new MemberDAO();
 		
-		Vector vec1 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-01");
-		Vector vec2 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-02");
-		Vector vec3 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-03");
-		Vector vec4 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-04");
-		Vector vec5 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-05");
-		Vector vec6 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-06");
-		Vector vec7 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-07");
-		Vector vec8 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-08");
-		Vector vec9 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-09");
-		Vector vec10 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-10");
-		Vector vec11 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-11");
-		Vector vec12 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2020-12");
-		
-		Vector vec2021_1 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-01");
+		Vector vec1 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-01");
+		Vector vec2 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-02");
+		Vector vec3 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-03");
+		Vector vec4 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-04");
+		Vector vec5 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-05");
+		Vector vec6 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-06");
+		Vector vec7 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-07");
+		Vector vec8 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-08");
+		Vector vec9 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-09");
+		Vector vec10 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-10");
+		Vector vec11 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-11");
+		Vector vec12 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-12");
 		
 		ArrayList<MemberDrawDTO> userDrawStylecodeList1 = (ArrayList<MemberDrawDTO>) vec1.get(0);
 		ArrayList<SneakerDTO> sneakerInfoList1 = (ArrayList<SneakerDTO>) vec1.get(1);
@@ -80,9 +78,6 @@ public class MemberDrawInfo implements Action{
 		ArrayList<MemberDrawDTO> userDrawStylecodeList12 = (ArrayList<MemberDrawDTO>) vec12.get(0);
 		ArrayList<SneakerDTO> sneakerInfoList12 = (ArrayList<SneakerDTO>) vec12.get(1);
 		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList2021_1 = (ArrayList<MemberDrawDTO>) vec2021_1.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList2021_1 = (ArrayList<SneakerDTO>) vec2021_1.get(1);
-		
 		request.setAttribute("userDrawStylecodeList1", userDrawStylecodeList1);
 		request.setAttribute("sneakerInfoList1", sneakerInfoList1);
 		
@@ -118,10 +113,7 @@ public class MemberDrawInfo implements Action{
 		
 		request.setAttribute("userDrawStylecodeList12", userDrawStylecodeList12);
 		request.setAttribute("sneakerInfoList12", sneakerInfoList12);
-		
-		request.setAttribute("userDrawStylecodeList2021_1", userDrawStylecodeList2021_1);
-		request.setAttribute("sneakerInfoList2021_1", sneakerInfoList2021_1);
-		
+
 		//페이지이동
 		forward.setPath("./member/memberDrawList.jsp");
 		forward.setRedirect(false);

@@ -370,10 +370,6 @@
 			$('#before').css({"background-color" : "#bfbfbf"});
 			$('#after').css({"background-color" : "#f2f2f2"});
 			
-			$('#month_2021').show();
-			$('#month_div_2021').show();
-			$('[id=div_month_2021]').show();
-			
 			for(var i=1; i<13; i++){
 				if(i < month) {
 					$("#slide-up_" + i).hide();
@@ -404,10 +400,6 @@
 			$('#before').css({"background-color" : "#f2f2f2"});
 			$('#after').css({"background-color" : "#bfbfbf"});
 			
-			$('#month_2021').hide();
-			$('#month_div_2021').hide();
-			$('[id=div_month_2021]').hide();
-			
 			for(var i=1; i<13; i++){
 				$("#slide-up_" + i).show();
 				$("#slide-down_" + i).hide();
@@ -420,6 +412,7 @@
 		});
 
 		var today = new Date();
+		// 1
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
 		
 		for(var i=1; i<13; i++){
@@ -435,7 +428,7 @@
 			//지금 달부터 미래의 달부터 나타내기 8~12월
 			else if(i >= month) {
 				//4개월 후까지만 나타내기
-				var monthPlus4 = month + 4;
+				var monthPlus4 = month + 3;
 
 				if(i >= monthPlus4) {
 					$("#month" + i).hide(); //4달 후 월들은 없애기
