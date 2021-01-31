@@ -86,7 +86,7 @@
 				Calendar cal = Calendar.getInstance();
 				int month = cal.get(Calendar.MONTH);
 				
-				for(int z=month+1; z<13; z++){
+				for(int z=1; z<13; z++){
 					ArrayList<SneakerDTO> new_sneakerList = new ArrayList<SneakerDTO>();
 					String month_label = "";
 					if(z==1){ new_sneakerList = sneakerList1; month_label = "Jan."; }
@@ -375,17 +375,8 @@
 					$("#slide-up_" + i).hide();
 					$("#slide-down_" + i).show();
 					
+					$("#month_" + i).hide();
 					$("#div_month_" + i).hide();
-				}
-			}
-			
-			for(var i=1; i<13; i++){
-				if(i < 4){
-					$("#month2021" + i).show();
-					$("#div_month_2021" + i).show();
-				}else if(i >= 4){
-					$("#month2021" + i).hide();
-					$("#div_month_2021" + i).hide();
 				}
 			}
 		});
@@ -401,38 +392,39 @@
 			$('#after').css({"background-color" : "#bfbfbf"});
 			
 			for(var i=1; i<13; i++){
-				$("#slide-up_" + i).show();
-				$("#slide-down_" + i).hide();
-				
-				$("#div_month_" + i).show();
-				
-				$("#month2021" + i).hide();
-				$("#div_month_2021" + i).hide();
+				if(i < month){
+					$("#slide-up_" + i).show();
+					$("#slide-down_" + i).hide();
+					
+					$("#month_" + i).show();
+					$("#div_month_" + i).show();	
+				}
 			}
 		});
 
 		var today = new Date();
-		// 1
+		// 2
 		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
 		
 		for(var i=1; i<13; i++){
 			//지금 달 보다 전전달들 ex.현재 8월, 1~6월 사라지고 7월 slideDown 만 나타내기
+			// 1월 < 2월
 			if(i < month) {
-				$("#month" + (i-1)).hide(); //2달 지나간 월들은 없애기
-				
 				$("#slide-up_" + i).hide();
 				$("#slide-down_" + i).show();
 				
+				$("#month" + (i-1)).hide(); 
 				$("#div_month_" + i).hide();
 			}
-			//지금 달부터 미래의 달부터 나타내기 8~12월
+			//지금 달부터 미래의 달부터 나타내기 2~4월
 			else if(i >= month) {
 				//4개월 후까지만 나타내기
-				var monthPlus4 = month + 3;
-
-				if(i >= monthPlus4) {
-					$("#month" + i).hide(); //4달 후 월들은 없애기
+				var monthPlus4 = month + 2; //4
+				
+				if((i-1) >= monthPlus4) {
 					$("#no_info" + i).hide();
+					
+					$("#month" + i).hide();
 					$("#div_month_" + i).hide();
 				}
 				else {
