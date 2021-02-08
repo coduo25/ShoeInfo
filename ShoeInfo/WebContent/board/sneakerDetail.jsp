@@ -24,7 +24,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body>
+<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
 
 	<!-- Header -->	
 	<header> <jsp:include page="/include/header.jsp" /> </header>
@@ -1310,6 +1310,14 @@
 
 	$(document).ready(function(){
 		
+		//방지
+		$(document).bind('keydown', function(e){
+			if(e.keyCode == 123 /* F12 */){
+				e.preventDefault();
+				e.returnVale = false;
+			}
+		});
+		
 		//국내진행중 해외진행중
 		var countDome = 0;
 		var countInte = 0;
@@ -1923,6 +1931,16 @@
 		});	
 		
 	});
+	
+	document.onmousedown=disableclick;
+// 	status="Right click is not availble";
+	
+	function disableclick(event){
+		if(event.button==2){
+// 			alert(status);
+			return false;
+		}
+	}
 	
 	
 

@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
-<body>
+<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
 
 	<%
 		String user = (String) session.getAttribute("email");
@@ -106,6 +106,14 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
+		//방지
+		$(document).bind('keydown', function(e){
+			if(e.keyCode == 123 /* F12 */){
+				e.preventDefault();
+				e.returnVale = false;
+			}
+		});
 		
 		//비밀번호 input를 클릭했을시
 		$("input[name=pass]").click(function(){
@@ -277,6 +285,16 @@
 		});
 		
 	});
+	
+	document.onmousedown=disableclick;
+	//status="Right click is not availble";
+	
+	function disableclick(event){
+		if(event.button==2){
+			//alert(status);
+			return false;
+		}
+	}
 
 </script>
 

@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body>
+<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
@@ -154,6 +154,14 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
+		//방지
+		$(document).bind('keydown', function(e){
+			if(e.keyCode == 123 /* F12 */){
+				e.preventDefault();
+				e.returnVale = false;
+			}
+		});
 
 		var today = new Date();
 		//1
@@ -204,6 +212,16 @@
 			$("#div_month_" + month).slideToggle("slow");
 		});
 	});
+	
+	document.onmousedown=disableclick;
+	//status="Right click is not availble";
+	
+	function disableclick(event){
+		if(event.button==2){
+			//alert(status);
+			return false;
+		}
+	}
 
 </script>
 </html>

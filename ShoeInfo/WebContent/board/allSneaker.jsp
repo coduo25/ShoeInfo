@@ -16,7 +16,7 @@
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
-<body>
+<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
 
 	<%
 		List<SneakerDTO> allSneakerList = (List<SneakerDTO>) request.getAttribute("allSneakerList");
@@ -86,8 +86,30 @@
 	        	length = length - 1;
 	      	}
 		}
-		
 	}
+	
+	$(document).ready(function(){
+		
+		//방지
+		$(document).bind('keydown', function(e){
+			if(e.keyCode == 123 /* F12 */){
+				e.preventDefault();
+				e.returnVale = false;
+			}
+		});
+	}
+	
+	document.onmousedown=disableclick;
+	//status="Right click is not availble";
+	
+	function disableclick(event){
+		if(event.button==2){
+			//alert(status);
+			return false;
+		}
+	}
+	
+	
 
 </script>
 </html>

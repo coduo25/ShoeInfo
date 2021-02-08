@@ -19,8 +19,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
-<body>
+<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
 
 	<!-- Header -->	
 	<header> <jsp:include page="/include/header.jsp" /> </header>
@@ -231,4 +232,29 @@
 	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 
 </body>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		//방지
+		$(document).bind('keydown', function(e){
+			if(e.keyCode == 123 /* F12 */){
+				e.preventDefault();
+				e.returnVale = false;
+			}
+		});
+	});
+	
+	document.onmousedown=disableclick;
+	//status="Right click is not availble";
+	
+	function disableclick(event){
+		if(event.button==2){
+			//alert(status);
+			return false;
+		}
+	}
+		
+</script>
+
 </html>

@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
 
 	<!-- Header -->
 <%-- 	<header> <jsp:include page="/include/header.jsp" /> </header> --%>
@@ -117,6 +117,14 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		
+		//방지
+		$(document).bind('keydown', function(e){
+			if(e.keyCode == 123 /* F12 */){
+				e.preventDefault();
+				e.returnVale = false;
+			}
+		});
 		
 		//비밀번호 찾기를 눌렸을시
 		$('.signup-toggle').click(function(){
@@ -248,8 +256,18 @@
 // 			});
 			
 		});
-		
-		
 	});
+	
+	document.onmousedown=disableclick;
+	//status="Right click is not availble";
+	
+	function disableclick(event){
+		if(event.button==2){
+			//alert(status);
+			return false;
+		}
+	}
+	
+	
 </script>
 </html>

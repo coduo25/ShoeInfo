@@ -32,7 +32,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
-<body>	
+<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>	
 	<%
 		String user = (String) session.getAttribute("email");
 		if(user == null){
@@ -350,6 +350,14 @@
 
 	$(document).ready(function(){
 		
+		//방지
+		$(document).bind('keydown', function(e){
+			if(e.keyCode == 123 /* F12 */){
+				e.preventDefault();
+				e.returnVale = false;
+			}
+		});
+		
 		var filter = "win16|win32|win64|mac|macintel";
 		if(navigator.platform) {
 			//모바일로 접속했을시
@@ -459,6 +467,16 @@
 		});
 
 	});
+	
+	document.onmousedown=disableclick;
+	//status="Right click is not availble";
+	
+	function disableclick(event){
+		if(event.button==2){
+			//alert(status);
+			return false;
+		}
+	}
 
 	var sTime = new Date().getTime();
 	(function(i,s,o,g,r,a,m){i['webObject']=g;i['webUid']=r;a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})
