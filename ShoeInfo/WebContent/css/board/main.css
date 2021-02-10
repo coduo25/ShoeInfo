@@ -4,7 +4,7 @@
 body {font-size:1em; line-weight:1.4}
 
 /* 모든 페이지 공통 부분 */
-.container {position: relative; width: 80%; margin: 5px auto; }
+.container {position: relative;  } /* width: 80%; margin: 5px auto; */
 
 /* 신발 추가 페이지 */
 #content_adminAddSneaker { width: 100%; margin-top: 30px; position: relative; z-index: 2; text-align: center;}

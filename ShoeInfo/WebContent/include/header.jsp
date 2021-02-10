@@ -8,14 +8,96 @@
 <title>SHOE INFO.</title>
 <link href="./css/include/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 
-	<nav class="acc_navbar">
+	<header class="header-container">
+	
+		<div class="toplink-container">
+			<div class="container row-fluid">
+				<!-- instagram -->
+				<div class="insta-label">
+					<span>
+						<a href="https://www.instagram.com/shoeinfo_official/" target="_blank"><i class="fab fa-instagram"></i> <i class="fas fa-caret-left"></i> visit ShoeInfo_official Instagram </a> 
+					</span> 
+				</div>
+				
+				<!-- register/login container -->
+				<div class="acc-container"> 
+					<%
+						request.setCharacterEncoding("UTF-8");
+					
+						//현재 페이지 이름, main.jsp or sneakerDetail.jsp
+						String pageName = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1);
+					
+						//로그인한 사용자가 체크
+						String user = (String) session.getAttribute("email");
+						//로그인 된 사용자의 position 가져오기
+						String usr_position = (String) session.getAttribute("usr_position");
+						if(user == null){
+							user = "";
+						}
+						if(usr_position == null){
+							usr_position = "";
+						}
+	
+						if(user == null || user.length() == 0){
+						%>
+							<span> <a href="./MemberLogin.me"> <i class="fas fa-user-alt"></i> 회원가입 / 로그인  </a> </span>
+						<%
+							}else if(usr_position.equals("admin")){ 
+						%>
+							<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
+							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-alt"></i> 나의정보관리 </a> </span> 
+							<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span>
+						<% 
+							}else{ 
+						%>
+							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-alt"></i> 나의정보관리 </a> </span>
+							<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
+						<% } %>
+				</div>
+			</div>
+		</div>
+		
+		<div class="logo-row container">
+			<div class="navbar_logo">
+				<div>
+					<a href="./SneakerList.go"> SHOE INFO. </a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="menu-row container">
+			<div class="block-list">
+				<div class="block-content">
+					<ul class="nav">
+						<li> <a href="./SneakerList.go"> 발매중/발매예정 </a> </li>
+						<li> <a href="#"> 발매완료 </a> </li>
+						<li> <a href="#"> SNKRS </a> </li>
+						<li> <a href="#" id="myDrawBtn"> 나의 응모내역 </a> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	
+	</header>
+	
+	
+	
+	<!-- 여기서 부터 구버전 -->
+	<!-- 여기서 부터 구버전 -->
+	<!-- 여기서 부터 구버전 -->
+	<!-- 여기서 부터 구버전 -->
+	<!-- 여기서 부터 구버전 -->
+	
+	<nav class="acc_navbar" style="display:none;">
 		<div class="acc_wrapper">
 			<!-- 인스타  -->
 			<div class="insta-icon">
@@ -27,12 +109,12 @@
 						request.setCharacterEncoding("UTF-8");
 					
 						//현재 페이지 이름, main.jsp or sneakerDetail.jsp
-						String pageName = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1);
+						//String pageName = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1);
 					
 						//로그인한 사용자가 체크
-						String user = (String) session.getAttribute("email");
+						//String user = (String) session.getAttribute("email");
 						//로그인 된 사용자의 position 가져오기
-						String usr_position = (String) session.getAttribute("usr_position");
+						//String usr_position = (String) session.getAttribute("usr_position");
 						if(user == null){
 							user = "";
 						}
@@ -64,7 +146,7 @@
 	</nav>
 	
 	<!-- 회원등급별표 -->
-	<div id="memberChart">
+	<div id="memberChart" style="display:none;">
 		<div id="mc_title">
 			<span>
 				현재&nbsp;
@@ -123,7 +205,7 @@
 
 	<input type="hidden" class="user" id="user" value="<%=user%>">
 		
-	<nav class="navbar">
+	<nav class="navbar" style="display: none;">
 		<!-- 로고 -->
 		<div class="navbar_logo">
 			<div>
@@ -168,7 +250,7 @@
 		
 	</nav>
 	
-	<div id="datebar_div">
+	<div id="datebar_div" style="display: none;">
 		<nav class="datebar" id="datebar">
 			<!-- 오늘 날짜 표시 -->
 			<div class="today_date">	
