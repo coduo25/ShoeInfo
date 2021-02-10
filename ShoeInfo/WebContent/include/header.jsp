@@ -42,11 +42,11 @@
 						
 						if(user == null || user.length() == 0){
 					%>
-						<span class="acc_pos">비회원&nbsp;<i class="far fa-question-circle"></i></span><span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
+						<span class="acc_pos" style="display:none;">비회원&nbsp;<i class="far fa-question-circle"></i></span><span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
 					<%
 						}else if(usr_position.equals("admin")){ 
 					%>
-						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%} else if(usr_position.equals("admin")){%>관리자<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
+						<span class="acc_pos" style="display:none;"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%} else if(usr_position.equals("admin")){%>관리자<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
 						
 						<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span> 
@@ -54,7 +54,7 @@
 					<% 
 						}else{ 
 					%>
-						<span class="acc_pos"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
+						<span class="acc_pos" style="display:none;"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
 					
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span>
 						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
