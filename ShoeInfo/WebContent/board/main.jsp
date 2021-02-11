@@ -46,12 +46,14 @@
 		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) request.getAttribute("brandList_todays");
 		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_todays");
 		
-		//발매중 신발들
-		//발매예정 신발들
-		//발매완료 신발들
+		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
 		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasedSneakerList");
+		
+		//이번주 snkrs 리스트
+		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_snkrs");
+		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_snkrs");
 		
 		
 		// 구 리스트들
@@ -78,6 +80,7 @@
 		
 		SimpleDateFormat newList_format = new SimpleDateFormat("M월 d일(E) HH:mm");
 		SimpleDateFormat newList_format2 = new SimpleDateFormat("M/d일(E) HH:mm");
+		SimpleDateFormat newList_format3 = new SimpleDateFormat("M/d일(E) a hh:mm");
 		
 		//오늘날짜
 		Date currentTime = new Date();
@@ -94,6 +97,28 @@
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
+	
+		<!-- 발매 중 리스트 -->
+		<div class="releasing-container">
+			<div class="sub-title">
+				<h4> 발매 중 라인업 </h4>
+			</div>
+			
+			<div class="releasing-table-container">
+				<% if(releasingSneakerList.isEmpty()){ %>
+					<div>
+						발매 중인 신발이 없습니다.
+					</div>
+				<% } else {
+					for(int i=0; i<releasingSneakerList.size(); i++){
+						SneakerDTO releasing_sdto = releasingSneakerList.get(i);	
+				%>
+					<div class="mainSneaker-container">
+						<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
+					</div>
+				<% } } %>
+			</div>
+		</div>
 	
 		<!-- 오늘의 응모 리스트 5개 -->
 		<div class="todaysDraw-container">
@@ -112,7 +137,7 @@
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
 						<tr>
-							<td> 발매 정보가 없습니다. </td>
+							<td colspan="7"> 발매 정보가 없습니다. </td>
 						</tr>
 					<% } else { 
 						for(int i=0; i<onlineList_todays.size(); i++){
@@ -155,7 +180,7 @@
 							<!-- 응모처명 -->
 							<td style="text-align: left !important; padding-left: 10px;"> 
 								<a> <span style="font-weight: bold;"> <%=bdto_todays.getBrand_name() %> </span> </a> <br>
-								<a style="display: block; margin-top: 5px;"> <%=bdto_todays.getCountry_name() + " | " + odto_todays.getDelivery_method()%> </a>
+								<a style="display: block; margin-top: 7px;"> <%=bdto_todays.getCountry_name() + " | " + odto_todays.getDelivery_method()%> </a>
 							</td>
 							
 							<!-- 마감시간 -->
@@ -171,25 +196,53 @@
 						</tr>
 				</table>
 			</div>
-			
 		</div>
 		
-		<!-- 발매 중 리스트 -->
-		<div class="releasing-container">
+		<!-- 이번주 나코 snkrs 리스트 -->
+		<div class="snkrsWeek-container">
 			<div class="sub-title">
-				<h4> 발매 중  </h4>
+				<h4> 나이키 코리아 이번주 라인업 </h4>
 			</div>
 			
-			<div class="releasing-table-container">
-				<% if(releasingSneakerList.isEmpty()){ %>
+			<div class="snkrsWeek-table-container">
+				<% if(onlineList_snkrs.isEmpty()){%>
 					<div>
-						발매 중인 신발이 없습니다.
+						이번주 발매 라인업이 없습니다.
 					</div>
-				<% } else {
-					for(int i=0; i<releasingSneakerList.size(); i++){
-						SneakerDTO releasing_sdto = releasingSneakerList.get(i);	
+				<% } else { 
+					for(int i=0; i<onlineList_snkrs.size(); i++) {
+						OnlineDTO snkrs_odto = onlineList_snkrs.get(i);
+						SneakerDTO snkrs_sdto = sneakerList_snkrs.get(i);
+						
+						String online_start_date = "";
+						String online_start_time = "";
+						
+						if((snkrs_odto.getOnline_start_date().isEmpty())){
+							online_start_date = "0000-00-00";
+						} else{
+							online_start_date = snkrs_odto.getOnline_start_date();
+						}
+						
+						if((snkrs_odto.getOnline_start_time().isEmpty())){
+							online_start_time = "24:00";
+						} else{
+							online_start_time = snkrs_odto.getOnline_start_time();
+						}
+						
+						Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
+						
+						//O월 OO일 24시
+						String newlist_Online_start_time = newList_format3.format(original_Online_start_time);
 				%>
-					<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>" style="padding:1px; width:18%;">
+					<div class="snkrsSneaker-container">
+						<img src="./sneaker_img_upload/<%=snkrs_sdto.getImage()%>">
+						<div class="snkrs_startTime">
+							<%=newlist_Online_start_time%> 응모 시작
+						</div>
+						<div class="snkrs_modelName">
+							<%=snkrs_sdto.getModel_name_kr()%>
+						</div>
+					</div>
 				<% } } %>
 			</div>
 		</div>
@@ -197,7 +250,7 @@
 		<!-- 발매 예정 리스트 -->
 		<div class="release-container">
 			<div class="sub-title">
-				<h4> 발매 예정  </h4>
+				<h4> 발매 예정 라인업</h4>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -209,22 +262,17 @@
 					for(int i=0; i<releaseSneakerList.size(); i++){
 						SneakerDTO release_sdto = releaseSneakerList.get(i);	
 				%>
-					<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>" style="padding:1px; width:18%;">
+					<div class="mainSneaker-container">
+						<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
+					</div>
 				<% } } %>
-			</div>
-		</div>
-		
-		<!-- 이번주 나코 snkrs 리스트 -->
-		<div class="snkrsWeek-container">
-			<div class="sub-title">
-				<h4> 이번주 나이키 코리아 SNKRS  </h4>
 			</div>
 		</div>
 		
 		<!-- 발매 완료 리스트 -->
 		<div class="released-container">
 			<div class="sub-title">
-				<h4> 발매 완료 </h4>
+				<h4> 발매 완료 라인업 </h4>
 			</div>
 			
 			<div class="released-table-container">
@@ -233,22 +281,33 @@
 						발매 완료된 신발이 없습니다.
 					</div>
 				<% } else {
-					for(int i=0; i<releasedSneakerList.size(); i++){
+					for(int i=releasedSneakerList.size()-1; i>=0; i--){
 						SneakerDTO released_sdto = releasedSneakerList.get(i);	
 				%>
-					<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>" style="padding:1px; width:18%;">
+					<div class="mainSneaker-container">
+						<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
+					</div>
 				<% } } %>
 			</div>
 		</div>
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<!-- 구 컨테이너들 -->
-		<div id="showAllChk">
+		<div id="showAllChk" style="display:none">
 			<span id="before">발매예정</span>
 			<span id="after">발매완료</span>
 		</div>
 	
-		<div id="content_sneakerList">
+		<div id="content_sneakerList" style="display:none">
 			<%
 				Calendar cal = Calendar.getInstance();
 				int month = cal.get(Calendar.MONTH);

@@ -229,7 +229,7 @@ public class OnlineDAO {
 		
 		try{
 			con = getConnection();
-			sql = "SELECT * from shoeinfo_onlineinfo where DATE_FORMAT(online_end_date, '%Y-%m-%d') = CURDATE() and CONCAT(online_end_time, ':00') >= CURTIME() order by online_end_time LIMIT 5";
+			sql = "SELECT * from shoeinfo_onlineinfo where DATE_FORMAT(online_end_date, '%Y-%m-%d') = CURDATE() and CONCAT(online_end_time, ':00') > CURTIME() order by online_end_time LIMIT 7";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){

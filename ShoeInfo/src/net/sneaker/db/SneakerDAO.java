@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Vector;
 
 import javax.naming.Context;
@@ -16,6 +14,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.board.action.Criteria;
+import net.online.db.OnlineDTO;
 
 public class SneakerDAO {
 	
@@ -321,6 +320,71 @@ public class SneakerDAO {
 			vec.add(releasingSneakerList);
 			vec.add(releasedSneakerList);
 		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return vec;
+	}
+	
+	//이번주 snkrs 리스트 가져오는 함수
+	public Vector getSnkrsWeekList(String monday, String sunday){
+		Vector vec = new Vector();
+		
+		ArrayList onlineList_snkrs = new ArrayList();
+		ArrayList sneakerList_snkrs = new ArrayList();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_onlineinfo "
+					+ "where brand_id = '대한민국_SNKRS 한국' "
+					+ "and concat(online_end_date, ' ', online_end_time, ':00') >= ? "
+					+ "and concat(online_end_date, ' ', online_end_time, ':00') <= ? "
+					+ "and concat(online_end_date, ' ', online_end_time, ':00') >= DATE_FORMAT(now(), '%Y-%m-%d %H:%i')"
+					+ "order by online_end_date, online_end_time";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, monday);
+			pstmt.setString(2, sunday);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				OnlineDTO odto = new OnlineDTO();
+				odto.setModel_num(rs.getInt("model_num"));
+				odto.setModel_stylecode(rs.getString("model_stylecode"));
+				odto.setCountry_region(rs.getString("country_region"));
+				odto.setCountry_name(rs.getString("country_name"));
+				odto.setBrand_id(rs.getString("brand_id"));
+				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_start_date(rs.getString("online_start_date"));
+				odto.setOnline_start_time(rs.getString("online_start_time"));
+				odto.setOnline_end_date(rs.getString("online_end_date"));
+				odto.setOnline_end_time(rs.getString("online_end_time"));
+				odto.setOnline_method(rs.getString("online_method"));
+				odto.setBuy_method(rs.getString("buy_method"));
+				odto.setDelivery_method(rs.getString("delivery_method"));
+				odto.setOnline_writer(rs.getString("online_writer"));
+				odto.setReg_date(rs.getTimestamp("reg_date"));
+				onlineList_snkrs.add(odto);
+				
+				//신발 정보 불러오기
+				sql = "select * from shoeinfo_sneakerlibrary where num = ? and model_stylecode = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setInt(1, odto.getModel_num());
+				pstmt2.setString(2, odto.getModel_stylecode());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					SneakerDTO sdto = new SneakerDTO();
+					sdto.setImage(rs2.getString("image"));
+					sdto.setModel_name_kr(rs2.getString("model_name_kr"));
+					sneakerList_snkrs.add(sdto);
+				}
+			}
+			vec.add(onlineList_snkrs);
+			vec.add(sneakerList_snkrs);
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();

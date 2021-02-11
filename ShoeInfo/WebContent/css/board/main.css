@@ -7,8 +7,8 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;  } /* width: 80%; margin: 5px auto; */
 
 /* 리스트 별 컨테이너 */
-.todaysDraw-container, .releasing-container, .release-container, .snkrsWeek-container, .released-container { display: block; margin: 25px 0 55px 0; font-family: 'Nanum Gothic', sans-serif; }
-.todays-table-container, .releasing-table-container { width: 100%;}
+.todaysDraw-container, .releasing-container, .release-container, .snkrsWeek-container, .released-container { display: table; width: 100%; box-sizing: border-box; margin: 35px 0 70px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todays-table-container, .releasing-table-container, .snkrsWeek-table-container { width: 100%;}
 
 /*서브 타이틀*/
 .sub-title { display: block; margin: 30px 0 20px 0; font-size: 22px; font-family: 'Nanum Gothic', sans-serif; }
@@ -16,10 +16,40 @@ body {font-size:1em; line-weight:1.4}
 /* 오늘의 응모 리스트 (메인페이지) */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; }
 #onlineList_todays_table th { height: 50px; border-top: 1px solid black; border-bottom: 1px solid #dcdcdc; } 
-#onlineList_todays_table td { height: 90px; border-bottom: 1px solid #dcdcdc;  }
+#onlineList_todays_table td { height: 100px; border-bottom: 1px solid #dcdcdc;  }
 #onlineList_todays_table td { text-align: center; }
 
 /* 발매 중 리스트 (메인페이지) */
+.mainSneaker-container { position:relative; float: left; width: 18%; margin: 1%; text-align: center; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; border: 1px solid #eaeaea; }
+.mainSneaker-container img { width: 100%; height: 100%; }
+
+/* 이번주 snkrs 리스트 (메인페이지) */
+.snkrsWeek-table-container { width: 100%; overflow-x: scroll; padding-bottom: 45px; white-space:nowrap; }
+.snkrsSneaker-container { display:inline-block; width: 30%; margin-right: 20px; }
+.snkrsSneaker-container img, .snkrsSneaker-container div { width: 100%; }
+.snkrsSneaker-container img { border: 1px solid #e2e2e2; padding: 25px 0; }
+.snkrsSneaker-container div { text-align: left; display: block; margin-left: 5px; }
+div.snkrs_startTime { font-size: 17px; font-weight: bold; margin-top:6px; }
+div.snkrs_modelName { font-size: 15px; margin-top:11px; }
+
+/* 스크롤바 style */
+/* width */
+::-webkit-scrollbar { width: 10px; }
+/* Track */
+::-webkit-scrollbar-track { background: #f1f1f1; }
+/* Handle */
+::-webkit-scrollbar-thumb { background: #888; }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -54,7 +84,7 @@ body {font-size:1em; line-weight:1.4}
 .shoelist_content_month p:last-child { padding-top: 5%; padding-bottom: 25%; position: relative; top: -10px; }
 
 /* 리스트 한칸 */
-.shoelist_content { z-index:8; position:relative; float: left; text-align: center; width: 18%; margin: 1.5% 1%; box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); font-family: 'Nanum Gothic', sans-serif; border: 1px solid rgb(222 222 222); transition: all 0.3s; /* border-radius: 0.3rem;*/ }
+.shoelist_content { z-index:8; position:relative; float: left; text-align: center; width: 18%; margin: 1.5% 1%; border: 1px solid rgb(222 222 222); box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); font-family: 'Nanum Gothic', sans-serif;  transition: all 0.3s; /* border-radius: 0.3rem;*/ }
 .shoelist_content img { width:180px; height:130px; width: 95%; height: 95%; transform:scale(1.0); transition: transform.5s; }
 .shoelist_content:hover .content_img img{ transform:scale(1.05); transition: transform.5s; }
 
