@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -159,6 +160,172 @@ public class SneakerDAO {
 			closeDB();
 		}
 		return sneakerList;
+	}
+	
+	//발매 중, 발매예정, 발매완료 리스트 나누는 함수
+	public Vector getTotalReleaseList(String date){
+		
+		Vector vec = new Vector();
+		
+		ArrayList<SneakerDTO> releasingSneakerList = new ArrayList<SneakerDTO>();
+		ArrayList<SneakerDTO> releaseSneakerList = new ArrayList<SneakerDTO>();
+		ArrayList<SneakerDTO> releasedSneakerList = new ArrayList<SneakerDTO>();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
+		
+		try {
+			con = getConnection();
+			sql = "select * from shoeinfo_sneakerlibrary where release_date like ? order by release_date";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, date);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SneakerDTO sdto = new SneakerDTO();
+				sdto.setNum(rs.getInt("num"));
+				sdto.setBrand(rs.getString("brand"));
+				sdto.setSub_brand(rs.getString("sub_brand"));
+				sdto.setBrand_index(rs.getString("brand_index"));
+				sdto.setImage(rs.getString("image"));
+				sdto.setModel_stylecode(rs.getString("model_stylecode"));
+				sdto.setModel_name(rs.getString("model_name"));
+				sdto.setModel_name_kr(rs.getString("model_name_kr"));
+				sdto.setModel_colorway(rs.getString("model_colorway"));
+				sdto.setPrice(rs.getInt("price"));
+				sdto.setRelease_date(rs.getString("release_date"));	
+				sdto.setViews(rs.getInt("views"));
+				
+				//스니커 라이브러리에 모든 스니커를 다 가지고와서
+				
+				String maxStart = "";
+				String maxStartDate = "";
+				String maxStartTime = "";
+				
+				String maxEnd = "";
+				String maxEndDate = "";
+				String maxEndTime = "";
+				
+				//각 신발의 온라인세부정보 끝나는 시간 가져오기
+				
+				//온라인세부정보 시작하는 시간
+				sql = "select online_start_date, online_start_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_start_date desc, online_start_time desc limit 1";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, sdto.getModel_stylecode());
+				pstmt2.setInt(2, sdto.getNum());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					
+					if(rs2.getString("online_start_date").isEmpty() || rs2.getString("online_start_date") == "" ||  rs2.getString("online_start_date") == null){
+						maxStartDate = "1234-12-34";
+					}else {
+						maxStartDate = rs2.getString("online_start_date");
+					}
+					
+					if(rs2.getString("online_start_time").isEmpty() || rs2.getString("online_start_time") == "" ||  rs2.getString("online_start_time") == null){
+						maxStartTime = "12:34";
+					}else {
+						maxStartTime = rs2.getString("online_start_time");
+					}
+					
+					maxStart = maxStartDate + " " + maxStartTime;
+					
+				}else{
+					maxStart = "1234-12-34 12:34";
+				}
+				//온라인 시작하는 시간 : maxStart
+				
+				//온라인세부정보 끝나는 시간
+				sql = "select online_end_date, online_end_time from shoeinfo_onlineinfo where model_stylecode = ? and model_num = ? order by online_end_date desc, online_end_time desc limit 1";
+				pstmt3 = con.prepareStatement(sql);
+				pstmt3.setString(1, sdto.getModel_stylecode());
+				pstmt3.setInt(2, sdto.getNum());
+				rs3 = pstmt3.executeQuery();
+				if(rs3.next()){
+					
+					if(rs3.getString("online_end_date").isEmpty() || rs3.getString("online_end_date") == "" ||  rs3.getString("online_end_date") == null){
+						maxEndDate = "1234-12-34";
+					}else {
+						maxEndDate = rs3.getString("online_end_date");
+					}
+					
+					if(rs3.getString("online_end_time").isEmpty() || rs3.getString("online_end_time") == "" ||  rs3.getString("online_end_time") == null){
+						maxEndTime = "12:34";
+					}else {
+						maxEndTime = rs3.getString("online_end_time");
+					}
+					
+					maxEnd = maxEndDate + " " + maxEndTime;
+					
+				}else {
+					maxEnd = "1234-12-34 12:34";
+				}
+				//온라인 끝나는 시간 : maxEnd
+				
+				//최종 온라인 시작, 끝나는 시간 sdto 에 넣기
+				if(maxStart.contains("1234-12-34") && maxStart.contains("12:34") && maxEnd.contains("1234-12-34") && maxEnd.contains("12:34")){
+					sdto.setMaxDate("1234-12-34 12:34");
+				}
+				else if(maxStart.contains("1234-12-34") || maxStart.contains("12:34")){
+					sdto.setMaxDate(maxEnd);
+				}
+				else if(maxEnd.contains("1234-12-34") || maxEnd.contains("12:34")){
+					sdto.setMaxDate(maxStart);
+				}
+				else if(!maxStart.contains("1234-12-34") && !maxStart.contains("12:34") && !maxEnd.contains("1234-12-34") && !maxEnd.contains("12:34")){
+					// maxStart 와 maxEnd 비교
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					Date startDate = format.parse(maxStart);
+					Date endDate = format.parse(maxEnd);
+					
+					int compare = startDate.compareTo(endDate);
+					
+					if(compare > 0){
+						sdto.setMaxDate(maxStart);
+					}
+					else if(compare < 0) {
+						sdto.setMaxDate(maxEnd);
+					}
+					else {
+						sdto.setMaxDate(maxEnd);
+					}
+				}
+				
+				//sdto에 저장된 MaxDate와 현재 시간을 비교해서 발매중, 발매예정, 발매완료 각 해당되는 리스트에 담기
+				Date maxDate = null;
+				Date currentDate = null;
+
+				SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				String nowDayTimeString = f.format(System.currentTimeMillis());
+				
+				//각 신발들의 Max 응모시간
+				maxDate = f.parse(sdto.getMaxDate());
+				//현재 시간
+				Date nowDayTimeFormat = f.parse(nowDayTimeString);				
+				
+				//발매예정
+				if(sdto.getMaxDate() == "1234-12-34 12:34"){
+					releaseSneakerList.add(sdto);
+				}
+				//발매중
+				else if(maxDate.getTime() >= nowDayTimeFormat.getTime()){
+					releasingSneakerList.add(sdto);
+				}
+				//발매완료
+				else if(maxDate.getTime() < nowDayTimeFormat.getTime()){
+					releasedSneakerList.add(sdto);
+				}
+			}
+			vec.add(releaseSneakerList);
+			vec.add(releasingSneakerList);
+			vec.add(releasedSneakerList);
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return vec;
 	}
 	
 	//신발정보 리스트로 가져오는 함수(월별로)

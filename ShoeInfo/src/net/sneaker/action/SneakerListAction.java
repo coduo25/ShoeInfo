@@ -7,6 +7,9 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.brand.db.BrandDTO;
+import net.online.db.OnlineDAO;
+import net.online.db.OnlineDTO;
 import net.sneaker.db.SneakerDAO;
 import net.sneaker.db.SneakerDTO;
 
@@ -15,7 +18,36 @@ public class SneakerListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		OnlineDAO odao = new OnlineDAO();
 		SneakerDAO sdao = new SneakerDAO();
+		
+		//오늘의 응모
+		Vector vec_todaysDraw = odao.getTodaysDraw();
+		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) vec_todaysDraw.get(0);
+		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) vec_todaysDraw.get(1);
+		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) vec_todaysDraw.get(2);
+		
+		request.setAttribute("onlineList_todays", onlineList_todays);
+		request.setAttribute("brandList_todays", brandList_todays);
+		request.setAttribute("sneakerList_todays", sneakerList_todays);
+		
+		//발매중 신발들
+		//발매예정 신발들
+		//발매완료 신발들
+		Vector vec_totalReleaseList = sdao.getTotalReleaseList("%" + "2021" + "%");
+		
+		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(0);
+		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(1);
+		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(2);
+		
+		request.setAttribute("releaseSneakerList", releaseSneakerList);
+		request.setAttribute("releasingSneakerList", releasingSneakerList);
+		request.setAttribute("releasedSneakerList", releasedSneakerList);
+		
+		//이번주 나코 SNKRS 신발들
+		
+		
+		
 		
 		List<SneakerDTO> sneakerList1 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2021-01" + "%" , "planned");
 		List<SneakerDTO> sneakerList2 = (List<SneakerDTO>) sdao.getSneakerList("%" + "2021-02" + "%" , "planned");

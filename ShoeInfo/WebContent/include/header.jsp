@@ -78,7 +78,8 @@
 			<div class="block-list">
 				<div class="block-content">
 					<ul class="nav">
-						<li> <a href="./SneakerList.go"> 발매중/발매예정 </a> </li>
+						<li> <a href="#"> 오늘의 응모 </a> </li>
+						<li> <a href="./SneakerList.go"> 발매 중/발매예정 </a> </li>
 						<li> <a href="#"> 발매완료 </a> </li>
 						<li> <a href="#"> SNKRS </a> </li>
 						<li> <a href="#" id="myDrawBtn"> 나의 응모내역 </a> </li>

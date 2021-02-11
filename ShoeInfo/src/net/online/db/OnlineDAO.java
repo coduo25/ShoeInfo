@@ -213,6 +213,89 @@ public class OnlineDAO {
 		return vec;
 	}
 	
+	//오늘의 응모 5개 가지고 오는 함수 (메인페이지)
+	public Vector getTodaysDraw() {
+		Vector vec = new Vector();
+		
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
+		
+		ArrayList onlineList_todays = new ArrayList();
+		ArrayList brandList_todays = new ArrayList();
+		ArrayList sneakerList_todays = new ArrayList();
+		
+		try{
+			con = getConnection();
+			sql = "SELECT * from shoeinfo_onlineinfo where DATE_FORMAT(online_end_date, '%Y-%m-%d') = CURDATE() and CONCAT(online_end_time, ':00') >= CURTIME() order by online_end_time LIMIT 5";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				OnlineDTO odto = new OnlineDTO();
+				odto.setModel_num(rs.getInt("model_num"));
+				odto.setModel_stylecode(rs.getString("model_stylecode"));
+				odto.setCountry_region(rs.getString("country_region"));
+				odto.setCountry_name(rs.getString("country_name"));
+				odto.setBrand_id(rs.getString("brand_id"));
+				odto.setOnline_link(rs.getString("online_link"));
+				odto.setOnline_start_date(rs.getString("online_start_date"));
+				odto.setOnline_start_time(rs.getString("online_start_time"));
+				odto.setOnline_end_date(rs.getString("online_end_date"));
+				odto.setOnline_end_time(rs.getString("online_end_time"));
+				odto.setOnline_method(rs.getString("online_method"));
+				odto.setBuy_method(rs.getString("buy_method"));
+				odto.setDelivery_method(rs.getString("delivery_method"));
+				odto.setOnline_writer(rs.getString("online_writer"));
+				odto.setReg_date(rs.getTimestamp("reg_date"));
+				onlineList_todays.add(odto);
+				
+				//불러온 5개의 오늘 응모 리스트의 브랜드 정보 담기
+				sql = "select * from shoeinfo_brand where brand_id = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, odto.getBrand_id());
+				rs2 = pstmt2.executeQuery();
+				if(rs2.next()){
+					//브랜드 정보 DB에 해당 브랜드가 저장되어있으면
+					BrandDTO bdto = new BrandDTO();
+					bdto.setCountry_name(rs2.getString("country_name"));
+					bdto.setBrand_logo(rs2.getString("brand_logo"));
+					bdto.setBrand_name(rs2.getString("brand_name"));
+					bdto.setBrand_id(rs2.getString("brand_id"));
+					sql="select country_flag from shoeinfo_country where country_name = ?";
+					pstmt3 = con.prepareStatement(sql);
+					pstmt3.setString(1, bdto.getCountry_name());
+					rs3 = pstmt3.executeQuery();
+					if(rs3.next()){
+						bdto.setCountry_flag(rs3.getString("country_flag"));
+					}
+					brandList_todays.add(bdto);
+				}
+				
+				//해당 모델 이미지 가져오기
+				sql = "select * from shoeinfo_sneakerlibrary where num = ? and model_stylecode = ?";
+				pstmt3 = con.prepareStatement(sql);
+				pstmt3.setInt(1, odto.getModel_num());
+				pstmt3.setString(2, odto.getModel_stylecode());
+				rs3 = pstmt3.executeQuery();
+				if(rs3.next()){
+					SneakerDTO sdto = new SneakerDTO();
+					sdto.setImage(rs3.getString("image"));
+					sdto.setModel_name_kr(rs3.getString("model_name_kr"));
+					sneakerList_todays.add(sdto);
+				}
+			}
+			vec.add(onlineList_todays);
+			vec.add(brandList_todays);
+			vec.add(sneakerList_todays);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return vec;
+	}
 	
 	//대한민국 신발 온라인 정보 가져오는 함수(브랜드 정보 + 온라인 정보)
 	public Vector getOnlineInfo_kr(String model_stylecode, int model_num) {
