@@ -28,7 +28,6 @@
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -100,8 +99,8 @@
 	
 		<!-- 발매 중 리스트 -->
 		<div class="releasing-container">
-			<div class="sub-title">
-				<h4> 발매 중 라인업 </h4>
+			<div class="sub-title-wline">
+				<h4> <span> 발매 중 라인업 </span> </h4>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -110,12 +109,25 @@
 						발매 중인 신발이 없습니다.
 					</div>
 				<% } else {
-					for(int i=0; i<releasingSneakerList.size(); i++){
+					for(int i=releasingSneakerList.size()-1; i>=0; i--){
 						SneakerDTO releasing_sdto = releasingSneakerList.get(i);	
 				%>
 					<div class="mainSneaker-container">
-						<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
+						<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
+							<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
+						</a>
+						
+						<!-- hover 칸  -->
+						<div class="mainSneaker-container-hover">
+							&nbsp;
+						</div>
+						
+						<!-- 이름 칸 -->
+						<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
+							<p> <%=releasing_sdto.getModel_name_kr()%> </p>
+						</div>
 					</div>
+					
 				<% } } %>
 			</div>
 		</div>
@@ -130,17 +142,17 @@
 				<table id="onlineList_todays_table">
 					<tr>
 						<th colspan="2" style="width:33%;"> 응모신발 </th>
-						<th style="width:15%;"> 방식 </th>
-						<th colspan="2" style="width:25%;"> 응모처 </th>
-						<th style="width:17%;"> 마감시간 </th>
-						<th style="width:10%;"> &nbsp; </th>
+						<th style="width:10%;"> 방식 </th>
+						<th colspan="2" style="width:27%;"> 응모처 </th>
+						<th style="width:15%;"> 마감시간 </th>
+						<th style="width:15%;"> &nbsp; </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
 						<tr>
 							<td colspan="7"> 발매 정보가 없습니다. </td>
 						</tr>
 					<% } else { 
-						for(int i=0; i<onlineList_todays.size(); i++){
+						for(int i=0; i<onlineList_todays.size()-1; i++){
 							OnlineDTO odto_todays = (OnlineDTO) onlineList_todays.get(i);
 							BrandDTO bdto_todays = (BrandDTO) brandList_todays.get(i);
 							SneakerDTO sdto_todays = (SneakerDTO) sneakerList_todays.get(i);
@@ -166,34 +178,41 @@
 							String newlist_Online_end_time = newList_format2.format(original_Online_end_time);
 					%>
 						<tr>
-						
 							<!-- 신발이미지 -->
-							<td> <a> <img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" width="80" height="60">  </a> </td>
+							<td style="text-align: right !important;"> <a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" width="80" height="60">  </a> </td>
 							<!-- 신발이름 -->
-							<td style="text-align: left !important; padding-left: 10px;"> <a> <%=sdto_todays.getModel_name_kr()%> </a> </td>
+							<td style="text-align: left !important; padding: 0 10px 0 15px;"> <a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <%=sdto_todays.getModel_name_kr()%> </a> </td>
 						
 							<!-- 방식 -->
 							<td> 응모</td>
 							
 							<!-- 응모처 -->
-							<td> <a> <img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="50" height="50" style="border:1px solid #efefef;"> </a> </td>
+							<td style="text-align: right !important; padding-left: 30px;"> 
+								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
+									<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="50" height="50" style="border:1px solid #efefef;"> 
+								</a>
+							</td>
+							
 							<!-- 응모처명 -->
-							<td style="text-align: left !important; padding-left: 10px;"> 
-								<a> <span style="font-weight: bold;"> <%=bdto_todays.getBrand_name() %> </span> </a> <br>
-								<a style="display: block; margin-top: 7px;"> <%=bdto_todays.getCountry_name() + " | " + odto_todays.getDelivery_method()%> </a>
+							<td style="text-align: left !important; padding: 0 10px 0 15px;"> 
+								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> <span style="font-weight: bold;"> <%=bdto_todays.getBrand_name() %> </span> </a> <br>
+								<a href="<%=odto_todays.getOnline_link()%>" target="_blank" style="display: block; margin-top: 7px;"> <%=bdto_todays.getCountry_name() + " | " + odto_todays.getDelivery_method()%> </a>
 							</td>
 							
 							<!-- 마감시간 -->
 							<td> ~<%=newlist_Online_end_time%> </td>
 							
 							<!-- 바로가기 버튼 -->
-							<td> <button type="button"> 바로가기</button>  </td>
+							<td> <a href="<%=odto_todays.getOnline_link()%>" target="_blank" class="direct-link"> <span class="direct-link-text">바로가기</span> <i class="fas fa-caret-right"></i> </a> </td>
 							
 						</tr>
-					<% } } %>
+					<% } } 
+						if(onlineList_todays.size() > 6) {
+					%>
 						<tr>
-							<td colspan="7" style="height: 60px !important;"> <a> 더보기 </a> <i class="far fa-plus-square"></i> </td>
+							<td colspan="7" style="height: 60px !important;"> <a href="./TodaysDrawList.go"> 더보기  <i class="far fa-plus-square"></i> </a> </td>
 						</tr>
+					<% } %>
 				</table>
 			</div>
 		</div>
@@ -235,12 +254,18 @@
 						String newlist_Online_start_time = newList_format3.format(original_Online_start_time);
 				%>
 					<div class="snkrsSneaker-container">
-						<img src="./sneaker_img_upload/<%=snkrs_sdto.getImage()%>">
+						<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+							<img src="./sneaker_img_upload/<%=snkrs_sdto.getImage()%>">
+						</a>
 						<div class="snkrs_startTime">
-							<%=newlist_Online_start_time%> 응모 시작
+							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+								<%=newlist_Online_start_time%> 응모 시작
+							</a>
 						</div>
 						<div class="snkrs_modelName">
-							<%=snkrs_sdto.getModel_name_kr()%>
+							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+								<%=snkrs_sdto.getModel_name_kr()%>
+							</a>
 						</div>
 					</div>
 				<% } } %>
@@ -249,8 +274,8 @@
 		
 		<!-- 발매 예정 리스트 -->
 		<div class="release-container">
-			<div class="sub-title">
-				<h4> 발매 예정 라인업</h4>
+			<div class="sub-title-wline">
+				<h4> <span> 발매 예정 라인업 </span> </h4>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -263,7 +288,20 @@
 						SneakerDTO release_sdto = releaseSneakerList.get(i);	
 				%>
 					<div class="mainSneaker-container">
-						<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
+						<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
+							<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
+						</a>
+						
+						<!-- hover 칸  -->
+						<div class="mainSneaker-container-hover">
+							 &nbsp;					
+						</div>
+						
+						<!-- 이름 칸 -->
+						<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
+							<p> <%=release_sdto.getModel_name_kr()%> </p>				
+						</div>
+						
 					</div>
 				<% } } %>
 			</div>
@@ -271,8 +309,8 @@
 		
 		<!-- 발매 완료 리스트 -->
 		<div class="released-container">
-			<div class="sub-title">
-				<h4> 발매 완료 라인업 </h4>
+			<div class="sub-title-wline">
+				<h4> <span> 발매 완료 라인업 </span> </h4>
 			</div>
 			
 			<div class="released-table-container">
@@ -285,7 +323,19 @@
 						SneakerDTO released_sdto = releasedSneakerList.get(i);	
 				%>
 					<div class="mainSneaker-container">
-						<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
+						<a href="./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>">
+							<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
+						</a>
+						
+						<!-- hover 칸  -->
+						<div class="mainSneaker-container-hover">
+							 &nbsp;					
+						</div>
+						
+						<!-- 이름 칸 -->
+						<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
+							<p> <%=released_sdto.getModel_name_kr()%> </p>				
+						</div>
 					</div>
 				<% } } %>
 			</div>
