@@ -11,14 +11,18 @@ body {font-size:1em; line-weight:1.4}
 .todays-table-container, .releasing-table-container, .snkrsWeek-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title-wline, .sub-title { display: block; margin: 30px 0 20px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; }
-.sub-title-wline h4, .sub-title h4 { display: flex; flex-direction: row; }
+.sub-title-wline, .sub-title { display: block; margin: 30px 0 20px 0; font-size: 24px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title h4 { display: inline-block; flex-direction: row; }
+.sub-title-wline h4 { display: flex; flex-direction: row; }
 .sub-title-wline h4 span, .sub-title h4 span { padding-right: 10px; }
 .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; }
 
 /* 바로가기 버튼 */
 .direct-link-text { padding-right: 3px; text-decoration: underline; }
 .direct-link:hover { opacity: 0.5; }
+
+/* 전체보기 버튼 */
+.allButton { display:inline-block; float:right; border:1px solid black; padding: 4px 8px; background-color: black; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
 
 /* 오늘의 응모 리스트 (메인페이지) */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; }

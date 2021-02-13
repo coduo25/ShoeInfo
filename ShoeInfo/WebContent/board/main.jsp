@@ -77,9 +77,8 @@
 		
 		SimpleDateFormat month_format = new SimpleDateFormat("M월");
 		
-		SimpleDateFormat newList_format = new SimpleDateFormat("M월 d일(E) HH:mm");
-		SimpleDateFormat newList_format2 = new SimpleDateFormat("M/d일(E) HH:mm");
-		SimpleDateFormat newList_format3 = new SimpleDateFormat("M/d일(E) a hh:mm");
+		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
+		SimpleDateFormat snkrs_format = new SimpleDateFormat("M/d일(E) a hh:mm");
 		
 		//오늘날짜
 		Date currentTime = new Date();
@@ -136,15 +135,19 @@
 		<div class="todaysDraw-container">
 			<div class="sub-title">
 				<h4> 오늘의 응모 </h4>
+				<div class="allButton" onclick="location.href='./TodaysDrawList.go'">
+					<span> 전체보기 </span>
+				</div>
 			</div>
+			
 			
 			<div class="todays-table-container">
 				<table id="onlineList_todays_table">
 					<tr>
-						<th colspan="2" style="width:33%;"> 응모신발 </th>
+						<th colspan="2" style="width:30%;"> 응모신발 </th>
 						<th style="width:10%;"> 방식 </th>
 						<th colspan="2" style="width:27%;"> 응모처 </th>
-						<th style="width:15%;"> 마감시간 </th>
+						<th style="width:18%;"> 마감시간 </th>
 						<th style="width:15%;"> &nbsp; </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
@@ -152,7 +155,10 @@
 							<td colspan="7"> 발매 정보가 없습니다. </td>
 						</tr>
 					<% } else { 
-						for(int i=0; i<onlineList_todays.size()-1; i++){
+						for(int i=0; i<onlineList_todays.size(); i++){
+							if(i==6){
+								break;
+							}
 							OnlineDTO odto_todays = (OnlineDTO) onlineList_todays.get(i);
 							BrandDTO bdto_todays = (BrandDTO) brandList_todays.get(i);
 							SneakerDTO sdto_todays = (SneakerDTO) sneakerList_todays.get(i);
@@ -175,7 +181,7 @@
 							Date original_Online_end_time = format.parse(online_end_date + " " + online_end_time);
 							
 							//O월 OO일 24시
-							String newlist_Online_end_time = newList_format2.format(original_Online_end_time);
+							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
 					%>
 						<tr>
 							<!-- 신발이미지 -->
@@ -200,7 +206,18 @@
 							</td>
 							
 							<!-- 마감시간 -->
-							<td> ~<%=newlist_Online_end_time%> </td>
+							<td> 
+								<span>
+								~
+								<!-- 끝나는 시간 -->	
+									<!-- 최종 끝나는 시간이 정확하지 않으면 -->
+									<%if(odto_todays.getOnline_end_date().isEmpty() || odto_todays.getOnline_end_time().isEmpty()) {%>
+										
+									<%} else {%>
+										<%=newlist_Online_end_time%>
+									<%} %>
+								</span>
+							</td>
 							
 							<!-- 바로가기 버튼 -->
 							<td> <a href="<%=odto_todays.getOnline_link()%>" target="_blank" class="direct-link"> <span class="direct-link-text">바로가기</span> <i class="fas fa-caret-right"></i> </a> </td>
@@ -220,7 +237,10 @@
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container">
 			<div class="sub-title">
-				<h4> 나이키 코리아 이번주 라인업 </h4>
+				<h4> 이번주 나이키 코리아 라인업 </h4>
+				<div class="allButton" onclick="location.href='#'">
+					<span> 전체보기 </span>
+				</div>
 			</div>
 			
 			<div class="snkrsWeek-table-container">
@@ -251,7 +271,7 @@
 						Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
 						
 						//O월 OO일 24시
-						String newlist_Online_start_time = newList_format3.format(original_Online_start_time);
+						String newlist_Online_start_time = snkrs_format.format(original_Online_start_time);
 				%>
 					<div class="snkrsSneaker-container">
 						<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
@@ -259,7 +279,14 @@
 						</a>
 						<div class="snkrs_startTime">
 							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
-								<%=newlist_Online_start_time%> 응모 시작
+								<%=newlist_Online_start_time%> 
+								<%if(snkrs_odto.getOnline_method().contains("선착")) {%>
+									선착
+								<%}else if(snkrs_odto.getOnline_method().contains("드로우")) {%>
+									응모 시작
+								<%}else if(snkrs_odto.getOnline_method().contains("-")) {%>
+									(발매방식 미정)
+								<%}%>
 							</a>
 						</div>
 						<div class="snkrs_modelName">

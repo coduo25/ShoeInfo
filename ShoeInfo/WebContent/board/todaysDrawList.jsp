@@ -47,13 +47,11 @@
 
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		SimpleDateFormat new_format = new SimpleDateFormat("M월 d일");
 		
-		SimpleDateFormat month_format = new SimpleDateFormat("M월");
+		SimpleDateFormat monthDay_format = new SimpleDateFormat("M/d일(E)");
+		SimpleDateFormat time_format = new SimpleDateFormat("HH:mm");
 		
-		SimpleDateFormat newList_format = new SimpleDateFormat("M월 d일(E) HH:mm");
-		SimpleDateFormat newList_format2 = new SimpleDateFormat("M/d일(E) HH:mm");
-		SimpleDateFormat newList_format3 = new SimpleDateFormat("M/d일(E) a hh:mm");
+		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
 	%>
 
 	<!-- Header -->
@@ -71,15 +69,15 @@
 			<div class="todays-table-container">
 				<table id="onlineList_todays_table">
 					<tr>
-						<th colspan="2" style="width:30%;"> 응모신발 </th>
-<!-- 						<th style="width:10%;"> 방식 </th> -->
-						<th colspan="2" style="width:30%;"> 응모처 </th>
-						<th style="width:30%;"> 일정정보 </th>
-						<th style="width:10%;"> &nbsp; </th>
+						<th colspan="2" style="width:20%;"> 응모신발 </th>
+						<th colspan="2" style="width:27%;"> 응모처 </th>
+						<th style="width:30%;"> 일정 </th>	
+						<th style="width:13%;"> 직배송 여부 </th>
+						<th style="width:10%;"> 링크 </th>					
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
 						<tr>
-							<td colspan="7"> 발매 정보가 없습니다. </td>
+							<td colspan="7" style="text-align: center; "> 발매 정보가 없습니다. </td>
 						</tr>
 					<% } else { 
 						for(int i=0; i<onlineList_todays.size(); i++){
@@ -87,9 +85,22 @@
 							BrandDTO bdto_todays = (BrandDTO) brandList_todays.get(i);
 							SneakerDTO sdto_todays = (SneakerDTO) sneakerList_todays.get(i);
 							
+							String online_start_date = "";
+							String online_start_time = "";
 							String online_end_date = "";
 							String online_end_time = "";
 							
+							if((odto_todays.getOnline_start_date().isEmpty())){
+								online_start_date = "0000-00-00";
+							} else{
+								online_start_date = odto_todays.getOnline_start_date();
+							}
+							
+							if((odto_todays.getOnline_start_time().isEmpty())){
+								online_start_time = "24:00";
+							} else{
+								online_start_time = odto_todays.getOnline_start_time();
+							}
 							if((odto_todays.getOnline_end_date().isEmpty())){
 								online_end_date = "0000-00-00";
 							} else{
@@ -102,44 +113,67 @@
 								online_end_time = odto_todays.getOnline_end_time();
 							}
 							
+							Date original_Online_start_time = format.parse(online_end_date + " " + online_end_time);
 							Date original_Online_end_time = format.parse(online_end_date + " " + online_end_time);
 							
 							//O월 OO일 24시
-							String newlist_Online_end_time = newList_format2.format(original_Online_end_time);
+							String newlist_Online_start_time = newList_format.format(original_Online_start_time);
+							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
 					%>
 						<tr>
 							<!-- 신발이미지 -->
-							<td style="text-align: right !important;"> <a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" width="80" height="60">  </a> </td>
+							<td style="text-align: right !important;"> 
+								<a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" width="80" height="60"> </a> 
+							</td>
 							<!-- 신발이름 -->
-							<td style="text-align: left !important; padding: 0 15px;"> <a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <%=sdto_todays.getModel_name_kr()%> </a> </td>
-						
-							<!-- 방식 -->
-<!-- 							<td> 응모</td> -->
+							<td style="padding: 0 15px;"> 
+								<a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <%=sdto_todays.getModel_name_kr()%> </a> 
+							</td>
 							
 							<!-- 응모처 -->
-							<td style="text-align: right !important; padding-left: 30px;"> 
-								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-									<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="50" height="50" style="border:1px solid #efefef;"> 
-								</a>
+							<td style="text-align: right !important; padding-left: 10px;"> 
+								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> <img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="50" height="50" style="border:1px solid #efefef;">  </a>
 							</td>
 							
 							<!-- 응모처명 -->
-							<td style="text-align: left !important; padding: 0 10px 0 15px;"> 
-								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> <span style="font-weight: bold;"> <%=bdto_todays.getBrand_name() %> </span> </a> <br>
-								<span style="display: block; margin-top: 7px;"> <%=bdto_todays.getCountry_name() + " | " + odto_todays.getDelivery_method() + " | " + odto_todays.getBuy_method()%> </span>
+							<td style="padding: 0 0 0 10px;"> 
+								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
+									<span class="brandName-label"> <%=bdto_todays.getBrand_name()%> </span> 
+								</a> 
+								<span style="display: block; margin-top: 6px;"> <%= bdto_todays.getCountry_name() + " | " + odto_todays.getBuy_method()%> </span>
 							</td>
 							
-							<!-- 응모일정 -->
-							<td style="padding:0 40px; text-align: left !important;" class="5th_td"> 
+							<!-- 응모 기간 -->
+							<td> 
 								<h4> 응모기간 </h4>
-								<span> ~ <%=newlist_Online_end_time%> </span> 
-								
-								<h4> 발표시간 </h4>
-								<span> <%=odto_todays.getWinner_time()%> </span>
+								<span style="display: block; margin-top: 9px;">
+								<!-- 시작 시간 -->
+									<!-- 최종 시작 시간이 정확하지 않으면 -->
+									<%if(odto_todays.getOnline_start_date().isEmpty() || odto_todays.getOnline_start_time().isEmpty()) {%>
+										
+									<%} else {%>
+										<%=newlist_Online_start_time%>
+									<%} %>
+									~
+								<!-- 끝나는 시간 -->	
+									<!-- 최종 끝나는 시간이 정확하지 않으면 -->
+									<%if(odto_todays.getOnline_end_date().isEmpty() || odto_todays.getOnline_end_time().isEmpty()) {%>
+										
+									<%} else {%>
+										<%=newlist_Online_end_time%>
+									<%} %>
+								</span>
+							</td>
+							
+							<!-- 직배송 여부 -->
+							<td style="text-align: center; padding: 0 10px;">
+								<span> <%=odto_todays.getDelivery_method()%> </span>
 							</td>
 							
 							<!-- 바로가기 버튼 -->
-							<td> <a href="<%=odto_todays.getOnline_link()%>" target="_blank" class="direct-link"> <span class="direct-link-text">바로가기</span> <i class="fas fa-caret-right"></i> </a> </td>
+							<td style="text-align: center !important;"> 
+								<a href="<%=odto_todays.getOnline_link()%>" target="_blank" class="direct-link"> <span class="direct-link-text">바로가기</span> <i class="fas fa-caret-right"></i> </a> 
+							</td>
 							
 						</tr>
 					<% } } %>

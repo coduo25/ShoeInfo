@@ -232,7 +232,7 @@
 							
 							<div style="padding:0;">
 								<div id="del-radio-wrapper">
-									<input type="radio" id="can" name="delivery_method" value="직배가능"> <label for="can">직배가능</label>
+									<input type="radio" id="can" name="delivery_method" value="직배"> <label for="can">직배</label>
 								</div>
 								<div id="del-radio-wrapper">
 									<input type="radio" id="cant" name="delivery_method" value="배대지"> <label for="cant">배대지</label>
