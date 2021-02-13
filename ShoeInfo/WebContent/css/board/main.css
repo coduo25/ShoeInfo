@@ -43,13 +43,13 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* 이번주 snkrs 리스트 (메인페이지) */
-.snkrsWeek-table-container { width: 100%; overflow-x: scroll; padding-bottom: 45px; white-space:nowrap; }
-.snkrsSneaker-container { display:inline-block; width: 30%; margin-right: 20px; }
+.snkrsWeek-table-container { width: 1080px; overflow-x: scroll; padding-bottom: 45px; white-space:nowrap; }
+.snkrsSneaker-container { display:inline-block; width: 25%; margin-right: 20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width: 100%; }
-.snkrsSneaker-container img { border: 1px solid #e2e2e2; padding: 25px 0; }
+.snkrsSneaker-container img { border: 1px solid #e2e2e2; padding: 25px 10px; }
 .snkrsSneaker-container div { text-align: left; display: block; margin-left: 5px; }
 div.snkrs_startTime { font-size: 17px; font-weight: bold; margin-top:6px; }
-div.snkrs_modelName { font-size: 15px; margin-top:11px; }
+div.snkrs_modelName { font-size: 16px; margin-top:11px; }
 
 /* 스크롤바 style */
 /* width */

@@ -328,7 +328,7 @@ public class SneakerDAO {
 	}
 	
 	//이번주 snkrs 리스트 가져오는 함수
-	public Vector getSnkrsWeekList(String monday, String sunday){
+	public Vector getSnkrsWeekList(){
 		Vector vec = new Vector();
 		
 		ArrayList onlineList_snkrs = new ArrayList();
@@ -341,13 +341,12 @@ public class SneakerDAO {
 			con = getConnection();
 			sql = "select * from shoeinfo_onlineinfo "
 					+ "where brand_id = '대한민국_SNKRS 한국' "
-					+ "and concat(online_end_date, ' ', online_end_time, ':00') >= ? "
-					+ "and concat(online_end_date, ' ', online_end_time, ':00') <= ? "
-					+ "and concat(online_end_date, ' ', online_end_time, ':00') >= DATE_FORMAT(now(), '%Y-%m-%d %H:%i')"
-					+ "order by online_end_date, online_end_time";
+					+ "and (((concat(online_start_date, ' ', online_start_time, ':00')) between (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 0), ' 00:00:00')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59'))) "
+					+ "or ((concat(online_end_date, ' ', online_end_time, ':00')) between (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 0), ' 00:00:00')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59')))) "
+					+ "and (((concat(online_start_date, ' ', online_start_time, ':00')) between (DATE_FORMAT(now(), '%Y-%m-%d %H:%i')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59'))) "
+					+ "or ((concat(online_end_date, ' ', online_end_time, ':00')) between (DATE_FORMAT(now(), '%Y-%m-%d %H:%i')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59')))) "
+					+ "and (online_method = '선착' or online_method = '드로우')";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, monday);
-			pstmt.setString(2, sunday);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				OnlineDTO odto = new OnlineDTO();

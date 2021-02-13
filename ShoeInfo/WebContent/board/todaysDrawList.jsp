@@ -113,7 +113,7 @@
 								online_end_time = odto_todays.getOnline_end_time();
 							}
 							
-							Date original_Online_start_time = format.parse(online_end_date + " " + online_end_time);
+							Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
 							Date original_Online_end_time = format.parse(online_end_date + " " + online_end_time);
 							
 							//O월 OO일 24시

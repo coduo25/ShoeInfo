@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,27 +44,31 @@ public class SneakerListAction implements Action {
 		request.setAttribute("releasingSneakerList", releasingSneakerList);
 		request.setAttribute("releasedSneakerList", releasedSneakerList);
 
-		//이번주 일요일 구하는 함수
-		SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
- 		Calendar cal = Calendar.getInstance();
- 		Calendar cal2 = Calendar.getInstance();
- 		
- 		cal.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
- 		cal2.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
- 		cal2.add(cal2.DATE,7); //이번주 일요일
-
- 		//2021-02-14 00:00
- 		String monday = formatter.format(cal.getTime()) + " 00:00";
- 		String sunday = formatter.format(cal2.getTime()) + " 23:59";
+//		SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
+// 		Calendar cal = Calendar.getInstance(Locale.KOREA);
+// 		
+// 		cal.add(Calendar.DATE, -1);
+// 		cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+// 		String monday = formatter.format(cal.getTime()) + " 00:00:00";
+// 		
+// 		cal.add(Calendar.DATE, 1);
+// 		cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+// 		String sunday = formatter.format(cal.getTime()) + " 23:59:59";
+// 		
+// 		System.out.println(monday + " " + sunday);
  		
  		//이번주 snkrs 리스트 가져오는 함수
- 		Vector vec_SnkrsWeek = sdao.getSnkrsWeekList(monday, sunday);
+ 		Vector vec_SnkrsWeek = sdao.getSnkrsWeekList();
  		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) vec_SnkrsWeek.get(0);
 		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) vec_SnkrsWeek.get(1);
  		
 		request.setAttribute("onlineList_snkrs", onlineList_snkrs);
 		request.setAttribute("sneakerList_snkrs", sneakerList_snkrs);
  		
+		
+		
+		
+		
 		
 		
 		//구버전
