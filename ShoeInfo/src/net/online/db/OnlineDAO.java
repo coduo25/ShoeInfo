@@ -283,6 +283,7 @@ public class OnlineDAO {
 					SneakerDTO sdto = new SneakerDTO();
 					sdto.setImage(rs3.getString("image"));
 					sdto.setModel_name_kr(rs3.getString("model_name_kr"));
+					sdto.setModel_stylecode(rs3.getString("model_stylecode"));
 					sneakerList_todays.add(sdto);
 				}
 			}
@@ -367,6 +368,7 @@ public class OnlineDAO {
 					SneakerDTO sdto = new SneakerDTO();
 					sdto.setImage(rs3.getString("image"));
 					sdto.setModel_name_kr(rs3.getString("model_name_kr"));
+					sdto.setModel_stylecode(rs3.getString("model_stylecode"));
 					sneakerList_todays.add(sdto);
 				}
 			}

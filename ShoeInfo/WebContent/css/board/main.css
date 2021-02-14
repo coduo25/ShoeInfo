@@ -7,28 +7,35 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;  } /* width: 80%; margin: 5px auto; */
 
 /* 리스트 별 컨테이너 */
-.todaysDraw-container, .releasing-container, .release-container, .snkrsWeek-container, .released-container { display: table; width: 100%; box-sizing: border-box; margin: 35px 0 70px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todaysDraw-container, .releasing-container, .release-container, .snkrsWeek-container, .released-container { display: table; width: 100%; box-sizing: border-box; margin: 70px 0; font-family: 'Nanum Gothic', sans-serif; }
 .todays-table-container, .releasing-table-container, .snkrsWeek-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title-wline, .sub-title { display: block; margin: 30px 0 20px 0; font-size: 24px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title-wline, .sub-title { display: block; margin: 30px 0 15px 0; font-size: 24px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title-wline h4 { display: flex; flex-direction: row; }
 .sub-title-wline h4 span, .sub-title h4 span { padding-right: 10px; }
-.sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; }
+/* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
+.desc-container { display: block; margin: 15px 0 20px 0; color: #3e3e3e; }
 
 /* 바로가기 버튼 */
 .direct-link-text { padding-right: 3px; text-decoration: underline; }
 .direct-link:hover { opacity: 0.5; }
 
 /* 전체보기 버튼 */
-.allButton { display:inline-block; float:right; border:1px solid black; padding: 4px 8px; background-color: black; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
+.allButton { display:inline-block; float:right; border:1px solid #191919; padding: 4px 8px; background-color: #191919; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
 
 /* 오늘의 응모 리스트 (메인페이지) */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; }
 #onlineList_todays_table th { height: 50px; border-top: 1px solid black; border-bottom: 1px solid #dcdcdc; } 
-#onlineList_todays_table td { height: 100px; border-bottom: 1px solid #dcdcdc;  }
+#onlineList_todays_table td { height: 190px; border-bottom: 1px solid #dcdcdc;  }
 #onlineList_todays_table td { text-align: center; }
+img.sneaker_img { width: 130px; }
+.modelName_todays { white-space: normal; }
+.drawShoe-info-td div { display:block; vertical-align: middle; }
+.brand-info-container { vertical-align: top; }
+.brand-info-container div { display:block; text-align: left !important;}
+
 
 /* 발매 중 리스트 (메인페이지) */
 .mainSneaker-container { position:relative; float: left; width: 19%; margin: 0.5%; text-align: center; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; border: 1px solid #eaeaea; padding: 0.5%;  }
@@ -42,14 +49,16 @@ body {font-size:1em; line-weight:1.4}
 .mainSneaker-container:hover > .mainSneaker-container-hover-Name { opacity:1; }
 
 
+
 /* 이번주 snkrs 리스트 (메인페이지) */
-.snkrsWeek-table-container { width: 1080px; overflow-x: scroll; padding-bottom: 45px; white-space:nowrap; }
+.snkrsWeek-table-container { width: 1080px; overflow-x: scroll; padding: 30px 0 45px 0; white-space:nowrap; border-top: 1px solid #b1b1b1; }
 .snkrsSneaker-container { display:inline-block; width: 25%; margin-right: 20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width: 100%; }
 .snkrsSneaker-container img { border: 1px solid #e2e2e2; padding: 25px 10px; }
 .snkrsSneaker-container div { text-align: left; display: block; margin-left: 5px; }
 div.snkrs_startTime { font-size: 17px; font-weight: bold; margin-top:6px; }
 div.snkrs_modelName { font-size: 16px; margin-top:11px; }
+
 
 /* 스크롤바 style */
 /* width */

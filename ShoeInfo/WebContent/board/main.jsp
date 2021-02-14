@@ -97,9 +97,17 @@
 	<div id="wrapper" class="container">
 	
 		<!-- 발매 중 리스트 -->
-		<div class="releasing-container">
-			<div class="sub-title-wline">
-				<h4> <span> 발매 중 라인업 </span> </h4>
+		<div class="releasing-container" style="margin-top: 35px !important;">
+			<div class="sub-title">	
+<!-- 			<div class="sub-title-wline"> -->
+				<h4> 발매 중 라인업 </h4>
+				<div class="allButton" onclick="location.href='#'">
+					<span> 전체보기 </span>
+				</div>
+			</div>
+			
+			<div class="desc-container">
+				<p> 각 신발들의 발매처가 <span style="color:green">응모 중</span>이거나 <span style="color:orange">선착순 구매</span>가 예정인 상품 라인업입니다. 클릭시, 해당 상품의 상세 정보가 담긴 발매처들을 볼 수 있습니다. </p>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -130,25 +138,27 @@
 				<% } } %>
 			</div>
 		</div>
-	
-		<!-- 오늘의 응모 리스트 5개 -->
+		
+		<!-- 오늘의 발매 리스트 6개 -->
 		<div class="todaysDraw-container">
 			<div class="sub-title">
-				<h4> 오늘의 응모 </h4>
+				<h4> 오늘의 발매 리스트 </h4>
 				<div class="allButton" onclick="location.href='./TodaysDrawList.go'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
+			<div class="desc-container">
+				<p> 현재 시간을 기준으로 금일 자정까지의 진행중인 모든 발매 정보를 보여주는 도표입니다. </p>
+			</div>
 			
 			<div class="todays-table-container">
 				<table id="onlineList_todays_table">
 					<tr>
-						<th colspan="2" style="width:30%;"> 응모신발 </th>
-						<th style="width:10%;"> 방식 </th>
-						<th colspan="2" style="width:27%;"> 응모처 </th>
-						<th style="width:18%;"> 마감시간 </th>
-						<th style="width:15%;"> &nbsp; </th>
+						<th style="width:25%;"> 모델명 </th>
+						<th style="width:30%;"> 발매처 정보 </th>
+						<th style="width:30%;"> 시간 </th>
+						<th style="width:15%;"> 발매처 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
 						<tr>
@@ -184,39 +194,72 @@
 							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
 					%>
 						<tr>
-							<!-- 신발이미지 -->
-							<td style="text-align: right !important;"> <a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" width="80" height="60">  </a> </td>
-							<!-- 신발이름 -->
-							<td style="text-align: left !important; padding: 0 10px 0 15px;"> <a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> <%=sdto_todays.getModel_name_kr()%> </a> </td>
-						
-							<!-- 방식 -->
-							<td> 응모</td>
-							
-							<!-- 응모처 -->
-							<td style="text-align: right !important; padding-left: 30px;"> 
-								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-									<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="50" height="50" style="border:1px solid #efefef;"> 
-								</a>
+							<!-- 발매신발 -->
+							<td class="drawShoe-info-td">
+								<!-- 신발이미지 --> 
+								<div>
+									<a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> 
+										<img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" class="sneaker_img">
+									</a>
+								</div>
+								<!-- 신발이름 -->
+								<div style="padding: 5px 20px 0 20px;">
+									<a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> 
+										<span class="modelName_todays"> <%=sdto_todays.getModel_name_kr()%> </span>
+									</a>
+								</div>
 							</td>
 							
-							<!-- 응모처명 -->
-							<td style="text-align: left !important; padding: 0 10px 0 15px;"> 
-								<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> <span style="font-weight: bold;"> <%=bdto_todays.getBrand_name() %> </span> </a> <br>
-								<a href="<%=odto_todays.getOnline_link()%>" target="_blank" style="display: block; margin-top: 7px;"> <%=bdto_todays.getCountry_name() + " | " + odto_todays.getDelivery_method()%> </a>
+							<!-- 응모처 -->
+							<td>
+								<!-- 응모처 이미지 --> 
+								<div style="display:inline-block;">
+									<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
+										<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="80" height="80" style="border:1px solid #efefef;"> 
+									</a>
+								</div>
+								<!-- 응모처 정보 통합 -->
+								<div style="display:inline-block; padding-left: 10px;" class="brand-info-container">
+									<!-- 응모처 이름 -->
+									<div style="margin-bottom: 7px;">
+										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> <span style="font-weight: bold;"> <%=bdto_todays.getBrand_name()%></span> </a> <%="("+bdto_todays.getCountry_name()+")"%>
+									</div>		
+									<!-- 방식 -->
+									<div style="margin-bottom: 14px;">
+										<%if(odto_todays.getOnline_method().contains("선착")) {%>
+											<span style="color:orange;"> 선착순 구매 </span>
+										<%} else if(odto_todays.getOnline_method().contains("드로우")) {%>
+											<span style="color:green;"> 온라인 응모 </span>
+										<%}%>
+									</div>
+									<!-- 직배송 여부 / 결제방식 -->
+									<div>
+										<%=odto_todays.getDelivery_method() + " | " + odto_todays.getBuy_method()%>
+									</div>
+								</div>
 							</td>
 							
 							<!-- 마감시간 -->
-							<td> 
-								<span>
-								~
-								<!-- 끝나는 시간 -->	
-									<!-- 최종 끝나는 시간이 정확하지 않으면 -->
-									<%if(odto_todays.getOnline_end_date().isEmpty() || odto_todays.getOnline_end_time().isEmpty()) {%>
-										
-									<%} else {%>
-										<%=newlist_Online_end_time%>
-									<%} %>
-								</span>
+							<td>
+								<%if(odto_todays.getOnline_method().contains("선착")){%>
+								<!-- 선착순 구매 -->
+								<div> <span> 선착순 기간 </span></div>
+								<div> <span> <%=odto_todays.getOnline_start_date() + " " + odto_todays.getOnline_start_time()%></span></div>
+								<%}else if(odto_todays.getOnline_method().contains("드로우")){%>
+								<!-- 응모 -->
+								<div> <span> 응모 기간 </span></div>
+								<div> 
+									<span>
+										~
+										<!-- 최종 끝나는 시간이 정확하지 않으면 -->
+										<%if(odto_todays.getOnline_end_date().isEmpty() || odto_todays.getOnline_end_time().isEmpty()) {%>
+											
+										<%} else {%>
+											<%=newlist_Online_end_time%>까지
+										<%} %>
+									</span>
+								</div>
+								<%}%>
 							</td>
 							
 							<!-- 바로가기 버튼 -->
@@ -237,16 +280,20 @@
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container">
 			<div class="sub-title">
-				<h4> 이번주 나이키 코리아 라인업 </h4>
+				<h4> 이번 주 나이키 코리아 라인업 </h4>
 				<div class="allButton" onclick="location.href='#'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
+			<div class="desc-container">
+				<p> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 금주 월요일~일요일까지 발매하는 한정판 신발 라인업입니다. </p>
+			</div>
+			
 			<div class="snkrsWeek-table-container">
 				<% if(onlineList_snkrs.isEmpty()){%>
-					<div>
-						이번주 발매 라인업이 없습니다.
+					<div style="padding-top: 30px;">
+						이번 주 발매 라인업이 없습니다.
 					</div>
 				<% } else { 
 					for(int i=0; i<onlineList_snkrs.size(); i++) {
@@ -301,8 +348,16 @@
 		
 		<!-- 발매 예정 리스트 -->
 		<div class="release-container">
-			<div class="sub-title-wline">
-				<h4> <span> 발매 예정 라인업 </span> </h4>
+			<div class="sub-title">	
+<!-- 			<div class="sub-title-wline"> -->
+				<h4> 발매 예정 라인업 </h4>
+				<div class="allButton" onclick="location.href='#'">
+					<span> 전체보기 </span>
+				</div>
+			</div>
+			
+			<div class="desc-container">
+				<p> 2021년 발매예정인 상품들의 라인업입니다. 해당 신발들은 아직 발매처가 없습니다. </p>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -336,8 +391,16 @@
 		
 		<!-- 발매 완료 리스트 -->
 		<div class="released-container">
-			<div class="sub-title-wline">
-				<h4> <span> 발매 완료 라인업 </span> </h4>
+			<div class="sub-title">	
+<!-- 			<div class="sub-title-wline"> -->
+				<h4> 발매 완료 라인업 </h4>
+				<div class="allButton" onclick="location.href='#'">
+					<span> 전체보기 </span>
+				</div>
+			</div>
+			
+			<div class="desc-container">
+				<p> 각 신발들의 발매처 기간이 종료되었거나 진행 중인 발매처가 없는 상품 라인업입니다. </p>
 			</div>
 			
 			<div class="released-table-container">
