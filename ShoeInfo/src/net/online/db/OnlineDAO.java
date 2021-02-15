@@ -229,7 +229,7 @@ public class OnlineDAO {
 		
 		try{
 			con = getConnection();
-			sql = "SELECT * from shoeinfo_onlineinfo where ((((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') > now()) and (online_start_date = curdate()))) or (((online_method like '%드로우%') || online_method like '%라플%') and (CONCAT(online_end_date, ' ', online_end_time, ':00') > now()) and (online_end_date = curdate()))) order by ((online_method like '%선착%') and CONCAT(online_start_date, ' ', online_start_time)), ((online_method like '%드로우%' || online_method like '%라플%') and CONCAT(online_end_date, ' ', online_end_time)) LIMIT 5";
+			sql = "SELECT * from shoeinfo_onlineinfo where ((((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') > now()) and (online_start_date = curdate()))) or (((online_method like '%드로우%') || online_method like '%라플%') and (CONCAT(online_end_date, ' ', online_end_time, ':00') > now()) and (online_end_date = curdate()))) order by ((online_method like '%선착%') and CONCAT(online_start_date, ' ', online_start_time)), ((online_method like '%드로우%' || online_method like '%라플%') and CONCAT(online_end_date, ' ', online_end_time)) LIMIT 6";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
