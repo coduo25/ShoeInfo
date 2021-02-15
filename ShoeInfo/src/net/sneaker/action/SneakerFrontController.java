@@ -43,12 +43,10 @@ public class SneakerFrontController extends HttpServlet{
 		
 		Action action = null;
 		ActionForward forward = null;
-		
+
 		//오늘의응모 리스트 보여주는 페이지 처리
-		
-		//신발 전체 리스트 보여주는 페이지 처리
-		if(command.equals("/TodaysDrawList.go")){
-			action = new TodayDrawListAction();
+		if(command.equals("/TodaysReleaseList.go")){
+			action = new TodayReleaseListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

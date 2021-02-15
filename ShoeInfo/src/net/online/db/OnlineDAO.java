@@ -213,8 +213,8 @@ public class OnlineDAO {
 		return vec;
 	}
 	
-	//오늘의 응모 5개 가지고 오는 함수 (메인페이지)
-	public Vector getTodaysDraw() {
+	//오늘의 발매 5개 가지고 오는 함수 (메인페이지)
+	public Vector getTodaysRelease() {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -229,7 +229,7 @@ public class OnlineDAO {
 		
 		try{
 			con = getConnection();
-			sql = "SELECT * from shoeinfo_onlineinfo where DATE_FORMAT(online_end_date, '%Y-%m-%d') = CURDATE() and CONCAT(online_end_time, ':00') > CURTIME() order by online_end_time LIMIT 7";
+			sql = "SELECT * from shoeinfo_onlineinfo where ((((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') > now()) and (online_start_date = curdate()))) or (((online_method like '%드로우%') || online_method like '%라플%') and (CONCAT(online_end_date, ' ', online_end_time, ':00') > now()) and (online_end_date = curdate()))) order by ((online_method like '%선착%') and CONCAT(online_start_date, ' ', online_start_time)), ((online_method like '%드로우%' || online_method like '%라플%') and CONCAT(online_end_date, ' ', online_end_time)) LIMIT 5";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -298,8 +298,8 @@ public class OnlineDAO {
 		return vec;
 	}
 	
-	//모든 오늘의 응모 리스트 가져 오는 함수 (오늘의 응모 페이지)
-	public Vector getTodaysDrawAll() {
+	//모든 오늘의 발매 리스트 가져 오는 함수 (오늘의 발매 페이지)
+	public Vector getTodaysReleaseAll() {
 		Vector vec = new Vector();
 		
 		PreparedStatement pstmt2 = null;
@@ -314,7 +314,7 @@ public class OnlineDAO {
 		
 		try{
 			con = getConnection();
-			sql = "SELECT * from shoeinfo_onlineinfo where DATE_FORMAT(online_end_date, '%Y-%m-%d') = CURDATE() and CONCAT(online_end_time, ':00') > CURTIME() order by online_end_time";
+			sql = "SELECT * from shoeinfo_onlineinfo where ((((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') > now()) and (online_start_date = curdate()))) or (((online_method like '%드로우%') || online_method like '%라플%') and (CONCAT(online_end_date, ' ', online_end_time, ':00') > now()) and (online_end_date = curdate()))) order by ((online_method like '%선착%') and CONCAT(online_start_date, ' ', online_start_time)), ((online_method like '%드로우%' || online_method like '%라플%') and CONCAT(online_end_date, ' ', online_end_time))";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){

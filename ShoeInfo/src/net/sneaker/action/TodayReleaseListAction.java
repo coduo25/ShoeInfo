@@ -12,7 +12,7 @@ import net.online.db.OnlineDTO;
 import net.sneaker.db.SneakerDAO;
 import net.sneaker.db.SneakerDTO;
 
-public class TodayDrawListAction implements Action {
+public class TodayReleaseListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -21,17 +21,17 @@ public class TodayDrawListAction implements Action {
 		SneakerDAO sdao = new SneakerDAO();
 		
 		//오늘의 응모
-		Vector vec_todaysDraw = odao.getTodaysDrawAll();
-		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) vec_todaysDraw.get(0);
-		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) vec_todaysDraw.get(1);
-		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) vec_todaysDraw.get(2);
+		Vector vec_todaysRelease = odao.getTodaysReleaseAll();
+		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) vec_todaysRelease.get(0);
+		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) vec_todaysRelease.get(1);
+		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) vec_todaysRelease.get(2);
 		
 		request.setAttribute("onlineList_todays", onlineList_todays);
 		request.setAttribute("brandList_todays", brandList_todays);
 		request.setAttribute("sneakerList_todays", sneakerList_todays);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./board/todaysDrawList.jsp");
+		forward.setPath("./board/todaysReleaseList.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

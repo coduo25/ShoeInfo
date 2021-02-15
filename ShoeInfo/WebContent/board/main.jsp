@@ -100,14 +100,14 @@
 		<div class="releasing-container" style="margin-top: 35px !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
-				<h4> 발매 중 라인업 </h4>
+				<h4> 현재 발매 중인 라인업 </h4>
 				<div class="allButton" onclick="location.href='#'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
 			<div class="desc-container">
-				<p> 각 신발들의 발매처가 <span style="color:green">응모 중</span>이거나 <span style="color:orange">선착순 구매</span>가 예정인 상품 라인업입니다. 클릭시, 해당 상품의 상세 정보가 담긴 발매처들을 볼 수 있습니다. </p>
+				<p> 각 신발들의 발매처가 <span style="color:green">응모 중</span>이거나 <span style="color:#ff5722">선착순 구매</span>가 예정인 상품 라인업입니다. 클릭시, 해당 상품의 발매처들을 볼 수 있습니다. </p>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -142,23 +142,26 @@
 		<!-- 오늘의 발매 리스트 6개 -->
 		<div class="todaysDraw-container">
 			<div class="sub-title">
-				<h4> 오늘의 발매 리스트 </h4>
-				<div class="allButton" onclick="location.href='./TodaysDrawList.go'">
+				<h4> 오늘의 발매 마감 리스트 </h4>
+				<div class="allButton" onclick="location.href='./TodaysReleaseList.go'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
 			<div class="desc-container">
-				<p> 현재 시간을 기준으로 금일 자정까지의 진행중인 모든 발매 정보를 보여주는 도표입니다. </p>
+				<p> 현재 시간을 기준으로 금일 자정까지 마감하는 모든 발매처를 보여주는 도표입니다. </p>
 			</div>
 			
 			<div class="todays-table-container">
 				<table id="onlineList_todays_table">
 					<tr>
-						<th style="width:25%;"> 모델명 </th>
-						<th style="width:30%;"> 발매처 정보 </th>
-						<th style="width:30%;"> 시간 </th>
-						<th style="width:15%;"> 발매처 링크 </th>
+						<th style="width:10%"> 상태 </th>
+						<th style="width:15%; border-right: 0.5px dotted #dcdcdc; border-left: 0.5px dotted #dcdcdc;"> 발매모델 </th>
+						<th style="width:30%;"> 발매처 </th>
+						<th style="width:10%;"> 방식 </th>
+						<th style="width:20%;"> 시간 </th>
+						<th style="width:10%;"> 직배송 <i class="far fa-question-circle"></i> </th>
+						<th style="width:10%;"> 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
 						<tr>
@@ -166,15 +169,29 @@
 						</tr>
 					<% } else { 
 						for(int i=0; i<onlineList_todays.size(); i++){
-							if(i==6){
+							if(i==5){
 								break;
 							}
 							OnlineDTO odto_todays = (OnlineDTO) onlineList_todays.get(i);
 							BrandDTO bdto_todays = (BrandDTO) brandList_todays.get(i);
 							SneakerDTO sdto_todays = (SneakerDTO) sneakerList_todays.get(i);
 							
+							String online_start_date = "";
+							String online_start_time = "";
 							String online_end_date = "";
 							String online_end_time = "";
+							
+							if((odto_todays.getOnline_start_date().isEmpty())){
+								online_start_date = "0000-00-00";
+							} else{
+								online_start_date = odto_todays.getOnline_start_date();
+							}
+							
+							if((odto_todays.getOnline_start_time().isEmpty())){
+								online_start_time = "24:00";
+							} else{
+								online_start_time = odto_todays.getOnline_start_time();
+							}
 							
 							if((odto_todays.getOnline_end_date().isEmpty())){
 								online_end_date = "0000-00-00";
@@ -188,78 +205,122 @@
 								online_end_time = odto_todays.getOnline_end_time();
 							}
 							
+							Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
 							Date original_Online_end_time = format.parse(online_end_date + " " + online_end_time);
 							
 							//O월 OO일 24시
+							String newlist_Online_start_time = newList_format.format(original_Online_start_time);
 							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
 					%>
 						<tr>
-							<!-- 발매신발 -->
-							<td class="drawShoe-info-td">
-								<!-- 신발이미지 --> 
+							<!-- 상태 -->
+							<td>
 								<div>
-									<a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> 
-										<img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" class="sneaker_img">
-									</a>
+									<%if(odto_todays.getOnline_method().contains("선착")) {%>
+										<span style="color:#ff5722;">선착예정</span>
+									<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+										<span style="color:green;">진행중</span>
+									<%}%>
+									
 								</div>
-								<!-- 신발이름 -->
-								<div style="padding: 5px 20px 0 20px;">
-									<a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> 
-										<span class="modelName_todays"> <%=sdto_todays.getModel_name_kr()%> </span>
-									</a>
+							</td>
+													
+							<!-- 발매신발 -->
+							<td style="border-left: 0.5px dotted #dcdcdc; border-right: 0.5px dotted #dcdcdc;">
+								<!-- 신발이미지 -->
+								<div onclick="location.href='./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>'" style="cursor:pointer;" class="todaysRelease-mainSneaker-container">
+									<img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" class="sneaker_img">
+									
+									<!-- hover 칸  -->
+									<div class="todaysRelease-mainSneaker-container-hover">
+										&nbsp;
+									</div>
+									
+									<!-- 이름 칸 -->
+									<div class="todaysRelease-mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=sdto_todays.getModel_stylecode()%>&num=<%=sdto_todays.getNum()%>';">
+										<p> <%=sdto_todays.getModel_name_kr()%> </p>
+									</div>
+									
 								</div>
 							</td>
 							
-							<!-- 응모처 -->
-							<td>
-								<!-- 응모처 이미지 --> 
-								<div style="display:inline-block;">
+							<!-- 발매처 -->
+							<td style="text-align: left; padding-left: 20px;">
+								<!-- 발매처 이미지 --> 
+								<div class="brand-info-image-container">
 									<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-										<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="80" height="80" style="border:1px solid #efefef;"> 
+										<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="60" height="60" style="border:1px solid #efefef;"> 
 									</a>
 								</div>
-								<!-- 응모처 정보 통합 -->
-								<div style="display:inline-block; padding-left: 10px;" class="brand-info-container">
+								<!-- 발매처 정보 -->
+								<div class="brand-info-container">
 									<!-- 응모처 이름 -->
-									<div style="margin-bottom: 7px;">
-										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> <span style="font-weight: bold;"> <%=bdto_todays.getBrand_name()%></span> </a> <%="("+bdto_todays.getCountry_name()+")"%>
-									</div>		
-									<!-- 방식 -->
-									<div style="margin-bottom: 14px;">
-										<%if(odto_todays.getOnline_method().contains("선착")) {%>
-											<span style="color:orange;"> 선착순 구매 </span>
-										<%} else if(odto_todays.getOnline_method().contains("드로우")) {%>
-											<span style="color:green;"> 온라인 응모 </span>
-										<%}%>
-									</div>
-									<!-- 직배송 여부 / 결제방식 -->
 									<div>
-										<%=odto_todays.getDelivery_method() + " | " + odto_todays.getBuy_method()%>
-									</div>
+										<div class="brand-info-name-div">
+											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
+												<span> <%=bdto_todays.getBrand_name()%></span>
+											</a>
+										</div>
+										<%=" (" + bdto_todays.getCountry_name()+ ")"%>
+									</div>		
+									
+									<!-- 결제 방식 -->
+									<%if(odto_todays.getOnline_method().contains("선착")) {%>
+									
+									<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+										<div>
+											<%=odto_todays.getBuy_method()%>
+										</div>
+									<%}%>
 								</div>
 							</td>
 							
-							<!-- 마감시간 -->
+							<!-- 발매방식 -->
 							<td>
+								<%if(odto_todays.getOnline_method().contains("선착")) {%>
+									<span style="color:#ff5722;"> 선착순구매 </span>
+								<%} else if(odto_todays.getOnline_method().contains("드로우")) {%>
+									<span> 온라인응모 </span>
+								<%} else if(odto_todays.getOnline_method().contains("이메일라플")) {%>
+									<span> 이메일응모 </span>
+								<%} %>
+								
+							</td>
+							
+							<!-- 시간정보 -->
+							<td class="drawTime-todays-td">
 								<%if(odto_todays.getOnline_method().contains("선착")){%>
 								<!-- 선착순 구매 -->
-								<div> <span> 선착순 기간 </span></div>
-								<div> <span> <%=odto_todays.getOnline_start_date() + " " + odto_todays.getOnline_start_time()%></span></div>
-								<%}else if(odto_todays.getOnline_method().contains("드로우")){%>
+								<div> <span style="font-weight:bold;"> 선착순시간 </span></div>
+								<div> 
+									<span> 
+										<!-- 최종 시작 시간이 정확하지 않으면 -->
+										<%if(odto_todays.getOnline_start_date().isEmpty() || odto_todays.getOnline_start_time().isEmpty()) {%>
+											
+										<%} else {%>
+											<%=newlist_Online_start_time%>
+										<%} %>
+									</span>
+								</div>
+								<%}else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")){%>
 								<!-- 응모 -->
-								<div> <span> 응모 기간 </span></div>
+								<div> <span style="font-weight:bold;"> 응모기간 </span></div>
 								<div> 
 									<span>
-										~
 										<!-- 최종 끝나는 시간이 정확하지 않으면 -->
 										<%if(odto_todays.getOnline_end_date().isEmpty() || odto_todays.getOnline_end_time().isEmpty()) {%>
 											
 										<%} else {%>
-											<%=newlist_Online_end_time%>까지
+											<%=newlist_Online_end_time%> 까지
 										<%} %>
 									</span>
 								</div>
 								<%}%>
+							</td>
+							
+							<!-- 직배송여부 -->
+							<td>
+								<%=odto_todays.getDelivery_method()%>
 							</td>
 							
 							<!-- 바로가기 버튼 -->
@@ -267,7 +328,7 @@
 							
 						</tr>
 					<% } } 
-						if(onlineList_todays.size() > 6) {
+						if(onlineList_todays.size() > 4) {
 					%>
 						<tr>
 							<td colspan="7" style="height: 60px !important;"> <a href="./TodaysDrawList.go"> 더보기  <i class="far fa-plus-square"></i> </a> </td>
@@ -277,17 +338,32 @@
 			</div>
 		</div>
 		
-		<!-- 이번주 나코 snkrs 리스트 -->
-		<div class="snkrsWeek-container">
+		<!-- 이번주 모든 발매 리스트 -->
+		<div class="thisWeek-container">
 			<div class="sub-title">
-				<h4> 이번 주 나이키 코리아 라인업 </h4>
+				<h4> 금주의 모든 발매 리스트 </h4>
 				<div class="allButton" onclick="location.href='#'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
 			<div class="desc-container">
-				<p> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 금주 월요일~일요일까지 발매하는 한정판 신발 라인업입니다. </p>
+				<p> 이번 주 월요일~일요일까지 발매하는 모든 리스트입니다. </p>
+			</div>
+			
+		</div>
+		
+		<!-- 이번주 나코 snkrs 리스트 -->
+		<div class="snkrsWeek-container">
+			<div class="sub-title">
+				<h4> 나이키 코리아 프리미엄 라인업 </h4>
+				<div class="allButton" onclick="location.href='#'">
+					<span> 전체보기 </span>
+				</div>
+			</div>
+			
+			<div class="desc-container">
+				<p> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 금주 월요일~일요일까지 발매하는 프리미엄 신발 라인업입니다. </p>
 			</div>
 			
 			<div class="snkrsWeek-table-container">
@@ -350,14 +426,14 @@
 		<div class="release-container">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
-				<h4> 발매 예정 라인업 </h4>
+				<h4> 2021년 발매 예정 라인업 </h4>
 				<div class="allButton" onclick="location.href='#'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
 			<div class="desc-container">
-				<p> 2021년 발매예정인 상품들의 라인업입니다. 해당 신발들은 아직 발매처가 없습니다. </p>
+				<p> 해당 신발들은 아직 발매처가 없습니다. </p>
 			</div>
 			
 			<div class="releasing-table-container">

@@ -25,14 +25,24 @@ public class SneakerListAction implements Action {
 		SneakerDAO sdao = new SneakerDAO();
 		
 		//오늘의 응모
-		Vector vec_todaysDraw = odao.getTodaysDraw();
-		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) vec_todaysDraw.get(0);
-		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) vec_todaysDraw.get(1);
-		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) vec_todaysDraw.get(2);
+		Vector vec_todaysRelease = odao.getTodaysRelease();
+		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) vec_todaysRelease.get(0);
+		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) vec_todaysRelease.get(1);
+		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) vec_todaysRelease.get(2);
 		
 		request.setAttribute("onlineList_todays", onlineList_todays);
 		request.setAttribute("brandList_todays", brandList_todays);
 		request.setAttribute("sneakerList_todays", sneakerList_todays);
+		
+		
+		//이번주 snkrs 리스트 가져오는 함수
+ 		Vector vec_SnkrsWeek = sdao.getSnkrsWeekList();
+ 		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) vec_SnkrsWeek.get(0);
+		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) vec_SnkrsWeek.get(1);
+ 		
+		request.setAttribute("onlineList_snkrs", onlineList_snkrs);
+		request.setAttribute("sneakerList_snkrs", sneakerList_snkrs);
+		
 		
 		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
 		Vector vec_totalReleaseList = sdao.getTotalReleaseList("%" + "2021" + "%");
@@ -43,27 +53,8 @@ public class SneakerListAction implements Action {
 		request.setAttribute("releaseSneakerList", releaseSneakerList);
 		request.setAttribute("releasingSneakerList", releasingSneakerList);
 		request.setAttribute("releasedSneakerList", releasedSneakerList);
-
-//		SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
-// 		Calendar cal = Calendar.getInstance(Locale.KOREA);
-// 		
-// 		cal.add(Calendar.DATE, -1);
-// 		cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-// 		String monday = formatter.format(cal.getTime()) + " 00:00:00";
-// 		
-// 		cal.add(Calendar.DATE, 1);
-// 		cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-// 		String sunday = formatter.format(cal.getTime()) + " 23:59:59";
-// 		
-// 		System.out.println(monday + " " + sunday);
  		
- 		//이번주 snkrs 리스트 가져오는 함수
- 		Vector vec_SnkrsWeek = sdao.getSnkrsWeekList();
- 		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) vec_SnkrsWeek.get(0);
-		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) vec_SnkrsWeek.get(1);
  		
-		request.setAttribute("onlineList_snkrs", onlineList_snkrs);
-		request.setAttribute("sneakerList_snkrs", sneakerList_snkrs);
  		
 		
 		

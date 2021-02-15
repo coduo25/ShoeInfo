@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+* {margin:0; padding:0; box-sizing: border-box;}
+body {font-size:1em; line-weight:1.4}
+
+/* 모든 페이지 공통 부분 */
+.container {position: relative; } /* width: 80%; margin: 5px auto; */
+
+/* 리스트 별 컨테이너 */
+.todaysDraw-container { display: table; width: 100%; box-sizing: border-box; margin: 35px 0 70px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todays-table-container { width: 100%;}
+
+/*서브 타이틀*/
+.sub-title-wline, .sub-title { display: block; margin: 30px 0 15px 0; font-size: 24px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title h4 { display: inline-block; flex-direction: row; }
+.sub-title h4 span { padding-right: 10px; }
+.desc-container { display: block; margin: 15px 0 20px 0; color: #3e3e3e; }
+
+/* 바로가기 버튼 */
+.direct-link-text { padding-right: 3px; text-decoration: underline; }
+.direct-link:hover { opacity: 0.5; }
+
+/* 오늘의 발매 리스트 */
+#onlineList_todays_table { width: 100%; border-collapse: collapse; }
+#onlineList_todays_table th { height: 50px; border-top: 1px solid black; border-bottom: 1px solid #dcdcdc; background-color: #f7f7f7; } 
+#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #dcdcdc;  }
+#onlineList_todays_table td { text-align: center; }
+
+.todaysRelease-mainSneaker-container { position:relative; text-align: center; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; }
+.todaysRelease-mainSneaker-container img { width: 100%; height: 100%; padding: 15%;}
+.todaysRelease-mainSneaker-container-hover { position: absolute; width: 100%; height: 100%; background-color: #2b2b2b; opacity:0; top:0; left:0; transition: 0.3s; }
+.todaysRelease-mainSneaker-container-hover-Name { display: table; position: absolute; width: 100%; height: 100%; opacity:0; top:0; left:0; transition: 0.3s; font-weight:bold; color: white; font-size: 19px; cursor:pointer; }
+.todaysRelease-mainSneaker-container-hover-Name p { display: table-cell; text-align: center; vertical-align: middle; padding: 0 7%; }
+.todaysRelease-mainSneaker-container-hover-Name p a { color: white !important; }
+.todaysRelease-mainSneaker-container:hover > .todaysRelease-mainSneaker-container-hover { opacity:0.8; }
+.todaysRelease-mainSneaker-container:hover > .todaysRelease-mainSneaker-container-hover-Name { opacity:1; }
+
+.brand-info-image-container { display: inline-block; vertical-align:middle; }
+.brand-info-container { display: inline-block; vertical-align: middle; padding-left: 10px; }
+.brand-info-container div { display:block; text-align: left !important; line-height: 30px; }
+.brand-info-name-div { display: inline-block !important; }
+.brand-info-name-div span { font-weight: bold; }
+
+.drawTime-todays-td div { display:block; line-height: 25px; }
+
