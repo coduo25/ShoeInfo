@@ -345,7 +345,8 @@ public class SneakerDAO {
 					+ "or ((concat(online_end_date, ' ', online_end_time, ':00')) between (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 0), ' 00:00:00')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59')))) "
 					+ "and (((concat(online_start_date, ' ', online_start_time, ':00')) between (DATE_FORMAT(now(), '%Y-%m-%d %H:%i')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59'))) "
 					+ "or ((concat(online_end_date, ' ', online_end_time, ':00')) between (DATE_FORMAT(now(), '%Y-%m-%d %H:%i')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59')))) "
-					+ "and (online_method = '선착' or online_method = '드로우')";
+					+ "and (online_method = '선착' or online_method = '드로우')"
+					+ "order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){

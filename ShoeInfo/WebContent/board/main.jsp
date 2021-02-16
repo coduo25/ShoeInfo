@@ -80,6 +80,8 @@
 		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
 		SimpleDateFormat snkrs_format = new SimpleDateFormat("M/d일(E) a hh:mm");
 		
+		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		
 		//오늘날짜
 		Date currentTime = new Date();
 		String current = original_format.format(currentTime);
@@ -156,8 +158,8 @@
 				<table id="onlineList_todays_table">
 					<tr>
 						<th style="width:5%"> 번호 </th>
-						<th style="width:15%; border-right: 0.5px dotted #dcdcdc; border-left: 0.5px dotted #dcdcdc;"> 발매모델 </th>
-						<th style="width:27%;"> 발매처 </th>
+						<th style="width:12%; border-right: 0.5px dotted #dcdcdc; border-left: 0.5px dotted #dcdcdc;"> 발매모델 </th>
+						<th style="width:30%;"> 발매처 </th>
 						<th style="width:20%;"> 시간 </th>
 						<th style="width:13%;"> 결제방식 </th>
 						<th style="width:10%;"> 직배송 <i class="far fa-question-circle"></i> </th>
@@ -211,6 +213,10 @@
 							//O월 OO일 24시
 							String newlist_Online_start_time = newList_format.format(original_Online_start_time);
 							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
+							
+							//남은시간 계산하기 위한 날짜데이터 (02/16/2021 10:00)
+							String count_todays_start_time = count_format.format(original_Online_start_time);
+							String count_todays_end_time = count_format.format(original_Online_end_time);
 					%>
 						<tr>
 							<!-- 번호 -->
@@ -250,19 +256,22 @@
 							</td>
 							
 							<!-- 발매처 -->
-							<td style="text-align: left; padding-left: 20px;">
+							<td style="text-align: left; padding-left: 40px;">
 								<!--  발매처 이미지 --> 
 								<div class="brand-info-image-container">
 									<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-										<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="60" height="60" style="border:1px solid #efefef;"> 
+										<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="80" height="80" style="border:1px solid #d4d4d4; position:relative;">
+										<div style="position:absolute; right:0; bottom:0;">
+											<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="border:1px solid #efefef; width: 26px; height: 17px;">
+										</div> 
 									</a>
 								</div>
 								<!-- 발매처 정보 -->
 								<div class="brand-info-container">
 									<!-- 응모처 이름 -->
-									<div>
+									<div style="margin-bottom: 10px;">
 										<p class="brand-info-name-p">
-											<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="width: 22px; border: 1px solid #efefef; vertical-align: middle; margin-bottom:2px;">
+<%-- 											<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="width: 22px; border: 1px solid #efefef; vertical-align: middle; margin-bottom:2px;"> --%>
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
 												<span> <%=bdto_todays.getBrand_name()%></span>
 											</a>
@@ -284,7 +293,7 @@
 	
 							<!-- 시간정보 -->
 							<td class="drawTime-todays-td">
-								<div style="margin-bottom:10px;">
+								<div style="margin-bottom:7px;">
 									<%if(odto_todays.getOnline_method().contains("선착")){%>
 									<!-- 선착순 구매 -->
 									<span> 
@@ -292,7 +301,7 @@
 										<%if(odto_todays.getOnline_start_date().isEmpty() || odto_todays.getOnline_start_time().isEmpty()) {%>
 											공지예정
 										<%} else {%>
-											<%=newlist_Online_start_time%> 선착구매
+											<%=newlist_Online_start_time%> 구매
 										<%} %>
 									</span>
 									<%}else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")){%>
@@ -302,22 +311,67 @@
 										<%if(odto_todays.getOnline_end_date().isEmpty() || odto_todays.getOnline_end_time().isEmpty()) {%>
 											공지예정
 										<%} else {%>
-											<%=newlist_Online_end_time%> 응모마감
+											<%=newlist_Online_end_time%> 마감
 										<%} %>
 									</span>
 									<%}%>
 								</div>
 								
 								<!-- 남은시간 -->
+								<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
+								<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
+								<!-- 남은시간 상태 -->
+								<span id="count_todays_status<%=i%>" style="display:none;"></span>
+									
+								<!-- 선착일때 -->
 								<%if(odto_todays.getOnline_method().contains("선착")){%>
-									<div style="font-size: 13px; font-weight: bold;  color: #3e3e3e;">
-										<span style="border: 1px solid #3e3e3e; padding: 4px 12px;"> 1일 10:12:34 </span>
+									<div>
+										<% if(!odto_todays.getOnline_start_date().isEmpty() && !odto_todays.getOnline_start_time().isEmpty()) {%>
+											<span style="font-size: 10px; font-weight: bold; color:#3e3e3e;">
+												<!-- 남은시간 -->
+												<span id="count_todays_status<%=i%>span" style="border: 1px solid #dcdcdc; padding: 10px 10px 6px 10px; color:#25752b;">
+<%-- 													<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일  --%>
+													<span class="remain-time" id="final_count_start_time<%=i%>hours"></span>시간
+													<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>분
+													<span class="remain-time" id="final_count_start_time<%=i%>seconds"></span>초
+													<span>남음</span>
+												</span>
+											</span>
+										<%} else {%>
+											<div style="font-size: 13px; font-weight: bold; color:#3e3e3e;">
+												<span style="border: 1px solid #3e3e3e; padding: 4px 12px;"> 
+												-
+												</span>
+											</div>
+										<%}%>
 									</div>
-								<%}else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")){%>
-									<div style="font-size: 13px; font-weight: bold; color: #3e3e3e;">
-										<span style="border: 1px solid #3e3e3e; padding: 4px 12px;"> 1일 10:12:34 </span>
+								<!-- 드로우일때 -->
+								<%} else if( odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+									<div>
+										<% if(!odto_todays.getOnline_end_date().isEmpty() && !odto_todays.getOnline_end_time().isEmpty()) {%>
+											<span style="font-size: 10px; font-weight: bold; color:#3e3e3e;"> 
+												<!-- 남은시간 -->
+												<span id="count_todays_status<%=i%>span" style="border: 1px solid #dcdcdc; padding: 10px 10px 6px 10px; color:#25752b;">
+<%-- 													<span class="remain-time" id="final_count_end_time<%=i%>days"></span>일  --%>
+													<span class="remain-time" id="final_count_end_time<%=i%>hours"></span>시간
+													<span class="remain-time" id="final_count_end_time<%=i%>minutes"></span>분
+													<span class="remain-time" id="final_count_end_time<%=i%>seconds"></span>초
+													<span>남음</span>
+												</span>
+											</span>
+										<%} else {%>
+											<div style="font-size: 13px; font-weight: bold; color: #3e3e3e;">
+												<span style="border: 1px solid #3e3e3e; padding: 4px 12px;"> 
+												-
+												</span>
+											</div>
+										<%}%>
 									</div>
-								<%}%>
+								<%} %>
+									<div style="position:relative;">
+										<!-- 마감임박 문구-->
+										<span id="count_todays_status<%=i%>label" style="display:none; font-weight: bold; font-size: 13px; position: absolute; width:100%;"></span>
+									</div>
 							</td>
 							
 							<!-- 결제방식 -->
@@ -330,7 +384,7 @@
 							</td>
 							
 							<!-- 직배송여부  -->
-							<td>
+							<td style="border-right: 0.5px dotted #dcdcdc;">
 								<%if(odto_todays.getOnline_method().contains("선착")) {%>
 									<%=odto_todays.getDelivery_method()%>
 								<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
@@ -340,7 +394,6 @@
 							
 							<!-- 바로가기 버튼 -->
 							<td> <a href="<%=odto_todays.getOnline_link()%>" target="_blank" class="direct-link"> <span class="direct-link-text">바로가기</span> <i class="fas fa-caret-right"></i> </a> </td>
-							
 						</tr>
 					<% } } 
 						if(onlineList_todays.size() > 5) {
@@ -805,6 +858,88 @@
 
 <script type="text/javascript">
 
+	//남은 시간 계산하는 함수
+	const countDownTimer = function (id, date, statusId) { 
+		var _vDate = new Date(date);
+		var _second = 1000; 
+		var _minute = _second * 60; 
+		var _hour = _minute * 60; 
+		var _day = _hour * 24; 
+		var timer;
+		
+		function showRemaining() { 
+			var now = new Date(); 
+			var distDt = _vDate - now;
+			if (distDt < 0) {
+				clearInterval(timer);
+				return; 
+			} 
+			var days = Math.floor(distDt / _day); 
+			var hours = Math.floor((distDt % _day) / _hour); 
+			var minutes = Math.floor((distDt % _hour) / _minute); 
+			var seconds = Math.floor((distDt % _minute) / _second); 
+			
+			if(hours <= 9) { hours = '0' + hours; }
+			if(minutes <= 9) { minutes = '0' + minutes; }
+			if(seconds <= 9) { seconds = '0' + seconds; }
+	
+			if(days || hours || minutes || seconds){
+	//				document.getElementById(id + 'days').textContent = days; 
+				document.getElementById(id + 'hours').textContent = hours; 
+				document.getElementById(id + 'minutes').textContent = minutes; 
+				document.getElementById(id + 'seconds').textContent = seconds;
+			}
+			
+			//임박시간 표시 하기
+			//남은시간에서 시간:분:초 = 00:19:59 부터 남은시간 붉은색으로 나타내기, 선착이면 '선착임박', 드로우면 '마감임박' 문구 나타내기
+			
+			//숫자 형태를 문자 형태로 바꾸끼 (편법)
+			hours += "";
+			minutes += "";
+			seconds += "";
+			
+			//문자 형태의 시간 합체
+			var finalTime = hours + minutes + seconds;
+			
+			//문자 형태의 최종시간을 다시 숫자 형태로 바꾸기
+			finalTime *= 1;
+			
+			//20분 남았을때
+			if(finalTime >= 000001 && finalTime <= 001959){
+				//시간 붉은색으로
+				$('#'+statusId+'span').css("color", "#da010a");
+				//임박글자 넣기 (선착이면 선착임박, 드로우면 마감임박)
+				if(id.match('start')){
+					document.getElementById(statusId+'label').textContent = '선착시간임박!';	
+				}
+				if(id.match('end')){
+					document.getElementById(statusId+'label').textContent = '마감임박!';	
+				}
+				//임박표시 ON
+				$('#'+statusId+'label').css("display", "block");
+			}
+			//종료되었을때
+			else if(finalTime == 000000){
+				document.getElementById(statusId).textContent = '종료';
+				document.getElementById(statusId+'span').textContent = '종료';
+				//종료 네모칸 없애고 글자 크게 학
+				$('#'+statusId+'span').css("border", "none");
+				$('#'+statusId+'span').css("font-size", "16px");
+				$('#'+statusId+'span').css("color", "black");
+				$('#'+statusId+'span').css("font-weight", "normal");
+				//임박표시 OFF
+				$('#'+statusId+'label').css("display", "none");
+			}
+			//임박하지 않고 계속 진행중일때
+			else {
+				document.getElementById(statusId).textContent = '진행중';
+				//임박표시 OFF
+				$('#'+statusId+'label').css("display", "none");
+			}
+		} 
+		timer = setInterval(showRemaining, 1000); 
+	}
+
 	$(document).ready(function(){
 		
 		//방지
@@ -822,6 +957,32 @@
 			}
 			//데스크탑으로 접속했을시
 			else { 
+			}
+		}
+		
+		//오늘 발매 리스트
+		var todaysReleaseAll_list = [];
+		<c:forEach items="${onlineList_todays}" var="onlineList_todays">
+			todaysReleaseAll_list.push("${onlineList_todays}");
+		</c:forEach>
+
+		for(var i=0; i<todaysReleaseAll_list.length; i++) {
+			//list
+			var count_span_start = document.getElementById("count_todays_start_time"+i).innerText;
+			var count_span_end = document.getElementById("count_todays_end_time"+i).innerText;
+
+			var noTimeData = '0002';
+			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
+			if(count_span_start.match(noTimeData)){
+				countDownTimer('final_count_end_time'+i, count_span_end, 'count_todays_status'+i);
+			}
+			//끝나는시간에 0002가 포함 = 무조건 시작시간(선착) = 시작으로만 가지고 놀기
+			if(count_span_end.match(noTimeData)) {
+				countDownTimer('final_count_start_time'+i, count_span_start, 'count_todays_status'+i);
+			}
+			//둘다 포함이 안되어있다 = 드로우밖에 없음 = 끝나는 시간으로만 가지고 놀기
+			if(!count_span_start.match(noTimeData) && !count_span_end.match(noTimeData)){
+				countDownTimer('final_count_end_time'+i, count_span_end, 'count_todays_status'+i);	
 			}
 		}
 		
