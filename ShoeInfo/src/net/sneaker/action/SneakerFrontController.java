@@ -44,9 +44,9 @@ public class SneakerFrontController extends HttpServlet{
 		Action action = null;
 		ActionForward forward = null;
 
-		//오늘의응모 리스트 보여주는 페이지 처리
-		if(command.equals("/TodaysReleaseList.go")){
-			action = new TodayReleaseListAction();
+		//메인 페이지 신발 리스트 보여주는 페이지 처리
+		if(command.equals("/SneakerList.go")) {
+			action = new SneakerListAction();		
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -54,9 +54,9 @@ public class SneakerFrontController extends HttpServlet{
 			}
 		}
 		
-		//신발 리스트 보여주는 페이지 처리
-		else if(command.equals("/SneakerList.go")) {
-			action = new SneakerListAction();		
+		//오늘의응모 리스트 보여주는 페이지 처리
+		else if(command.equals("/TodaysReleaseList.go")){
+			action = new TodayReleaseListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

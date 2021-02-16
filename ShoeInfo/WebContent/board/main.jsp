@@ -157,10 +157,10 @@
 					<tr>
 						<th style="width:5%"> 번호 </th>
 						<th style="width:15%; border-right: 0.5px dotted #dcdcdc; border-left: 0.5px dotted #dcdcdc;"> 발매모델 </th>
-						<th style="width:25%;"> 발매처 </th>
+						<th style="width:27%;"> 발매처 </th>
 						<th style="width:20%;"> 시간 </th>
-						<th style="width:12%;"> 결제방식 </th>
-						<th style="width:8%;"> 직배송 <i class="far fa-question-circle"></i> </th>
+						<th style="width:13%;"> 결제방식 </th>
+						<th style="width:10%;"> 직배송 <i class="far fa-question-circle"></i> </th>
 						<th style="width:10%;"> 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
@@ -261,12 +261,12 @@
 								<div class="brand-info-container">
 									<!-- 응모처 이름 -->
 									<div>
-										<div class="brand-info-name-div">
+										<p class="brand-info-name-p">
+											<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="width: 22px; border: 1px solid #efefef; vertical-align: middle; margin-bottom:2px;">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
 												<span> <%=bdto_todays.getBrand_name()%></span>
 											</a>
-										</div>
-										<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="width: 22px; border: 1px solid #efefef; vertical-align: middle; margin-bottom:2px;">
+										</p>
 									</div>		
 									
 									<!-- 발매 방식 -->
@@ -310,12 +310,12 @@
 								
 								<!-- 남은시간 -->
 								<%if(odto_todays.getOnline_method().contains("선착")){%>
-									<div style="font-size: 13px; font-weight: bold;  color: #ff5722;">
-										<span style="border: 1px solid black; padding: 4px 12px;"> 1일 10:12:34 남음 </span>
+									<div style="font-size: 13px; font-weight: bold;  color: #3e3e3e;">
+										<span style="border: 1px solid #3e3e3e; padding: 4px 12px;"> 1일 10:12:34 </span>
 									</div>
 								<%}else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")){%>
-									<div style="font-size: 13px; font-weight: bold; color: green;">
-										<span style="border: 1px solid black; padding: 4px 12px;"> 1일 10:12:34 남음 </span>
+									<div style="font-size: 13px; font-weight: bold; color: #3e3e3e;">
+										<span style="border: 1px solid #3e3e3e; padding: 4px 12px;"> 1일 10:12:34 </span>
 									</div>
 								<%}%>
 							</td>
