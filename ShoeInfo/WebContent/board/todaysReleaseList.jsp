@@ -52,6 +52,7 @@
 		SimpleDateFormat time_format = new SimpleDateFormat("HH:mm");
 		
 		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
+		SimpleDateFormat newList_format2 = new SimpleDateFormat("M/d(E) a h:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 	%>
 
@@ -61,14 +62,16 @@
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 
-		<!-- 모든 오늘의 응모 리스트 -->
-		<div class="todaysDraw-container">
+		<!-- 오늘의 모든 발매 리스트 -->
+		<div class="todaysRelease-container">
 			<div class="sub-title">
-				<h4> 오늘의 발매 마감 리스트 </h4>
+				<h4> 오늘의 발매 리스트 </h4>
 			</div>
 			
 			<div class="desc-container">
-				<p> 현재 시간을 기준으로 금일 자정까지 마감하는 모든 발매처를 보여주는 도표입니다. </p>
+				<p style="position:relative;"> 현재 시간을 기준으로 진행 중이거나 마감 예정인 모든 발매처를 보여주는 도표입니다. 
+					<span style="position:absolute; right:0;"><input type="checkbox" id="todays_kr" name="todays_kr"> <label for="todays_kr">국내 발매처만 보기</label></span>
+				</p>
 			</div>
 			
 			<div class="todays-table-container">
@@ -124,9 +127,9 @@
 							Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
 							Date original_Online_end_time = format.parse(online_end_date + " " + online_end_time);
 							
-							//O월 OO일 24시
-							String newlist_Online_start_time = newList_format.format(original_Online_start_time);
-							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
+							//O월 OO일 오전/오후 12시
+							String newlist_Online_start_time = newList_format2.format(original_Online_start_time);
+							String newlist_Online_end_time = newList_format2.format(original_Online_end_time);
 							
 							//남은시간 계산하기 위한 날짜데이터 (02/16/2021 10:00)
 							String count_todays_start_time = count_format.format(original_Online_start_time);
@@ -207,7 +210,7 @@
 	
 							<!-- 시간정보 -->
 							<td class="drawTime-todays-td">
-								<div style="margin-bottom:7px;">
+								<div>
 									<%if(odto_todays.getOnline_method().contains("선착")){%>
 									<!-- 선착순 구매 -->
 									<span> 
@@ -215,7 +218,7 @@
 										<%if(odto_todays.getOnline_start_date().isEmpty() || odto_todays.getOnline_start_time().isEmpty()) {%>
 											공지예정
 										<%} else {%>
-											<%=newlist_Online_start_time%> 구매
+											<%=newlist_Online_start_time%> 선착
 										<%} %>
 									</span>
 									<%}else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")){%>
@@ -244,11 +247,11 @@
 											<span style="font-size: 10px; font-weight: bold; color:#3e3e3e;">
 												<!-- 남은시간 -->
 												<span id="count_todays_status<%=i%>span" style="border: 1px solid #dcdcdc; padding: 10px 10px 6px 10px; color:#25752b;">
-<%-- 													<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일  --%>
-													<span class="remain-time" id="final_count_start_time<%=i%>hours"></span>시간
+													<span style="padding-right: 1px;">선착까지</span>
+													<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일 
+													<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 3px;"></span>시간
 													<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>분
 													<span class="remain-time" id="final_count_start_time<%=i%>seconds"></span>초
-													<span>남음</span>
 												</span>
 											</span>
 										<%} else {%>
@@ -266,11 +269,11 @@
 											<span style="font-size: 10px; font-weight: bold; color:#3e3e3e;"> 
 												<!-- 남은시간 -->
 												<span id="count_todays_status<%=i%>span" style="border: 1px solid #dcdcdc; padding: 10px 10px 6px 10px; color:#25752b;">
-<%-- 													<span class="remain-time" id="final_count_end_time<%=i%>days"></span>일  --%>
-													<span class="remain-time" id="final_count_end_time<%=i%>hours"></span>시간
+													<span style="padding-right: 1px;">마감까지</span>
+													<span class="remain-time" id="final_count_end_time<%=i%>days"></span>일 
+													<span class="remain-time" id="final_count_end_time<%=i%>hours" style="padding-left: 3px;"></span>시간
 													<span class="remain-time" id="final_count_end_time<%=i%>minutes"></span>분
 													<span class="remain-time" id="final_count_end_time<%=i%>seconds"></span>초
-													<span>남음</span>
 												</span>
 											</span>
 										<%} else {%>
@@ -282,10 +285,10 @@
 										<%}%>
 									</div>
 								<%} %>
-									<div style="position:relative;">
-										<!-- 마감임박 문구-->
-										<span id="count_todays_status<%=i%>label" style="display:none; font-weight: bold; font-size: 13px; position: absolute; width:100%;"></span>
-									</div>
+								<div>
+									<!-- 마감임박 문구-->
+									<span id="count_todays_status<%=i%>label" style="display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%;"></span>
+								</div>
 							</td>
 							
 							<!-- 결제방식 -->
@@ -350,7 +353,7 @@
 			if(seconds <= 9) { seconds = '0' + seconds; }
 
 			if(days || hours || minutes || seconds){
-// 				document.getElementById(id + 'days').textContent = days; 
+				document.getElementById(id + 'days').textContent = days; 
 				document.getElementById(id + 'hours').textContent = hours; 
 				document.getElementById(id + 'minutes').textContent = minutes; 
 				document.getElementById(id + 'seconds').textContent = seconds;
@@ -360,18 +363,19 @@
 			//남은시간에서 시간:분:초 = 00:19:59 부터 남은시간 붉은색으로 나타내기, 선착이면 '선착임박', 드로우면 '마감임박' 문구 나타내기
 			
 			//숫자 형태를 문자 형태로 바꾸끼 (편법)
+			days += "";
 			hours += "";
 			minutes += "";
 			seconds += "";
 			
 			//문자 형태의 시간 합체
-			var finalTime = hours + minutes + seconds;
+			var finalTime = days + hours + minutes + seconds;
 			
 			//문자 형태의 최종시간을 다시 숫자 형태로 바꾸기
 			finalTime *= 1;
 			
 			//20분 남았을때
-			if(finalTime >= 000001 && finalTime <= 001959){
+			if(finalTime >= 0000001 && finalTime <= 0000959){
 				//시간 붉은색으로
 				$('#'+statusId+'span').css("color", "#da010a");
 				//임박글자 넣기 (선착이면 선착임박, 드로우면 마감임박)
@@ -385,12 +389,12 @@
 				$('#'+statusId+'label').css("display", "block");
 			}
 			//종료되었을때
-			else if(finalTime == 000000){
+			else if(finalTime == 0000000){
 				document.getElementById(statusId).textContent = '종료';
 				document.getElementById(statusId+'span').textContent = '종료';
 				//종료 네모칸 없애고 글자 크게 학
 				$('#'+statusId+'span').css("border", "none");
-				$('#'+statusId+'span').css("font-size", "16px");
+				$('#'+statusId+'span').css("font-size", "15px");
 				$('#'+statusId+'span').css("color", "black");
 				$('#'+statusId+'span').css("font-weight", "normal");
 				//임박표시 OFF

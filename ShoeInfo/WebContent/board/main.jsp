@@ -40,7 +40,7 @@
 			user="";
 		}
 	
-		//오늘의 응모 리스트(5개)
+		//오늘의 발매 리스트(5개)
 		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_todays");
 		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) request.getAttribute("brandList_todays");
 		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_todays");
@@ -78,6 +78,7 @@
 		SimpleDateFormat month_format = new SimpleDateFormat("M월");
 		
 		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
+		SimpleDateFormat newList_format2 = new SimpleDateFormat("M/d(E) a h:mm");
 		SimpleDateFormat snkrs_format = new SimpleDateFormat("M/d일(E) a hh:mm");
 		
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
@@ -141,17 +142,17 @@
 			</div>
 		</div>
 		
-		<!-- 오늘의 발매 리스트 6개 -->
-		<div class="todaysDraw-container">
+		<!-- 오늘의 모든 발매 리스트 -->
+		<div class="todaysRelease-container">
 			<div class="sub-title">
-				<h4> 오늘의 발매 마감 리스트 </h4>
+				<h4> 오늘의 발매 리스트 </h4>
 				<div class="allButton" onclick="location.href='./TodaysReleaseList.go'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
 			<div class="desc-container">
-				<p> 현재 시간을 기준으로 금일 자정까지 마감하는 모든 발매처를 보여주는 도표입니다. </p>
+				<p> 현재 시간을 기준으로 진행 중이거나 마감 예정인 모든 발매처를 보여주는 도표입니다.  </p>
 			</div>
 			
 			<div class="todays-table-container">
@@ -210,9 +211,9 @@
 							Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
 							Date original_Online_end_time = format.parse(online_end_date + " " + online_end_time);
 							
-							//O월 OO일 24시
-							String newlist_Online_start_time = newList_format.format(original_Online_start_time);
-							String newlist_Online_end_time = newList_format.format(original_Online_end_time);
+							//O월 OO일 오전/오후 12시
+							String newlist_Online_start_time = newList_format2.format(original_Online_start_time);
+							String newlist_Online_end_time = newList_format2.format(original_Online_end_time);
 							
 							//남은시간 계산하기 위한 날짜데이터 (02/16/2021 10:00)
 							String count_todays_start_time = count_format.format(original_Online_start_time);
@@ -405,22 +406,7 @@
 				</table>
 			</div>
 		</div>
-		
-		<!-- 이번주 모든 발매 리스트 -->
-		<div class="thisWeek-container">
-			<div class="sub-title">
-				<h4> 금주의 모든 발매 리스트 </h4>
-				<div class="allButton" onclick="location.href='#'">
-					<span> 전체보기 </span>
-				</div>
-			</div>
-			
-			<div class="desc-container">
-				<p> 이번 주 월요일~일요일까지 발매하는 모든 리스트입니다. </p>
-			</div>
-			
-		</div>
-		
+
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container">
 			<div class="sub-title">
@@ -905,7 +891,7 @@
 			finalTime *= 1;
 			
 			//20분 남았을때
-			if(finalTime >= 000001 && finalTime <= 001959){
+			if(finalTime >= 000001 && finalTime <= 000959){
 				//시간 붉은색으로
 				$('#'+statusId+'span').css("color", "#da010a");
 				//임박글자 넣기 (선착이면 선착임박, 드로우면 마감임박)
