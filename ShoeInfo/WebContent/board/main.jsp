@@ -55,6 +55,29 @@
 		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_snkrs");
 		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_snkrs");
 		
+		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat new_format = new SimpleDateFormat("M월 d일");
+		
+		SimpleDateFormat month_format = new SimpleDateFormat("M월");
+		
+		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
+
+		SimpleDateFormat snkrs_format = new SimpleDateFormat("M/d일(E) a hh:mm");
+		
+		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		
+		//오늘날짜
+		Date currentTime = new Date();
+		String current = original_format.format(currentTime);
+		Date today = original_format.parse(current);
+		
+		
+		
+		
+		
+		
+		
 		
 		// 구 리스트들
 		ArrayList<SneakerDTO> sneakerList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList1");
@@ -71,26 +94,8 @@
 		ArrayList<SneakerDTO> sneakerList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList12");
 		
 		ArrayList<SneakerDTO> sneakerList2021 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2021");
-		
-		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		SimpleDateFormat new_format = new SimpleDateFormat("M월 d일");
-		
-		SimpleDateFormat month_format = new SimpleDateFormat("M월");
-		
-		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
 
-		SimpleDateFormat snkrs_format = new SimpleDateFormat("M/d일(E) a hh:mm");
-		
-		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-		
-		//오늘날짜
-		Date currentTime = new Date();
-		String current = original_format.format(currentTime);
-		
 		String compare_Today = format.format(currentTime);
-		
-		Date today = original_format.parse(current);
 		Date compareToday = format.parse(compare_Today);
 	%>
 
@@ -111,7 +116,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<p> 각 신발들의 발매처가 <span style="color:green">응모 중</span>이거나 <span style="color:#ff5722">선착순 구매</span>가 예정인 상품 라인업입니다. 클릭시, 해당 상품의 발매처들을 볼 수 있습니다. </p>
+				<span> 각 신발들의 발매처가 <span style="color:green">응모 중</span>이거나 <span style="color:#ff5722">선착순 구매</span>가 예정인 상품 라인업입니다. 클릭시, 해당 상품의 발매처들을 볼 수 있습니다. </span>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -153,7 +158,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<p> 현재 시간을 기준으로 진행 중이거나 마감 예정인 모든 발매처를 보여주는 도표입니다.  </p>
+				<span> 현재 시간을 기준으로 진행 중이거나 마감 예정인 모든 발매처를 보여주는 도표입니다. </span>
 			</div>
 			
 			<div class="todays-table-container">
@@ -216,6 +221,12 @@
 							//남은시간 계산하기 위한 날짜데이터 (02/16/2021 10:00)
 							String count_todays_start_time = count_format.format(original_Online_start_time);
 							String count_todays_end_time = count_format.format(original_Online_end_time);
+							
+							//비교하기 위한 날짜포멧들 
+							//현재 시간과 시작 시간 비교	(현재시간이 시작시간보다 지났으면  1)
+							//현재 시간과 끝나는 시간 비교	(현재시간이 끝나는시간보다 지났으면  1)
+							int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
+							int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
 					%>
 						<tr>
 							<!-- 번호 -->
@@ -328,7 +339,7 @@
 										<span class="info-subTitle">결제방식</span>
 										<span class="info-content">
 											<%if(odto_todays.getOnline_method().contains("선착")) {%>
-												-
+												선착순 구매
 											<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
 												<%=odto_todays.getBuy_method()%>
 											<%}%>
@@ -349,22 +360,32 @@
 									
 									<!-- 남은시간 -->
 									<div style="margin-top:35px;">
-<!-- 									<span class="info-subTitle">남은시간</span> -->
-										<span id="count_todays_status<%=i%>border" style="padding: 13px 16px 4px 16px; border: 1px solid #505050;">
-											<!-- 남은시간 -->
-											<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
-											<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
-											<!-- 남은시간 상태 -->
-											<span id="count_todays_status<%=i%>" style="display:none;"></span>
-											
+										<!-- 남은시간 -->
+										<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
+										<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
+										<!-- 남은시간 상태 -->
+										<span id="count_todays_status<%=i%>" style="display:none;">
 											<!-- 선착일때 -->
 											<%if(odto_todays.getOnline_method().contains("선착")){%>
+												<%if(compare_w_start_result == 1) {%>
+												종료
+												<%} %>
+											<!-- 드로우일때 -->
+											<%} else if( odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+												<%if(compare_w_end_result == 1){ %>
+												종료
+												<%} %>
+											<%}%>
+										</span>
+											
+										<!-- 선착일때 -->
+										<%if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result <= 0){%>
+											<span id="count_todays_status<%=i%>border" style="padding: 13px 16px 4px 16px; border: 1px solid #505050;">
 												<span>
 													<% if(!odto_todays.getOnline_start_date().isEmpty() && !odto_todays.getOnline_start_time().isEmpty()) {%>
 														<span class="remainTime-container">
 															<!-- 남은시간 -->
 															<span id="count_todays_status<%=i%>span" style="color:#313131;">
-<!-- 																<span style="padding-right: 1px;">선착까지</span> -->
 																<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일 
 																<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 4px;"></span>시간
 																<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>분
@@ -380,8 +401,17 @@
 														</span>
 													<%}%>
 												</span>
-											<!-- 드로우일때 -->
-											<%} else if( odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+											</span>
+										<%} else if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result == 1){%>
+											<span style="padding: 5px 10px; border: 1px solid #505050;">
+												<span style="color:#313131;">
+													종료
+												</span>
+											</span>
+										
+										<!-- 드로우일때 -->
+										<%} else if( (odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result <= 0) {%>
+											<span id="count_todays_status<%=i%>border" style="padding: 13px 16px 4px 16px; border: 1px solid #505050;">
 												<span>
 													<% if(!odto_todays.getOnline_end_date().isEmpty() && !odto_todays.getOnline_end_time().isEmpty()) {%>
 														<span class="remainTime-container"> 
@@ -403,8 +433,15 @@
 														</span>
 													<%}%>
 												</span>
-											<%} %>
-										</span>
+											</span>
+										<%} else if( (odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result == 1) {%>
+											<span style="padding: 5px 10px; border: 1px solid #505050;">
+												<span style="color:#313131;">
+													종료
+												</span>
+											</span>
+										<%} %>
+										
 									</div>
 									
 									<div class="remainWarning-container">
@@ -441,7 +478,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<p> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 금주 월요일~일요일까지 발매하는 프리미엄 신발 라인업입니다. </p>
+				<span> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 금주 월요일~일요일까지 발매하는 프리미엄 신발 라인업입니다. </span>
 			</div>
 			
 			<div class="snkrsWeek-table-container">
@@ -511,7 +548,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<p> 해당 신발들은 아직 발매처가 없습니다. </p>
+				<span> 해당 신발들은 아직 발매처가 없습니다. </span>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -554,7 +591,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<p> 각 신발들의 발매처 기간이 종료되었거나 진행 중인 발매처가 없는 상품 라인업입니다. </p>
+				<span> 각 신발들의 발매처 기간이 종료되었거나 진행 중인 발매처가 없는 상품 라인업입니다. </span>
 			</div>
 			
 			<div class="released-table-container">
@@ -936,7 +973,7 @@
 				
 				$('#'+statusId+'border').css("padding", "5px 10px");
 				$('#'+statusId+'span').css("font-size", "16px");
-				$('#'+statusId+'span').css("color", "#505050");
+				$('#'+statusId+'span').css("color", "#313131");
 				$('#'+statusId+'span').css("font-weight", "normal");
 				//임박표시 OFF
 				$('#'+statusId+'label').css("display", "none");

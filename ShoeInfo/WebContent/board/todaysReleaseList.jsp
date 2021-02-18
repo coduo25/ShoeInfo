@@ -54,6 +54,11 @@
 		
 		SimpleDateFormat newList_format = new SimpleDateFormat("M/d(E) HH:mm");
 		SimpleDateFormat count_format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		
+		// 오늘 날짜
+		Date currentTime = new Date();
+		String current = format.format(currentTime);
+		Date today = format.parse(current);
 	%>
 
 	<!-- Header -->
@@ -69,9 +74,9 @@
 			</div>
 			
 			<div class="desc-container">
-				<p style="position:relative;"> 현재 시간을 기준으로 진행 중이거나 마감 예정인 모든 발매처를 보여주는 도표입니다. 
-					<span style="position:absolute; right:0;"><input type="checkbox" id="todays_kr" name="todays_kr"> <label for="todays_kr">국내 발매처만 보기</label></span>
-				</p>
+				<span style="float:left;"> 현재 시간을 기준으로 진행 중이거나 마감 예정인 모든 발매처를 보여주는 도표입니다. </span> 
+				<span style="padding-left: 20px; float:right;"> <input type="checkbox" id="todaysEnd_kr" name="todaysEnd_kr"> <label for="todaysEnd_kr">마감포함 </label> </span>
+				<span style="float:right;"> <input type="checkbox" id="todays_kr" name="todays_kr"> <label for="todays_kr">국내 발매처만 보기</label> </span>
 			</div>
 			
 			<div class="todays-table-container">
@@ -131,8 +136,19 @@
 							//남은시간 계산하기 위한 날짜데이터 (02/16/2021 10:00)
 							String count_todays_start_time = count_format.format(original_Online_start_time);
 							String count_todays_end_time = count_format.format(original_Online_end_time);
+							
+							//비교하기 위한 날짜포멧들 
+							//현재 시간과 시작 시간 비교	(현재시간이 시작시간보다 지났으면  1)
+							//현재 시간과 끝나는 시간 비교	(현재시간이 끝나는시간보다 지났으면  1)
+							int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
+							int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
 					%>
-						<tr>
+						<tr class="release<%=odto_todays.getCountry_name()%>"
+						<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result == 1) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result == 1))){%>
+							id="releaseEnd<%=i%>tr" style="display:none;"
+						<%} else {%> 
+							id="release<%=i%>tr"
+						<%}%>>
 							<!-- 번호 -->
 							<td style="border-right: 0.5px dotted #dcdcdc;">
 								<%=i+1%>
@@ -161,8 +177,10 @@
 							<td style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:0 0 0 30px;">
 							
 								<!-- 발매처 기본정보 -->
-								<div class="todaysRelease-content1">
-								
+								<div id="count_todays_status<%=i%>releaseInfo" class="todaysRelease-content1" 
+								<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result == 1) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result == 1))){%> 
+									style="opacity:0.2;"
+								<%}%> >
 									<!--  발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
@@ -264,30 +282,32 @@
 									
 									<!-- 남은시간 -->
 									<div style="margin-top:35px;">
-<!-- 									<span class="info-subTitle">남은시간</span> -->
-										<span id="count_todays_status<%=i%>border" style="padding: 13px 16px 4px 16px; border: 1px solid #505050;">
-											<!-- 남은시간 -->
-											<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
-											<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
-											<!-- 남은시간 상태 -->
-											<span id="count_todays_status<%=i%>" style="display:none;">
-												<!-- 선착일때 -->
-												<%if(odto_todays.getOnline_method().contains("선착")){%>
-													
-												<!-- 드로우일때 -->
-												<%} else if( odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
-													
-												<%}%>
-											</span>
-											
+										<!-- 남은시간 -->
+										<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
+										<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
+										<!-- 남은시간 상태 -->
+										<span id="count_todays_status<%=i%>" style="display:none;">
 											<!-- 선착일때 -->
 											<%if(odto_todays.getOnline_method().contains("선착")){%>
+												<%if(compare_w_start_result == 1) {%>
+												종료
+												<%} %>
+											<!-- 드로우일때 -->
+											<%} else if( odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+												<%if(compare_w_end_result == 1){ %>
+												종료
+												<%} %>
+											<%}%>
+										</span>
+											
+										<!-- 선착일때 -->
+										<%if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result <= 0){%>
+											<span id="count_todays_status<%=i%>border" style="padding: 13px 16px 4px 16px; border: 1px solid #505050;">
 												<span>
 													<% if(!odto_todays.getOnline_start_date().isEmpty() && !odto_todays.getOnline_start_time().isEmpty()) {%>
 														<span class="remainTime-container">
 															<!-- 남은시간 -->
 															<span id="count_todays_status<%=i%>span" style="color:#313131;">
-<!-- 																<span style="padding-right: 1px;">선착까지</span> -->
 																<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일 
 																<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 4px;"></span>시간
 																<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>분
@@ -303,8 +323,17 @@
 														</span>
 													<%}%>
 												</span>
-											<!-- 드로우일때 -->
-											<%} else if( odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+											</span>
+										<%} else if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result == 1){%>
+											<span style="padding: 5px 10px; border: 1px solid #505050;">
+												<span style="color:#313131;">
+													종료
+												</span>
+											</span>
+										
+										<!-- 드로우일때 -->
+										<%} else if( (odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result <= 0) {%>
+											<span id="count_todays_status<%=i%>border" style="padding: 13px 16px 4px 16px; border: 1px solid #505050;">
 												<span>
 													<% if(!odto_todays.getOnline_end_date().isEmpty() && !odto_todays.getOnline_end_time().isEmpty()) {%>
 														<span class="remainTime-container"> 
@@ -326,8 +355,14 @@
 														</span>
 													<%}%>
 												</span>
-											<%} %>
-										</span>
+											</span>
+										<%} else if( (odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result == 1) {%>
+											<span style="padding: 5px 10px; border: 1px solid #505050;">
+												<span style="color:#313131;">
+													종료
+												</span>
+											</span>
+										<%} %>
 										
 									</div>
 									
@@ -425,9 +460,10 @@
 				document.getElementById(statusId).textContent = '종료';
 				document.getElementById(statusId+'span').textContent = '종료';
 				
+				$('#'+statusId+'releaseInfo').css("opacity", "0.2");
 				$('#'+statusId+'border').css("padding", "5px 10px");
 				$('#'+statusId+'span').css("font-size", "16px");
-				$('#'+statusId+'span').css("color", "#505050");
+				$('#'+statusId+'span').css("color", "#313131");
 				$('#'+statusId+'span').css("font-weight", "normal");
 				//임박표시 OFF
 				$('#'+statusId+'label').css("display", "none");
@@ -486,10 +522,33 @@
 			if(!count_span_start.match(noTimeData) && !count_span_end.match(noTimeData)){
 				countDownTimer('final_count_end_time'+i, count_span_end, 'count_todays_status'+i);	
 			}
-			
-			//발매종료된거 체크해서 종료 표시하기
-			
 		}
+		
+		//국내발매처만 클릭했을시
+		$('#todays_kr').change(function(){
+			//체크여부
+			var checked = $(this).is(":checked");
+			if(checked){
+				$("tr[class^='release']").not($("tr[class='release대한민국']")).css("display", "none");
+			}else{
+				$("tr[class^='release']").not($("tr[id^='releaseEnd']")).css("display", "table-row");
+			}
+		});
+		
+		//마감포함 클릭했을시
+		$('#todaysEnd_kr').change(function(){
+			//체크여부
+			var checked = $(this).is(":checked");
+			if(checked){
+				for(var i=0; i<todaysReleaseAll_list.length; i++) {
+					$('#releaseEnd'+i+'tr').css("display", "table-row");
+				}
+			}else{
+				for(var i=0; i<todaysReleaseAll_list.length; i++) {
+					$('#releaseEnd'+i+'tr').css("display", "none");	
+				}
+			}
+		});
 
 	});
 	
