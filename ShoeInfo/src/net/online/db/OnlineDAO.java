@@ -229,7 +229,7 @@ public class OnlineDAO {
 		
 		try{
 			con = getConnection();
-			sql = "SELECT * from shoeinfo_onlineinfo where ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') between now() and concat(adddate(curdate(), 1), ' 00:00:01')))) or (((online_method like '%드로우%') || online_method like '%라플%') and ( ((online_start_date = curdate() or online_end_date = curdate()) and (CONCAT(online_start_date, ' ', online_start_time, ':00') >= now())) or (now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')) ) )) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))  limit 6";
+			sql = "SELECT * from shoeinfo_onlineinfo where ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') between now() and concat(adddate(curdate(), 1), ' 00:00:01')))) or (((online_method like '%드로우%') || online_method like '%라플%') and ( ((online_start_date = curdate() or online_end_date = curdate()) and (CONCAT(online_start_date, ' ', online_start_time, ':00') >= now())) or (now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')) ) )) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))  limit 4";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -314,7 +314,7 @@ public class OnlineDAO {
 		
 		try{
 			con = getConnection();
-			sql = "SELECT * from shoeinfo_onlineinfo where ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') between now() and concat(adddate(curdate(), 1), ' 00:00:01')))) or (((online_method like '%드로우%') || online_method like '%라플%') and ( (online_start_date = curdate() or online_end_date = curdate()) or (now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')) ) )) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
+			sql = "SELECT * from shoeinfo_onlineinfo where ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') between concat(curdate(), ' 00:00:00') and concat(adddate(curdate(), 1), ' 00:00:01')))) or (((online_method like '%드로우%') || online_method like '%라플%') and ( (online_start_date = curdate() or online_end_date = curdate()) or (now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')) ) )) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){

@@ -151,22 +151,22 @@
 		<!-- 오늘의 모든 발매 리스트 -->
 		<div class="todaysRelease-container">
 			<div class="sub-title">
-				<h4> 오늘의 발매 리스트 </h4>
+				<h4> 오늘의 발매처 </h4>
 				<div class="allButton" onclick="location.href='./TodaysReleaseList.go'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
 			<div class="desc-container">
-				<span> 현재 시간을 기준으로 진행 중이거나 마감 예정인 모든 발매처를 보여주는 도표입니다. </span>
+				<span> 오늘 마감 예정인 모든 발매처 입니다. </span>
 			</div>
 			
 			<div class="todays-table-container">
 				<table id="onlineList_todays_table">
 					<tr>
-						<th style="width:5%; border-right: 0.5px dotted #dcdcdc;"> 번호 </th>
-						<th style="width:18%; border-right: 0.5px dotted #dcdcdc;"> 발매모델 </th>
-						<th style="width:65%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
+						<th style="width:7%; border-right: 0.5px dotted #dcdcdc;"> 번호 </th>
+						<th style="width:20%; border-right: 0.5px dotted #dcdcdc;"> 발매모델 </th>
+						<th style="width:61%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
 						<th style="width:12%;"> 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
@@ -175,9 +175,6 @@
 						</tr>
 					<% } else { 
 						for(int i=0; i<onlineList_todays.size(); i++){
-							if(i==5){
-								break;
-							}
 							OnlineDTO odto_todays = (OnlineDTO) onlineList_todays.get(i);
 							BrandDTO bdto_todays = (BrandDTO) brandList_todays.get(i);
 							SneakerDTO sdto_todays = (SneakerDTO) sneakerList_todays.get(i);
@@ -458,7 +455,7 @@
 							
 						</tr>
 					<% } } 
-						if(onlineList_todays.size() > 5) {
+						if(onlineList_todays.size() >= 4) {
 					%>
 						<tr>
 							<td colspan="4" style="height: 60px !important;"> <a href="./TodaysReleaseList.go"> 더보기  <i class="far fa-plus-square"></i> </a> </td>
@@ -1018,7 +1015,7 @@
 			//list
 			var count_span_start = document.getElementById("count_todays_start_time"+i).innerText;
 			var count_span_end = document.getElementById("count_todays_end_time"+i).innerText;
-
+			
 			var noTimeData = '0002';
 			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
 			if(count_span_start.match(noTimeData)){
