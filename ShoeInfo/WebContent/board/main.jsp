@@ -116,7 +116,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 각 신발들의 발매처가 <span style="color:green">응모 중</span>이거나 <span style="color:#ff5722">선착순 구매</span>가 예정인 상품 라인업입니다. 클릭시, 해당 상품의 발매처들을 볼 수 있습니다. </span>
+				<span> 진행 중인 발매처가 있는 제품들 </span>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -158,7 +158,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 오늘 마감 예정인 모든 발매처 입니다. </span>
+				<span> 오늘 마감 예정이거나 진행 중인 발매처 </span>
 			</div>
 			
 			<div class="todays-table-container">
@@ -475,7 +475,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 금주 월요일~일요일까지 발매하는 프리미엄 신발 라인업입니다. </span>
+				<span> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 이번 주 발매하는 프리미엄 신발 라인업 </span>
 			</div>
 			
 			<div class="snkrsWeek-table-container">
@@ -545,7 +545,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 해당 신발들은 아직 발매처가 없습니다. </span>
+				<span> 발매처가 없는 제품들 </span>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -588,7 +588,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 각 신발들의 발매처 기간이 종료되었거나 진행 중인 발매처가 없는 상품 라인업입니다. </span>
+				<span> 발매가 종료된 제품들 </span>
 			</div>
 			
 			<div class="released-table-container">
