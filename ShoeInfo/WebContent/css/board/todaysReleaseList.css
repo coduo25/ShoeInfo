@@ -57,7 +57,7 @@ body {font-size:1em; line-weight:1.4}
 	/* 바로가기 버튼 & 참여 체크박스 */
 	.links-container div { display:block; border: 1px solid black; padding: 5px 7px; border-radius: 5px; width: 90px; font-weight:bold; }
 	.direct-box { background-color:white; margin: 0 auto 10px auto; font-size:15px; transition: 0.3s; }
-	.draw_checkBox { margin: 0 auto; transition: 0.3s; font-size:15px; }
+	.draw_checkBox { margin: 0 auto; transition: 0.3s; font-size:15px; cursor:pointer; }
 	.direct-box:hover { background-color: black; color: white; }
 	
 	
