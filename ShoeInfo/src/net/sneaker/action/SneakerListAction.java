@@ -1,16 +1,14 @@
 package net.sneaker.action;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.brand.db.BrandDAO;
 import net.brand.db.BrandDTO;
 import net.member.db.MemberDAO;
 import net.online.db.OnlineDAO;
@@ -29,6 +27,7 @@ public class SneakerListAction implements Action {
 		
 		OnlineDAO odao = new OnlineDAO();
 		SneakerDAO sdao = new SneakerDAO();
+		BrandDAO bdao = new BrandDAO();
 		
 		//사용자 응모한 브랜드 리스트
 		MemberDAO mdao = new MemberDAO();
@@ -65,6 +64,10 @@ public class SneakerListAction implements Action {
 		request.setAttribute("releaseSneakerList", releaseSneakerList);
 		request.setAttribute("releasingSneakerList", releasingSneakerList);
 		request.setAttribute("releasedSneakerList", releasedSneakerList);
+		
+		//현재 발매 중인 신발들 진행중인 브랜드 갯수 가져오는 함수
+		ArrayList<Integer> countReleasingBrandList = bdao.getCountReleasingBrandList();
+		
  		
  		
  		

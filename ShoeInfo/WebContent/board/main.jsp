@@ -132,21 +132,27 @@
 						SneakerDTO releasing_sdto = releasingSneakerList.get(i);	
 				%>
 					<div class="mainSneaker-container">
-						<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
-							<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
-						</a>
-						
-						<!-- hover 칸  -->
-						<div class="mainSneaker-container-hover">
-							&nbsp;
+						<div class="mainSneaker-image">
+							<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
+								<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
+							</a>
+							<!-- hover 칸  -->
+							<div class="mainSneaker-container-hover">
+								&nbsp;
+							</div>
+							<!-- 이름 칸 -->
+							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
+								<p> <%=releasing_sdto.getModel_name_kr()%> </p>
+							</div>
 						</div>
-						
-						<!-- 이름 칸 -->
-						<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
-							<p> <%=releasing_sdto.getModel_name_kr()%> </p>
+							
+						<div class="mainSneaker-brandCount">
+							<span style="text-decoration:underline;">
+								발매처<span style="font-weight:normal">(3개)</span>
+							</span>
+							
 						</div>
 					</div>
-					
 				<% } } %>
 			</div>
 		</div>
@@ -548,7 +554,7 @@
 			
 			<div class="snkrsWeek-table-container">
 				<% if(onlineList_snkrs.isEmpty()){%>
-					<div style="padding-top: 30px;">
+					<div>
 						이번 주 발매 라인업이 없습니다.
 					</div>
 				<% } else { 
@@ -613,7 +619,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 발매처가 없는 제품들 </span>
+				<span> 발매처가 아직 없는 제품들 </span>
 			</div>
 			
 			<div class="releasing-table-container">
@@ -626,20 +632,19 @@
 						SneakerDTO release_sdto = releaseSneakerList.get(i);	
 				%>
 					<div class="mainSneaker-container">
-						<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
-							<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
-						</a>
-						
-						<!-- hover 칸  -->
-						<div class="mainSneaker-container-hover">
-							 &nbsp;					
+						<div class="mainSneaker-image">
+							<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
+								<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
+							</a>
+							<!-- hover 칸  -->
+							<div class="mainSneaker-container-hover">
+								 &nbsp;					
+							</div>
+							<!-- 이름 칸 -->
+							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
+								<p> <%=release_sdto.getModel_name_kr()%> </p>				
+							</div>
 						</div>
-						
-						<!-- 이름 칸 -->
-						<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
-							<p> <%=release_sdto.getModel_name_kr()%> </p>				
-						</div>
-						
 					</div>
 				<% } } %>
 			</div>
@@ -656,7 +661,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 발매가 종료된 제품들 </span>
+				<span> 모든 발매가 종료된 제품들 </span>
 			</div>
 			
 			<div class="released-table-container">
@@ -669,18 +674,18 @@
 						SneakerDTO released_sdto = releasedSneakerList.get(i);	
 				%>
 					<div class="mainSneaker-container">
-						<a href="./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>">
-							<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
-						</a>
-						
-						<!-- hover 칸  -->
-						<div class="mainSneaker-container-hover">
-							 &nbsp;					
-						</div>
-						
-						<!-- 이름 칸 -->
-						<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
-							<p> <%=released_sdto.getModel_name_kr()%> </p>				
+						<div class="mainSneaker-image">
+							<a href="./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>">
+								<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
+							</a>
+							<!-- hover 칸  -->
+							<div class="mainSneaker-container-hover">
+								 &nbsp;					
+							</div>
+							<!-- 이름 칸 -->
+							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
+								<p> <%=released_sdto.getModel_name_kr()%> </p>				
+							</div>
 						</div>
 					</div>
 				<% } } %>
@@ -1026,7 +1031,7 @@
 					document.getElementById(statusId+'label').textContent = '선착시간임박!';	
 				}
 				if(id.match('end')){
-					document.getElementById(statusId+'label').textContent = '마감임박!';	
+					document.getElementById(statusId+'label').textContent = '응모마감임박!';	
 				}
 				//임박표시 ON
 				$('#'+statusId+'label').css("display", "block");
@@ -1035,13 +1040,17 @@
 			else if(finalTime == 0000000){
 				document.getElementById(statusId).textContent = '종료';
 				document.getElementById(statusId+'span').textContent = '종료';
-				
-				$('#'+statusId+'border').css("padding", "5px 10px");
-				$('#'+statusId+'span').css("font-size", "16px");
-				$('#'+statusId+'span').css("color", "#313131");
-				$('#'+statusId+'span').css("font-weight", "normal");
+				document.getElementById(statusId+'linkBtnText').textContent = '종료';				
+			
+				//응모 status (응모중,응모예정) 없애기
+				$('#'+statusId+'release-status').css("display", "none");
+				//남은시간 '종료'빨간색으로 바꾸끼
+				$('#'+statusId+'span').css("color", "rgb(218, 1, 10)");
 				//임박표시 OFF
 				$('#'+statusId+'label').css("display", "none");
+				//응모링크 클릭 못하게+disable 디자인
+				$('#'+statusId+'linkBtn').css({"border":"none", "background-color":"#f1f1f1", "color":"rgb(196 196 196)"});
+				$('#'+statusId+'linkBtn').removeAttr('onclick');
 			}
 			//임박하지 않고 계속 진행중일때
 			else {
@@ -1073,7 +1082,7 @@
 			}
 		}
 		
-		//오늘 발매 리스트
+		///오늘 발매 리스트
 		var todaysReleaseAll_list = [];
 		<c:forEach items="${onlineList_todays}" var="onlineList_todays">
 			todaysReleaseAll_list.push("${onlineList_todays}");
@@ -1083,7 +1092,7 @@
 			//list
 			var count_span_start = document.getElementById("count_todays_start_time"+i).innerText;
 			var count_span_end = document.getElementById("count_todays_end_time"+i).innerText;
-			
+
 			var noTimeData = '0002';
 			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
 			if(count_span_start.match(noTimeData)){
@@ -1098,6 +1107,97 @@
 				countDownTimer('final_count_end_time'+i, count_span_end, 'count_todays_status'+i);	
 			}
 		}
+		
+		//응모 여부 체크박스 클릭했을시 -----------------------------------------------------------------------
+		$('.draw_checkBox').on('click', function(){
+			//로그인 체크
+			if($(".login_user").val() == "") {
+				var login_confirm = confirm("응모여부를 체크할려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
+				if(login_confirm){
+					location.href="./MemberLogin.me";
+					$(this).prop("checked", false);
+				}else {
+					$(this).prop("checked", false);
+				}
+			}
+			//로그인시
+			else {
+				var checkbox_id = $(this).attr("id");
+				var id_num = checkbox_id.replace(/[^0-9]/g,'');
+				
+				//응모참여 status
+				var draw_status = $('#drawCheck_status'+id_num).val();
+
+				//응모시간이 아니면 alert 띄우기
+				var hidden_ing = $('#hidden_ing'+id_num).val();
+				if(hidden_ing < 0){
+					alert("응모 전입니다. \n응모기간에 응모여부를 체크 할 수 있습니다.");
+					return false;
+				}
+				else {
+					//신발모델 번호
+					var model_num = $('#model_num'+id_num).val();
+					//신발모델 스타이코드
+					var model_stylecode = $('#model_stylecode'+id_num).val();
+					//브랜드 아이디
+					var brand_id = $('#brand_id'+id_num).val();
+					//국가 이름
+					var country_name = $('#country_name'+id_num).val();
+					
+					//참여전인데 체크박스 눌릴시 -> 참여완료
+					if(draw_status == '참여전'){
+						//status 참여완료로 바꾸기
+						$('#drawCheck_status'+id_num).val('참여완료');
+						$.ajax({
+				   			type:'get',
+				   			url:'./addUserDrawInfoAction.me',
+				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
+				   			dataType: 'html',
+				   			success:function(data) {
+
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+						//참여전 표시 -> 참여완료로 바꾸기
+						$('#release-info'+id_num).css("opacity", "0.3");
+						$('#releaseModel-info'+id_num).css("opacity", "0.3");
+						$('#draw_checkBox'+id_num).css("background-color","black");
+						$('#draw_checkBox'+id_num).css("color","white");
+						$('#drawCheck_statusTxt'+id_num).text("응모함");
+					} 
+					//참여완료인데 체크박스 눌릴시 -> 참여전
+					else if(draw_status == '참여완료'){
+						//status 참여전으로 바꾸기
+						$('#drawCheck_status'+id_num).val('참여전');
+						$.ajax({
+				   			type:'get',
+				   			url:'./deleteUserDrawInfoAction.me',
+				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
+				   			dataType: 'html',
+				   			success:function(data) {
+				   				
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+						//참여완료 표시 -> 참여전으로 바꾸기
+						$('#release-info'+id_num).css("opacity", "1");
+						$('#releaseModel-info'+id_num).css("opacity", "1");
+						$('#draw_checkBox'+id_num).css("background-color","white");
+						$('#draw_checkBox'+id_num).css("color","black");
+						$('#drawCheck_statusTxt'+id_num).text("");
+					}
+				}
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
 		
 		//발매전을 눌렸을시
 		$('#before').click(function(){
