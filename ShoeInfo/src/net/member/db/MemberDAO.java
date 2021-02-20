@@ -607,6 +607,26 @@ public class MemberDAO {
 		return userDrawBrandList;
 	}
 	
+	//사용자의 모든 응모 정보 불러오는 함수
+	public ArrayList<String> searchDrawBrandInfoAll(String user) {
+		ArrayList<String> userDrawBrandList = new ArrayList();
+		try {
+			con = getConnection();
+			sql = "select distinct brand_id, model_stylecode from shoeinfo_memberdrawinfo where member_email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				userDrawBrandList.add(rs.getString("brand_id")+rs.getString("model_stylecode"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return userDrawBrandList;
+	}
+	
 	//사용자의 월별 응모 브랜드 정보 불러오는 함수
 	public Vector searchUserDrawStylecode_kr(String user, String date) {
 		Vector vec = new Vector();

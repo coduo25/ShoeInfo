@@ -441,7 +441,9 @@
 										
 										<!-- 온라인 방식이 '드로우'이고  로그인이 안되어있으면 -->
 										<%if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("오프라인라플") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user.equals("")){%>
-											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> <input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox"> </span>
+											<span class="draw_chkBtn" id="draw-status_list_<%=country_name_eng%><%=i%>"> 
+												<input id="drawCheckbox_<%=country_name_eng%><%=i%>" type="checkbox" class="draw_checkbox"> 
+											</span>
 										<!-- 온라인 방식이 '드로우'이고 로그인이 되어있으면 -->
 										<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("오프라인라플") || odto.getOnline_method().contains("인스타라플") || odto.getOnline_method().contains("이메일라플")) && user != null && !userDrawBrandList.contains(odto.getBrand_id())){%>
 											<span class="draw_chkBtn" id="draw-status_<%=country_name_eng%><%=i%>">
