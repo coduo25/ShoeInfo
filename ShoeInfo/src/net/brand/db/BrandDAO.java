@@ -196,20 +196,6 @@ public class BrandDAO {
 		return brandList;
 	}
 	
-	//신발별 현재 진행중인 브랜드 갯수를 구하는 함수
-	public ArrayList getCountReleasingBrandList(){
-		ArrayList count = new ArrayList();
-		try {
-			con = getConnection();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		return count;
-	}
-	
 	// 브랜드 상세정보 가져오는 함수
 	public BrandDTO getBrandDetail(String brand_id) {
 		BrandDTO bdto = null;

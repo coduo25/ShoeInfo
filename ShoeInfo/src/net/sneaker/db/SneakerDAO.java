@@ -170,10 +170,14 @@ public class SneakerDAO {
 		ArrayList<SneakerDTO> releaseSneakerList = new ArrayList<SneakerDTO>();
 		ArrayList<SneakerDTO> releasedSneakerList = new ArrayList<SneakerDTO>();
 		
+		ArrayList<Integer> countReleasingBrandList = new ArrayList<Integer>();
+		
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
 		PreparedStatement pstmt3 = null;
 		ResultSet rs3 = null;
+		PreparedStatement pstmt4 = null;
+		ResultSet rs4 = null;
 		
 		try {
 			con = getConnection();
@@ -310,6 +314,15 @@ public class SneakerDAO {
 				//발매중
 				else if(maxDate.getTime() >= nowDayTimeFormat.getTime()){
 					releasingSneakerList.add(sdto);
+					
+					//발매 중인 신발의 현재 진행중인 브랜드 갯수 구해서 리스트에 넣기
+					sql = "SELECT count(brand_id) as brand_id from shoeinfo_onlineinfo where model_stylecode = ? and ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') >= now()))) or (((online_method like '%드로우%') || online_method like '%라플%') and ( ((online_start_date = curdate() or online_end_date = curdate()) and (CONCAT(online_start_date, ' ', online_start_time, ':00') >= now())) or (now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')) ) )) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
+					pstmt4 = con.prepareStatement(sql);
+					pstmt4.setString(1, sdto.getModel_stylecode());
+					rs4 = pstmt4.executeQuery();
+					if(rs4.next()){
+						countReleasingBrandList.add(rs4.getInt("brand_id"));
+					}
 				}
 				//발매완료
 				else if(maxDate.getTime() < nowDayTimeFormat.getTime()){
@@ -319,6 +332,7 @@ public class SneakerDAO {
 			vec.add(releaseSneakerList);
 			vec.add(releasingSneakerList);
 			vec.add(releasedSneakerList);
+			vec.add(countReleasingBrandList);
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
@@ -339,14 +353,7 @@ public class SneakerDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo "
-					+ "where brand_id = '대한민국_SNKRS 한국' "
-					+ "and (((concat(online_start_date, ' ', online_start_time, ':00')) between (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 0), ' 00:00:00')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59'))) "
-					+ "or ((concat(online_end_date, ' ', online_end_time, ':00')) between (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 0), ' 00:00:00')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59')))) "
-					+ "and (((concat(online_start_date, ' ', online_start_time, ':00')) between (DATE_FORMAT(now(), '%Y-%m-%d %H:%i')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59'))) "
-					+ "or ((concat(online_end_date, ' ', online_end_time, ':00')) between (DATE_FORMAT(now(), '%Y-%m-%d %H:%i')) and (concat( ADDDATE(CURDATE(), -WEEKDAY(CURDATE()) + 6), ' 23:59:59')))) "
-					+ "and (online_method = '선착' or online_method = '드로우')"
-					+ "order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
+			sql = "select * from shoeinfo_onlineinfo where brand_id='대한민국_SNKRS 한국' and (((online_method='선착') and (concat(online_start_date, ' ', online_start_time, ':00') between now() and concat(last_day(now()-interval 0 month), ' 23:59:59'))) or ((online_method = '드로우') and (concat(online_end_date, ' ', online_end_time, ':00') between now() and concat(last_day(now()-interval 0 month), ' 23:59:59')))) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){

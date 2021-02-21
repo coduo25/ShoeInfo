@@ -23,22 +23,22 @@ body {font-size:1em; line-weight:1.4}
 .allButton { display:inline-block; float:right; border:1px solid #191919; padding: 4px 8px; background-color: #191919; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
 
 /* 발매 중 리스트 (메인페이지) */
-.mainSneaker-container { float:left; width:19%; margin:0.5% 0.5% 2.5% 0.5%; text-align:center; font-family:'Nanum Gothic', sans-serif; font-weight:bold; }
+.mainSneaker-container { float:left; width:24%; margin:0.5%; text-align:center; font-family:'Nanum Gothic', sans-serif; font-weight:bold; }
 .mainSneaker-image { position:relative; display:block; border:1px solid #eaeaea; }
-.mainSneaker-image img { width:100%; height:100%; padding:3%; }
-.mainSneaker-brandCount { display:block; font-weight:normal !important; margin-top:5px; }
+.mainSneaker-image img { width:100%; height:100%; padding:5%; }
+.mainSneaker-brandCount { display:block; font-weight:normal !important; margin:4px 0 5px 0; cursor:pointer;}
 
 .mainSneaker-container-hover { position: absolute; width: 100%; height: 100%; background-color: #2b2b2b; opacity:0; top:0; left:0; transition: 0.3s; }
-.mainSneaker-container-hover-Name { display: table; position: absolute; width: 100%; height: 100%; opacity:0; top:0; left:0; transition: 0.3s; font-weight:bold; color: white; font-size: 19px; cursor:pointer; }
+.mainSneaker-container-hover-Name { display: table; position: absolute; width: 100%; height: 100%; opacity:0; top:0; left:0; transition: 0.3s; font-weight:bold; color: white; font-size: 22px; cursor:pointer; }
 .mainSneaker-container-hover-Name p { display: table-cell; text-align: center; vertical-align: middle; padding: 0 7%; }
 .mainSneaker-container-hover-Name p a { color: white !important; }
 .mainSneaker-image:hover > .mainSneaker-container-hover { opacity:0.8; }
 .mainSneaker-image:hover > .mainSneaker-container-hover-Name { opacity:1; }
 
 
-/* 오늘의 발매 리스트 */
+/* 오늘의 발매 리스트 ------------------------------------------------------------------------------ */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; }
-#onlineList_todays_table th { height: 50px; border-top: 1px solid black; border-bottom: 1px solid #bbbbbb; background-color: #f7f7f7; } 
+#onlineList_todays_table th { height: 50px; border-top: 1.8px solid black; border-bottom: 1px solid #bbbbbb; background-color: #f7f7f7; } 
 #onlineList_todays_table td { height: 100%; border-bottom: 1px solid #c7c7c7; padding:30px 0; }
 #onlineList_todays_table td { text-align: center; }
 
@@ -76,20 +76,16 @@ body {font-size:1em; line-weight:1.4}
 	.draw_checkBox { margin: 0 auto; transition: 0.3s; font-size:15px; cursor:pointer; }
 	.direct-box:hover { background-color: black; color: white; }
 	
-	
 
-
-
-
-/* 이번주 snkrs 리스트 (메인페이지) */
-.snkrsWeek-table-container { width: 1080px; overflow-x: scroll; padding: 30px 0 45px 0; white-space:nowrap; border-top: 1px solid #b1b1b1; }
-.snkrsSneaker-container { display:inline-block; width: 25%; margin-right: 20px; }
-.snkrsSneaker-container img, .snkrsSneaker-container div { width: 100%; }
-.snkrsSneaker-container img { border: 1px solid #e2e2e2; padding: 30px 10px 20px 10px; }
-.snkrsSneaker-container div { text-align: left; display: block; margin-left: 5px; }
-div.snkrs_startTime { font-size: 17px; font-weight: bold; margin-top:6px; }
-div.snkrs_modelName { font-size: 16px; margin-top:11px; }
-
+/* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
+.snkrsWeek-table-container { width:1080px; overflow-x:scroll; padding:30px 0 45px 10px; white-space:nowrap; border-top:1px solid #b1b1b1; }
+.snkrsSneaker-container { display:inline-block; width:25%; margin-right:20px; }
+.snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
+.snkrsSneaker-container img { border:1px solid #cecece; padding:85px 10px 20px 10px; }
+.snkrsSneaker-container div { text-align:center; display:block; position:relative; }
+div.snkrs_date { font-size:24px; margin:8px 0; font-weight:bold; }
+div.snkrs_time a { font-size:14px; color:#777 !important; }
+.dDay-status { position:absolute !important; padding:17px; color:#e0575c; font-size:22px; font-weight:bold; font-family: 'Noto Sans KR', sans-serif; }
 
 /* 스크롤바 style */
 /* width */

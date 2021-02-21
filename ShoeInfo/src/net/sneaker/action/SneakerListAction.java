@@ -60,15 +60,15 @@ public class SneakerListAction implements Action {
 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(0);
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(1);
 		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(2);
+		//현재 발매 중인 신발들 중에 진행중인 브랜드 갯수 가져오는 리스트
+		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) vec_totalReleaseList.get(3);
 		
 		request.setAttribute("releaseSneakerList", releaseSneakerList);
 		request.setAttribute("releasingSneakerList", releasingSneakerList);
 		request.setAttribute("releasedSneakerList", releasedSneakerList);
 		
-		//현재 발매 중인 신발들 진행중인 브랜드 갯수 가져오는 함수
-		ArrayList<Integer> countReleasingBrandList = bdao.getCountReleasingBrandList();
-		
- 		
+		request.setAttribute("countReleasingBrandList", countReleasingBrandList);
+
  		
  		
 		

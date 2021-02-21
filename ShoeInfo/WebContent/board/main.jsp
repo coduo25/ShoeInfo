@@ -26,10 +26,12 @@
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
@@ -44,7 +46,7 @@
 		//사용자 응모한 브랜드 리스트
 		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
 	
-		//오늘의 발매 리스트(5개)
+		//오늘의 발매 리스트(4개)
 		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_todays");
 		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) request.getAttribute("brandList_todays");
 		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_todays");
@@ -53,6 +55,8 @@
 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
 		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasedSneakerList");
+		//발매중인 산발들의 진행중인 브랜드 갯수
+		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) request.getAttribute("countReleasingBrandList");
 		
 		//이번주 snkrs 리스트
 		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_snkrs");
@@ -60,7 +64,8 @@
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		SimpleDateFormat new_format = new SimpleDateFormat("M월 d일");
+		SimpleDateFormat date_format = new SimpleDateFormat("M월 d일(E)");
+		SimpleDateFormat time_format = new SimpleDateFormat("a hh:mm");
 		
 		SimpleDateFormat month_format = new SimpleDateFormat("M월");
 		
@@ -72,8 +77,8 @@
 		
 		//오늘날짜
 		Date currentTime = new Date();
-		String current = original_format.format(currentTime);
-		Date today = original_format.parse(current);
+		String current = format.format(currentTime);
+		Date today = format.parse(current);
 		
 		
 		
@@ -105,6 +110,8 @@
 	<!-- Header -->
 	<header> <jsp:include page="/include/header.jsp" /> </header>
 
+	<input type="hidden" class="login_user" id="login_user" value="<%=user%>">
+
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 	
@@ -130,6 +137,7 @@
 				<% } else {
 					for(int i=releasingSneakerList.size()-1; i>=0; i--){
 						SneakerDTO releasing_sdto = releasingSneakerList.get(i);	
+						int countBrand = countReleasingBrandList.get(i);
 				%>
 					<div class="mainSneaker-container">
 						<div class="mainSneaker-image">
@@ -146,9 +154,9 @@
 							</div>
 						</div>
 							
-						<div class="mainSneaker-brandCount">
-							<span style="text-decoration:underline; color:#606060;">
-								발매처<span style="font-weight:normal">(3개)</span>
+						<div class="mainSneaker-brandCount" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>'">
+							<span style="color:#606060; float:center;">	
+								발매처 (<span style="border-bottom:1px dotted #606060;"><%=countBrand%>곳</span>)
 							</span>
 							
 						</div>
@@ -549,13 +557,13 @@
 			</div>
 			
 			<div class="desc-container">
-				<span> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="text-decoration:underline; color: #fe0016;">SNKRS</a>)에서 이번 주 발매하는 프리미엄 신발 라인업 </span>
+				<span> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 이번 달 발매하는 프리미엄 신발 라인업 </span>
 			</div>
 			
 			<div class="snkrsWeek-table-container">
 				<% if(onlineList_snkrs.isEmpty()){%>
 					<div>
-						이번 주 발매 라인업이 없습니다.
+						이번 달 발매 라인업이 없습니다.
 					</div>
 				<% } else { 
 					for(int i=0; i<onlineList_snkrs.size(); i++) {
@@ -578,17 +586,50 @@
 						}
 						
 						Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
+						Date original_Online_start_date = original_format.parse(online_start_date);
 						
-						//O월 OO일 24시
-						String newlist_Online_start_time = snkrs_format.format(original_Online_start_time);
+						//yyyy-MM-dd
+						String dateFormat2 = original_format.format(original_Online_start_time);
+
+						//O월 OO일(수)
+						String dateFormat = date_format.format(original_Online_start_time);
+						//오전 10:00
+						String timeFormat = time_format.format(original_Online_start_time);
+						
+						//발매 날짜와 현재 날짜 차이 계산해서 D-O일 나타내기
+						Calendar getToday = Calendar.getInstance();
+						getToday.setTime(new Date()); //오늘날짜
+						
+						Calendar releaseDate = Calendar.getInstance();
+						releaseDate.setTime(original_Online_start_date); //발매날짜
+						
+						long diffSec = (releaseDate.getTimeInMillis()-getToday.getTimeInMillis()) / 1000;
+						long diffDays = (diffSec / (24*60*60))+1; //일자수 차이
 				%>
 					<div class="snkrsSneaker-container">
-						<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
-							<img src="./sneaker_img_upload/<%=snkrs_sdto.getImage()%>">
-						</a>
-						<div class="snkrs_startTime">
+						<div>
+							<div class="dDay-status">
+								<%if(diffDays==0){ %>
+									발매일
+								<%}else { %>
+									<%=diffDays%>일 남음
+								<%} %>
+							</div>
 							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
-								<%=newlist_Online_start_time%> 
+								<img src="./sneaker_img_upload/<%=snkrs_sdto.getImage()%>">
+							</a>
+						</div>
+						<div>
+							<!-- 시작날짜 -->
+							<div class="snkrs_date">
+								<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+									<%=dateFormat%>
+								</a>
+							</div>
+							<!-- 시작시간 -->
+							<div class="snkrs_time">
+								<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+								<%=timeFormat%>
 								<%if(snkrs_odto.getOnline_method().contains("선착")) {%>
 									선착
 								<%}else if(snkrs_odto.getOnline_method().contains("드로우")) {%>
@@ -596,9 +637,12 @@
 								<%}else if(snkrs_odto.getOnline_method().contains("-")) {%>
 									(발매방식 미정)
 								<%}%>
-							</a>
+								</a>
+							</div>
 						</div>
-						<div class="snkrs_modelName">
+						
+						
+						<div class="snkrs_modelName" style="display:none;">
 							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
 								<%=snkrs_sdto.getModel_name_kr()%>
 							</a>
@@ -848,7 +892,7 @@
 									<% if(sdto.getRelease_date().contains("99")){%>
 										<%=month_format.format(month_date_type)%> &nbsp;–&nbsp;일
 									<%} else {%>
-										<%=new_format.format(date_type)%>
+										<%=date_format.format(date_type)%>
 									<%}%>
 								</span>
 							</div>
