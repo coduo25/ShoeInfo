@@ -53,7 +53,6 @@ public class SneakerFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
 		//오늘의응모 리스트 보여주는 페이지 처리
 		else if(command.equals("/TodaysReleaseList.go")){
 			action = new TodayReleaseListAction();
@@ -63,7 +62,24 @@ public class SneakerFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
+		//발매중 발매예정 리스트 보여주는 페이지 처리
+		else if(command.equals("/AllReleaseList.go")){
+			action = new AllReleaseListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//발매완료 리스트 보여주는 페이지 처리
+		else if(command.equals("/AllReleasedList.go")){
+			action = new AllReleasedListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//신발 정보(디테일) 보여주는 페이지 처리
 		else if(command.equals("/SneakerDetail.go")) {
 			action = new SneakerDetailAction();

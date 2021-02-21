@@ -31,8 +31,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
 
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
@@ -156,7 +154,7 @@
 							
 						<div class="mainSneaker-brandCount" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>'">
 							<span style="color:#777; float:center;">	
-								발매처 (<span style="border-bottom:1px dotted #606060;"><%=countBrand%>곳</span>)
+								발매처 (<span style="border-bottom:1px dotted #525252;"><%=countBrand%>곳</span>)
 							</span>
 							
 						</div>
@@ -254,7 +252,7 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:30px 0 30px 20px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:30px 0 30px 15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
@@ -550,8 +548,8 @@
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container">
 			<div class="sub-title">
-				<h4> 나이키 코리아<img src="./brand_img_upload/nikelogo.png" width="30" height="30" style="border:0.5px solid #f1f1f1; vertical-align: bottom;"> 프리미엄 라인업  </h4>
-				<div class="allButton" onclick="location.href='#'">
+				<h4><img src="./brand_img_upload/nikelogo.png" width="50" height="30" style="vertical-align:bottom;">나이키 코리아 프리미엄 라인업</h4>
+				<div class="allButton" onclick="location.href='./AllReleaseList.go'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
@@ -596,24 +594,29 @@
 						//오전 10:00
 						String timeFormat = time_format.format(original_Online_start_time);
 						
-						//발매 날짜와 현재 날짜 차이 계산해서 D-O일 나타내기
-						Calendar getToday = Calendar.getInstance();
-						getToday.setTime(new Date()); //오늘날짜
+						//발매 날짜와 현재 날짜 차이 계산해서 D-O일 나타내기						
+						Calendar cal = Calendar.getInstance();
+						String todayDate_instance = original_format.format(cal.getTime());
 						
-						Calendar releaseDate = Calendar.getInstance();
-						releaseDate.setTime(original_Online_start_date); //발매날짜
+						Date todayDate = original_format.parse(todayDate_instance);
+						Date releaseDate = original_format.parse(dateFormat2);
 						
-						long diffSec = (releaseDate.getTimeInMillis()-getToday.getTimeInMillis()) / 1000;
-						long diffDays = (diffSec / (24*60*60))+1; //일자수 차이
+						long calDate = releaseDate.getTime()-todayDate.getTime();
+						
+						long calDateDays = calDate/(24*60*60*1000);
+						
+						calDateDays = Math.abs(calDateDays);
 				%>
 					<div class="snkrsSneaker-container">
 						<div>
 							<div class="dDay-status">
-								<%if(diffDays==0){ %>
-									발매일
-								<%}else { %>
-									<%=diffDays%>일 남음
-								<%} %>
+								<span>
+									<%if(calDateDays==0){ %>
+										발매일
+									<%}else { %>
+										<%=calDateDays%>일 남음
+									<%} %>
+								</span>
 							</div>
 							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
 								<img src="./sneaker_img_upload/<%=snkrs_sdto.getImage()%>">
@@ -657,7 +660,7 @@
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 2021년 발매 예정 라인업 </h4>
-				<div class="allButton" onclick="location.href='#'">
+				<div class="allButton" onclick="location.href='./AllReleaseList.go'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
