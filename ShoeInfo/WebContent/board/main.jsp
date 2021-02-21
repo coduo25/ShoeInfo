@@ -155,7 +155,7 @@
 						</div>
 							
 						<div class="mainSneaker-brandCount" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>'">
-							<span style="color:#606060; float:center;">	
+							<span style="color:#777; float:center;">	
 								발매처 (<span style="border-bottom:1px dotted #606060;"><%=countBrand%>곳</span>)
 							</span>
 							
@@ -499,7 +499,7 @@
 							</td>
 	
 							<!-- 바로가기 버튼 & 참여체크박스 -->
-							<td class="links-container"> 
+							<td class="links-container" > 
 								<!-- 바로가기 버튼 -->
 								<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
 									<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="border:none; background-color:#f1f1f1; color:rgb(196 196 196);">
@@ -550,14 +550,14 @@
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container">
 			<div class="sub-title">
-				<h4> 나이키 코리아 프리미엄 라인업 </h4>
+				<h4> 나이키 코리아<img src="./brand_img_upload/nikelogo.png" width="30" height="30" style="border:0.5px solid #f1f1f1; vertical-align: bottom;"> 프리미엄 라인업  </h4>
 				<div class="allButton" onclick="location.href='#'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
 			
 			<div class="desc-container">
-				<span> 나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 이번 달 발매하는 프리미엄 신발 라인업 </span>
+				<span>나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 이번 달 발매하는 프리미엄 신발 라인업 </span>
 			</div>
 			
 			<div class="snkrsWeek-table-container">
