@@ -147,7 +147,7 @@
 						</div>
 							
 						<div class="mainSneaker-brandCount">
-							<span style="text-decoration:underline;">
+							<span style="text-decoration:underline; color:#606060;">
 								발매처<span style="font-weight:normal">(3개)</span>
 							</span>
 							
