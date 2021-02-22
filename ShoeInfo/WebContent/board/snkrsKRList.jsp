@@ -134,7 +134,7 @@
 					<div class="snkrsSneaker-container">
 						<div>
 							<div class="dDay-status">
-								<span>
+								<span <%if(calDateDays <=2){%>style="border:1px solid #e0575c; background-color:#e0575c;"<%}else{%>style="border:1px solid black; background-color:black;"<%}%>>
 									<%if(calDateDays==0){ %>
 										발매일
 									<%}else { %>

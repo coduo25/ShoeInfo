@@ -251,7 +251,7 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:30px 0 px 5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:25px 0 25px 5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
@@ -613,7 +613,7 @@
 					<div class="snkrsSneaker-container">
 						<div>
 							<div class="dDay-status">
-								<span>
+								<span <%if(calDateDays <=2){%>style="border:1px solid #e0575c; background-color:#e0575c;"<%}else{%>style="border:1px solid black; background-color:black;"<%}%>>
 									<%if(calDateDays==0){ %>
 										발매일
 									<%}else { %>
