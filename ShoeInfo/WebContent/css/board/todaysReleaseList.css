@@ -7,11 +7,11 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative; } /* width: 80%; margin: 5px auto; */
 
 /* 리스트 별 컨테이너 */
-.todaysRelease-container { display: table; width: 100%; box-sizing: border-box; margin: 10px 0 70px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todaysRelease-container { display: table; width: 100%; box-sizing: border-box; margin:100px 0; font-family: 'Nanum Gothic', sans-serif; }
 .todays-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title { display: block; margin: 30px 0 15px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; margin:0 0 15px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -20,21 +20,21 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* 오늘의 발매 리스트 */
-#onlineList_todays_table { width: 100%; border-collapse: collapse; }
-#onlineList_todays_table th { height: 50px; border-top: 1.8px solid black; border-bottom: 1px solid #b5b5b5; background-color: #f7f7f7; } 
-#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #b5b5b5; padding:30px 0; }
+#onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black;}
+#onlineList_todays_table th { height: 50px; border-bottom: 1px solid #b5b5b5; background-color: #f7f7f7; } 
+#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #b5b5b5; padding:25px 0; }
 #onlineList_todays_table td { text-align: center; }
 
 	/* 번호 & 상태 */
-	.status-container div { display:block; }
+	.status-container div { display:block; font-size:17px;}
 
 	/* 발매처정보 */
 	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; }
-	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left: 15px; }
+	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left: 20px; }
 
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
-	.brand-info-container { vertical-align: top; margin-bottom: 20px !important; }
+	.brand-info-container { vertical-align: top; margin-bottom: 17px !important; }
 	.release-status { margin-left: 7px; padding:4px 6px; vertical-align: -webkit-baseline-middle !important; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	
 	/* 발매처 정보 박스 */

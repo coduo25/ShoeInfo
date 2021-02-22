@@ -80,6 +80,15 @@ public class SneakerFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		//발매완료 리스트 보여주는 페이지 처리
+		else if(command.equals("/SnkrsKRList.go")){
+			action = new SnkrsKRListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		//신발 정보(디테일) 보여주는 페이지 처리
 		else if(command.equals("/SneakerDetail.go")) {
 			action = new SneakerDetailAction();

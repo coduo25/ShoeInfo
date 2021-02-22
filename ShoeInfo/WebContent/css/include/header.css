@@ -14,12 +14,12 @@ a { text-decoration: none; color: #000000; }
 
 /* 최상단 메뉴 */
 .toplink-container div { display: block; }
-.toplink-container { display: flex; align-items: center; padding: 0.7rem; position: relative; z-index: 99; background-color: #ebeef0 !important; font-family: 'Nanum Gothic', sans-serif; }
-.insta-label { float: left; margin-right: 10px; text-transform: none; font-size: 13px; font-weight: bold; }
-.insta-label span { font-weight: bold; }
-.acc-container { float: right; font-size: 13px; font-weight: bold; }
-.insta-label a, .acc-container a { color: #444; }
-.toplink-container i { padding-right: 2px; }
+.toplink-container { display: flex; align-items: center; padding: 0.7rem; position: relative; z-index: 99; background-color: #eaeaea !important; font-family: 'Nanum Gothic', sans-serif; }
+.insta-label { float: left; margin-right: 10px; text-transform:none; font-size:13px; }
+/* .insta-label span { font-weight: bold; } */
+.acc-container { float: right; font-size:13px; }
+.insta-label a, .acc-container a { color:#444; }
+.toplink-container i { padding-right:2px; }
 
 .toplink-container a:hover { color: #808080; }
 

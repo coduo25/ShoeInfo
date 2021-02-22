@@ -25,7 +25,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<link href="./css/board/snkrsKRList.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
@@ -40,12 +40,10 @@
 		if(user == null){
 			user="";
 		}
-		
-		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
-		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
-		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
-		//발매중인 산발들의 진행중인 브랜드 갯수
-		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) request.getAttribute("countReleasingBrandList");
+
+		//이번주 snkrs 리스트
+		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_snkrs");
+		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_snkrs");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -73,94 +71,114 @@
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
-	
-		<!-- 발매 중 리스트 -->
-		<div class="releasing-container" style="margin-top:40px !important;">
-			<div class="sub-title">	
-<!-- 			<div class="sub-title-wline"> -->
-				<h4> 현재 발매 중인 라인업 </h4>
+
+		<!-- 이번주 나코 snkrs 리스트 -->
+		<div class="snkrsWeek-container" style="margin-top:40px !important;">
+			<div class="sub-title">
+				<h4><img src="./brand_img_upload/nikelogo.png" width="50" height="30" style="vertical-align:bottom;">나이키 코리아 프리미엄 라인업</h4>
 			</div>
 			
 			<div class="desc-container">
-				<span> 진행 중인 발매처가 있는 제품들 </span>
+				<span>나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 이번 달 발매하는 프리미엄 신발 라인업 </span>
 			</div>
 			
-			<div class="releasing-table-container">
-				<% if(releasingSneakerList.isEmpty()){ %>
+			<div class="snkrsWeek-table-container">
+				<% if(onlineList_snkrs.isEmpty()){%>
 					<div>
-						발매 중인 신발이 없습니다.
+						이번 달 발매 라인업이 없습니다.
 					</div>
-				<% } else {
-					for(int i=releasingSneakerList.size()-1; i>=0; i--){
-						SneakerDTO releasing_sdto = releasingSneakerList.get(i);	
-						int countBrand = countReleasingBrandList.get(i);
+				<% } else { 
+					for(int i=0; i<onlineList_snkrs.size(); i++) {
+						OnlineDTO snkrs_odto = onlineList_snkrs.get(i);
+						SneakerDTO snkrs_sdto = sneakerList_snkrs.get(i);
+						
+						String online_start_date = "";
+						String online_start_time = "";
+						
+						if((snkrs_odto.getOnline_start_date().isEmpty())){
+							online_start_date = "0000-00-00";
+						} else{
+							online_start_date = snkrs_odto.getOnline_start_date();
+						}
+						
+						if((snkrs_odto.getOnline_start_time().isEmpty())){
+							online_start_time = "24:00";
+						} else{
+							online_start_time = snkrs_odto.getOnline_start_time();
+						}
+						
+						Date original_Online_start_time = format.parse(online_start_date + " " + online_start_time);
+						Date original_Online_start_date = original_format.parse(online_start_date);
+						
+						//yyyy-MM-dd
+						String dateFormat2 = original_format.format(original_Online_start_time);
+
+						//O월 OO일(수)
+						String dateFormat = date_format.format(original_Online_start_time);
+						//오전 10:00
+						String timeFormat = time_format.format(original_Online_start_time);
+						
+						//발매 날짜와 현재 날짜 차이 계산해서 D-O일 나타내기						
+						Calendar cal = Calendar.getInstance();
+						String todayDate_instance = original_format.format(cal.getTime());
+						
+						Date todayDate = original_format.parse(todayDate_instance);
+						Date releaseDate = original_format.parse(dateFormat2);
+						
+						long calDate = releaseDate.getTime()-todayDate.getTime();
+						
+						long calDateDays = calDate/(24*60*60*1000);
+						
+						calDateDays = Math.abs(calDateDays);
 				%>
-					<div class="mainSneaker-container">
-						<div class="mainSneaker-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
-								<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
-							</a>
-							<!-- hover 칸  -->
-							<div class="mainSneaker-container-hover">
-								&nbsp;
+					<div class="snkrsSneaker-container">
+						<div>
+							<div class="dDay-status">
+								<span>
+									<%if(calDateDays==0){ %>
+										발매일
+									<%}else { %>
+										<%=calDateDays%>일 남음
+									<%} %>
+								</span>
 							</div>
-							<!-- 이름 칸 -->
-							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
-								<p> <%=releasing_sdto.getModel_name_kr()%> </p>
+							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+								<img src="./sneaker_img_upload/<%=snkrs_sdto.getImage()%>">
+							</a>
+						</div>
+						<div>
+							<!-- 시작날짜 -->
+							<div class="snkrs_date">
+								<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+									<%=dateFormat%>
+								</a>
+							</div>
+							<!-- 시작시간 -->
+							<div class="snkrs_time">
+								<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+								<%=timeFormat%>
+								<%if(snkrs_odto.getOnline_method().contains("선착")) {%>
+									선착
+								<%}else if(snkrs_odto.getOnline_method().contains("드로우")) {%>
+									응모 시작
+								<%}else if(snkrs_odto.getOnline_method().contains("-")) {%>
+									(발매방식 미정)
+								<%}%>
+								</a>
 							</div>
 						</div>
-							
-						<div class="mainSneaker-brandCount" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>'">
-							<span style="color:#2b2b2b; float:center;">	
-								발매처 (<span style="border-bottom:1px dotted #525252;"><span style="color:#00b300;"><%=countBrand%></span></span>)
-							</span>
-							
+						
+						
+						<div class="snkrs_modelName" style="display:none;">
+							<a href="<%=snkrs_odto.getOnline_link()%>" target="_blank">
+								<%=snkrs_sdto.getModel_name_kr()%>
+							</a>
 						</div>
 					</div>
 				<% } } %>
 			</div>
 		</div>
-
-		<!-- 발매 예정 리스트 -->
-		<div class="release-container">
-			<div class="sub-title">	
-<!-- 			<div class="sub-title-wline"> -->
-				<h4> 2021년 발매 예정 라인업 </h4>
-			</div>
-			
-			<div class="desc-container">
-				<span> 발매처가 아직 없는 제품들 </span>
-			</div>
-			
-			<div class="releasing-table-container">
-				<% if(releasingSneakerList.isEmpty()){ %>
-					<div>
-						발매 예정인 신발이 없습니다.
-					</div>
-				<% } else {
-					for(int i=0; i<releaseSneakerList.size(); i++){
-						SneakerDTO release_sdto = releaseSneakerList.get(i);	
-				%>
-					<div class="mainSneaker-container">
-						<div class="mainSneaker-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
-								<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
-							</a>
-							<!-- hover 칸  -->
-							<div class="mainSneaker-container-hover">
-								 &nbsp;					
-							</div>
-							<!-- 이름 칸 -->
-							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
-								<p> <%=release_sdto.getModel_name_kr()%> </p>				
-							</div>
-						</div>
-					</div>
-				<% } } %>
-			</div>
-			
-		</div>
-
+		
 	</div>
 	
 	<!-- FOOTER -->
@@ -179,16 +197,6 @@
 				e.returnVale = false;
 			}
 		});
-		
-		var filter = "win16|win32|win64|mac|macintel";
-		if(navigator.platform) {
-			//모바일로 접속했을시
-			if (filter.indexOf( navigator.platform.toLowerCase() ) < 0) {	
-			}
-			//데스크탑으로 접속했을시
-			else { 
-			}
-		}
 
 	});
 	

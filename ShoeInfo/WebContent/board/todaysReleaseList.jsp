@@ -74,7 +74,7 @@
 	<div id="wrapper" class="container">
 
 		<!-- 오늘의 모든 발매 리스트 -->
-		<div class="todaysRelease-container">
+		<div class="todaysRelease-container" style="margin-top:40px !important;">
 			<div class="sub-title">
 				<h4> 오늘의 발매처 </h4>
 			</div>
@@ -94,9 +94,9 @@
 			<div class="todays-table-container">
 				<table id="onlineList_todays_table">
 					<tr>
-						<th style="width:6%;"> 번호 </th>
-						<th style="width:50%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
-						<th style="width:20%; border-right: 0.5px dotted #dcdcdc;"> 발매제품 </th>
+						<th style="width:8%;"> 번호 </th>
+						<th style="width:45%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
+						<th style="width:23%; border-right: 0.5px dotted #dcdcdc;"> 발매제품 </th>
 						<th style="width:12%;"> 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
@@ -167,7 +167,7 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:30px 0 30px 15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:25px 0 25px 5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
@@ -176,7 +176,7 @@
 									<!--  발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="155" height="155" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
+											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="125" height="125" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
 											<span style="position:absolute; right:0; bottom:0;">
 												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width: 30px; height: 20px;">
 											</span> 
@@ -222,11 +222,15 @@
 										<span class="info-subTitle">발매 방식</span>
 										<span class="info-content">
 										<%if(odto_todays.getOnline_method().contains("선착")) {%>
-											선착순구매  <!-- color:#ff5722; -->
+											선착순 구매  <!-- color:#ff5722; -->
 										<%} else if(odto_todays.getOnline_method().contains("드로우")) {%>
 											온라인응모
 										<%} else if(odto_todays.getOnline_method().contains("이메일라플")) {%>
 											이메일응모
+										<%} else if(odto_todays.getOnline_method().contains("인스타라플")) {%>
+											인스타그램 응모
+										<%} else if(odto_todays.getOnline_method().contains("미정")) {%>
+											미정
 										<%} %>
 										</span>
 									</div>
@@ -389,7 +393,7 @@
 							</td>
 				
 							<!-- 발매신발 -->
-							<td id="releaseModel-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; padding:30px 15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
+							<td id="releaseModel-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; padding:25px 15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
 							<input type="hidden" id="model_num<%=i%>" value="<%=odto_todays.getModel_num()%>">
 							<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
 <!-- 								<div> -->

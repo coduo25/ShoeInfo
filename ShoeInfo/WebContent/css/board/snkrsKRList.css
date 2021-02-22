@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+* {margin:0; padding:0; box-sizing: border-box;}
+body {font-size:1em; line-weight:1.4}
+
+/* 모든 페이지 공통 부분 */
+.container {position: relative;  } /* width: 80%; margin: 5px auto; */
+
+/* 리스트 별 컨테이너 */
+.snkrsWeek-container { display: table; width: 100%; box-sizing: border-box; margin:100px 0; font-family: 'Nanum Gothic', sans-serif; }
+.snkrsWeek-table-container { width: 100%;}
+
+/*서브 타이틀*/
+.sub-title { display: block; margin:0 0 15px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title h4 { display: inline-block; flex-direction: row; }
+.sub-title h4 span { padding-right: 10px; }
+/* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
+.desc-container { display: block; padding: 0 0 20px 0; color: #3e3e3e; }
+.desc-container span { display:inline-block; position:relative; }
+
+/* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
+.snkrsWeek-table-container { width:1080px; white-space:nowrap; margin-bottom:30px; display:block; }
+.snkrsSneaker-container { display:inline-block; width:32.333%; margin:0.5% 0.5% 3% 0.5%; display:inline-block; float:left; }
+.snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
+.snkrsSneaker-container img { border:1px solid #a0a0a0; padding:80px 10px 20px 10px; }
+.snkrsSneaker-container div { text-align:center; display:block; position:relative; }
+div.snkrs_date { font-size:26px; margin:4px 0 8px 0; font-weight:bold; }
+div.snkrs_time a { font-size:14px; color:#777 !important; }
+.dDay-status { position:absolute !important; text-align:right !important; padding:27px 17px; font-family:'Noto Sans KR', sans-serif; }
+.dDay-status span { border:1px solid #e0575c; background-color:#e0575c; color:white; border-radius:5px; font-size:21px; font-weight:bold; padding:1px 9px; }
+
+/* 스크롤바 style */
+/* width */
+::-webkit-scrollbar { width: 10px; }
+/* Track */
+::-webkit-scrollbar-track { background: #f1f1f1; }
+/* Handle */
+::-webkit-scrollbar-thumb { background: #888; }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+
+
+
+
+
+
+
+

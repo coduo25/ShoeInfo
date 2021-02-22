@@ -114,7 +114,7 @@
 	<div id="wrapper" class="container">
 
 		<!-- 발매 완료 리스트 -->
-		<div class="released-container" style="margin:35px 0 70px 0 !important;">
+		<div class="released-container" style="margin-top:40px !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 발매 완료 라인업 </h4>

@@ -52,7 +52,6 @@
 		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
-		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasedSneakerList");
 		//발매중인 산발들의 진행중인 브랜드 갯수
 		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) request.getAttribute("countReleasingBrandList");
 		
@@ -114,7 +113,7 @@
 	<div id="wrapper" class="container">
 	
 		<!-- 발매 중 리스트 -->
-		<div class="releasing-container" style="margin-top: 35px !important;">
+		<div class="releasing-container" style="margin-top: 40px !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 현재 발매 중인 라인업 </h4>
@@ -153,8 +152,8 @@
 						</div>
 							
 						<div class="mainSneaker-brandCount" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>'">
-							<span style="color:#777; float:center;">	
-								발매처 (<span style="border-bottom:1px dotted #525252;"><%=countBrand%>곳</span>)
+							<span style="color:#2b2b2b; float:center;">	
+								발매처 (<span style="border-bottom:1px dotted #525252;"><span style="color:#00b300;"><%=countBrand%></span></span>)
 							</span>
 							
 						</div>
@@ -179,9 +178,9 @@
 			<div class="todays-table-container">
 				<table id="onlineList_todays_table">
 					<tr>
-						<th style="width:6%;"> 번호 </th>
-						<th style="width:50%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
-						<th style="width:20%; border-right: 0.5px dotted #dcdcdc;"> 발매제품 </th>
+						<th style="width:8%;"> 번호 </th>
+						<th style="width:45%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
+						<th style="width:23%; border-right: 0.5px dotted #dcdcdc;"> 발매제품 </th>
 						<th style="width:12%;"> 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
@@ -252,7 +251,7 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:30px 0 30px 15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding:30px 0 px 5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
@@ -261,9 +260,9 @@
 									<!--  발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="155" height="155" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
+											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="125" height="125" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
 											<span style="position:absolute; right:0; bottom:0;">
-												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width: 30px; height: 20px;">
+												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width:30px; height: 20px;">
 											</span> 
 										</a>
 									</div>							
@@ -312,6 +311,10 @@
 											온라인응모
 										<%} else if(odto_todays.getOnline_method().contains("이메일라플")) {%>
 											이메일응모
+										<%} else if(odto_todays.getOnline_method().contains("인스타라플")) {%>
+											인스타그램 응모
+										<%} else if(odto_todays.getOnline_method().contains("미정")) {%>
+											미정
 										<%} %>
 										</span>
 									</div>
@@ -549,7 +552,7 @@
 		<div class="snkrsWeek-container">
 			<div class="sub-title">
 				<h4><img src="./brand_img_upload/nikelogo.png" width="50" height="30" style="vertical-align:bottom;">나이키 코리아 프리미엄 라인업</h4>
-				<div class="allButton" onclick="location.href='./AllReleaseList.go'">
+				<div class="allButton" onclick="location.href='./SnkrsKRList.go'">
 					<span> 전체보기 </span>
 				</div>
 			</div>
@@ -696,58 +699,32 @@
 				<% } } %>
 			</div>
 		</div>
-		
-		<!-- 발매 완료 리스트 -->
-		<div class="released-container">
-			<div class="sub-title">	
-<!-- 			<div class="sub-title-wline"> -->
-				<h4> 발매 완료 라인업 </h4>
-				<div class="allButton" onclick="location.href='#'">
-					<span> 전체보기 </span>
-				</div>
-			</div>
-			
-			<div class="desc-container">
-				<span> 모든 발매가 종료된 제품들 </span>
-			</div>
-			
-			<div class="released-table-container">
-				<% if(releasedSneakerList.isEmpty()){ %>
-					<div>
-						발매 완료된 신발이 없습니다.
-					</div>
-				<% } else {
-					for(int i=releasedSneakerList.size()-1; i>=0; i--){
-						SneakerDTO released_sdto = releasedSneakerList.get(i);	
-				%>
-					<div class="mainSneaker-container">
-						<div class="mainSneaker-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>">
-								<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
-							</a>
-							<!-- hover 칸  -->
-							<div class="mainSneaker-container-hover">
-								 &nbsp;					
-							</div>
-							<!-- 이름 칸 -->
-							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
-								<p> <%=released_sdto.getModel_name_kr()%> </p>				
-							</div>
-						</div>
-					</div>
-				<% } } %>
-			</div>
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 		<!-- 구 컨테이너들 -->
 		<div id="showAllChk" style="display:none">
