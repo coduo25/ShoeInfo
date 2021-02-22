@@ -19,7 +19,7 @@ body {font-size:1em; line-weight:1.4}
 .desc-container span { display:inline-block; position:relative; }
 
 /* 전체보기 버튼 */
-.allButton { display:inline-block; float:right; border:1px solid #191919; padding: 4px 8px; background-color: #191919; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
+.allButton { display:inline-block; float:right; border:1px solid #191919; padding: 4px 8px; background-color:#191919; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
 
 /* 발매 중 리스트 (메인페이지) */
 .mainSneaker-container { float:left; width:24%; margin:0 0.5% 1% 0.5%; text-align:center; font-family:'Nanum Gothic', sans-serif; font-weight:bold; }

@@ -375,6 +375,27 @@ public class BrandDAO {
 		}
 		return brandReqList;
 	}
+	
+	//신발별 현재 진행중인 응모처 갯수 구하는 함수
+	public int getReleasingBrandNum(String model_stylecode){
+		int num = 0;
+		
+		try {
+			con = getConnection();
+			sql = "SELECT count(brand_id) as brand_id from shoeinfo_onlineinfo where model_stylecode = ? and ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') >= now()))) or (((online_method like '%드로우%') || online_method like '%라플%') and ( ((online_start_date = curdate() or online_end_date = curdate()) and (CONCAT(online_start_date, ' ', online_start_time, ':00') >= now())) or (now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')) ) )) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model_stylecode);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				num = rs.getInt("brand_id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}	
+		return num;
+	}
 		
 		
 }

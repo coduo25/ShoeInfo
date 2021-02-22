@@ -24,7 +24,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
+<body> <!-- oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false' -->
 
 	<!-- Header -->	
 	<header> <jsp:include page="/include/header.jsp" /> </header>
@@ -45,6 +45,15 @@
 	
 		//신발 기본 정보 리스트
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
+		
+		//발매중인 산발들의 진행중인 브랜드 갯수
+		int countReleasingBrand = (Integer) request.getAttribute("countReleasingBrand");
+		
+		
+		
+		
+		
+		
 
 		// ---------- 온라인 정보 -----------
 		//대한민국
@@ -69,6 +78,7 @@
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		SimpleDateFormat original_format2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat original_format3 = new SimpleDateFormat("yyyy/MM/dd");
 		SimpleDateFormat date_format = new SimpleDateFormat("yyyy년 M월 d일");
 
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
@@ -91,12 +101,86 @@
 	<input type="hidden" class="num" id="num" value="<%=sdto.getNum()%>">
 	
 	<div id="wrapper" class="container">
+	
+		<!-- 신발 정보 container -->
+		<div class="shoeinfo-container">
+			<!-- 신발 이미지 -->
+			<div class="shoeImg-container">
+				<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
+			</div>
+			
+			<!-- 신발 상세정보 -->
+			<div class="shoeDetailInfo-container">
+				<div class="shoeDetailInfo-name">
+					<!-- 영문 이름 -->
+					<div class="shoeFullName_eng">
+						<span> <%=sdto.getModel_name()%></span>
+					</div>
+					<!-- 한글 이름 -->
+					<div class="shoeFullName_kr">
+						<span> <%=sdto.getModel_name_kr()%> </span>
+					</div>
+				</div>
+				
+				<!-- 상세 정보 -->
+				<div class="shoeDetailInfo">
+					<div class="shoeDetailInfo-subtitle">
+						<p>제품 정보</p>
+					</div>
+					<!-- 제품 상제 정보 -->
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">브랜드</span>
+						<span class="shoeinfo-cateAns"><%=sdto.getBrand()%></span>
+					</div>
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">스타일코드</span>
+						<span class="shoeinfo-cateAns"><%=sdto.getModel_stylecode()%></span>
+					</div>
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">컬러웨이</span>
+						<span class="shoeinfo-cateAns"><%=sdto.getModel_colorway()%></span>
+					</div>
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">발매일(글로벌)</span>
+						<span class="shoeinfo-cateAns">
+							<%if(sdto.getRelease_date().contains("99")){%>
+								미정
+							<%}else{%>
+								<%=date_format.format(date_type)%>
+							<%}%>
+						</span>
+					</div>
+					<div class="shoeDetailInfo-content" style="border-bottom:1px solid #e8e8e8; padding-bottom:20px !important;">
+						<span class="shoeinfo-cate">발매가</span>
+						<span class="shoeinfo-cateAns">₩ <%=formatter.format(sdto.getPrice())%></span>
+					</div>
+					
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">조회</span>
+						<span class="shoeinfo-cateAns"><i style="vertical-align:bottom;" class="fas fa-eye"></i>&nbsp;&nbsp;<%=formatter.format(sdto.getViews())%> views</span>
+					</div>					
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">진행 중인 발매처</span>
+						<span class="shoeinfo-cateAns"><%=countReleasingBrand%>곳</span>
+					</div>
+					
+				</div>
+				
+				
+			</div>
+		
+		</div>
+	
+	
+	
+	
+	
 
 		<!-- content -->
 		<div id="content_sneakerDetail">
 		
 			<!-- 카테고리 -->
-			<div id="cate_Detail">
+			<div id="cate_Detail" style="margin-top:200px;">
 				<a href="./SneakerList.go"> <span> HOME </span> </a>
 				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
 				<span> <%=sdto.getModel_name() %></span>

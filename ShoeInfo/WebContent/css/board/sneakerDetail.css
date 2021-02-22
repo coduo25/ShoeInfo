@@ -3,10 +3,48 @@
 * {margin:0; padding:0; box-sizing: border-box;}
 body {font-size:1em; line-weight:1.4}
 
-/* 모든 페이지 공통 부분 */
-.container { position: relative; width: 1200px; margin: 5px auto; }
-
 /* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
+.shoeinfo-container { display:block; margin:30px 0; font-family:'Nanum Gothic', sans-serif;}
+
+.shoeImg-container, .shoeDetailInfo-container { display:inline-block; vertical-align:top; }
+.shoeImg-container { width:45%; }
+.shoeDetailInfo-container { width:44%; }
+
+/* 이미지 파트 */
+.shoeImg-container { text-align:right; }
+.shoeImg-container img { background-color:rgb(246 246 247); padding:15% 3% 10% 3%; width:100%; }
+
+/* 신발 내용 파트 */
+.shoeDetailInfo-container { margin:0 3%}
+	/* 제품 모델명 */
+	.shoeDetailInfo-name { padding-bottom:20px; border-bottom:1px solid #a5a5a5; }
+	.shoeFullName_eng, .shoeFullName_kr { display:block; }
+	.shoeFullName_eng { font-size:25px; margin:10px 0 15px 0; font-weight:bold; }
+	.shoeFullName_kr { font-size:17px; color:#777; }
+	
+	/* 제품 정보 */
+	.shoeDetailInfo { margin:30px 0; }
+	.shoeDetailInfo-subtitle { margin-bottom:30px;}
+	.shoeDetailInfo-subtitle p { font-size:18px; font-weight:bold; }
+	.shoeDetailInfo-content { margin-bottom:15px; }
+	.shoeinfo-cate { display:inline-block; width:30%; color:#999; }
+	.shoeinfo-cateAns { display:inline-block; width:69%; text-align:right;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #content_sneakerDetail{ width: 100%; float: left; position: relative; z-index: 2; font-family: 'Nanum Gothic', sans-serif; }
 #content_sneakerDetail div#sneaker_Detail{ width: 100%; padding: 0 0.5%; }
 #content_sneakerDetail div#sneakerOnlineInfo_table{ width: 100%; }

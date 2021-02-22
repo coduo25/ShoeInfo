@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.brand.db.BrandDAO;
 import net.brand.db.BrandDTO;
 import net.member.db.MemberDAO;
 import net.online.db.OnlineDAO;
@@ -30,12 +31,13 @@ public class SneakerDetailAction implements Action{
 		int num = Integer.parseInt(request.getParameter("num")); 
 				
 		MemberDAO mdao = new MemberDAO();
+		SneakerDAO sdao = new SneakerDAO();
+		BrandDAO bdao = new BrandDAO();
+		
 		ArrayList<String> userDrawBrandList = mdao.searchDrawBrandInfo(user, model_stylecode);
 
 		request.setAttribute("userDrawBrandList", userDrawBrandList);
 
-		SneakerDAO sdao = new SneakerDAO();
-		
 		//저장된 쿠키 불러오기, https://drsggg.tistory.com/216
 		Cookie[] cookieFromRequest = request.getCookies();
 		if(cookieFromRequest == null){
@@ -67,6 +69,10 @@ public class SneakerDetailAction implements Action{
 			//정보 가져오기 전에 조회수 1 올리기
 			sdao.addViews(num, model_stylecode);
 		}
+		
+		//현재 발매 중인 신발들 중에 진행중인 브랜드 갯수 가져오는 리스트
+		int countReleasingBrand = bdao.getReleasingBrandNum(model_stylecode);
+		request.setAttribute("countReleasingBrand", countReleasingBrand);
 		
 		SneakerDTO sdto = sdao.getSneakerDetail(num, model_stylecode);
 		request.setAttribute("sneakerDetail", sdto);
