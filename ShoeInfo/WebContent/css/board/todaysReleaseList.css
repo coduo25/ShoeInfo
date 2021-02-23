@@ -21,8 +21,9 @@ body {font-size:1em; line-weight:1.4}
 
 /* 오늘의 발매 리스트 */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black;}
-#onlineList_todays_table th { height: 50px; border-bottom: 1px solid #b5b5b5; background-color:rgb(246 246 247);} 
-#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #b5b5b5; padding:25px 0; }
+#onlineList_todays_table th { height: 50px; border-bottom: 1px solid #a5a5a5; background-color:rgb(246 246 247);}
+#onlineList_todays_table tr:hover { background-color:rgb(246 246 247); } 
+#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:25px 0; }
 #onlineList_todays_table td { text-align: center; }
 
 	/* 번호 & 상태 */

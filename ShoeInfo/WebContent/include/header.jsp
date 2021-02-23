@@ -78,7 +78,7 @@
 			<div class="block-list">
 				<div class="block-content">
 					<ul class="nav">
-						<li> <a href="./TodaysReleaseList.go"> 오늘의 발매처 </a> </li>
+						<li> <a href="./TodaysReleaseList.go" style="color:#4990e2;"> 오늘의 발매처 </a> </li>
 <!-- 						<li> <a href=".#"> 브랜드별 </a> </li> -->
 						<li> <a href="./AllReleaseList.go"> 발매 중 | 발매예정 </a> </li>
 						<li> <a href="./AllReleasedList.go"> 발매완료 </a> </li>
