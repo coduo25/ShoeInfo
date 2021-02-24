@@ -5,7 +5,7 @@ body {font-size:1em; line-weight:1.4;}
 .container { font-family:	'Nanum Gothic', sans-serif; }
 
 /* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
-.shoeinfo-container { display:block; margin:30px 0; font-family:'Nanum Gothic', sans-serif !important;}
+.shoeinfo-container { display:block; padding:30px 0; font-family:'Nanum Gothic', sans-serif !important; }
 
 .shoeImg-container, .shoeDetailInfo-container { display:inline-block; vertical-align:top; }
 .shoeImg-container { width:50%; }
@@ -13,10 +13,10 @@ body {font-size:1em; line-weight:1.4;}
 
 /* 이미지 파트 */
 .shoeImg-container { text-align:center; }
-.shoeImg-container img { background-color:rgb(246 246 247); padding:15% 0 10% 0; width:90%; }
+.shoeImg-container img { background-color:#f3f3f3; padding:15% 0 10% 0; width:90%; }
 
 /* 신발 내용 파트 */
-.shoeDetailInfo-container { margin:0 2%}
+.shoeDetailInfo-container { margin:0 1.5% }
 	/* 제품 모델명 */
 	.shoeDetailInfo-name { padding-bottom:20px; border-bottom:1px solid #a5a5a5; }
 	.shoeFullName_eng, .shoeFullName_kr { display:block; }
@@ -24,48 +24,52 @@ body {font-size:1em; line-weight:1.4;}
 	.shoeFullName_kr { font-size:17px; color:#777; }
 	
 	/* 제품 정보 */
-	.shoeDetailInfo { margin:40px 0 10px 0; }
+	.shoeDetailInfo { margin:35px 0 10px 0; }
 	.shoeDetailInfo-subtitle { margin-bottom:30px;}
 	.shoeDetailInfo-subtitle p { font-size:18px; font-weight:bold; }
 	.shoeDetailInfo-content { margin-bottom:15px; }
-	.shoeinfo-cate { display:inline-block; width:30%; color:#999; }
+	.shoeinfo-cate { display:inline-block; width:30%; color:#777777; } /* color:#999; */
 	.shoeinfo-cateAns { display:inline-block; width:69%; text-align:right;}
 
 /* 국가별 카테고리 파트 */
-.countryCate-container { margin:10px 0 10px 0; padding:0 30px; border-top:1px solid #a5a5a5; border-bottom:1px solid #a5a5a5; text-align:center; }
-.countryCate-container div { display:inline-block; padding:15px; cursor:pointer; margin:0 8px 0 8px;}
+.countryCate-container { padding:45px 0; text-align:center; }
+.countryCate-container div { display:inline; padding:8px 28px; cursor:pointer; color:#777777; font-size:16px; border:1px solid #f1f1f1; }
 
 /* 발매처정보 */
-.releaseList-container { margin:20px 0; }
+.releaseList-container { margin:0 0 300px 0; }
 
-.releaseList-countryDiv { display:table; width:100%; margin:3% 0 8% 0;}
+.releaseList-countryDiv { display:table; width:100%; margin:0 0 8% 0;}
 
-.noReleaseInfo { text-align:center; margin:3% 0; }
-.noReleaseInfo span { border:1px solid #b3b3b3; border-radius:5px; padding:0.5% 1%; }
+.noReleaseInfo { text-align:center; margin:8% 0; }
+.noReleaseInfo span { padding: 5px 15px; border: 1px solid #a5a5a5; border-radius: 5px; }
 
-.release-subtitle { margin:10px 0 15px 0; text-align:center;}
-.release-subtitle span { font-size:28px; font-weight:bold; }
+.releaseList-detail { display:table; width:100%; }
 
-.releaseBox { display:inline-block; float:left; margin:1%; width:31.33%; }
-.releaseBox:hover { background-color:rgb(246 246 247); }
+.release-subtitle { margin:15px; padding:15px; text-align:center; border-bottom:2px solid #a5a5a5;  } /* border-bottom:2px dotted #a5a5a5; */
+.release-subtitle span { font-size:24px; font-weight:bold; }
 
-.Release-content { display:inline-block; vertical-align:top; text-align:left; width:100%; border:1px solid #b3b3b3; border-radius:5px; padding:4%; position:relative; }
+.releaseBox { display:inline-block; float:left; margin:1.5%; width:30.33%; border:1px solid #b3b3b3; border-radius:5px; background-color:white; }
+
+.Release-content { display:inline-block; vertical-align:top; text-align:left; width:100%; position:relative; }
 .Release-content span { display:inline-block; vertical-align: top; }
 
+	.brand-box { background-color:#f3f3f3; border-bottom:1px solid #b3b3b3; padding:4% 4% 0 4%; border-top-left-radius:5px; border-top-right-radius:5px; }
+	.detail-box { padding:5% 5% 7% 5%; }
+	
 	/* 발매처 상태 */
-	.brand-info-status-container { position:absolute !important; right:0; padding:0 4%; }
+	.brandInfo-status-container { position:absolute !important; right:0; padding:4%; }
+	.release-status { padding:4px 6px; vertical-align: -webkit-baseline-middle !important; color: white; font-weight: bold; font-size:17px; border-radius:4px; }
 
 	/* 발매처 이미지 */
-	.brand-info-image-container { width:100%; text-align:center; margin:5px 0;}
+	.brandInfo-image-container { width:100%; text-align:center; margin:5px 0;}
 
 	/* 발매처 이름 */
-	.brand-info-name-container { vertical-align:top; margin:10px 0; width:100%; text-align:center; border-bottom:1px solid #b3b3b3; padding-bottom:10px; }
-	.release-status { padding:4px 6px; vertical-align: -webkit-baseline-middle !important; color: white; font-weight: bold; font-size:15px;}
+	.brandInfo-name-container { vertical-align:top; margin:10px 0 15px 0; width:100%; text-align:center; }
 	
 	/* 발매처 정보 박스 */
-	.brand-info-detail-container { margin:15px 0; }
+	.brandInfo-detail-container { margin-bottom:15px; }
 	.info-subTitle { color: #1f1f1f; width:30%;}
-	.info-content { color:#949494; width:68%; text-align:right;}
+	.info-content { color:#949494; width:68%; text-align:right; float:right; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }

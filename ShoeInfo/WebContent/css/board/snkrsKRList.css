@@ -22,7 +22,7 @@ body {font-size:1em; line-weight:1.4}
 .snkrsWeek-table-container { width:1080px; white-space:nowrap; margin-bottom:30px; display:block; }
 .snkrsSneaker-container { display:inline-block; width:32.333%; margin:0.5% 0.5% 3% 0.5%; display:inline-block; float:left; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
-.snkrsSneaker-container img { background-color:rgb(246 246 247); padding:80px 10px 20px 10px; }
+.snkrsSneaker-container img { background-color:#f3f3f3; padding:80px 10px 20px 10px; }
 .snkrsSneaker-container div { text-align:center; display:block; position:relative; }
 div.snkrs_date { font-size:26px; margin:8px 0; font-weight:bold; }
 div.snkrs_time a { font-size:14px; color:#777 !important; }

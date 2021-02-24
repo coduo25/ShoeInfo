@@ -541,7 +541,7 @@
 						if(onlineList_todays.size() >= 4) {
 					%>
 						<tr>
-							<td colspan="4" style="padding:0 !important;"> <a href="./TodaysReleaseList.go"><span style="display:block; padding:15px 0;">더보기 <i class="far fa-plus-square"></i></span></a> </td>
+							<td colspan="4" style="padding:0 !important; background-color:#f3f3f3;"> <a href="./TodaysReleaseList.go"><span style="display:block; padding:15px 0;">더보기 <i class="far fa-plus-square"></i></span></a> </td>
 						</tr>
 					<% } %>
 				</table>
