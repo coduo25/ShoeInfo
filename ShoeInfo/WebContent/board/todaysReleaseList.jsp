@@ -431,7 +431,6 @@
 										<%}%>
 									</div>
 								<%} %>
-								</div>
 								<!-- 참여체크박스 -->
 								<%if(odto_todays.getOnline_method().contains("선착")) {%>
 								

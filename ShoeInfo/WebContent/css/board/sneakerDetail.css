@@ -32,7 +32,7 @@ body {font-size:1em; line-weight:1.4;}
 	.shoeinfo-cateAns { display:inline-block; width:69%; text-align:right;}
 
 /* 국가별 카테고리 파트 */
-.countryCate-container { padding:45px 0; text-align:center; }
+.countryCate-container { padding:35px 0; text-align:center; }
 .countryCate-container div { display:inline; padding:8px 28px; cursor:pointer; color:#777777; font-size:16px; border:1px solid #e8e8e8; }
 
 /* 발매처정보 */
@@ -45,7 +45,7 @@ body {font-size:1em; line-weight:1.4;}
 
 .releaseList-detail { display:table; width:100%; }
 
-.release-subtitle { margin:15px 0; padding:15px; text-align:center; border-bottom:2px solid #a5a5a5; }
+.release-subtitle { margin:15px 0; padding:15px; text-align:center; border-bottom:2px solid #e0e0e0; }
 .release-subtitle span { font-size:24px; font-weight:bold; }
 
 .releaseBox { display:inline-block; float:left; margin:1.5%; width:30.33%; border:1px solid #b3b3b3; border-radius:5px; background-color:white; }
@@ -54,7 +54,12 @@ body {font-size:1em; line-weight:1.4;}
 .Release-content span { display:inline-block; vertical-align: top; }
 
 	.brand-box { background-color:#f3f3f3; border-bottom:1px solid #b3b3b3; padding:4% 4% 0 4%; border-top-left-radius:5px; border-top-right-radius:5px; }
-	.detail-box { padding:5% 5% 7% 5%; }
+	.detail-box { padding:4% 4% 7% 4%; }
+	
+	/* 링크 + 참여 체크박스 */
+	.links-container { display:flex; border-bottom:1px solid #b3b3b3; }
+	.links-container div { font-weight:bold; width:50%; text-align:center; padding:7px 0; }
+	.draw_checkBox { margin: 0 auto; transition: 0.3s; cursor:pointer; }
 	
 	/* 발매처 상태 */
 	.brandInfo-status-container { position:absolute !important; right:0; padding:4%; }
@@ -77,9 +82,7 @@ body {font-size:1em; line-weight:1.4;}
 	.remainWarning-container { display: block; position: relative; color: black !important; margin-top:5px; }
 	.remainWarning-container span { display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%; }
 	
-	/* 참여 체크박스 */
-	.links-container div { font-weight:bold; width:100%; text-align:center; border-top:1px solid #b3b3b3; padding:9px 0; border-bottom-left-radius:5px; border-bottom-right-radius:5px; }
-	.draw_checkBox { margin: 0 auto; transition: 0.3s; cursor:pointer; }
+
 
 
 

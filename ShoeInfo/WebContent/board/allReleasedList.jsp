@@ -103,6 +103,8 @@
 
 		String compare_Today = format.format(currentTime);
 		Date compareToday = format.parse(compare_Today);
+		
+		
 	%>
 
 	<!-- Header -->
@@ -130,8 +132,11 @@
 						발매 완료된 신발이 없습니다.
 					</div>
 				<% } else {
-					for(int i=releasedSneakerList.size()-1; i>=0; i--){
-						SneakerDTO released_sdto = releasedSneakerList.get(i);	
+					for(int i=releasedSneakerList.size()-1, countNum=0; i>=0; i--, countNum++){
+						SneakerDTO released_sdto = releasedSneakerList.get(i);
+						if(countNum==12){
+							break;
+						}
 				%>
 					<div class="mainSneaker-container">
 						<div class="mainSneaker-image">
@@ -147,9 +152,20 @@
 								<p> <%=released_sdto.getModel_name_kr()%> </p>				
 							</div>
 						</div>
-					</div>
-				<% } } %>
+					</div>		
+				<%
+					} }
+				%>
 			</div>
+			<%
+				if(releasedSneakerList.size()>=11){
+			%>
+				<div>
+					<span>더보기</span>
+				</div>
+			<%
+				}
+			%>	
 		</div>
 		
 	</div>
@@ -180,6 +196,8 @@
 			else { 
 			}
 		}
+		
+		
 
 	});
 	
