@@ -312,14 +312,14 @@
 											<%}%>
 										</div>
 
-										<div class="brand-box">
+										<div class="brand-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 											<!--  발매처 이미지 --> 
 											<div class="brandInfo-image-container">
 												<div style="display:inline-block; position:relative; margin-bottom:0 !important;">
 													<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 														<img src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="120" height="120" style="border:1px solid #b3b3b3; position:relative; border-radius:8px;">
 														<span style="position:absolute; right:0; bottom:0;">
-															<img src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width:27px; height:18px;">
+															<img src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width:29px; height:19px;">
 														</span>
 													</a> 
 												</div>
@@ -336,7 +336,7 @@
 											</div>
 										</div>
 
-										<div class="detail-box">
+										<div class="detail-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 											<!-- 발매 방식  -->
 											<div class="brandInfo-detail-container">
 												<span class="info-subTitle">발매 방식</span>
@@ -353,6 +353,12 @@
 													미정
 												<%} %>
 												</span>
+											</div>
+											
+											<!-- 발매 가격 -->
+											<div class="brandInfo-detail-container">
+												<span class="info-subTitle">발매 가격</span>
+												<span class="info-content">$190</span>
 											</div>
 			
 											<!-- 결제·배송 -->
@@ -373,16 +379,10 @@
 														<%=odto.getDelivery_method()%>
 													<%}%>
 												</span>
-											</div>
-											
-											<!-- 발매 가격 -->
-											<div class="brandInfo-detail-container">
-												<span class="info-subTitle">발매 가격</span>
-												<span class="info-content">$190</span>
-											</div>
+											</div>	
 											
 											<!-- 시간 -->
-											<div class="brandInfo-detail-container" style="height:38px;">
+											<div class="brandInfo-detail-container" style="height:38px; border-top: 1px solid #e8e8e8; padding-top: 10px; margin-bottom: 25px !important;">
 												<span class="info-subTitle">
 													<%if(odto.getOnline_method().contains("선착")){%>
 														선착 시간
@@ -419,7 +419,7 @@
 											</div>
 											
 											<!-- 남은시간 -->
-											<div>
+											<div class="brandInfo-detail-container">
 												<!-- 남은시간 -->
 												<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
 												<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
@@ -512,7 +512,31 @@
 														<span id="count_todays_status<%=i%>label"></span>			
 													</div>
 												</span>
-											</div>
+											</div>	
+										</div>
+										
+										<!-- 응모참여버튼 -->
+										<div class="links-container">
+											<!-- 참여체크박스 -->
+											<%if(odto.getOnline_method().contains("선착")) {%>
+													<div>
+														<span>-</span>
+													</div>
+											<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+												<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
+													<input type="hidden" id="drawCheck_status<%=i%>" value="참여전">
+													<!-- 참여전 체크박스 -->
+													<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:white; color:black;">
+														<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>">응모전</span></span>
+													</div> 
+												<%}else{%>
+													<input type="hidden" id="drawCheck_status<%=i%>" value="참여완료">
+													<!-- 참여완료 체크박스 -->
+													<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:#1f1f1f; color:white;">
+														<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>">응모함</span></span>
+													</div> 
+												<%}%>
+											<%}%>
 										</div>
 		
 									</div>

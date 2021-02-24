@@ -34,11 +34,17 @@ a { text-decoration: none; color: #000000; }
 .block-list { text-align: center; }
 .block-content { display: inline-block; }
 .nav { list-style: none; }
-.nav > li { display: inline-block; vertical-align: middle; zoom: 1; float: none; text-align: left; margin-right: 25px; position: inherit; }
+.nav > li { display: inline-block; vertical-align: middle; zoom: 1; float: none; text-align: left; margin-right:27px; position: inherit; }
 .nav > li:last-child { margin-right: 0px !important; }
 .nav li a { padding: 10px 0 5px; marign: 0; font-size: 18px; text-transform: none; position: relative; font-family: 'Nanum Gothic', sans-serif; }
 .nav li:last-child a { color: #AE0F19; }
 .nav a:hover { color: #c0c0c0; }
+
+
+
+
+
+
 
 /* 여기부터 구버전 */
 /* 여기부터 구버전 */

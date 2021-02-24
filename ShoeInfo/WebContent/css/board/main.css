@@ -39,7 +39,7 @@ body {font-size:1em; line-weight:1.4}
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black;}
 #onlineList_todays_table th { height: 50px; border-bottom: 1px solid #a5a5a5; background-color:#f3f3f3;}
 #onlineList_todays_table tr:hover { background-color:rgb(246 246 247 / 52%); }  
-#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:25px 0; }
+#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:35px 0; }
 #onlineList_todays_table td { text-align: center; }
 
 	/* 번호 & 상태 */
