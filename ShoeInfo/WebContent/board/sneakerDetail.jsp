@@ -308,6 +308,7 @@
 												<input type="hidden" id="hidden_ing<%=i%>" value="1">
 											<!-- 선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
 											<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
+												<span id="count_todays_status<%=i%>release-status" class="release-status" style="border:none !important; color:rgb(218, 1, 10); font-weight:normal !important;">종료</span>
 												<input type="hidden" id="hidden_ing<%=i%>" value="1">
 											<%}%>
 										</div>
@@ -336,23 +337,8 @@
 											</div>
 										</div>
 										
-										
 										<!-- 응모참여버튼 -->
-										<div class="links-container">
-											<!-- 바로가기 버튼 -->
-											<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-												<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="border:none; color:rgb(196 196 196); border-right:1px solid #b3b3b3;">
-													<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">종료</span>
-												</div>
-											<%}else {%>
-												<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="cursor:pointer; border-right:1px solid #b3b3b3; border-bottom-left-radius:5px;" onclick="window.open('<%=odto.getOnline_link()%>', 'mywindow');">
-													<%if(odto.getOnline_method().contains("선착")) {%>
-														<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">선착링크</span>
-													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-														<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">응모링크</span>
-													<%}%>
-												</div>
-											<%} %>
+										<div class="links-container" style="display:none;">
 											<!-- 참여체크박스 -->
 											<%if(odto.getOnline_method().contains("선착")) {%>
 													<div>
@@ -374,7 +360,7 @@
 												<%}%>
 											<%}%>
 										</div>
-
+									
 										<div class="detail-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 											<!-- 발매 방식  -->
 											<div class="brandInfo-detail-container">
@@ -394,34 +380,8 @@
 												</span>
 											</div>
 											
-											<!-- 발매 가격 -->
-											<div class="brandInfo-detail-container">
-												<span class="info-subTitle">발매 가격</span>
-												<span class="info-content">$190</span>
-											</div>
-			
-											<!-- 결제·배송 -->
-											<div class="brandInfo-detail-container">
-												<span class="info-subTitle">결제·배송</span>
-												<span class="info-content">
-													<!-- 결제방식 -->
-													<%if(odto.getOnline_method().contains("선착")) {%>
-														선착순 구매
-													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-														<%=odto.getBuy_method()%>
-													<%}%>
-													·
-													<!-- 배송방식 -->
-													<%if(odto.getOnline_method().contains("선착")) {%>
-														<%=odto.getDelivery_method()%>
-													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-														<%=odto.getDelivery_method()%>
-													<%}%>
-												</span>
-											</div>	
-											
 											<!-- 시간 -->
-											<div class="brandInfo-detail-container" style="height:38px; border-top: 1px solid #e8e8e8; padding-top: 10px; margin-bottom: 25px !important;">
+											<div class="brandInfo-detail-container" style="height:38px; margin-bottom:15px !important;">
 												<span class="info-subTitle">
 													<%if(odto.getOnline_method().contains("선착")){%>
 														선착 시간
@@ -458,7 +418,7 @@
 											</div>
 											
 											<!-- 남은시간 -->
-											<div class="brandInfo-detail-container">
+											<div class="brandInfo-detail-container" style="margin-bottom:0px !important;">
 												<!-- 남은시간 -->
 												<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
 												<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
@@ -507,11 +467,7 @@
 															</span>
 														</span>
 													<%} else if(odto.getOnline_method().contains("선착") && compare_w_start_result >= 0){%>
-														<span>
-															<span style="color:rgb(218, 1, 10);">
-																종료
-															</span>
-														</span>
+														<span>-</span>
 													
 													<!-- 드로우일때 -->
 													<%} else if( (odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result < 0) {%>
@@ -539,11 +495,7 @@
 															</span>
 														</span>
 													<%} else if( (odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0) {%>
-														<span>
-															<span style="color:rgb(218, 1, 10);">
-																종료
-															</span>
-														</span>
+														<span>-</span>
 													<%} %>
 													
 													<!-- 마감임박 문구-->
@@ -551,12 +503,100 @@
 														<span id="count_todays_status<%=i%>label"></span>			
 													</div>
 												</span>
-											</div>	
+											</div>
+											
+											<!-- 링크 + 참여버튼 -->
+											<div class="brandInfo-detail-container">
+												<!-- 바로가기 버튼 -->
+												<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
+													<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="border:none; background-color:#f1f1f1; color:rgb(196 196 196);">
+														<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">종료</span>
+													</div>
+												<%}else {%>
+													<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="cursor:pointer;" onclick="window.open('<%=odto.getOnline_link()%>', 'mywindow');">
+														<%if(odto.getOnline_method().contains("선착")) {%>
+															<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">선착링크</span>
+														<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+															<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">응모링크</span>
+														<%}%>
+													</div>
+												<%} %>
+												<!-- 참여체크박스 -->
+												<%if(odto.getOnline_method().contains("선착")) {%>
+														<div>
+															<span>-</span>
+														</div>
+												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+													<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
+														<input type="hidden" id="drawCheck_status<%=i%>" value="참여전">
+														<!-- 참여전 체크박스 -->
+														<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:white; color:black;">
+															<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>"></span></span>
+														</div> 
+													<%}else{%>
+														<input type="hidden" id="drawCheck_status<%=i%>" value="참여완료">
+														<!-- 참여완료 체크박스 -->
+														<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:#1f1f1f; color:white;">
+															<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>">응모함</span></span>
+														</div> 
+													<%}%>
+												<%}%>
+											
+											</div>
+											
+										</div>
+			
+										<!-- 추가 정보 보여주는 버튼 -->
+										<div class="info-dropDown" id="infoDropDown-<%=countryName_kr%>-<%=i%>">
+											<div>
+												<span><i class="fas fa-caret-down"></i></span>
+											</div>
 										</div>
 										
-		
+										<!-- 추가 정보 없애는 버튼 -->
+										<div class="info-dropUp" id="infoDropUp-<%=countryName_kr%>-<%=i%>">
+											<div>
+												<span><i class="fas fa-caret-up"></i></span>
+											</div>
+										</div>
+										
+										<!-- 추가 정보 -->
+										<div class="detail-box2" id="detail-box2-<%=countryName_kr%>-<%=i%>">
+											<!-- 발매 가격 -->
+											<div class="brandInfo-detail-container">
+												<span class="info-subTitle">발매 가격</span>
+												<span class="info-content">$190</span>
+											</div>
+			
+											<!-- 결제 -->
+											<div class="brandInfo-detail-container">
+												<span class="info-subTitle">결제 방식</span>
+												<span class="info-content">
+													<!-- 결제방식 -->
+													<%if(odto.getOnline_method().contains("선착")) {%>
+														선착순 구매
+													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+														<%=odto.getBuy_method()%>
+													<%}%>
+												</span>
+											</div>	
+											
+											<!-- 배송 -->
+											<div class="brandInfo-detail-container" style="margin-bottom:0px !important;">
+												<span class="info-subTitle">배송 방식</span>
+												<span class="info-content">
+													<!-- 배송방식 -->
+													<%if(odto.getOnline_method().contains("선착")) {%>
+														<%=odto.getDelivery_method()%>
+													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+														<%=odto.getDelivery_method()%>
+													<%}%>
+												</span>
+											</div>
+										</div>
+
 									</div>
-								
+
 								
 								</div>
 								
@@ -1839,6 +1879,62 @@
 				$('#releaseList-countryDiv-'+cateCountry).fadeIn();
 			}
 		});
+		
+		//추가 정보 Down 버튼 눌렸을시
+		$('.info-dropDown').click(function(){
+			$(this).css('display','none');
+			
+			//아이디 값 가져오기
+			var divID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = divID.split('-');
+			//뒤에서 두번째 = 국가
+			var country = splitArray[splitArray.length - 2];
+			//맨 마지막 = 번호
+			var number = splitArray[splitArray.length - 1];
+			
+			//DropUp 버튼 나타내기
+			$('#infoDropUp-'+country+'-'+number).css('display','flex');
+			
+			$('#detail-box2-'+country+'-'+number).slideDown();
+		});
+		
+		//추가 정보 Up 버튼 눌렸을시
+		$('.info-dropUp').click(function(){
+			$(this).css('display','none');
+			
+			//아이디 값 가져오기
+			var divID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = divID.split('-');
+			//뒤에서 두번째 = 국가
+			var country = splitArray[splitArray.length - 2];
+			//맨 마지막 = 번호
+			var number = splitArray[splitArray.length - 1];
+			
+			//DropDown 버튼 나타내기
+			$('#infoDropDown-'+country+'-'+number).css('display','flex');
+			
+			$('#detail-box2-'+country+'-'+number).slideUp();
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
