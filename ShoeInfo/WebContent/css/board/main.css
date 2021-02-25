@@ -25,7 +25,7 @@ body {font-size:1em; line-weight:1.4}
 .mainSneaker-container { float:left; width:24%; margin:0 0.5% 1% 0.5%; text-align:center; font-family:'Nanum Gothic', sans-serif; font-weight:bold; }
 .mainSneaker-image { position:relative; display:block; background-color:#f3f3f3; }
 .mainSneaker-image img { width:100%; height:100%; padding:15% 3% 10% 3%; }
-.mainSneaker-brandCount { display:block; font-weight:normal !important; margin:5px 0 15px 0; cursor:pointer; text-align:right; padding-right:8px; font-size:18px;}
+.mainSneaker-brandCount { display:table; position:absolute; font-weight:normal !important; text-align:right; font-size:17px; padding:10px; top:0; right:0; color:#00b300; }
 
 .mainSneaker-container-hover { position: absolute; width: 100%; height: 100%; background-color: #2b2b2b; opacity:0; top:0; left:0; transition: 0.3s; border-radius:4px; }
 .mainSneaker-container-hover-Name { display: table; position: absolute; width: 100%; height: 100%; opacity:0; top:0; left:0; transition: 0.3s; font-weight:bold; color: white; font-size: 22px; cursor:pointer; }

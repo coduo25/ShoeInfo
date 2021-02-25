@@ -149,14 +149,16 @@
 							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
 								<p> <%=releasing_sdto.getModel_name_kr()%> </p>
 							</div>
+							
+							
+							<div class="mainSneaker-brandCount">
+								<span>	
+									&#9679; 발매처 <span style="font-weight:bold;"><%=countBrand-1%>+</span>
+								</span>
+							</div>
 						</div>
 							
-						<div class="mainSneaker-brandCount" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>'">
-							<span style="color:#2b2b2b; float:center;">	
-								발매처 (<span style="border-bottom:1px dotted #525252;"><span style="color:#00b300;"><%=countBrand%></span></span>)
-							</span>
-							
-						</div>
+						
 					</div>
 				<% } } %>
 			</div>
