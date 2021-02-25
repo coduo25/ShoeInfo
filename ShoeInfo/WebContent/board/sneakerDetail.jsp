@@ -331,14 +331,16 @@
 												<!-- 발매처 이름 -->
 												<div id="count_todays_status<%=i%>brandName">
 													<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-														<span style="font-weight:bold; font-size:22px; color: #1f1f1f;"> <%=bdto.getBrand_name()%></span>
+														<span style="font-weight:bold; font-size:22px; color: #1f1f1f; <%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"> 
+															<%=bdto.getBrand_name()%>
+														</span>
 													</a>
 												</div>
 											</div>
 										</div>
 										
 										<!-- 응모참여버튼 -->
-										<div class="links-container" style="display:none;">
+										<div class="links-container">
 											<!-- 참여체크박스 -->
 											<%if(odto.getOnline_method().contains("선착")) {%>
 													<div>
@@ -349,7 +351,7 @@
 													<input type="hidden" id="drawCheck_status<%=i%>" value="참여전">
 													<!-- 참여전 체크박스 -->
 													<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:white; color:black;">
-														<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>"></span></span>
+														<span style="color:#d8d8d8;"><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>"></span></span>
 													</div> 
 												<%}else{%>
 													<input type="hidden" id="drawCheck_status<%=i%>" value="참여완료">
@@ -418,7 +420,7 @@
 											</div>
 											
 											<!-- 남은시간 -->
-											<div class="brandInfo-detail-container" style="margin-bottom:0px !important;">
+											<div class="brandInfo-detail-container" style="border-bottom:0px !important;">
 												<!-- 남은시간 -->
 												<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
 												<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
@@ -505,67 +507,28 @@
 												</span>
 											</div>
 											
-											<!-- 링크 + 참여버튼 -->
-											<div class="brandInfo-detail-container">
-												<!-- 바로가기 버튼 -->
-												<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-													<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="border:none; background-color:#f1f1f1; color:rgb(196 196 196);">
-														<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">종료</span>
-													</div>
-												<%}else {%>
-													<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="cursor:pointer;" onclick="window.open('<%=odto.getOnline_link()%>', 'mywindow');">
-														<%if(odto.getOnline_method().contains("선착")) {%>
-															<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">선착링크</span>
-														<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-															<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">응모링크</span>
-														<%}%>
-													</div>
-												<%} %>
-												<!-- 참여체크박스 -->
-												<%if(odto.getOnline_method().contains("선착")) {%>
-														<div>
-															<span>-</span>
-														</div>
-												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-													<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
-														<input type="hidden" id="drawCheck_status<%=i%>" value="참여전">
-														<!-- 참여전 체크박스 -->
-														<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:white; color:black;">
-															<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>"></span></span>
-														</div> 
-													<%}else{%>
-														<input type="hidden" id="drawCheck_status<%=i%>" value="참여완료">
-														<!-- 참여완료 체크박스 -->
-														<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:#1f1f1f; color:white;">
-															<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>">응모함</span></span>
-														</div> 
-													<%}%>
-												<%}%>
-											
-											</div>
-											
 										</div>
-			
+										
 										<!-- 추가 정보 보여주는 버튼 -->
-										<div class="info-dropDown" id="infoDropDown-<%=countryName_kr%>-<%=i%>">
+										<div class="info-dropDown" id="infoDropDown-<%=countryName_kr%>-<%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 											<div>
-												<span><i class="fas fa-caret-down"></i></span>
+												<span>자세히 <i class="fas fa-caret-down"></i></span>
 											</div>
 										</div>
 										
 										<!-- 추가 정보 없애는 버튼 -->
-										<div class="info-dropUp" id="infoDropUp-<%=countryName_kr%>-<%=i%>">
+										<div class="info-dropUp" id="infoDropUp-<%=countryName_kr%>-<%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 											<div>
-												<span><i class="fas fa-caret-up"></i></span>
+												<span>자세히 <i class="fas fa-caret-up"></i></span>
 											</div>
 										</div>
 										
 										<!-- 추가 정보 -->
-										<div class="detail-box2" id="detail-box2-<%=countryName_kr%>-<%=i%>">
+										<div class="detail-box2" id="detail-box2-<%=countryName_kr%>-<%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 											<!-- 발매 가격 -->
 											<div class="brandInfo-detail-container">
 												<span class="info-subTitle">발매 가격</span>
-												<span class="info-content">$190</span>
+												<span class="info-content">-</span>
 											</div>
 			
 											<!-- 결제 -->
@@ -594,6 +557,46 @@
 												</span>
 											</div>
 										</div>
+										
+										<!-- 링크 + 참여버튼 -->
+										<div class="links-container" style="display:none">
+											<!-- 바로가기 버튼 -->
+											<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
+												<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="border:none; color:rgb(196 196 196);"> <!-- background-color:#f1f1f1;  -->
+													<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText" style="text-decoration:line-through; text-decoration-thickness:2px;">링크</span>
+												</div>
+											<%}else {%>
+												<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="cursor:pointer;" onclick="window.open('<%=odto.getOnline_link()%>', 'mywindow');">
+													<%if(odto.getOnline_method().contains("선착")) {%>
+														<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText"><i class="fas fa-link"></i> 링크</span>
+													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+														<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText"><i class="fas fa-link"></i> 링크</span>
+													<%}%>
+												</div>
+											<%} %>
+											<!-- 참여체크박스 -->
+											<%if(odto.getOnline_method().contains("선착")) {%>
+													<div>
+														<span>-</span>
+													</div>
+											<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+												<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
+													<input type="hidden" id="drawCheck_status<%=i%>" value="참여전">
+													<!-- 참여전 체크박스 -->
+													<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:white; color:black;">
+														<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>"></span></span>
+													</div> 
+												<%}else{%>
+													<input type="hidden" id="drawCheck_status<%=i%>" value="참여완료">
+													<!-- 참여완료 체크박스 -->
+													<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:#1f1f1f; color:white;">
+														<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>">응모함</span></span>
+													</div> 
+												<%}%>
+											<%}%>
+										
+										</div>
+
 
 									</div>
 
@@ -1896,7 +1899,7 @@
 			//DropUp 버튼 나타내기
 			$('#infoDropUp-'+country+'-'+number).css('display','flex');
 			
-			$('#detail-box2-'+country+'-'+number).slideDown();
+			$('#detail-box2-'+country+'-'+number).slideDown('fast');
 		});
 		
 		//추가 정보 Up 버튼 눌렸을시
@@ -1915,8 +1918,11 @@
 			//DropDown 버튼 나타내기
 			$('#infoDropDown-'+country+'-'+number).css('display','flex');
 			
-			$('#detail-box2-'+country+'-'+number).slideUp();
+			$('#detail-box2-'+country+'-'+number).slideUp('fast');
 		});
+		
+		//응모 여부 체크박스 클릭했을시 -----------------------------------------------------------
+		
 		
 		
 		
