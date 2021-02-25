@@ -148,6 +148,7 @@
 									발매처 <span style="font-weight:bold;"><%=countBrand%>+</span>
 								</span>
 							</div>
+							
 							<!-- hover 칸  -->
 							<div class="mainSneaker-container-hover">
 								&nbsp;
@@ -157,8 +158,6 @@
 								<p> <%=releasing_sdto.getModel_name_kr()%> </p>
 							</div>
 						</div>
-							
-						
 					</div>
 				<% } } %>
 			</div>

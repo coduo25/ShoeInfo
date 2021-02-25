@@ -160,8 +160,8 @@
 			<%
 				if(releasedSneakerList.size()>=11){
 			%>
-				<div>
-					<span>더보기</span>
+				<div class="moreBtn-container">
+					<span class="moreBtn">더보기</span>
 				</div>
 			<%
 				}
