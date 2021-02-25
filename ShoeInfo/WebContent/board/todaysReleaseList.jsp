@@ -668,7 +668,7 @@
 				else {
 					//신발모델 번호
 					var model_num = $('#model_num'+id_num).val();
-					//신발모델 스타이코드
+					//신발모델 스타일코드
 					var model_stylecode = $('#model_stylecode'+id_num).val();
 					//브랜드 아이디
 					var brand_id = $('#brand_id'+id_num).val();
