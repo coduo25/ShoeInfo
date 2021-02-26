@@ -79,7 +79,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span>나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 이번 달 발매하는 프리미엄 신발 라인업 </span>
+				<span>나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 발매하는 프리미엄 신발 라인업 </span>
 			</div>
 			
 			<div class="snkrsWeek-table-container">

@@ -33,7 +33,7 @@ body {font-size:1em; line-weight:1.4;}
 
 /* 국가별 카테고리 파트 */
 .countryCate-container { padding:35px 0; text-align:right; }
-.countryCate-container div { display:inline; padding:8px 40px; cursor:pointer; color:#777777; font-size:16px; border:1px solid #e8e8e8; }
+.countryCate-container div { display:inline; padding:8px 32px; cursor:pointer; color:#777777; font-size:16px; border:1px solid #e8e8e8; }
 
 /* 발매처정보 */
 .releaseList-container { margin:0 0 300px 0; }
@@ -80,13 +80,31 @@ body {font-size:1em; line-weight:1.4;}
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
 	.remain-time { font-size:18px; padding:0 3px; font-weight: bold; font-family: 'Kelly Slab', cursive; }
-	.remainWarning-container { display: block; position: relative; color: black !important; margin-top:5px; }
-	.remainWarning-container span { display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%; }
+	.remainWarning-container { display:block; position:relative; color:black !important; }
+	.remainWarning-container span { display:none; font-weight:bold; font-size:12px; position:absolute; width:100%; text-align:right; padding-right:5px; }
 	
 	/* 발매처 정보 박스 */
 	.brandInfo-detail-container { margin-bottom:12px; }
 	.info-subTitle { color:#1f1f1f; width:27%;}
 	.info-content { color:#949494; width:70%; } /* text-align:right; float:right;  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

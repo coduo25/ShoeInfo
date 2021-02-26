@@ -21,6 +21,7 @@
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -165,22 +166,22 @@
 		<!-- 발매처 카테고리 -->
 		<div class="countryCate-container">
 			<div class="countryCate-div" id="countryCate-전체" style="color:black; border:1px solid black;">
-				<span class="countryCate-span" id="countryCateSpan-전체" style="color:black; font-weight:bold;">전체</span>
+				<span class="countryCate-span" id="countryCateSpan-전체" style="color:black; font-weight:bold;">전체(<%=onlineList_kr.size()+onlineList_asia.size()+onlineList_america.size()+onlineList_europe.size()+onlineList_etc.size()%>)</span>
 			</div>
 			<div class="countryCate-div" id="countryCate-한국">
-				<span class="countryCate-span" id="countryCateSpan-한국">한국</span>
+				<span class="countryCate-span" id="countryCateSpan-한국">한국(<%=onlineList_kr.size()%>)</span>
 			</div>
 			<div class="countryCate-div" id="countryCate-아시아">
-				<span class="countryCate-span" id="countryCateSpan-아시아">아시아</span>
+				<span class="countryCate-span" id="countryCateSpan-아시아">아시아(<%=onlineList_asia.size()%>)</span>
 			</div>
 			<div class="countryCate-div" id="countryCate-북미">
-				<span class="countryCate-span" id="countryCateSpan-북미">북미</span>
+				<span class="countryCate-span" id="countryCateSpan-북미">북미(<%=onlineList_america.size()%>)</span>
 			</div>
 			<div class="countryCate-div" id="countryCate-유럽">
-				<span class="countryCate-span" id="countryCateSpan-유럽">유럽</span>
+				<span class="countryCate-span" id="countryCateSpan-유럽">유럽(<%=onlineList_europe.size()%>)</span>
 			</div>
 			<div class="countryCate-div" id="countryCate-기타">
-				<span class="countryCate-span" id="countryCateSpan-기타">기타</span>
+				<span class="countryCate-span" id="countryCateSpan-기타">기타(<%=onlineList_etc.size()%>)</span>
 			</div>
 		</div>
 	
@@ -286,7 +287,7 @@
 									String count_todays_end_time = count_format.format(original_Online_end_time);
 							%>
 								<!-- 발매처 박스 -->
-								<div class="releaseBox" id="releaseBox<%=countryName_eng%><%=i%>">
+								<div class="releaseBox" id="count_todays_status<%=countryName_eng%><%=i%>releaseBox">
 								
 									<input type="hidden" id="brand_id<%=countryName_eng%><%=i%>" value="<%=bdto.getBrand_id()%>">
 									<input type="hidden" id="country_name<%=countryName_eng%><%=i%>" value="<%=bdto.getCountry_name()%>">
@@ -334,9 +335,9 @@
 											<!-- 발매처 이름  -->
 											<div class="brandInfo-name-container">
 												<!-- 발매처 이름 -->
-												<div id="count_todays_status<%=i%>brandName">
+												<div id="count_todays_status<%=countryName_eng%><%=i%>brandName">
 													<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-														<span style="font-weight:bold; font-size:20px; color: #1f1f1f;"> 
+														<span id="count_todays_status<%=countryName_eng%><%=i%>brandNameTxt" style="font-weight:bold; font-size:20px; color: #1f1f1f; <%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"> 
 															<%=bdto.getBrand_name()%>
 														</span>
 													</a>
@@ -369,7 +370,7 @@
 										</div>
 										
 										<!-- 응모 종료 되었을때 나타나는 drop down/up 버튼 -->
-										<div class="releasedDropDown-container"
+										<div class="releasedDropDown-container" id="count_todays_status<%=countryName_eng%><%=i%>releasedDropDown" 
 										<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>
 											style="display:flex !important;"
 										<%}%>
@@ -383,7 +384,7 @@
 										</div>
 									
 										<!-- 디테일 박스 -->
-										<div class="detail-box" id="detail-box<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%><%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>display:none !important;<%}%>">
+										<div class="detail-box" id="count_todays_status<%=countryName_eng%><%=i%>detail-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%><%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>display:none !important;<%}%>">
 											<!-- 발매 방식  -->
 											<div class="brandInfo-detail-container">
 												<span class="info-subTitle">발매 방식</span>
@@ -442,10 +443,10 @@
 											<!-- 남은시간 -->
 											<div class="brandInfo-detail-container" style="border-bottom:0px !important;">
 												<!-- 남은시간 -->
-												<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
-												<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
+												<span id="count_todays_start_time<%=countryName_eng%><%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
+												<span id="count_todays_end_time<%=countryName_eng%><%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
 												<!-- 남은시간 상태 -->
-												<span id="count_todays_status<%=i%>" style="display:none;">
+												<span id="count_todays_status<%=countryName_eng%><%=i%>" style="display:none;">
 													<!-- 선착일때 -->
 													<%if(odto.getOnline_method().contains("선착")){%>
 														<%if(compare_w_start_result >= 0) {%>
@@ -470,12 +471,12 @@
 																<% if(!odto.getOnline_start_date().isEmpty() && !odto.getOnline_start_time().isEmpty()) {%>
 																	<span class="remainTime-container">
 																		<!-- 남은시간 -->
-																		<span id="count_todays_status<%=i%>span" style="color:#313131;">
+																		<span id="count_todays_status<%=countryName_eng%><%=i%>span" style="color:#313131;">
 			<!-- 																<span style="padding-right: 1px;">선착까지</span> -->
-																			<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일 
-																			<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 4px;"></span>시간
-																			<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>분
-																			<span class="remain-time" id="final_count_start_time<%=i%>seconds"></span>초
+																			<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>days"></span>일 
+																			<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>시간
+																			<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>minutes"></span>분
+																			<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>seconds"></span>초
 																			<span> 남음</span>
 																		</span>
 																	</span>
@@ -498,12 +499,12 @@
 																<% if(!odto.getOnline_end_date().isEmpty() && !odto.getOnline_end_time().isEmpty()) {%>
 																	<span class="remainTime-container"> 
 																		<!-- 남은시간 -->
-																		<span id="count_todays_status<%=i%>span" style="color:#313131;">
+																		<span id="count_todays_status<%=countryName_eng%><%=i%>span" style="color:#313131;">
 			<!-- 																<span style="padding-right: 1px;">마감까지</span> -->
-																			<span class="remain-time" id="final_count_end_time<%=i%>days"></span>일 
-																			<span class="remain-time" id="final_count_end_time<%=i%>hours" style="padding-left: 4px;"></span>시간
-																			<span class="remain-time" id="final_count_end_time<%=i%>minutes"></span>분
-																			<span class="remain-time" id="final_count_end_time<%=i%>seconds"></span>초
+																			<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>days"></span>일 
+																			<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>시간
+																			<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>minutes"></span>분
+																			<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>seconds"></span>초
 																			<span> 남음</span>
 																		</span>
 																	</span>
@@ -519,10 +520,9 @@
 													<%} else if( (odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0) {%>
 														<span>-</span>
 													<%} %>
-													
 													<!-- 마감임박 문구-->
 													<div class="remainWarning-container">
-														<span id="count_todays_status<%=i%>label"></span>			
+														<span id="count_todays_status<%=countryName_eng%><%=i%>label"></span>			
 													</div>
 												</span>
 											</div>
@@ -568,7 +568,7 @@
 					</div>
 					
 					<!-- 종료된 리스트들 -->
-					<div class="released-part" id="released-part<%=countryName_eng%>" style="display:none;">
+					<div class="released-part" id="count_todays_status<%=countryName_eng%>released-part" style="display:none;">
 						
 					</div>
 					
@@ -583,7 +583,7 @@
 </body>
 <script type="text/javascript">
 
-	const countDownTimer = function (id, date, drawstatus_id) { 
+	const countDownTimer = function (id, date, statusId) { 
 		var _vDate = new Date(date);
 		var _second = 1000; 
 		var _minute = _second * 60; 
@@ -603,23 +603,76 @@
 			var minutes = Math.floor((distDt % _hour) / _minute); 
 			var seconds = Math.floor((distDt % _minute) / _second); 
 			
-			if(!id.includes('list')){
-				if(days <= 9) { days = '0' + days; }
-				if(hours <= 9) { hours = '0' + hours; }
-				if(minutes <= 9) { minutes = '0' + minutes; }
-				if(seconds <= 9) { seconds = '0' + seconds; }
-			}else {
-				days = days + 'd';
-				hours = hours + 'h';
-				minutes = minutes + 'm';
-				seconds = seconds + 's';
-			}
+			if(hours <= 9) { hours = '0' + hours; }
+			if(minutes <= 9) { minutes = '0' + minutes; }
+			if(seconds <= 9) { seconds = '0' + seconds; }
 
 			if(days || hours || minutes || seconds){
 				document.getElementById(id + 'days').textContent = days; 
 				document.getElementById(id + 'hours').textContent = hours; 
 				document.getElementById(id + 'minutes').textContent = minutes; 
 				document.getElementById(id + 'seconds').textContent = seconds;
+			}
+			
+			//임박시간 표시 하기
+			//남은시간에서 시간:분:초 = 00:19:59 부터 남은시간 붉은색으로 나타내기, 선착이면 '선착임박', 드로우면 '마감임박' 문구 나타내기
+			
+			//숫자 형태를 문자 형태로 바꾸끼 (편법)
+			days += "";
+			hours += "";
+			minutes += "";
+			seconds += "";
+			
+			//문자 형태의 시간 합체
+			var finalTime = days + hours + minutes + seconds;
+			
+			//문자 형태의 최종시간을 다시 숫자 형태로 바꾸기
+			finalTime *= 1;
+			
+			//20분 남았을때
+			if(finalTime >= 0000001 && finalTime <= 0001459){
+				//시간 붉은색으로
+				$('#'+statusId+'span').css("color", "#da010a");
+				//임박글자 넣기 (선착이면 선착임박, 드로우면 마감임박)
+				if(id.match('start')){
+					document.getElementById(statusId+'label').textContent = '(임박!)';	
+				}
+				if(id.match('end')){
+					document.getElementById(statusId+'label').textContent = '(임박!)';	
+				}
+				//임박표시 ON
+				$('#'+statusId+'label').css("display", "block");
+			}
+			//종료되었을때
+			else if(finalTime == 0000000){
+				document.getElementById(statusId).textContent = '종료';
+				document.getElementById(statusId+'span').textContent = '종료';
+				
+				//브랜드이름 줄 긋기
+				$('#'+statusId+'brandNameTxt').css({"text-decoration":"line-through", "text-decoration-thickness":"2px"})
+				//응모 status (응모중,응모예정) 없애기
+				$('#'+statusId+'release-status').css("display", "none");
+				//남은시간 '종료'원래 회색으로 바꾸끼
+				$('#'+statusId+'span').css("color", "#949494");
+				//임박표시 OFF
+				$('#'+statusId+'label').css("display", "none");
+				//상세정보 자세히 보는 버튼 활성화
+				$('#'+statusId+'releasedDropDown').slideDown('fast');
+				//상세정보 박스 사라지게하기
+				$('#'+statusId+'detail-box').slideUp('fast');
+				
+				//statusId에서 숫자만 뺀 문자열
+				var statusIdTxt = statusId.replace(/\d+/g, '');
+				//종료된 발매처 모으는 div 키기
+				$('#'+statusIdTxt+'released-part').css('display','block');
+				//종료된 박스 밑으로 보내기
+				$('#'+statusId+'releaseBox').appendTo('#'+statusIdTxt+'released-part');
+			}
+			//임박하지 않고 계속 진행중일때
+			else {
+				document.getElementById(statusId).textContent = '진행중';	
+				//임박표시 OFF
+				$('#'+statusId+'label').css("display", "none");
 			}
 		} 
 		timer = setInterval(showRemaining, 1000); 
@@ -649,10 +702,27 @@
 		for(var i=0; i<onlineList_kr.length; i++){
 			var release_status = $('#count_todays_statuskr'+i+'release-status').text();
 			if(release_status == '종료'){
-				//진행종료된 div 위에 선 긋기
-				$('#released-partkr').css('display','block');
+				$('#count_todays_statuskrreleased-part').css('display','block');
 				//kr과 i를 가지고 해당 브랜드박스 전체 이동시키기
-				$('#releaseBoxkr'+i).appendTo('#released-partkr');
+				$('#count_todays_statuskr'+i+'releaseBox').appendTo('#count_todays_statuskrreleased-part');
+			}
+			
+			//남은시간 계산하기
+			var count_span_start = document.getElementById("count_todays_start_timekr"+i).innerText;
+			var count_span_end = document.getElementById("count_todays_end_timekr"+i).innerText;
+			
+			var noTimeData = '0002';
+			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
+			if(count_span_start.match(noTimeData)){
+				countDownTimer('final_count_end_timekr'+i, count_span_end, 'count_todays_statuskr'+i);
+			}
+			//끝나는시간에 0002가 포함 = 무조건 시작시간(선착) = 시작으로만 가지고 놀기
+			if(count_span_end.match(noTimeData)) {
+				countDownTimer('final_count_start_timekr'+i, count_span_start, 'count_todays_statuskr'+i);
+			}
+			//둘다 포함이 안되어있다 = 드로우밖에 없음 = 끝나는 시간으로만 가지고 놀기
+			if(!count_span_start.match(noTimeData) && !count_span_end.match(noTimeData)){
+				countDownTimer('final_count_end_timekr'+i, count_span_end, 'count_todays_statuskr'+i);	
 			}
 		}
 		
@@ -665,10 +735,27 @@
 		for(var i=0; i<onlineList_asia.length; i++){
 			var release_status = $('#count_todays_statusasia'+i+'release-status').text();
 			if(release_status == '종료'){
-				//진행종료된 div 위에 선 긋기
-				$('#released-partasia').css('display','block');
+				$('#count_todays_statusasiareleased-part').css('display','block');
 				//kr과 i를 가지고 해당 브랜드박스 전체 이동시키기
-				$('#releaseBoxasia'+i).appendTo('#released-partasia');
+				$('#count_todays_statusasia'+i+'releaseBox').appendTo('#count_todays_statusasiareleased-part');
+			}
+			
+			//남은시간 계산하기
+			var count_span_start = document.getElementById("count_todays_start_timeasia"+i).innerText;
+			var count_span_end = document.getElementById("count_todays_end_timeasia"+i).innerText;
+			
+			var noTimeData = '0002';
+			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
+			if(count_span_start.match(noTimeData)){
+				countDownTimer('final_count_end_timeasia'+i, count_span_end, 'count_todays_statusasia'+i);
+			}
+			//끝나는시간에 0002가 포함 = 무조건 시작시간(선착) = 시작으로만 가지고 놀기
+			if(count_span_end.match(noTimeData)) {
+				countDownTimer('final_count_start_timeaisa'+i, count_span_start, 'count_todays_statusasia'+i);
+			}
+			//둘다 포함이 안되어있다 = 드로우밖에 없음 = 끝나는 시간으로만 가지고 놀기
+			if(!count_span_start.match(noTimeData) && !count_span_end.match(noTimeData)){
+				countDownTimer('final_count_end_timeasia'+i, count_span_end, 'count_todays_statusasia'+i);	
 			}
 		}
 		
@@ -681,10 +768,27 @@
 		for(var i=0; i<onlineList_america.length; i++){
 			var release_status = $('#count_todays_statusna'+i+'release-status').text();
 			if(release_status == '종료'){
-				//진행종료된 div 위에 선 긋기
-				$('#released-partna').css('display','block');
+				$('#count_todays_statusnareleased-part').css('display','block');
 				//kr과 i를 가지고 해당 브랜드박스 전체 이동시키기
-				$('#releaseBoxna'+i).appendTo('#released-partna');
+				$('#count_todays_statusna'+i+'releaseBox').appendTo('#count_todays_statusnareleased-part');
+			}
+			
+			//남은시간 계산하기
+			var count_span_start = document.getElementById("count_todays_start_timena"+i).innerText;
+			var count_span_end = document.getElementById("count_todays_end_timena"+i).innerText;
+			
+			var noTimeData = '0002';
+			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
+			if(count_span_start.match(noTimeData)){
+				countDownTimer('final_count_end_timena'+i, count_span_end, 'count_todays_statusna'+i);
+			}
+			//끝나는시간에 0002가 포함 = 무조건 시작시간(선착) = 시작으로만 가지고 놀기
+			if(count_span_end.match(noTimeData)) {
+				countDownTimer('final_count_start_timena'+i, count_span_start, 'count_todays_statusna'+i);
+			}
+			//둘다 포함이 안되어있다 = 드로우밖에 없음 = 끝나는 시간으로만 가지고 놀기
+			if(!count_span_start.match(noTimeData) && !count_span_end.match(noTimeData)){
+				countDownTimer('final_count_end_timena'+i, count_span_end, 'count_todays_statusna'+i);	
 			}
 		}
 		
@@ -697,10 +801,27 @@
 		for(var i=0; i<onlineList_europe.length; i++){
 			var release_status = $('#count_todays_statuseu'+i+'release-status').text();
 			if(release_status == '종료'){
-				//진행종료된 div 위에 선 긋기
-				$('#released-parteu').css('display','block');
+				$('#count_todays_statuseureleased-part').css('display','block');
 				//kr과 i를 가지고 해당 브랜드박스 전체 이동시키기
-				$('#releaseBoxeu'+i).appendTo('#released-parteu');
+				$('#count_todays_statuseu'+i+'releaseBox').appendTo('#count_todays_statuseureleased-part');
+			}
+			
+			//남은시간 계산하기
+			var count_span_start = document.getElementById("count_todays_start_timeeu"+i).innerText;
+			var count_span_end = document.getElementById("count_todays_end_timeeu"+i).innerText;
+			
+			var noTimeData = '0002';
+			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
+			if(count_span_start.match(noTimeData)){
+				countDownTimer('final_count_end_timeeu'+i, count_span_end, 'count_todays_statuseu'+i);
+			}
+			//끝나는시간에 0002가 포함 = 무조건 시작시간(선착) = 시작으로만 가지고 놀기
+			if(count_span_end.match(noTimeData)) {
+				countDownTimer('final_count_start_timeeu'+i, count_span_start, 'count_todays_statuseu'+i);
+			}
+			//둘다 포함이 안되어있다 = 드로우밖에 없음 = 끝나는 시간으로만 가지고 놀기
+			if(!count_span_start.match(noTimeData) && !count_span_end.match(noTimeData)){
+				countDownTimer('final_count_end_timeeu'+i, count_span_end, 'count_todays_statuseu'+i);	
 			}
 		}
 		
@@ -713,10 +834,27 @@
 		for(var i=0; i<onlineList_etc.length; i++){
 			var release_status = $('#count_todays_statusetc'+i+'release-status').text();
 			if(release_status == '종료'){
-				//진행종료된 div 위에 선 긋기
-				$('#released-partetc').css('display','block');
+				$('#count_todays_statusetcreleased-part').css('display','block');
 				//kr과 i를 가지고 해당 브랜드박스 전체 이동시키기
-				$('#releaseBoxetc'+i).appendTo('#released-partetc');
+				$('#count_todays_statusetc'+i+'releaseBox').appendTo('#count_todays_statusetcreleased-part');
+			}
+			
+			//남은시간 계산하기
+			var count_span_start = document.getElementById("count_todays_start_timeetc"+i).innerText;
+			var count_span_end = document.getElementById("count_todays_end_timeetc"+i).innerText;
+			
+			var noTimeData = '0002';
+			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
+			if(count_span_start.match(noTimeData)){
+				countDownTimer('final_count_end_timeetc'+i, count_span_end, 'count_todays_statusetc'+i);
+			}
+			//끝나는시간에 0002가 포함 = 무조건 시작시간(선착) = 시작으로만 가지고 놀기
+			if(count_span_end.match(noTimeData)) {
+				countDownTimer('final_count_start_timeetc'+i, count_span_start, 'count_todays_statusetc'+i);
+			}
+			//둘다 포함이 안되어있다 = 드로우밖에 없음 = 끝나는 시간으로만 가지고 놀기
+			if(!count_span_start.match(noTimeData) && !count_span_end.match(noTimeData)){
+				countDownTimer('final_count_end_timeetc'+i, count_span_end, 'count_todays_statusetc'+i);	
 			}
 		}
 		
@@ -761,7 +899,7 @@
 			//DropUp 버튼 나타내기
 			$('#releasedDropUp-'+country+'-'+number).css('display','block');
 			
-			$('#detail-box'+country+number).slideDown('fast');
+			$('#count_todays_status'+country+number+'detail-box').slideDown('fast');
 			$('#infoDropDown-'+country+'-'+number).slideDown('fast');
 		});
 		
@@ -781,7 +919,7 @@
 			//DropUp 버튼 나타내기
 			$('#releasedDropDown-'+country+'-'+number).css('display','block');
 			
-			$('#detail-box'+country+number).slideUp('fast');
+			$('#count_todays_status'+country+number+'detail-box').slideUp('fast');
 			$('#infoDropDown-'+country+'-'+number).slideUp('fast');
 			$('#infoDropUp-'+country+'-'+number).css('display','none');
 		});
@@ -844,7 +982,7 @@
 				   		});
 						//참여전 표시 -> 참여완료로 바꾸기
 				   		$('#brand-box'+country+number).css('opacity','0.3');
-						$('#detail-box'+country+number).css('opacity','0.3');
+						$('#count_todays_status'+country+number+'detail-box').css('opacity','0.3');
 						$('#draw_checkBox'+country+number).css('background-color','#1f1f1f');
 						$('#draw_checkBox'+country+number).css('color','white');
 						$('#drawCheck_statusTxt'+country+number).text("응모함");
@@ -866,7 +1004,7 @@
 				   		});
 						//참여완료 표시 -> 참여전으로 바꾸기
 						$('#brand-box'+country+number).css('opacity','1');
-						$('#detail-box'+country+number).css('opacity','1');
+						$('#count_todays_status'+country+number+'detail-box').css('opacity','1');
 						$('#drawCheck_statusTxt'+country+number).text("");
 						$('#draw_checkBox'+country+number).css('background-color','white');
 						$('#draw_checkBox'+country+number).css('color','#d8d8d8');

@@ -353,7 +353,7 @@ public class SneakerDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_onlineinfo where brand_id='대한민국_SNKRS 한국' and (((online_method='선착') and (concat(online_start_date, ' ', online_start_time, ':00') between now() and concat(last_day(now()-interval 0 month), ' 23:59:59'))) or ((online_method = '드로우') and (concat(online_end_date, ' ', online_end_time, ':00') between now() and concat(last_day(now()-interval 0 month), ' 23:59:59')))) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
+			sql = "select * from shoeinfo_onlineinfo where brand_id='대한민국_SNKRS 한국' and (((online_method='선착') and (concat(online_start_date, ' ', online_start_time, ':00') between now() and concat(date_add(now(), interval +1 month), ' 23:59:59'))) or ((online_method = '드로우') and (concat(online_end_date, ' ', online_end_time, ':00') between now() and concat(date_add(now(), interval +1 month), ' 23:59:59')))) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){

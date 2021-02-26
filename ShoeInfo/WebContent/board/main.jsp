@@ -277,7 +277,7 @@
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-												<span style="font-weight:bold; font-size:24px; color: #1f1f1f;"> <%=bdto_todays.getBrand_name()%></span>
+												<span id="count_todays_status<%=i%>brandNameTxt" style="font-weight:bold; font-size:24px; color: #1f1f1f;"> <%=bdto_todays.getBrand_name()%></span>
 											</a>
 											<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
 											<%if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
@@ -559,7 +559,7 @@
 			</div>
 			
 			<div class="desc-container">
-				<span>나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 이번 달 발매하는 프리미엄 신발 라인업 </span>
+				<span>나이키 코리아(<a href="https://www.nike.com/kr/launch/?type=upcoming&activeDate=date-filter:AFTER" target="_blank" style="border-bottom:1px dotted #fe0016; color:#fe0016;">SNKRS</a>)에서 발매하는 프리미엄 신발 라인업 </span>
 			</div>
 			
 			<div class="snkrsWeek-table-container">
@@ -664,9 +664,9 @@
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 2021년 발매 예정 라인업 </h4>
-				<div class="allButton" onclick="location.href='./AllReleaseList.go'">
-					<span> 전체보기 </span>
-				</div>
+<!-- 				<div class="allButton" onclick="location.href='./AllReleaseList.go'"> -->
+<!-- 					<span> 전체보기 </span> -->
+<!-- 				</div> -->
 			</div>
 			
 			<div class="desc-container">
@@ -680,7 +680,10 @@
 					</div>
 				<% } else {
 					for(int i=0; i<releaseSneakerList.size(); i++){
-						SneakerDTO release_sdto = releaseSneakerList.get(i);	
+						SneakerDTO release_sdto = releaseSneakerList.get(i);
+						if(i==12){
+							break;
+						}
 				%>
 					<div class="mainSneaker-container">
 						<div class="mainSneaker-image">
@@ -699,6 +702,15 @@
 					</div>
 				<% } } %>
 			</div>
+			<%
+				if(releaseSneakerList.size()>=11){
+			%>
+				<div class="moreBtn-container">
+					<span class="moreBtn" onclick="location.href='./AllReleaseList.go'">더보기</span>
+				</div>
+			<%
+				}
+			%>	
 		</div>
 
 
@@ -1067,6 +1079,8 @@
 				document.getElementById(statusId+'span').textContent = '종료';
 				document.getElementById(statusId+'linkBtnText').textContent = '종료';				
 			
+				//브랜드이름 줄 긋기
+				$('#'+statusId+'brandNameTxt').css({"text-decoration":"line-through", "text-decoration-thickness":"2px"})
 				//응모 status (응모중,응모예정) 없애기
 				$('#'+statusId+'release-status').css("display", "none");
 				//남은시간 '종료'빨간색으로 바꾸끼

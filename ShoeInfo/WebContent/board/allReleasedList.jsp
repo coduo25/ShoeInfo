@@ -78,13 +78,12 @@
 		String current = format.format(currentTime);
 		Date today = format.parse(current);
 		
+
 		
 		
-		
-		
-		
-		
-		
+		// 구 리스트들
+		// 구 리스트들
+		// 구 리스트들
 		// 구 리스트들
 		ArrayList<SneakerDTO> sneakerList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList1");
 		ArrayList<SneakerDTO> sneakerList2 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2");

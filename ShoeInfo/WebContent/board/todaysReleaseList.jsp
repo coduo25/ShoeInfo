@@ -82,12 +82,14 @@
 			<div class="desc-container">
 				<span style="float:left;"> 오늘 마감 예정이거나 진행 중인 발매처 </span> 
 				
-				<span style="padding-left: 20px; float:right;"> 
-					<input class="cate_checkbox" type="checkbox" id="todaysEnd_kr" name="todaysEnd_kr"> <label for="todaysEnd_kr">마감포함 </label> 
+				<span style="padding-left:30px; float:right;"> 
+					<input class="cate_checkbox" type="checkbox" id="todaysEnd_kr" name="todaysEnd_kr"> 
+					<label for="todaysEnd_kr">마감포함</label> 
 				</span>
 				
 				<span style="float:right;"> 
-					<input class="cate_checkbox" type="checkbox" id="todays_kr" name="todays_kr"> <label for="todays_kr">국내 발매처만 보기</label> 
+					<input class="cate_checkbox" type="checkbox" id="todays_kr" name="todays_kr"> 
+					<label for="todays_kr"> 국내 발매처만 보기 </label> 
 				</span>
 			</div>
 			
@@ -192,7 +194,7 @@
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-												<span style="font-weight:bold; font-size:24px; color: #1f1f1f;"> <%=bdto_todays.getBrand_name()%></span>
+												<span id="count_todays_status<%=i%>brandNameTxt" style="font-weight:bold; font-size:24px; color:#1f1f1f; <%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto_todays.getBrand_name()%></span>
 											</a>
 											<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
 											<%if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
@@ -532,8 +534,10 @@
 			else if(finalTime == 0000000){
 				document.getElementById(statusId).textContent = '종료';
 				document.getElementById(statusId+'span').textContent = '종료';
-				document.getElementById(statusId+'linkBtnText').textContent = '종료';				
-			
+				document.getElementById(statusId+'linkBtnText').textContent = '종료';	
+				
+				//브랜드이름 줄 긋기
+				$('#'+statusId+'brandNameTxt').css({"text-decoration":"line-through", "text-decoration-thickness":"2px"})
 				//응모 status (응모중,응모예정) 없애기
 				$('#'+statusId+'release-status').css("display", "none");
 				//남은시간 '종료'빨간색으로 바꾸끼
