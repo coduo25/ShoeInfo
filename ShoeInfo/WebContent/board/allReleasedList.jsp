@@ -63,9 +63,6 @@
 		Date currentTime = new Date();
 		String current = format.format(currentTime);
 		Date today = format.parse(current);
-
-		int showNum = 0;
-		
 		
 		
 		
@@ -157,9 +154,7 @@
 			<div class="moreBtn-container">
 				<span class="moreBtn">더보기</span>
 			</div>
-			
-		</div>
-		
+
 	</div>
 	
 	<!-- FOOTER -->

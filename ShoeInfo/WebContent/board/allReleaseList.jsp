@@ -42,10 +42,13 @@
 		}
 		
 		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
-		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
+// 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
+
 		//발매중인 산발들의 진행중인 브랜드 갯수
 		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) request.getAttribute("countReleasingBrandList");
+		
+		List<List<SneakerDTO>> splitedList = (List<List<SneakerDTO>>) request.getAttribute("splitedList");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -72,10 +75,10 @@
 	<input type="hidden" class="login_user" id="login_user" value="<%=user%>">
 
 	<!-- Main Content -->
-	<div id="wrapper" class="container">
+	<div id="wrapper" class="container" style="margin-bottom:50px;">
 	
 		<!-- 발매 중 리스트 -->
-		<div class="releasing-container" style="margin-top:40px !important;">
+		<div class="releasing-container" style="margin:40px 0 100px 0 !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 현재 발매 중인 라인업 </h4>
@@ -122,7 +125,7 @@
 		</div>
 
 		<!-- 발매 예정 리스트 -->
-		<div class="release-container">
+		<div class="release-container" style="margin:40px 0 0 0 !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 2021년 발매 예정 라인업 </h4>
@@ -132,34 +135,49 @@
 				<span> 발매처가 아직 없는 제품들 </span>
 			</div>
 			
-			<div class="releasing-table-container">
-				<% if(releasingSneakerList.isEmpty()){ %>
-					<div>
-						발매 예정인 신발이 없습니다.
-					</div>
-				<% } else {
-					for(int i=0; i<releaseSneakerList.size(); i++){
-						SneakerDTO release_sdto = releaseSneakerList.get(i);	
-				%>
-					<div class="mainSneaker-container">
-						<div class="mainSneaker-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
-								<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
-							</a>
-							<!-- hover 칸  -->
-							<div class="mainSneaker-container-hover">
-								 &nbsp;					
-							</div>
-							<!-- 이름 칸 -->
-							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
-								<p> <%=release_sdto.getModel_name_kr()%> </p>				
-							</div>
+				<% if(splitedList.isEmpty()){ %>
+					<div class="releasing-table-container">
+						<div>
+							발매 예정인 신발이 없습니다.
 						</div>
 					</div>
-				<% } } %>
+				<% } else {
+					// 0의 리스트 중에 마지막부터
+					// 1의 리스트 중에 마지막부터
+					// 2의 리스트 중에 마지막부터
+					for(int j=0; j<=2; j++){
+				%>
+					<div class="releasing-table-container" id="releasing-table-container<%=j%>" <%if(j>=1){%>style="display:none;"<%}%>>
+						<%
+						for(int i=0; i<splitedList.get(j).size(); i++){
+							SneakerDTO release_sdto = splitedList.get(j).get(i);	
+						%>
+							<div class="mainSneaker-container">
+								<div class="mainSneaker-image">
+									<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
+										<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
+									</a>
+									<!-- hover 칸  -->
+									<div class="mainSneaker-container-hover">
+										 &nbsp;					
+									</div>
+									<!-- 이름 칸 -->
+									<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
+										<p> <%=release_sdto.getModel_name_kr()%> </p>				
+									</div>
+								</div>
+							</div>
+						<% 
+							} 
+						%>
+					</div>
+				<%	} %>
+				<%	} %>
 			</div>
 			
-		</div>
+			<div class="moreBtn-container">
+				<span class="moreBtn">더보기</span>
+			</div>
 
 	</div>
 	
@@ -190,7 +208,15 @@
 			}
 		}
 		
-		
+		//더보기 눌렸을시 j+1값 나타내기
+		var showNum = 0;
+		$('.moreBtn').click(function(){
+			showNum += 1;
+			$('#releasing-table-container'+showNum).fadeIn();
+			if(showNum>=2){
+				$('.moreBtn-container').css('display','none');
+			}
+		});
 
 	});
 	
