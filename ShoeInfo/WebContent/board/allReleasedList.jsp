@@ -40,25 +40,11 @@
 		if(user == null){
 			user="";
 		}
+
+		//발매완료 신발들
+// 		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasedSneakerList");
 		
-		//사용자 응모한 브랜드 리스트
-		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
-	
-		//오늘의 발매 리스트(4개)
-		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_todays");
-		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) request.getAttribute("brandList_todays");
-		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_todays");
-		
-		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
-		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
-		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
-		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasedSneakerList");
-		//발매중인 산발들의 진행중인 브랜드 갯수
-		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) request.getAttribute("countReleasingBrandList");
-		
-		//이번주 snkrs 리스트
-		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_snkrs");
-		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList_snkrs");
+		List<List<SneakerDTO>> splitedList = (List<List<SneakerDTO>>) request.getAttribute("splitedList");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -77,8 +63,12 @@
 		Date currentTime = new Date();
 		String current = format.format(currentTime);
 		Date today = format.parse(current);
-		
 
+		int showNum = 0;
+		
+		
+		
+		
 		
 		
 		// 구 리스트들
@@ -102,8 +92,6 @@
 
 		String compare_Today = format.format(currentTime);
 		Date compareToday = format.parse(compare_Today);
-		
-		
 	%>
 
 	<!-- Header -->
@@ -112,59 +100,64 @@
 	<input type="hidden" class="login_user" id="login_user" value="<%=user%>">
 
 	<!-- Main Content -->
-	<div id="wrapper" class="container">
+	<div id="wrapper" class="container" style="margin-bottom:50px;">
 
 		<!-- 발매 완료 리스트 -->
-		<div class="released-container" style="margin-top:40px !important;">
+		<div class="released-container">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 발매 완료 라인업 </h4>
 			</div>
 			
 			<div class="desc-container">
-				<span> 모든 발매가 종료된 제품들 </span>
+				<span> 최근 발매가 종료된 제품들 </span>
 			</div>
 			
-			<div class="released-table-container">
-				<% if(releasedSneakerList.isEmpty()){ %>
-					<div>
-						발매 완료된 신발이 없습니다.
-					</div>
-				<% } else {
-					for(int i=releasedSneakerList.size()-1, countNum=0; i>=0; i--, countNum++){
-						SneakerDTO released_sdto = releasedSneakerList.get(i);
-						if(countNum==12){
-							break;
-						}
-				%>
-					<div class="mainSneaker-container">
-						<div class="mainSneaker-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>">
-								<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
-							</a>
-							<!-- hover 칸  -->
-							<div class="mainSneaker-container-hover">
-								 &nbsp;					
-							</div>
-							<!-- 이름 칸 -->
-							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
-								<p> <%=released_sdto.getModel_name_kr()%> </p>				
-							</div>
+				<% if(splitedList.isEmpty()){ %>
+					<div class="released-table-container">
+						<div>
+							발매 완료된 신발이 없습니다.
 						</div>
-					</div>		
-				<%
-					} }
+					</div>
+				<% } else { 
+					// 0의 리스트 중에 마지막부터
+					// 1의 리스트 중에 마지막부터
+					// 2의 리스트 중에 마지막부터
+					for(int j=0; j<=2; j++){
 				%>
+					<div class="released-table-container" id="released-table-container<%=j%>" <%if(j>=1){%>style="display:none;"<%}%>>
+						<%
+							for(int i=0; i<=splitedList.get(j).size()-1; i++){
+								SneakerDTO released_sdto = splitedList.get(j).get(i);
+						%>
+							<div class="mainSneaker-container">
+								<div class="mainSneaker-image">
+									<a href="./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>">
+										<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
+									</a>
+									<!-- hover 칸  -->
+									<div class="mainSneaker-container-hover">
+										 &nbsp;					
+									</div>
+									<!-- 이름 칸 -->
+									<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
+										<p> <%=released_sdto.getModel_name_kr()%> </p>				
+									</div>
+								</div>
+							</div>		
+						<%
+							} 
+						%>
+					</div>
+				<% } %> 
+					
+				<% }%>
 			</div>
-			<%
-				if(releasedSneakerList.size()>=11){
-			%>
-				<div class="moreBtn-container">
-					<span class="moreBtn">더보기</span>
-				</div>
-			<%
-				}
-			%>	
+			
+			<div class="moreBtn-container">
+				<span class="moreBtn">더보기</span>
+			</div>
+			
 		</div>
 		
 	</div>
@@ -195,6 +188,16 @@
 			else { 
 			}
 		}
+		
+		//더보기 눌렸을시 j+1값 나타내기
+		var showNum = 0;
+		$('.moreBtn').click(function(){
+			showNum += 1;
+			$('#released-table-container'+showNum).fadeIn();
+			if(showNum>=2){
+				$('.moreBtn-container').css('display','none');
+			}
+		});
 		
 		
 

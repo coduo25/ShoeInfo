@@ -33,6 +33,8 @@ public class AllReleaseListAction implements Action {
 		
 		request.setAttribute("countReleasingBrandList", countReleasingBrandList);
 		
+		
+		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./board/allReleaseList.jsp");
 		forward.setRedirect(false);
