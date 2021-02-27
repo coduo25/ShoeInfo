@@ -630,6 +630,7 @@ public class MemberDAO {
 	//사용자의 월별 응모 브랜드 정보 불러오는 함수
 	public Vector searchUserDrawStylecode_kr(String user, String last_date, String cur_date, String next_date) {
 		Vector vec = new Vector();
+		int count = 0;
 		
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
@@ -654,6 +655,9 @@ public class MemberDAO {
 		PreparedStatement pstmt4_1_1_1 = null;
 		ResultSet rs4_1_1_1 = null;
 		
+		PreparedStatement pstmt_count = null;
+		ResultSet rs_count = null;
+		
 		ArrayList userDrawStylecodeList = new ArrayList();
 		ArrayList sneakerInfoList = new ArrayList();
 		
@@ -665,14 +669,16 @@ public class MemberDAO {
 		ArrayList brandList_etc = new ArrayList();
 		ArrayList onlineinfoList_etc = new ArrayList();
 		
+		ArrayList countDraw = new ArrayList();
+		
 		try {
 			con = getConnection();
 			//사용자가 응모한 모든 신발 가지고오기
-			sql = "select distinct A.model_stylecode, B.num from shoeinfo_memberdrawinfo AS A JOIN shoeinfo_sneakerlibrary AS B ON A.model_stylecode = B.model_stylecode where member_email = ? order by (B.release_date);";
+			sql = "select distinct A.model_stylecode, B.num from shoeinfo_memberdrawinfo AS A JOIN shoeinfo_sneakerlibrary AS B ON A.model_stylecode = B.model_stylecode where member_email = ? order by (B.release_date) desc;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
-			
+
 			while(rs.next()){
 				MemberDrawDTO mddto = new MemberDrawDTO();
 				mddto.setModel_stylecode(rs.getString("model_stylecode"));
@@ -743,7 +749,7 @@ public class MemberDAO {
 									sql="select * from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
 									pstmt3_1_1_1 = con.prepareStatement(sql);
 									pstmt3_1_1_1.setString(1, sdto.getModel_stylecode());
-									pstmt3_1_1_1.setString(2, mddto.getBrand_id());
+									pstmt3_1_1_1.setString(2, bdto.getBrand_id());
 									rs3_1_1_1 = pstmt3_1_1_1.executeQuery();
 									if(rs3_1_1_1.next()){
 										OnlineDTO odto = new OnlineDTO();
@@ -801,7 +807,7 @@ public class MemberDAO {
 									sql="select * from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
 									pstmt4_1_1_1 = con.prepareStatement(sql);
 									pstmt4_1_1_1.setString(1, sdto.getModel_stylecode());
-									pstmt4_1_1_1.setString(2, mddto.getBrand_id());
+									pstmt4_1_1_1.setString(2, bdto.getBrand_id());
 									rs4_1_1_1 = pstmt4_1_1_1.executeQuery();
 									if(rs4_1_1_1.next()){
 										OnlineDTO odto = new OnlineDTO();
@@ -817,6 +823,18 @@ public class MemberDAO {
 								}
 							}
 						}
+						
+						//횟수 리스트 넣기
+						sql = "select count(*) from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and member_email = ?";
+						pstmt_count = con.prepareStatement(sql);
+						pstmt_count.setInt(1, sdto.getNum());
+						pstmt_count.setString(2, sdto.getModel_stylecode());
+						pstmt_count.setString(3, user);
+						rs_count = pstmt_count.executeQuery();
+						if(rs_count.next()){
+							count = rs_count.getInt(1);
+							countDraw.add(count);
+						}
 					}	
 				}
 			}
@@ -831,6 +849,7 @@ public class MemberDAO {
 			vec.add(brandList_etc);
 			vec.add(onlineinfoList_etc);
 			
+			vec.add(countDraw);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

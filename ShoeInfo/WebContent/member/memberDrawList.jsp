@@ -27,9 +27,9 @@
 			response.sendRedirect("./SneakerList.go");
 		}
 	
-		ArrayList<MemberDrawDTO> userDrawStylecodeList1 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList1");
-		ArrayList<SneakerDTO> sneakerInfoList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList1");
-		
+		ArrayList<MemberDrawDTO> userDrawStylecodeList = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList");
+		ArrayList<SneakerDTO> sneakerInfoList = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList");
+
 		//국내 응모 정보
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) request.getAttribute("brandList_kr");
@@ -39,6 +39,9 @@
 		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) request.getAttribute("brandList_etc");
 		ArrayList<OnlineDTO> onlineinfoList_etc = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
+		
+		//응모 횟수 리스트
+		ArrayList<Integer> countDrawList = (ArrayList<Integer>) request.getAttribute("countDrawList");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -51,67 +54,119 @@
 	<!-- Header -->	
 	<header> <jsp:include page="/include/header.jsp" /> </header>
 	
+	<input type="hidden" class="login_user" id="login_user" value="<%=user%>">
+	
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 	
-		<div id="content_sneakerList" style="margin-top: 20px;">
-			<%
-				Calendar cal = Calendar.getInstance();
-				int month = cal.get(Calendar.MONTH);
-		
-				for(int z=1; z<13; z++){
-					ArrayList<MemberDrawDTO> new_userDrawStylecodeList = new ArrayList();
-					ArrayList<SneakerDTO> new_sneakerInfoList = new ArrayList();
-					
-					if(z==1){ new_userDrawStylecodeList = userDrawStylecodeList1; new_sneakerInfoList = sneakerInfoList1;}
-			%>
-				<p id="month<%=z%>" class="month"> 
-					<%=z%>월 응모내역. 
-					<span id="slide-down_<%=z%>"> <i class="fas fa-caret-down"></i> </span>
-					<span id="slide-up_<%=z%>"> <i class="fas fa-caret-up"></i> </span>
-				</p>
-			
-				<div id="div_month_<%=z%>" class="div_month">
-					<%
-						if(new_userDrawStylecodeList.size() == 0){
-					%>
-						<div class="no_info" id="no_info<%=z%>">
-							<span> <%=z%>월 응모한 내역이 없습니다. </span>
-						</div>
-					<%
-						}
-						for (int i = 0; i <new_userDrawStylecodeList.size(); i++) {
-							MemberDrawDTO mddto = new_userDrawStylecodeList.get(i);
-							SneakerDTO sdto = new_sneakerInfoList.get(i);
-							
-							Date original_release_date = original_format.parse(sdto.getRelease_date());
-					%>
-						<div class="shoelist_content">
-							<div class="content_wrapper_draw">
-								<!-- 이미지 -->
-								<div class="content_img">
-									<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-		  								<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" > <br>
-									</a>
+		<!-- 나의 응모내역 리스트 -->
+		<div class="myDrawList-container" style="margin-top:40px !important;">
+			<div class="sub-title">
+				<h4> 나의 응모내역 </h4>
+			</div>
+			<div class="myDraw-table-container">
+				<% if(userDrawStylecodeList.isEmpty()) { %>
+					<div>
+						참여한 응모내역이 없습니다.
+					</div>
+				<%} else {
+					//응모한 신발 리스트
+					for(int i=0; i<userDrawStylecodeList.size(); i++) {
+						SneakerDTO mydraw_sdto = sneakerInfoList.get(i);
+						int countNum = countDrawList.get(i);
+				%>
+					<div class="myDraw-container">
+						<div class="myDraw-shoeInfo">
+							<!-- 신발이미지 -->
+							<div class="myDraw-image">
+								<a href="./SneakerDetail.go?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>">
+									<img src="./sneaker_img_upload/<%=mydraw_sdto.getImage()%>">
+								</a>
+							</div>
+							<!-- 신발 이름 + 해당 신발 응모 횟수 -->
+							<div class="myDrawShoeInfo-container">
+								<!-- 이름 -->
+								<div class="myDrawShoeInfo-name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>';">
+									<span><%=mydraw_sdto.getModel_name_kr()%></span>
 								</div>
-								<!-- links -->
-								<div class="content_links">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">	
-										<div id="link-wrapper" style="pointer-events: auto;">
-											<%=sdto.getModel_name_kr()%>
-										</div>
-									</a>
+								<!-- 응모 횟수 -->
+								<div class="myDrawShoeInfo-countNum">
+									<span>응모횟수 : <%=countNum%></span>
+								</div>
+							</div>
+							<!-- 내 응모 내역 열기-->
+							<div class="myDrawDropDown-container">
+								<span><i class="fas fa-list"></i></span>
+							</div>
+						</div>
+						
+						<!-- 응모 브랜드 리스트 -->
+						<div class="brandList-container">
+							<div class="brandList-table">
+								<!-- 국내 테이블 -->
+								<div class="kr-table">
+									<h4>국내</h4>
+									<table>
+										<tr>
+											<th> 브랜드명 </th>
+											<th> 발표일 </th>
+											<th> 남은시간 </th>
+										</tr>
+										
+										<%if(drawInfoList_kr.isEmpty()){%>
+											<tr>
+												<td> 응모내역이 없습니다. </td>
+											</tr>	
+										<%} else {
+											//countDrawList.get(0) 의 값 만큼씩 
+											for(int j=0; j<countDrawList.get(i); j++) {
+												MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(j);
+												BrandDTO bdto = (BrandDTO) brandList_kr.get(j);
+												OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(j);
+										%>
+											<tr>
+												<!-- 브랜드 이미지 + 이름-->
+												<td class="brandLogoName">
+													<div class="myDraw-logo">
+														<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+															<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+														</a>
+													</div>
+													<div class="myDraw-brandName">
+														<div class="myDraw-brandNameTxt">
+															<span><%=bdto.getBrand_name()%> </span>
+														</div>
+													</div>
+												</td>
+												<!-- 발표일 -->
+												<td>
+													<div>
+														<span>-</span>
+													</div>
+												</td>
+												<!-- 남은시간 -->
+												<td>
+													<div>
+														<span>-</span>
+													</div>
+												</td>
+											</tr>
+										<% } } %>
+									</table>
+								</div>
+								
+								<!-- 해외 테이블 -->
+								<div class="etc-table">
+									<h4>해외</h4>
 								</div>
 							</div>
 						</div>
-					<%	
-						}
-					%>
-				</div>
-			<%
-				}
-			%>
+						
+					</div>
+				<%} } %>
+			</div>
 		</div>
+		
 	</div>
 	
 	<!-- FOOTER -->
