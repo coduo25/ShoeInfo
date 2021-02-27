@@ -1,12 +1,16 @@
 package net.member.action;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.brand.db.BrandDTO;
 import net.member.db.MemberDAO;
 import net.member.db.MemberDrawDTO;
 import net.sneaker.db.SneakerDTO;
@@ -29,91 +33,48 @@ public class MemberDrawInfo implements Action{
 		//디비가서 내가 응모한 브랜드 정보 가져오기
 		MemberDAO mdao = new MemberDAO();
 		
-		Vector vec1 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-01");
-		Vector vec2 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-02");
-		Vector vec3 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-03");
-		Vector vec4 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-04");
-		Vector vec5 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-05");
-		Vector vec6 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-06");
-		Vector vec7 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-07");
-		Vector vec8 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-08");
-		Vector vec9 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-09");
-		Vector vec10 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-10");
-		Vector vec11 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-11");
-		Vector vec12 = (Vector) mdao.searchUserDrawStylecode_kr(user,"2021-12");
+		//현재 년 + 월 구하기
+		Calendar last_month = Calendar.getInstance();
+		Calendar cur_month = Calendar.getInstance();
+		Calendar next_month = Calendar.getInstance();
 		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList1 = (ArrayList<MemberDrawDTO>) vec1.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList1 = (ArrayList<SneakerDTO>) vec1.get(1);
+		DateFormat date_format = new SimpleDateFormat("yyyy-MM");
 		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList2 = (ArrayList<MemberDrawDTO>) vec2.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList2 = (ArrayList<SneakerDTO>) vec2.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList3 = (ArrayList<MemberDrawDTO>) vec3.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList3 = (ArrayList<SneakerDTO>) vec3.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList4 = (ArrayList<MemberDrawDTO>) vec4.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList4 = (ArrayList<SneakerDTO>) vec4.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList5 = (ArrayList<MemberDrawDTO>) vec5.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList5 = (ArrayList<SneakerDTO>) vec5.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList6 = (ArrayList<MemberDrawDTO>) vec6.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList6 = (ArrayList<SneakerDTO>) vec6.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList7 = (ArrayList<MemberDrawDTO>) vec7.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList7 = (ArrayList<SneakerDTO>) vec7.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList8 = (ArrayList<MemberDrawDTO>) vec8.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList8 = (ArrayList<SneakerDTO>) vec8.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList9 = (ArrayList<MemberDrawDTO>) vec9.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList9 = (ArrayList<SneakerDTO>) vec9.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList10 = (ArrayList<MemberDrawDTO>) vec10.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList10 = (ArrayList<SneakerDTO>) vec10.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList11 = (ArrayList<MemberDrawDTO>) vec11.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList11 = (ArrayList<SneakerDTO>) vec11.get(1);
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList12 = (ArrayList<MemberDrawDTO>) vec12.get(0);
-		ArrayList<SneakerDTO> sneakerInfoList12 = (ArrayList<SneakerDTO>) vec12.get(1);
-		
-		request.setAttribute("userDrawStylecodeList1", userDrawStylecodeList1);
-		request.setAttribute("sneakerInfoList1", sneakerInfoList1);
-		
-		request.setAttribute("userDrawStylecodeList2", userDrawStylecodeList2);
-		request.setAttribute("sneakerInfoList2", sneakerInfoList2);
-		
-		request.setAttribute("userDrawStylecodeList3", userDrawStylecodeList3);
-		request.setAttribute("sneakerInfoList3", sneakerInfoList3);
-		
-		request.setAttribute("userDrawStylecodeList4", userDrawStylecodeList4);
-		request.setAttribute("sneakerInfoList4", sneakerInfoList4);
-		
-		request.setAttribute("userDrawStylecodeList5", userDrawStylecodeList5);
-		request.setAttribute("sneakerInfoList5", sneakerInfoList5);
-		
-		request.setAttribute("userDrawStylecodeList6", userDrawStylecodeList6);
-		request.setAttribute("sneakerInfoList6", sneakerInfoList6);
-		
-		request.setAttribute("userDrawStylecodeList7", userDrawStylecodeList7);
-		request.setAttribute("sneakerInfoList7", sneakerInfoList7);
-		
-		request.setAttribute("userDrawStylecodeList8", userDrawStylecodeList8);
-		request.setAttribute("sneakerInfoList8", sneakerInfoList8);
-		
-		request.setAttribute("userDrawStylecodeList9", userDrawStylecodeList9);
-		request.setAttribute("sneakerInfoList9", sneakerInfoList9);
-		
-		request.setAttribute("userDrawStylecodeList10", userDrawStylecodeList10);
-		request.setAttribute("sneakerInfoList10", sneakerInfoList10);
-		
-		request.setAttribute("userDrawStylecodeList11", userDrawStylecodeList11);
-		request.setAttribute("sneakerInfoList11", sneakerInfoList11);
-		
-		request.setAttribute("userDrawStylecodeList12", userDrawStylecodeList12);
-		request.setAttribute("sneakerInfoList12", sneakerInfoList12);
+		last_month.add(last_month.MONTH, - 1);
+		cur_month.add(cur_month.MONTH, + 0);
+		next_month.add(next_month.MONTH, + 1);
 
+		//2021-01
+		//2021-02
+		//2012-03
+		String last_month_Str = date_format.format(last_month.getTime());
+		String cur_month_Str = date_format.format(cur_month.getTime());
+		String next_month_Str = date_format.format(next_month.getTime());
+		
+		Vector vec = (Vector) mdao.searchUserDrawStylecode_kr(user, last_month_Str, cur_month_Str, next_month_Str);
+		
+		ArrayList<MemberDrawDTO> userDrawStylecodeList = (ArrayList<MemberDrawDTO>) vec.get(0);
+		ArrayList<SneakerDTO> sneakerInfoList = (ArrayList<SneakerDTO>) vec.get(1);
+
+		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) vec.get(2);
+		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec.get(3);
+		ArrayList<BrandDTO> onlineinfoList_kr = (ArrayList<BrandDTO>) vec.get(4);
+		
+		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec.get(5);
+		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec.get(6);
+		ArrayList<BrandDTO> onlineinfoList_etc = (ArrayList<BrandDTO>) vec.get(7);
+		
+		request.setAttribute("userDrawStylecodeList", userDrawStylecodeList);
+		request.setAttribute("sneakerInfoList", sneakerInfoList);
+		
+		request.setAttribute("drawInfoList_kr", drawInfoList_kr);
+		request.setAttribute("brandList_kr", brandList_kr);
+		request.setAttribute("onlineinfoList_kr", onlineinfoList_kr);
+		
+		request.setAttribute("drawInfoList_etc", drawInfoList_etc);
+		request.setAttribute("brandList_etc", brandList_etc);
+		request.setAttribute("onlineinfoList_etc", onlineinfoList_etc);
+			
 		//페이지이동
 		forward.setPath("./member/memberDrawList.jsp");
 		forward.setRedirect(false);

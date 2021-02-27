@@ -1,3 +1,4 @@
+<%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -18,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
+<body> <!-- oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false' -->
 	<%
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
@@ -27,40 +28,17 @@
 		}
 	
 		ArrayList<MemberDrawDTO> userDrawStylecodeList1 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList1");
-		ArrayList<SneakerDTO> sneakerInfoList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList1");	
+		ArrayList<SneakerDTO> sneakerInfoList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList1");
 		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList2 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList2");
-		ArrayList<SneakerDTO> sneakerInfoList2 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList2");	
+		//국내 응모 정보
+		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
+		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) request.getAttribute("brandList_kr");
+		ArrayList<OnlineDTO> onlineinfoList_kr = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_kr");
 		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList3 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList3");
-		ArrayList<SneakerDTO> sneakerInfoList3 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList3");	
-	
-		ArrayList<MemberDrawDTO> userDrawStylecodeList4 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList4");
-		ArrayList<SneakerDTO> sneakerInfoList4 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList4");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList5 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList5");
-		ArrayList<SneakerDTO> sneakerInfoList5 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList5");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList6 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList6");
-		ArrayList<SneakerDTO> sneakerInfoList6 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList6");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList7 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList7");
-		ArrayList<SneakerDTO> sneakerInfoList7 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList7");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList8 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList8");
-		ArrayList<SneakerDTO> sneakerInfoList8 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList8");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList9 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList9");
-		ArrayList<SneakerDTO> sneakerInfoList9 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList9");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList10 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList10");
-		ArrayList<SneakerDTO> sneakerInfoList10 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList10");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList11 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList11");
-		ArrayList<SneakerDTO> sneakerInfoList11 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList11");	
-		
-		ArrayList<MemberDrawDTO> userDrawStylecodeList12 = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList12");
-		ArrayList<SneakerDTO> sneakerInfoList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList12");	
+		//해외 응모 정보
+		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
+		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) request.getAttribute("brandList_etc");
+		ArrayList<OnlineDTO> onlineinfoList_etc = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -86,17 +64,6 @@
 					ArrayList<SneakerDTO> new_sneakerInfoList = new ArrayList();
 					
 					if(z==1){ new_userDrawStylecodeList = userDrawStylecodeList1; new_sneakerInfoList = sneakerInfoList1;}
-					if(z==2){ new_userDrawStylecodeList = userDrawStylecodeList2; new_sneakerInfoList = sneakerInfoList2;}
-					if(z==3){ new_userDrawStylecodeList = userDrawStylecodeList3; new_sneakerInfoList = sneakerInfoList3;}
-					if(z==4){ new_userDrawStylecodeList = userDrawStylecodeList4; new_sneakerInfoList = sneakerInfoList4;}
-					if(z==5){ new_userDrawStylecodeList = userDrawStylecodeList5; new_sneakerInfoList = sneakerInfoList5;}
-					if(z==6){ new_userDrawStylecodeList = userDrawStylecodeList6; new_sneakerInfoList = sneakerInfoList6;}
-					if(z==7){ new_userDrawStylecodeList = userDrawStylecodeList7; new_sneakerInfoList = sneakerInfoList7;}
-					if(z==8){ new_userDrawStylecodeList = userDrawStylecodeList8; new_sneakerInfoList = sneakerInfoList8;}
-					if(z==9){ new_userDrawStylecodeList = userDrawStylecodeList9; new_sneakerInfoList = sneakerInfoList9;}
-					if(z==10){ new_userDrawStylecodeList = userDrawStylecodeList10; new_sneakerInfoList = sneakerInfoList10;}
-					if(z==11){ new_userDrawStylecodeList = userDrawStylecodeList11; new_sneakerInfoList = sneakerInfoList11;}
-					if(z==12){ new_userDrawStylecodeList = userDrawStylecodeList12; new_sneakerInfoList = sneakerInfoList12;}
 			%>
 				<p id="month<%=z%>" class="month"> 
 					<%=z%>월 응모내역. 
@@ -163,54 +130,7 @@
 			}
 		});
 
-		var today = new Date();
-		//1
-		var month = today.getMonth() + 1; //오늘의 달은 + 1 해야한다
 		
-		for(var i=1; i<13; i++){
-			//지금 달 보다 전전달들 ex.현재 8월, 1~6월 사라지고 7월 slideDown 만 나타내기
-			if(i < month) {
-				$("#month" + (i-1)).hide(); //2달 지나간 월들은 없애기
-				
-				$("#slide-up_" + i).hide();
-				$("#slide-down_" + i).show();
-				
-				$("#div_month_" + i).hide();
-			}
-			//지금 달부터 미래의 달부터 나타내기 8~12월
-			else if(i >= month) {
-				//4개월 후까지만 나타내기
-				var monthPlus4 = month + 3;
-
-				if(i >= monthPlus4) {
-					$("#month" + i).hide(); //4달 후 월들은 없애기
-					$("#no_info" + i).hide();
-					$("#div_month_" + i).hide();
-				}
-				else {
-					$("#slide-up_" + i).show();
-					$("#slide-down_" + i).hide();
-					
-					$("#div_month_" + i).show();
-				}
-			}
-		}
-		
-		//각 달별로 slide down 버튼을 눌렸을시
-		$(".month").click(function(){
-			var month = $(this).attr('id').replace(/[^0-9]/g,''); //숫자만 추출
-			//만약 신발 리스트가 닫혀있으면
-			if($("#div_month_" + month).css("display") == "none"){
-				$("#slide-up_" + month).show();
-				$("#slide-down_" + month).hide();
-			}
-			//신발 리스트가 열려있으면
-			else {
-				$("#slide-up_" + month).hide();
-				$("#slide-down_" + month).show();
-			}
-			$("#div_month_" + month).slideToggle("slow");
-		});
 	});
 	
 	document.onmousedown=disableclick;
