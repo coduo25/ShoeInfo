@@ -45,8 +45,8 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* 나의 응모내역 리스트 ------------------------------------------------------------------------------ */ 
-.myDraw-container { float:left; width:48%; margin:1% 1% 2% 1%; text-align:left; font-family:'Nanum Gothic', sans-serif; vertical-align:top; position:relative; border:1px solid #d8d8d8; }
-.myDraw-shoeInfo { display:flex; align-items:center; padding:1%;}
+.myDraw-container { float:left; width:48%; margin:1% 1% 2% 1%; text-align:left; font-family:'Nanum Gothic', sans-serif; vertical-align:top; position:relative; border:1px solid #b3b3b3; border-radius:5px; }
+.myDraw-shoeInfo { display:flex; align-items:center; padding:2% 1%;}
 .myDraw-image, .myDrawShoeInfo-container { padding:10px 0; }
 .noDrawInfo-tr { text-align: center; }
 
@@ -57,11 +57,11 @@ body {font-size:1em; line-weight:1.4}
 		 
 	/* 모델 이름 + 응모횟수 파트 */
 	.myDrawShoeInfo-container { width:70%; vertical-align: baseline; padding:0 12px !important; }
-		.myDrawShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:38px; line-height:1.2em; font-weight:bold; cursor:pointer; margin-bottom:7px; }
+		.myDrawShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:18px; min-height:38px; line-height:1.2em; font-weight:bold; cursor:pointer; margin-bottom:7px; }
 		.myDrawShoeInfo-countNum { font-size:17px; color:#777; }
 	
 	/* DropDown 파트*/
-	.myDrawDropDown-container, .myDrawDropUp-container { background-color:#d4d4d4 !important; width:100%; text-align:center; cursor:pointer; padding:4px 12px; border-top:1px solid #d8d8d8; }
+	.myDrawDropDown-container, .myDrawDropUp-container { width:100%; text-align:right; cursor:pointer; padding:6px 12px; border-top:1px dotted #b3b3b3; }
 	.myDrawDropDown-container span, .myDrawDropUp-container span { vertical-align: middle; font-size:14px; color:#585858; }
 
 	/* 응모 브랜드 리스트 */
@@ -69,8 +69,9 @@ body {font-size:1em; line-weight:1.4}
 	
 	.brandList-table table { width:100%; border-collapse:collapse; text-align:center; }
 	.brandList-table table th { border-top:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8; padding:10px 0; font-weight:normal !important; background-color:white; }
-	.brandList-table table td { padding:15px; background-color:#f3f3f369;}
+	.brandList-table table td { padding:15px; }	
 	.brandList-table table tr:not(:first-child) { border-top:1px dotted #d8d8d8; }
+/* 	.brandList-table table tr:last-child { border-bottom-left-radius:5px; border-bottom-right-radius:5px; } */
 	.brandList-table table td img { width:60px; height:60px; border:1px solid #e0e0e0; border-radius:5px; }
 	.brandLogoName { text-align:left !important; }
 	.myDraw-logo, .myDraw-brandName { display:inline-block; vertical-align:top; }

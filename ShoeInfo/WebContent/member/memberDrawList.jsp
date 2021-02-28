@@ -77,7 +77,7 @@
 						int countNum_kr = countDrawKrList.get(i);
 						int countNum_etc = countDrawEtcList.get(i);
 				%>
-					<div class="myDraw-container">
+					<div class="myDraw-container" id="myDraw-container<%=i%>">
 						<div class="myDraw-shoeInfo">	
 							<!-- 신발이미지 -->
 							<div class="myDraw-image">
@@ -104,7 +104,7 @@
 						
 						<!-- List DropDown 버튼 -->
 						<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
-							<span><i class="fas fa-list"></i></span>
+							<span><i style="padding-right:10px;" class="fas fa-list"></i><i class="fas fa-angle-down"></i></span>
 						</div>
 						<!-- List DropUp 버튼 -->
 						<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
@@ -118,7 +118,7 @@
 								<div class="kr-table">
 									<table>
 										<tr>
-											<th style="width:50%;"> 국내발매처 </th>
+											<th style="width:50%;"> 국내 </th>
 											<th style="width:35%;"> 발표일 </th>
 											<th style="width:15%;"> 수신방식 </th>
 										</tr>
@@ -152,17 +152,17 @@
 												</td>
 												<!-- 발표일 -->
 												<td>
-													<div>
+													<div style="padding-bottom:5px;">
 <%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
 														2.26 18:00
 													</div>
 													<div>
-														00:00:00
+														--:--:--
 													</div>
 												</td>
 												<!-- 남은시간 -->
 												<td>
-													<div style="font-size:20px;">
+													<div style="font-size:22px;">
 														<span><i class="fas fa-sms"></i></span>
 													</div>
 												</td>
@@ -175,7 +175,7 @@
 								<div class="etc-table">
 									<table>
 										<tr>
-											<th style="width:50%;"> 해외발매처 </th>
+											<th style="width:50%;"> 해외 </th>
 											<th style="width:35%;"> 발표일 </th>
 											<th style="width:15%;"> 수신방식 </th>
 										</tr>
@@ -209,17 +209,17 @@
 												</td>
 												<!-- 발표일 -->
 												<td>
-													<div>
+													<div style="padding-bottom:5px;">
 <%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
 														2.26 18:00
 													</div>
 													<div>
-														00:00:00
+														--:--:--
 													</div>
 												</td>
 												<!-- 남은시간 -->
 												<td>
-													<div style="font-size:20px;">
+													<div style="font-size:22px;">
 														<span><i class="far fa-envelope"></i></span>
 													</div>
 												</td>
@@ -266,6 +266,9 @@
 			//맨 마지막 = 번호
 			var number = splitArray[splitArray.length - 1];
 			
+			//밑 border radius 지우기
+			$('#myDraw-container'+number).css({'border-bottom-left-radius':'0', 'border-bottom-right-radius':'0'});			
+			
 			//DrowUp버튼 활성화
 			$('#myDrawDropUp-container-'+number).css('display','block');
 			
@@ -283,6 +286,9 @@
 			var splitArray = divID.split('-');
 			//맨 마지막 = 번호
 			var number = splitArray[splitArray.length - 1];
+			
+			//밑 border radius 둥글게 만들기
+			$('#myDraw-container'+number).css({'border-bottom-left-radius':'5px', 'border-bottom-right-radius':'5px'});		
 			
 			//DrowUp버튼 활성화
 			$('#myDrawDropDown-container-'+number).css('display','block');
