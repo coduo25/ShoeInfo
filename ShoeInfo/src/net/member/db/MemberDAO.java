@@ -630,7 +630,8 @@ public class MemberDAO {
 	//사용자의 월별 응모 브랜드 정보 불러오는 함수
 	public Vector searchUserDrawStylecode_kr(String user, String last_date, String cur_date, String next_date) {
 		Vector vec = new Vector();
-		int count = 0;
+		int count_kr = 0;
+		int count_etc = 0;
 		
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
@@ -655,8 +656,10 @@ public class MemberDAO {
 		PreparedStatement pstmt4_1_1_1 = null;
 		ResultSet rs4_1_1_1 = null;
 		
-		PreparedStatement pstmt_count = null;
-		ResultSet rs_count = null;
+		PreparedStatement pstmt_count_kr = null;
+		ResultSet rs_count_kr = null;
+		PreparedStatement pstmt_count_etc = null;
+		ResultSet rs_count_etc = null;
 		
 		ArrayList userDrawStylecodeList = new ArrayList();
 		ArrayList sneakerInfoList = new ArrayList();
@@ -669,7 +672,8 @@ public class MemberDAO {
 		ArrayList brandList_etc = new ArrayList();
 		ArrayList onlineinfoList_etc = new ArrayList();
 		
-		ArrayList countDraw = new ArrayList();
+		ArrayList countDraw_kr = new ArrayList();
+		ArrayList countDraw_etc = new ArrayList();
 		
 		try {
 			con = getConnection();
@@ -782,7 +786,7 @@ public class MemberDAO {
 							mddto_etc.setModel_num(rs4.getInt("model_num"));
 							drawInfoList_etc.add(mddto_etc);
 							
-							//한국 브랜드 정보 가져오기
+							//해외 브랜드 정보 가져오기
 							sql = "select * from shoeinfo_brand where brand_id = ?";
 							pstmt4_1 = con.prepareStatement(sql);
 							pstmt4_1.setString(1, mddto_etc.getBrand_id());
@@ -824,16 +828,30 @@ public class MemberDAO {
 							}
 						}
 						
-						//횟수 리스트 넣기
-						sql = "select count(*) from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and member_email = ?";
-						pstmt_count = con.prepareStatement(sql);
-						pstmt_count.setInt(1, sdto.getNum());
-						pstmt_count.setString(2, sdto.getModel_stylecode());
-						pstmt_count.setString(3, user);
-						rs_count = pstmt_count.executeQuery();
-						if(rs_count.next()){
-							count = rs_count.getInt(1);
-							countDraw.add(count);
+						//한국 횟수 리스트 넣기
+						sql = "select count(*) from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and member_email = ? and country_name = ?";
+						pstmt_count_kr = con.prepareStatement(sql);
+						pstmt_count_kr.setInt(1, sdto.getNum());
+						pstmt_count_kr.setString(2, sdto.getModel_stylecode());
+						pstmt_count_kr.setString(3, user);
+						pstmt_count_kr.setString(4, "대한민국");
+						rs_count_kr = pstmt_count_kr.executeQuery();
+						if(rs_count_kr.next()){
+							count_kr = rs_count_kr.getInt(1);
+							countDraw_kr.add(count_kr);
+						}
+						
+						//해외 횟수 리스트 넣기
+						sql = "select count(*) from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and member_email = ? and country_name != ?";
+						pstmt_count_etc = con.prepareStatement(sql);
+						pstmt_count_etc.setInt(1, sdto.getNum());
+						pstmt_count_etc.setString(2, sdto.getModel_stylecode());
+						pstmt_count_etc.setString(3, user);
+						pstmt_count_etc.setString(4, "대한민국");
+						rs_count_etc = pstmt_count_etc.executeQuery();
+						if(rs_count_etc.next()){
+							count_etc = rs_count_etc.getInt(1);
+							countDraw_etc.add(count_etc);
 						}
 					}	
 				}
@@ -849,7 +867,8 @@ public class MemberDAO {
 			vec.add(brandList_etc);
 			vec.add(onlineinfoList_etc);
 			
-			vec.add(countDraw);
+			vec.add(countDraw_kr);
+			vec.add(countDraw_etc);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

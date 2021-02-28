@@ -41,7 +41,8 @@
 		ArrayList<OnlineDTO> onlineinfoList_etc = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
 		
 		//응모 횟수 리스트
-		ArrayList<Integer> countDrawList = (ArrayList<Integer>) request.getAttribute("countDrawList");
+		ArrayList<Integer> countDrawKrList = (ArrayList<Integer>) request.getAttribute("countDrawKrList");
+		ArrayList<Integer> countDrawEtcList = (ArrayList<Integer>) request.getAttribute("countDrawEtcList");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -73,10 +74,11 @@
 					//응모한 신발 리스트
 					for(int i=0; i<userDrawStylecodeList.size(); i++) {
 						SneakerDTO mydraw_sdto = sneakerInfoList.get(i);
-						int countNum = countDrawList.get(i);
+						int countNum_kr = countDrawKrList.get(i);
+						int countNum_etc = countDrawEtcList.get(i);
 				%>
 					<div class="myDraw-container">
-						<div class="myDraw-shoeInfo">
+						<div class="myDraw-shoeInfo">	
 							<!-- 신발이미지 -->
 							<div class="myDraw-image">
 								<a href="./SneakerDetail.go?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>">
@@ -91,18 +93,22 @@
 								</div>
 								<!-- 응모 횟수 -->
 								<div class="myDrawShoeInfo-countNum">
-									<span>응모횟수 : <%=countNum%></span>
+									<span>국내 응모 : <%=countNum_kr%></span>
+									&nbsp;
+									/
+									&nbsp;
+									<span>해외 응모 : <%=countNum_etc%></span>
 								</div>
 							</div>
-							
-							<!-- List DropDown 버튼 -->
-							<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
-								<span style="color:rgb(216, 216, 216);"><i class="fas fa-list"></i></span>
-							</div>
-							<!-- List DropUp 버튼 -->
-							<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
-								<span style="color:black;"><i class="fas fa-list"></i></span>
-							</div>	
+						</div>
+						
+						<!-- List DropDown 버튼 -->
+						<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
+							<span><i class="fas fa-list"></i></span>
+						</div>
+						<!-- List DropUp 버튼 -->
+						<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
+							<span><i class="fas fa-angle-up"></i></span>
 						</div>
 						
 						<!-- 응모 브랜드 리스트 -->
@@ -110,21 +116,20 @@
 							<div class="brandList-table">
 								<!-- 국내 테이블 -->
 								<div class="kr-table">
-									<h4>국내</h4>
 									<table>
 										<tr>
-											<th style="width:50%;">  </th>
-											<th style="width:30%;"> 발표일 </th>
-											<th style="width:20%;"> 남은시간 </th>
+											<th style="width:50%;"> 국내발매처 </th>
+											<th style="width:35%;"> 발표일 </th>
+											<th style="width:15%;"> 수신방식 </th>
 										</tr>
 										
-										<%if(drawInfoList_kr.isEmpty()){%>
+										<%if(countDrawKrList.get(i) == 0){%>
 											<tr>
-												<td> 응모내역이 없습니다. </td>
+												<td colspan="3"> 응모내역이 없습니다. </td>
 											</tr>	
 										<%} else {
 											//countDrawList.get(0) 의 값 만큼씩 
-											for(int j=0; j<countDrawList.get(i); j++) {
+											for(int j=0; j<countDrawKrList.get(i); j++) {
 												MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(j);
 												BrandDTO bdto = (BrandDTO) brandList_kr.get(j);
 												OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(j);
@@ -148,16 +153,17 @@
 												<!-- 발표일 -->
 												<td>
 													<div>
-														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%>
+<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
+														2.26 18:00
 													</div>
 													<div>
-														당첨문자
+														00:00:00
 													</div>
 												</td>
 												<!-- 남은시간 -->
 												<td>
-													<div>
-														<span>-</span>
+													<div style="font-size:20px;">
+														<span><i class="fas fa-sms"></i></span>
 													</div>
 												</td>
 											</tr>
@@ -167,7 +173,59 @@
 								
 								<!-- 해외 테이블 -->
 								<div class="etc-table">
-									<h4>해외</h4>
+									<table>
+										<tr>
+											<th style="width:50%;"> 해외발매처 </th>
+											<th style="width:35%;"> 발표일 </th>
+											<th style="width:15%;"> 수신방식 </th>
+										</tr>
+										
+										<%if(countDrawEtcList.get(i) == 0){%>
+											<tr class="noDrawInfo-tr">
+												<td colspan="3"> 응모내역이 없습니다. </td>
+											</tr>	
+										<%} else {
+											//countDrawList.get(0) 의 값 만큼씩 
+											for(int j=0; j<countDrawEtcList.get(i); j++) {
+												MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_etc.get(j);
+												BrandDTO bdto = (BrandDTO) brandList_etc.get(j);
+												OnlineDTO odto = (OnlineDTO) onlineinfoList_etc.get(j);
+										%>
+											<tr>
+												<!-- 브랜드 이미지 + 이름-->
+												<td class="brandLogoName">
+													<div style="display:flex; align-items: center;">
+														<div class="myDraw-logo">
+															<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+																<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+															</a>
+														</div>
+														<div class="myDraw-brandName">
+															<div class="myDraw-brandNameTxt">
+																<span><%=bdto.getBrand_name()%> </span>
+															</div>
+														</div>
+													</div>
+												</td>
+												<!-- 발표일 -->
+												<td>
+													<div>
+<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
+														2.26 18:00
+													</div>
+													<div>
+														00:00:00
+													</div>
+												</td>
+												<!-- 남은시간 -->
+												<td>
+													<div style="font-size:20px;">
+														<span><i class="far fa-envelope"></i></span>
+													</div>
+												</td>
+											</tr>
+										<% } } %>
+									</table>
 								</div>
 							</div>
 						</div>

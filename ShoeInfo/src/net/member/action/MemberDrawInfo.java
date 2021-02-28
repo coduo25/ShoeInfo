@@ -64,7 +64,8 @@ public class MemberDrawInfo implements Action{
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec.get(6);
 		ArrayList<BrandDTO> onlineinfoList_etc = (ArrayList<BrandDTO>) vec.get(7);
 		
-		ArrayList<Integer> countDrawList = (ArrayList<Integer>) vec.get(8);
+		ArrayList<Integer> countDrawKrList = (ArrayList<Integer>) vec.get(8);
+		ArrayList<Integer> countDrawEtcList = (ArrayList<Integer>) vec.get(9);
 		
 		request.setAttribute("userDrawStylecodeList", userDrawStylecodeList);
 		request.setAttribute("sneakerInfoList", sneakerInfoList);
@@ -77,7 +78,8 @@ public class MemberDrawInfo implements Action{
 		request.setAttribute("brandList_etc", brandList_etc);
 		request.setAttribute("onlineinfoList_etc", onlineinfoList_etc);
 		
-		request.setAttribute("countDrawList", countDrawList);
+		request.setAttribute("countDrawKrList", countDrawKrList);
+		request.setAttribute("countDrawEtcList", countDrawEtcList);
 			
 		//페이지이동
 		forward.setPath("./member/memberDrawList.jsp");
