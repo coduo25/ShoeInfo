@@ -61,7 +61,7 @@ body {font-size:1em; line-weight:1.4}
 		.myDrawShoeInfo-countNum { font-size:17px; color:#777; }
 	
 	/* DropDown 파트*/
-	.myDrawDropDown-container, .myDrawDropUp-container { background-color:#e0e0e0 !important; width:100%; text-align:center; cursor:pointer; padding:4px 12px; border-top:1px solid #d8d8d8; }
+	.myDrawDropDown-container, .myDrawDropUp-container { background-color:#d4d4d4 !important; width:100%; text-align:center; cursor:pointer; padding:4px 12px; border-top:1px solid #d8d8d8; }
 	.myDrawDropDown-container span, .myDrawDropUp-container span { vertical-align: middle; font-size:14px; color:#585858; }
 
 	/* 응모 브랜드 리스트 */
@@ -69,7 +69,7 @@ body {font-size:1em; line-weight:1.4}
 	
 	.brandList-table table { width:100%; border-collapse:collapse; text-align:center; }
 	.brandList-table table th { border-top:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8; padding:10px 0; font-weight:normal !important; background-color:white; }
-	.brandList-table table td { padding:15px; background-color:#f3f3f3a8;}
+	.brandList-table table td { padding:15px; background-color:#f3f3f369;}
 	.brandList-table table tr:not(:first-child) { border-top:1px dotted #d8d8d8; }
 	.brandList-table table td img { width:60px; height:60px; border:1px solid #e0e0e0; border-radius:5px; }
 	.brandLogoName { text-align:left !important; }
