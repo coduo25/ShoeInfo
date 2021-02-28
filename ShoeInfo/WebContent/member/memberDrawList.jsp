@@ -60,7 +60,7 @@
 	<div id="wrapper" class="container">
 	
 		<!-- 나의 응모내역 리스트 -->
-		<div class="myDrawList-container" style="margin-top:40px !important;">
+		<div class="myDrawList-container" style="margin:40px 0 400px !important;">
 			<div class="sub-title">
 				<h4> 나의 응모내역 </h4>
 			</div>
@@ -94,23 +94,28 @@
 									<span>응모횟수 : <%=countNum%></span>
 								</div>
 							</div>
-							<!-- 내 응모 내역 열기-->
-							<div class="myDrawDropDown-container">
-								<span><i class="fas fa-list"></i></span>
+							
+							<!-- List DropDown 버튼 -->
+							<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
+								<span style="color:rgb(216, 216, 216);"><i class="fas fa-list"></i></span>
 							</div>
+							<!-- List DropUp 버튼 -->
+							<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
+								<span style="color:black;"><i class="fas fa-list"></i></span>
+							</div>	
 						</div>
 						
 						<!-- 응모 브랜드 리스트 -->
-						<div class="brandList-container">
+						<div class="brandList-container" id="brandList-container<%=i%>" style="display:none;">
 							<div class="brandList-table">
 								<!-- 국내 테이블 -->
 								<div class="kr-table">
 									<h4>국내</h4>
 									<table>
 										<tr>
-											<th> 브랜드명 </th>
-											<th> 발표일 </th>
-											<th> 남은시간 </th>
+											<th style="width:50%;">  </th>
+											<th style="width:30%;"> 발표일 </th>
+											<th style="width:20%;"> 남은시간 </th>
 										</tr>
 										
 										<%if(drawInfoList_kr.isEmpty()){%>
@@ -127,21 +132,26 @@
 											<tr>
 												<!-- 브랜드 이미지 + 이름-->
 												<td class="brandLogoName">
-													<div class="myDraw-logo">
-														<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-															<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
-														</a>
-													</div>
-													<div class="myDraw-brandName">
-														<div class="myDraw-brandNameTxt">
-															<span><%=bdto.getBrand_name()%> </span>
+													<div style="display:flex; align-items: center;">
+														<div class="myDraw-logo">
+															<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+																<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+															</a>
+														</div>
+														<div class="myDraw-brandName">
+															<div class="myDraw-brandNameTxt">
+																<span><%=bdto.getBrand_name()%> </span>
+															</div>
 														</div>
 													</div>
 												</td>
 												<!-- 발표일 -->
 												<td>
 													<div>
-														<span>-</span>
+														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%>
+													</div>
+													<div>
+														당첨문자
 													</div>
 												</td>
 												<!-- 남은시간 -->
@@ -161,6 +171,8 @@
 								</div>
 							</div>
 						</div>
+						
+						
 						
 					</div>
 				<%} } %>
@@ -183,6 +195,42 @@
 				e.preventDefault();
 				e.returnVale = false;
 			}
+		});
+		
+		//리스트 DrowDown 버튼 눌렸을시
+		$('.myDrawDropDown-container').click(function(){
+			$(this).css('display', 'none');
+			
+			//아이다 값 가져오기
+			var divID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = divID.split('-');
+			//맨 마지막 = 번호
+			var number = splitArray[splitArray.length - 1];
+			
+			//DrowUp버튼 활성화
+			$('#myDrawDropUp-container-'+number).css('display','block');
+			
+			//리스트 열기
+			$('#brandList-container'+number).slideDown('fast');
+		});
+		
+		//리스트 DrowUp 버튼 눌렸을시
+		$('.myDrawDropUp-container').click(function(){
+			$(this).css('display', 'none');
+			
+			//아이다 값 가져오기
+			var divID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = divID.split('-');
+			//맨 마지막 = 번호
+			var number = splitArray[splitArray.length - 1];
+			
+			//DrowUp버튼 활성화
+			$('#myDrawDropDown-container-'+number).css('display','block');
+			
+			//리스트 열기
+			$('#brandList-container'+number).slideUp('fast');
 		});
 
 		

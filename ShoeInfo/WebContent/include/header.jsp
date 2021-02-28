@@ -78,12 +78,23 @@
 			<div class="block-list">
 				<div class="block-content">
 					<ul class="nav">
-						<li> <a href="./AllReleaseList.go"> 발매 중&#8226;발매예정 </a> </li>
-						<li> <a href="./TodaysReleaseList.go" style="color:#4990e2;"> 오늘의 발매처 </a> </li>
-<!-- 						<li> <a href=".#"> 브랜드별 </a> </li> -->
-						<li> <a href="./AllReleasedList.go"> 발매완료 </a> </li>
-						<li> <a href="./SnkrsKRList.go"> SNKRS </a> </li>
-						<li> <a href="#" id="myDrawBtn"> 나의 응모내역 </a> </li>
+						<li <%if(pageName.equals("allReleaseList.jsp") || pageName.equals("sneakerDetail.jsp")) {%> style="border-bottom:2px solid black;"<%}%>> 
+							<a href="./AllReleaseList.go">발매 중&#8226;발매예정</a>
+						</li>
+						<li <%if(pageName.equals("todaysReleaseList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
+							<a href="./TodaysReleaseList.go" style="color:#4990e2;">
+								오늘의 발매처 </a>
+							</li>
+<!-- 					<li> <a href=".#"> 브랜드별 </a> </li> -->
+						<li <%if(pageName.equals("allReleasedList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
+							<a href="./AllReleasedList.go">발매완료</a>
+						</li>
+						<li <%if(pageName.equals("snkrsKRList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
+							<a href="./SnkrsKRList.go">SNKRS</a>
+						</li>
+						<li <%if(pageName.equals("memberDrawList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
+							<a href="#" id="myDrawBtn"> 나의 응모내역 </a>
+						 </li>
 					</ul>
 				</div>
 			</div>

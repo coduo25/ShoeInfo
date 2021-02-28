@@ -13,7 +13,7 @@ body {font-size:1em; line-weight:1.4}
 .todays-table-container, .releasing-table-container, .snkrsWeek-table-container, .myDraw-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title { display: block; margin:0 0 15px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; padding:0 0 15px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; margin-bottom:15px; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -45,32 +45,34 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* 나의 응모내역 리스트 ------------------------------------------------------------------------------ */ 
-.myDraw-container { float:left; width:48%; margin:1%; text-align:left; font-family:'Nanum Gothic', sans-serif; background-color:#f3f3f3; vertical-align:top; position:relative; }
-.myDraw-shoeInfo { display:flex; align-items:center; padding:0.5% 0 0.5% 1.5%; }
+.myDraw-container { float:left; width:100%; text-align:left; font-family:'Nanum Gothic', sans-serif; vertical-align:top; position:relative; border:1px solid #d8d8d8; padding:1%; margin-bottom:2%; }
+.myDraw-shoeInfo { display:flex; align-items:center; padding:0 0 0 1%; }
 .myDraw-image, .myDrawShoeInfo-container, .myDrawDropDown-container { padding:10px 0; }
 	/* 이미지 파트 */	
-	.myDraw-image { width:25%; position:relative; margin-right:5px; vertical-align: baseline; }
+	.myDraw-image { width:10%; position:relative; margin-right:5px; vertical-align: baseline; background-color:#f3f3f3; border-radius:8px; }
 		/* 이미지 */
-		 .myDraw-image img { width:100%; height:100%; padding:1%; }
+		 .myDraw-image img { width:100%; height:100%; padding:0 5%; }
 	/* 모델 이름 + 응모횟수 파트 */
-	.myDrawShoeInfo-container { width:63%; vertical-align: baseline; border-right:1px dotted #d4d4d4; padding:10px 12px !important; }
-		.myDrawShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:31px; line-height:1.2em; margin-bottom:7px; font-weight:bold; cursor:pointer; }
-		.myDrawShoeInfo-countNum { font-size:18px; color:#777;  }
+	.myDrawShoeInfo-container { width:80%; vertical-align: baseline; border-right:1px dotted #d8d8d8; padding:0 12px !important; }
+		.myDrawShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:19px; min-height:38px; line-height:1.2em; font-weight:bold; cursor:pointer; }
+		.myDrawShoeInfo-countNum { font-size:17px; color:#777; font-weight:bold; }
 	/* DropDown 파트*/
-	.myDrawDropDown-container { width:12%; text-align:center; }
-	.myDrawDropDown-container span { font-size:22px; color:#5d5d5d; }
+	.myDrawDropDown-container, .myDrawDropUp-container { width:10%; text-align:center; padding:35px 0; cursor:pointer; }
+	.myDrawDropDown-container span, .myDrawDropUp-container span { font-size:30px; }
 
 	/* 응모 브랜드 리스트 */
-	.brandList-container {  width:100%; padding:1%; background-color:white; }
+	.brandList-container { width:100%; background-color:white; position:absolute; z-index:10; border-left:1px solid #d8d8d8; border-right:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8; border-bottom-left-radius:5px; border-bottom-right-radius:5px; margin-top:1.5%; }
 	.brandList-container h4 { padding:15px 10px;}
 	
-	.brandList-table table { width:100%; border-collapse:collapse; text-align:center; }
-	.brandList-table table th { border-top:1px solid black; border-bottom:1px solid #a5a5a5; padding:12px 0; }
-	.brandList-table table td { border-bottom:1px solid #a5a5a5; padding:15px; }
-	.brandList-table table td img { width:50px; height:50px; }
+	.brandList-table table { width:100%; border-collapse:collapse; text-align:center; border-top:1px solid black; border-bottom:1px solid black; }
+	.brandList-table table th { border-bottom:1px solid #dadada; padding:10px 0; font-weight:normal !important; }
+	.brandList-table table td { border-bottom:1px dotted #dadada; padding:15px 10px; }
+	.brandList-table table td img { width:60px; height:60px; border:1px solid #e0e0e0; border-radius:5px; }
 	.brandLogoName { text-align:left !important; }
 	.myDraw-logo, .myDraw-brandName { display:inline-block; vertical-align:top; }
+	.myDraw-brandName { width:80%; padding-left:10px; }
 	.myDraw-brandNameTxt { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:31px; line-height:1.2em; }
+	
 	
 	
 	
