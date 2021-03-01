@@ -628,7 +628,7 @@ public class MemberDAO {
 	}
 	
 	//사용자의 월별 응모 브랜드 정보 불러오는 함수
-	public Vector searchUserDrawStylecode_kr(String user, String last_date, String cur_date, String next_date) {
+	public Vector searchUserDrawStylecode_kr(String user, String lastlast_date, String last_date, String cur_date, String next_date) {
 		Vector vec = new Vector();
 		int count_kr = 0;
 		int count_etc = 0;
@@ -697,7 +697,7 @@ public class MemberDAO {
 				
 				if(rs2.next()){
 					//가지고온 신발 증에 release_date가 전달과 다음달사이에 포함되어있으면 list에 추가하기
-					if(rs2.getString("release_date").contains(last_date) || rs2.getString("release_date").contains(cur_date) || rs2.getString("release_date").contains(next_date)){
+					if(rs2.getString("release_date").contains(lastlast_date) || rs2.getString("release_date").contains(last_date) || rs2.getString("release_date").contains(cur_date) || rs2.getString("release_date").contains(next_date)){
 						userDrawStylecodeList.add(mddto);
 						//스니커 정보 DB에 해당 스니커가 저장되어있으면
 						SneakerDTO sdto = new SneakerDTO();

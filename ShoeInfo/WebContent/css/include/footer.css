@@ -9,33 +9,33 @@
 	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 0.8em;
 	font-weight: lighter;
-	background-color: black;
+	background-color: #f3f3f3 !important;
 	line-height: 80px;
+	color:#444;
 }
 
 #footer-wrapper{
-	max-width: 80%;
+	max-width: 1080px;
 	margin: 0 auto;
 }
 
-#footer-wrapper div{ display:inline-block; }
-
-#footer-wrapper div#copyright, #footer-wrapper div#info{
-	color: white;
+.footer-nav div {
+	display:inline-block !important;
 }
 
-#div { color: white; padding: 0 0.6em; }
+#footer-wrapper div{ display:block; text-align:center; }
 
-.footer-nav {
-	display:inline-block;
-	float: right;
-	text-align: right;
-}
-.footer-nav ul { list-style: none; }
-.footer-nav ul li { display: inline; }
-.footer-nav ul li span { color: white; cursor: pointer; }
-.footer-nav ul li span a { color: white; }
-.footer-nav ul li:not(:first-child):before { content: '|'; padding: 0.3em; color: white; }
+
+
+
+
+
+
+
+
+
+
+
 
 /* media Query */
 @media screen and (max-width: 1440px){

@@ -34,12 +34,14 @@ public class MemberDrawInfo implements Action{
 		MemberDAO mdao = new MemberDAO();
 		
 		//현재 년 + 월 구하기
+		Calendar lastlast_month = Calendar.getInstance();
 		Calendar last_month = Calendar.getInstance();
 		Calendar cur_month = Calendar.getInstance();
 		Calendar next_month = Calendar.getInstance();
 		
 		DateFormat date_format = new SimpleDateFormat("yyyy-MM");
 		
+		lastlast_month.add(lastlast_month.MONTH, - 2);
 		last_month.add(last_month.MONTH, - 1);
 		cur_month.add(cur_month.MONTH, + 0);
 		next_month.add(next_month.MONTH, + 1);
@@ -47,11 +49,12 @@ public class MemberDrawInfo implements Action{
 		//2021-01
 		//2021-02
 		//2012-03
+		String lastlast_month_Str = date_format.format(lastlast_month.getTime());
 		String last_month_Str = date_format.format(last_month.getTime());
 		String cur_month_Str = date_format.format(cur_month.getTime());
 		String next_month_Str = date_format.format(next_month.getTime());
 		
-		Vector vec = (Vector) mdao.searchUserDrawStylecode_kr(user, last_month_Str, cur_month_Str, next_month_Str);
+		Vector vec = (Vector) mdao.searchUserDrawStylecode_kr(user, lastlast_month_Str, last_month_Str, cur_month_Str, next_month_Str);
 		
 		ArrayList<MemberDrawDTO> userDrawStylecodeList = (ArrayList<MemberDrawDTO>) vec.get(0);
 		ArrayList<SneakerDTO> sneakerInfoList = (ArrayList<SneakerDTO>) vec.get(1);

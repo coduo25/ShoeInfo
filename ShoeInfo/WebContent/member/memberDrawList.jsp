@@ -104,7 +104,7 @@
 						
 						<!-- List DropDown 버튼 -->
 						<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
-							<span><i style="padding-right:10px;" class="fas fa-list"></i><i class="fas fa-angle-down"></i></span>
+							<span><i class="fas fa-angle-down"></i></span>
 						</div>
 						<!-- List DropUp 버튼 -->
 						<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
@@ -119,8 +119,8 @@
 									<table>
 										<tr>
 											<th style="width:50%;"> 국내 </th>
-											<th style="width:35%;"> 발표일 </th>
-											<th style="width:15%;"> 수신방식 </th>
+											<th style="width:30%;"> 발표일 </th>
+											<th style="width:20%;"> 수신방식 </th>
 										</tr>
 										
 										<%if(countDrawKrList.get(i) == 0){%>
@@ -176,8 +176,8 @@
 									<table>
 										<tr>
 											<th style="width:50%;"> 해외 </th>
-											<th style="width:35%;"> 발표일 </th>
-											<th style="width:15%;"> 수신방식 </th>
+											<th style="width:30%;"> 발표일 </th>
+											<th style="width:20%;"> 수신방식 </th>
 										</tr>
 										
 										<%if(countDrawEtcList.get(i) == 0){%>
@@ -268,6 +268,7 @@
 			
 			//밑 border radius 지우기
 			$('#myDraw-container'+number).css({'border-bottom-left-radius':'0', 'border-bottom-right-radius':'0'});			
+			$('#myDrawDropUp-container-'+number).css({'border-bottom-left-radius':'0', 'border-bottom-right-radius':'0'});
 			
 			//DrowUp버튼 활성화
 			$('#myDrawDropUp-container-'+number).css('display','block');
@@ -289,6 +290,7 @@
 			
 			//밑 border radius 둥글게 만들기
 			$('#myDraw-container'+number).css({'border-bottom-left-radius':'5px', 'border-bottom-right-radius':'5px'});		
+			$('#myDrawDropUp-container-'+number).css({'border-bottom-left-radius':'5px', 'border-bottom-right-radius':'5px'});
 			
 			//DrowUp버튼 활성화
 			$('#myDrawDropDown-container-'+number).css('display','block');

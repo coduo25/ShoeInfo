@@ -75,7 +75,7 @@ body {font-size:1em; line-weight:1.4;}
 	
 	/* 종료하고 자세히 드랍다운 버튼 */
 	.releasedDropDown-container { display:none; }
-	.releasedDropDown-container div { width:100%; text-align:right; padding:3px 12px; font-size:14px; }
+	.releasedDropDown-container div { width:100%; text-align:right; padding:4px 12px; font-size:14px; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
