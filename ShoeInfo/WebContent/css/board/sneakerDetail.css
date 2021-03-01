@@ -32,7 +32,7 @@ body {font-size:1em; line-weight:1.4;}
 	.shoeinfo-cateAns { display:inline-block; width:69%; text-align:right;}
 
 /* 국가별 카테고리 파트 */
-.countryCate-container { padding:35px 0; text-align:right; }
+.countryCate-container { padding:35px 0; text-align:center; }
 .countryCate-container div { display:inline; padding:8px 32px; cursor:pointer; color:#777777; font-size:16px; border:1px solid #e8e8e8; }
 
 /* 발매처정보 */

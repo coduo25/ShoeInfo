@@ -12,20 +12,18 @@
 <body>
 	<div id="footer">
 		<div id="footer-wrapper">
-			<div id="copyright"> Copyright 2020 (C) SHOEINFO. All rights reserved. </div>
-			
-			<div id="info">Contact : info@shoeinfo.co.kr</div>
+			<div class="copyright">
+				<span>Copyright 2021 (C) SHOEINFO. All rights reserved.</span>
+			</div>
 			
 			<div class="footer-nav">
-				<div>
-					<span onclick="openJoin_term()"> 이용약관 </span>
-				</div>
-				<div>
-					<span onclick="openPrivacy()"> 개인정보처리방침 </span>
-				</div>
-				<div>
-					<span> <a href="https://www.instagram.com/shoeinfo.official/" target="_blank"><i class="fab fa-instagram"></i></a> </span>
-				</div>
+				<span onclick="openJoin_term()"> 이용약관 </span>
+				<span onclick="openPrivacy()"> 개인정보처리방침 </span>
+				<span> <a href="https://www.instagram.com/shoeinfo.official/" target="_blank"><i class="fab fa-instagram"></i></a> </span>
+			</div>
+			
+			<div class="info">
+				<span>Contact : info@shoeinfo.co.kr</span>
 			</div>
 		</div>
 	</div>

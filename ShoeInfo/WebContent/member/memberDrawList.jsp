@@ -266,10 +266,6 @@
 			//맨 마지막 = 번호
 			var number = splitArray[splitArray.length - 1];
 			
-			//밑 border radius 지우기
-			$('#myDraw-container'+number).css({'border-bottom-left-radius':'0', 'border-bottom-right-radius':'0'});			
-			$('#myDrawDropUp-container-'+number).css({'border-bottom-left-radius':'0', 'border-bottom-right-radius':'0'});
-			
 			//DrowUp버튼 활성화
 			$('#myDrawDropUp-container-'+number).css('display','block');
 			
@@ -287,10 +283,6 @@
 			var splitArray = divID.split('-');
 			//맨 마지막 = 번호
 			var number = splitArray[splitArray.length - 1];
-			
-			//밑 border radius 둥글게 만들기
-			$('#myDraw-container'+number).css({'border-bottom-left-radius':'5px', 'border-bottom-right-radius':'5px'});		
-			$('#myDrawDropUp-container-'+number).css({'border-bottom-left-radius':'5px', 'border-bottom-right-radius':'5px'});
 			
 			//DrowUp버튼 활성화
 			$('#myDrawDropDown-container-'+number).css('display','block');
