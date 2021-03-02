@@ -23,7 +23,7 @@ body {font-size:1em; line-weight:1.4}
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black;}
 #onlineList_todays_table th { height: 50px; border-bottom: 1px solid #a5a5a5; background-color:#f3f3f3;}
 #onlineList_todays_table tr:hover { background-color:rgb(246 246 247 / 80%); } 
-#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:35px 0; }
+#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:50px 0; }
 #onlineList_todays_table td { text-align: center; }
 
 	/* 번호 & 상태 */
@@ -51,8 +51,8 @@ body {font-size:1em; line-weight:1.4}
 	.remainWarning-container span { display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%; }
 
 	/* 발매 제품  */
-	.releaseModel-image img { width: 130px; }
-	.releaseModel-name { margin-bottom: 10px; }
+	.releaseModel-image img { width: 180px; }
+	.releaseModel-name { margin-bottom: 10px; padding:0 5%; }
 	
 	/* 바로가기 버튼 & 참여 체크박스 */
 	.links-container div { display:block; border: 1px solid black; padding: 5px 7px; border-radius: 5px; width: 90px; font-weight:bold; }

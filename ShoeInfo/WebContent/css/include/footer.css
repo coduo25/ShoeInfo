@@ -21,7 +21,7 @@
 .footer-nav div { display:inline-block !important; }
 .footer-nav span { padding:0 10px; cursor:pointer; }
 .footer-nav span:not(:last-child) { border-right:1px solid #9c9c9c; }
-.info { padding:15px 0 60px 0 !important; }
+.info { padding:15px 0 40px 0 !important; }
 
 
 

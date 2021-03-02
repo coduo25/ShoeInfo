@@ -180,8 +180,8 @@
 				<table id="onlineList_todays_table">
 					<tr>
 						<th style="width:8%;"> 번호 </th>
-						<th style="width:45%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
-						<th style="width:23%; border-right: 0.5px dotted #dcdcdc;"> 발매제품 </th>
+						<th style="width:48%; border-right: 0.5px dotted #dcdcdc;"> 발매처정보 </th>
+						<th style="width:20%; border-right: 0.5px dotted #dcdcdc;"> 발매제품 </th>
 						<th style="width:12%;"> 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
@@ -261,7 +261,7 @@
 									<!--  발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="125" height="125" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
+											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="130" height="130" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
 											<span style="position:absolute; right:0; bottom:0;">
 												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width:30px; height: 20px;">
 											</span> 
@@ -496,7 +496,7 @@
 								</div>
 								<!-- 발매가 -->
 								<div class="releaseModel-price">
-									<span>$-</span>
+									<span>-</span>
 								</div>
 							</td>
 	

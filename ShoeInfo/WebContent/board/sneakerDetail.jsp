@@ -75,6 +75,7 @@
 		SimpleDateFormat original_format2 = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat original_format3 = new SimpleDateFormat("yyyy/MM/dd");
 		SimpleDateFormat date_format = new SimpleDateFormat("yyyy년 M월 d일");
+		SimpleDateFormat dot_format = new SimpleDateFormat("yyyy.MM.dd");
 
 		SimpleDateFormat new_format = new SimpleDateFormat("M/d HH:mm");
 		SimpleDateFormat newList_format = new SimpleDateFormat("M월 d일(E) HH:mm");
@@ -142,7 +143,7 @@
 							<%if(sdto.getRelease_date().contains("99")){%>
 								미정
 							<%}else{%>
-								<%=date_format.format(date_type)%>
+								<%=dot_format.format(date_type)%>
 							<%}%>
 						</span>
 					</div>
