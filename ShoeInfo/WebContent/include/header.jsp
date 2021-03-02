@@ -15,7 +15,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<script data-ad-client="ca-pub-8228533393025739" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- <script data-ad-client="ca-pub-8228533393025739" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 
 </head>
 <body>
@@ -102,10 +102,10 @@
 				</div>
 			</div>
 		</div>
-	
 	</header>
 	
-	
+	<!-- top link -->
+	<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-caret-up"></i></button>
 	
 	
 	
@@ -288,12 +288,37 @@
 		</nav>
 	</div>
 	
-	<!-- top link -->
-	<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-caret-up"></i></button>
+	
 
 </body>
 <script type="text/javascript">
 
+	window.onscroll = function() {myFunction()};
+	
+	var mybutton = document.getElementById("myBtn");
+	
+	function myFunction() {		
+		//최상단으로 가는 버튼 활성화
+	  	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+	  		$('#myBtn').fadeIn();
+		} else {
+			$('#myBtn').hide();
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	//구 코드
+	//구 코드
+	//구 코드
+	//구 코드
+	//구 코드
+	//구 코드
 	$(document).ready(function(){
 
 		$('.acc_pos').click(function(){
@@ -381,26 +406,5 @@
 // 			document.documentElement.scrollTop = 0;
 		}
 
-		//헤더 스크롤 내려도 메뉴바 상단에 고정시키는 스크립트
-		window.onscroll = function() {myFunction()};
-		
-		var navbar = document.getElementById("datebar_div");
-		var sticky = navbar.offsetTop;
-		var mybutton = document.getElementById("myBtn");
-		
-		function myFunction() {
-		  	if (window.pageYOffset >= sticky) {
-		  		navbar.classList.add("sticky")
-		  	}else {
-		  		navbar.classList.remove("sticky");
-		 	}
-	  	
-		  	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-		  		$('#myBtn').fadeIn();
-			} else {
-				$('#myBtn').hide();
-			}
-		  	
-		}
 </script>
 </html>

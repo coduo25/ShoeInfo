@@ -15,7 +15,7 @@ body {font-size:1em; line-weight:1.4}
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
-.desc-container { display: block; padding: 0 0 40px 0; color: #3e3e3e; }
+.desc-container { display: block; padding: 5px 0 40px 0; color: #3e3e3e; }
 .desc-container span { display:inline-block; position:relative; }
 
 
@@ -23,7 +23,7 @@ body {font-size:1em; line-weight:1.4}
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black;}
 #onlineList_todays_table th { height: 50px; border-bottom: 1px solid #a5a5a5; background-color:#f3f3f3;}
 #onlineList_todays_table tr:hover { background-color:rgb(246 246 247 / 80%); } 
-#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:50px 0; }
+#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:45px 0; }
 #onlineList_todays_table td { text-align: center; }
 
 	/* 번호 & 상태 */

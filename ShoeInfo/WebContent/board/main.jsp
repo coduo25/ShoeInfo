@@ -112,6 +112,13 @@
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 	
+		<!-- 좌측 사이즈바 -->
+		<div class="left-sideBar" id="left-sideBar">
+			<div style="position:relative; width:160px; margin:10px;">
+				현재시간
+			</div>
+		</div>	
+	
 		<!-- 발매 중 리스트 -->
 		<div class="releasing-container" style="margin-top: 40px !important;">
 			<div class="sub-title">	
@@ -1101,6 +1108,21 @@
 		timer = setInterval(showRemaining, 1000); 
 	}
 
+
+	var sticky = $(".left-sideBar").offsetTop;
+
+	$(window).scroll(function(event){
+		//좌측 사이드바 스크롤 내렸을시
+		 if (window.pageYOffset >= sticky) {
+			 $(".left-sideBar").css('position','sticky');
+			 $(".left-sideBar").css('top','20px');
+		  } else {
+			  $(".left-sideBar").css('position','absolute');
+			  $(".left-sideBar").css('top','0');
+		  }
+	});
+	
+
 	$(document).ready(function(){
 		
 		//방지
@@ -1120,6 +1142,8 @@
 			else { 
 			}
 		}
+		
+		
 		
 		///오늘 발매 리스트
 		var todaysReleaseAll_list = [];
