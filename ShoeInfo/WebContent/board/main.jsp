@@ -31,6 +31,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap" rel="stylesheet">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
@@ -115,8 +118,23 @@
 		<!-- 좌측 사이드바 -->
 		<div class="left-sideBar" id="left-sideBar">
 			<!-- 달력 -->
-			<div class="calendar" style="position:relative; width:160px; margin:10px;">
+			<div class="calendar-box">
+			</div>
+			<!-- 시계 -->
+			<div class="clock" id="clock">
+				<div class="month_date" id="month_date">
+				</div>
+				<div class="time_zone" id="time_zone">
+				</div>
+				<div class="ampm_zone_container" >
+					<span id="ampm_zone"></span>
+				</div>
+			</div>
+			<!-- 구글 광고 1 -->
+			<div class="google-ad1">
+				<div class="ad1-box">
 				
+				</div>
 			</div>
 		</div>	
 	
@@ -1124,7 +1142,9 @@
 		}
 	});
 	
-	//Calendar date 객체 생성
+	
+	/////////////////////////////////////////////////////////
+	//Calendar date 객체 생성 
 	var Calendar = new Date();
 	var day_of_week = ['일', '월', '화', '수', '목', '금', '토'];
 	var month_of_year = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
@@ -1145,15 +1165,15 @@
 	var TR_end = "</tr>";
 	
 	var TD_week_start = "<td class='week'>";
-	var TD_blank_start = "<td class='blank'";
-	var TD_today_start = "<td class='day'";
+	var TD_blank_start = "<td class='blank'>";
+	var TD_today_start = "<td class='today'>";
 	var TD_day_start = "<td class='day'>";
 	var TD_saturday_start = "<td class='saturday'>";
 	var TD_sunday_start = "<td class='sunday'>";
 	var TD_end = "</td>";
 	
-	str = "<table width=100% border:1 cellspacing=0 cellpadding=0 bordercolor=bbbbbb><tr><td style='text-align:center'>";
-	str += "<strong>" + year + "." + month_of_year[month] + "</strong>";
+	str = "<table width=100% border:1 cellspacing=0 cellpadding=0><tr><td style='text-align:center;'>";
+	str += "<strong class='cal-title'>" + year + "." + month_of_year[month] + "</strong>";
 	str += "<table class='calendar' border=0 cellspacing=0 celpadding=2>";
 	
 	//tr 시간
@@ -1201,12 +1221,57 @@
 	str += "</table></td></tr></table>";
 	
 	//calendar 태그에 넣기
-	$('.calendar').html(str);
+	$('.calendar-box').html(str);
 	
+	/////////////////////////////////////////////////////////
+	//실시간 현재 시간
+	function getTime(){
+			
+		//현재 시간 계산
+		var date = new Date();
+		//요일
+		var week = new Array('일', '월', '화', '수', '목', '금', '토'); 	
+		var currentDate = (date.getMonth() + 1) + "월 " +  date.getDate() + "일" + "(" + week[date.getDay()] +")"; 
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		var seconds = date.getSeconds();
+		//오전/오후 표시하기
+		var AMorPM = date.getHours() < 12 ? "AM" : "PM";
+		//오후시간일때 12시간 빼기
+		if(hours > 12) {
+			hours -= 12;
+		}
+		
+		//시간, 분, 초 앞에 한자리수이면 앞자리수에 0 붙이기
+		if(hours < 10){ hours = "0" + hours; }
+		if(minutes < 10){ minutes = "0" + minutes; }
+		if(seconds < 10){ seconds = "0" + seconds; }
+
+		var currentTime = hours + ":" + minutes + ":" + seconds;
+
+		var monthDate_div = document.getElementById("month_date");
+		var time_div = document.getElementById("time_zone");
+		var ampm_zone = document.getElementById("ampm_zone");
+
+		//월 + 일 넣기
+		monthDate_div.innerHTML = currentDate;
+		//시간 넣기
+		time_div.innerHTML = currentTime;
+		//am pm 넣기
+		ampm_zone.innerHTML = AMorPM;
+	}
+	
+	//실시간 갱신시켜주는 함수
+	function init(){
+	    setInterval(getTime, 1000);
+	}
+	
+	init();
 	
 	
 	
 
+	/////////////////////////////////////////////////////////
 	$(document).ready(function(){
 		
 		//방지

@@ -7,15 +7,27 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;} /* width: 80%; margin: 5px auto; */
 
 /* 좌측 사이드바 */
-.left-sideBar { position:absolute; width:180px; background-color:#f3f3f3; border:1px solid #dddddd; border-radius:4px; margin-left:-220px; height:620px; }
+.left-sideBar { position:absolute; width:180px; background-color:#f3f3f3; border:1px solid #dddddd; border-radius:4px; margin-left:-230px; height:9200px; z-index:50; }
 	/* 달력 */
-	.calendar { width:100%; overflow:visible; text-align:center; display:table; border-collapse:separate; border-spacing:2px; border-color:grey; }
-	.calendar .week { background:#f1f0f0; color:#515151; font-size:16px; font-weight:bold; border-bottom:1px solid #d6d6d6; height:40px; }
-	.calendar .saturday { background:white; color:#3a87ad; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
-	.calendar .sunday { background:white; color:crimson; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
-	.calendar .today { background:white; color:darkblue; font-size:16px; font-weight:bold; height:55px; border:2px solid darkblue; }
-	.calendar .blank { background:white; color:brown; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
-	.calendar .day { background:white; color:#515151; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
+	.calendar-box { background-color:#fdfdfd; margin:4%; border:1px solid #505050; font-family:'Nanum Gothic', sans-serif; border-top-right-radius:10px; border-top-left-radius:10px; }
+	.calendar { width:100%; overflow:visible; text-align:center; display:table; border-collapse:separate; padding:3%; }
+	.cal-title { font-size:14px; padding:6px 0 4px 0; display:block; }
+	.calendar .week { padding:3px 0 5px 0; color:#808080; font-size:13px; font-weight:bold; border-bottom:1px solid #dedfde; }
+	.calendar .saturday { color:#3a87ad; font-size:12px; font-weight:bold; padding:4px 0 6px 0; }
+	.calendar .sunday { color:crimson; font-size:12px; font-weight:bold; padding:4px 0 6px 0; }
+	.calendar .blank {color:brown; font-size:12px; font-weight:bold; padding:4px 0 6px 0;}
+	.calendar .day { color:#515151; font-size:12px; font-weight:bold; padding:4px 0 6px 0; }
+	.calendar .today { background-color:#ff6400; color:white; font-size:12px; font-weight:bold; padding:4px 0 6px 0; }
+	/* 현재 시간 */
+	.clock { text-align:center; padding:3% 5%; }
+	.month_date { font-size:20px; font-family:'Nanum Gothic', sans-serif; padding:4px 0;}
+	.time_zone { font-family:'Oxanium', cursive; font-size:35px; font-weight:bold; padding:5px 0 2px 0;}
+	.ampm_zone_container { padding:0 0 5px 0; font-weight:bold; }
+	#ampm_zone { font-family:'Oxanium', cursive; font-size:13px; padding:3px 6px; border:1px solid black; background-color:black; color:white; }
+	/* 구글 광고 1 */
+	.google-ad1 { width:100%; padding:4% 5%; }
+	.ad1-box { height:600px; border:1px solid #505050; border-radius:5px; z-index:50; }
+	
  
 /* 리스트 별 컨테이너 */
 .todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container { display: table; width: 100%; box-sizing: border-box; margin:120px 0; font-family: 'Nanum Gothic', sans-serif; }
@@ -74,8 +86,8 @@ body {font-size:1em; line-weight:1.4}
 	/* 발매처 정보 박스 */
 	.todaysRelease-content2 div { margin-bottom: 10px; display: block; }
 	.todaysRelease-content2 span { display:inline-block; vertical-align: top; }
-	.info-subTitle { color: #1f1f1f; }
-	.info-content { color: #949494; padding-left: 20px; }
+	.info-subTitle { color:#1f1f1f; }
+	.info-content { color:#949494; padding-left:15px; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }

@@ -42,7 +42,7 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-content2 div { margin-bottom: 10px; display: block; }
 	.todaysRelease-content2 span { display:inline-block; vertical-align: top; }
 	.info-subTitle { color: #1f1f1f; }
-	.info-content { color: #949494; padding-left: 20px; }
+	.info-content { color: #949494; padding-left:15px; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
