@@ -7,7 +7,15 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;} /* width: 80%; margin: 5px auto; */
 
 /* 좌측 사이드바 */
-.left-sideBar { position:absolute; width:180px; background-color:#f3f3f3; border:1px solid #dddddd; border-radius:4px; margin-left:-220px; }
+.left-sideBar { position:absolute; width:180px; background-color:#f3f3f3; border:1px solid #dddddd; border-radius:4px; margin-left:-220px; height:620px; }
+	/* 달력 */
+	.calendar { width:100%; overflow:visible; text-align:center; display:table; border-collapse:separate; border-spacing:2px; border-color:grey; }
+	.calendar .week { background:#f1f0f0; color:#515151; font-size:16px; font-weight:bold; border-bottom:1px solid #d6d6d6; height:40px; }
+	.calendar .saturday { background:white; color:#3a87ad; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
+	.calendar .sunday { background:white; color:crimson; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
+	.calendar .today { background:white; color:darkblue; font-size:16px; font-weight:bold; height:55px; border:2px solid darkblue; }
+	.calendar .blank { background:white; color:brown; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
+	.calendar .day { background:white; color:#515151; font-size:16px; font-weight:bold; height:55px; border:2px solid #f1f0f0; }
  
 /* 리스트 별 컨테이너 */
 .todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container { display: table; width: 100%; box-sizing: border-box; margin:120px 0; font-family: 'Nanum Gothic', sans-serif; }
