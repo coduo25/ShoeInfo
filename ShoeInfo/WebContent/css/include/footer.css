@@ -13,7 +13,7 @@
 	color:#444;
 }
 
-#footer-wrapper{ max-width: 1080px; margin: 0 auto; color:#889498; }
+#footer-wrapper{ max-width: 1080px; margin: 0 auto; color:#444; }
 #footer-wrapper div { display:block; text-align:left; }
 
 .footer-nav { padding:22px 0 15px 0; }

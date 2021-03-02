@@ -1113,13 +1113,28 @@
 
 	$(window).scroll(function(event){
 		//좌측 사이드바 스크롤 내렸을시
-		 if (window.pageYOffset >= sticky) {
-			 $(".left-sideBar").css('position','sticky');
-			 $(".left-sideBar").css('top','20px');
-		  } else {
-			  $(".left-sideBar").css('position','absolute');
-			  $(".left-sideBar").css('top','0');
-		  }
+		
+		//화면을 200정도만 내렸을때 좌측 메뉴 고정
+// 		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+// 			$(".left-sideBar").css('position','sticky');
+// 			$(".left-sideBar").css('top','30px');
+// 		} else {
+// 			$(".left-sideBar").css('position','absolute');
+// 			$(".left-sideBar").css('top','0');
+// 		}
+		
+		var leftBar = document.getElementById("left-sideBar");
+		var sticky = leftBar.offsetTop;
+		
+		if (window.pageYOffset >= sticky) {
+			$("#left-sideBar").css('position','sticky');
+// 			$(".left-sideBar").css('top','20px');
+// 			leftBar.classList.add("sticky");
+		} else {
+			$("#left-sideBar").css('position','absolute');
+// 			$(".left-sideBar").css('top','20px');
+// 			leftBar.classList.remove("sticky");
+		}
 	});
 	
 
