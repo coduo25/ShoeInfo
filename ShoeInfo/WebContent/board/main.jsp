@@ -130,23 +130,24 @@
 					<span id="ampm_zone"></span>
 				</div>
 			</div>
-			<!-- 구글 광고 1 -->
-			<div class="google-ad1">
-				<div class="ad1-box">
+			
+			<!-- 구글 좌측 사이드바 광고 -->
+			<div class="googleAd-leftSideBar">
+				<div class="ad-leftSideBar-box">
 				
 				</div>
 			</div>
-		</div>	
-	
+		</div>
+
 		<!-- 발매 중 리스트 -->
-		<div class="releasing-container" style="margin-top: 40px !important;">
+		<div class="releasing-container" style="margin-top:30px !important;">
 		
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 현재 발매 중인 라인업 </h4>
-				<div class="allButton" onclick="location.href='#'">
-					<span> 전체보기 </span>
-				</div>
+<!-- 				<div class="allButton" onclick="location.href='#'"> -->
+<!-- 					<span> 전체보기 </span> -->
+<!-- 				</div> -->
 			</div>
 			
 			<div class="desc-container">
@@ -740,9 +741,26 @@
 			%>	
 		</div>
 
-
-
-
+		<!-- 우측 사이드바 -->
+		<div class="right-sideBar" id="right-sideBar">
+			<div class="popular-chart">
+				<table>
+					<tr>
+						<th>인기상품</th>
+					</tr>
+					<tr>
+						<td> 유니버시티 블루 </td>
+					</tr>
+				</table>
+			</div>
+			
+			<!-- 구글 우측 사이드바 광고 -->
+			<div class="googleAd-rightSideBar">
+				<div class="ad-rightSideBar-box">
+				
+				</div>
+			</div>
+		</div>
 
 
 
@@ -1135,7 +1153,7 @@
 		//화면을 200정도만 내렸을때 좌측 메뉴 고정
 		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
 			$(".left-sideBar").css('position','fixed');
-			$(".left-sideBar").css('top','20px');
+			$(".left-sideBar").css('top','40px');
 		} else {
 			$(".left-sideBar").css('position','absolute');
 			$(".left-sideBar").css('top','0');
