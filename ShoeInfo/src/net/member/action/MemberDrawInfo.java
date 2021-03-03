@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import net.brand.db.BrandDTO;
 import net.member.db.MemberDAO;
 import net.member.db.MemberDrawDTO;
+import net.sneaker.db.SneakerDAO;
 import net.sneaker.db.SneakerDTO;
 
 public class MemberDrawInfo implements Action{
@@ -32,6 +33,11 @@ public class MemberDrawInfo implements Action{
 		
 		//디비가서 내가 응모한 브랜드 정보 가져오기
 		MemberDAO mdao = new MemberDAO();
+		SneakerDAO sdao = new SneakerDAO();
+		
+		//인기상품 리스트
+		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
+		request.setAttribute("popularList", popularList);
 		
 		//현재 년 + 월 구하기
 		Calendar lastlast_month = Calendar.getInstance();
