@@ -11,7 +11,7 @@ body {font-size:1em; line-weight:1.4}
 .snkrsWeek-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title { display: block; margin:0 0 15px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; margin:0 0 15px 0; font-size:30px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -20,7 +20,7 @@ body {font-size:1em; line-weight:1.4}
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
 .snkrsWeek-table-container { width:1080px; white-space:nowrap; margin-bottom:30px; display:block; }
-.snkrsSneaker-container { display:inline-block; width:32.333%; margin:0.5% 0.5% 3% 0.5%; display:inline-block; float:left; }
+.snkrsSneaker-container { display:inline-block; width:32.333%; margin:0.5% 0.5% 4% 0.5%; display:inline-block; float:left; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
 .snkrsSneaker-container img { background-color:#f3f3f3; padding:80px 10px 20px 10px; }
 .snkrsSneaker-container div { text-align:center; display:block; position:relative; }

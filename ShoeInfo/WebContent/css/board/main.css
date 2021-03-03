@@ -37,13 +37,13 @@ body {font-size:1em; line-weight:1.4}
  
  
 /* 리스트 별 컨테이너 */
-.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container { display: table; width: 100%; box-sizing: border-box; margin:120px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container { display: table; width: 100%; box-sizing: border-box; margin-bottom:100px; font-family: 'Nanum Gothic', sans-serif; }
 .released-container { display: table; width: 100%; box-sizing: border-box; margin:40px 0 0 0; font-family: 'Nanum Gothic', sans-serif; }
 
 .todays-table-container, .releasing-table-container, .snkrsWeek-table-container, .myDraw-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title { display: block; padding:0 0 15px 0; font-size: 26px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; padding:0 0 15px 0; font-size:30px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -72,10 +72,10 @@ body {font-size:1em; line-weight:1.4}
 .mainSneaker-image:hover > .mainSneaker-container-hover-Name { opacity:1; }
 
 /* 오늘의 발매 리스트 ------------------------------------------------------------------------------ */
-#onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black;}
+#onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black; } /* border-left:1px dotted #dcdcdc; border-right:1px dotted #dcdcdc;  */
 #onlineList_todays_table th { height: 50px; border-bottom: 1px solid #a5a5a5; background-color:#f3f3f3;}
 #onlineList_todays_table tr:hover { background-color:rgb(246 246 247 / 80%); }  
-#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:45px 0; }
+#onlineList_todays_table td { height: 100%; border-bottom: 1px solid #a5a5a5; padding:35px 0; }
 #onlineList_todays_table td { text-align: center; }
 
 	/* 번호 & 상태 */
@@ -169,6 +169,11 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.myDraw-brandName { width:80%; padding-left:12px; }
 	.myDraw-brandNameTxt { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:31px; line-height:1.2em; font-weight:bold; }
 	
+
+
+
+
+
 
 
 

@@ -120,7 +120,7 @@
 					// 0의 리스트 중에 마지막부터
 					// 1의 리스트 중에 마지막부터
 					// 2의 리스트 중에 마지막부터
-					for(int j=0; j<=2; j++){
+					for(int j=0; j<2; j++){
 				%>
 					<div class="released-table-container" id="released-table-container<%=j%>" <%if(j>=1){%>style="display:none;"<%}%>>
 						<%

@@ -169,7 +169,7 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; text-align:left !important; padding-left:5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" style="border-right:1px dotted #dcdcdc; text-align:left !important; padding-left:5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
@@ -395,7 +395,7 @@
 							</td>
 				
 							<!-- 발매신발 -->
-							<td id="releaseModel-info<%=i%>" style="border-right: 0.5px dotted #dcdcdc; padding-left:15px; padding-right:15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
+							<td id="releaseModel-info<%=i%>" style="border-right:1px dotted #dcdcdc; padding-left:15px; padding-right:15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
 							<input type="hidden" id="model_num<%=i%>" value="<%=odto_todays.getModel_num()%>">
 							<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
 <!-- 								<div> -->
