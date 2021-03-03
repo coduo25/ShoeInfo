@@ -1,3 +1,5 @@
+<%@page import="java.util.Vector"%>
+<%@page import="net.sneaker.db.SneakerDAO"%>
 <%@page import="net.brand.db.BrandDTO"%>
 <%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.io.IOException"%>
@@ -44,6 +46,9 @@
 			user="";
 		}
 		
+		//인기상품
+		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
+		
 		//사용자 응모한 브랜드 리스트
 		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
 	
@@ -79,10 +84,10 @@
 		Date currentTime = new Date();
 		String current = format.format(currentTime);
 		Date today = format.parse(current);
+
 		
 		
-		
-		
+
 		
 		
 		
@@ -745,19 +750,48 @@
 		<div class="right-sideBar" id="right-sideBar">
 			<div class="popular-chart">
 				<table>
-					<tr>
-						<th>인기상품</th>
+					<tr class="popular-subtitle">
+						<th colspan="3">인기제품</th>
 					</tr>
-					<tr>
-						<td> 유니버시티 블루 </td>
-					</tr>
+					<%
+						if(popularList.isEmpty()) {
+					%>
+						<tr>
+							<td>
+								<span>업데이트 예정</span>
+							</td>
+						</tr>
+					<%	} else {
+						for(int i=0; i<popularList.size(); i++){
+							SneakerDTO sdto = popularList.get(i);
+					%>
+						<tr class="popular-row">
+							<!-- 순번 -->
+							<td class="popularNum-td">
+								<span><%=i+1%></span>
+							</td>
+							<!-- 신발이미지 -->
+							<td class="popularImg-td">
+								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+									<img src="./sneaker_img_upload/<%=sdto.getImage()%>" width="50" height="38">
+								</a>
+							</td>
+							<!-- 신발이름 -->
+							<td class="popularName-td">
+								<div>
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"><%=sdto.getModel_name_kr()%></a>
+								</div>
+							</td>
+						</tr>
+					<%
+						} }
+					%>
 				</table>
 			</div>
 			
 			<!-- 구글 우측 사이드바 광고 -->
 			<div class="googleAd-rightSideBar">
 				<div class="ad-rightSideBar-box">
-				
 				</div>
 			</div>
 		</div>

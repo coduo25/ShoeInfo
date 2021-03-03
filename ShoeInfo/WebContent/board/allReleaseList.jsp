@@ -78,7 +78,7 @@
 	<div id="wrapper" class="container" style="margin-bottom:50px;">
 	
 		<!-- 발매 중 리스트 -->
-		<div class="releasing-container" style="margin:40px 0 100px 0 !important;">
+		<div class="releasing-container" style="margin-top:30px !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 현재 발매 중인 라인업 </h4>

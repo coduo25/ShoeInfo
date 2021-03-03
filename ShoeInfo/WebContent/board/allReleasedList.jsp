@@ -100,7 +100,7 @@
 	<div id="wrapper" class="container" style="margin-bottom:50px;">
 
 		<!-- 발매 완료 리스트 -->
-		<div class="released-container">
+		<div class="released-container" style="margin-top:30px !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 발매 완료 라인업 </h4>

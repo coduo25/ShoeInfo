@@ -28,11 +28,14 @@ public class SneakerListAction implements Action {
 		OnlineDAO odao = new OnlineDAO();
 		SneakerDAO sdao = new SneakerDAO();
 		BrandDAO bdao = new BrandDAO();
+		MemberDAO mdao = new MemberDAO();
+		
+		//인기상품 리스트
+		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
+		request.setAttribute("popularList", popularList);
 		
 		//사용자 응모한 브랜드 리스트
-		MemberDAO mdao = new MemberDAO();
 		ArrayList<String> userDrawBrandList = mdao.searchDrawBrandInfoAll(user);
-		
 		request.setAttribute("userDrawBrandList", userDrawBrandList);
 		
 		//오늘의 응모
@@ -40,20 +43,16 @@ public class SneakerListAction implements Action {
 		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) vec_todaysRelease.get(0);
 		ArrayList<BrandDTO> brandList_todays = (ArrayList<BrandDTO>) vec_todaysRelease.get(1);
 		ArrayList<SneakerDTO> sneakerList_todays = (ArrayList<SneakerDTO>) vec_todaysRelease.get(2);
-		
 		request.setAttribute("onlineList_todays", onlineList_todays);
 		request.setAttribute("brandList_todays", brandList_todays);
 		request.setAttribute("sneakerList_todays", sneakerList_todays);
-		
 		
 		//이번주 snkrs 리스트 가져오는 함수
  		Vector vec_SnkrsWeek = sdao.getSnkrsWeekList();
  		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) vec_SnkrsWeek.get(0);
 		ArrayList<SneakerDTO> sneakerList_snkrs = (ArrayList<SneakerDTO>) vec_SnkrsWeek.get(1);
- 		
 		request.setAttribute("onlineList_snkrs", onlineList_snkrs);
 		request.setAttribute("sneakerList_snkrs", sneakerList_snkrs);
-		
 		
 		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
 		Vector vec_totalReleaseList = sdao.getTotalReleaseList("%" + "2021" + "%");
@@ -62,11 +61,9 @@ public class SneakerListAction implements Action {
 		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(2);
 		//현재 발매 중인 신발들 중에 진행중인 브랜드 갯수 가져오는 리스트
 		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) vec_totalReleaseList.get(3);
-		
 		request.setAttribute("releaseSneakerList", releaseSneakerList);
 		request.setAttribute("releasingSneakerList", releasingSneakerList);
 		request.setAttribute("releasedSneakerList", releasedSneakerList);
-		
 		request.setAttribute("countReleasingBrandList", countReleasingBrandList);
 
  		

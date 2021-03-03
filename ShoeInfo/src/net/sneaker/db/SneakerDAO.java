@@ -161,6 +161,47 @@ public class SneakerDAO {
 		return sneakerList;
 	}
 	
+	//인기순 리스트 가져오는 함수
+	public ArrayList getPopularList(){	
+		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
+		try {
+			con = getConnection();
+			sql = "select B.model_stylecode from shoeinfo_memberdrawinfo as B join shoeinfo_sneakerlibrary as A on B.model_stylecode = A.model_stylecode where A.release_date between last_day(now() - interval 1 month) and last_day(now())group by B.model_stylecode order by count(B.model_stylecode) desc limit 5";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				String model_stylecode = rs.getString("model_stylecode");
+				sql = "select * from shoeinfo_sneakerlibrary where model_stylecode = ?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, model_stylecode);
+				rs2 = pstmt2.executeQuery();
+				while(rs2.next()){
+					SneakerDTO sdto = new SneakerDTO();
+					sdto.setNum(rs2.getInt("num"));
+					sdto.setBrand(rs2.getString("brand"));
+					sdto.setSub_brand(rs2.getString("sub_brand"));
+					sdto.setBrand_index(rs2.getString("brand_index"));
+					sdto.setImage(rs2.getString("image"));
+					sdto.setModel_stylecode(rs2.getString("model_stylecode"));
+					sdto.setModel_name(rs2.getString("model_name"));
+					sdto.setModel_name_kr(rs2.getString("model_name_kr"));
+					sdto.setModel_colorway(rs2.getString("model_colorway"));
+					sdto.setPrice(rs2.getInt("price"));
+					sdto.setRelease_date(rs2.getString("release_date"));
+					sdto.setRelease_status(rs2.getString("release_status"));
+					sneakerList.add(sdto);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return sneakerList;
+	}
+	
 	//발매 중, 발매예정, 발매완료 리스트 나누는 함수
 	public Vector getTotalReleaseList(String date){
 		
