@@ -34,20 +34,19 @@
 	
 		ArrayList<MemberDrawDTO> userDrawStylecodeList = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList");
 		ArrayList<SneakerDTO> sneakerInfoList = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList");
-
 		//국내 응모 정보
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) request.getAttribute("brandList_kr");
 		ArrayList<OnlineDTO> onlineinfoList_kr = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_kr");
-		
 		//해외 응모 정보
 		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) request.getAttribute("brandList_etc");
 		ArrayList<OnlineDTO> onlineinfoList_etc = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
-		
 		//응모 횟수 리스트
 		ArrayList<Integer> countDrawKrList = (ArrayList<Integer>) request.getAttribute("countDrawKrList");
 		ArrayList<Integer> countDrawEtcList = (ArrayList<Integer>) request.getAttribute("countDrawEtcList");
+		//총 응모 횟수
+		int totalcount = (Integer) request.getAttribute("totalcount");
 		
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -133,8 +132,8 @@
 	
 		<!-- 나의 응모내역 리스트 -->
 		<div class="myDrawList-container" style="margin-top:30px !important; padding-top:0 !important;">
-			<div class="sub-title">
-				<h4> 나의 응모내역 </h4>
+			<div class="sub-title" style="border-bottom:1px solid black;">
+				<h4> 응모 참여 내역 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=totalcount%>건</span> </h4> 
 			</div>
 			<div class="myDraw-table-container">
 				<% if(userDrawStylecodeList.isEmpty()) { %>
@@ -171,15 +170,13 @@
 									<span>해외 응모 : <%=countNum_etc%></span>
 								</div>
 							</div>
-						</div>
-						
-						<!-- List DropDown 버튼 -->
-						<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
-							<span><i class="fas fa-angle-down"></i></span>
-						</div>
-						<!-- List DropUp 버튼 -->
-						<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
-							<span><i class="fas fa-angle-up"></i></span>
+							<!-- 목록 보기 버튼 -->
+							<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
+								<span><i class="fas fa-angle-down"></i></span>
+							</div>
+							<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
+								<span><i class="fas fa-angle-up"></i></span>
+							</div>
 						</div>
 						
 						<!-- 응모 브랜드 리스트 -->
@@ -189,14 +186,15 @@
 								<div class="kr-table">
 									<table>
 										<tr>
-											<th style="width:55%;"> 국내 </th>
-											<th style="width:25%;"> 발표일 </th>
-											<th style="width:20%;"> 수신방식 </th>
+											<th style="width:40%;"> 국내 </th>
+											<th style="width:20%;"> 응모발표일 </th>
+											<th style="width:15%;"> 수신방식 </th>
+											<th style="width:25%;"> 구매기간 </th>
 										</tr>
 										
 										<%if(countDrawKrList.get(i) == 0){%>
 											<tr>
-												<td colspan="3"> 응모내역이 없습니다. </td>
+												<td colspan="4"> 응모내역이 없습니다. </td>
 											</tr>	
 										<%} else {
 											//countDrawList.get(0) 의 값 만큼씩 
@@ -222,19 +220,25 @@
 													</div>
 												</td>
 												<!-- 발표일 -->
-												<td style="background-color:#f3f3f3;">
+												<td>
 													<div style="padding-bottom:5px;">
 <%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
-														2.26 18:00
+														0.00 00:00
 													</div>
 													<div>
 														--:--:--
 													</div>
 												</td>
-												<!-- 남은시간 -->
+												<!-- 수신방식 -->
 												<td>
 													<div style="font-size:22px;">
 														<span><i class="fas fa-sms"></i></span>
+													</div>
+												</td>
+												<!-- 구매기간 -->
+												<td>
+													<div>
+														<span>2021.00.00 ~ 2021.00.00</span>
 													</div>
 												</td>
 											</tr>
@@ -243,17 +247,18 @@
 								</div>
 								
 								<!-- 해외 테이블 -->
-								<div class="etc-table">
+								<div class="etc-table" style="border-bottom:1px solid #dcdcdc;">
 									<table>
 										<tr>
 											<th style="width:55%;"> 해외 </th>
-											<th style="width:25%;"> 발표일 </th>
-											<th style="width:20%;"> 수신방식 </th>
+											<th style="width:20%;"> 응모발표일 </th>
+											<th style="width:15%;"> 수신방식 </th>
+											<th style="width:25%;"> 구매기간 </th>
 										</tr>
 										
 										<%if(countDrawEtcList.get(i) == 0){%>
 											<tr class="noDrawInfo-tr">
-												<td colspan="3"> 응모내역이 없습니다. </td>
+												<td colspan="4"> 응모내역이 없습니다. </td>
 											</tr>	
 										<%} else {
 											//countDrawList.get(0) 의 값 만큼씩 
@@ -279,19 +284,25 @@
 													</div>
 												</td>
 												<!-- 발표일 -->
-												<td style="background-color:#f3f3f3;">
+												<td>
 													<div style="padding-bottom:5px;">
 <%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
-														2.26 18:00
+														0.00 00:00
 													</div>
 													<div>
 														--:--:--
 													</div>
 												</td>
-												<!-- 남은시간 -->
+												<!-- 수신방식 -->
 												<td>
 													<div style="font-size:22px;">
 														<span><i class="far fa-envelope"></i></span>
+													</div>
+												</td>
+												<!-- 구매기간 -->
+												<td>
+													<div>
+														<span>2021.00.00 ~ 2021.00.00</span>
 													</div>
 												</td>
 											</tr>

@@ -465,7 +465,7 @@
 							</td>
 				
 							<!-- 발매신발 -->
-							<td id="releaseModel-info<%=i%>" style="background-color:#f3f3f3; border-right:1px dotted #dcdcdc; padding-left:15px; padding-right:15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
+							<td id="releaseModel-info<%=i%>" style="background-color:#f9f9f9; border-right:1px dotted #dcdcdc; padding-left:15px; padding-right:15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
 							<input type="hidden" id="model_num<%=i%>" value="<%=odto_todays.getModel_num()%>">
 							<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
 <!-- 								<div> -->

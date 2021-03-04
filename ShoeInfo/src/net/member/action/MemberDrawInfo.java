@@ -64,31 +64,47 @@ public class MemberDrawInfo implements Action{
 		
 		ArrayList<MemberDrawDTO> userDrawStylecodeList = (ArrayList<MemberDrawDTO>) vec.get(0);
 		ArrayList<SneakerDTO> sneakerInfoList = (ArrayList<SneakerDTO>) vec.get(1);
+		request.setAttribute("userDrawStylecodeList", userDrawStylecodeList);
+		request.setAttribute("sneakerInfoList", sneakerInfoList);
 		
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) vec.get(2);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec.get(3);
 		ArrayList<BrandDTO> onlineinfoList_kr = (ArrayList<BrandDTO>) vec.get(4);
-		
-		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec.get(5);
-		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec.get(6);
-		ArrayList<BrandDTO> onlineinfoList_etc = (ArrayList<BrandDTO>) vec.get(7);
-		
-		ArrayList<Integer> countDrawKrList = (ArrayList<Integer>) vec.get(8);
-		ArrayList<Integer> countDrawEtcList = (ArrayList<Integer>) vec.get(9);
-		
-		request.setAttribute("userDrawStylecodeList", userDrawStylecodeList);
-		request.setAttribute("sneakerInfoList", sneakerInfoList);
-		
 		request.setAttribute("drawInfoList_kr", drawInfoList_kr);
 		request.setAttribute("brandList_kr", brandList_kr);
 		request.setAttribute("onlineinfoList_kr", onlineinfoList_kr);
 		
+		for(int i=0; i<userDrawStylecodeList.size(); i++){
+			SneakerDTO sdto = sneakerInfoList.get(i);
+			System.out.println(sdto.getModel_name_kr());
+			
+		}
+		
+		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec.get(5);
+		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec.get(6);
+		ArrayList<BrandDTO> onlineinfoList_etc = (ArrayList<BrandDTO>) vec.get(7);
 		request.setAttribute("drawInfoList_etc", drawInfoList_etc);
 		request.setAttribute("brandList_etc", brandList_etc);
 		request.setAttribute("onlineinfoList_etc", onlineinfoList_etc);
 		
+		ArrayList<Integer> countDrawKrList = (ArrayList<Integer>) vec.get(8);
+		ArrayList<Integer> countDrawEtcList = (ArrayList<Integer>) vec.get(9);
 		request.setAttribute("countDrawKrList", countDrawKrList);
 		request.setAttribute("countDrawEtcList", countDrawEtcList);
+		
+		//총 응모수 더하기
+		int totalcount= 0;
+		for(int i=0; i<countDrawKrList.size(); i++){
+			totalcount += countDrawKrList.get(i);
+		}
+		for(int j=0; j<countDrawEtcList.size(); j++){
+			totalcount += countDrawEtcList.get(j);
+		}
+		request.setAttribute("totalcount", totalcount);
+		
+		
+		
+		
 			
 		//페이지이동
 		forward.setPath("./member/memberDrawList.jsp");
