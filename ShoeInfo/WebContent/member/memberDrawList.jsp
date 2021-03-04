@@ -31,17 +31,9 @@
 		
 		//인기상품
 		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
-	
+		//응모한 신발리스트
 		ArrayList<MemberDrawDTO> userDrawStylecodeList = (ArrayList<MemberDrawDTO>) request.getAttribute("userDrawStylecodeList");
 		ArrayList<SneakerDTO> sneakerInfoList = (ArrayList<SneakerDTO>) request.getAttribute("sneakerInfoList");
-		//국내 응모 정보
-		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
-		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) request.getAttribute("brandList_kr");
-		ArrayList<OnlineDTO> onlineinfoList_kr = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_kr");
-		//해외 응모 정보
-		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
-		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) request.getAttribute("brandList_etc");
-		ArrayList<OnlineDTO> onlineinfoList_etc = (ArrayList<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
 		//응모 횟수 리스트
 		ArrayList<Integer> countDrawKrList = (ArrayList<Integer>) request.getAttribute("countDrawKrList");
 		ArrayList<Integer> countDrawEtcList = (ArrayList<Integer>) request.getAttribute("countDrawEtcList");
@@ -138,7 +130,9 @@
 			<div class="myDraw-table-container">
 				<% if(userDrawStylecodeList.isEmpty()) { %>
 					<div>
-						참여한 응모내역이 없습니다.
+						<div style="padding:10%;">
+							<span style="text-align:center; display:block;">응모내역이 없습니다.</span>
+						</div>
 					</div>
 				<%} else {
 					//응모한 신발 리스트
@@ -170,149 +164,7 @@
 									<span>해외 응모 : <%=countNum_etc%></span>
 								</div>
 							</div>
-							<!-- 목록 보기 버튼 -->
-							<div class="myDrawDropDown-container" id="myDrawDropDown-container-<%=i%>">
-								<span><i class="fas fa-angle-down"></i></span>
-							</div>
-							<div class="myDrawDropUp-container" id="myDrawDropUp-container-<%=i%>" style="display:none;">
-								<span><i class="fas fa-angle-up"></i></span>
-							</div>
 						</div>
-						
-						<!-- 응모 브랜드 리스트 -->
-						<div class="brandList-container" id="brandList-container<%=i%>" style="display:none;">
-							<div class="brandList-table">
-								<!-- 국내 테이블 -->
-								<div class="kr-table">
-									<table>
-										<tr>
-											<th style="width:40%;"> 국내 </th>
-											<th style="width:20%;"> 응모발표일 </th>
-											<th style="width:15%;"> 수신방식 </th>
-											<th style="width:25%;"> 구매기간 </th>
-										</tr>
-										
-										<%if(countDrawKrList.get(i) == 0){%>
-											<tr>
-												<td colspan="4"> 응모내역이 없습니다. </td>
-											</tr>	
-										<%} else {
-											//countDrawList.get(0) 의 값 만큼씩 
-											for(int j=0; j<countDrawKrList.get(i); j++) {
-												MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(j);
-												BrandDTO bdto = (BrandDTO) brandList_kr.get(j);
-												OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(j);
-										%>
-											<tr>
-												<!-- 브랜드 이미지 + 이름-->
-												<td class="brandLogoName">
-													<div style="display:flex; align-items: center;">
-														<div class="myDraw-logo">
-															<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-																<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
-															</a>
-														</div>
-														<div class="myDraw-brandName">
-															<div class="myDraw-brandNameTxt">
-																<span><%=bdto.getBrand_name()%> </span>
-															</div>
-														</div>
-													</div>
-												</td>
-												<!-- 발표일 -->
-												<td>
-													<div style="padding-bottom:5px;">
-<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
-														0.00 00:00
-													</div>
-													<div>
-														--:--:--
-													</div>
-												</td>
-												<!-- 수신방식 -->
-												<td>
-													<div style="font-size:22px;">
-														<span><i class="fas fa-sms"></i></span>
-													</div>
-												</td>
-												<!-- 구매기간 -->
-												<td>
-													<div>
-														<span>2021.00.00 ~ 2021.00.00</span>
-													</div>
-												</td>
-											</tr>
-										<% } } %>
-									</table>
-								</div>
-								
-								<!-- 해외 테이블 -->
-								<div class="etc-table" style="border-bottom:1px solid #dcdcdc;">
-									<table>
-										<tr>
-											<th style="width:55%;"> 해외 </th>
-											<th style="width:20%;"> 응모발표일 </th>
-											<th style="width:15%;"> 수신방식 </th>
-											<th style="width:25%;"> 구매기간 </th>
-										</tr>
-										
-										<%if(countDrawEtcList.get(i) == 0){%>
-											<tr class="noDrawInfo-tr">
-												<td colspan="4"> 응모내역이 없습니다. </td>
-											</tr>	
-										<%} else {
-											//countDrawList.get(0) 의 값 만큼씩 
-											for(int j=0; j<countDrawEtcList.get(i); j++) {
-												MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_etc.get(j);
-												BrandDTO bdto = (BrandDTO) brandList_etc.get(j);
-												OnlineDTO odto = (OnlineDTO) onlineinfoList_etc.get(j);
-										%>
-											<tr>
-												<!-- 브랜드 이미지 + 이름-->
-												<td class="brandLogoName">
-													<div style="display:flex; align-items: center;">
-														<div class="myDraw-logo">
-															<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-																<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
-															</a>
-														</div>
-														<div class="myDraw-brandName">
-															<div class="myDraw-brandNameTxt">
-																<span><%=bdto.getBrand_name()%> </span>
-															</div>
-														</div>
-													</div>
-												</td>
-												<!-- 발표일 -->
-												<td>
-													<div style="padding-bottom:5px;">
-<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
-														0.00 00:00
-													</div>
-													<div>
-														--:--:--
-													</div>
-												</td>
-												<!-- 수신방식 -->
-												<td>
-													<div style="font-size:22px;">
-														<span><i class="far fa-envelope"></i></span>
-													</div>
-												</td>
-												<!-- 구매기간 -->
-												<td>
-													<div>
-														<span>2021.00.00 ~ 2021.00.00</span>
-													</div>
-												</td>
-											</tr>
-										<% } } %>
-									</table>
-								</div>
-							</div>
-						</div>
-						
-						
 						
 					</div>
 				<%} } %>

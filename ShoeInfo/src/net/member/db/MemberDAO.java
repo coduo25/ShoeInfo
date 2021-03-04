@@ -632,29 +632,9 @@ public class MemberDAO {
 		Vector vec = new Vector();
 		int count_kr = 0;
 		int count_etc = 0;
-		
+
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
-		
-		//국내 발매처
-		PreparedStatement pstmt3 = null;
-		ResultSet rs3 = null;
-		PreparedStatement pstmt3_1 = null;
-		ResultSet rs3_1 = null;
-		PreparedStatement pstmt3_1_1 = null;
-		ResultSet rs3_1_1 = null;
-		PreparedStatement pstmt3_1_1_1 = null;
-		ResultSet rs3_1_1_1 = null;
-		
-		//해외 발매처
-		PreparedStatement pstmt4 = null;
-		ResultSet rs4 = null;
-		PreparedStatement pstmt4_1 = null;
-		ResultSet rs4_1 = null;
-		PreparedStatement pstmt4_1_1 = null;
-		ResultSet rs4_1_1 = null;
-		PreparedStatement pstmt4_1_1_1 = null;
-		ResultSet rs4_1_1_1 = null;
 		
 		PreparedStatement pstmt_count_kr = null;
 		ResultSet rs_count_kr = null;
@@ -663,14 +643,6 @@ public class MemberDAO {
 		
 		ArrayList userDrawStylecodeList = new ArrayList();
 		ArrayList sneakerInfoList = new ArrayList();
-		
-		ArrayList drawInfoList_kr = new ArrayList();
-		ArrayList brandList_kr = new ArrayList();
-		ArrayList onlineinfoList_kr = new ArrayList();
-		
-		ArrayList drawInfoList_etc = new ArrayList();
-		ArrayList brandList_etc = new ArrayList();
-		ArrayList onlineinfoList_etc = new ArrayList();
 		
 		ArrayList countDraw_kr = new ArrayList();
 		ArrayList countDraw_etc = new ArrayList();
@@ -713,124 +685,6 @@ public class MemberDAO {
 						sneakerInfoList.add(sdto);
 					}
 					
-					//원하는 기간에 포함된 신발의 국내 해외 응모한 곳 리스트 가져와서 vector에 넣기
-					
-					//국내 발매처 모음
-					sql = "select * from shoeinfo_memberdrawinfo where model_num = ? AND model_stylecode = ? AND member_email = ? AND country_name = ?";
-					pstmt3 = con.prepareStatement(sql);
-					pstmt3.setInt(1, sdto.getNum());
-					pstmt3.setString(2, sdto.getModel_stylecode());
-					pstmt3.setString(3, user);
-					pstmt3.setString(4, "대한민국");
-			
-					rs3 = pstmt3.executeQuery();
-					while(rs3.next()){
-						MemberDrawDTO mddto2 = new MemberDrawDTO();
-						mddto2.setBrand_id(rs3.getString("brand_id"));
-						mddto2.setModel_stylecode(rs3.getString("model_stylecode"));
-						mddto2.setModel_num(rs3.getInt("model_num"));
-						drawInfoList_kr.add(mddto2);
-						
-						//한국 브랜드 정보 가져오기
-						sql = "select * from shoeinfo_brand where brand_id = ?";
-						pstmt3_1 = con.prepareStatement(sql);
-						pstmt3_1.setString(1, mddto2.getBrand_id());
-						rs3_1 = pstmt3_1.executeQuery();
-						if(rs3_1.next()){
-							//브랜드 정보 DB에 해당 브랜드가 저장되어있으면
-							BrandDTO bdto = new BrandDTO();
-							bdto.setCountry_name(rs3_1.getString("country_name"));
-							bdto.setBrand_logo(rs3_1.getString("brand_logo"));
-							bdto.setBrand_name(rs3_1.getString("brand_name"));
-							bdto.setBrand_id(rs3_1.getString("brand_id"));
-							
-							sql="select country_flag from shoeinfo_country where country_name = ?";
-							pstmt3_1_1 = con.prepareStatement(sql);
-							pstmt3_1_1.setString(1, bdto.getCountry_name());
-							rs3_1_1 = pstmt3_1_1.executeQuery();
-							if(rs3_1_1.next()){
-								bdto.setCountry_flag(rs3_1_1.getString("country_flag"));
-								brandList_kr.add(bdto);
-							
-								//발매링크 가져오기
-								sql="select * from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
-								pstmt3_1_1_1 = con.prepareStatement(sql);
-								pstmt3_1_1_1.setString(1, sdto.getModel_stylecode());
-								pstmt3_1_1_1.setString(2, bdto.getBrand_id());
-								rs3_1_1_1 = pstmt3_1_1_1.executeQuery();
-								if(rs3_1_1_1.next()){
-									OnlineDTO odto = new OnlineDTO();
-									odto.setOnline_link(rs3_1_1_1.getString("online_link"));
-									odto.setBuy_method(rs3_1_1_1.getString("buy_method"));
-									if(rs3_1_1_1.getString("winner_time") == null){
-										odto.setWinner_time("-");
-									}else{
-										odto.setWinner_time(rs3_1_1_1.getString("winner_time"));
-									}
-									onlineinfoList_kr.add(odto);
-								}
-							}
-						}
-					}
-					
-					//해외 발매처 모음
-					sql = "select * from shoeinfo_memberdrawinfo where model_num = ? AND model_stylecode = ? AND member_email = ? AND not country_name = ? order by draw_count";
-					pstmt4 = con.prepareStatement(sql);
-					pstmt4.setInt(1, sdto.getNum());
-					pstmt4.setString(2, sdto.getModel_stylecode());
-					pstmt4.setString(3, user);
-					pstmt4.setString(4, "대한민국");
-			
-					rs4 = pstmt4.executeQuery();
-					while(rs4.next()){
-						MemberDrawDTO mddto_etc = new MemberDrawDTO();
-						mddto_etc.setBrand_id(rs4.getString("brand_id"));
-						mddto_etc.setModel_stylecode(rs4.getString("model_stylecode"));
-						mddto_etc.setModel_num(rs4.getInt("model_num"));
-						drawInfoList_etc.add(mddto_etc);
-						
-						//해외 브랜드 정보 가져오기
-						sql = "select * from shoeinfo_brand where brand_id = ?";
-						pstmt4_1 = con.prepareStatement(sql);
-						pstmt4_1.setString(1, mddto_etc.getBrand_id());
-						rs4_1 = pstmt4_1.executeQuery();
-						if(rs4_1.next()){
-							//브랜드 정보 DB에 해당 브랜드가 저장되어있으면
-							BrandDTO bdto = new BrandDTO();
-							bdto.setCountry_name(rs4_1.getString("country_name"));
-							bdto.setBrand_logo(rs4_1.getString("brand_logo"));
-							bdto.setBrand_name(rs4_1.getString("brand_name"));
-							bdto.setBrand_id(rs4_1.getString("brand_id"));
-							
-							sql="select country_flag from shoeinfo_country where country_name = ?";
-							pstmt4_1_1 = con.prepareStatement(sql);
-							pstmt4_1_1.setString(1, bdto.getCountry_name());
-							rs4_1_1 = pstmt4_1_1.executeQuery();
-							if(rs4_1_1.next()){
-								bdto.setCountry_flag(rs4_1_1.getString("country_flag"));
-								brandList_etc.add(bdto);
-							
-								//발매링크 가져오기
-								sql="select * from shoeinfo_onlineinfo where model_stylecode = ? and brand_id = ?";
-								pstmt4_1_1_1 = con.prepareStatement(sql);
-								pstmt4_1_1_1.setString(1, sdto.getModel_stylecode());
-								pstmt4_1_1_1.setString(2, bdto.getBrand_id());
-								rs4_1_1_1 = pstmt4_1_1_1.executeQuery();
-								if(rs4_1_1_1.next()){
-									OnlineDTO odto = new OnlineDTO();
-									odto.setOnline_link(rs4_1_1_1.getString("online_link"));
-									odto.setBuy_method(rs4_1_1_1.getString("buy_method"));
-									if(rs4_1_1_1.getString("winner_time") == null){
-										odto.setWinner_time("-");
-									}else{
-										odto.setWinner_time(rs4_1_1_1.getString("winner_time"));
-									}
-									onlineinfoList_etc.add(odto);
-								}
-							}
-						}
-					}
-					
 					//한국 횟수 리스트 넣기
 					sql = "select count(*) from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and member_email = ? and country_name = ?";
 					pstmt_count_kr = con.prepareStatement(sql);
@@ -861,15 +715,6 @@ public class MemberDAO {
 			}
 			vec.add(userDrawStylecodeList);
 			vec.add(sneakerInfoList);
-			
-			vec.add(drawInfoList_kr);
-			vec.add(brandList_kr);
-			vec.add(onlineinfoList_kr);
-			
-			vec.add(drawInfoList_etc);
-			vec.add(brandList_etc);
-			vec.add(onlineinfoList_etc);
-			
 			vec.add(countDraw_kr);
 			vec.add(countDraw_etc);
 		} catch (Exception e) {
