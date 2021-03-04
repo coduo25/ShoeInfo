@@ -103,71 +103,8 @@
 	
 	<div id="wrapper" class="container">
 	
-		<!-- 좌측 사이드바 -->
-		<div class="left-sideBar" id="left-sideBar">
-			<!-- 달력 -->
-			<div class="calendar-box">
-			</div>
-			<!-- 시계 -->
-			<div class="clock" id="clock">
-				<div class="month_date" id="month_date">
-				</div>
-				<div class="time_zone" id="time_zone">
-				</div>
-				<div class="ampm_zone_container" >
-					<span id="ampm_zone"></span>
-				</div>
-			</div>
-			
-			<!-- 인기제품 -->
-			<div class="popular-chart">
-				<table>
-					<tr class="popular-subtitle">
-						<th colspan="3">인기제품</th>
-					</tr>
-					<%
-						if(popularList.isEmpty()) {
-					%>
-						<tr>
-							<td>
-								<span>업데이트 예정</span>
-							</td>
-						</tr>
-					<%	} else {
-						for(int i=0; i<popularList.size(); i++){
-							SneakerDTO popular_sdto = popularList.get(i);
-					%>
-						<tr class="popular-row">
-							<!-- 순번 -->
-							<td class="popularNum-td">
-								<span><%=i+1%></span>
-							</td>
-							<!-- 신발이미지 -->
-							<td class="popularImg-td">
-								<a href="./SneakerDetail.go?model_stylecode=<%=popular_sdto.getModel_stylecode()%>&num=<%=popular_sdto.getNum()%>">
-									<img src="./sneaker_img_upload/<%=popular_sdto.getImage()%>" width="50" height="38">
-								</a>
-							</td>
-							<!-- 신발이름 -->
-							<td class="popularName-td">
-								<div>
-									<a href="./SneakerDetail.go?model_stylecode=<%=popular_sdto.getModel_stylecode()%>&num=<%=popular_sdto.getNum()%>"><%=popular_sdto.getModel_name_kr()%></a>
-								</div>
-							</td>
-						</tr>
-					<%
-						} }
-					%>
-				</table>
-			</div>
-			
-			<!-- 구글 좌측 사이드바 광고 -->
-<!-- 			<div class="googleAd-leftSideBar"> -->
-<!-- 				<div class="ad-leftSideBar-box"> -->
-				
-<!-- 				</div> -->
-<!-- 			</div> -->
-		</div>
+		<!-- 좌측 사이드 바 -->
+		<jsp:include page="/include/leftSideBar.jsp" />
 	
 		<!-- 신발 정보 container -->
 		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important;">
@@ -654,15 +591,7 @@
 			</div>
 		</div>
 		
-		<!-- 우측 사이드바 -->
-		<div class="right-sideBar" id="right-sideBar">
-			<!-- 구글 우측 사이드바 광고 -->
-			<div class="googleAd-rightSideBar">
-				<div class="ad-rightSideBar-box">
-					
-				</div>
-			</div>
-		</div>
+		<jsp:include page="/include/rightSideBar.jsp" />
 		
 		
 	</div>

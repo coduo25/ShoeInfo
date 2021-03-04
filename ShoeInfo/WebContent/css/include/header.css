@@ -51,7 +51,7 @@ a { text-decoration: none; color: #000000; }
 
 
 /* 좌측 사이드바 */
-.left-sideBar { position:absolute; width:200px; border-radius:4px; margin-left:-250px; z-index:50; background-color:#eaeaea; padding:12px; }
+.left-sideBar { position:absolute; width:200px; border-radius:4px; margin-left:-300px; z-index:50; padding:12px; } /* background-color:#eaeaea;  */
 	/* 달력 */
 	.calendar-box { background-color:#fdfdfd; border:1px solid #a5a5a5; font-family:'Nanum Gothic', sans-serif; border-top-right-radius:10px; border-top-left-radius:10px; }
 	.calendar { width:100%; overflow:visible; text-align:center; display:table; border-collapse:separate; padding:3%; }
@@ -87,9 +87,9 @@ a { text-decoration: none; color: #000000; }
 	.ad-leftSideBar-box {  border-radius:5px; z-index:50; } /* height:240px; background-color:#eaeaea; border:1px solid #9a9a9a; */
 
  /* 우측 사이드바 */
- .right-sideBar { position:absolute; width:300px; border-radius:4px; margin-right:-350px; z-index:50; top:0; right:0; }
+ .right-sideBar { position:absolute; border-radius:4px; margin-right:-350px; z-index:50; top:0; right:0; }
 	/* 구글 우측 광고 */
-	.googleAd-rightSideBar { width:100%; }
+	.googleAd-rightSideBar { width:300px; }
 	.ad-rightSideBar-box { height:600px; border-radius:5px; z-index:50; background-color:#eaeaea; } /* border:1px solid #9a9a9a;*/
 
 
