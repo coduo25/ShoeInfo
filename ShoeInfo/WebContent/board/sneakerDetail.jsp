@@ -311,7 +311,7 @@
 									<div class="Release-content">
 									
 										<!-- 진행 상태 표시 -->
-										<div class="brandInfo-status-container" id="brandInfo-status-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%>">
+										<div class="brandInfo-status-container" id="brandInfo-status-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 											<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
 											<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
 												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:black;">선착</span>
@@ -334,9 +334,9 @@
 											<%}%>
 										</div>
 
-										<div class="brand-box" id="brand-box<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>background-color:#f9f9f9;<%}%>">
+										<div class="brand-box" id="brand-box<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>background-color:#b7b7b7;<%}%>">
 											<!--  발매처 이미지 --> 
-											<div class="brandInfo-image-container" id="brandInfo-image-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%>">
+											<div class="brandInfo-image-container" id="brandInfo-image-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 												<div style="display:inline-block; position:relative; margin-bottom:0 !important;">
 													<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 														<img src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="120" height="120" style="border:1px solid #b3b3b3; position:relative; border-radius:8px;">
@@ -348,7 +348,7 @@
 											</div>
 											
 											<!-- 발매처 이름  -->
-											<div class="brandInfo-name-container" id="brandInfo-name-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%>">
+											<div class="brandInfo-name-container" id="brandInfo-name-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
 												<!-- 발매처 이름 -->
 												<div id="count_todays_status<%=countryName_eng%><%=i%>brandName">
 													<a href="<%=odto.getOnline_link()%>" target="_blank"> 
@@ -363,7 +363,7 @@
 											<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>">	
 												<!-- 참여체크박스 -->
 												<%if(odto.getOnline_method().contains("선착")) {%>
-														<div>
+														<div class="draw_checkBox" style="border:0 !important;">
 															<span>-</span>
 														</div>
 												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
@@ -388,7 +388,7 @@
 										<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>" style="display:none;">	
 											<!-- 참여체크박스 -->
 											<%if(odto.getOnline_method().contains("선착")) {%>
-													<div>
+													<div class="draw_checkBox">
 														<span>-</span>
 													</div>
 											<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
@@ -423,7 +423,7 @@
 										</div>
 									
 										<!-- 디테일 박스 -->
-										<div class="detail-box" id="count_todays_status<%=countryName_eng%><%=i%>detail-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%><%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>display:none !important;<%}%>">
+										<div class="detail-box" id="count_todays_status<%=countryName_eng%><%=i%>detail-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%><%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>display:none !important;<%}%>">
 											<!-- 발매 방식  -->
 											<div class="brandInfo-detail-container">
 												<span class="info-subTitle">발매 방식</span>
@@ -728,149 +728,7 @@
 		timer = setInterval(showRemaining, 1000); 
 	}
 	
-// 	function fnMove(seq){
-// 		var offset = $("#h4title" + seq).offset();
-//         $('html, body').animate({scrollTop : offset.top-100}, 400);
-// 	}
 	
-	var sticky = $(".left-sideBar").offsetTop;
-
-	$(window).scroll(function(event){
-		//화면을 200정도만 내렸을때 좌측 메뉴 고정
-		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
-			$(".left-sideBar").css('position','fixed');
-			$(".left-sideBar").css('top','40px');
-		} else {
-			$(".left-sideBar").css('position','absolute');
-			$(".left-sideBar").css('top','0');
-		}
-	});
-	
-	/////////////////////////////////////////////////////////
-	//Calendar date 객체 생성 
-	var Calendar = new Date();
-	var day_of_week = ['일', '월', '화', '수', '목', '금', '토'];
-	var month_of_year = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
-	
-	var year = Calendar.getFullYear();
-	var month = Calendar.getMonth();
-	var today = Calendar.getDate();
-	var weekday = Calendar.getDay();
-	
-	Calendar.setDate(1); //1일
-	
-	var DAYS_OF_WEEK = 7;
-	var DAYS_OF_MONTH = 31;
-	var str;
-	
-	//tr
-	var TR_start = "<tr>";
-	var TR_end = "</tr>";
-	
-	var TD_week_start = "<td class='week'>";
-	var TD_blank_start = "<td class='blank'>";
-	var TD_today_start = "<td class='today'>";
-	var TD_day_start = "<td class='day'>";
-	var TD_saturday_start = "<td class='saturday'>";
-	var TD_sunday_start = "<td class='sunday'>";
-	var TD_end = "</td>";
-	
-	str = "<table width=100% border:1 cellspacing=0 cellpadding=0><tr><td style='text-align:center;'>";
-	str += "<strong class='cal-title'>" + year + "." + month_of_year[month] + "</strong>";
-	str += "<table class='calendar' border=0 cellspacing=0 celpadding=2>";
-	
-	//tr 시간
-	str += TR_start;
-	
-	for(var i=0; i<DAYS_OF_WEEK; ++i){
-		str += TD_week_start + day_of_week[i] + TD_end;
-	}
-	
-	str += TR_end;
-	
-	for(var i=0; i<Calendar.getDay(); ++i){
-		str += TD_blank_start + TD_end;
-	}
-	
-	//1일부터 시작
-	for(i=0; i<DAYS_OF_MONTH; ++i){
-		if(Calendar.getDate() >i){
-			var day = Calendar.getDate();
-			var week_day = Calendar.getDay();
-			if(week_day ==0){
-				str += TR_start;
-			}
-			if(day == today){
-				str += TD_today_start + day + TD_end;
-			}
-			else {
-				switch(week_day){
-					case 0 :
-						str += TD_sunday_start + day + TD_end;
-						break;
-					case 6 :
-						str += TD_saturday_start + day + TD_end;
-						str += TR_end
-						break;
-					default :
-						str += TD_day_start + day + TD_end;
-					break;
-				}
-			}
-		}
-		
-		Calendar.setDate(Calendar.getDate() + 1);
-	} //for end
-	str += "</table></td></tr></table>";
-	
-	//calendar 태그에 넣기
-	$('.calendar-box').html(str);
-	
-	/////////////////////////////////////////////////////////
-	//실시간 현재 시간
-	function getTime(){
-			
-		//현재 시간 계산
-		var date = new Date();
-		//요일
-		var week = new Array('일', '월', '화', '수', '목', '금', '토'); 	
-		var currentDate = (date.getMonth() + 1) + "월 " +  date.getDate() + "일" + "(" + week[date.getDay()] +")"; 
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
-		var seconds = date.getSeconds();
-		//오전/오후 표시하기
-		var AMorPM = date.getHours() < 12 ? "AM" : "PM";
-		//오후시간일때 12시간 빼기
-// 		if(hours > 12) {
-// 			hours -= 12;
-// 		}
-		
-		//시간, 분, 초 앞에 한자리수이면 앞자리수에 0 붙이기
-		if(hours < 10){ hours = "0" + hours; }
-		if(minutes < 10){ minutes = "0" + minutes; }
-		if(seconds < 10){ seconds = "0" + seconds; }
-
-		var currentTime = hours + ":" + minutes + ":" + seconds;
-
-		var monthDate_div = document.getElementById("month_date");
-		var time_div = document.getElementById("time_zone");
-		var ampm_zone = document.getElementById("ampm_zone");
-
-		//월 + 일 넣기
-		monthDate_div.innerHTML = currentDate;
-		//시간 넣기
-		time_div.innerHTML = currentTime;
-		//am pm 넣기
-		ampm_zone.innerHTML = AMorPM;
-	}
-	
-	//실시간 갱신시켜주는 함수
-	function init(){
-	    setInterval(getTime, 1000);
-	}
-	
-	init();
-
 	$(document).ready(function(){
 		
 		//방지
@@ -1169,16 +1027,16 @@
 							}
 				   		});
 						//참여전 표시 -> 참여완료로 바꾸기
-				   		$('#brand-box'+country+number).css('background-color','#f9f9f9');
-						$('#brandInfo-status-container'+country+number).css('opacity','0.2');
-						$('#brandInfo-image-container'+country+number).css('opacity','0.2');
-						$('#brandInfo-name-container'+country+number).css('opacity','0.2');
+				   		$('#brand-box'+country+number).css('background-color','#b7b7b7');
+						$('#brandInfo-status-container'+country+number).css('opacity','0.3');
+						$('#brandInfo-image-container'+country+number).css('opacity','0.3');
+						$('#brandInfo-name-container'+country+number).css('opacity','0.3');
 						
-						$('#draw_checkBox'+country+number).css('background-color','#3c3c3c');
 						$('#draw_checkBox'+country+number).css('color','white');
-						$('#drawCheck_statusTxt'+country+number).text("응모함");
+						$('#draw_checkBox'+country+number).css('background-color','#1f1f1f');
+				   		$('#drawCheck_statusTxt'+country+number).text("응모함");
 						
-						$('#count_todays_status'+country+number+'detail-box').css('opacity','0.2');
+						$('#count_todays_status'+country+number+'detail-box').css('opacity','0.3');
 					}
 					//참여완료인데 체크박스 눌릴시 -> 참여전
 					else if(draw_status == '참여완료'){
@@ -1201,9 +1059,9 @@
 						$('#brandInfo-image-container'+country+number).css('opacity','1');
 						$('#brandInfo-name-container'+country+number).css('opacity','1');
 						
-						$('#drawCheck_statusTxt'+country+number).text("");
 						$('#draw_checkBox'+country+number).css('color','#1f1f1f');
 						$('#draw_checkBox'+country+number).css('background-color','white');
+						$('#drawCheck_statusTxt'+country+number).text("");
 
 						$('#count_todays_status'+country+number+'detail-box').css('opacity','1');
 					}

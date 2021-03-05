@@ -133,7 +133,7 @@
 							<!-- 발매처 횟수 -->
 							<div class="mainSneaker-brandCount">
 								<span>	
-									발매처 : <%=countBrand%>+
+									진행 중 : <%=countBrand%>+
 								</span>
 							</div>
 						</div>

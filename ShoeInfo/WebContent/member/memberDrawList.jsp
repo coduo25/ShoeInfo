@@ -83,14 +83,14 @@
 					<div class="myDraw-container">	
 						<!-- 신발이미지 -->
 						<div class="myDraw-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>">
+							<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>">
 								<img src="./sneaker_img_upload/<%=mydraw_sdto.getImage()%>">
 							</a>
 						</div>
 						<!-- 신발 이름 + 해당 신발 응모 횟수 -->
 						<div class="myDrawShoeInfo-container">
 							<!-- 이름 -->
-							<div class="myDrawShoeInfo-name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>';">
+							<div class="myDrawShoeInfo-name" onclick="location.href='././MemberDrawDetailInfo.me?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>';">
 								<span><%=mydraw_sdto.getModel_name_kr()%></span>
 							</div>
 							<!-- 응모 횟수 -->
@@ -125,7 +125,7 @@
 						<div class="myDraw-shoeInfo-mobile">	
 							<!-- 신발이미지 -->
 							<div class="myDraw-image-mobile">
-								<a href="./SneakerDetail.go?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>">
+								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>">
 									<img src="./sneaker_img_upload/<%=mydraw_sdto.getImage()%>">
 								</a>
 							</div>

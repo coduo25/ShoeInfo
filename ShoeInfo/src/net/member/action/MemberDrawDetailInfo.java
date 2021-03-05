@@ -49,20 +49,24 @@ public class MemberDrawDetailInfo implements Action{
 		ArrayList<MemberDrawDTO> drawInfoList_kr = (ArrayList<MemberDrawDTO>) vec_draw_kr.get(0);
 		ArrayList<BrandDTO> brandList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(1);
 		ArrayList<BrandDTO> onlineinfoList_kr = (ArrayList<BrandDTO>) vec_draw_kr.get(2);
+		int countDraw_kr = (int) vec_draw_kr.get(3);
 		
 		request.setAttribute("drawInfoList_kr", drawInfoList_kr);
 		request.setAttribute("brandList_kr", brandList_kr);
 		request.setAttribute("onlineinfoList_kr", onlineinfoList_kr);
+		request.setAttribute("countDraw_kr", countDraw_kr);
 		
 		//해외 응모 한곳
 		Vector vec_draw_etc = mdao.getDrawInfo(model_num, model_stylecode, user, "해외");
 		ArrayList<MemberDrawDTO> drawInfoList_etc = (ArrayList<MemberDrawDTO>) vec_draw_etc.get(0);
 		ArrayList<BrandDTO> brandList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(1);
 		ArrayList<BrandDTO> onlineinfoList_etc = (ArrayList<BrandDTO>) vec_draw_etc.get(2);
+		int countDraw_etc = (int) vec_draw_etc.get(3);
 		
 		request.setAttribute("drawInfoList_etc", drawInfoList_etc);
 		request.setAttribute("brandList_etc", brandList_etc);
 		request.setAttribute("onlineinfoList_etc", onlineinfoList_etc);
+		request.setAttribute("countDraw_etc", countDraw_etc);
 		
 		forward.setPath("./member/memberDrawDetailList.jsp");
 		forward.setRedirect(false);

@@ -738,11 +738,16 @@ public class MemberDAO {
 		PreparedStatement pstmt4 = null;
 		ResultSet rs4 = null;
 		
+		PreparedStatement pstmt_count = null;
+		ResultSet rs_count = null;
+		
 		//대한민국 신발 응모 정보 저장
 		//브랜드 정보 저장
 		ArrayList drawInfoList_kr = new ArrayList();
 		ArrayList brandList_kr = new ArrayList();
 		ArrayList onlineinfoList_kr = new ArrayList();
+		
+		int countDraw = 0;
 		
 		try {	
 			con = getConnection();
@@ -803,10 +808,42 @@ public class MemberDAO {
 						}
 					}
 				}
+				
+				//응모횟수 계산해서 넣기
+				if(country.equals("대한민국")){
+					sql = "select count(*) from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and member_email = ? and country_name = ?";
+					pstmt_count = con.prepareStatement(sql);
+					pstmt_count.setInt(1, model_num);
+					pstmt_count.setString(2, model_stylecode);
+					pstmt_count.setString(3, email);
+					pstmt_count.setString(4, "대한민국");
+					rs_count = pstmt_count.executeQuery();
+					if(rs_count.next()){
+						countDraw = rs_count.getInt(1);
+					}else {
+						countDraw = 0;
+					}
+						
+				}else if(country.equals("해외")){
+					sql = "select count(*) from shoeinfo_memberdrawinfo where model_num = ? and model_stylecode = ? and member_email = ? and country_name != ?";
+					pstmt_count = con.prepareStatement(sql);
+					pstmt_count.setInt(1, model_num);
+					pstmt_count.setString(2, model_stylecode);
+					pstmt_count.setString(3, email);
+					pstmt_count.setString(4, "대한민국");
+					rs_count = pstmt_count.executeQuery();
+					if(rs_count.next()){
+						countDraw = rs_count.getInt(1);
+					}else {
+						countDraw = 0;
+					}
+				}
+				
 			}
 			vec.add(drawInfoList_kr);
 			vec.add(brandList_kr);
 			vec.add(onlineinfoList_kr);
+			vec.add(countDraw);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

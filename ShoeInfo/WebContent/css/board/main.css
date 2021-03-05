@@ -28,15 +28,15 @@ body {font-size:1em; line-weight:1.4}
 .moreBtn { padding:10px 15px; color:white; border-radius:5px; font-size:18px; margin:30px auto 50px auto; background-color:#4990e2; box-shadow:0 0.1rem 0.1rem rgb(0 0 0 / 10%), 0 0.1rem 0.3rem rgb(0 0 0 / 10%); cursor:pointer; }
 
 /* 발매 중 리스트 (메인페이지) */
-.mainSneaker-container { float:left; width:23%; margin:0 1% 3% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; }
+.mainSneaker-container { float:left; width:31.33%; margin:0 1% 2% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; }
 	/* 이미지 파트 */
 	.mainSneaker-image { display:block; }
-	.mainSneaker-image img { width:100%; height:100%; background-color:#f3f3f3; padding:16% 6%; border:1px solid rgb(222 222 222); border-radius:5px; }
+	.mainSneaker-image img { width:100%; height:100%; background-color:#f3f3f3; padding:12% 3% 10% 3%; border:1px solid rgb(222 222 222); border-radius:5px; }
 	
 	/* 모델 이름 + 발매처 횟수 */
-	.mainSneakerShoeInfo-container { width:100%; padding:3% 1% 5% 1%; }
-		.mainSneakerShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:40px; line-height:1.2em; cursor:pointer; margin-bottom:4px; }
-		.mainSneaker-brandCount { font-size:16px; color:black; font-weight:bold; }
+	.mainSneakerShoeInfo-container { width:100%; padding:2% 1% 5% 1%; }
+		.mainSneakerShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:16px; min-height:20px; line-height:1.2em; cursor:pointer; margin-bottom:10px; }
+		.mainSneaker-brandCount { font-size:17px; color:black; font-weight:bold; }
 
 /* 오늘의 발매 리스트 ------------------------------------------------------------------------------ */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black; } /* border-left:1px dotted #dcdcdc; border-right:1px dotted #dcdcdc;  */
@@ -80,7 +80,7 @@ body {font-size:1em; line-weight:1.4}
 	
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
-.snkrsWeek-table-container { width:1080px; overflow-x:scroll; padding:35px 20px; white-space:nowrap; border-top:1px solid #c1c1c1; border-left:1px solid #c1c1c1; border-right:1px solid #c1c1c1; }
+.snkrsWeek-table-container { width:1080px; overflow-x:scroll; padding:35px 20px; white-space:nowrap; border-top:2px solid #c1c1c1; }
 .snkrsSneaker-container { display:inline-block; width:30%; margin-right:20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
 .snkrsSneaker-container img { padding:70px 10px 20px 10px; background-color:#f3f3f3; border:1px solid #e1e1e1; }
@@ -94,15 +94,14 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 /* width */
 ::-webkit-scrollbar { width: 10px; }
 /* Track */
-::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-track { background: #d6d6d6; }
 /* Handle */
-::-webkit-scrollbar-thumb { background: #888; }
+::-webkit-scrollbar-thumb { background: #797979; }
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover { background: #555; }
+::-webkit-scrollbar-thumb:hover { background: #d0d0d0; }
 
 
 /* 나의 응모내역 리스트 ------------------------------------------------------------------------------ */ 
-
 
 /******************** pc 버전  ****************************/
 .myDraw-container { float:left; width:31.33%; margin:0 1% 4% 1%; text-align:left; font-family:'Nanum Gothic', sans-serif; vertical-align:top; position:relative; border:1px solid rgb(222 222 222); cursor:pointer; box-shadow:0 0.03rem 0.06rem rgb(0 0 0 / 10%), 0 0.1rem 0.3rem rgb(0 0 0 / 10%); }
@@ -130,6 +129,51 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 .myDrawShoeInfo-container-mobile { width:70%; vertical-align:baseline; padding:0 10px 0 12px !important; }
 	.myDrawShoeInfo-name-mobile { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:20px; min-height:38px; line-height:1.2em; font-weight:bold; cursor:pointer; margin-bottom:12px; }
 	.myDrawShoeInfo-countNum-mobile { font-size:18px; color:#777; }
+
+
+
+/* 나의 응모내역 디테일 신발상세 + 응모내역 리스트 */
+/* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
+.shoeinfo-container { display:table; padding:30px 0; font-family:'Nanum Gothic', sans-serif !important; width:100%; }
+
+.shoeImg-container, .shoeDetailInfo-container { display:inline-block; vertical-align:top; }
+.shoeImg-container { width:40%; }
+.shoeDetailInfo-container { width:55%; }
+
+/* 이미지 파트 */
+.shoeImg-container { text-align:center; }
+.shoeImg-container img { background-color:#f3f3f3; padding:15% 5% 5% 5%; width:90%; }
+
+/* 신발 내용 파트 */
+.shoeDetailInfo-container { margin:0 1.5% }
+	/* 제품 모델명 */
+	.shoeDetailInfo-name { padding-bottom:20px; border-bottom:1px solid #a5a5a5; }
+	.shoeFullName_eng, .shoeFullName_kr { display:block; }
+	.shoeFullName_eng { font-size:25px; margin:10px 0; font-weight:bold; }
+	.shoeFullName_kr { font-size:17px; color:#777; }
+	
+	/* 제품 정보 */
+	.shoeDetailInfo { margin:15px 0 10px 0; }
+	.shoeDetailInfo-subtitle { margin-bottom:20px;}
+	.shoeDetailInfo-subtitle p { font-size:18px; font-weight:bold; }
+	.shoeDetailInfo-content { margin-bottom:15px; }
+	.shoeinfo-cate { display:inline-block; width:30%; color:#777777; } /* color:#999; */
+	.shoeinfo-cateAns { display:inline-block; width:69%; text-align:left;}
+	
+	/* 응모 브랜드 리스트 */
+	.brandList-container { width:100%; background-color:white; padding:50px 0; }
+	
+	.brandList-table table { width:100%; border-collapse:collapse; text-align:center; }
+	.brandList-table table th { border-top:1px solid #222; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:16px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
+	.brandList-table table th:not(:last-child) { border-right:0.5px dotted #dcdcdc; }
+	.brandList-table table td { padding:15px 20px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1;}
+	.brandList-table table td img { width:60px; height:60px; border:1px solid #e0e0e0; border-radius:5px; }
+	.brandLogoName { text-align:left !important; }
+	.myDraw-logo, .myDraw-brandName { display:inline-block; vertical-align:top; }
+	.myDraw-brandName { width:80%; padding-left:12px; }
+	.myDraw-brandNameTxt { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:31px; line-height:1.2em; }
+
+
 
 
 

@@ -14,17 +14,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
-<link href="./css/board/memberDraw.css" rel="stylesheet">
+<link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 </head>
 <body> <!-- oncontextmenu='return false' onselectstart='return false' ondragstart='return false' -->
-
-	<!-- Header -->	
-	<header> <jsp:include page="/include/header.jsp" /> </header>
 
 	<!-- Main Content -->
 	<%
@@ -43,189 +42,251 @@
 		List<MemberDrawDTO> drawInfoList_kr = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
 		List<BrandDTO> brandList_kr = (List<BrandDTO>) request.getAttribute("brandList_kr");
 		List<OnlineDTO> onlineinfoList_kr = (List<OnlineDTO>) request.getAttribute("onlineinfoList_kr");
+		int countDraw_kr = (Integer) request.getAttribute("countDraw_kr");
 		
 		//해외 응모 정보
 		List<MemberDrawDTO> drawInfoList_etc = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_etc");
 		List<BrandDTO> brandList_etc = (List<BrandDTO>) request.getAttribute("brandList_etc");
 		List<OnlineDTO> onlineinfoList_etc = (List<OnlineDTO>) request.getAttribute("onlineinfoList_etc");
+		int countDraw_etc = (Integer) request.getAttribute("countDraw_etc");
 
 		DecimalFormat formatter = new DecimalFormat("#,###,###");
 		SimpleDateFormat date_format = new SimpleDateFormat("yyyy년 M월 d일");
 		SimpleDateFormat original_format2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dot_format = new SimpleDateFormat("yyyy.MM.dd");
 		
 		String ty_str_date = sdto.getRelease_date();
 		Date date_type = original_format2.parse(ty_str_date);
 	%>
+	
+	<!-- Header -->	
+	<header> <jsp:include page="/include/header.jsp" /> </header>
+	
 	<div id="wrapper" class="container">
 	
-		<!-- 카테고리 -->
-<!-- 		<div id="cate_Detail"> -->
-<!-- 			<a href="./SneakerList.go"> <span> HOME </span> </a> -->
-<!-- 			<span class="arrow"> <i class="fas fa-angle-right"></i> </span> -->
-<!-- 			<a href="./MemberDrawInfo.me"> <span> MY DRAW </span></a> -->
-<!-- 			<span class="arrow"> <i class="fas fa-angle-right"></i> </span> -->
-<%-- 			<span> <%=sdto.getModel_name() %></span> --%>
-<!-- 		</div> -->
-
-		<!-- content -->
-		<div id="content_sneakerDetail_D">
+		<!-- 좌측 사이드 바 -->
+		<jsp:include page="/include/leftSideBar.jsp" />
 		
-			<!-- 제목 -->
-			<div id="title">
-				<span> <%=sdto.getModel_name()%></span> 
-			</div>
-			<!-- 제목 -->
-			<div id="title_kr">
-				<span> <%=sdto.getModel_name_kr()%></span> 
-			</div>
-
-			<!-- 신발 기본 정보 -->
-			<div id="sneaker_Detail_D">
-				<div class="sneaker_image_wrapper"> 
-					<div class="sneaker_image"> 
-						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
-					</div>
-				</div>
+		<!-- 신발 정보 container -->
+		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important;">
+			<!-- 신발 이미지 -->
+			<div class="shoeImg-container">
+				<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 			</div>
 			
-			<div class="detail_wrapper_D">
-				<!-- 세부사항 -->					
-				<div class="desc_wrapper_D">
-					<div class="sneaker_option_wrapper">
-						<div class="sneaker_cate_D">
-							<label> <strong> STYLECODE </strong> </label>
-							<span id="model_stylecode"><%=sdto.getModel_stylecode()%></span>
-						</div>
-						<div class="sneaker_cate_D">
-							<label> <strong> COLORWAY </strong> </label>
-							<span> <%=sdto.getModel_colorway() %> </span>
-						</div>
-						<div class="sneaker_cate_D">
-							<label> <strong> PRICE </strong> </label>
-							 
-							<%if(sdto.getPrice() == 0){%> 
-							<span> - </span>
-							<%}else{%> 
-							<span> ₩ <%=formatter.format(sdto.getPrice())%> </span>
-							<%}%>
-						</div>
-						<div class="sneaker_cate_D">
-							<label> <strong> RELEASE DATE </strong> </label>
-							<span> 
+			<!-- 신발 상세정보 -->
+			<div class="shoeDetailInfo-container">
+				<div class="shoeDetailInfo-name">
+					<!-- 영문 이름 -->
+					<div class="shoeFullName_eng">
+						<span> <%=sdto.getModel_name()%></span>
+					</div>
+					<!-- 한글 이름 -->
+					<div class="shoeFullName_kr">
+						<span> <%=sdto.getModel_name_kr()%> </span>
+					</div>
+				</div>
+				
+				<!-- 상세 정보 -->
+				<div class="shoeDetailInfo">
+					<div class="shoeDetailInfo-subtitle">
+						<p>제품 정보</p>
+					</div>
+					<!-- 제품 상제 정보 -->
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">브랜드</span>
+						<span class="shoeinfo-cateAns"><%=sdto.getBrand()%></span>
+					</div>
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">스타일코드</span>
+						<span class="shoeinfo-cateAns"><%=sdto.getModel_stylecode()%></span>
+					</div>
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">컬러웨이</span>
+						<span class="shoeinfo-cateAns"><%=sdto.getModel_colorway()%></span>
+					</div>
+					<div class="shoeDetailInfo-content">
+						<span class="shoeinfo-cate">발매일(글로벌)</span>
+						<span class="shoeinfo-cateAns">
 							<%if(sdto.getRelease_date().contains("99")){%>
 								미정
 							<%}else{%>
-								<%=date_format.format(date_type)%>
-							<%}%>	
-							</span>
-						</div>
+								<%=dot_format.format(date_type)%>
+							<%}%>
+						</span>
+					</div>
+					<div class="shoeDetailInfo-content" style="border-bottom:1px solid #e8e8e8; padding-bottom:20px !important;">
+						<span class="shoeinfo-cate">발매가</span>
+						<span class="shoeinfo-cateAns">₩ <%=formatter.format(sdto.getPrice())%></span>
 					</div>
 				</div>
 			</div>
-			
-			<div class="direct_detail" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>'">
-				<span>응모처 확인하기</span>
-			</div>
-			
 		</div>
-
-		<!-- content -->
-		<div id="content_sneakerInfo_D">
 			
-			<!-- 응모한 브랜드 정보 보여주는 영역 -->
-			<div id="content_userDrawInfo">
-				<!-- 국내 응모 한 테이블 -->
-				<div id="dome-draw-wrapper">
-					<span> <h4> 국내 응모내역 <i class="fas fa-caret-down"></i> </h4> </span>
-					<%
-						if(drawInfoList_kr.isEmpty()){
-					%>
-						<div id="no-draw-wrapper">
-							<span> 응모한 곳이 없습니다. </span>
-						</div>
-					<% } else {
-						for(int i=0; i<drawInfoList_kr.size(); i++){
-							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(i);
-							BrandDTO bdto = (BrandDTO) brandList_kr.get(i);
-							OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(i);
-					%>
-						<div class="grid-wrapper_D">
-							<div class="grid-item_D" onclick="window.open('<%=odto.getOnline_link()%>');">
-								<!-- 로고 -->
-								<div class="grid-logo">
-									<a href="<%=odto.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>"> </a>
-								</div>
-								<!-- 브랜드 내용 -->
-								<div class="grid-content">
-								
-									<!-- 브랜드 이름 & 국기 -->
-									<div id="wrapper-name">
-										<span id="brand_name_D"><%=bdto.getBrand_name()%> </span>
-									</div>
-									
-									<!-- 구매방식 -->
-									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D">
-											<span id="method" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
-										</span>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-					<%
-						}
-					}
-					%>
-				</div>
-			
-				<!-- 해외 응모 한 테이블 -->
-				<div id="inter-draw-wrapper">
-					<span> <h4> 해외 응모내역 <i class="fas fa-caret-down"></i> </h4></span>
-					<%
-						if(drawInfoList_etc.isEmpty()){
-					%>
-						<div id="no-draw-wrapper">
-							<span> 응모한 곳이 없습니다. </span>
-						</div>
-					<% } else {
-						for(int i=0; i<drawInfoList_etc.size(); i++){
-							MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_etc.get(i);
-							BrandDTO bdto = (BrandDTO) brandList_etc.get(i);
-							OnlineDTO odto = (OnlineDTO) onlineinfoList_etc.get(i);
-					%>
-						<div class="grid-wrapper_D">
-							<div class="grid-item_D" onclick="window.open('<%=odto.getOnline_link()%>');">
-								<!-- 로고 -->
-								<div class="grid-logo">
-									<a href="<%=odto.getOnline_link()%>" target="_blank"> <img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>"> </a>
-								</div>
-								<!-- 브랜드 내용 -->
-								<div class="grid-content">
-								
-									<!-- 브랜드 이름 & 국기 -->
-									<div id="wrapper-name">
-										<span id="brand_name_D"><%=bdto.getBrand_name()%> </span>
-									</div>
-									
-									<!-- 구매방식 -->
-									<div id="wrapper-bmethod_D">
-										<span id="wrapper-content_D">
-											<span id="method" <%if(odto.getBuy_method().equals("당첨후 선착구매")){%> style="color: #ff6600;" <%}%>><%=odto.getBuy_method()%></span><span id="sep">|</span><span id="winner_time">발표<span id="time">시간</span> : <%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%></span>
-										</span>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-					<%
-						}
-					}
-					%>
-				</div>
+		<!-- 중간 광고 970x90 -->
+		<div class="betweenAds-container">
+			<div class="betweenAds-box">
 				
 			</div>
-		</div>	
+		</div>
+		
+		<div class="myDrawListDetail-container" style="margin-top:30px !important; padding-top:0 !important;">
+		
+			<!-- 응모 브랜드 리스트 -->
+			<div class="brandList-container">
+				<div class="brandList-table">
+				
+					<div class="sub-title">
+						<h4> 국내 참여 내역 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=countDraw_kr%>건</span> </h4>
+					</div>
+					
+					<!-- 국내 테이블 -->
+					<div class="kr-table">
+						<table>
+							<tr>
+								<th style="width:55%;"> 해외 </th>
+								<th style="width:20%;"> 응모발표일 </th>
+								<th style="width:15%;"> 수신방식 </th>
+								<th style="width:25%;"> 구매기간 </th>
+							</tr>
+							<%
+								if(drawInfoList_kr.isEmpty()){
+							%>
+								<tr id="no-draw-wrapper">
+									<td colspan="5"> 응모한 곳이 없습니다. </td>
+								</tr>
+							<% } else {
+								for(int i=0; i<drawInfoList_kr.size(); i++){
+									MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_kr.get(i);
+									BrandDTO bdto = (BrandDTO) brandList_kr.get(i);
+									OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(i);
+							%>
+							<tr>
+								<!-- 브랜드 이미지 + 이름-->
+								<td class="brandLogoName">
+									<div style="display:flex; align-items: center;">
+										<div class="myDraw-logo">
+											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+												<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+											</a>
+										</div>
+										<div class="myDraw-brandName">
+											<div class="myDraw-brandNameTxt">
+												<span><%=bdto.getBrand_name()%> </span>
+											</div>
+										</div>
+									</div>
+								</td>
+								<!-- 발표일 -->
+								<td>
+									<div style="padding-bottom:5px;">
+<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
+										0.00 00:00
+									</div>
+									<div>
+										--:--:--
+									</div>
+								</td>
+								<!-- 수신방식 -->
+								<td>
+									<div style="font-size:22px;">
+										<span><i class="fas fa-sms"></i></span>
+									</div>
+								</td>
+								<!-- 구매기간 -->
+								<td>
+									<div>
+										<span>2021.00.00 ~ 2021.00.00</span>
+									</div>
+								</td>
+							</tr>
+							<% } }%>
+						</table>
+					</div>
+					
+					<div class="sub-title" style="padding-top: 50px;">
+						<h4> 해외 참여 내역 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=countDraw_etc%>건</span> </h4>
+					</div>
+					
+					<!-- 해외 테이블 -->
+					<div class="etc-table">
+						<table>
+							<tr>
+								<th style="width:55%;"> 해외 </th>
+								<th style="width:20%;"> 응모발표일 </th>
+								<th style="width:15%;"> 수신방식 </th>
+								<th style="width:25%;"> 구매기간 </th>
+							</tr>
+							<%
+								if(drawInfoList_etc.isEmpty()){
+							%>
+								<tr id="no-draw-wrapper">
+									<td colspan="5"> 응모한 곳이 없습니다. </td>
+								</tr>
+							<% } else {
+								for(int i=0; i<drawInfoList_etc.size(); i++){
+									MemberDrawDTO mddto = (MemberDrawDTO) drawInfoList_etc.get(i);
+									BrandDTO bdto = (BrandDTO) brandList_etc.get(i);
+									OnlineDTO odto = (OnlineDTO) onlineinfoList_etc.get(i);
+							%>
+							<tr>
+								<!-- 브랜드 이미지 + 이름-->
+								<td class="brandLogoName">
+									<div style="display:flex; align-items: center;">
+										<div class="myDraw-logo">
+											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+												<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+											</a>
+										</div>
+										<div class="myDraw-brandName">
+											<div class="myDraw-brandNameTxt">
+												<span><%=bdto.getBrand_name()%> </span>
+											</div>
+										</div>
+									</div>
+								</td>
+								<!-- 발표일 -->
+								<td>
+									<div style="padding-bottom:5px;">
+<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
+										0.00 00:00
+									</div>
+									<div>
+										--:--:--
+									</div>
+								</td>
+								<!-- 수신방식 -->
+								<td>
+									<div style="font-size:22px;">
+										<span><i class="far fa-envelope"></i></span>
+									</div>
+								</td>
+								<!-- 구매기간 -->
+								<td>
+									<div>
+										<span>2021.00.00 ~ 2021.00.00</span>
+									</div>
+								</td>
+							</tr>
+							<%} }%>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		
+		</div>
+		
+		<!-- 중간 광고 970x250 -->
+		<div class="betweenAds2-container" style="padding-bottom:40px;">
+			<div class="betweenAds2-box">
+				
+			</div>
+		</div>
+		
+		<!-- 우측 사이드바 -->
+		<jsp:include page="/include/rightSideBar.jsp" />
+
 	</div>
 
 	<!-- FOOTER -->
