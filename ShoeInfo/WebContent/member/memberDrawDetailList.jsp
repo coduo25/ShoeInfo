@@ -1,11 +1,13 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.List"%>
+<%@page import="net.online.db.OnlineDTO"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="net.online.db.OnlineDTO"%>
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="net.brand.db.BrandDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="net.member.db.MemberDrawDTO"%>
 <%@page import="net.sneaker.db.SneakerDTO"%>
+<%@page import="net.brand.db.BrandDTO"%>
+<%@page import="net.member.db.MemberDrawDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,6 +36,9 @@
 		if(user == null){
 			response.sendRedirect("./SneakerList.go");
 		}
+		
+		//인기상품
+		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
 	
 		//신발 기본 정보 리스트
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
@@ -144,9 +149,10 @@
 					<div class="kr-table">
 						<table>
 							<tr>
-								<th style="width:55%;"> 해외 </th>
-								<th style="width:20%;"> 응모발표일 </th>
-								<th style="width:15%;"> 수신방식 </th>
+								<th style="width:8%"> 번호 </th>
+								<th style="width:30%;"> 응모처 </th>
+								<th style="width:25%;"> 응모발표일 </th>
+								<th style="width:12%;"> 수신방식 </th>
 								<th style="width:25%;"> 구매기간 </th>
 							</tr>
 							<%
@@ -162,6 +168,10 @@
 									OnlineDTO odto = (OnlineDTO) onlineinfoList_kr.get(i);
 							%>
 							<tr>
+								<!-- 번호 -->
+								<td>
+									<span><%=i+1%></span>
+								</td>
 								<!-- 브랜드 이미지 + 이름-->
 								<td class="brandLogoName">
 									<div style="display:flex; align-items: center;">
@@ -212,9 +222,10 @@
 					<div class="etc-table">
 						<table>
 							<tr>
-								<th style="width:55%;"> 해외 </th>
-								<th style="width:20%;"> 응모발표일 </th>
-								<th style="width:15%;"> 수신방식 </th>
+								<th style="width:8%"> 번호 </th>
+								<th style="width:30%;"> 응모처 </th>
+								<th style="width:25%;"> 응모발표일 </th>
+								<th style="width:12%;"> 수신방식 </th>
 								<th style="width:25%;"> 구매기간 </th>
 							</tr>
 							<%
@@ -230,6 +241,10 @@
 									OnlineDTO odto = (OnlineDTO) onlineinfoList_etc.get(i);
 							%>
 							<tr>
+								<!-- 번호 -->
+								<td>
+									<span><%=i+1%></span>
+								</td>
 								<!-- 브랜드 이미지 + 이름-->
 								<td class="brandLogoName">
 									<div style="display:flex; align-items: center;">

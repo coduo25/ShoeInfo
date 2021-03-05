@@ -28,7 +28,7 @@ body {font-size:1em; line-weight:1.4}
 .moreBtn { padding:10px 15px; color:white; border-radius:5px; font-size:18px; margin:30px auto 50px auto; background-color:#4990e2; box-shadow:0 0.1rem 0.1rem rgb(0 0 0 / 10%), 0 0.1rem 0.3rem rgb(0 0 0 / 10%); cursor:pointer; }
 
 /* 발매 중 리스트 (메인페이지) */
-.mainSneaker-container { float:left; width:31.33%; margin:0 1% 2% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; }
+.mainSneaker-container { float:left; width:23%; margin:0 1% 2% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; }
 	/* 이미지 파트 */
 	.mainSneaker-image { display:block; }
 	.mainSneaker-image img { width:100%; height:100%; background-color:#f3f3f3; padding:12% 3% 10% 3%; border:1px solid rgb(222 222 222); border-radius:5px; }
@@ -161,12 +161,11 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.shoeinfo-cateAns { display:inline-block; width:69%; text-align:left;}
 	
 	/* 응모 브랜드 리스트 */
-	.brandList-container { width:100%; background-color:white; padding:50px 0; }
+	.brandList-container { width:100%; background-color:white; padding:30px 0 70px 0; }
 	
 	.brandList-table table { width:100%; border-collapse:collapse; text-align:center; }
 	.brandList-table table th { border-top:1px solid #222; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:16px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
-	.brandList-table table th:not(:last-child) { border-right:0.5px dotted #dcdcdc; }
-	.brandList-table table td { padding:15px 20px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1;}
+	.brandList-table table td { padding:20px 10px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1;}
 	.brandList-table table td img { width:60px; height:60px; border:1px solid #e0e0e0; border-radius:5px; }
 	.brandLogoName { text-align:left !important; }
 	.myDraw-logo, .myDraw-brandName { display:inline-block; vertical-align:top; }

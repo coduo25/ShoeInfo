@@ -208,18 +208,261 @@
 					ArrayList<BrandDTO> new_brandList = new ArrayList<BrandDTO>();
 					String countryName_eng = "";
 					String countryName_kr = "";
+					int countBrand = 0;
 					//kr
-					if(z==0) { new_onlineList = onlineList_kr; new_brandList = brandList_kr; countryName_eng="kr"; countryName_kr="한국"; }
+					if(z==0) { new_onlineList = onlineList_kr; new_brandList = brandList_kr; countryName_eng="kr"; countryName_kr="한국"; countBrand = onlineList_kr.size(); }
 					//asia
-					if(z==1) { new_onlineList = onlineList_asia; new_brandList = brandList_asia; countryName_eng="asia"; countryName_kr = "아시아"; }
+					if(z==1) { new_onlineList = onlineList_asia; new_brandList = brandList_asia; countryName_eng="asia"; countryName_kr = "아시아"; countBrand = onlineList_asia.size(); }
 					//na
-					if(z==2) { new_onlineList = onlineList_america; new_brandList = brandList_america; countryName_eng="na"; countryName_kr = "북미"; }
+					if(z==2) { new_onlineList = onlineList_america; new_brandList = brandList_america; countryName_eng="na"; countryName_kr = "북미"; countBrand = onlineList_america.size(); }
 					//eu
-					if(z==3) { new_onlineList = onlineList_europe; new_brandList = brandList_europe; countryName_eng="eu"; countryName_kr = "유럽"; }
+					if(z==3) { new_onlineList = onlineList_europe; new_brandList = brandList_europe; countryName_eng="eu"; countryName_kr = "유럽"; countBrand = onlineList_europe.size(); }
 					//etc
-					if(z==4) { new_onlineList = onlineList_etc; new_brandList = brandList_etc; countryName_eng="etc"; countryName_kr = "기타"; }
+					if(z==4) { new_onlineList = onlineList_etc; new_brandList = brandList_etc; countryName_eng="etc"; countryName_kr = "기타"; countBrand = onlineList_etc.size(); }
 			%>
 				<div class="releaseList-countryDiv" id="releaseList-countryDiv-<%=countryName_kr%>">
+					<div class="sub-title">
+						<h4> <%=countryName_kr%> 발매처 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=countBrand%>건</span> </h4>
+					</div>
+					
+					<!-- 국가별 테이블 -->
+					<div class="country-table">
+						<table>
+							<tr>
+								<th style="width:6%"> 번호 </th>
+								<th style="width:8%"> 진행상태 </th>
+								<th style="width:25%"> 발매처 </th>
+								<th style="width:35%"> 응모시간 </th>
+								<th> 결제·배송 </th>
+								<th> 링크 </th>
+							</tr>
+							<%if(new_onlineList.isEmpty()) {%>
+							<tr>
+								<td colspan="6" style="padding:50px; border-bottom:1px solid #c1c1c1;">온라인 발매 정보가 없습니다.</td>
+							<tr>
+							<%} else {
+								for(int i=0; i<new_onlineList.size(); i++){
+									OnlineDTO odto = (OnlineDTO) new_onlineList.get(i);
+									BrandDTO bdto = (BrandDTO) new_brandList.get(i);
+									
+									String online_start_date = "";
+									String online_start_time = "";
+									String online_end_date = "";
+									String online_end_time = "";
+									
+									if((odto.getOnline_start_date().isEmpty())){
+										online_start_date = "0000-00-00";
+									} else{
+										online_start_date = odto.getOnline_start_date();
+									}
+									
+									if((odto.getOnline_start_time().isEmpty())){
+										online_start_time = "24:00";
+									} else{
+										online_start_time = odto.getOnline_start_time();
+									}
+									
+									if((odto.getOnline_end_date().isEmpty())){
+										online_end_date = "0000-00-00";
+									} else{
+										online_end_date = odto.getOnline_end_date();
+									}
+									
+									if((odto.getOnline_end_time().isEmpty())){
+										online_end_time = "24:00";
+									} else{
+										online_end_time = odto.getOnline_end_time();
+									}
+									
+									//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+									// 2020-04-18 10:00
+									Date original_Online_start_time = original_format.parse(online_start_date + " " + online_start_time);
+									Date original_Online_end_time = original_format.parse(online_end_date + " " + online_end_time);
+									// 04/18 10:00
+									String new_Online_start_time = new_format.format(original_Online_start_time);
+									String new_Online_end_time = new_format.format(original_Online_end_time);
+									
+									//4월 18일 오전 10시
+									String newlist_Online_start_time = newList_format.format(original_Online_start_time);
+									String newlist_Online_end_time = newList_format.format(original_Online_end_time);
+									
+									// 04/18/2020 10:00
+									String count_Online_start_time = count_format.format(original_Online_start_time);
+									String count_Online_end_time = count_format.format(original_Online_end_time);
+									
+									// 04/18
+									String[] start_time_Arr = online_start_date.split("-");
+									String[] end_time_Arr = online_end_date.split("-");
+									int month_start = Integer.parseInt(start_time_Arr[1]);
+									int date_start = Integer.parseInt(start_time_Arr[2]);
+									int month_end = Integer.parseInt(end_time_Arr[1]);
+									int date_end = Integer.parseInt(end_time_Arr[2]);
+									
+									String new_date_start_time = month_start + "/" + date_start;
+									String new_date_end_time = month_end + "/" + date_end;
+									
+									int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
+									int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
+									
+									//남은시간 계산하기 위한 날짜데이터 (02/16/2021 10:00)
+									String count_todays_start_time = count_format.format(original_Online_start_time);
+									String count_todays_end_time = count_format.format(original_Online_end_time);
+							%>
+							<tr>
+								<!-- 번호 -->
+								<td><%=i+1%></td>
+								
+								<!-- 진행상태 -->
+								<td>
+									<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
+									<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
+										<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:black;">선착</span>
+									<!-- 응모인데 지금시간이 시작시간보다 전일때 -->
+									<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
+										<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:black;">응모예정</span>
+										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="-1">
+									<!-- 응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
+									<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
+										<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:#58af58;">응모 중</span>
+										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
+									<!-- 응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
+									<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
+										<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:#58af58;">응모 중</span>
+										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
+									<!-- 선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
+									<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
+										<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="display:none;">종료</span>
+										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
+									<%}%>
+								</td>
+								
+								<!-- 발매처 -->
+								<td class="brandLogoName">
+									<div style="display:flex; align-items:center;">
+										<div class="sneakerDetail-logo">
+											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+												<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+											</a>
+										</div>
+										<div class="sneakerDetail-brandName">
+											<div class="sneakerDetail-brandNameTxt">
+												<span><%=bdto.getBrand_name()%> </span>
+											</div>
+											<div class="sneakerDetail-releaseMethod">
+												<span>
+												<%if(odto.getOnline_method().contains("선착")) {%>
+													선착순 구매  <!-- color:#ff5722; -->
+												<%} else if(odto.getOnline_method().contains("드로우")) {%>
+													온라인응모
+													<%} else if(odto.getOnline_method().contains("이메일라플")) {%>
+													이메일응모
+												<%} else if(odto.getOnline_method().contains("인스타라플")) {%>
+													인스타그램 응모
+												<%} else if(odto.getOnline_method().contains("미정")) {%>
+													미정
+												<%} %>
+												</span>
+											</div>
+										</div>
+									</div>
+								</td>
+								
+								<!-- 응모시간 -->
+								<td>
+									<!-- 시간 -->
+									<div class="sneakerDetail-releaseTime">
+										<span class="info-content" style="width:50% !important;">
+											<%if(odto.getOnline_method().contains("선착")){%>
+											<!-- 선착순 구매 -->
+											<span> 
+												<!-- 최종 시작 시간이 정확하지 않으면 -->
+												<%if(odto.getOnline_start_date().isEmpty() || odto.getOnline_start_time().isEmpty()) {%>
+													공지예정
+												<%} else {%>
+													<%=newlist_Online_start_time%>
+												<%} %>
+											</span>
+											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
+											<!-- 응모 -->
+											<span>
+												<!-- 최종 끝나는 시간이 정확하지 않으면 -->
+												<%if(odto.getOnline_end_date().isEmpty() || odto.getOnline_end_time().isEmpty()) {%>
+													공지예정
+												<%} else {%>
+													<%if(!odto.getOnline_start_date().isEmpty()) {%>
+														<%=newlist_Online_start_time%>
+													 <%}%>
+													<%=" ~ " + newlist_Online_end_time%>
+												<%} %>
+											</span>
+											<%}%>
+										</span>
+									</div>
+									<!-- 남은시간 -->
+									<div class="sneakerDetail-remainTime">
+										<span>00일 00시간 00분 00초 남음</span>
+									</div>
+								</td>
+								
+								<!-- 결제 배송 -->
+								<td>
+									<!-- 결제 -->
+									<div class="sneakerDetail-payMethod">
+										<%if(odto.getOnline_method().contains("선착")) {%>
+											선착순 구매
+										<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+											<%=odto.getBuy_method()%>
+										<%}%>
+									</div>
+									·
+									<!-- 배송 -->
+									<div class="sneakerDetail-deliveryMethod">
+										<%if(odto.getOnline_method().contains("선착")) {%>
+											<%=odto.getDelivery_method()%>
+										<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+											<%=odto.getDelivery_method()%>
+										<%}%>
+									</div>
+								
+								</td>
+								
+								<!-- 링크 -->
+								<td>
+									<!-- 응모참여 버튼 -->
+									<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>">	
+										<!-- 참여체크박스 -->
+										<%if(odto.getOnline_method().contains("선착")) {%>
+												<div class="draw_checkBox" style="border:0 !important;">
+													<span>-</span>
+												</div>
+										<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+											<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
+												<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여전">
+												<!-- 참여전 체크박스 -->
+												<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:white; color:#1f1f1f;">
+													<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>"></span></span>
+												</div> 
+											<%}else{%>
+												<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여완료">
+												<!-- 참여완료 체크박스 -->
+												<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:#1f1f1f; color:white;">
+													<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>">응모함</span></span>
+												</div> 
+											<%}%>
+										<%}%>
+									</div>
+								</td>
+								
+							</tr>
+							<%} }%>
+						</table>
+					</div>
+					
+				</div>
+			
+			
+			
+				<div class="releaseList-countryDiv" id="releaseList-countryDiv-<%=countryName_kr%>" style="display:none;">
 					<div class="release-subtitle">
 						<h4>
 							<span style="padding-right:15px;"><%=countryName_kr%> 발매처</span>
@@ -382,30 +625,6 @@
 													<%}%>
 												<%}%>
 											</div>
-										</div>
-										
-										<!-- 응모참여버튼 -->
-										<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>" style="display:none;">	
-											<!-- 참여체크박스 -->
-											<%if(odto.getOnline_method().contains("선착")) {%>
-													<div class="draw_checkBox">
-														<span>-</span>
-													</div>
-											<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-												<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
-													<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여전">
-													<!-- 참여전 체크박스 -->
-													<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:white; color:#d8d8d8;">
-														<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>"></span></span>
-													</div> 
-												<%}else{%>
-													<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여완료">
-													<!-- 참여완료 체크박스 -->
-													<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:#1f1f1f; color:white;">
-														<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>">응모함</span></span>
-													</div> 
-												<%}%>
-											<%}%>
 										</div>
 										
 										<!-- 응모 종료 되었을때 나타나는 drop down/up 버튼 -->

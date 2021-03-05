@@ -32,12 +32,17 @@ public class MemberDrawDetailInfo implements Action{
 		String model_stylecode = (String) request.getParameter("model_stylecode");
 		int model_num= Integer.parseInt(request.getParameter("num"));
 		
+
 		/******************************************************
 		 * 신발 기본 정보 리스트 만들기
 		 ******************************************************/
 		SneakerDAO sdao = new SneakerDAO();
 		SneakerDTO sdto = sdao.getSneakerDetail(model_num, model_stylecode);
 		request.setAttribute("sneakerDetail", sdto);
+		
+		//인기상품 리스트
+		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
+		request.setAttribute("popularList", popularList);
 		
 		/******************************************************
 		 * 응모한 신발 브랜드 정보 가져오기
