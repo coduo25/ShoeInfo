@@ -192,6 +192,13 @@
 				<span class="countryCate-span" id="countryCateSpan-기타">기타(<%=onlineList_etc.size()%>)</span>
 			</div>
 		</div>
+		
+		<!-- 중간 광고 970x90 -->
+		<div class="betweenAds-container">
+			<div class="betweenAds-box">
+				
+			</div>
+		</div>
 	
 		<!-- 국가별 발매처 -->
 		<div class="releaseList-container" style='margin-bottom:40px !important;'>
@@ -304,7 +311,7 @@
 									<div class="Release-content">
 									
 										<!-- 진행 상태 표시 -->
-										<div class="brandInfo-status-container">
+										<div class="brandInfo-status-container" id="brandInfo-status-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%>">
 											<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
 											<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
 												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:black;">선착</span>
@@ -327,9 +334,9 @@
 											<%}%>
 										</div>
 
-										<div class="brand-box" id="brand-box<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%>">
+										<div class="brand-box" id="brand-box<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>background-color:#f9f9f9;<%}%>">
 											<!--  발매처 이미지 --> 
-											<div class="brandInfo-image-container">
+											<div class="brandInfo-image-container" id="brandInfo-image-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%>">
 												<div style="display:inline-block; position:relative; margin-bottom:0 !important;">
 													<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 														<img src="./brand_img_upload/<%=bdto.getBrand_logo()%>" width="120" height="120" style="border:1px solid #b3b3b3; position:relative; border-radius:8px;">
@@ -341,7 +348,7 @@
 											</div>
 											
 											<!-- 발매처 이름  -->
-											<div class="brandInfo-name-container">
+											<div class="brandInfo-name-container" id="brandInfo-name-container<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%>">
 												<!-- 발매처 이름 -->
 												<div id="count_todays_status<%=countryName_eng%><%=i%>brandName">
 													<a href="<%=odto.getOnline_link()%>" target="_blank"> 
@@ -351,10 +358,34 @@
 													</a>
 												</div>
 											</div>
+											
+											<!-- 응모참여 버튼 -->
+											<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>">	
+												<!-- 참여체크박스 -->
+												<%if(odto.getOnline_method().contains("선착")) {%>
+														<div>
+															<span>-</span>
+														</div>
+												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+													<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
+														<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여전">
+														<!-- 참여전 체크박스 -->
+														<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:white; color:#1f1f1f;">
+															<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>"></span></span>
+														</div> 
+													<%}else{%>
+														<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여완료">
+														<!-- 참여완료 체크박스 -->
+														<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:#1f1f1f; color:white;">
+															<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>">응모함</span></span>
+														</div> 
+													<%}%>
+												<%}%>
+											</div>
 										</div>
 										
 										<!-- 응모참여버튼 -->
-										<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>">	
+										<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>" style="display:none;">	
 											<!-- 참여체크박스 -->
 											<%if(odto.getOnline_method().contains("선착")) {%>
 													<div>
@@ -392,7 +423,7 @@
 										</div>
 									
 										<!-- 디테일 박스 -->
-										<div class="detail-box" id="count_todays_status<%=countryName_eng%><%=i%>detail-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.3;<%}%><%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>display:none !important;<%}%>">
+										<div class="detail-box" id="count_todays_status<%=countryName_eng%><%=i%>detail-box" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity: 0.2;<%}%><%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>display:none !important;<%}%>">
 											<!-- 발매 방식  -->
 											<div class="brandInfo-detail-container">
 												<span class="info-subTitle">발매 방식</span>
@@ -420,10 +451,10 @@
 														응모 시간
 													<%}%>
 												</span>
-												<span class="info-content" style="width:55% !important;">
+												<span class="info-content" style="width:50% !important;">
 													<%if(odto.getOnline_method().contains("선착")){%>
 													<!-- 선착순 구매 -->
-													<span> 
+													<span style="display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; min-height:38px;"> 
 														<!-- 최종 시작 시간이 정확하지 않으면 -->
 														<%if(odto.getOnline_start_date().isEmpty() || odto.getOnline_start_time().isEmpty()) {%>
 															공지예정
@@ -433,7 +464,7 @@
 													</span>
 													<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
 													<!-- 응모 -->
-													<span>
+													<span style="display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; min-height:38px;">
 														<!-- 최종 끝나는 시간이 정확하지 않으면 -->
 														<%if(odto.getOnline_end_date().isEmpty() || odto.getOnline_end_time().isEmpty()) {%>
 															공지예정
@@ -1138,11 +1169,16 @@
 							}
 				   		});
 						//참여전 표시 -> 참여완료로 바꾸기
-				   		$('#brand-box'+country+number).css('opacity','0.3');
-						$('#count_todays_status'+country+number+'detail-box').css('opacity','0.3');
-						$('#draw_checkBox'+country+number).css('background-color','#1f1f1f');
+				   		$('#brand-box'+country+number).css('background-color','#f9f9f9');
+						$('#brandInfo-status-container'+country+number).css('opacity','0.2');
+						$('#brandInfo-image-container'+country+number).css('opacity','0.2');
+						$('#brandInfo-name-container'+country+number).css('opacity','0.2');
+						
+						$('#draw_checkBox'+country+number).css('background-color','#3c3c3c');
 						$('#draw_checkBox'+country+number).css('color','white');
 						$('#drawCheck_statusTxt'+country+number).text("응모함");
+						
+						$('#count_todays_status'+country+number+'detail-box').css('opacity','0.2');
 					}
 					//참여완료인데 체크박스 눌릴시 -> 참여전
 					else if(draw_status == '참여완료'){
@@ -1160,11 +1196,16 @@
 							}
 				   		});
 						//참여완료 표시 -> 참여전으로 바꾸기
-						$('#brand-box'+country+number).css('opacity','1');
-						$('#count_todays_status'+country+number+'detail-box').css('opacity','1');
+						$('#brand-box'+country+number).css('background-color','#e0e0e0');
+						$('#brandInfo-status-container'+country+number).css('opacity','1');
+						$('#brandInfo-image-container'+country+number).css('opacity','1');
+						$('#brandInfo-name-container'+country+number).css('opacity','1');
+						
 						$('#drawCheck_statusTxt'+country+number).text("");
+						$('#draw_checkBox'+country+number).css('color','#1f1f1f');
 						$('#draw_checkBox'+country+number).css('background-color','white');
-						$('#draw_checkBox'+country+number).css('color','#d8d8d8');
+
+						$('#count_todays_status'+country+number+'detail-box').css('opacity','1');
 					}
 				}
 			}

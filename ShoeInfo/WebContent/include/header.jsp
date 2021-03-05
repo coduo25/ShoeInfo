@@ -293,6 +293,8 @@
 		</nav>
 	</div>
 	
+	
+
 </body>
 <script type="text/javascript">
 
@@ -311,9 +313,97 @@
 		}
 	}
 
-	function topFunction() {
-		$('html,body').animate({ scrollTop: 0 }, 'fast');
-	}
+	$(document).ready(function(){
+
+		$('.acc_pos').click(function(){
+			$('#memberChart').slideDown(400);
+		});	
+		
+		$('#mc_exit').click(function(){
+			$('#memberChart').slideUp(400);
+		});
+		
+		//마이드로우 눌렸을시
+		$('#myDrawBtn, #myDrawBtn2, #myDrawBtn_mobile').click(function(){
+			//로그인 체크
+			if($(".user").val() == "" || $(".user").val() == "undefined" || $(".user").val() == null) {
+				location.href="./MemberLogin.me";
+			}else {
+				location.href="./MemberDrawInfo.me";
+			}
+		});
+		
+	});
+	
+	
+	//구 코드
+	//구 코드
+	//구 코드
+	//구 코드
+	//구 코드
+	//구 코드
+	
+		
+		//현재 시간 계산해주는 함수
+		function getTime(){
+			
+			//현재 시간 계산
+			var date = new Date();
+			//요일
+			var week = new Array('일', '월', '화', '수', '목', '금', '토'); 
+			
+// 			date.getFullYear() + "년 " + 
+			
+			var currentDate = (date.getMonth() + 1) + "월 " +  date.getDate() + "일" + "(" + week[date.getDay()] +")"; 
+			
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			//오전/오후 표시하기
+			var AMorPM = date.getHours() < 12 ? "오전" : "오후";
+			
+			//오후시간일때 12시간 빼기
+			if(hours > 12) {
+				hours -= 12;
+			}
+			
+			//시간, 분, 초 앞에 한자리수이면 앞자리수에 0 붙이기
+			if(hours < 10){ hours = "0" + hours; }
+			if(minutes < 10){ minutes = "0" + minutes; }
+			if(seconds < 10){ seconds = "0" + seconds; }
+	
+			var currentTime = AMorPM + " " + hours + ":" + minutes + ":" + seconds  + "";
+			
+			var result = document.getElementById("today_date_val");
+			
+			result.innerHTML = "현재시간: " + currentDate + " " + currentTime;
+			
+		}
+	
+		//실시간 갱신시켜주는 함수
+		function init(){
+		    setInterval(getTime, 1000);
+		}
+		
+		init();
+
+		$(".navbar_toggleBtn").click(function(){
+			if($(".navbar_menu").is(":visible")){
+				$(".navbar_menu").slideUp();
+				$(".navbar_userlinks").slideUp();
+			}
+			else if(!$(".navbar_menu").is(":visible")){
+				$(".navbar_menu").slideDown();
+				$(".navbar_userlinks").slideDown();
+			}
+		});
+		
+		
+		function topFunction() {
+			$('html,body').animate({ scrollTop: 0 }, 'fast');
+// 			document.body.scrollTop = 0;
+// 			document.documentElement.scrollTop = 0;
+		}
 
 </script>
 </html>
