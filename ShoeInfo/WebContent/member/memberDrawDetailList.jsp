@@ -21,7 +21,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
+<body> <!-- oncontextmenu='return false' onselectstart='return false' ondragstart='return false' -->
 
 	<!-- Header -->	
 	<header> <jsp:include page="/include/header.jsp" /> </header>
