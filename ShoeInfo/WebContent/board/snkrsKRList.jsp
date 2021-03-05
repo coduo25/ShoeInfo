@@ -80,7 +80,7 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 
 		<!-- 이번주 나코 snkrs 리스트 -->
-		<div class="snkrsWeek-container" style="margin-top:40px !important; padding-top:0 !important; margin-bottom:40px !important;">
+		<div class="snkrsWeek-container" style="margin-top:40px !important; padding-top:0 !important; margin-bottom:100px !important;">
 			<div class="sub-title">
 				<h4><img src="./brand_img_upload/nikelogo.png" width="50" height="30" style="vertical-align:bottom;">나이키 코리아 프리미엄 라인업</h4>
 			</div>

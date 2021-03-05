@@ -50,12 +50,12 @@ body {font-size:1em; line-weight:1.4;}
 .release-subtitle h4 { display:flex; flex-direction:row; font-size:24px; font-weight:bold; }
 .release-subtitle h4:after { content:""; flex:1 1; border-bottom:2px solid #e8e8e8; margin:auto; }
 
-.releaseBox { display:inline-block; float:left; margin:1.5%; width:30.33%; border:1px solid #b3b3b3;  background-color:white; position:relative; border-radius:5px; }
+.releaseBox { display:inline-block; float:left; margin:1.5%; width:30.33%; border:1px solid #b3b3b3;  background-color:white; position:relative; }
 
 .Release-content { display:inline-block; vertical-align:top; text-align:left; width:100%; position:relative; }
 .Release-content span { display:inline-block; vertical-align: top; }
 
-	.brand-box { background-color:#e0e0e0; padding:3%; border-bottom:1px solid #a5a5a5; border-top-left-radius:5px; border-top-right-radius:5px; }
+	.brand-box { background-color:#e0e0e0; padding:3%; border-bottom:1px solid #a5a5a5; }
 	.detail-box { padding:4%; }
 	
 	/* 발매처 상태 */

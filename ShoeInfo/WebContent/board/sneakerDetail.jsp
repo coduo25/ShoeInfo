@@ -420,7 +420,7 @@
 														응모 시간
 													<%}%>
 												</span>
-												<span class="info-content" style="width:52% !important;">
+												<span class="info-content" style="width:55% !important;">
 													<%if(odto.getOnline_method().contains("선착")){%>
 													<!-- 선착순 구매 -->
 													<span> 

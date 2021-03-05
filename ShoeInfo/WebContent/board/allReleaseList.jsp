@@ -130,6 +130,13 @@
 				<% } } %>
 			</div>
 		</div>
+		
+		<!-- 중간 광고 970x90 -->
+		<div class="betweenAds-container">
+			<div class="betweenAds-box">
+				
+			</div>
+		</div>
 
 		<!-- 발매 예정 리스트 -->
 		<div class="release-container" style="margin-bottom:0px !important; padding-bottom:0 !important;">
@@ -186,7 +193,7 @@
 				<span class="moreBtn">더보기</span>
 			</div>
 			
-			<!-- 중간 광고 970x250 -->
+			<!-- 하단 광고 970x250 -->
 			<div class="betweenAds2-container" style="padding:50px 0 40px 0;">
 				<div class="betweenAds2-box">
 					

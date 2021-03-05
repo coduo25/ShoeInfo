@@ -467,7 +467,7 @@
 			</div>
 		</div>
 		
-		<!-- 중간 광고 970x250 -->
+		<!-- 하단 광고 970x250 -->
 		<div class="betweenAds2-container" style="padding-bottom:40px;">
 			<div class="betweenAds2-box">
 				

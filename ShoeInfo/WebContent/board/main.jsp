@@ -79,32 +79,6 @@
 		Date currentTime = new Date();
 		String current = format.format(currentTime);
 		Date today = format.parse(current);
-
-		
-		
-
-		
-		
-		
-		
-		// 구 리스트들
-		ArrayList<SneakerDTO> sneakerList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList1");
-		ArrayList<SneakerDTO> sneakerList2 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2");
-		ArrayList<SneakerDTO> sneakerList3 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList3");
-		ArrayList<SneakerDTO> sneakerList4 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList4");
-		ArrayList<SneakerDTO> sneakerList5 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList5");
-		ArrayList<SneakerDTO> sneakerList6 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList6");
-		ArrayList<SneakerDTO> sneakerList7 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList7");
-		ArrayList<SneakerDTO> sneakerList8 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList8");
-		ArrayList<SneakerDTO> sneakerList9 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList9");
-		ArrayList<SneakerDTO> sneakerList10 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList10");
-		ArrayList<SneakerDTO> sneakerList11 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList11");
-		ArrayList<SneakerDTO> sneakerList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList12");
-		
-		ArrayList<SneakerDTO> sneakerList2021 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2021");
-
-		String compare_Today = format.format(currentTime);
-		Date compareToday = format.parse(compare_Today);
 	%>
 
 	<!-- Header -->
@@ -556,7 +530,9 @@
 						if(onlineList_todays.size() >= 4) {
 					%>
 						<tr>
-							<td colspan="4" style="padding:0 !important; background-color:#f3f3f3;"> <a href="./TodaysReleaseList.go"><span style="display:block; padding:15px 0;">더보기 <i class="far fa-plus-square"></i></span></a> </td>
+							<td colspan="4" style="padding:0 !important; background-color:#f9f9f9;">
+								<a href="./TodaysReleaseList.go"><span style="display:block; padding:15px 0;">더보기 <i class="far fa-plus-square"></i></span></a>
+							</td>
 						</tr>
 					<% } %>
 				</table>
@@ -680,6 +656,13 @@
 			</div>
 		</div>
 		
+		<!-- 중간 광고 970x90 -->
+		<div class="betweenAds-container">
+			<div class="betweenAds-box">
+				
+			</div>
+		</div>
+		
 		<!-- 발매 예정 리스트 -->
 		<div class="release-container" style="margin-bottom:0px !important; padding-bottom:0 !important;">
 			<div class="sub-title">	
@@ -734,7 +717,7 @@
 			%>	
 		</div>
 		
-		<!-- 중간 광고 970x250 -->
+		<!-- 하단 광고 970x250 -->
 		<div class="betweenAds2-container" style="padding-bottom:40px;">
 			<div class="betweenAds2-box">
 				
