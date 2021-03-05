@@ -106,24 +106,23 @@
 						int countBrand = countReleasingBrandList.get(i);
 				%>
 					<div class="mainSneaker-container">
+						<!-- 신발이미지 -->
 						<div class="mainSneaker-image">
 							<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
 								<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
 							</a>
-							
+						</div>
+						<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
+						<div class="mainSneakerShoeInfo-container">
+							<!-- 이름 칸 -->
+							<div class="mainSneakerShoeInfo-name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
+								<span> <%=releasing_sdto.getModel_name_kr()%> </span>
+							</div>
+							<!-- 발매처 횟수 -->
 							<div class="mainSneaker-brandCount">
 								<span>	
-									<span style="height:10px; width:10px; background-color:#0eb300; border-radius:50%; display:table-caption;"></span> 
-									발매처 <span style="font-weight:bold;"><%=countBrand%>+</span>
+									발매처 : <%=countBrand%>+
 								</span>
-							</div>
-							<!-- hover 칸  -->
-							<div class="mainSneaker-container-hover">
-								&nbsp;
-							</div>
-							<!-- 이름 칸 -->
-							<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
-								<p> <%=releasing_sdto.getModel_name_kr()%> </p>
 							</div>
 						</div>
 					</div>
@@ -167,17 +166,17 @@
 							SneakerDTO release_sdto = splitedList.get(j).get(i);	
 						%>
 							<div class="mainSneaker-container">
+								<!-- 신발이미지 -->
 								<div class="mainSneaker-image">
 									<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
 										<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
 									</a>
-									<!-- hover 칸  -->
-									<div class="mainSneaker-container-hover">
-										 &nbsp;					
-									</div>
+								</div>
+								<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
+								<div class="mainSneakerShoeInfo-container">
 									<!-- 이름 칸 -->
-									<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
-										<p> <%=release_sdto.getModel_name_kr()%> </p>				
+									<div class="mainSneakerShoeInfo-name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
+										<span> <%=release_sdto.getModel_name_kr()%> </span>
 									</div>
 								</div>
 							</div>

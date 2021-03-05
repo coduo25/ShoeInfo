@@ -132,17 +132,17 @@
 								SneakerDTO released_sdto = splitedList.get(j).get(i);
 						%>
 							<div class="mainSneaker-container">
+								<!-- 신발이미지 -->
 								<div class="mainSneaker-image">
 									<a href="./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>">
 										<img src="./sneaker_img_upload/<%=released_sdto.getImage()%>">
 									</a>
-									<!-- hover 칸  -->
-									<div class="mainSneaker-container-hover">
-										 &nbsp;					
-									</div>
+								</div>
+								<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
+								<div class="mainSneakerShoeInfo-container">
 									<!-- 이름 칸 -->
-									<div class="mainSneaker-container-hover-Name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
-										<p> <%=released_sdto.getModel_name_kr()%> </p>				
+									<div class="mainSneakerShoeInfo-name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=released_sdto.getModel_stylecode()%>&num=<%=released_sdto.getNum()%>';">
+										<span> <%=released_sdto.getModel_name_kr()%> </span>
 									</div>
 								</div>
 							</div>		
