@@ -61,12 +61,21 @@
 				%>
 			</table>
 		</div>
+		
 		<!-- 구글 우측 사이드바 광고 -->
 		<div class="googleAd-rightSideBar">
 			<div class="ad-rightSideBar-box">
 				
 			</div>
 		</div>
+		
+		<!-- 나의 응모내역 보러가기 box -->
+		<div>
+			<div>
+				<span> 나의 응모내역 보러가기</span>
+			</div>
+		</div>
+		
 	</div>
 </body>
 

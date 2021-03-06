@@ -208,7 +208,7 @@
 												<span id="count_todays_status<%=i%>release-status" class="release-status" style="background-color:black;">선착</span>
 											<!-- 응모인데 지금시간이 시작시간보다 전일때 -->
 											<%}else if(((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && !odto_todays.getOnline_start_date().isEmpty()) && (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
-												<span id="count_todays_status<%=i%>release-status" class="release-status" style="background-color:black;">응모예정</span>
+												<span id="count_todays_status<%=i%>release-status" class="release-status" style="background-color:black;">응모 전</span>
 												<input type="hidden" id="hidden_ing<%=i%>" value="-1">
 											<!-- 응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
 											<%}else if(((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && !odto_todays.getOnline_start_date().isEmpty()) && (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
