@@ -2,16 +2,16 @@
 
 /* 중간 가로 970x90 광고 */
 .betweenAds-container { width:100%; display:table; }
-.betweenAds-box { width:970px; height:90px; border-radius:5px; background-color:#eaeaea; margin:0 auto; }
+.betweenAds-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; } /* width:970px; height:90px; *
 
 /* 중간 가로 970x250 광고 */
 .betweenAds2-container { width:100%; display:table; }
-.betweenAds2-box { width:970px; height:250px; border-radius:5px; background-color:#eaeaea; margin:0 auto; }
+.betweenAds2-box {  border-radius:5px; background-color:#eaeaea; margin:0 auto; } /* width:970px; height:250px; */
 
 
 /* 좌측 사이드바 */
-.left-sideBar { position:absolute; width:200px; border-radius:4px; margin-left:-250px; z-index:50; padding:0 15px; } /* background-color:#eaeaea;  */
-	/* 달력 */
+.left-sideBar { position:absolute; width:200px; border-radius:4px; margin-left:-250px; z-index:50; padding:0 15px; } 
+
 	.calendar-box { background-color:#fdfdfd; border:1px solid #a5a5a5; font-family:'Nanum Gothic', sans-serif; border-top-right-radius:10px; border-top-left-radius:10px; }
 	.calendar { width:100%; overflow:visible; text-align:center; display:table; border-collapse:separate; padding:3%; }
 	.cal-title { font-size:14px; padding:6px 0 4px 0; display:block; }
@@ -46,16 +46,13 @@
 	/* 이름 */
 	.popularName-td div { display: -webkit-box; text-overflow: ellipsis; word-wrap: break-word; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 12px; min-height: 30px; }
 	
-	 /* 구글 좌측 광고 */
-	.googleAd-leftSideBar { width:100%; padding:4% 5%; }
-	.ad-leftSideBar-box {  border-radius:5px; z-index:50; } /* height:240px; background-color:#eaeaea; border:1px solid #9a9a9a; */
-	
 	/* 구글 우측 광고 */
-	.googleAd-rightSideBar { width:160px; }
-	.ad-rightSideBar-box { height:600px; border-radius:5px; z-index:50; background-color:#eaeaea; } /* border:1px solid #9a9a9a;*/
+	.googleAd-rightSideBar {  } /* width:160px; */
+	.ad-rightSideBar-box { border-radius:5px; z-index:50; background-color:#eaeaea; margin:0 auto; } /* height:600px; */
 	
 	/* 나의 응모내역 보러가기 박스 */
-	.myDrawPopUp { font-family:'Nanum Gothic', sans-serif; border:2px solid #c1c1c1; border-radius:5px; padding:5%; width:160px; margin-top:10%; font-size:18px; }
+	.myDrawPopUp { width:180px; font-family:'Nanum Gothic', sans-serif; border:2px solid #b12e30; border-radius:5px; padding:3% 5%; margin-top:10%; background-color:#d24042; cursor:pointer; }
+	.myDrawPopUp div { text-align:center; font-weight:bold; color:white; }
 	
 	
 	

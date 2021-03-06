@@ -121,7 +121,7 @@
 							<!-- 발매처 횟수 -->
 							<div class="mainSneaker-brandCount">
 								<span class="mainSneaker-brandCountTxt">	
-									발매처 : <%=countBrand%>+
+									발매처 <%=countBrand%>+
 								</span>
 							</div>
 						</div>

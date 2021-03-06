@@ -42,7 +42,7 @@ a { text-decoration: none; color: #000000; }
 
 
 /* 좌측 하단 광고 */
-.googleAd-leftbottomBox { position:fixed; bottom:0; left:0; width:300px; height:250px; background-color:#eaeaea; z-index:50; }	
+.googleAd-leftbottomBox { position:fixed; bottom:0; left:0; background-color:#eaeaea; z-index:50; } /* width:300px; height:250px; */	
 
 
 
