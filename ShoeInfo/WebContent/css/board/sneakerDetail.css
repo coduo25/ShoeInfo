@@ -45,12 +45,12 @@ body {font-size:1em; line-weight:1.4;}
 
 .releaseList-countryDiv {  width:100%; padding:40px 0 70px 0; }
 .country-table table { width:100%; border-collapse:collapse; text-align:center; }
-.country-table table th { border-top:1px solid #c1c1c1; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:15px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
-.country-table table td { padding:25px 10px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1; font-size:15px; color:#666; }
-.country-table table td img { width:60px; height:60px; border:1px solid #e0e0e0; border-radius:5px; }
+.country-table table th { border-top:1px solid #222; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:15px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
+.country-table table td { padding:30px 10px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1; font-size:15px; color:#666; }
+.country-table table td img { width:80px; height:80px; border:1px solid #e0e0e0; border-radius:5px; }
 
 	/* 진행상태 */
-	.release-status { font-size:14px; padding:4px 5px; vertical-align:-webkit-baseline-middle !important; color:white; font-weight:bold; border-radius:4px; }
+	.release-status { font-size:14px; padding:4px 5px; vertical-align:middle; color:white; font-weight:bold; border-radius:4px; }
 	
 	/* 발매처 */
 	.brandLogoName { text-align:left !important; }
@@ -71,7 +71,7 @@ body {font-size:1em; line-weight:1.4;}
 
 	/* 링크, 응모체크박스 */
 	.direct-box { margin:0 auto 7px auto !important; }
-	.direct-box, .draw_checkBox { margin:0 auto; width:80px !important; font-weight:bold; padding:3px 0; border:1px solid #1f1f1f; border-radius:5px; color:#1f1f1f; font-size:14px; }
+	.direct-box, .draw_checkBox { margin:0 auto; width:80px !important; padding:4px 0; border:1px solid #1f1f1f; border-radius:5px; color:#1f1f1f; font-size:14px; }
 	.draw_checkBox { transition: 0.3s; cursor:pointer; }
 	
 

@@ -29,10 +29,10 @@
 	#ampm_zone { font-family:'Oxanium', cursive; font-size:13px; padding:3px 6px; border:1px solid black; background-color:black; color:white; vertical-align:top; }
 
 
- /* 우측 사이드바 */
- .right-sideBar { position:absolute; border-radius:4px; margin-right:-230px; z-index:50; top:0; right:0; }
- 
- 	/* 인기 차트 */
+/* 우측 사이드바 */
+.right-sideBar { position:absolute; border-radius:4px; margin-right:-230px; z-index:50; top:0; right:0; }
+
+	/* 인기 차트 */
 	.popular-chart { margin:0 0 12%; border:1px solid #c1c1c1; font-family:'Nanum Gothic', sans-serif; background-color:#fdfdfd; width:180px; }
 	.popular-chart table { border-collapse:collapse; }
 	.popular-subtitle { font-size:14px; }
@@ -49,12 +49,13 @@
 	 /* 구글 좌측 광고 */
 	.googleAd-leftSideBar { width:100%; padding:4% 5%; }
 	.ad-leftSideBar-box {  border-radius:5px; z-index:50; } /* height:240px; background-color:#eaeaea; border:1px solid #9a9a9a; */
- 
+	
 	/* 구글 우측 광고 */
 	.googleAd-rightSideBar { width:160px; }
 	.ad-rightSideBar-box { height:600px; border-radius:5px; z-index:50; background-color:#eaeaea; } /* border:1px solid #9a9a9a;*/
 	
-	
+	/* 나의 응모내역 보러가기 박스 */
+	.myDrawPopUp { font-family:'Nanum Gothic', sans-serif; border:2px solid #c1c1c1; border-radius:5px; padding:5%; width:160px; margin-top:10%; font-size:18px; }
 	
 	
 	

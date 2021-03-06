@@ -170,7 +170,7 @@
 							<tr>
 								<!-- 번호 -->
 								<td>
-									<span><%=i+1%></span>
+									<span><%=i+1%>.</span>
 								</td>
 								<!-- 브랜드 이미지 + 이름-->
 								<td class="brandLogoName">
@@ -199,7 +199,7 @@
 								</td>
 								<!-- 수신방식 -->
 								<td>
-									<div style="font-size:22px;">
+									<div style="font-size:22px; color:#121212;">
 										<span><i class="fas fa-sms"></i></span>
 									</div>
 								</td>
@@ -272,7 +272,7 @@
 								</td>
 								<!-- 수신방식 -->
 								<td>
-									<div style="font-size:22px;">
+									<div style="font-size:22px; color:#121212;">
 										<span><i class="far fa-envelope"></i></span>
 									</div>
 								</td>

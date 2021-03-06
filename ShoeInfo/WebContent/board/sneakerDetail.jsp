@@ -234,7 +234,7 @@
 								<th style="width:92px"> 진행상태 </th>
 								<th style="width:281px"> 발매처 </th>
 								<th style="width:320px"> 시간 </th>
-								<th style="width:170px"> 결제·배송 </th>
+								<th style="width:170px; border-right: 1px dotted #dcdcdc;"> 결제·배송 </th>
 								<th style="width:147px"> 링크 </th>
 							</tr>
 							<%if(new_onlineList.isEmpty()) {%>
@@ -316,7 +316,7 @@
 								</td>
 								
 								<!-- 번호 -->
-								<td class="brandNum" id="brandNum<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>"><%=i+1%></td>
+								<td class="brandNum" id="brandNum<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>"><%=i+1%>.</td>
 								
 								<!-- 진행상태 -->
 								<td class="brandStatus" id="brandStatus<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
@@ -406,6 +406,10 @@
 									</div>
 									<!-- 남은시간 -->
 									<div class="sneakerDetail-remainTime">
+										<!-- 남은시간 -->
+										<span id="count_todays_start_time<%=countryName_eng%><%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
+										<span id="count_todays_end_time<%=countryName_eng%><%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
+											
 										<!-- 선착일때 -->
 										<%if(odto.getOnline_method().contains("선착") && compare_w_start_result < 0){%>
 											<span id="count_todays_status<%=countryName_eng%><%=i%>border">
@@ -470,7 +474,7 @@
 								</td>
 								
 								<!-- 결제 배송 -->
-								<td class="payAnddel" id="payAnddel<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
+								<td class="payAnddel" id="payAnddel<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%> border-right: 1px dotted #dcdcdc;">
 									<!-- 결제 -->
 									<div class="sneakerDetail-payMethod">
 										<%if(odto.getOnline_method().contains("선착")) {%>
@@ -551,6 +555,7 @@
 					</div>
 					
 				</div>
+
 			<%} %>
 		</div>
 		
@@ -634,7 +639,6 @@
 			}
 			//종료되었을때
 			else if(finalTime == 0000000){
-				document.getElementById(statusId).textContent = '종료';
 				document.getElementById(statusId+'release-status').textContent = '종료';
 				
 				$('#'+statusId+'release-status').css({"color":"#666", "background-color":"white", "border":"0", "font-weight":"normal"});
@@ -660,7 +664,6 @@
 			}
 			//임박하지 않고 계속 진행중일때
 			else {
-				document.getElementById(statusId).textContent = '진행중';	
 				//임박표시 OFF
 				$('#'+statusId+'label').css("display", "none");
 			}

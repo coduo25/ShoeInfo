@@ -132,7 +132,7 @@
 							</div>
 							<!-- 발매처 횟수 -->
 							<div class="mainSneaker-brandCount">
-								<span>	
+								<span class="mainSneaker-brandCountTxt">	
 									발매처 : <%=countBrand%>+
 								</span>
 							</div>
@@ -263,7 +263,7 @@
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-												<span id="count_todays_status<%=i%>brandNameTxt" style="font-weight:bold; font-size:24px; color: #1f1f1f;"> <%=bdto_todays.getBrand_name()%></span>
+												<span id="count_todays_status<%=i%>brandNameTxt" style="font-weight:bold; font-size:23px; color: #1f1f1f;"> <%=bdto_todays.getBrand_name()%></span>
 											</a>
 											<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
 											<%if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>

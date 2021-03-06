@@ -70,9 +70,12 @@
 		</div>
 		
 		<!-- 나의 응모내역 보러가기 box -->
-		<div>
+		<div class="myDrawPopUp">
 			<div>
-				<span> 나의 응모내역 보러가기</span>
+				<span>나의 응모내역</span>
+			</div>
+			<div>
+				<span>보러가기</span>
 			</div>
 		</div>
 		
