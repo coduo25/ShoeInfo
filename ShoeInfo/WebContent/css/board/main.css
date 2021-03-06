@@ -28,7 +28,7 @@ body {font-size:1em; line-weight:1.4}
 .moreBtn { padding:10px 15px; color:white; border-radius:5px; font-size:18px; margin:30px auto 50px auto; background-color:#4990e2; box-shadow:0 0.1rem 0.1rem rgb(0 0 0 / 10%), 0 0.1rem 0.3rem rgb(0 0 0 / 10%); cursor:pointer; }
 
 /* 발매 중 리스트 (메인페이지) */
-.mainSneaker-container { float:left; width:23%; margin:0 1% 2% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; }
+.mainSneaker-container { float:left; width:23%; margin:0 0.5% 2% 0.5%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; }
 	/* 이미지 파트 */
 	.mainSneaker-image { display:block; }
 	.mainSneaker-image img { width:100%; height:100%; background-color:#f3f3f3; padding:12% 3% 10% 3%; border:1px solid rgb(222 222 222); border-radius:5px; }
