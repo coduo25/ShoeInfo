@@ -40,142 +40,126 @@
 			<!-- login content -->
 			<div class="login-box">
 				<div class="login_subtitle">
-					<span>Login Part</span>
+					<span>Login</span>
+				</div>
+				<div class="loginformBox">
+					<!-- 로그인 form -->
+					<form action="./MemberLoginAction.me" method="post" id="loginForm">
+						<div class="login-form">
+							<input type="hidden" name="referer" id="fm_url_login" value="<%=prev_url%>" />
+						
+							<!-- 이메일 -->
+							<div class="fm_txt">
+								<span>이메일</span>
+							</div>
+							<div class="fm_input">
+								<input type="email" name="email" id="fm_email_login" id="email">
+							</div>
+							
+							<!-- 비밀번호 -->
+							<div class="fm_txt">
+								<span>비밀번호</span>
+							</div>
+							<div class="fm_input">
+								<input type="password" name="pass" id="fm_pass_login">
+							</div>
+							
+							<div class="fm_find">
+								<a href="./MemberFindIDPW.me"> 암호를 잊으셨습니까? </a>
+							</div>
+							
+							<!-- 로그인 -->
+							<div class="fm_submitBtn">
+								<button type="button" class="login_submitBtn">
+									<span id="join_text">로그인</span>
+								</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 			
 			<!-- 회원이 아니십니까? -->
-			<div class="joinPopUp-text">
-				<span>회원이 아니십니까?</span>
+			<div class="joinPopUp-text" style="margin:20px 0;">
+				<span>계정이 없으십니까?</span>
+			</div>
+			<div class="joinPopUp-textUp" style="display:none; margin:15px 0 5px 0;">
+				<span style="font-size:20px !important;"><i class="fas fa-angle-up"></i></span>
 			</div>
 			
 			<!-- register content  -->
-			<div class="join-box">
+			<div class="join-box" style="display:none; margin-bottom:0 !important; background-color:#f3f3f36b; ">
 				<div class="join_subtitle">
-					<span>Register Part</span>
+					<span>Create Account</span>
 				</div>
-			</div>
-			
-		</div>
-	
+				<div class="joinformBox">
+					<form action="./MemberJoinAction.me" method="post" name="joinForm" id="joinForm">
+						<div class="join-form">
+						
+							<!-- 이메일 -->
+							<div class="fm_txt">
+								<span>이메일*</span>
+							</div>
+							<div class="fm_input">
+								<input type="text" name="email" id="fm_email_join"> 
+							</div>
+								<!-- 중복체크 input 없을시 checked -->
+								<input type="hidden" name="checkedEmail" value="">
 		
-		<div class="component-page" style="display:none;">
-			<!-- login content -->
-			<div class="login_box">
-				
-				<div class="signup-toggle">
-					<span> 회원가입 </span>
-				</div>
-				<div class="login-toggle">
-					<span> 로그인  </span>
-				</div>
-				
-				<!-- 회원가입 form -->
-				<form action="./MemberJoinAction.me" method="post" name="joinForm" id="joinForm">
-				
-					<div class="join-form">
-					
-						<!-- 이메일 -->
-						<div class="fm_email">
-							<input type="text" name="email" id="fm_email_join" placeholder="이메일" style="float: left;"> 
-						</div>
-						
-						<button type="button" class="checkEmail"> 중복체크 </button>
-						<input type="hidden" name="checkedEmail" value="">
-	
-						<!-- 비밀번호 -->
-						<div class="fm_pass">
-							<input type="password" name="pass" id="fm_pass_join" placeholder="비밀번호 (8~16 영문/숫자 포함)" maxlength="16">
-						</div>
-						
-							<div class="confirmMsg1" style="display: none;">
-								<span id="pwConfirmMsg"></span>
+							<!-- 비밀번호 -->
+							<div class="fm_txt">
+								<span>비밀번호*</span>
 							</div>
-	
-						<!-- 비밀번호 체크 --> 
-						<div class="fm_passChk">
-							<input type="password" id="fm_passChk_join" name="pass2" placeholder="비밀번호 확인">
-						</div>
-						
-							<div class="confirmMsg2" style="display: none;">
-								<span id="pw2ConfirmMsg"></span>
+							<div class="fm_input">
+								<input type="password" name="pass" id="fm_pass_join" placeholder="(8~16 영문/숫자 포함)" maxlength="16">
 							</div>
-	
-						<!-- 이름 -->
-						<div class="fm_name">
-							<input type="text" name="name" id="fm_name_join" placeholder="이름">
+								<!-- 비밀번호 유효성 검사 체크 -->
+								<input type="hidden" name="checkedPass" value="">
+							
+							<!-- 이름 -->
+							<div class="fm_txt">
+								<span>이름*</span>
+							</div>
+							<div class="fm_input">
+								<input type="text" name="name" id="fm_name_join">
+							</div>
+							
+							<!-- 이용약관 & 개인정보정책 동의란 -->
+							<div class="privacyBox">
+								<p>
+									<input type="checkbox" name="privacy" id="fm_privacy"> <span id="privacy_label"> (필수) 이용약관 <span id="popup_privacy" onclick="openJoin_term()" >전체보기</span></span>
+								</p>
+								<p>
+									<input type="checkbox" name="privacy" id="fm_join_term"> <span id="privacy_label"> (필수) 개인정보정책 <span id="popup_privacy" onclick="openPrivacy()">전체보기</span> </span>
+								</p>
+							</div>
+							
+							
+							<!-- 가입하기 버튼 -->
+							<div class="fm_submitBtn">
+								<button type="button" class="join_submitBtn">
+									<span id="join_text">가입하기</span> <span id="loading" style="display:none; font-size: 1.1em;"><i class="fa fa-spinner fa-spin"></i> </span>
+								</button>
+							</div>
+							
 						</div>
-	
-						<!-- 휴대폰번호 -->
-						<div class="fm_phone">
-							<input type="text" name="phone" id="fm_phone_join" placeholder="휴대폰번호( '-' 제외)" maxlength="13" pattern="\d*">
-						</div>
-						
-						<!-- 이용약관 & 개인정보정책 동의란 -->
-						<p style="margin:4% 0 1.5% 0;">
-							<input type="checkbox" name="privacy" id="fm_privacy"> (필수) <span id="privacy_label"> 이용약관 <span id="popup_privacy" onclick="openJoin_term()" >전체보기</span></span>
-						</p>
-						<p style="margin:1.5% 0 4% 0;">
-							<input type="checkbox" name="privacy" id="fm_join_term"> (필수) <span id="privacy_label"> 개인정보정책 <span id="popup_privacy" onclick="openPrivacy()">전체보기</span> </span>
-						</p>
-						
-						<!-- 가입하기 버튼 -->
-						<div class="fm_submitBtn">
-							<button type="button" class="join_submitBtn">
-								<span id="join_text">가입하기</span> <span id="loading" style="display:none; font-size: 1.1em;"><i class="fa fa-spinner fa-spin"></i> </span>
-							</button>
-						</div>
-						
-					</div>
-				</form>
-				
-				<!-- 로그인 form -->
-				<form action="./MemberLoginAction.me" method="post" id="loginForm">
-					<div class="login-form">
-					
-						<input type="hidden" name="referer" id="fm_url_login" value="<%=prev_url%>" />
-					
-						<!-- 이메일 -->
-						<div class="fm_email">
-							<input type="email" name="email" id="fm_email_login" placeholder="이메일" id="email">
-						</div>
-						
-						<!-- 비밀번호 -->
-						<div class="fm_pass">
-							<input type="password" name="pass" id="fm_pass_login" placeholder="비밀번호">
-						</div>
-						
-						<div class="fm_find">
-							<a href="./MemberFindIDPW.me"> 이메일 또는 암호를 잊으셨습니까? </a>
-						</div>
-						
-						<!-- 로그인 -->
-						<div class="fm_submitBtn">
-							<button type="button" class="login_submitBtn">
-								<span id="join_text">로그인</span>
-							</button>
-						</div>
-					</div>
-				</form>
-			</div>
-			
-			<!-- 회원이 아니십니까? -->
-			<div>
-				<span>회원이 아니십니까?</span>
-			</div>
-			
-			<!-- register content  -->
-			<div class="join-box">
-				
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
+	
+	<!-- FOOTER -->
+	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 	
 </body>
 
 <script type="text/javascript">
 
 	$(document).ready(function(){
+		
+		$('#fm_email_login').focus();
 		
 		//방지
 		$(document).bind('keydown', function(e){
@@ -185,39 +169,38 @@
 			}
 		});
 		
-		//회원가입 form을 클릭했을시
-		$('.signup-toggle').click(function(){
-			$('#content_login').css("height", "650px");
-			$('.signup-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
-			$('.login-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
-			$('#loginForm').css("display", "none");
-			$('#joinForm').css("display", "inline-block");
-		});	
-		
-		//로그인 form을 클릭했을시
-		$('.login-toggle').click(function(){
-			$('#content_login').css("height", "350px");
-			$('.signup-toggle').css({"border-bottom":"3px solid #e0e0e0", "color":"#939393"})
-			$('.login-toggle').css({"border-bottom":"3px solid #424242", "color":"#424242"})
-			$('#joinForm').css("display", "none");
-			$('#loginForm').css("display", "inline-block");
+		//회원이 아닙니다 클릭했을시 
+		$('.joinPopUp-text').click(function(){
+			$(this).css('display', 'none');
+			
+			$('.joinPopUp-textUp').css('display', 'block');
+			
+			//회원가입 form 밑으로 내리기
+			$('.join-box').slideDown('fast');
 		});
-		
+		//회원가입 form 접는 버튼 클릭했을시
+		$('.joinPopUp-textUp').click(function(){
+			$(this).css('display', 'none');
+			
+			$('.joinPopUp-text').css('display', 'block');
+			
+			//회원가입 form 밑으로 내리기
+			$('.join-box').slideUp('fast');
+		});
 		
 		// ---------------- 회원가입 Form 관련 유효성 검사 --------------------
 		
 		//올바른 이메일 양식 체크하는 함수
-		$('.checkEmail').click(function(){
+		$('#fm_email_join').on("propertychange change keyup paste input", function(){
 			var email = $("#fm_email_join").val();
 			//이메일란에 빈칸을 작성했을시
 			if(email == ""){
-				alert("이메일을 작성해주세요.");
+// 				alert("이메일을 작성해주세요.");
 				$("#fm_email_join").focus();
 			}
 			
 			//올바른 이메일 양식 체크하기
 			else if(/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test($.trim(email))){
-				 //alert("사용하실수 있는 양식의 이메일입니다.");
 				 $.ajax({
 					type:"post",
 					url:"./MemberCheckEmailAction.me",
@@ -225,18 +208,17 @@
 					success:function(data){
 						//가입 되어 있지 않은 이메일이면
 						if($.trim(data) == "YES"){
-				 			alert("사용하실수 있는 이메일입니다.\n\n※ 주의 : 반드시 본인이 수신가능한 메일이어야합니다.");
+// 				 			alert("사용하실수 있는 이메일입니다.\n\n※ 주의 : 반드시 본인이 수신가능한 메일이어야합니다.");
+				 			$('#fm_email_join').css({"border":"1px solid #46a74e", "color":"#46a74e"}); //초록
 				 			
 				 			//checkedEmail input 값에 checked 값 넣기
 				 			$("input[name=checkedEmail]").val("checked");
-				 			$('#emailConfirmIcon').text('✔').css({'color':'green', 'font-size':16, 'font-weight':'bold'});
-				 			$("#fm_pass_join").focus();
-				 				
 				 		}
 				 		//이미 가입되어있는 이메일이면
 				 		else if($.trim(data) == "NO"){
-				 			alert("이미 가입되어 있는 이메일입니다.");
-				 			$("#fm_email_join").focus();
+// 				 			alert("이미 가입되어 있는 이메일입니다.");
+				 			$('#fm_email_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
+				 			$("input[name=checkedEmail]").val(null);
 				 		}
 					},
 					error:function(request,status,error){
@@ -246,10 +228,10 @@
 				 });
 			}
 			else if(!/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test($.trim(email))){
-				alert("올바른 양식의 이메일을 작성해주세요.");
-				$("#fm_email_join").focus();
+// 				alert("올바른 양식의 이메일을 작성해주세요.");
+				$('#fm_email_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
+				$("input[name=checkedEmail]").val(null);
 			}
-			
 			
 			//이메일 input 값이 변경되었을시 감지하는 함수
 			$('#fm_email_join').change(function(){
@@ -261,72 +243,29 @@
 		//비밀번호 input를 클릭했을시
 		$("#fm_pass_join").click(function(){
 			this.value = '';
-			$('#pwConfirmMsg').text('');
-			$('.confirmMsg1').hide("fast");
+			$('input[name=checkedPass]').val(null);
 		});
 		
 		//비밀번호 유효성 검사
 		$("#fm_pass_join").on("propertychange change keyup paste input", function(){
 			//비밀번호 조건(8~16자, 영문/숫자 포함)
 			if(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/.test($(this).val())){
-				$('#pwConfirmMsg').text('사용할 수 있는 비밀번호 입니다.').css({'color':'#009c00'});
-				$('.confirmMsg1').show("fast");
+				$('#fm_pass_join').css({"border":"1px solid #46a74e", "color":"#46a74e"}); //초록
+				$("input[name=checkedPass]").val("checked");
 			} else{
-				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다. (8~16 영문/숫자 포함)').css({'color':'#af0000'});
-				$('.confirmMsg1').show("fast");
-			}
-			
-			if(document.joinForm.pass2.value.length != 0){
-				
-				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-				
-				if(document.joinForm.pass.value != document.joinForm.pass2.value){
-					$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-					$('.confirmMsg2').show("fast");
-				} else{
-					$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
-					$('.confirmMsg2').show("fast");
-				}
+				$('#fm_pass_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
+				$('input[name=checkedPass]').val(null);
 			}
 		});
-		
-		//비밀번호 확인란 체크하기
-		$("#fm_passChk_join").on("propertychange change keyup paste input", function(){
-			if($("#fm_pass_join").val() == ''){
-				alert("비밀번호를 작성해주세요.");
-				$("#fm_passChk_join").val('');
-				return false;
-			}
-			else if(document.joinForm.pass.value != document.joinForm.pass2.value){
-				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-				$('.confirmMsg2').show("fast");
-			} else{
-				$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
-				$('.confirmMsg2').show("fast");
-			}
-		});
-		
-		//비밀번호확인 input를 다시 클릭했을시
-		$("#fm_passChk_join").click(function(){
-			this.value = '';
-			$('#pw2ConfirmMsg').text('');
-			$('.confirmMsg2').hide("fast");
-		});
-		
+
 		//이름 input에 한글,영어만 입력하도록 하는 함수
 		$("#fm_name_join").on("propertychange change keyup paste input", function(){
 			var inputName = $(this).val();
 			$(this).val(inputName.replace(/[^ㄱ-힣a-zA-Z\u119E\u11A2]/gi,''));
 		});
 		
-		//휴대폰번호 input에 숫자만 입력하도록 하는 함수
-		$("#fm_phone_join").on("propertychange change keyup paste input", function(){
-			var inputNum = $(this).val();
-			$(this).val(inputNum.replace(/[^0-9]/gi,''));
-		});
-		
 		//enter 키 눌렸을시
-		$('#fm_email_join, #fm_pass_join, #fm_passChk_join, #fm_name_join, #fm_phone_join').keypress(function(event){
+		$('#fm_email_join, #fm_pass_join, #fm_passChk_join, #fm_name_join').keypress(function(event){
 			if(event.which == 13){
 				$(".join_submitBtn").click();
 				return false;
@@ -337,49 +276,32 @@
 		$(".join_submitBtn").click(function(){
 			//이메일 빈칸이면
 			if($('#fm_email_join').val() == ''){
-				alert("이메일을 입력해주세요.");
+				alert("이메일을 작성해주세요.");
 				$('#fm_email_join').focus();
 				return false;
 			}
 			//중복체크 안했으면
 			else if($('input[name=checkedEmail]').val() == ''){
-				alert("이메일 중복체크를 해주세요.");
+				alert("이미 가입되어 있거나 올바른 이메일 양식을 작성해주세요.");
+				$('#fm_email_join').focus();
 				return false;
 			}
 			//비밀번호 빈칸이면
 			else if($('#fm_pass_join').val() == ''){
-				alert("비밀번호를 입력해주세요.");
+				alert("비밀번호를 작성해주세요.");
 				$('#fm_pass_join').focus();
 				return false;
 			}
-			//비밀번호가 유효한 비밀번호인지 체크 (사용할 수 없는~) 포함 여부
-			else if($('#pwConfirmMsg').text().includes('없는')){
-				alert("유효한 비밀번호를 입력해주세요.");
+			//비밀번호 체크 input이 빈칸이면
+			else if($('input[name=checkedPass]').val() == ''){
+				alert("올바른 비밀번호를 작성해주세요.");
 				$('#fm_pass_join').focus();
-				return false;
-			}
-			//비밀번호 확인 빈칸이면
-			else if($('#fm_passChk_join').val() == ''){
-				alert("비밀번호 확인란을 입력해주세요.");
-				$('#fm_passChk_join').focus();
-				return false;
-			}
-			//비밀번호 확인란 체크하기
-			else if(document.joinForm.pass.value != document.joinForm.pass2.value){
-				alert("비밀번호가 다릅니다.");
-				$('#fm_passChk_join').focus();
 				return false;
 			}
 			//이름 빈칸이면
 			else if($('#fm_name_join').val() == ''){
-				alert("이름을 입력해주세요.");
+				alert("이름을 작성해주세요.");
 				$('#fm_name_join').focus();
-				return false;
-			}
-			//휴대폰 번호 빈칸이면
-			else if($('#fm_phone_join').val() == ''){
-				alert("휴대폰을 입력해주세요.");
-				$('#fm_phone_join').focus();
 				return false;
 			}
 			//이용약관 개인정보정책 동의 체크하기
@@ -398,7 +320,7 @@
 		});
 		
 		
-		
+
 		// ---------------- 로그인 Form 관련 유효성 검사 --------------------
 		//Enter키 눌렸을시
 		$('#fm_email_login, #fm_pass_login').keypress(function(event){
@@ -413,13 +335,13 @@
 		
 			//이메일란이 비어있으면
 			if($('#fm_email_login').val() == ''){
-				alert("이메일을 입력해주세요.");
+				alert("이메일을 작성해주세요.");
 				$('#fm_email_login').focus();
 				return false;
 			}
 			//비밀번호란이 비어있으면
 			else if($('#fm_pass_login').val() == ''){
-				alert("비밀번호를 입력해주세요.");
+				alert("비밀번호를 작성해주세요.");
 				$('#fm_pass_login').focus();
 				return false;
 			}
