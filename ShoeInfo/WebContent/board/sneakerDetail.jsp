@@ -541,10 +541,10 @@
 							</tr>
 							<%}%>
 							<tr class="releasedDropDown" id="count_todays_status<%=countryName_eng%>-releasedDropDown">
-								<td colspan="6" style="padding:8px;"> 마감된 발매처 <i class="fas fa-angle-down"></i> </td>
+								<td colspan="6" style="padding:8px;"> 종료된 발매처 <i class="fas fa-angle-down"></i> </td>
 							</tr>
 							<tr class="releasedDropUp" id="count_todays_status<%=countryName_eng%>-releasedDropUp" style="display:none;">
-								<td colspan="6" style="padding:8px;"> 마감된 발매처 <i class="fas fa-angle-up"></i> </td>
+								<td colspan="6" style="padding:8px;"> 종료된 발매처 <i class="fas fa-angle-up"></i> </td>
 							</tr>
 							<!-- 마감된 발매처들 -->
 							<tbody id="count_todays_status<%=countryName_eng%>trReleasedPart" style="display:none;">

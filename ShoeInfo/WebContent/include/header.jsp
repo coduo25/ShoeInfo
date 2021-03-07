@@ -81,7 +81,7 @@
 			<div class="block-list">
 				<div class="block-content">
 					<ul class="nav">
-						<li <%if(pageName.equals("allReleaseList.jsp") || pageName.equals("sneakerDetail.jsp")) {%> style="border-bottom:2px solid black;"<%}%>> 
+						<li <%if(pageName.equals("allReleaseList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>> 
 							<a href="./AllReleaseList.go">발매 중&#8226;발매예정</a>
 						</li>
 						<li <%if(pageName.equals("todaysReleaseList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>

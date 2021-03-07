@@ -28,7 +28,7 @@ body {font-size:1em; line-weight:1.4}
 .moreBtn { padding:10px 15px; color:white; border-radius:5px; font-size:18px; margin:30px auto 50px auto; background-color:#4990e2; box-shadow:0 0.1rem 0.1rem rgb(0 0 0 / 10%), 0 0.1rem 0.3rem rgb(0 0 0 / 10%); cursor:pointer; }
 
 /* 발매 중 리스트 (메인페이지) */
-.mainSneaker-container { float:left; width:23%; margin:0 1% 3% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; box-shadow:0px 2px 5px rgb(0 0 0 / 20%); border:1px solid rgb(222 222 222); }
+.mainSneaker-container { float:left; width:23%; margin:0 1% 3% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; box-shadow:0px 2px 5px #44444433; border:1px solid rgb(222 222 222); }
 	/* 이미지 파트 */
 	.mainSneaker-image { display:block; }
 	.mainSneaker-image img { width:100%; height:100%; background-color:#f3f3f3; padding:25% 10% 5% 10%; border-bottom:1px solid rgb(222 222 222);}
@@ -81,7 +81,7 @@ body {font-size:1em; line-weight:1.4}
 	
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
-.snkrsWeek-table-container { width:1080px; overflow-x:scroll; padding:35px 20px; white-space:nowrap; box-shadow:0px 0px 10px rgb(0 0 0 / 20%); }
+.snkrsWeek-table-container { width:1080px; overflow-x:scroll; padding:35px 20px; white-space:nowrap; box-shadow:0px 0px 5px rgb(0 0 0 / 20%); }
 .snkrsSneaker-container { display:inline-block; width:30%; margin-right:20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
 .snkrsSneaker-container img { padding:70px 10px 20px 10px; background-color:#f3f3f3; border:1px solid #e1e1e1; }
@@ -105,7 +105,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 /* 나의 응모내역 리스트 ------------------------------------------------------------------------------ */ 
 
 /******************** pc 버전  ****************************/
-.myDraw-container { float:left; width:31.33%; margin:0 1% 4% 1%; text-align:left; font-family:'Nanum Gothic', sans-serif; vertical-align:top; position:relative; border:1px solid rgb(222 222 222); cursor:pointer; box-shadow:0px 2px 5px rgb(0 0 0 / 20%);; }
+.myDraw-container { float:left; width:31.33%; margin:0 1% 4% 1%; text-align:left; font-family:'Nanum Gothic', sans-serif; vertical-align:top; position:relative; border:1px solid rgb(222 222 222); cursor:pointer; box-shadow:0px 2px 5px #44444433; }
 .myDraw-image, .myDrawShoeInfo-container { display:block; }
 /* 이미지 파트 */	
 .myDraw-image { width:100%; position:relative; }

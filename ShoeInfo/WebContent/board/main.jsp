@@ -118,25 +118,25 @@
 						int countBrand = countReleasingBrandList.get(i);
 				%>
 					<div class="mainSneaker-container">
-						<!-- 신발이미지 -->
-						<div class="mainSneaker-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
+						<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
+							<!-- 신발이미지 -->
+							<div class="mainSneaker-image">
 								<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
-							</a>
-						</div>
-						<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
-						<div class="mainSneakerShoeInfo-container">
-							<!-- 이름 칸 -->
-							<div class="mainSneakerShoeInfo-name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>';">
-								<span> <%=releasing_sdto.getModel_name_kr()%> </span>
 							</div>
-							<!-- 발매처 횟수 -->
-							<div class="mainSneaker-brandCount">
-								<span class="mainSneaker-brandCountTxt">	
-									발매처 <%=countBrand%>+
-								</span>
+							<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
+							<div class="mainSneakerShoeInfo-container">
+								<!-- 이름 칸 -->
+								<div class="mainSneakerShoeInfo-name">
+									<span> <%=releasing_sdto.getModel_name_kr()%> </span>
+								</div>
+								<!-- 발매처 횟수 -->
+								<div class="mainSneaker-brandCount">
+									<span class="mainSneaker-brandCountTxt">	
+										발매처 <%=countBrand%>+
+									</span>
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				<% } } %>
 			</div>
@@ -688,19 +688,19 @@
 						}
 				%>
 					<div class="mainSneaker-container">
-						<!-- 신발이미지 -->
-						<div class="mainSneaker-image">
-							<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
+						<a href="./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>">
+							<!-- 신발이미지 -->
+							<div class="mainSneaker-image">
 								<img src="./sneaker_img_upload/<%=release_sdto.getImage()%>">
-							</a>
-						</div>
-						<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
-						<div class="mainSneakerShoeInfo-container">
-							<!-- 이름 칸 -->
-							<div class="mainSneakerShoeInfo-name" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=release_sdto.getModel_stylecode()%>&num=<%=release_sdto.getNum()%>';">
-								<span> <%=release_sdto.getModel_name_kr()%> </span>
 							</div>
-						</div>
+							<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
+							<div class="mainSneakerShoeInfo-container">
+								<!-- 이름 칸 -->
+								<div class="mainSneakerShoeInfo-name">
+									<span> <%=release_sdto.getModel_name_kr()%> </span>
+								</div>
+							</div>
+						</a>
 					</div>
 				<% } } %>
 			</div>

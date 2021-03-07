@@ -30,26 +30,44 @@
 		}
 	%>
 	
-	<div class="mem_header">
-		<!-- 로고 -->
-		<div class="navbar_logo">
-			<a href="./SneakerList.go"> SHOE Info. </a>
-		</div>
-	</div>
+	<!-- Header -->
+	<header> <jsp:include page="/include/header.jsp" /> </header>
 	
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
+	
 		<div class="component-page">
-			<!-- content -->
-			<div id="content_login">
+			<!-- login content -->
+			<div class="login-box">
+				<div class="login_subtitle">
+					<span>Login Part</span>
+				</div>
+			</div>
 			
-				<div class="change_form">
-					<div class="signup-toggle">
-						<span> 회원가입 </span>
-					</div>
-					<div class="login-toggle">
-						<span> 로그인  </span>
-					</div>
+			<!-- 회원이 아니십니까? -->
+			<div class="joinPopUp-text">
+				<span>회원이 아니십니까?</span>
+			</div>
+			
+			<!-- register content  -->
+			<div class="join-box">
+				<div class="join_subtitle">
+					<span>Register Part</span>
+				</div>
+			</div>
+			
+		</div>
+	
+		
+		<div class="component-page" style="display:none;">
+			<!-- login content -->
+			<div class="login_box">
+				
+				<div class="signup-toggle">
+					<span> 회원가입 </span>
+				</div>
+				<div class="login-toggle">
+					<span> 로그인  </span>
 				</div>
 				
 				<!-- 회원가입 form -->
@@ -139,6 +157,16 @@
 						</div>
 					</div>
 				</form>
+			</div>
+			
+			<!-- 회원이 아니십니까? -->
+			<div>
+				<span>회원이 아니십니까?</span>
+			</div>
+			
+			<!-- register content  -->
+			<div class="join-box">
+				
 			</div>
 		</div>
 	</div>
