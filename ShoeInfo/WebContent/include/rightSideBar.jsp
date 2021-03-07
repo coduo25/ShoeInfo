@@ -83,12 +83,20 @@
 		
 		<!-- 나의 응모내역 보러가기 box -->
 		<div class="myDrawPopUp" id="myDrawPopUp">
-			<div>
-				<span>나의 응모내역</span>
+		
+			<div class="myDrawPopUpIcon" style="display:inline-block;">
+				<i class="fas fa-user-check"></i>
 			</div>
-			<div>
-				<span>보러가기</span>
+			
+			<div style="display:inline-block;">
+				<div class="myDrawPopUpTxt1">
+					<span>나의 응모내역</span>
+				</div>
+				<div class="myDrawPopUpTxt2">
+					<span>보러가기</span>
+				</div>
 			</div>
+			
 		</div>
 		
 	</div>

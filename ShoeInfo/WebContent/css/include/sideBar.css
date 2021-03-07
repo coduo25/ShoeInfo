@@ -51,9 +51,10 @@
 	.ad-rightSideBar-box { border-radius:5px; z-index:50; background-color:#eaeaea; margin:0 auto; } /* height:600px; */
 	
 	/* 나의 응모내역 보러가기 박스 */
-	.myDrawPopUp { width:180px; font-family:'Nanum Gothic', sans-serif; border:2px solid #b12e30; border-radius:5px; padding:3% 5%; margin-top:10%; background-color:#d24042; cursor:pointer; }
-	.myDrawPopUp div { text-align:center; font-weight:bold; color:white; }
-	
+	.myDrawPopUp { display:flex; width:180px; font-family:'Nanum Gothic', sans-serif; border:3px solid #282A35; border-radius:5px; padding:8px 12px; margin-top:10%; background-color:#282A35; cursor:pointer; transition:0.5s; }
+	.myDrawPopUpIcon { padding-right:8px; }
+	.myDrawPopUpIcon i { font-size:32px; color:white; padding:2px; }
+	.myDrawPopUpTxt1, .myDrawPopUpTxt2 { text-align:left; font-weight:bold; color:white; line-height:1.3em; }
 	
 	
 	
