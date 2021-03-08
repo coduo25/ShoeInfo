@@ -73,7 +73,7 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 		
 		<!-- 신발 정보 container -->
-		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important;">
+		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important; border-bottom:1px solid #c8c8c8; padding-bottom:25px !important;">
 			<!-- 신발 이미지 -->
 			<div class="shoeImg-container">
 				<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
@@ -90,40 +90,29 @@
 					<div class="shoeFullName_kr">
 						<span> <%=sdto.getModel_name_kr()%> </span>
 					</div>
+					
+					<!-- 상세 정보 -->
+					<div class="shoeDetailInfo">
+						<!-- 제품 상제 정보 -->
+						<div class="shoeDetailInfo-content">
+							<span class="shoeinfo-cateAns">
+								<%=sdto.getModel_stylecode()%>
+									<span class="dividePipe">|</span>
+								<%=sdto.getModel_colorway()%>
+									<span class="dividePipe">|</span>
+								<%if(sdto.getRelease_date().contains("99")){%>
+									미정
+								<%}else{%>
+									<%=dot_format.format(date_type)%>
+								<%}%>
+							</span>
+						</div>
+					</div>
 				</div>
 				
-				<!-- 상세 정보 -->
-				<div class="shoeDetailInfo">
-					<div class="shoeDetailInfo-subtitle">
-						<p>제품 정보</p>
-					</div>
-					<!-- 제품 상제 정보 -->
-					<div class="shoeDetailInfo-content">
-						<span class="shoeinfo-cate">브랜드</span>
-						<span class="shoeinfo-cateAns"><%=sdto.getBrand()%></span>
-					</div>
-					<div class="shoeDetailInfo-content">
-						<span class="shoeinfo-cate">스타일코드</span>
-						<span class="shoeinfo-cateAns"><%=sdto.getModel_stylecode()%></span>
-					</div>
-					<div class="shoeDetailInfo-content">
-						<span class="shoeinfo-cate">컬러웨이</span>
-						<span class="shoeinfo-cateAns"><%=sdto.getModel_colorway()%></span>
-					</div>
-					<div class="shoeDetailInfo-content">
-						<span class="shoeinfo-cate">발매일(글로벌)</span>
-						<span class="shoeinfo-cateAns">
-							<%if(sdto.getRelease_date().contains("99")){%>
-								미정
-							<%}else{%>
-								<%=dot_format.format(date_type)%>
-							<%}%>
-						</span>
-					</div>
-					<div class="shoeDetailInfo-content" style="border-bottom:1px solid #e8e8e8; padding-bottom:20px !important;">
-						<span class="shoeinfo-cate">발매가</span>
-						<span class="shoeinfo-cateAns">₩ <%=formatter.format(sdto.getPrice())%></span>
-					</div>
+				<!-- 발매처 보러가기 버튼 -->
+				<div class="shoeDetailInfo-directlinks">
+					<span onclick="location.href='./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>'"><i class="fab fa-sistrix"></i> 발매처 보러가기</span>
 				</div>
 			</div>
 		</div>

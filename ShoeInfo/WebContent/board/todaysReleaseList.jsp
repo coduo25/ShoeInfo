@@ -104,9 +104,9 @@
 				<table id="onlineList_todays_table">
 					<tr>
 						<th style="width:8%;"> 번호 </th>
-						<th style="width:48%; border-right: 0.5px dotted #dcdcdc;"> 발매처 정보 </th>
-						<th style="width:20%; border-right: 0.5px dotted #dcdcdc;"> 발매제품 </th>
-						<th style="width:12%;"> 링크 </th>
+						<th style="width:45%;"> 발매처 정보 </th>
+						<th style="width:20%;"> 발매제품 </th>
+						<th style="width:15%;"> 링크 </th>
 					</tr>
 					<% if(onlineList_todays.isEmpty() || brandList_todays.isEmpty()){ %>
 						<tr>
@@ -176,7 +176,7 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" style="border-right:1px dotted #dcdcdc; text-align:left !important; padding-left:5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" style="text-align:left !important; padding-left:5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
@@ -402,7 +402,7 @@
 							</td>
 				
 							<!-- 발매신발 -->
-							<td id="releaseModel-info<%=i%>" style="background-color:#f9f9f9; border-right:1px dotted #dcdcdc; padding-left:15px; padding-right:15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
+							<td id="releaseModel-info<%=i%>" style="padding-left:15px; padding-right:15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>" class="releaseModel-container">
 							<input type="hidden" id="model_num<%=i%>" value="<%=odto_todays.getModel_num()%>">
 							<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
 <!-- 								<div> -->
@@ -415,11 +415,11 @@
 									</a>
 								</div>
 								<!-- 발매제품 모델명 -->
-								<div class="releaseModel-name">
+								<div class="releaseModel-name" style="display:none;">
 									<span><a href="./SneakerDetail.go?model_stylecode=<%=odto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"><%=sdto_todays.getModel_name_kr()%></a></span>
 								</div>
 								<!-- 발매가 -->
-								<div class="releaseModel-price">
+								<div class="releaseModel-price" style="display:none;">
 									<span>-</span>
 								</div>
 							</td>

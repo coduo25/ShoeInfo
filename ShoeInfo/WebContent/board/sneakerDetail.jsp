@@ -233,8 +233,8 @@
 								<th style="width:70px"> 번호 </th>
 								<th style="width:92px"> 진행상태 </th>
 								<th style="width:281px"> 발매처 </th>
-								<th style="width:320px"> 시간 </th>
-								<th style="width:170px; border-right: 1px dotted #dcdcdc;"> 결제·배송 </th>
+								<th style="width:310px"> 시간 </th>
+								<th style="width:180px; border-right: 1px dotted #dcdcdc;"> 결제·배송 </th>
 								<th style="width:147px"> 링크 </th>
 							</tr>
 							<%if(new_onlineList.isEmpty()) {%>
@@ -352,7 +352,9 @@
 										</div>
 										<div class="sneakerDetail-brandName">
 											<div class="sneakerDetail-brandNameTxt" id="count_todays_status<%=countryName_eng%><%=i%>brandName">
-												<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%></span>
+												<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+													<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%></span>
+												</a>
 											</div>
 											<div class="sneakerDetail-releaseMethod">
 												<span>
