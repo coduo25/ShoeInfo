@@ -27,79 +27,67 @@
 	%>
 
 	<!-- Header -->
-<%-- 	<header> <jsp:include page="/include/header.jsp" /> </header> --%>
-
-	<div class="mem_header">
-		<!-- 로고 -->
-		<div class="navbar_logo">
-			<a href="./SneakerList.go"> SHOE Info. </a>
-		</div>
-	</div>
+	<header> <jsp:include page="/include/header.jsp" /> </header>
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 		<div class="component-page">
-			<!-- content -->
-			<div id="content_modify" style="margin:100px auto 20px auto;">
-	
-				<h3>회원정보 수정</h3>
-	
-				<form action="#" method="post" name="modiForm" id="modiForm">
-					<div class="modi-form">
-					
-						<!-- 이메일 -->
-						<div class="fm_email">
-							<input type="email" name="email" placeholder="이메일" value="<%=mdto.getEmail()%>" disabled> 
-						</div>
-	
-						<!-- 비밀번호 -->
-						<div class="fm_pass">
-							<input type="password" name="pass" placeholder="비밀번호 (8~16 영문/숫자 포함)" maxlength="16">
+			
+			<div class="update-box">
+				<div class="update_subtitle">
+					<span>Update Information</span>
+				</div>
+				<div class="updateformBox">
+					<!-- 회원정보수정 form -->
+					<form action="#" method="post" name="modiForm" id="modiForm">
+						<div class="modi-form">
+						
+							<!-- 이메일 -->
+							<div class="fm_txt">
+								<span>이메일</span>
+							</div>
+							<div class="fm_input">
+								<input type="email" id="fm_email_join" name="email" value="<%=mdto.getEmail()%>" disabled style="background-color:#ececec !important;" > 
+							</div>
+		
+							<!-- 비밀번호 -->
+							<div class="fm_txt">
+								<span>비밀번호</span>
+							</div>
+							<div class="fm_input">
+								<input type="password" id="fm_pass_join" name="pass" maxlength="16">
+							</div>
+								<!-- 비밀번호 유효성 검사 체크 -->
+								<input type="hidden" name="checkedPass" value="">
+		
+							<!-- 이름 -->
+							<div class="fm_txt">
+								<span>이름</span>
+							</div>
+							<div class="fm_input">
+								<input type="text" id="fm_name_join" name="name" value="<%=mdto.getName()%>">
+							</div>
 							
-						</div>
-						
-							<div class="confirmMsg1" style="display: none;">
-								<span id="pwConfirmMsg"></span>
+							<!-- 수정하기 버튼 -->
+							<div class="fm_submitBtn">
+								<button type="button" class="modi_submitBtn">
+									<span id="join_text">수정하기</span>
+								</button>
 							</div>
-	
-						<!-- 비밀번호 체크 --> 
-						<div class="fm_passChk">
-							<input type="password" name="pass2" placeholder="비밀번호 확인">
 						</div>
-						
-							<div class="confirmMsg2" style="display: none;">
-								<span id="pw2ConfirmMsg"></span>
-							</div>
-	
-						<!-- 이름 -->
-						<div class="fm_name">
-							<input type="text" name="name" placeholder="이름" value="<%=mdto.getName()%>">
-						</div>
-	
-						<!-- 휴대폰번호 -->
-						<div class="fm_phone">
-							<input type="text" name="phone" placeholder="휴대폰번호( '-' 제외)" maxlength="13" pattern="\d*" value="<%=mdto.getPhone()%>">
-						</div>
-						
-						<!-- 수정하기 버튼 -->
-						<div class="fm_submitBtn">
-							<button type="button" class="modi_submitBtn">
-								<span id="join_text">수정하기</span>
-							</button>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 			
-			<div id="content_modify" style="margin:20px auto 100px auto; height: 50px; display: table;">
-				<div id="delete_text" style="display:table-cell; font-weight: normal; vertical-align: middle; font-size: 0.9em; color: #8d8d8d; cursor: pointer;"> 회원정보탈퇴신청 </div>
+			<div class="content_modify">
+				<div class="delete_text"> 회원탈퇴신청 </div>
 			</div>
 			
 		</div>
 	</div>
 
 	<!-- FOOTER -->
-<%-- 	<footer> <jsp:include page="/include/footer.jsp" /> </footer> --%>
+	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 
 </body>
 
@@ -116,80 +104,30 @@
 		});
 		
 		//비밀번호 input를 클릭했을시
-		$("input[name=pass]").click(function(){
+		$("#fm_pass_join").click(function(){
 			this.value = '';
-			$('#pwConfirmMsg').text('');
-			$('.confirmMsg1').hide("fast");
+			$('#fm_pass_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
+			$('input[name=checkedPass]').val(null);
 		});
 		
 		//비밀번호 유효성 검사
-		$("input[name=pass]").on("propertychange change keyup paste input", function(){
+		$("#fm_pass_join").on("propertychange change keyup paste input", function(){
 			//비밀번호 조건(8~16자, 영문/숫자 포함)
 			if(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/.test($(this).val())){
-				$('#pwConfirmMsg').text('사용할 수 있는 비밀번호 입니다.').css({'color':'#009c00'});
-				$('.confirmMsg1').show("fast");
+				$('#fm_pass_join').css({"border":"1px solid #46a74e", "color":"#46a74e"}); //초록
+				$("input[name=checkedPass]").val("checked");
 			} else{
-				$('#pwConfirmMsg').text('사용할 수 없는 비밀번호 입니다. (8~16 영문/숫자 포함)').css({'color':'#af0000'});
-				$('.confirmMsg1').show("fast");
+				$('#fm_pass_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
+				$('input[name=checkedPass]').val(null);
 			}
-			
-			if(document.modiForm.pass2.value.length != 0){
-				
-				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-				
-				if(document.modiForm.pass.value != document.modiForm.pass2.value){
-					$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-					$('.confirmMsg2').show("fast");
-				} else{
-					$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
-					$('.confirmMsg2').show("fast");
-				}
-			}
-		});
-		
-		//비밀번호 확인란 체크하기
-		$("input[name=pass2]").on("propertychange change keyup paste input", function(){
-			if($("input[name=pass]").val() == ''){
-				alert("비밀번호를 작성해주세요.");
-				$("input[name=pass2]").val('');
-				return false;
-			}
-			else if(document.modiForm.pass.value != document.modiForm.pass2.value){
-				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-				$('.confirmMsg2').show("fast");
-			} else{
-				$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
-				$('.confirmMsg2').show("fast");
-			}
-		});
-		
-		//비밀번호 확인 input를 다시 클릭했을시
-		$("input[name=pass2]").click(function(){
-			this.value = '';
-		});
-		
-		//비밀번호확인 input를 다시 클릭했을시
-		$("input[name=pass2]").click(function(){
-			this.value = '';
-			$('#pw2ConfirmMsg').text('');
-			$('.confirmMsg2').hide("fast");
 		});
 		
 		//이름 input에 한글,영어만 입력하도록 하는 함수
-		$("input[name=name]").on("propertychange change keyup paste input", function(){
+		$("#fm_name_join").on("propertychange change keyup paste input", function(){
 			var inputName = $(this).val();
 			$(this).val(inputName.replace(/[^ㄱ-힣a-zA-Z\u119E\u11A2]/gi,''));
 		});
-	
-		
-		//휴대폰번호 input에 숫자만 입력하도록 하는 함수
-		$("input[name=phone]").on("propertychange change keyup paste input", function(){
-			var inputNum = $(this).val();
-			$(this).val(inputNum.replace(/[^0-9]/gi,''));
-		});
-		
-		// ----------------------------------------------------------------------------
-		// 모든 input 유효성 검사하는 함수
+
 		
 		//Enter키 눌렸을시
 		$('input').keypress(function(event){
@@ -199,12 +137,13 @@
 			}
 		});
 		
+		//모든 회원 수정 input 유효성 검사하는 함수 -------------------------
 		$(".modi_submitBtn").click(function(){
 			
 			//비밀번호 빈칸이면
-			if($('input[name=pass]').val() == ''){
-				alert("비밀번호를 입력해주세요.");
-				$('input[name=pass]').focus();
+			if($('#fm_pass_join').val() == ''){
+				alert("비밀번호를 작성해주세요.");
+				$('#fm_pass_join').focus();
 				return false;
 			}
 			//비밀번호가 유효한 비밀번호인지 체크 (사용할 수 없는~) 포함 여부
@@ -213,28 +152,16 @@
 				$('input[name=pass]').focus();
 				return false;
 			}
-			//비밀번호 확인 빈칸이면
-			else if($('input[name=pass2]').val() == ''){
-				alert("비밀번호 확인란을 입력해주세요.");
-				$('input[name=pass2]').focus();
-				return false;
-			}
-			//비밀번호 확인란 체크하기
-			else if(document.modiForm.pass.value != document.modiForm.pass2.value){
-				alert("비밀번호가 다릅니다.");
-				$('input[name=pass2]').focus();
+			//비밀번호 체크 input이 빈칸이면
+			else if($('input[name=checkedPass]').val() == ''){
+				alert("올바른 비밀번호를 작성해주세요.");
+				$('#fm_pass_join').focus();
 				return false;
 			}
 			//이름 빈칸이면
-			else if($('input[name=name]').val() == ''){
-				alert("이름을 입력해주세요.");
-				$('input[name=name]').focus();
-				return false;
-			}
-			//휴대폰 번호 빈칸이면
-			else if($('input[name=phone]').val() == ''){
-				alert("휴대폰을 입력해주세요.");
-				$('input[name=phone]').focus();
+			else if($('#fm_name_join').val() == ''){
+				alert("이름을 작성해주세요.");
+				$('#fm_name_join').focus();
 				return false;
 			}
 			
@@ -242,7 +169,7 @@
 			$.ajax({
 				type:"post",
 				url:"./MemberUpdateInfoAction.me",
-				data: {"email":$("input[name=email]").val(), "pass":$("input[name=pass]").val(), "name":$("input[name=name]").val(), "phone":$("input[name=phone]").val()},
+				data: {"email":$("input[name=email]").val(), "pass":$("input[name=pass]").val(), "name":$("input[name=name]").val()},
 				success:function(data){
 					//정보 수정했을시
 					if($.trim(data) == "YES"){
@@ -264,7 +191,7 @@
 		});
 		
 		//탈퇴신청 문구 클릭했을시
-		$('#delete_text').click(function(){
+		$('.delete_text').click(function(){
 			 var confirm_delete = confirm("회원탈퇴를 하시겠습니까? (철회불가) \n탈퇴시 모든 정보가 삭제됩니다.");
 			 if(confirm_delete) {
 				$.ajax({

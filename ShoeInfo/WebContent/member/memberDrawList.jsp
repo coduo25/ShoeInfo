@@ -69,7 +69,7 @@
 			<div class="myDraw-table-container" style="margin-top:15px;">
 				<% if(userDrawStylecodeList.isEmpty()) { %>
 					<div>
-						<div style="padding:10%; border-top:1px solid #222; border-bottom:1px solid #222; margin-top:10px;">
+						<div style="padding:10%; border-top:1px solid #222; border-bottom:1px solid #c1c1c1; margin-top:10px;">
 							<span style="text-align:center; display:block;">응모내역이 없습니다.</span>
 						</div>
 					</div>

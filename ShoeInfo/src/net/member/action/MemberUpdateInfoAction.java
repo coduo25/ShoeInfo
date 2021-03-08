@@ -35,7 +35,11 @@ public class MemberUpdateInfoAction implements Action{
 		mdto.setSalt(salt);
 		mdto.setPass(newpass);
 		mdto.setName(request.getParameter("name"));
-		mdto.setPhone(request.getParameter("phone"));;
+		//휴대폰 예외처리
+		String phone = "";
+		if(request.getParameter("phone") == null){
+			mdto.setPhone(phone);
+		}
 		
 		MemberDAO mdao = new MemberDAO();
 		

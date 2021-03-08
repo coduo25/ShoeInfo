@@ -27,8 +27,6 @@ public class MemberLoginAction implements Action{
 		int check = mdao.loginEmailCheck(email, pass);
 		String str = "";
 		
-		String url = request.getParameter("url");
-		
 		PrintWriter out = response.getWriter();
 		
 		//비밀번호 오류
@@ -51,15 +49,8 @@ public class MemberLoginAction implements Action{
 			String usr_position = mdao.positionCheck(email);
 			session.setAttribute("usr_position", usr_position);
 			
-			if(url == null || url == "" || url.isEmpty()){
-				str = "SUCCESS";
-				out.print(str);
-			}
-			else {
-				str = url;
-				out.print(str);
-			}
-			
+			str = "SUCCESS";
+			out.print(str);
 		}
 		return null;
 	}

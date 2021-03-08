@@ -6,95 +6,51 @@ body { font-size:1em; line-weight:1.4 }
 /* 모든 페이지 공통 부분 */
 a { text-decoration: none; color: #000000; }
 
-/* 로그인 & 회원가입 페이지 */
-.component-page { width:450px; border:1px solid #a5a5a5; margin:50px auto; z-index:1000; box-shadow:0px 2px 5px #44444433; }
-.login-box, .join-box { font-family: 'Nanum Gothic', sans-serif; display:block; margin-bottom:20px; }
-.login-box { padding:25px 25px 0 25px; }
-
-.join-box { padding:25px; }
 
 input:focus{ outline: none; }
 
-/* Login Part, Register Part */
-.login_subtitle, .join_subtitle { border-bottom:1px solid #eeeeee; padding-bottom:20px; }
-.login_subtitle span, .join_subtitle span { font-size:20px; color:#595b5a; font-weight:bold; }
+/* 로그인 & 회원가입 페이지 */
+.component-page { width:450px; border:1px solid #a5a5a5; margin:50px auto; z-index:1000; box-shadow:0px 2px 5px #44444433; }
+.login-box, .join-box, .accCheck-box, .update-box, .findPass-box, .resetPass-box { font-family: 'Nanum Gothic', sans-serif; display:block; }
+.login-box { padding:25px 25px 0 25px; margin-bottom:20px; }
+.join-box, .accCheck-box, .update-box, .findPass-box, .resetPass-box { padding:25px; }
 
-	.loginformBox, .joinformBox { padding-top:15px; }
-	
+.login_subtitle, .join_subtitle, .accCheck_subtitle, .update_subtitle, .findPass_subtitle, .resetPass_subtitle { border-bottom:1px solid #dadada; padding-bottom:20px; }
+.login_subtitle span, .join_subtitle span, .accCheck_subtitle span, .update_subtitle span, .findPass_subtitle span, .resetPass_subtitle span { font-size:20px; color:#595b5a; font-weight:bold; }
+
+/* Login, Register, accCheck, .update Part */
+.loginformBox, .joinformBox, .accCheckformBox, .updateformBox, .findPassformBox, .resetPassBox { padding-top:15px; }
+
 	.login-form { width:100%; }
 	.fm_txt { margin:5px 0; font-size:15px; color:black; }
 	.fm_input { display:-webkit-box; }
-	.fm_input input { font-size:15px; position:relative; float:left; width:100%; height:36px; margin:5px 0 10px 0; color:#595b5a; border:1px solid #c1c1c1; padding:18px 10px; }
+	.fm_input input { font-size:15px; position:relative; float:left; width:100%; height:36px; margin:5px 0 15px 0; color:#595b5a; border:1px solid #c1c1c1; padding:18px 10px; }
 	/* 암호를 잊으셨습니까? */
-	.fm_find { font-size:13px; margin:5px 0 15px 0; text-align:right; color:#595b5a; }
+	.fm_find { font-size:13px; margin:5px 0 15px 0; text-align:right; }
 	/* 로그인, 회원가입 버튼 */
+	.fm_submitBtn { margin-top:15px; }
 	.fm_submitBtn button, .join_submitBtn button { width:100%; height:45px; border:1px solid #191919; background-color:#191919; font-size:18px; color:white; font-family:'Nanum Gothic', sans-serif; }
 
 	/* 회원이 아닙니까? */
-	.joinPopUp-text, .joinPopUp-textUp { font-family:'Nanum Gothic', sans-serif; display:block; text-align:center; font-size:13px; cursor:pointer; }
+	.joinPopUp-text, .joinPopUp-textUp { font-family:'Nanum Gothic', sans-serif; display:block; text-align:center; font-size:14px; cursor:pointer; }
 
 	/* 이용약관 & 개인정책 */
-	.privacyBox { margin:15px 0 20px 0; }
+	.privacyBox { margin:10px 0 20px 0; }
 	.privacyBox p { padding:5px 0; }
 	.privacyBox p input { width:17px; height:17px; vertical-align:bottom; }
-	#privacy_label { font-size:15px; font-weight: normal; padding-left:5px; }
-	#popup_privacy { font-size:14px; text-decoration: underline; cursor: pointer; padding-left:5px; }
+	#privacy_label { font-size:15px; font-weight:normal; padding-left:5px; }
+	#popup_privacy { font-size:14px; text-decoration:underline; cursor:pointer; padding-left:5px; }
+
+	/* 회원탈퇴신청 */
+	.content_modify { text-align:center; margin:0 0 20px 0; }
+	.delete_text { vertical-align: middle; font-size:14px; color:#8d8d8d; cursor:pointer; }
+
+	/* 로그인 페이지로 돌아가는 버튼 */
+	.pre-page { display:block; width: 100%; padding:0 0 15px 0; }
 
 
 
 
-
-/* #content_modify { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin: 100px auto; height: 500px; font-weight: bold; border: 1px solid #e0e0e0; background: white; } */
-/* #content_modifyPW { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin: 100px auto; height: 390px; font-weight: bold; border: 1px solid #e0e0e0; background: white; } */
-/* #content_upPos { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 60%; margin: 80px auto; height: 350px; font-weight: bold; border: 1px solid #e0e0e0; background: white; } */
-
-/* #content_idpwfind { font-family: 'Nanum Gothic', sans-serif; text-align:center; width: 40%; margin:100px auto; height: 400px; font-weight: bold; border: 1px solid #e0e0e0; background: white; } */
-
-/* .login-form, .join-form, .modi-form, .up-form { list-style: none; width: 90%; height: 100%; margin: 0 auto; position: relative; } */
-/* .idfind-form, .pwfind-form { list-style: none; width: 90%; height: 100%; margin: 0 auto; position: relative; } */
-
-/* .login-form div, .join-form div, .modi-form div, .idfind-form div, .pwfind-form div { position:relative; float: left; width: 100%; height: 40px; margin: 5px 0; } */
-/* .up-form div { position:relative; float: left; width: 100%; height: 40px; margin: 5px 0 20px 0; } */
-/* .fm_label { height: 20px !important; text-align: left; margin: 5px 0 !important; } */
-/* .fm_reason { height: 100% !important; } */
-/* #reason { width: 100%; display: inline-block; padding: 2%; font-size: 15px; } */
-
-/* .fm_warn { height: 100% !important; text-align: left; margin: 10px 2px !important; color: green; } */
-
-/* .login-form input, .join-form input, .modi-form input, .idfind-form input, .pwfind-form input, .up-form input { width: 100%; height: 100%; font-size: 15px; font-family: 'Nanum Gothic', sans-serif; padding-left: 8px;} */
-/* .join-form p { display: inline-block; width: 100%; text-align: left; padding-left: 1%; } */
-/* input[name=privacy] { height: unset; width: 10%; height: 20px; vertical-align: middle; } */
-
-
-
-/* .checkEmail { position: absolute; float: right; height: 40px; width: 20%; margin-top: 5px; margin-left: 10px; border: 1px solid #000000; background-color: white; font-size: 15px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold;} */
-
-
-/* 비밀번호 확인하는 div 태그 */
-/* .confirmMsg1:not(.join-form), .confirmMsg2:not(.join-form) { height: 20px; font-size: 14px; text-align: left; margin: 0 0 10px 0; padding-left: 10px; } */
-
-/* ::placeholder { } */
-/* input:focus::placeholder { color: transparent; } */
-
-/* 로그인, 가입하기 버튼 부모 속성 무시하기 */
-/* .fm_submitBtn:not(.join-form) {position:relative; float: left; width: 100%; height: 48px; margin: 5px 0;  margin-top: 10px; margin-bottom: 5px; } */
-/* .fm_submitBtn button { width: 100%; height: 48px; border: 1px solid #303030; border-radius: 7px; background-color: #303030; font-size: 20px; color: white; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; margin-bottom: 5px; } */
-
-/* .join_submitBtn:not(.join-form){ width: 100%; height: 48px; border: 1px solid #303030;  background-color: #303030; font-size: 20px; color: white; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; margin: 10px 0;} */
-
-/* 아이디찾기, 비밀번호 찾기 버튼 부모 속성 무시하기 */
-#pwfind_wrap { display: none; }
-
-/* .fm_idpwsubmitBtn:not(.idfind-form) {position:relative; float: left; width: 100%; height: 48px; margin: 5px 0;  margin-top: 10px; margin-bottom: 5px; } */
-/* .fm_idpwsubmitBtn button { width: 100%; height: 48px; border: 1px solid #303030; border-radius: 7px; background-color: #303030; font-size: 20px; color: white; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; margin-bottom: 5px; } */
-
-#content_idpwfind p { width: 90%; font-size: 12px; color: #8d8d8d; line-height: 18px; margin: 0 auto; }
-
-.pre-page { display: inline-flex; height: 15px; text-align: left; width: 100%; padding-top: 20px;}
-
-/* .fm_find { font-size: 0.8em; margin: 0; text-align: right; } */
-
-#idfind_wrap, #pwfind_wrap { width: 100%; }
 
 
 

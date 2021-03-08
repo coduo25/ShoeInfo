@@ -20,57 +20,53 @@
 		String email = request.getParameter("email");
 	%>
 	
-	<div class="mem_header">
-		<!-- 로고 -->
-		<div class="navbar_logo">
-			<a href="./SneakerList.go"> SHOE Info. </a>
-		</div>
-	</div>
+	<!-- Header -->
+	<header> <jsp:include page="/include/header.jsp" /> </header>
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
 		<div class="component-page">
-			<!-- content -->
-			<div id="content_modifyPW">
-				<h3>비밀번호 재설정</h3>
-				<form action="#" method="post" name="modiForm" id="modiForm">
-					<div class="modi-form">
-					
-						<!-- 이메일 -->
-						<div class="fm_email">
-							<input type="text" name="email" placeholder="이메일" value="<%=email%>" readonly> 
-						</div>
-	
-						<!-- 비밀번호 -->
-						<div class="fm_pass">
-							<input type="password" name="pass" placeholder="비밀번호 (8~16 영문/숫자 포함)" maxlength="16">
+			<div class="resetPass-box">
+				<div class="resetPass_subtitle">
+					<span>Reset Password</span>
+				</div>
+				<div class="resetPassBox">
+					<form action="#" method="post" name="modiForm" id="modiForm">
+						<div class="modi-form">
+						
+							<!-- 이메일 -->
+							<div class="fm_txt">
+								<span>이메일</span>
+							</div>
+							<div class="fm_input">
+								<input type="text" name="email" value="<%=email%>" readonly style="background-color:#ececec !important;"> 
+							</div>
+		
+							<!-- 비밀번호 -->
+							<div class="fm_txt">
+								<span>비밀번호*</span>
+							</div>
+							<div class="fm_input">
+								<input type="password" id="fm_pass_join" name="pass" placeholder="(8~16 영문/숫자 포함)" maxlength="16">
+							</div>
+								<!-- 비밀번호 유효성 검사 체크 -->
+								<input type="hidden" name="checkedPass" value="">
 							
-						</div>
-						
-							<div class="confirmMsg1" style="display: none;">
-								<span id="pwConfirmMsg1"></span>
+							<!-- 수정하기 버튼 -->
+							<div class="fm_submitBtn">
+								<button type="button" class="modi_submitBtn">
+									<span id="join_text">재설정하기</span>
+								</button>
 							</div>
-	
-						<!-- 비밀번호 체크 --> 
-						<div class="fm_passChk">
-							<input type="password" name="pass2" placeholder="비밀번호 확인">
 						</div>
-						
-							<div class="confirmMsg2" style="display: none;">
-								<span id="pw2ConfirmMsg"></span>
-							</div>
-						
-						<!-- 수정하기 버튼 -->
-						<div class="fm_submitBtn">
-							<button type="button" class="modi_submitBtn">
-								<span id="join_text">재설정하기</span>
-							</button>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
+	
+	<!-- FOOTER -->
+	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 
 </body>
 
@@ -87,68 +83,24 @@
 		});
 		
 		//비밀번호 input를 클릭했을시
-		$("input[name=pass]").click(function(){
+		$("#fm_pass_join").click(function(){
 			this.value = '';
-			$('#pwConfirmMsg1').text('');
-			$('.confirmMsg1').hide("fast");
+			$('#fm_pass_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
+			$('input[name=checkedPass]').val(null);
 		});
 		
 		//비밀번호 유효성 검사
-		$("input[name=pass]").on("propertychange change keyup paste input", function(){
+		$("#fm_pass_join").on("propertychange change keyup paste input", function(){
 			//비밀번호 조건(8~16자, 영문/숫자 포함)
 			if(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/.test($(this).val())){
-				$('#pwConfirmMsg1').text('사용할 수 있는 비밀번호 입니다.').css({'color':'#009c00'});
-				$('.confirmMsg1').show("fast");
+				$('#fm_pass_join').css({"border":"1px solid #46a74e", "color":"#46a74e"}); //초록
+				$("input[name=checkedPass]").val("checked");
 			} else{
-				$('#pwConfirmMsg1').text('사용할 수 없는 비밀번호 입니다.').css({'color':'#af0000'});
-				$('.confirmMsg1').show("fast");
-				$('input[name=pass]').focus();
-			}
-			
-			if(document.modiForm.pass2.value.length != 0){
-				
-				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-				
-				if(document.modiForm.pass.value != document.modiForm.pass2.value){
-					$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-					$('.confirmMsg2').show("fast");
-				} else{
-					$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
-					$('.confirmMsg2').show("fast");
-				}
+				$('#fm_pass_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
+				$('input[name=checkedPass]').val(null);
 			}
 		});
 
-		//비밀번호 확인란 체크하기
-		$("input[name=pass2]").on("propertychange change keyup paste input", function(){
-			if($("input[name=pass]").val() == ''){
-				alert("비밀번호를 작성해주세요.");
-				$("input[name=pass2]").val('');
-				$("input[name=pass]").focus();
-				return false;
-			}
-			else if(document.modiForm.pass.value != document.modiForm.pass2.value){
-				$('#pw2ConfirmMsg').text('비밀번호가 다릅니다.').css({'color':'#af0000'});
-				$('.confirmMsg2').show("fast");
-				$('input[name=pass2]').focus();
-			} else{
-				$('#pw2ConfirmMsg').text('✔').css({'color':'#009c00'});
-				$('.confirmMsg2').show("fast");
-			}
-		});
-		
-		//비밀번호 확인 input를 다시 클릭했을시
-		$("input[name=pass2]").click(function(){
-			this.value = '';
-		});
-		
-		//비밀번호확인 input를 다시 클릭했을시
-		$("input[name=pass2]").click(function(){
-			this.value = '';
-			$('#pw2ConfirmMsg').text('');
-			$('.confirmMsg2').hide("fast");
-		});
-		
 		// ----------------------------------------------------------------------------
 		// 모든 input 유효성 검사하는 함수
 		
@@ -161,30 +113,24 @@
 				return false;
 			}
 			//비밀번호 빈칸이면
-			else if($('input[name=pass]').val() == ''){
-				alert("비밀번호를 입력해주세요.");
-				$('input[name=pass]').focus();
+			else if($('#fm_pass_join').val() == ''){
+				alert("비밀번호를 작성해주세요.");
+				$('#fm_pass_join').focus();
 				return false;
 			}
 			//비밀번호가 유효한 비밀번호인지 체크 (사용할 수 없는~) 포함 여부
-			else if($('#pwConfirmMsg1').text().includes('없는')){
+			else if($('#pwConfirmMsg').text().includes('없는')){
 				alert("유효한 비밀번호를 입력해주세요.");
 				$('input[name=pass]').focus();
 				return false;
 			}
-			//비밀번호 확인 빈칸이면
-			else if($('input[name=pass2]').val() == ''){
-				alert("비밀번호 확인란을 입력해주세요.");
-				$('input[name=pass2]').focus();
+			//비밀번호 체크 input이 빈칸이면
+			else if($('input[name=checkedPass]').val() == ''){
+				alert("올바른 비밀번호를 작성해주세요.");
+				$('#fm_pass_join').focus();
 				return false;
 			}
-			//비밀번호 확인란 체크하기
-			else if(document.modiForm.pass.value != document.modiForm.pass2.value){
-				alert("비밀번호가 다릅니다.");
-				$('input[name=pass2]').focus();
-				return false;
-			}
-
+			
 			//모든 유효성 검사 통과했을시 Ajax로 정보 수정하기
 			$.ajax({
 				type:"post",

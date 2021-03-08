@@ -20,14 +20,6 @@
 		if(user != null){
 			response.sendRedirect("./SneakerList.go");
 		}
-	
-		String prev_url = "";
-		
-		prev_url = request.getHeader("referer");
-		
-		if(prev_url == null || prev_url.length() == 0){
-			prev_url = "";
-		}
 	%>
 	
 	<!-- Header -->
@@ -46,14 +38,13 @@
 					<!-- 로그인 form -->
 					<form action="./MemberLoginAction.me" method="post" id="loginForm">
 						<div class="login-form">
-							<input type="hidden" name="referer" id="fm_url_login" value="<%=prev_url%>" />
 						
 							<!-- 이메일 -->
 							<div class="fm_txt">
 								<span>이메일</span>
 							</div>
 							<div class="fm_input">
-								<input type="email" name="email" id="fm_email_login" id="email">
+								<input type="email" name="email" id="fm_email_login">
 							</div>
 							
 							<!-- 비밀번호 -->
@@ -88,7 +79,7 @@
 			</div>
 			
 			<!-- register content  -->
-			<div class="join-box" style="display:none; margin-bottom:0 !important; background-color:#f3f3f36b; ">
+			<div class="join-box" style="display:none; background-color:#f2f2f2; ">
 				<div class="join_subtitle">
 					<span>Create Account</span>
 				</div>
@@ -176,7 +167,7 @@
 			$('.joinPopUp-textUp').css('display', 'block');
 			
 			//회원가입 form 밑으로 내리기
-			$('.join-box').slideDown('fast');
+			$('.join-box').fadeIn();
 		});
 		//회원가입 form 접는 버튼 클릭했을시
 		$('.joinPopUp-textUp').click(function(){
@@ -243,6 +234,7 @@
 		//비밀번호 input를 클릭했을시
 		$("#fm_pass_join").click(function(){
 			this.value = '';
+			$('#fm_pass_join').css({"border":"1px solid #f13340", "color":"#f13340"}); //레드
 			$('input[name=checkedPass]').val(null);
 		});
 		
@@ -345,17 +337,11 @@
 				$('#fm_pass_login').focus();
 				return false;
 			}
-			
-			var url = $('#fm_url_login').val();
-			
-			if(url.indexOf("&")){
-				url = url.replace('&', '%26');
-			}
-			
+
 			$.ajax({
 				type:"post",
 				url:"./MemberLoginAction.me",
-				data: 'email=' + $('#fm_email_login').val() + '&pass=' + $('#fm_pass_login').val() + '&url=' + url,
+				data: 'email=' + $('#fm_email_login').val() + '&pass=' + $('#fm_pass_login').val(),
 				success:function(data) {
 					if($.trim(data) == "NOEMAIL"){
 						alert("존재하지 않는 이메일입니다.");
@@ -363,9 +349,7 @@
 						alert("비밀번호가 올바르지 않습니다.");
 						$('#fm_pass_login').focus();
 					}else if($.trim(data) == "SUCCESS"){
-						location.href="./SneakerList.go";
-					}else {
-						location.href=$.trim(data);
+						location.href="./Main.bo";
 					}
 				},error:function(request,status,error){
 				 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);

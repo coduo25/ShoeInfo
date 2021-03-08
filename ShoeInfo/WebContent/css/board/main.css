@@ -55,7 +55,7 @@ body {font-size:1em; line-weight:1.4}
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
 	.brand-info-container { vertical-align: top; margin-bottom: 17px !important; }
-	.release-status { margin-left: 7px; padding:4px 6px; vertical-align: -webkit-baseline-middle !important; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
+	.release-status { margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	
 	/* 발매처 정보 박스 */
 	.todaysRelease-content2 div { margin-bottom: 11px; display: block; }

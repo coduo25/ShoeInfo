@@ -23,50 +23,53 @@
 		}
 	%>
 
-	<div class="mem_header">
-		<!-- 로고 -->
-		<div class="navbar_logo">
-			<a href="./SneakerList.go"> SHOE Info. </a>
-		</div>
-	</div>
+	<!-- Header -->
+	<header> <jsp:include page="/include/header.jsp" /> </header>
 
 	<!-- Main Content -->
 	<div id="wrapper" class="container">
+	
 		<div class="component-page">
 			<!-- content -->
-			<div id="content_login" style="height: 300px;">
-				
-				<div class="change_form">
-					<div class="idpw-toggle">
-						<span> 재인증을 위한 비밀번호를 입력해주세요.  </span>
-					</div>
+			<div class="accCheck-box">
+				<div class="accCheck_subtitle">
+					<span> Account Check  </span>
 				</div>
-				
-				<!-- 로그인 form -->
-				<form action="./MemberInfoCheckAction.me" method="post" id="loginForm">
-					<div class="login-form">
-					
-						<!-- 이메일 -->
-						<div class="fm_email">
-							<input type="text" name="email" id="fm_email_login" placeholder="이메일" id="email" value="<%=user%>" readonly>
-						</div>
+				<div class="accCheckformBox">
+					<form action="./MemberInfoCheckAction.me" method="post" id="loginForm">
+						<div class="login-form">
 						
-						<!-- 비밀번호 -->
-						<div class="fm_pass">
-							<input type="password" name="pass" id="fm_pass_login" placeholder="비밀번호">
+							<!-- 이메일 -->
+							<div class="fm_txt">
+								<span>이메일</span>
+							</div>
+							<div class="fm_input">
+								<input type="text" name="email" id="fm_email_login" id="email" value="<%=user%>" readonly style="background-color:#ececec !important;">
+							</div>
+							
+							<!-- 비밀번호 -->
+							<div class="fm_txt">
+								<span>비밀번호</span>
+							</div>
+							<div class="fm_input">
+								<input type="password" name="pass" id="fm_pass_login">
+							</div>
+							
+							<!-- 로그인 -->
+							<div class="fm_submitBtn">
+								<button type="button" class="login_submitBtn">
+									<span id="join_text">인증하기</span>
+								</button>
+							</div>
 						</div>
-						
-						<!-- 로그인 -->
-						<div class="fm_submitBtn">
-							<button type="button" class="login_submitBtn">
-								<span id="join_text">인증하기</span>
-							</button>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
+	
+	<!-- FOOTER -->
+	<footer> <jsp:include page="/include/footer.jsp"/> </footer>
 
 </body>
 <script type="text/javascript">
