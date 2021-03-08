@@ -56,7 +56,7 @@ public class MemberJoinAction implements Action{
 
 		ActionForward forward = new ActionForward();
 				
-		forward.setPath("./MemberLogin.me?url=");
+		forward.setPath("./MemberLogin.me");
 		forward.setRedirect(true);		
 		return forward;
 	}

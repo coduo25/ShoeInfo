@@ -40,14 +40,14 @@ public class MemberFrontController extends HttpServlet{
 		ActionForward forward = null;
 		
 		//회원가입 처리페이지(/MemberJoin.me)
-		if(command.equals("/MemberJoin.me")){
-			forward = new ActionForward();
-			forward.setPath("./member/joinForm.jsp");
-			forward.setRedirect(false);	
-		}
+//		if(command.equals("/MemberJoin.me")){
+//			forward = new ActionForward();
+//			forward.setPath("./member/joinForm.jsp");
+//			forward.setRedirect(false);	
+//		}
 		
 		//회원가입 처리페이지2(/MemberJoinAction.me)
-		else if(command.equals("/MemberJoinAction.me")){
+		if(command.equals("/MemberJoinAction.me")){
 			action = new MemberJoinAction();
 			try {
 				forward = action.execute(request, response);
