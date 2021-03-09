@@ -91,8 +91,8 @@
 			
 			<div class="snkrsWeek-table-container">
 				<% if(onlineList_snkrs.isEmpty()){%>
-					<div>
-						이번 달 발매 라인업이 없습니다.
+					<div style="padding:100px; text-align:center;">
+						<span style=""><i class="far fa-calendar-times"></i> 이번 달 발매 라인업이 없습니다.</span>
 					</div>
 				<% } else { 
 					for(int i=0; i<onlineList_snkrs.size(); i++) {

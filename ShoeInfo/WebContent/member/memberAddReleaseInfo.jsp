@@ -42,235 +42,250 @@
 	<header> <jsp:include page="/include/header.jsp" /> </header>
 	
 	<div id="wrapper" class="container">
+	
+		<!-- 좌측 사이드 바 -->
+		<jsp:include page="/include/leftSideBar.jsp" />
 
 		<!-- content -->
-		<div id="content_sneakerDetail">
-			<!-- 카테고리 -->
-			<div id="cate_Detail">
-				<a href="./SneakerList.go"> <span> HOME </span> </a>
-				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
-				<a href="./SneakerDetail.go?model_stylecode=<%=model_stylecode%>&num=<%=sdto.getNum()%>"> <span> <%=sdto.getModel_name() %></span> </a>
-				<span class="arrow"> <i class="fas fa-angle-right"></i> </span>
-				<span> ADD INFO </span>
-			</div>
+		<div id="content_sneakerDetail" style="margin-top:30px !important; padding-top:0 !important;">
 			
-			<!-- 제목 -->
-			<div id="title">
-				<span> <%=sdto.getModel_name()%></span>
-			</div>
-			
-			<!-- 신발 기본 정보 -->
 			<div id="sneaker_Detail">
-				<div class="sneaker_image_wrapper" style="border-bottom: 1px solid #b7b7b7;"> 
-					<div class="sneaker_image"> 
-						<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
-					</div>
-<!-- 					신발 이름 -->
-<!-- 					<div class="sneaker_name"> -->
-<%-- 						<span><%=sdto.getModel_name() %></span> --%>
-<!-- 					</div> -->
-				</div>
-
-			
 				<!-- 추가하는 form -->
 				<div class="add_wrapper">
+					<!-- 신발이미지 -->
+					<div class="sneaker_image_wrapper"> 
+						<div class="sneaker_image"> 
+							<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>" style="width:20%;">
+						</div>
+					</div>
+					
 					<form action="./AddOnlineInfoAction.me" id="addOnlineForm" method="post">
 					
-						<span id="category_warn"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 발매정보는 SHOEINFO를 이용하는 모든 이용자들이 보는 정보입니다. </span>
-						<span id="category_warn" style="padding-bottom: 4%; border-bottom: 1px solid #9e9e9e"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 허위로 작성하거나 수정했을시 활동이 정지될 수 있습니다. </span>
-					
-						<input type="hidden" name="model_num" value="<%=sdto.getNum()%>"> 
-						<div id="stylecode-form" style="padding-top: 5%;">
-							<span id="category"> 스타일 코드 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
-							<input type="text" name="model_stylecode" value="<%=model_stylecode%>" readonly>
+						<input type="hidden" name="model_num" value="<%=sdto.getNum()%>">
+						
+						<!-- 스타일코드 --> 
+						<div id="cate-Row">
+							<div class="category">
+								<span>스타일 코드*</span>
+							</div>
+							<div class="addContent">
+								<input type="text" name="model_stylecode" value="<%=model_stylecode%>" readonly>
+							</div>
 						</div>
 						
-						<div id="brand-form">
-							<span id="category"> 브랜드 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
-							<div class="search-form">
-								<input type="text" placeholder="ex. END, SNS, ..." onkeyup="filter()" id="textBrand"> 
-								<input type="button" value="검색" id="searchBtn">
+						<!-- 브랜드 -->
+						<div id="cate-Row">
+							<div class="category">
+								<span> 브랜드*</span>
 							</div>
-							<div class="searched-form">
-								<!-- form 끄는 버튼 -->
-								<span id="exit-form"> <i class="far fa-window-close"></i> </span>
-								
-								<%
-									for(int i=0; i<brandList.size(); i++) {
-										BrandDTO bdto = brandList.get(i);
-								%>
-									<div class="brandList-wrapper" onclick="addBrand(<%=i%>)" id="brandList-wrapper<%=i%>">
+							<div class="addContent">
+							
+								<div class="search-form">
+									<input type="text" placeholder="ex. END, SNS, ..." onkeyup="filter()" id="textBrand"> 
+<!-- 									<input type="button" value="검색" id="searchBtn"> -->
+								</div>
+							
+								<div class="searched-form">
+									<!-- form 끄는 버튼 -->
+									<span id="exit-form"> <i class="far fa-window-close"></i> </span>
+									
+									<%
+										for(int i=0; i<brandList.size(); i++) {
+											BrandDTO bdto = brandList.get(i);
+									%>
+										<div class="brandList-wrapper" onclick="addBrand(<%=i%>)" id="brandList-wrapper<%=i%>">
+											<div>
+												<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>">
+											</div>
+											
+											<div id="brandList-name" >
+												<span class="name"><%=bdto.getBrand_name()%></span>
+											</div>
+											
+											<input type="hidden" id="val_brandLogo<%=i%>" value="<%=bdto.getBrand_logo()%>">
+											<input type="hidden" id="val_countryName<%=i%>" value="<%=bdto.getCountry_name()%>">
+											<input type="hidden" id="val_brandName<%=i%>" value="<%=bdto.getBrand_name()%>">
+										</div>
+									<%}%>
+									
+									<!-- searched 안될때 -->
+									<div id="nothingSearched">
+										<span> 검색 결과가 없습니다. </span>
+										<div class="request-Btn"> 브랜드 등록 요청하기 </div>
+									</div> 
+									
+									
+									<!-- 브랜드 요청하는 form -->
+									<div id="request-form">
+										<!-- 브랜드 이름 -->
 										<div>
-											<img src="./brand_img_upload/<%=bdto.getBrand_logo().split(",")[0]%>">
+											<span id="category"> 브랜드 이름*</span>
+											<input type="text" id="req-brandName">
 										</div>
-										
-										<div id="brandList-name" >
-											<span class="name"><%=bdto.getBrand_name()%></span>
+										<!-- 브랜드 주소 -->
+										<div>
+											<span id="category"> 브랜드 주소(옵션) </span>
+											<input type="text" id="req-brandURL">
 										</div>
-										
-										<input type="hidden" id="val_brandLogo<%=i%>" value="<%=bdto.getBrand_logo()%>">
-										<input type="hidden" id="val_countryName<%=i%>" value="<%=bdto.getCountry_name()%>">
-										<input type="hidden" id="val_brandName<%=i%>" value="<%=bdto.getBrand_name()%>">
+										<!-- 요청하기 버튼 -->
+										<div>
+											<button type="button" class="newBrand_req"> 요청하기 </button>
+										</div>
 									</div>
-								<%}%>
-								
-								<!-- searched 안될때 -->
-								<div id="nothingSearched">
-									<span> 검색 결과가 없습니다. </span>
-									<div class="request-Btn"> 브랜드 등록 요청하기 </div>
-								</div> 
-								
-								
-								<!-- 브랜드 요청하는 form -->
-								<div id="request-form">
-									<!-- 브랜드 이름 -->
+									
+								</div>
+							
+								<div class="picked-form">
+									<span id="exit-form2">
+										<i class="fas fa-times" id="exit-icon"></i>
+									</span>
 									<div>
-										<span id="category"> 브랜드 이름 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
-										<input type="text" id="req-brandName">
+										<img id="brandlogo_img" >
 									</div>
-									<!-- 브랜드 주소 -->
 									<div>
-										<span id="category"> 브랜드 주소(옵션) </span>
-										<input type="text" id="req-brandURL">
+										<span class="picked-name"></span>
 									</div>
-									<!-- 요청하기 버튼 -->
-									<div>
-										<button type="button" class="newBrand_req"> 요청하기 </button>
-									</div>
+									
+									<input type="hidden" name="country_name" id="country_name">
+									<input type="hidden" name="brand_name" id="brand_name">
+								</div>
+							</div>
+						</div>
+						
+						<!-- 온라인 링크 -->
+						<div id="cate-Row"> 
+							<div class="category">
+								<span> 온라인 링크*</span>
+							</div>
+							<div class="addContent">
+								<input type="text" name="online_link">
+							</div>
+						</div>
+						
+						<!-- 발매방식 -->
+						<div id="cate-Row">
+							<div class="category">
+								<span> 발매 방식*</span>
+							</div>
+							<div class="addContent">
+								<div id="onlineM-radio-wrapper">
+									<input type="radio" id="fcfs" name="online_method" value="선착"> <label for="fcfs">선착</label>
 								</div>
 								
-							</div>
-							
-							<div class="picked-form">
-								<span id="exit-form2">
-									<i class="fas fa-times" id="exit-icon"></i>
-								</span>
-								<div>
-									<img id="brandlogo_img" >
-								</div>
-								<div>
-									<span class="picked-name"></span>
+								<div id="onlineM-radio-wrapper">
+									<input type="radio" id="draw" name="online_method" value="드로우"> <label for="draw">드로우</label>
 								</div>
 								
-								<input type="hidden" name="country_name" id="country_name">
-								<input type="hidden" name="brand_name" id="brand_name">
-							</div>
-
+								<div id="onlineM-radio-wrapper">
+									<input type="radio" id="instadraw" name="online_method" value="인스타라플"> <label for="instadraw">인스타라플</label>
+								</div>
+								
+								<div id="onlineM-radio-wrapper">
+									<input type="radio" id="emaildraw" name="online_method" value="이메일라플"> <label for="emaildraw">이메일라플</label>
+								</div>
+								
+								<div id="onlineM-radio-wrapper">
+									<input type="radio" id="offdraw" name="online_method" value="오프라인라플"> <label for="offdraw">오프라인라플</label>
+								</div>
+								
+								<div id="onlineM-radio-wrapper">
+									<input type="radio" id="Undefined" name="online_method" value="-"> <label for="Undefined">미정</label>
+								</div>
+							</div>		
 						</div>
 						
-						<div id="link-form"> 
-							<span id="category"> 온라인 링크 <span id="req_icon"><i class="fas fa-asterisk"></i></span></span>
-							<input type="text" name="online_link">
+						<!-- 발매시간 -->
+						<div id="cate-Row">
+							<div class="category">
+								<span> 발매 시간 </span>
+							</div>
+							<div class="addContent">
+								<span style="display:block; padding-bottom:10px;">시작</span>
+								<input type="date" name="online_date_start" id="input_date">
+								<input type="time" name="online_hour_start" id="input_date"> ~
+								
+								<span style="display:block; padding:10px 0;">끝</span>
+								<input type="date" name="online_date_end" id="input_date">
+								<input type="time" name="online_hour_end" id="input_date">
+							</div>
 						</div>
 						
-						<div id="online_method-form">
-							<span id="category"> 발매 방식 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
-							
-							<div id="onlineM-radio-wrapper">
-								<input type="radio" id="fcfs" name="online_method" value="선착"> <label for="fcfs">선착</label>
+						<!-- 발표시간 -->
+						<div id="cate-Row">
+							<div class="category">
+								<span> 발표 시간 </span>
 							</div>
-							
-							<div id="onlineM-radio-wrapper">
-								<input type="radio" id="draw" name="online_method" value="드로우"> <label for="draw">드로우</label>
-							</div>
-							
-							<div id="onlineM-radio-wrapper">
-								<input type="radio" id="offdraw" name="online_method" value="오프라인라플"> <label for="offdraw">오프라인라플</label>
-							</div>
-							
-							<div id="onlineM-radio-wrapper">
-								<input type="radio" id="instadraw" name="online_method" value="인스타라플"> <label for="instadraw">인스타라플</label>
-							</div>
-							
-							<div id="onlineM-radio-wrapper">
-								<input type="radio" id="emaildraw" name="online_method" value="이메일라플"> <label for="emaildraw">이메일라플</label>
-							</div>
-							
-							<div id="onlineM-radio-wrapper">
-								<input type="radio" id="Undefined" name="online_method" value="-"> <label for="Undefined">미정</label>
-							</div>
-							
-						</div>
-						
-						<div id="onlineTime-form">
-							<span id="category"> 발매 시간 </span>
-							
-							<input type="date" name="online_date_start" id="input_date">
-							<input type="time" name="online_hour_start" id="input_date">
-							<span id="tilde">~</span>
-							<input type="date" name="online_date_end" id="input_date">
-							<input type="time" name="online_hour_end" id="input_date">
-							
-							<span id="warn_label"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 날짜와 시간이 없을시, 빈칸으로 놔두기(지우기)! </span>
-							
-						</div>
-						
-						<div id="buyMethod-form">
-							<span id="category"> 구매 방식 <span id="req_icon"><i class="fas fa-asterisk"></i></span></span>
-							
-							<div id="radio-wrapper" class="buy_fcfs">
-								<input type="radio" id="buy_fcfs" name="buy_method" value="선착순 구매" disabled> <label for="buy_fcfs">선착순 구매</label>
-							</div>
-							
-							<div id="radio-wrapper" class=buy_afCredit>
-								<input type="radio" id="buy_afCredit" name="buy_method" value="당첨후 결제" disabled> <label for="buy_afCredit">당첨후 결제</label>
-							</div>
-							<div id="radio-wrapper" class="buy_beCredit">
-								<input type="radio" id="buy_beCredit" name="buy_method" value="당첨전 선결제" disabled> <label for="buy_beCredit">당첨전 선결제</label>
-							</div>
-							<div id="radio-wrapper" class="buy_affcfs">
-								<input type="radio" id="buy_affcfs" name="buy_method" value="당첨후 선착구매" disabled> <label for="buy_affcfs">당첨후 선착구매</label>
-							</div>
-							<div id="radio-wrapper" class="buy_Undefined">
-								<input type="radio" id="buy_Undefined" name="buy_method" value="-" disabled> <label for="buy_Undefined">미정</label>
-							</div>	
-							
-						</div>
-						
-						<div id="delivery_method-form">
-							<span id="category"> 배송 여부 <span id="req_icon"><i class="fas fa-asterisk"></i></span></span>
-							
-							<div style="padding:0;">
-								<div id="del-radio-wrapper">
-									<input type="radio" id="can" name="delivery_method" value="직배"> <label for="can">직배</label>
-								</div>
-								<div id="del-radio-wrapper">
-									<input type="radio" id="cant" name="delivery_method" value="배대지"> <label for="cant">배대지</label>
-								</div>
-								<div id="del-radio-wrapper">
-									<input type="radio" id="domestic" name="delivery_method" value="국내배송"> <label for="domestic">국내배송</label>
-								</div>
-								<div id="del-radio-wrapper">
-									<input type="radio" id="instore" name="delivery_method" value="매장수령"> <label for="instore">매장수령</label>
-								</div>
-								<div id="del-radio-wrapper">
-									<input type="radio" id="onlyLocal" name="delivery_method" value="직배x배대지x"> <label for="onlyLocal">직배x 배대지x</label>
-								</div>
-								<div id="del-radio-wrapper">
-									<input type="radio" id="etc" name="delivery_method"> <label for="etc" style="margin-right: 1%;"> 기타: </label> <input type="text" id="delivery_etc" maxlength="10" disabled>
-								</div>
-							</div>
-							
-						</div>
-							
-						<div id="winner_time">
-							<span id="category"> 당첨자 발표 시간 (옵션)  </span>
-							
-							<div style="padding-bottom: 1.5%;">
+							<div class="addContent">
 								<input type="text" name="winner_time" maxlength="25"> 
 							</div>
-							
-							<span id="example"> ex. 마감후 2시간이내, O월 OO일 오후 4시 이후 문자발송 </span>
 						</div>
 						
-						<div id="online_writer" style="padding-bottom: 0 !important;">
-							<span id="category"> 작성자 <span id="req_icon"><i class="fas fa-asterisk"></i></span> </span>
-							<div>
-								<input type="text" name="online_writer" value="<%=user%>" id="online_writer" readonly style="width: 50%;">
+						<!-- 구매방식 -->
+						<div id="cate-Row">
+							<div class="category">
+								<span> 구매 방식*</span>
+							</div>
+							<div class="addContent">
+								<div id="radio-wrapper" class="buy_fcfs">
+									<input type="radio" id="buy_fcfs" name="buy_method" value="선착순 구매" disabled> <label for="buy_fcfs">선착순 구매</label>
+								</div>
+								
+								<div id="radio-wrapper" class=buy_afCredit>
+									<input type="radio" id="buy_afCredit" name="buy_method" value="당첨후 결제" disabled> <label for="buy_afCredit">당첨후 결제</label>
+								</div>
+								<div id="radio-wrapper" class="buy_beCredit">
+									<input type="radio" id="buy_beCredit" name="buy_method" value="당첨전 선결제" disabled> <label for="buy_beCredit">당첨전 선결제</label>
+								</div>
+								<div id="radio-wrapper" class="buy_affcfs">
+									<input type="radio" id="buy_affcfs" name="buy_method" value="당첨후 선착구매" disabled> <label for="buy_affcfs">당첨후 선착구매</label>
+								</div>
+								<div id="radio-wrapper" class="buy_Undefined">
+									<input type="radio" id="buy_Undefined" name="buy_method" value="-" disabled> <label for="buy_Undefined">미정</label>
+								</div>	
+							</div>		
+						</div>
+						
+						<!-- 배송여부 -->
+						<div id="cate-Row">
+							<div class="category">
+								<span> 배송 여부*</span>
+							</div>
+							<div class="addContent">
+								<div style="padding:0;">
+									<div id="del-radio-wrapper">
+										<input type="radio" id="can" name="delivery_method" value="직배"> <label for="can">직배</label>
+									</div>
+									<div id="del-radio-wrapper">
+										<input type="radio" id="cant" name="delivery_method" value="배대지"> <label for="cant">배대지</label>
+									</div>
+									<div id="del-radio-wrapper">
+										<input type="radio" id="domestic" name="delivery_method" value="국내배송"> <label for="domestic">국내배송</label>
+									</div>
+									<div id="del-radio-wrapper">
+										<input type="radio" id="instore" name="delivery_method" value="매장수령"> <label for="instore">매장수령</label>
+									</div>
+									<div id="del-radio-wrapper">
+										<input type="radio" id="onlyLocal" name="delivery_method" value="직배x배대지x"> <label for="onlyLocal">직배x 배대지x</label>
+									</div>
+									<div id="del-radio-wrapper">
+										<input type="radio" id="etc" name="delivery_method"> <label for="etc" style="margin-right: 1%;"> 기타: </label> <input type="text" id="delivery_etc" maxlength="10" disabled>
+									</div>
+								</div>
+							</div>	
+						</div>
+	
+						<!-- 작성자 -->
+						<div id="cate-Row">
+							<div class="category">
+								<span> 작성자*</span>
+							</div>
+							<div class="addContent">
+								<input type="text" name="online_writer" value="<%=user%>" id="online_writer" readonly>
 							</div>
 						</div>
 						
-						<div id="submitBtn-form">
+						<!-- 추가버튼 -->
+						<div id="cate-Row">
 							<button type="button" class="rel_Btn2"> 
 								<span> 추가하기 </span>
 							</button>

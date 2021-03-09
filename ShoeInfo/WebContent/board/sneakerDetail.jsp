@@ -111,6 +111,18 @@
 		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important;">
 			<!-- 신발 이미지 -->
 			<div class="shoeImg-container">
+				<%if(usr_position.equals("admin")){%>
+					<!-- 기본정보 수정하기 -->
+					<div style="position:absolute; top:5%; right:10%; font-size:25px;">
+						<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
+							<span><i class="fas fa-edit"></i></span>
+						</a>
+					</div>
+					<!-- 밞매처 추가하기 -->
+					<div class="rel_Btn" style="position:absolute; bottom:5%; right:10%; font-size:20px; cursor:pointer;">
+						<span><i class="far fa-plus-square"></i> 발매정보 추가</span>
+					</div>
+				<%}%>
 				<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 			</div>
 			
@@ -676,6 +688,9 @@
 	
 	$(document).ready(function(){
 		
+		var model_stylecode = $('.model_stylecode').val();
+		var num = $('.num').val();
+		
 		//방지
 		$(document).bind('keydown', function(e){
 			if(e.keyCode == 123 /* F12 */){
@@ -1036,28 +1051,6 @@
 				}
 			}
 		});
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		//발매정보 추가하기 버튼 눌렸을시
@@ -1067,28 +1060,23 @@
 				location.href="./MemberLogin.me";
 			}
 			//열심회원 체크
-			else if($("#login_user_position").val() == "general"){
-				alert("현재 등업 시스템 점검중입니다. \n서비스 이용에 불편을 드려 죄송합니다.");
-// 				var upPosition_confirm = confirm("발매정보는 열심회원원만 추가할 수 있습니다. \n등업신청 페이지로 가시겠습니까?");
-// 				if(upPosition_confirm){
-// 					location.href="./RequestUpPos.me?email="+$("#login_user").val();
-// 				}
-			}
+// 			else if($("#login_user_position").val() == "general"){
+// 				alert("현재 등업 시스템 점검중입니다. \n서비스 이용에 불편을 드려 죄송합니다.");
+// 			}
 			else {
-				var release_date_val = $('#release_date_val').val();
-				var null_date = '99-99';
+				location.href="./SearchBrand.me?model_stylecode=" + model_stylecode + "&num=" + num;
+// 				var release_date_val = $('#release_date_val').val();
+// 				var null_date = '99-99';
 				
-				if(release_date_val.indexOf(null_date) > -1){
-					alert("발매일이 미정인 제품입니다.");
-					return false;
-				}else {
-					location.href="./SearchBrand.me?model_stylecode=" + model_stylecode + "&num=" + num;
-				}
+// 				if(release_date_val.indexOf(null_date) > -1){
+// 					alert("발매일이 미정인 제품입니다.");
+// 					return false;
+// 				}else {
+// 					location.href="./SearchBrand.me?model_stylecode=" + model_stylecode + "&num=" + num;
+// 				}
 			}	
 		});
-		
-		
-		
+
 		//수정버튼을 클릭했을시 로그인 체크하기
 		$(".grid-edit").on('click', function() {
 			//grid-edit-kr1
@@ -1126,6 +1114,7 @@
 		});
 		
 		
+
 		
 		
 	});
