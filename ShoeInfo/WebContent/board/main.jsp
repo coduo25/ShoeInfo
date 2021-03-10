@@ -24,7 +24,7 @@
 <meta property="og:description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트, 국내 발매 정보 응모하기, 해외 발매 정보 응모하기, 나의 응모 현황 정리">
 <meta property="og:url" content="http://www.shoeinfo.co.kr">
 
-<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
@@ -43,6 +43,9 @@
 		if(user == null){
 			user="";
 		}
+		
+		//인기상품
+		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
 		
 		//사용자 응모한 브랜드 리스트
 		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
@@ -91,6 +94,42 @@
 	
 		<!-- 좌측 사이드 바 -->
 		<jsp:include page="/include/leftSideBar.jsp" />
+		
+		<div class="popular-container" style="margin-top:30px !important; padding:0 !important;">
+			<div class="sub-title">	
+				<h4> 인기 제품 </h4>
+			</div>
+			<div class="popular-table-container">
+				<% if(popularList.isEmpty()) {%>
+					<div>
+						인기상품 업데이트 중
+					</div>
+				<% } else { 
+					for (int i=0; i<popularList.size(); i++) {
+						SneakerDTO popular_sdto = popularList.get(i);
+				%>
+					<div class="popular-product">
+						<!-- 순위 -->
+						<div class="popular-rank">
+							<span><%=i+1%>위</span>
+						</div>
+						<!-- 이미지 -->
+						<div class="popular-imgBox">
+							<a href="./SneakerDetail.go?model_stylecode=<%=popular_sdto.getModel_stylecode()%>&num=<%=popular_sdto.getNum()%>">
+								<img src="./sneaker_img_upload/<%=popular_sdto.getImage()%>" width="50" height="38">
+							</a>
+						</div>
+					</div>
+				<% } } %>
+			</div>
+		</div>
+		
+		<!-- 최상단 메인 광고 970x90 -->
+		<div class="betweenAds-container-maintop" style="display:none; padding:20px 0;">
+			<div class="betweenAds-box">
+				
+			</div>
+		</div>
 
 		<!-- 발매 중 리스트 -->
 		<div class="releasing-container" style="margin-top:30px !important; padding-top:0 !important;">

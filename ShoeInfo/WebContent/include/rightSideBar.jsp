@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <title>Insert title here</title>
 <link href="./css/include/sideBar.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap" rel="stylesheet">
@@ -30,13 +31,14 @@
 		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
 	%>
 <body>
+
 	<!-- 우측 사이드바 -->
 	<div class="right-sideBar" id="right-sideBar">
 		<!-- 인기제품 -->
 		<div class="popular-chart">
 			<table>
 				<tr class="popular-subtitle">
-					<th colspan="3">인기제품</th>
+					<th colspan="3">인기 제품</th>
 				</tr>
 				<%
 					if(popularList.isEmpty()) {

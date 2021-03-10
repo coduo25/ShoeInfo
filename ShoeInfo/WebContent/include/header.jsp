@@ -109,6 +109,17 @@
 		
 	</div>
 	
+	<!-- 상단 왼쪽 현시간 표시 박스 (화면 줄였을때) -->
+	<div class="leftTopClock" id="leftTopClock" style="padding:0.5%;">
+		<div class="month_date" id="month_date" style="font-size:15px;">
+		</div>
+		<div class="time_zone" id="time_zone" style="font-size:24px; padding:10px 0 0 0 !important;">
+		</div>
+<!-- 		<div class="ampm_zone_container" > -->
+<!-- 			<span id="ampm_zone"></span> -->
+<!-- 		</div> -->
+	</div>
+	
 	<!-- top link -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-caret-up"></i></button>
 	
@@ -334,15 +345,7 @@
 		});
 		
 	});
-	
-	
-	//구 코드
-	//구 코드
-	//구 코드
-	//구 코드
-	//구 코드
-	//구 코드
-	
+
 		
 		//현재 시간 계산해주는 함수
 		function getTime(){

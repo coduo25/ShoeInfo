@@ -39,67 +39,67 @@
 
 /* media Query */
 @media screen and (max-width: 1440px){
-	#footer-wrapper{
-		max-width: 90%;
-	}
+/* 	#footer-wrapper{ */
+/* 		max-width: 90%; */
+/* 	} */
 }
 
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px){
-	#footer-wrapper {
-		width: 90%;
-		font-size:0.9em;
-	}
+/* 	#footer-wrapper { */
+/* 		width: 90%; */
+/* 		font-size:0.9em; */
+/* 	} */
 }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	#footer {
-		height: 100%;
-	}
-	#footer-wrapper {
-		width: 90%;
-		text-align: center;
-	}
-	#copyright {
-		line-height: 50px;
-		margin:0 auto;
-	}
-	#footer-wrapper div#copyright, #footer-wrapper div#info{
-		display:block;
-		line-height: 30px;
-		padding:1%;
-	}
-	#footer-wrapper div#div { 
-		display: none;
-	}
+/* 	#footer { */
+/* 		height: 100%; */
+/* 	} */
+/* 	#footer-wrapper { */
+/* 		width: 90%; */
+/* 		text-align: center; */
+/* 	} */
+/* 	#copyright { */
+/* 		line-height: 50px; */
+/* 		margin:0 auto; */
+/* 	} */
+/* 	#footer-wrapper div#copyright, #footer-wrapper div#info{ */
+/* 		display:block; */
+/* 		line-height: 30px; */
+/* 		padding:1%; */
+/* 	} */
+/* 	#footer-wrapper div#div {  */
+/* 		display: none; */
+/* 	} */
 		
-	.footer-nav {
-		display:block;
-		line-height: 30px;
-		padding:2%;
-		width: 100%;
-		float: none;
-  		text-align: center;
-	}
+/* 	.footer-nav { */
+/* 		display:block; */
+/* 		line-height: 30px; */
+/* 		padding:2%; */
+/* 		width: 100%; */
+/* 		float: none; */
+/*   		text-align: center; */
+/* 	} */
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	#footer-wrapper {
-		width: 90%;
-		text-align: center;
-	}
-	#footer-wrapper div#copyright{
-		padding:4% 0;
-	}
-	#footer-wrapper div#info{
-		padding:0.5%;
-		line-height: 15px;
-	}
-	.footer-nav {
-		font-size: 0.9em;
-		padding:5% 0 7% 0;
-	}
+/* 	#footer-wrapper { */
+/* 		width: 90%; */
+/* 		text-align: center; */
+/* 	} */
+/* 	#footer-wrapper div#copyright{ */
+/* 		padding:4% 0; */
+/* 	} */
+/* 	#footer-wrapper div#info{ */
+/* 		padding:0.5%; */
+/* 		line-height: 15px; */
+/* 	} */
+/* 	.footer-nav { */
+/* 		font-size: 0.9em; */
+/* 		padding:5% 0 7% 0; */
+/* 	} */
 }
 	

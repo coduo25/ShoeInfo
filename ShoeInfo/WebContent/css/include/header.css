@@ -44,7 +44,8 @@ a { text-decoration: none; color: #000000; }
 /* 좌측 하단 광고 */
 .googleAd-leftbottomBox { position:fixed; bottom:0; left:0; background-color:#eaeaea; z-index:50; width:300px; height:250px; } /*  */	
 
-
+/* 왼쪽 상단 시계 */
+.leftTopClock { display:none; position:fixed; left:0; top:8%; background-color:#fdfdfd; z-index:60; border:1px solid #a5a5a5; border-top-right-radius:10px; border-bottom-right-radius:10px; }
 
 
 
@@ -229,6 +230,16 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 
 
 
+/* 모바일 -------------------------------------------------------------- */
+/*  ----------------------------------------------------------------- */
+
+/* 1680px 밑으로 적용 */
+@media screen and (max-width: 1680px) {
+	/* 좌측 하단 광고 300x250 없애기 */
+	.googleAd-leftbottomBox { display:none !important; }
+	/* 좌측 상단 시계 on */
+	.leftTopClock { display:block; }
+}
 
 
 
@@ -236,13 +247,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 
 
 
-
-
-
-
-
-/* media Query */
-@media screen and (max-width: 1440px){
+@media screen and (max-width: 1440px) {
 	.acc_wrapper, .navbar {
 		width: 90%;
 		max-width: 90%;
