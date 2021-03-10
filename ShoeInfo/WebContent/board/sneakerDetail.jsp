@@ -113,13 +113,13 @@
 			<div class="shoeImg-container">
 				<%if(usr_position.equals("admin")){%>
 					<!-- 기본정보 수정하기 -->
-					<div style="position:absolute; top:5%; right:10%; font-size:25px;">
+					<div style="position:absolute; top:5%; right:9%; font-size:25px;">
 						<a href="./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
 							<span><i class="fas fa-edit"></i></span>
 						</a>
 					</div>
 					<!-- 밞매처 추가하기 -->
-					<div class="rel_Btn" style="position:absolute; bottom:5%; right:10%; font-size:20px; cursor:pointer;">
+					<div class="rel_Btn" style="position:absolute; bottom:5%; right:9%; font-size:20px; cursor:pointer;">
 						<span><i class="far fa-plus-square"></i> 발매정보 추가</span>
 					</div>
 				<%}%>
@@ -513,6 +513,17 @@
 								
 								<!-- 링크 -->
 								<td class="links">
+									<%if(usr_position.equals("admin")){%>
+										<!-- 해당 브랜드 정보 삭제하기 (관리자) -->
+										<div style="position:absolute; top:0; right:0;">
+											<span>
+												<a href="./DeleteDrawInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&brand_id=<%=bdto.getBrand_id() %>&model_num=<%=sdto.getNum()%>">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+											</span>
+										</div>
+									<%}%>
+									
 									<!-- 바로가기 버튼 -->
 									<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
 										<div id="count_todays_status<%=i%>linkBtn" class="direct-box" style="border:none; background-color:#f1f1f1; color:rgb(196 196 196);">
@@ -550,6 +561,19 @@
 											<%}%>
 										<%}%>
 									</div>
+									
+									<input type="hidden" id="modi_modelStylecode-<%=countryName_eng%><%=i%>" value="<%=sdto.getModel_stylecode()%>">
+									<input type="hidden" id="modi_brandId-<%=countryName_eng%><%=i%>" value="<%=bdto.getBrand_id()%>">
+									
+									
+									<%if(usr_position.equals("admin")){%>
+										<!-- 발매처 정보 수정하기 (관리자) -->
+										<div class="edit-container" id="edit-container-<%=countryName_eng%><%=i%>" style="margin-top:10px;">
+											<div>
+												<span><i class="fas fa-edit"></i></span>
+											</div>
+										</div>
+									<%}%>
 								</td>
 								
 							</tr>
@@ -748,7 +772,7 @@
 			//남은시간 계산하기
 			var count_span_start = document.getElementById("count_todays_start_timekr"+i).innerText;
 			var count_span_end = document.getElementById("count_todays_end_timekr"+i).innerText;
-			
+
 			var noTimeData = '0002';
 			//시작시간에 0002가 포함 = 무조건 끝나느시간이다 = 엔드로만 가지고 놀기
 			if(count_span_start.match(noTimeData)){
@@ -1078,7 +1102,7 @@
 		});
 
 		//수정버튼을 클릭했을시 로그인 체크하기
-		$(".grid-edit").on('click', function() {
+		$(".edit-container").on('click', function() {
 			//grid-edit-kr1
 			var grid_editID = $(this).attr('id');
 			// - 기준으로 자르기
@@ -1086,7 +1110,7 @@
  			// 제일 마지막 kr1 만 가지고 오기
 			var lastElement = splitArray[splitArray.length - 1];
  			
- 			var writer = $('#writer-' + lastElement).val();
+//  			var writer = $('#writer-' + lastElement).val();
  			
 			//로그인 체크
 			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {
@@ -1096,21 +1120,23 @@
 				var model_num = $('#num').val()
 				var model_stylecode = $('#modi_modelStylecode-' + lastElement).val();
 				var brand_id = $('#modi_brandId-' + lastElement).val();
-		
+				
 				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id + "&num=" + model_num;
 			}
+			
+			
 			//작성자와 같은지 체크
-			else if($('#logined').val() != writer || $('#login_user_position').val() == 'general'){
-				alert("해당 발매정보는 작성자만 수정할 수 있습니다.");
-				return false;
-			}
-			else if($('#login_user_position').val() == 'admin' || ($('#login_user_position').val() == 'prime' && $('#logined').val() == writer)){
-				var model_num = $('#num').val()
-				var model_stylecode = $('#modi_modelStylecode-' + lastElement).val();
-				var brand_id = $('#modi_brandId-' + lastElement).val();
+// 			else if($('#logined').val() != writer || $('#login_user_position').val() == 'general'){
+// 				alert("해당 발매정보는 작성자만 수정할 수 있습니다.");
+// 				return false;
+// 			}
+// 			else if($('#login_user_position').val() == 'admin' || ($('#login_user_position').val() == 'prime' && $('#logined').val() == writer)){
+// 				var model_num = $('#num').val()
+// 				var model_stylecode = $('#modi_modelStylecode-' + lastElement).val();
+// 				var brand_id = $('#modi_brandId-' + lastElement).val();
 		
-				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id + "&num=" + model_num;
-			}
+// 				location.href="./UpdateDrawInfo.me?model_stylecode=" + model_stylecode + "&brand_id=" + brand_id + "&num=" + model_num;
+// 			}
 		});
 		
 		

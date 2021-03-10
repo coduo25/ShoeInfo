@@ -54,8 +54,8 @@
 						<span class="total_main"> <a href="./MemberList.ad"> <%=memberNum%> 명 </a> </span>
 					</li>
 					<li>
-						<span class="total_subTit"> 등업신청 </span>
-						<span class="total_main"> <a href="#" style="color:green"> <%=memberPosReqNum%> 명 </a> </span>
+						<span class="total_subTit"> 신발 수 </span>
+						<span class="total_main"> <a href="./SneakerList.ad"> <%=sneakerNum%> 개 </a></span>
 					</li>
 					<li>
 						<span class="total_subTit"> 응모등록 </span>
@@ -66,12 +66,12 @@
 						<span class="total_main"> <a href="./BrandList.ad"> <%=brandNum%> 개 </a></span>
 					</li>
 					<li>
-						<span class="total_subTit"> 신발 수 </span>
-						<span class="total_main"> <a href="./SneakerList.ad"> <%=sneakerNum%> 개 </a></span>
+						<span class="total_subTit"> 회원 응모 횟수 </span>
+						<span class="total_main"> <a href="./MemberDrawList.ad" style="color:blue;"> <%=memberDrawNum%> 개 </a> </span>
 					</li>
 					<li>
-						<span class="total_subTit"> 회원 응모 횟수 </span>
-						<span class="total_main"> <a href="./MemberDrawList.ad"> <%=memberDrawNum%> 개 </a> </span>
+						<span class="total_subTit"> 등업신청 </span>
+						<span class="total_main"> <a href="#" style="color:green"> <%=memberPosReqNum%> 명 </a> </span>
 					</li>
 					<li>
 						<span class="total_subTit"> 브랜드 요청 </span>

@@ -30,7 +30,7 @@
 	<div id="wrapper" class="container">
 	
 		<!-- 제목 -->
-		<h3> 새로운 신발 추가하기 </h3>
+		<h3> 추가하기 </h3>
 	
 		<!-- content -->
 		<div id="content_adminAddSneaker">
@@ -46,63 +46,43 @@
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="3" id="category_brand"> 브랜드 </td>
-						<td id="category"> 브랜드* </td>
+						<td id="category" colspan="2"> 브랜드* </td>
 						<td> 
 							<input type="text" name="brand">
-							<span id="cate_ref"> 예시) Nike, Air Jordan, Adidas </span> 
 						</td>
 					</tr>
 					<tr>
-						<td id="category"> 서브브랜드  </td> 
-						<td> 
-							<input type="text" name="sub_brand">
-							<span id="cate_ref"> 예시) 1, 11, Yeezy, Dunk, Dunk SB </span> 
-						</td>
-					</tr>
-					<tr>
-						<td id="category"> 브랜드인덱스 </td> 
-						<td> 
-							<input type="text" name="brand_index">
-							 <span id="cate_ref"> 예시) Low, Fear of God, Boost 350 V2, 992 </span> 
-						</td>
-					</tr>
-					<tr>
-						<td id="category" colspan="2"> 제품 이미지* </td>
+						<td id="category" colspan="2"> 이미지* </td>
 						<td colspan="2"> <input type="file" name="file1"> </td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 스타일 코드 </td>
+						<td id="category" colspan="2"> 스타일 코드 </td>
 						<td colspan="2">
 							<input type="text" name="model_stylecode">
 						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품명 </td>
+						<td id="category" colspan="2"> 제품명 ENG </td>
 						<td colspan="2"> 
 							<input type="text" name="model_name">
-							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span> 
 						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품명(한국어) </td>
+						<td id="category" colspan="2"> 제품명 KOR </td>
 						<td colspan="2"> 
 							<input type="text" name="model_name_kr">
-							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span> 
 						</td>
 					</tr>
 					<tr>
-						<td id="category" colspan="2"> 제품 컬러 웨이 </td>
+						<td id="category" colspan="2"> 컬러 웨이 </td>
 						<td colspan="2"> 
 							<input type="text" name="model_colorway">
-							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 미정일시, 빈칸유지 </span> 
 						</td>
 					</tr>
 					<tr>
 						<td id="category" colspan="2"> 가격  </td>
 						<td colspan="2"> 
 							<input type="text" name="price">원
-							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 한국기준 가격이 미정일시, 빈칸유지 </span> 
 						</td>
 					</tr>
 					<tr>
@@ -170,7 +150,6 @@
 								<option value="99"> 99 </option>
 							</select>
 							일
-							<span id="cate_ref"> <i class="fas fa-exclamation-triangle"></i> &nbsp; 글로벌기준, 만약 월만 나왔을경우 일은 99 선택 </span> 
 						</td>
 					</tr>
 					<tr>

@@ -67,7 +67,7 @@
 							<td> <input type="file" name="brand_logo"> </td>
 						</tr>
 						<tr>
-							<td id="category"> 브랜드 이름 <span style="display:block; font-size:0.8em; font-weight: normal; padding-top:2%;"> <a href="./BrandList.ad"> 전체 브랜드 보기 </a> </span> </td>
+							<td id="category"> 브랜드 이름 </td>
 							<td> <input type="text" name="brand_name"> </td>
 						</tr>
 					
@@ -105,14 +105,13 @@
 							<td id="category"> 나라 이름 </td>
 							<td>
 								<input type="text" name="country_name"> 
-								<span id="cate_ref"> 예시) 대한민국, 미국, 네덜란드 </span>
 							</td>
 						</tr>
 						<tr>
 							<td id="category"> 나라 코드 </td>
 							<td>
 								<input type="text" name="country_code">
-								<span id="cate_ref"> 예시) 82, 12 <a href="https://countrycode.org/" target="_blank" style="color:#e00000; font-weight: bold;">코드보러가기</a> </span>
+								<a href="https://countrycode.org/" target="_blank">코드보러가기</a>
 							</td>
 						</tr>
 						<tr>

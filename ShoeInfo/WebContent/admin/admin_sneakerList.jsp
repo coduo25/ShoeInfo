@@ -51,7 +51,7 @@
 							for( int i=0; i<admin_sneakerList.size(); i++){
 								SneakerDTO sdto = admin_sneakerList.get(i);
 						%>
-							<div class="sneakerList-wrapper" onclick="location.href='./UpdateSneakerInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>'">
+							<div class="sneakerList-wrapper" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>'">
 								<div>
 									<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
 								</div>

@@ -2,11 +2,11 @@
 
 /* 중간 가로 970x90 광고 */
 .betweenAds-container { width:100%; display:table; }
-.betweenAds-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; } /* width:970px; height:90px; *
+.betweenAds-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:90px; } /* width:970px; height:90px; *
 
 /* 중간 가로 970x250 광고 */
 .betweenAds2-container { width:100%; display:table; }
-.betweenAds2-box {  border-radius:5px; background-color:#eaeaea; margin:0 auto; } /* width:970px; height:250px; */
+.betweenAds2-box {  border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:250px; } /* width:970px; height:250px; */
 
 
 /* 좌측 사이드바 */
@@ -47,8 +47,8 @@
 	.popularName-td div { display: -webkit-box; text-overflow: ellipsis; word-wrap: break-word; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 12px; min-height: 30px; }
 	
 	/* 구글 우측 광고 */
-	.googleAd-rightSideBar {  } /* width:160px; */
-	.ad-rightSideBar-box { border-radius:5px; z-index:50; background-color:#eaeaea; margin:0 auto; } /* height:600px; */
+	.googleAd-rightSideBar { width:160px; } /* width:160px; */
+	.ad-rightSideBar-box { border-radius:5px; z-index:50; background-color:#eaeaea; margin:0 auto; height:600px; } /* height:600px; */
 	
 	/* 나의 응모내역 보러가기 박스 */
 	.myDrawPopUp { display:flex; width:180px; font-family:'Nanum Gothic', sans-serif; border:3px solid #282A35; border-radius:5px; padding:8px 12px; margin-top:10%; background-color:#282A35; cursor:pointer; transition:0.5s; }

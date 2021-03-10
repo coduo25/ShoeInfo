@@ -287,7 +287,7 @@
 						<!-- 추가버튼 -->
 						<div id="cate-Row">
 							<button type="button" class="rel_Btn2"> 
-								<span> 추가하기 </span>
+								<span> 추가 </span>
 							</button>
 						</div>
 

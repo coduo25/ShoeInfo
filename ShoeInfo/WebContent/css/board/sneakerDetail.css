@@ -46,7 +46,7 @@ body { line-weight:1.4;}
 .releaseList-countryDiv {  width:100%; padding:40px 0 70px 0; }
 .country-table table { width:100%; border-collapse:collapse; text-align:center; }
 .country-table table th { border-top:1px solid #222; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:15px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
-.country-table table td { padding:30px 10px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1; font-size:15px; color:#666; }
+.country-table table td { padding:30px 10px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1; font-size:15px; color:#666; position:relative; }
 .country-table table td img { width:80px; height:80px; border:1px solid #c0c0c0; border-radius:5px; }
 
 	/* 진행상태 */
@@ -71,7 +71,7 @@ body { line-weight:1.4;}
 
 	/* 링크, 응모체크박스 */
 	.direct-box { margin:0 auto 7px auto !important; }
-	.direct-box, .draw_checkBox { margin:0 auto; width:90px !important; padding:4px 0; border:1px solid #1f1f1f; border-radius:5px; color:#1f1f1f; font-size:14px; }
+	.direct-box, .draw_checkBox, .editButton { margin:0 auto; width:90px !important; padding:4px 0; border:1px solid #1f1f1f; border-radius:5px; color:#1f1f1f; font-size:14px; }
 	.draw_checkBox { transition: 0.3s; cursor:pointer; }
 
 
@@ -83,7 +83,7 @@ body { line-weight:1.4;}
 	.sneaker_image_wrapper { text-align:center; border-bottom:1px dotted black; }
 
 	/* 추가하는 form */
-	#addOnlineForm { padding:3%; }
+	#addOnlineForm, #updateOnlineForm { padding:3% 0; }
 	#cate-Row { margin:0 0 40px 0; }
 	.category, .addContent { display:inline-block; vertical-align:top; }
 	.category { width:120px; color:#9a9a9a; }
