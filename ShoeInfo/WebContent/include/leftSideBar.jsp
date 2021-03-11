@@ -31,6 +31,15 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- 상단 왼쪽 현시간 표시 박스 (화면 줄였을때) -->
+		<div class="leftTopClock" id="leftTopClock" style="padding:0.5% 1%;">
+			<div class="month_date_mob" id="month_date_mob" style="font-size:15px;">
+			</div>
+			<div class="time_zone_mob" id="time_zone_mob" style="font-size:24px; padding:8px 0 0 0 !important;">
+			</div>
+		</div>
+		
 </body>
 
 <script type="text/javascript">
@@ -154,14 +163,21 @@
 	
 		var currentTime = hours + ":" + minutes + ":" + seconds;
 	
+		//PC 버전 현재시간
 		var monthDate_div = document.getElementById("month_date");
 		var time_div = document.getElementById("time_zone");
 		var ampm_zone = document.getElementById("ampm_zone");
-	
+		
+		//모바일 버전 현재시간
+		var monthDate_div_mob = document.getElementById("month_date_mob");
+		var time_div_mob = document.getElementById("time_zone_mob");
+		
 		//월 + 일 넣기
 		monthDate_div.innerHTML = currentDate;
+		monthDate_div_mob.innerHTML = currentDate;
 		//시간 넣기
 		time_div.innerHTML = currentTime;
+		time_div_mob.innerHTML = currentTime;
 		//am pm 넣기
 		ampm_zone.innerHTML = AMorPM;
 	}

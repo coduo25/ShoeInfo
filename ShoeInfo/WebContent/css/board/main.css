@@ -7,7 +7,7 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;} /* width: 80%; margin: 5px auto; */
  
 /* 리스트 별 컨테이너 */
-.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:80px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:50px 0; font-family: 'Nanum Gothic', sans-serif; }
 .released-container { display: table; width: 100%; box-sizing: border-box; margin:40px 0 0 0; font-family: 'Nanum Gothic', sans-serif; }
 .popular-container { display:none; }
 
@@ -41,7 +41,7 @@ body {font-size:1em; line-weight:1.4}
 .mainSneaker-container { float:left; width:23%; margin:0 1% 4% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; box-shadow:0px 2px 5px #44444433; border:1px solid rgb(222 222 222); }
 	/* 이미지 파트 */
 	.mainSneaker-image { display:block; }
-	.mainSneaker-image img { width:100%; height:100%; background-color:#f3f3f3; padding:25% 8% 5% 8%; border-bottom:1px solid rgb(222 222 222);}
+	.mainSneaker-image img { width:100%; height:100%; background-color:#f3f3f3; padding:25% 5% 8% 5%; border-bottom:1px solid rgb(222 222 222);}
 	
 	/* 모델 이름 + 발매처 횟수 */
 	.mainSneakerShoeInfo-container { width:100%; padding:5% 5% 7% 5%; }
@@ -103,13 +103,11 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 /* 스크롤바 style */
 /* width */
-::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar { width:12px; }
 /* Track */
 ::-webkit-scrollbar-track { background: #d6d6d6; }
 /* Handle */
 ::-webkit-scrollbar-thumb { background: #797979; }
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover { background: #d0d0d0; }
 
 
 /* 나의 응모내역 리스트 ------------------------------------------------------------------------------ */ 
@@ -342,6 +340,8 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.betweenAds-container-maintop { display:block !important; }
 }
 
+
+
 /* 0 ~ 1220px */
 /* @media screen and (max-width: 1440px){ */
 /* 	.container { */
@@ -372,99 +372,99 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	.shoelist_content {
-/* 		width: 48%; */
-		font-size: 0.85em;
-	}
-	#dd-label {
-		font-size: 1em;
-	}
-	#ing_status {
-		font-size: 1em;
-	}
-	#showAllChk {
-		text-align: center;
-	}
-	#showAllChk {
-    	width: 60%;
-	}
-	#ing_status, #recent-dot { 
-		font-size: 13px;
-	}
-	.shoelist_content_month p:nth-child(2), .shoelist_content_month p:last-child {
-		top: -3px;
-	}
+/* 	.shoelist_content { */
+/* /* 		width: 48%; */ */
+/* 		font-size: 0.85em; */
+/* 	} */
+/* 	#dd-label { */
+/* 		font-size: 1em; */
+/* 	} */
+/* 	#ing_status { */
+/* 		font-size: 1em; */
+/* 	} */
+/* 	#showAllChk { */
+/* 		text-align: center; */
+/* 	} */
+/* 	#showAllChk { */
+/*     	width: 60%; */
+/* 	} */
+/* 	#ing_status, #recent-dot {  */
+/* 		font-size: 13px; */
+/* 	} */
+/* 	.shoelist_content_month p:nth-child(2), .shoelist_content_month p:last-child { */
+/* 		top: -3px; */
+/* 	} */
 }
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-	.shoelist_content_month {
-		width: 48%;
-   		margin: 3% 1%;
-   		font-size: 1.7em;
-   		padding: 0 3%;
-	}
-	.shoelist_content {
-		width: 48%;
-   		margin: 3% 1%;
-   		font-size: 1em;
-	}
-	.release_date{
-		font-size: 0.95em;
-	}
-	.content_name .model_name {
-		font-size: 0.75em;
-	}
-	#link-wrapper {
-		font-size: 0.75em;
-	}
-	.no_info {
-		margin:8% 1%;
-	}
-	#recent-dot i {
-		font-size: 1em;
-	}
-	#dd-label {
-		font-size: 0.8em;
-		padding: 2% 7%;
-	}
-	#dd-label-wrapper {
-		width: 50%;
-	}
-	.rel_finish {
-		font-size: 1em;
-	}
-	.rel_finish_label {
-		padding-top: 70%;
-		font-size: 1.2em;
-	}
-	#recent-dot {
-    	left: 68%;
-	}
-	#showAllChk {
-		padding: 22px 0 17px 0;
-	}
-	#showAllChk {
-    	width: 80% !important;
-	}
-	#showAllChk span{
-		font-size:0.8em;
-		letter-spacing: .125rem;
-	}
-	.content_img {
-		padding: 16% 0 14% 0;
-	}
-	#ing_status, #recent-dot{ 
-		font-size: 0.7em;
-		padding: 2px 3px;
-	}
+/* 	.shoelist_content_month { */
+/* 		width: 48%; */
+/*    		margin: 3% 1%; */
+/*    		font-size: 1.7em; */
+/*    		padding: 0 3%; */
+/* 	} */
+/* 	.shoelist_content { */
+/* 		width: 48%; */
+/*    		margin: 3% 1%; */
+/*    		font-size: 1em; */
+/* 	} */
+/* 	.release_date{ */
+/* 		font-size: 0.95em; */
+/* 	} */
+/* 	.content_name .model_name { */
+/* 		font-size: 0.75em; */
+/* 	} */
+/* 	#link-wrapper { */
+/* 		font-size: 0.75em; */
+/* 	} */
+/* 	.no_info { */
+/* 		margin:8% 1%; */
+/* 	} */
+/* 	#recent-dot i { */
+/* 		font-size: 1em; */
+/* 	} */
+/* 	#dd-label { */
+/* 		font-size: 0.8em; */
+/* 		padding: 2% 7%; */
+/* 	} */
+/* 	#dd-label-wrapper { */
+/* 		width: 50%; */
+/* 	} */
+/* 	.rel_finish { */
+/* 		font-size: 1em; */
+/* 	} */
+/* 	.rel_finish_label { */
+/* 		padding-top: 70%; */
+/* 		font-size: 1.2em; */
+/* 	} */
+/* 	#recent-dot { */
+/*     	left: 68%; */
+/* 	} */
+/* 	#showAllChk { */
+/* 		padding: 22px 0 17px 0; */
+/* 	} */
+/* 	#showAllChk { */
+/*     	width: 80% !important; */
+/* 	} */
+/* 	#showAllChk span{ */
+/* 		font-size:0.8em; */
+/* 		letter-spacing: .125rem; */
+/* 	} */
+/* 	.content_img { */
+/* 		padding: 16% 0 14% 0; */
+/* 	} */
+/* 	#ing_status, #recent-dot{  */
+/* 		font-size: 0.7em; */
+/* 		padding: 2px 3px; */
+/* 	} */
 
-	#link-wrapper {
-		height: 30px;
-	}
-	.content_links {
-    	padding: 9% 4% 10% 4%;
-	}
+/* 	#link-wrapper { */
+/* 		height: 30px; */
+/* 	} */
+/* 	.content_links { */
+/*     	padding: 9% 4% 10% 4%; */
+/* 	} */
 }
 
 
