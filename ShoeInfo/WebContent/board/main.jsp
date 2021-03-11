@@ -130,6 +130,13 @@
 				
 			</div>
 		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none; padding:20px 0;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
 
 		<!-- 발매 중 리스트 -->
 		<div class="releasing-container" style="margin-top:30px !important; padding-top:0 !important;">
@@ -184,6 +191,13 @@
 		<!-- 중간 광고 970x90 -->
 		<div class="betweenAds-container">
 			<div class="betweenAds-box">
+				
+			</div>
+		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none;">
+			<div class="betweenAdsPad-box">
 				
 			</div>
 		</div>
@@ -286,9 +300,9 @@
 									<!--  발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="130" height="130" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
+											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" class="brandImg">
 											<span style="position:absolute; right:0; bottom:0;">
-												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width:30px; height: 20px;">
+												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" class="countryflag">
 											</span> 
 										</a>
 									</div>							
@@ -582,6 +596,13 @@
 				
 			</div>
 		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
 
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container">
@@ -700,6 +721,13 @@
 			</div>
 		</div>
 		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
+		
 		<!-- 발매 예정 리스트 -->
 		<div class="release-container" style="margin-bottom:0px !important; padding-bottom:0 !important;">
 			<div class="sub-title">	
@@ -760,6 +788,16 @@
 				
 			</div>
 		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none; padding-bottom:40px;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
+
+
+
 
 		<jsp:include page="/include/rightSideBar.jsp" />
 

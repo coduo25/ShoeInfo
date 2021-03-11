@@ -185,12 +185,33 @@
 									<!--  발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" width="130" height="130" style="border:1px solid #b3b3b3; position:relative; border-radius: 8px;">
+											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" class="brandImg">
 											<span style="position:absolute; right:0; bottom:0;">
-												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" style="border:0.5px solid #d4d4d4; width: 30px; height: 20px;">
+												<img src="./countryflag_img_upload/<%=bdto_todays.getCountry_flag()%>" class="countryflag">
 											</span> 
 										</a>
-									</div>							
+									</div>	
+									<!-- (모바일) 응모체크  -->
+									<div class="mob-drawCheckBtn" style="display:none;">
+										<!-- 참여체크박스 -->
+										<%if(odto_todays.getOnline_method().contains("선착")) {%>
+										
+										<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+											<%if(!userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>
+												<input type="hidden" id="drawCheck_status<%=i%>" value="참여전">
+												<!-- 참여체크박스 -->
+												<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:white; color:black;">
+													<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>"></span></span>
+												</div> 
+											<%}else{%>
+												<input type="hidden" id="drawCheck_status<%=i%>" value="참여완료">
+												<!-- 참여체크박스 -->
+												<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:black; color:white;">
+													<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>">응모함</span></span>
+												</div> 
+											<%}%>
+										<%}%>
+									</div>						
 								</div>
 								
 								<!-- 발매처 세부정보 -->

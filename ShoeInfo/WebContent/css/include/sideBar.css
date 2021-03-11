@@ -1,12 +1,19 @@
 @CHARSET "UTF-8";
 
-/* 중간 가로 970x90 광고 */
+/* PC - 중간 가로 970x90 광고 */
 .betweenAds-container { width:100%; display:table; margin:30px 0; }
 .betweenAds-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:90px; } /* width:970px; height:90px; *
 
-/* 중간 가로 970x250 광고 */
+/* PC - 중간 가로 970x250 광고 */
 .betweenAds2-container { width:100%; display:table; }
 .betweenAds2-box {  border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:250px; } /* width:970px; height:250px; */
+
+/* Pad - 중간 가로 728x90 광고 */
+.betweenAdsPad-container { width:100%; display:table; }
+.betweenAdsPad-box {  border-radius:5px; background-color:#eaeaea; margin:0 auto; width:720px; height:90px; } /* width:720px; height:90px; */
+
+
+
 
 
 /* 좌측 사이드바 */

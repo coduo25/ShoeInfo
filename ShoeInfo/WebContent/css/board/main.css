@@ -62,6 +62,8 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; }
 	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left: 20px; }
 
+	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius: 8px; }
+	.countryflag { border:0.5px solid #d4d4d4; width:30px; height:20px; }
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
 	.brand-info-container { vertical-align: top; margin-bottom: 17px !important; }
@@ -358,16 +360,40 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.todaysRelease-content2 { padding-left: 15px; }
 	
 	/* 브랜드 이미지 */
-	.brand-info-image-container img { width:120px; height:120px; }
+	.brandImg { width:120px !important; height:120px !important; }
 	
 	/* 발매제품 이미지 */
 	.releaseModel-image img {
 	    padding:60px 10px 20px 10px;
 	}
 
+	/* 나의 응모내역 리스트 페이지 */
+	.myDrawShoeInfo-name { font-size:16px; } 
 
-
+	/* 나의 응모내역 디테일 페이지 */
+	.shoeFullName_eng { font-size:25px; }
+	
 }
+
+
+/* 0 ~ 768px */
+@media screen and (max-width: 768px){
+	/* 970 광고 전부 업애고 728 광고 on */
+	/* 최정상 	광고 없애기 */
+	.betweenAds-container-maintop { display:none !important; }
+	.betweenAds-container { display:none !important; }
+	.betweenAds2-container { display:none !important;}
+	.betweenAdsPad-container { display:table !important; }
+	
+	/* 현재 발매중 박스 크기 변경 */
+	.mainSneaker-container { width:31.33%; }
+	
+	/* 오늘의 발매처 */
+	.todaysRelease-content1 { display:block; text-align:left; padding:0 0 10px 15px; }
+	.brand-info-image-container img { width:80px; height:80px; }
+	.todaysRelease-content2 { display:block; } 
+}
+
 
 
 
