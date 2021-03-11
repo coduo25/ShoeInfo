@@ -74,6 +74,23 @@
 				<div>
 					<a href="./Main.bo"> SHOE INFO. </a>
 				</div>
+				<!-- 모바일 버전 로그인/회원정보 버튼 -->
+				<div class="mob-acc-container">
+					<% if(user == null || user.length() == 0){ %>
+						<span> <a href="./MemberLogin.me"><i class="far fa-user"></i></a> </span>
+					<%
+						}else if(usr_position.equals("admin")){ 
+					%>
+						<span class="acc_list"> <a href="./Main.ad"> <i class="fas fa-user-secret"></i> </a> </span>
+						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span> 
+						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span>
+					<% 
+						}else{ 
+					%>
+						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
+						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
+					<% } %>
+				</div>
 			</div>
 		</div>
 		
@@ -97,7 +114,7 @@
 						</li>
 						<li <%if(pageName.equals("memberDrawList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
 							<a href="#" id="myDrawBtn"> 나의 응모내역 </a>
-						 </li>
+						</li>
 					</ul>
 				</div>
 			</div>

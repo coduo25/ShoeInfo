@@ -12,7 +12,7 @@
 	border-top: 1px solid #dadada;
 }
 
-#footer-wrapper{ max-width: 1080px; margin: 0 auto; color:#444; }
+#footer-wrapper{ width: 1080px; margin: 0 auto; color:#444; }
 #footer-wrapper div { display:block; text-align:left; }
 
 .footer-nav { padding:22px 0 15px 0; }
@@ -20,7 +20,7 @@
 .footer-nav span { padding-right:18px; }
 
 .copyright { padding:5px 0 50px 0; }
-.info { float:right; font-size:22px; }
+.info { float:right; font-size:22px; white-space:nowrap; }
 .info span { padding-right:0 !important; padding-left:5px; }
 .info i { color:#889498; }
 
@@ -28,29 +28,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-/* media Query */
-@media screen and (max-width: 1440px){
-/* 	#footer-wrapper{ */
-/* 		max-width: 90%; */
-/* 	} */
-}
+/* 모바일 -------------------------------------------------------------- */
+/*  ----------------------------------------------------------------- */
 
 /* 0 ~ 1220px */
-@media screen and (max-width: 1220px){
-/* 	#footer-wrapper { */
-/* 		width: 90%; */
-/* 		font-size:0.9em; */
-/* 	} */
+@media screen and (max-width: 1220px) {
+	#footer-wrapper { width: 100%; padding:0 2%; }
 }
+
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){

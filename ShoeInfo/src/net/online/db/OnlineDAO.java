@@ -314,7 +314,7 @@ public class OnlineDAO {
 		
 		try{
 			con = getConnection();
-			sql = "SELECT * from shoeinfo_onlineinfo where ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') between concat(curdate(), ' 00:00:00') and concat(adddate(curdate(), 1), ' 00:00:01'))))or(((online_method like '%드로우%') || online_method like '%라플%') and ((online_start_date = curdate() or online_end_date = curdate()) or ((now() >= CONCAT(online_start_date, ' ', online_start_time, ':00')) and (now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')))))) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
+			sql = "SELECT * from shoeinfo_onlineinfo where ( (((online_method like '%선착%') and (CONCAT(online_start_date, ' ', online_start_time, ':00') between concat(curdate(), ' 00:00:00') and concat(adddate(curdate(), 1), ' 00:00:01')))) or (((online_method like '%드로우%') || online_method like '%라플%') and ((online_start_date = curdate() or online_end_date = curdate()) or ((now() <= CONCAT(online_end_date, ' ', online_end_time, ':00')))))) order by GREATEST(concat(online_start_date, ' ', online_start_time), concat(online_end_date, ' ', online_end_time))";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -336,7 +336,7 @@ public class OnlineDAO {
 				odto.setReg_date(rs.getTimestamp("reg_date"));
 				onlineList_todays.add(odto);
 				
-				//불러온 5개의 오늘 응모 리스트의 브랜드 정보 담기
+				//오늘 응모 리스트의 브랜드 정보 담기
 				sql = "select * from shoeinfo_brand where brand_id = ?";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setString(1, odto.getBrand_id());

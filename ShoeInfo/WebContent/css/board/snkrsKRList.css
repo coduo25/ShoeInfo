@@ -19,7 +19,7 @@ body {font-size:1em; line-weight:1.4}
 .desc-container span { display:inline-block; position:relative; }
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
-.snkrsWeek-table-container { width:1080px; white-space:nowrap; margin-bottom:30px; display:block; }
+.snkrsWeek-table-container { white-space:nowrap; margin-bottom:30px; display:block; }
 .snkrsSneaker-container { display:inline-block; width:32.333%; margin:0.5% 0.5% 4% 0.5%; display:inline-block; float:left; box-shadow:0px 2px 5px #44444433; padding-bottom:20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
 .snkrsSneaker-container img { background-color:#f3f3f3; padding:80px 10px 40px 10px; border:1px solid #e1e1e1; }
@@ -41,7 +41,19 @@ div.snkrs_time a { font-size:16px; color:#777 !important; }
 
 
 
+/* 모바일 -------------------------------------------------------------- */
+/*  ----------------------------------------------------------------- */
 
+/* 0 ~ 1220px */
+@media screen and (max-width: 1220px) {
+	/* 제목 */
+	.sub-title { font-size:22px; }
+	
+	/* 몇일 남았는지 */
+	.dDay-status span { font-size:18px; }
+	/* 날짜 */
+	div.snkrs_date { font-size:26px; }
+}
 
 
 

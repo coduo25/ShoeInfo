@@ -30,13 +30,16 @@ a { text-decoration: none; color: #000000; }
 .navbar_logo { z-index: 1; font-size: 60px; font-family: 'Racing Sans One', cursive; }
 .navbar_logo a { letter-spacing: -2px; }
 
+		/* 모바일 버전 회원정보 버튼 */
+		.mob-acc-container { display:none; position:absolute; right:10px; top:0; font-size:25px !important; }
+
 /* 메인 메뉴 */
 .block-list { text-align: center; }
 .block-content { display: inline-block; }
 .nav { list-style: none; }
 .nav > li { display: inline-block; vertical-align: middle; zoom: 1; float: none; text-align: left; position:inherit; padding: 0 10px 15px 10px; margin-right:10px;}
 .nav > li:last-child { margin-right: 0px !important; }
-.nav li a { padding: 10px 0 5px; marign: 0; font-size: 18px; text-transform: none; position: relative; font-family: 'Nanum Gothic', sans-serif; }
+.nav li a { padding: 10px 0 5px; marign: 0; font-size: 18px; text-transform: none; position: relative; font-family: 'Nanum Gothic', sans-serif; white-space:nowrap; }
 .nav li:last-child a { color: #AE0F19; }
 .nav a:hover { color: #c0c0c0; }
 
@@ -239,38 +242,30 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 
 /* 0 ~ 1220px */
 @media screen and (max-width: 1220px) {
+	/* 모든 페이지 */
+	.container { padding:0 2%; margin:0 !important; width:100% !important; }
+	.header-container { border-bottom:0; }
+
 	/* pc버전 인스타+로그인 row 없애기 */
 	.toplink-container { display:none; }
+	
+	/* 로고  + 로그인 + 회원정보 버튼 */
+	.logo-row { text-align:left; padding:1% 2% 2% 2%; }
+	.mob-acc-container { display:block; padding:2%; }
+	.navbar_logo { font-size:40px; }
+	.acc_list { padding-right:20px; }
+	
+	/* 메뉴바 */
+	.block-list { text-align:left; white-space:nowrap; overflow-x:auto; }
+	.nav > li { padding:0 0 15px 0; margin-right:30px; }
 }
 
 
 
 
 
-@media screen and (max-width: 1440px) {
-/* 	.acc_wrapper, .navbar { */
-/* 		width: 90%; */
-/* 		max-width: 90%; */
-/* 	} */
-}
-/* 0 ~ 1220px */
-@media screen and (max-width: 1220px) {
 
-/* 	.acc_wrapper, .navbar { */
-/* 		width: 100%; */
-/* 		max-width: 100%; */
-/* 		padding: 0 40px; */
-/* 	} */
-/* 	.navbar_menu { */
-/* 		display: flex; */
-/* 	} */
-/* 	.navbar_userlinks { */
-/* 		display: flex; */
-/* 	} */
-/* 	#showAllChk { */
-/*     	width: 30%; */
-/* 	} */
-}
+
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px) {

@@ -277,7 +277,7 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" style="text-align:left !important; padding-left:5px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" class="release-info" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
@@ -302,7 +302,7 @@
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-												<span id="count_todays_status<%=i%>brandNameTxt" style="font-weight:bold; font-size:23px; color: #1f1f1f;"> <%=bdto_todays.getBrand_name()%></span>
+												<span id="count_todays_status<%=i%>brandNameTxt" class="todays-brandName"> <%=bdto_todays.getBrand_name()%></span>
 											</a>
 											<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
 											<%if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
