@@ -245,6 +245,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	/* 모든 페이지 */
 	.container { padding:0 2%; margin:0 !important; width:100% !important; }
 	.header-container { border-bottom:0; }
+	.menu-row { border-bottom:1px solid #dadada; }
 
 	/* pc버전 인스타+로그인 row 없애기 */
 	.toplink-container { display:none; }
@@ -257,7 +258,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	
 	/* 메뉴바 */
 	.block-list { text-align:left; white-space:nowrap; overflow-x:auto; }
-	.nav > li { padding:0 0 15px 0; margin-right:30px; }
+	.nav > li { padding:0 5px 15px 5px; margin-right:25px; }
 }
 
 

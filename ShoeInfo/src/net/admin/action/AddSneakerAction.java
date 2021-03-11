@@ -44,8 +44,14 @@ public class AddSneakerAction implements Action {
 		SneakerDTO sdto = new SneakerDTO();
 		
 		sdto.setBrand(multi.getParameter("brand").trim());
-		sdto.setSub_brand(multi.getParameter("sub_brand").trim());
-		sdto.setBrand_index(multi.getParameter("brand_index").trim());
+		
+		if(multi.getParameter("sub_brand") == null){
+			sdto.setSub_brand("");
+		}
+		if(multi.getParameter("brand_index") == null){
+			sdto.setBrand_index("");
+		}
+		
 		String image1 = multi.getFilesystemName("file1");
 		sdto.setImage(image1);
 		

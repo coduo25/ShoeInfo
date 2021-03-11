@@ -81,8 +81,8 @@ public class SneakerDAO {
 			pstmt.setString(4, sdto.getBrand_index());
 			pstmt.setString(5, sdto.getImage());
 			pstmt.setString(6, sdto.getModel_stylecode());
-			pstmt.setString(7, sdto.getModel_name_kr());
-			pstmt.setString(8, sdto.getModel_name());
+			pstmt.setString(7, sdto.getModel_name());
+			pstmt.setString(8, sdto.getModel_name_kr());
 			pstmt.setString(9, sdto.getModel_colorway());
 			pstmt.setInt(10, sdto.getPrice());
 			pstmt.setString(11, sdto.getRelease_date());

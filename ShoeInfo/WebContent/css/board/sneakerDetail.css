@@ -56,7 +56,8 @@ body { line-weight:1.4;}
 	.brandLogoName { text-align:left !important; }
 	.sneakerDetail-logo, .sneakerDetail-brandName { display:inline-block; vertical-align:top; }
 	.sneakerDetail-brandName { padding-left:12px; }
-	.sneakerDetail-brandNameTxt { font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:16px; margin-bottom:12px; }
+	.sneakerDetail-brandNameTxt span { width:150px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:16px; margin-bottom:12px; white-space:nowrap; }
+	.sneakerDetail-releaseMethod { white-space:nowrap; }
 	
 	/* 응모시간 + 남은시간 */
 	.releaseTime { line-height:25px; }
@@ -166,6 +167,10 @@ body { line-weight:1.4;}
 	.shoeDetailInfo-subtitle p { font-size:15px; }
 	.shoeDetailInfo-subtitle { margin-bottom:20px; }
 	.shoeDetailInfo-content { margin-bottom:10px; }
+	.sub-title { font-size:22px; }
+	/* 발매처 표 */
+	.release-status { font-size:14px; }
+	.sneakerDetail-brandNameTxt span { font-size:15px; }
 }
 
 
