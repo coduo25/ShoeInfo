@@ -52,23 +52,23 @@ body {font-size:1em; line-weight:1.4}
 /* 오늘의 발매 리스트 ------------------------------------------------------------------------------ */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black; }
 #onlineList_todays_table th { padding:20px 10px; background:#f9f9f9; border-top:1px solid #222; border-bottom:1px solid #c1c1c1; color:#222; font-size:15px; }
-#onlineList_todays_table td { height: 100%; border-bottom:1px solid #c1c1c1; padding:35px 0; }
-#onlineList_todays_table td { text-align: center; }
+#onlineList_todays_table td { height: 100%; border-bottom:1px solid #c1c1c1; padding:35px 0; text-align: center; }
 
 	/* 번호 & 상태 */
 	.status-container div { display:block; font-size:17px; }
 
 	/* 발매처정보 */
-	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; padding-left:25px; }
-	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left:25px; }
+	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; padding-left:20px; }
+	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left:20px; }
 
-	.brandImg { width:140px; height:140px; border:1px solid #b3b3b3; position:relative; border-radius:8px; }
+	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius:8px; }
 	.countryflag { border:0.5px solid #d4d4d4; width:30px; height:20px; }
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
 	.brand-info-container { vertical-align: top; margin-bottom: 17px !important; }
 	.todays-brandName { font-weight:bold; font-size:23px; color:#1f1f1f; }
 	.release-status { margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
+	.mob-release-status { display:none !important; margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	
 	/* 발매처 정보 박스 */
 	.release-info { text-align:left !important; padding-left:5px; }
@@ -79,23 +79,17 @@ body {font-size:1em; line-weight:1.4}
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
-	.remain-time { font-size:18px; padding:0 3px; font-weight: bold; font-family: 'Kelly Slab', cursive; }
+	.remain-time { font-size:20px; padding:0 5px 0 4px; font-weight: bold; font-family: 'Kelly Slab', cursive; }
 	.remainWarning-container { display: block; position: relative; color: black !important; margin-top:5px; }
 	.remainWarning-container span { display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%; }
 
 	/* 발매 제품  */
-	.releaseModel-image img { width:90%; background-color:#f3f3f3; padding:70px 10px 20px 10px; }
+	.releaseModel-image img { width:90%; background-color:#f3f3f3; padding:80px 10px 20px 10px; }
 	.releaseModel-name { margin-bottom: 10px; padding:0 5%; font-size:15px; }
 	
 	/* 체크박스 */
 	.drawCheckBtn { display:block; margin-top:10px; }
-	.draw_checkBox { border:1px solid #b3b3b3; padding:4px; width:90%; margin:0 auto; }
-	
-	/* 바로가기 버튼 & 참여 체크박스 */
-/* 	.links-container div { display:block; padding:5px 7px; border-radius:5px; width:100px; } */
-/* 	.direct-box { border:1px solid black; background-color:white; margin: 0 auto 10px auto; font-size:15px; transition: 0.3s; } */
-/* 	.draw_checkBox { border:1px solid #b3b3b3; margin: 0 auto; transition: 0.3s; font-size:15px; cursor:pointer; } */
-/* 	.direct-box:hover { background-color: black; color: white; } */
+	.draw_checkBox { border:1px solid #b3b3b3; padding:4px; width:50%; margin:0 auto; border-radius:5px; }
 	
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
@@ -339,14 +333,14 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	
 	/* 오늘의 발매처 part ----------------------------------------------------------------------------- */
 	/* td 발매처 정보 block */
-/* 	.todaysRelease-content1 { display:block; text-align:left; padding: 0 0 10px 20px; } */
-/* 	.todaysRelease-content2 { display:block; } */
-	.todays-brandName { font-size:20px; }
+	.todays-brandName { font-size:21px; }
 	.release-status { font-size:14px; }
 	.release-info { padding-left:0 !important; }
-	.info-subTitle { font-size:14px; }
-	.info-content { font-size:14px; }
-	.todaysRelease-content2 { padding-left: 15px; }
+	.info-subTitle { font-size:15px; }
+	.info-content { font-size:15px; }
+/* 	.todaysRelease-content2 { padding-left: 15px; } */
+	.remain-time { font-size:18px; }
+	.remainTime-container { font-size:14px; } 
 	
 	/* 브랜드 이미지 */
 	.brandImg { width:120px !important; height:120px !important; }
@@ -374,21 +368,24 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.betweenAds2-container { display:none !important;}
 	.betweenAdsPad-container { display:table !important; }
 	
+	/* 제목 */
+	.sub-title { margin:0 0 10px 0; }
+	
 	/* 현재 발매중 박스 크기 변경 */
 	.mainSneaker-container { width:31.33%; }
 	
 	/* 오늘의 발매처 */
+	.mob-release-status { display:inline-block !important; }
+	#onlineList_todays_table th:nth-child(2), #onlineList_todays_table td:nth-child(2) { display:None; }
+	#onlineList_todays_table th:nth-child(3) { width:63% !important; }
+	#onlineList_todays_table td:last-child { padding-left:20px !important; padding-right:20px !important; }
 	.brandImg { width:80px !important; height:80px !important; }
 	
+	.todaysRelease-content1, .todaysRelease-content2 { padding-left:15px; }
 	.todays-brandName { font-size:18px; }
-	.release-status { padding:3px 4px; }
+	.mob-release-status { padding:3px 5px; }
 	.todaysRelease-content2 div { margin-bottom:9px; }
 	.countryflag { width:24px !important; height:15px !important; }
-	.info-subTitle { display:none !important; }
-	.info-content { padding-left:0; }
-	#onlineList_todays_table th:last-child { display:none; }
-	#onlineList_todays_table td:last-child { display:none; }
-	.mob-drawCheckBtn { display:block !important; } 
 }
 
 
