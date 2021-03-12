@@ -108,16 +108,14 @@
 					for (int i=0; i<popularList.size(); i++) {
 						SneakerDTO popular_sdto = popularList.get(i);
 				%>
-					<div class="popular-product">
+					<div class="popular-product" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=popular_sdto.getModel_stylecode()%>&num=<%=popular_sdto.getNum()%>'" style="cursor:pointer;">
 						<!-- 순위 -->
 						<div class="popular-rank">
 							<span><%=i+1%>위</span>
 						</div>
 						<!-- 이미지 -->
 						<div class="popular-imgBox">
-							<a href="./SneakerDetail.go?model_stylecode=<%=popular_sdto.getModel_stylecode()%>&num=<%=popular_sdto.getNum()%>">
 								<img src="./sneaker_img_upload/<%=popular_sdto.getImage()%>" width="50" height="38">
-							</a>
 						</div>
 					</div>
 				<% } } %>

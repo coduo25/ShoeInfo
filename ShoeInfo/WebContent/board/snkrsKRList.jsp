@@ -78,6 +78,13 @@
 	
 		<!-- 좌측 사이드 바 -->
 		<jsp:include page="/include/leftSideBar.jsp" />
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none; margin-top:20px;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
 
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container" style="margin-top:40px !important; padding-top:0 !important; margin-bottom:100px !important;">
@@ -133,7 +140,6 @@
 						Date releaseDate = original_format.parse(dateFormat2);
 						
 						long calDate = releaseDate.getTime()-todayDate.getTime();
-						
 						long calDateDays = calDate/(24*60*60*1000);
 						
 						calDateDays = Math.abs(calDateDays);
@@ -143,7 +149,9 @@
 							<div class="dDay-status">
 								<span <%if(calDateDays <=2){%>style="border:1px solid #e0575c; background-color:#e0575c;"<%}else{%>style="border:1px solid black; background-color:black;"<%}%>>
 									<%if(calDateDays==0){ %>
-										발매일
+										오늘발매
+									<%}else if(calDateDays==1){ %>
+										내일발매
 									<%}else { %>
 										<%=calDateDays%>일 남음
 									<%} %>
@@ -189,6 +197,13 @@
 		<!-- 중간 광고 970x250 -->
 		<div class="betweenAds2-container" style="padding-bottom:40px;">
 			<div class="betweenAds2-box">
+				
+			</div>
+		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none; padding-bottom:40px;">
+			<div class="betweenAdsPad-box">
 				
 			</div>
 		</div>

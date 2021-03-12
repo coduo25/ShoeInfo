@@ -47,14 +47,16 @@ body { line-weight:1.4;}
 .country-table table { width:100%; border-collapse:collapse; text-align:center; }
 .country-table table th { border-top:1px solid #222; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:15px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
 .country-table table td { padding:30px 10px; border-top:1px solid #ddd; border-bottom:1px solid #c1c1c1; font-size:15px; color:#666; position:relative; }
-.country-table table td img { width:80px; height:80px; border:1px solid #c0c0c0; border-radius:5px; }
 
 	/* 진행상태 */
+	.brandStatus { white-space:nowrap; }
 	.release-status { font-size:14px; padding:4px 5px; vertical-align:middle; color:white; font-weight:bold; border-radius:4px; }
 	
 	/* 발매처 */
 	.brandLogoName { text-align:left !important; }
-	.sneakerDetail-logo, .sneakerDetail-brandName { display:inline-block; vertical-align:top; }
+	.sneakerDetail-logo, .sneakerDetail-brandName { display:inline-block; vertical-align:top; position:relative; }
+	.brandlogo_img { width:80px; height:80px; border:1px solid #c0c0c0; border-radius:5px; }
+	.countryflag { border:0.5px solid #d4d4d4; width:25px; height:15px; }
 	.sneakerDetail-brandName { padding-left:12px; }
 	.sneakerDetail-brandNameTxt span { width:150px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:16px; margin-bottom:12px; white-space:nowrap; }
 	.sneakerDetail-releaseMethod { white-space:nowrap; }
@@ -147,9 +149,6 @@ body { line-weight:1.4;}
 	#submitBtn-form { padding: 3% 0; }
 
 
-	
-	
-	
 
 
 /* 모바일 -------------------------------------------------------------- */
@@ -173,504 +172,69 @@ body { line-weight:1.4;}
 	.sneakerDetail-brandNameTxt span { font-size:15px; }
 }
 
-
-
-
-
-
-
-
-
-
-
-/* media Query */
-/* 0 ~ 1220px */
-@media screen and (max-width: 1220px){
-/* 	.container { */
-/* 		width: 93%; */
-/* 	} */
-/* 	.draw_status { */
-/* 		font-size: 0.9em; */
-/* 	} */
-/* 	.sneaker_image img, .sneaker_image_draw img{ */
-/* 		width: 70%; */
-/* 		height: 70%; */
-/* 	} */
-/* /* 	.sneaker_cate label, .sneaker_cate span { */ */
-/* /* 		font-size: 0.9em; */ */
-/* /* 	} */ */
-/* 	#rel_Btn_label { */
-/* 		font-size: 0.95em !important; */
-/* 	} */
-/* 	.grid-wrapper { */
-/* 		width:21%; */
-/* 		height: 500px; */
-/* 	} */
-/* 	.grid-info span { */
-/* 		font-size: 1.1em !important; */
-/* 	} */
-/* 	#wrapper-period span { */
-/* 		font-size: 0.9em; */
-/* 	} */
-/* 	/* 발매 정보 추가하는 영역 */ */
-/* 	.add_wrapper { */
-/* 		padding: 2% 0; */
-/* 	} */
-/* 	#addOnlineForm, #updateOnlineForm { */
-/* 		padding: 4%; */
-/* 	} */
-	
-/* 	#draw_count_result_ing, #draw_count_result_before { */
-/* 		font-size: 0.85em; */
-/* 	} */
-/* 	.searched-form { */
-/* 		width: 70%; */
-/* 	} */
-/* 	.rel_Btn{ */
-/* 		width: 100%; */
-/* 	} */
-/* 	.grid-info { */
-/* 		top: 86%; */
-/* 	} */
-/* 	#start_time2 { */
-/* 		display: none; */
-/* 	} */
-/* 	.grid-wrapper-list { */
-/*     	margin: 1.25% 1%; */
-/*     	width: 98%; */
-/* 	} */
-/* 	#content_sneakerInfo h4, #content_sneakerInfo_list h4 { */
-/* 		font-size: 1.4em; */
-/* 	} */
-/* 	.detail_wrapper { */
-/* 		padding: 1.5% 1%; */
-/* 	} */
-	
-/* 	.draw_status div { */
-/* 		width: 20%; */
-/* 	} */
-	
-/* 	#title { */
-/* 		padding: 2% 0 0 0; */
-/* 	} */
-/* 	#brandlogo_img_list { */
-/* 		width: 80px; */
-/* 		height: 80px; */
-/* 	} */
-/* 	.grid-content-list { */
-/* 		padding: 0 0.5% 0.5% 1.5%; */
-/* 	} */
-/* 	.grid-item-list { */
-/*     	padding: 1.5%; */
-/* 	} */
-/* 	#wrapper-period-list { */
-/*     	margin-bottom: 1.5%; */
-/* 	} */
-/* 	.grid-time { */
-/* 		margin: 7% 0; */
-/* 	} */
-}
-
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-/* 	.container { */
-/* 		width: 95%; */
-/* 	} */
-/* 	.grid-wrapper { */
-/* 		width:29.33%; */
-/* 		height: 540px; */
-/* 	} */
-/* 	.rel_Btn{ */
-/* 		width: 100%; */
-/* 	} */
-/* 	#content_sneakerDetail div#cate_Detail { */
-/* 		padding: 5% 0 0; */
-/* 		font-size: 1em; */
-/* 	} */
-/* 	#content_sneakerDetail div#sneaker_Detail { */
-/* 		padding: 0; */
-/* 	} */
-/* 	.sneaker_cate { */
-/* 		margin-bottom: 0.5%; */
-/* 	} */
-/* 	.detail_wrapper { */
-/* 		padding: 2.5% 0; */
-/* 	} */
-/* 	.detail_wrapper div.desc_wrapper, .detail_wrapper div.relBtn_wrapper { */
-/* 		width: 100%; */
-/* 	} */
-/* 	.detail_wrapper div.relBtn_wrapper { */
-/*     	margin-top: 3%; */
-/* 	} */
-/* 	.sneaker_cate label { */
-/* 		width: 36%; */
-/* 	} */
-/* 	.desc_wrapper .sneaker_cate span { */
-/* 		text-align: right; */
-/* 		width: 62%; */
-/* 	} */
-/* 	.draw_count_result_wrapper { */
-/* 		font-size: 0.95em !important; */
-/* 	} */
-/* 	#nothingSearched div { */
-/* 		width: 60%; */
-/* 	} */
-/* 	#del-radio-wrapper { */
-/*     	display: block; */
-/*     	padding: 1% 0 3% 0; */
-/* 	} */
-/* 	.grid-info { */
-/* 		top: 87%; */
-/* 	} */
-/* 	#wrapper-period { */
-/*     	margin-bottom: 10%; */
-/* 	} */
-/* 	.grid-content div { */
-/*     	margin-bottom: 5%; */
-/* 	} */
-/* 	.grid-wrapper-list { */
-/* 		font-size: 1em; */
-/* 		margin: 1.5% 1%; */
-/* 		width: 98%; */
-/* 	} */
-/* 	#wrapper-name { */
-/* 		margin-bottom: 1.5%; */
-/* 	} */
-/* 	.grid-wrapper { */
-/*     	height: 530px; */
-/* 	} */
-/* 	.grid-item-list { */
-/*     	padding: 2%; */
-/* 	} */
-/* 	.grid-content-list { */
-/* 		padding: 0% 0.5% 0% 3%; */
-/* 	} */
-/* 	#wrapper-period-list { */
-/*     	margin-bottom: 2%; */
-/* 	} */
+	/* 970 광고 전부 업애고 728 광고 on */
+	/* 최정상 	광고 없애기 */
+	.betweenAds-container-maintop { display:none !important; }
+	.betweenAds-container { display:none !important; }
+	.betweenAds2-container { display:none !important;}
+	.betweenAdsPad-container { display:table !important; }
 	
-/* 	#country_flag_img-list { */
-/* 		vertical-align: middle; */
-/* 	} */
-/* 	.draw_status { */
-/* 		margin: 0 auto 5% auto; */
-/* 	} */
-/* 	.draw_status div { */
-/* 		width: 25%; */
-/* 	} */
-/* 	#content_sneakerInfo h4, #content_sneakerInfo_list h4 { */
-/*     	font-size: 1.3em; */
-/* 	} */
-/* 	#country_flag_img { */
-/* 		margin-top: 8px; */
-/* 	} */
-/* 	.grid-content { */
-/*    		padding: 3% 5% 5% 5%; */
-/* 	} */
+	.sub-title { font-size:20px; }
 	
-/* 	#title { */
-/* 		font-size: 2.3em; */
-/* 	} */
-/* 	#title_kr { */
-/* 		font-size: 1.5em; */
-/* 	} */
+	/* 신발 정보 디테일 */
+	.shoeImg-container { width:40%; }
+	.shoeImg-container img { padding:25% 0; }
+	.shoeDetailInfo-container { width:57%; }
+	.shoeFullName_eng { font-size:21px; }
+	.countryCate-container { white-space:nowrap; overflow-x:auto; }
+	.countryCate-container div { font-size:15px; padding:6px 26px; }
+	
+	/* 발매처 리스트 */
+	.country-table th { display:none; }
+	.brandNum, .releaseTime, .payAnddel { display:none; }
+	
+	
+	
+/* 	.country-table th:first-child, .brandNum { display:none; } */
+/* 	.country-table th:last-child, .links { display:none; } */
+/* 	.country-table th:nth-child(2) { width:80px; } */
+/* 	.country-table th:nth-child(5), .payAnddel { border-right:0 !important; } */
+	
+/* 	.brandNum { display:none !important; } */
+/* 	.country-table table td { display:block; border-bottom:0; text-align:left; padding:20px 10px; } */
+/* 	.brandStatus, .country-table td:last-child { display:table-cell !important; text-align:center; } */
+	
+/* 	.country-table td:before { padding: 0 0 0 10px; display:inline-block; width:80px; } */
+/* 	.country-table td:nth-of-type(4):before { content:"남은시간"; } */
+/* 	.country-table td:nth-of-type(5):before { content:"결제 배송"; } */
+
+
+
+
+
+
+
 }
 
-/* 0 ~ 468px */
-@media screen and (max-width: 468px){
-/* 	.container { */
-/* 		width: 93%; */
-/* 	} */
-/* 	/* 스위치 */ */
-/* 	.switch-wrapper {  */
-/* /* 		display: none; */ */
-/* 		width: 100%; */
-/* 	    display: block; */
-/* 	    position: relative; */
-/* 	    float: left; */
-/* 	    text-align: right; */
-/* 	    margin: 6% 0; */
-/* 	    padding-right: 3%; */
-/* 	} */
-/* 	.detail_wrapper div.relBtn_wrapper { */
-/*     	margin-top: 6%; */
-/* 	} */
-/* 	.sneaker_image img, .sneaker_image_draw img{ */
-/* 		width: 70%; */
-/* 		height: 70%; */
-/* 	} */
-/* 	.sneaker_name { */
-/* 		font-size: 0.8em; */
-/* 		line-height: unset; */
-/* 	} */
-/* 	#no-info-wrapper { */
-/* 		margin: 5% 0 0 0; */
-/* 		font-size: 0.9em; */
-/* 	} */
-/* 	#no-info-label { */
-/* 		padding: 12% 0; */
-/* 		font-size: 1em;	 */
-/* 	} */
-/* 	.grid-wrapper { */
-/* 		width: 44%; */
-/*     	margin: 3%; */
-/*     	height: unset; */
-/* 	} */
-/* 	#wrapper-period { */
-/* 		margin-bottom: 7%; */
-/* 	} */
-/* 	.grid-content div { */
-/*     	margin-bottom: 5%; */
-/* 	} */
-	
-/* 	#wrapper-period span { */
-/* 		font-size: 0.9em; */
-/* 	} */
-/* /* 	#content_sneakerDetail div#cate_Detail { */ */
-/* /* 		font-size: 0.8em; */ */
-/* /* 	} */ */
-/* 	#cate_Detail { */
-/* 		display:none; */
-/* 	} */
-/* 	.arrow { */
-/*     	padding: 0 3px 0 4px; */
-/* 	} */
-	
-/* 	#title { */
-/* 		font-size: 1.5em; */
-/* 		padding: 3.5% 0 0 0; */
-/* 	} */
-/* 	#title_kr { */
-/* 		font-size: 0.9em; */
-/* 		padding: 2% 0.5% 3% 0.5%; */
-/* 	} */
-	
-/* 	#country_flag_img { */
-/* 		width: 20px; */
-/*    		height: 13px; */
-/*    		margin-top: 5px; */
-/* 	} */
-/* 	.wrapper-content span { */
-/* 		font-size:0.9em; */
-/* 	} */
-/* 	.grid-ing { */
-/*  		top: 6%; */
-/*     	width: 40%; */
-/*     	left: 54%; */
-/* 	} */
-/* 	.grid-time { */
-/*     	height: 40px; */
-/*     	margin: 10% 0; */
-/*     	font-size: 0.85em; */
-/* 	} */
-/* 	.draw_count_result_wrapper { */
-/*     	font-size: 0.8em !important; */
-/* 	}	 */
-/* 	.grid-info-writer {  */
-/* 		padding: 3% 4%; */
-/* 	} */
-/* 	.grid-content { */
-/*     	padding: 3% 6% 1% 6%; */
-/*     	font-size: 0.9em; */
-/* 	} */
-	
-	
-/* 	/* 발매 추가 영역 */ */
-/* 	.add_wrapper #category_warn { */
-/* 		font-size: 0.7em; */
-/* 		padding-bottom: 4%; */
-/* 	} */
-/* 	.add_wrapper #category { */
-/* 		font-size: 0.9em; */
-/* 		padding-bottom: 3%; */
-/* 	} */
-/* 	.add_wrapper #example { */
-/* 		font-size: 0.8em; */
-/* 	} */
-/* 	input[name=model_stylecode] { */
-/*     	width: 50%; */
-/* 	} */
-/* 	input[name=online_link] { */
-/*     	width: 100%; */
-/* 	} */
-/* 	input[type=date], input[type=time] { */
-/* 		display: block; */
-/* 		margin-bottom: 2%; */
-/* 	} */
-/* 	label { */
-/* 		font-size: 0.9em; */
-/* 	} */
-/* 	#del-radio-wrapper { */
-/* 		display: block; */
-/* 		padding: 1% 0 3% 0; */
-/* 	} */
-/* 	input[type=radio] { */
-/* 		height: 1em; */
-/* 	} */
-/* 	.searched-form { */
-/*     	width: 80%; */
-/* 	} */
-/* 	#brandList-name { */
-/* 		font-size: 0.5em; */
-/* 	} */
-/* 	#nothingSearched div { */
-/*     	font-size: 0.7em; */
-/*     	padding: 2%; */
-/* 	} */
-/* 	#request-form { */
-/* 		font-size: 0.8em; */
-/* 	} */
-/* 	#request-form button { */
-/* 		font-size: 0.7em; */
-/*     	width: 30%; */
-/*     	padding: 3%; */
-/* 	} */
-/* 	#brand-form, #link-form, #online_method-form, #onlineTime-form, #buyMethod-form, #delivery_method-form { */
-/*    		padding-bottom: 12%; */
-/* 	} */
-/* 	.rel_Btn2 { */
-/* 		width: 100%; */
-/* 	} */
-/* 	.brandList-wrapper { */
-/* 		width: 33%; */
-/* 	} */
-/* 	.picked-form { */
-/*     	width: 50%; */
-/* 	} */
-	
-/* 	.mobile-toggle-down {  */
-/* 		display: none; */
-/* 	} */
-	
-/* 	#radio-wrapper { */
-/* 	    padding: 1% 0 7% 0; */
-/* 	} */
-/* 	#radio-wrapper:last-child { */
-/*    		padding: 1% 0 0 0; */
-/* 	} */
-/* 	#del-radio-wrapper { */
-/*     	padding: 1% 0 7% 0; */
-/* 	} */
-	
-/* 	.add_wrapper label { */
-/* 		vertical-align: middle; */
-/* 	} */
-	
-/* 	#onlineM-radio-wrapper { */
-/*     	display: block; */
-/*     	padding: 1% 0 5% 0; */
-/* 	} */
-/* 	.grid-info { */
-/* 		display: none; */
-/* 		right: 5%; */
-/* 		top: 84%; */
-/* 	} */
-/* 	#addOnlineForm, #updateOnlineForm { */
-/*     	padding: 5%; */
-/* 	} */
-/* 	.add_wrapper div { */
-/*     	padding-bottom: 12%; */
-/* 	} */
-/* 	#req_icon { */
-/* 	    vertical-align: middle; */
-/* 	}	 */
-/* 	.grid-wrapper-list { */
-/* 		font-size: 0.7em; */
-/* 		width: 100%; */
-/* 		margin: 3.5% 0; */
-/* 	} */
-/* 	.grid-ing-list { */
-/* 		right: -1%; */
-/* 		top: 15%; */
-/* 	} */
-	
-/* 	#draw_count_result_ing_list ,#draw_count_result_ing, #draw_count_result_before, #draw_count_result_before_list { */
-/*     	font-size: 0.8em; */
-/*     	padding: 2px 3px; */
-/* 	}	 */
-	
-/* 	#country_flag_img-list { */
-/* 		width: 15px; */
-/*     	height: 10px; */
-/*     	margin-bottom: -1.3px; */
-/* 	} */
-/* 	#brandlogo_img_list { */
-/* 		width: 60px; */
-/* 		height: 60px; */
-/* 	} */
-	
-/* 	#grid-list, #grid-list-list { */
-/* 		margin-bottom: 15%; */
-/* 	} */
-	
-/* 	#last-wrapper-content { */
-/* 		margin-bottom: 3%; */
-/* 	} */
-	
-/* 	#slide { */
-/* 		margin: 0; */
-/* 	} */
-	
-/* 	#content_sneakerInfo h4, #content_sneakerInfo_list h4 { */
-/*     	font-size: 1.05em; */
-/*     	margin: 1% 0 2% 0; */
-/*     	text-align: left;  */
-/* 	} */
-	
-/* 	.ribbon { */
-/* 		top: 8px; */
-/*     	left: -33px; */
-/*     	width: 95px; */
-/*     	padding: 1px 0; */
-/*     	font-size: 10px; */
-/* 	} */
-	
-/* 	.grid-item-list { */
-/*     	padding: 2%; */
-/* 	} */
-/* 	#wrapper-name { */
-/*     	margin: 0.5% 0 1.8% 0; */
-/*     	font-size: 1.25em; */
-/* 	} */
-/* 	#wrapper-period-list { */
-/* 		font-size: 0.9em; */
-/*     	margin-bottom: 2.5%; */
-/* 	} */
-/* 	#remain-time-list { */
-/* 		top: 0%; */
-/* 		font-size: 0.9em; */
-/* 		z-index: -1; */
-/* 	} */
-/* 	.draw_checkbox { */
-/* 		width: 13px; */
-/* 		height: 13px; */
-/* 		margin-bottom: 0; */
-/* 	} */
-/* 	.draw_status { */
-/* 		font-size: 0.7em; */
-/* 		margin: 1% auto 7% auto; */
-/* 	} */
-/* 	.draw_status div { */
-/* 		width: 37%; */
-/* 		margin: 0 8px; */
-/* 		padding: 7px 0; */
-/* 	} */
-/* 	.detail_wrapper { */
-/*     	padding: 3% 1%; */
-/*     	font-size: 0.9em; */
-/* 	} */
-/* 	.grid-content-list { */
-/*     	padding: 0% 1% 0% 2.5%; */
-/* 	} */
-/* 	#divide { */
-/*     	padding: 0 5px; */
-/* 	} */
-/* 	.checkbg_list, .md-status-wrapper-list { */
-/* 		width: 60px; */
-/* 		height: 60px; */
-/* 	} */
-	
-	
-	
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	

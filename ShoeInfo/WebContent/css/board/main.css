@@ -61,7 +61,7 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; padding-left:20px; }
 	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left:20px; }
 
-	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius:8px; }
+	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius:6px; }
 	.countryflag { border:0.5px solid #d4d4d4; width:30px; height:20px; }
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
@@ -369,7 +369,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.betweenAdsPad-container { display:table !important; }
 	
 	/* 제목 */
-	.sub-title { margin:0 0 10px 0; }
+	.sub-title { margin:0 0 10px 0; padding:0 0 5px 0; }
 	
 	/* 현재 발매중 박스 크기 변경 */
 	.mainSneaker-container { width:31.33%; }
@@ -386,6 +386,10 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.mob-release-status { padding:3px 5px; }
 	.todaysRelease-content2 div { margin-bottom:9px; }
 	.countryflag { width:24px !important; height:15px !important; }
+	
+	/* 나이키코리아 snkrs */
+	.snkrsSneaker-container { width:40%; }
+	div.snkrs_date { font-size: 22px; }
 }
 
 
@@ -396,31 +400,6 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 
 
-/* 0 ~ 768px */
-@media screen and (max-width: 768px){
-/* 	.shoelist_content { */
-/* /* 		width: 48%; */ */
-/* 		font-size: 0.85em; */
-/* 	} */
-/* 	#dd-label { */
-/* 		font-size: 1em; */
-/* 	} */
-/* 	#ing_status { */
-/* 		font-size: 1em; */
-/* 	} */
-/* 	#showAllChk { */
-/* 		text-align: center; */
-/* 	} */
-/* 	#showAllChk { */
-/*     	width: 60%; */
-/* 	} */
-/* 	#ing_status, #recent-dot {  */
-/* 		font-size: 13px; */
-/* 	} */
-/* 	.shoelist_content_month p:nth-child(2), .shoelist_content_month p:last-child { */
-/* 		top: -3px; */
-/* 	} */
-}
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){

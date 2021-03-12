@@ -212,6 +212,13 @@
 				
 			</div>
 		</div>
+
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
 	
 		<!-- 국가별 발매처 -->
 		<div class="releaseList-container" style='margin-bottom:40px !important;'>
@@ -243,7 +250,7 @@
 						<table>
 							<tr>
 								<th style="width:70px"> 번호 </th>
-								<th style="width:92px"> 진행상태 </th>
+								<th style="width:92px"> 상태 </th>
 								<th style="width:281px"> 발매처 </th>
 								<th style="width:310px"> 시간 </th>
 								<th style="width:180px; border-right: 1px dotted #dcdcdc;"> 결제·배송 </th>
@@ -322,11 +329,10 @@
 									String count_todays_end_time = count_format.format(original_Online_end_time);
 							%>
 							<tr class="sneakerDetail-tr" id="count_todays_status<%=countryName_eng%><%=i%>DetailTr">
-								<td style="display:none;">
-									<input type="hidden" id="brand_id<%=countryName_eng%><%=i%>" value="<%=bdto.getBrand_id()%>">
-									<input type="hidden" id="country_name<%=countryName_eng%><%=i%>" value="<%=bdto.getCountry_name()%>">
-								</td>
 								
+								<input type="hidden" id="brand_id<%=countryName_eng%><%=i%>" value="<%=bdto.getBrand_id()%>">
+								<input type="hidden" id="country_name<%=countryName_eng%><%=i%>" value="<%=bdto.getCountry_name()%>">
+							
 								<!-- 번호 -->
 								<td class="brandNum" id="brandNum<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>"><%=i+1%>.</td>
 								
@@ -359,13 +365,16 @@
 									<div style="display:flex; align-items:center;">
 										<div class="sneakerDetail-logo">
 											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-												<img id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+												<img class="brandlogo_img" id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+												<span style="position:absolute; right:0; bottom:0;">
+													<img src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" class="countryflag">
+												</span> 
 											</a>
 										</div>
 										<div class="sneakerDetail-brandName">
 											<div class="sneakerDetail-brandNameTxt" id="count_todays_status<%=countryName_eng%><%=i%>brandName">
 												<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-													<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%></span>
+													<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>
 												</a>
 											</div>
 											<div class="sneakerDetail-releaseMethod">
@@ -600,6 +609,13 @@
 		<!-- 중간 광고 970x250 -->
 		<div class="betweenAds2-container" style="padding-bottom:40px;">
 			<div class="betweenAds2-box">
+				
+			</div>
+		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none; padding-bottom:40px;">
+			<div class="betweenAdsPad-box">
 				
 			</div>
 		</div>
