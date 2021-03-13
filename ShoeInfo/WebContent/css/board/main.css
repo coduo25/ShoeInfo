@@ -55,7 +55,7 @@ body {font-size:1em; line-weight:1.4}
 #onlineList_todays_table td { height: 100%; border-bottom:1px solid #c1c1c1; padding:35px 0; text-align: center; }
 
 	/* 번호 & 상태 */
-	.status-container div { display:block; font-size:17px; }
+	.status-container div { display:block; font-size:17px;}
 
 	/* 발매처정보 */
 	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; padding-left:20px; }
@@ -71,10 +71,10 @@ body {font-size:1em; line-weight:1.4}
 	
 	/* 발매처 정보 박스 */
 	.release-info { text-align:left !important; padding-left:5px; }
-	
+
 	.brand-info-container { display:block; }
-	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; }
-	.info-content { display:inline-block; color:#949494; padding-left:15px; font-size:16px; }
+	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; width:80px; }
+	.info-content { display:inline-block; color:#949494; font-size:16px; width:400px; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
@@ -316,19 +316,19 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.todays-brandName { font-size:21px; }
 	.release-status { font-size:14px; }
 	.release-info { padding-left:0 !important; }
-	.info-subTitle { font-size:15px; }
-	.info-content { font-size:15px; }
-/* 	.todaysRelease-content2 { padding-left: 15px; } */
+	.brand-info-container { width:100%; }
+	.info-subTitle, .info-content { font-size:15px; }
 	.remain-time { font-size:18px; }
 	.remainTime-container { font-size:14px; } 
 	
+	.todaysRelease-content2 { width:80%; } 
+	
+	
 	/* 브랜드 이미지 */
-	.brandImg { width:120px !important; height:120px !important; }
+	.brandImg { width:100px !important; height:100px !important; }
 	
 	/* 발매제품 이미지 */
-	.releaseModel-image img {
-	    padding:60px 10px 20px 10px;
-	}
+	.releaseModel-image img { padding:60px 10px 20px 10px; }
 
 	/* 나의 응모내역 리스트 페이지 */
 	.myDrawShoeInfo-name { font-size:16px; } 
@@ -348,13 +348,14 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.mainSneaker-container { width:31.33%; }
 	
 	/* 오늘의 발매처 */
-	.mob-release-status { display:inline-block !important; }
 	#onlineList_todays_table td:last-child { padding-left:20px !important; padding-right:20px !important; }
-	.brandImg { width:80px !important; height:80px !important; }
 	
-	.todaysRelease-content1 { display:block; text-align:left; }
-	.todaysRelease-content1, .todaysRelease-content2 { padding-left:10px; }
-	.info-content { padding-left:10px; }
+	.brandImg { width:80px !important; height:80px !important; }
+	.info-subTitle, .info-content { width:100%; display:block; }
+	.todaysRelease-content1 { padding-left:0; }
+	.todaysRelease-content2 { width:70%; }
+	.todaysRelease-content2 div { margin-bottom:15px !important; }
+	.info-subTitle { margin-bottom:5px; }
 	.todays-brandName { font-size:18px; }
 	.mob-release-status { padding:3px 5px; }
 	.todaysRelease-content2 div { margin-bottom:9px; }

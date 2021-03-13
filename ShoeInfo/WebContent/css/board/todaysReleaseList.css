@@ -43,8 +43,8 @@ body {font-size:1em; line-weight:1.4}
 	.release-info { text-align:left !important; padding-left:5px; }
 
 	.brand-info-container { display:block; }
-	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; white-space:nowrap; }
-	.info-content { display:inline-block; color:#949494; padding-left:15px; font-size:16px; white-space:nowrap; }
+	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; width:80px; }
+	.info-content { display:inline-block; color:#949494; font-size:16px; width:400px; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
@@ -74,16 +74,15 @@ body {font-size:1em; line-weight:1.4}
 	.todays-brandName { font-size:21px; }
 	.release-status { font-size:14px; }
 	.release-info { padding-left:0 !important; }
-	.todaysRelease-content2 { width:80%; }
 	.brand-info-container { width:100%; }
-	.info-subTitle { font-size:15px; }
-	.info-content { font-size:15px; width:80%; }
+	.info-subTitle, .info-content { font-size:15px; }
 	.remain-time { font-size:18px; }
-	.remainTime-container { font-size:14px; } 
+	.remainTime-container { font-size:14px; }
+	
+	.todaysRelease-content2 { width:80%; } 
 	
 	/* 브랜드 이미지 */
 	.brandImg { width:100px !important; height:100px !important; }
-	.todaysRelease-content2 { padding-left:15px; }
 	
 	/* 발매제품 이미지 */
 	.releaseModel-image img { padding:60px 10px 20px 10px; }
@@ -98,11 +97,12 @@ body {font-size:1em; line-weight:1.4}
 	/* 오늘의 발매처 */
 	#onlineList_todays_table td:last-child { padding-left:20px !important; padding-right:20px !important; }
 	
-	.brandImg { width:60px !important; height:60px !important; }
-/* 	.todaysRelease-content1, .todaysRelease-content2 { padding-left:10px; display:block; text-align:left; } */
-/* 	.todaysRelease-content2 { width:100%; } */
-	.brand-info-container { width:100%; }
-	.info-content { padding-left:10px; }	
+	.brandImg { width:80px !important; height:80px !important; }
+	.info-subTitle, .info-content { width:100%; display:block; }
+	.todaysRelease-content1 { padding-left:0; }
+	.todaysRelease-content2 { width:70%; }
+	.todaysRelease-content2 div { margin-bottom:15px !important; }
+	.info-subTitle { margin-bottom:5px; }
 	.todays-brandName { font-size:18px; }
 	.mob-release-status { padding:3px 5px; }
 	.todaysRelease-content2 div { margin-bottom:9px; }

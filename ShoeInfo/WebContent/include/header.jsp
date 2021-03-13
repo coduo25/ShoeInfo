@@ -75,22 +75,38 @@
 					<a href="./Main.bo"> SHOE INFO. </a>
 				</div>
 				<!-- 모바일 버전 로그인/회원정보 버튼 -->
-				<div class="mob-acc-container">
-					<% if(user == null || user.length() == 0){ %>
-						<span> <a href="./MemberLogin.me"><i class="far fa-user"></i></a> </span>
-					<%
-						}else if(usr_position.equals("admin")){ 
-					%>
-						<span class="acc_list"> <a href="./Main.ad"> <i class="fas fa-user-secret"></i> </a> </span>
-						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span> 
-						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span>
-					<% 
-						}else{ 
-					%>
-						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
-						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
-					<% } %>
+				<div class="mob-container">
+					<!-- 회원관련 버튼들 -->
+					<div class="mob-acc-container">
+						<% if(user == null || user.length() == 0){ %>
+							<span> <a href="./MemberLogin.me"><i class="far fa-user"></i></a> </span>
+						<%
+							}else if(usr_position.equals("admin")){ 
+						%>
+							<span class="acc_list"> <a href="./Main.ad"> <i class="fas fa-user-secret"></i> </a> </span>
+							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span> 
+							<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span>
+						<% 
+							}else{ 
+						%>
+							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
+							<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
+						<% } %>
+					</div>
+					<!-- 모바일 버전일때 메뉴 버튼 -->
+					<div class="mob-nav-container">
+						<a href="#" class="navbar_toggleBtn">
+							<i class="fas fa-bars"></i>
+						</a>
+					</div>
+					
+					<div class="mob-nav-container-exitBtn">
+						<a href="#" class="navbar_toggleBtn">
+							<i class="fas fa-times"></i>
+						</a>
+					</div>
 				</div>
+
 			</div>
 		</div>
 		
@@ -119,6 +135,12 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- 모바일 흰색 메뉴판 -->
+		<div class="mob-menuBoard">
+			메뉴판 
+		</div>
+
 	</header>
 	
 	<!-- 좌측 하단 광고 300x250 -->
@@ -195,64 +217,6 @@
 			</div>
 		</div>
 	</nav>
-	
-	<!-- 회원등급별표 -->
-	<div id="memberChart" style="display:none;">
-		<div id="mc_title">
-			<span>
-				현재&nbsp;
-				<span id="current_rank">
-					<%if(user == null || user.length() == 0){%>
-						
-						비회원
-					
-					<%}else if(usr_position.equals("general")){%>
-					
-						일반회원
-						
-					<%}else if(usr_position.equals("prime")){%>
-					
-						열심회원
-						
-					<%}else if(usr_position.equals("admin")){%>
-					
-						관리자
-						
-					<%}%>
-				</span> 
-				&nbsp;입니다
-			</span>
-			<span id="mc_exit">
-				<i class="fas fa-times"></i>
-			</span>
-		</div>
-		<div id="memberRank-wrapper">
-			<div id="rank-wrapper">
-				<div id="rank_label">비회원</div>
-				<div id="stars"><i class="fas fa-star"></i></div>
-				<div id="rank_content"> 
-					<p onclick="location.href='./Main.bo'">발매정보 보기</p>
-				</div>
-			</div>
-			<div id="rank-wrapper">
-				<div id="rank_label">일반회원</div>
-				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-				<div id="rank_content"> 
-					<p onclick="location.href='./Main.bo'">발매정보 보기</p>
-					<p id="myDrawBtn2"><i class="far fa-calendar-check"></i> MYDRAW 관리 </p>
-				</div>
-			</div>
-			<div id="rank-wrapper">
-				<div id="rank_label">열심회원</div>
-				<div id="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-				<div id="rank_content"> 
-					<p onclick="location.href='./Main.bo'">발매정보 보기</p>
-					<p id="myDrawBtn2"><i class="far fa-calendar-check"></i> MYDRAW 관리</p>
-					<p id="addDrawInfo"><i class="far fa-edit"></i> 발매정보 추가</p>			 
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<input type="hidden" class="user" id="user" value="<%=user%>">
 		
@@ -348,6 +312,23 @@
 			}else {
 				location.href="./MemberDrawInfo.me";
 			}
+		});
+		
+		//모바일 버전 메뉴 버튼 눌렸을시 (메뉴 나오게하기)
+		$('.mob-nav-container').click(function(){
+			$(this).hide();
+			$('.mob-nav-container-exitBtn').fadeIn(0.01);
+			$('.mob-menuBoard').show(0.01).animate({
+                right:0
+            });
+		});
+		//모바일 버전 메뉴 버튼 눌렸을시 (메뉴 없애기)
+		$('.mob-nav-container-exitBtn').click(function(){
+			$(this).hide();
+			$('.mob-nav-container').fadeIn(0.01);
+			$('.mob-menuBoard').show(0.01).animate({
+                right:'-'+100+'%'
+            });
 		});
 		
 	});
