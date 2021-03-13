@@ -178,13 +178,6 @@ body { line-weight:1.4;}
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	/* 970 광고 전부 업애고 728 광고 on */
-	/* 최정상 	광고 없애기 */
-	.betweenAds-container-maintop { display:none !important; }
-	.betweenAds-container { display:none !important; }
-	.betweenAds2-container { display:none !important;}
-	.betweenAdsPad-container { display:table !important; }
-	
 	.sub-title { font-size:20px; }
 	
 	/* 신발 정보 디테일 */

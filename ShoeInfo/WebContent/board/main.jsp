@@ -124,15 +124,19 @@
 		
 		<!-- 최상단 메인 광고 970x90 -->
 		<div class="betweenAds-container-maintop" style="display:none; padding:20px 0;">
-			<div class="betweenAds-box">
-				
+			<div class="betweenAds-box">	
 			</div>
 		</div>
 		
 		<!-- Pad - 중간 광고 728x90 -->
 		<div class="betweenAdsPad-container" style="display:none; padding:20px 0;">
 			<div class="betweenAdsPad-box">
-				
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none; padding:20px 0;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 
@@ -334,7 +338,7 @@
 								<div class="todaysRelease-content2">
 								
 									<!-- 발매처 정보 -->
-									<div class="brand-info-container">
+									<div class="brand-info-container" style="margin-bottom: 15px !important;">
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
@@ -365,9 +369,9 @@
 									</div>
 								
 									<!-- 발매 방식  -->
-									<div>
-										<span class="info-subTitle">발매 방식</span>
-										<span class="info-content">
+									<div class="brand-info-container">
+										<div class="info-subTitle">발매 방식</div>
+										<div class="info-content">
 										<%if(odto_todays.getOnline_method().contains("선착")) {%>
 											선착순구매  <!-- color:#ff5722; -->
 										<%} else if(odto_todays.getOnline_method().contains("드로우")) {%>
@@ -379,19 +383,19 @@
 										<%} else if(odto_todays.getOnline_method().contains("미정")) {%>
 											미정
 										<%} %>
-										</span>
+										</div>
 									</div>
 
 									<!-- 시간 -->
-									<div>
-										<span class="info-subTitle">
+									<div class="brand-info-container">
+										<div class="info-subTitle">
 											<%if(odto_todays.getOnline_method().contains("선착")){%>
 												선착 시간
 											<%}else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")){%>
 												응모 시간
 											<%}%>
-										</span>
-										<span class="info-content">
+										</div>
+										<div class="info-content">
 											<%if(odto_todays.getOnline_method().contains("선착")){%>
 											<!-- 선착순 구매 -->
 											<span> 
@@ -416,13 +420,13 @@
 												<%} %>
 											</span>
 											<%}%>
-										</span>
+										</div>
 									</div>
 	
 									<!-- 결제·배송 -->
-									<div>
-										<span class="info-subTitle">결제·배송</span>
-										<span class="info-content">
+									<div class="brand-info-container">
+										<div class="info-subTitle">결제·배송</div>
+										<div class="info-content">
 											<!-- 결제방식 -->
 											<%if(odto_todays.getOnline_method().contains("선착")) {%>
 												선착순 구매
@@ -436,11 +440,11 @@
 											<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
 												<%=odto_todays.getDelivery_method()%>
 											<%}%>
-										</span>
+										</div>
 									</div>
 									
 									<!-- 남은시간 -->
-									<div style="margin-bottom: 0 !important;">
+									<div class="brand-info-container" style="margin-bottom: 0 !important;">
 										<!-- 남은시간 -->
 										<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
 										<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
@@ -787,7 +791,12 @@
 			</div>
 		</div>
 
-
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="bottomAdsPhone-container" style="display:none; padding-bottom:40px;">
+			<div class="bottomAdsPhone-box">
+				
+			</div>
+		</div>
 
 
 		<jsp:include page="/include/rightSideBar.jsp" />

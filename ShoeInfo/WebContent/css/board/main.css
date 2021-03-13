@@ -65,17 +65,18 @@ body {font-size:1em; line-weight:1.4}
 	.countryflag { border:0.5px solid #d4d4d4; width:30px; height:20px; }
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
-	.brand-info-container { vertical-align: top; margin-bottom: 17px !important; }
+	.brand-info-container { vertical-align: top; margin-bottom:12px !important; }
 	.todays-brandName { font-weight:bold; font-size:23px; color:#1f1f1f; }
 	.release-status { margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	.mob-release-status { display:none !important; margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	
 	/* 발매처 정보 박스 */
 	.release-info { text-align:left !important; padding-left:5px; }
-	.todaysRelease-content2 div { margin-bottom: 11px; display: block; white-space:nowrap; }
-	.todaysRelease-content2 span { display:inline-block; vertical-align: top; }
-	.info-subTitle { color:#1f1f1f; font-size:16px; white-space:nowrap; }
-	.info-content { color:#949494; padding-left:15px; font-size:16px; white-space:nowrap; }
+/* 	.todaysRelease-content2 div { margin-bottom: 11px; display: block; } */
+/* 	.todaysRelease-content2 span { display:inline-block; vertical-align: top; } */
+	.brand-info-container { display:block; }
+	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; }
+	.info-content { display:inline-block; color:#949494; padding-left:15px; font-size:16px; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
@@ -114,7 +115,6 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 /* 나의 응모내역 리스트 ------------------------------------------------------------------------------ */ 
 
-/******************** pc 버전  ****************************/
 .myDraw-container { float:left; width:31.33%; margin:0 1% 4% 1%; text-align:left; font-family:'Nanum Gothic', sans-serif; vertical-align:top; position:relative; border:1px solid rgb(222 222 222); cursor:pointer; box-shadow:0px 2px 5px #44444433; }
 .myDraw-image, .myDrawShoeInfo-container { display:block; }
 /* 이미지 파트 */	
@@ -302,7 +302,6 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 /* 1680px 밑으로 적용 */
 @media screen and (max-width: 1680px) {
-
 	/* 인기 제품 container on */
 	.popular-container { display:table !important; }
 	/* 메인페이지 최상단 광고 on */
@@ -344,13 +343,6 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	/* 970 광고 전부 업애고 728 광고 on */
-	/* 최정상 	광고 없애기 */
-	.betweenAds-container-maintop { display:none !important; }
-	.betweenAds-container { display:none !important; }
-	.betweenAds2-container { display:none !important;}
-	.betweenAdsPad-container { display:table !important; }
-	
 	/* 제목 */
 	.sub-title { font-size:20px; margin:0 0 10px 0; padding:0 0 5px 0; }
 	
@@ -364,7 +356,9 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	#onlineList_todays_table td:last-child { padding-left:20px !important; padding-right:20px !important; }
 	.brandImg { width:80px !important; height:80px !important; }
 	
-	.todaysRelease-content1, .todaysRelease-content2 { padding-left:15px; }
+	.todaysRelease-content1 { display:block; text-align:left; }
+	.todaysRelease-content1, .todaysRelease-content2 { padding-left:10px; }
+	.info-content { padding-left:10px; }
 	.todays-brandName { font-size:18px; }
 	.mob-release-status { padding:3px 5px; }
 	.todaysRelease-content2 div { margin-bottom:9px; }
@@ -373,7 +367,6 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	/* 나이키코리아 snkrs */
 	.snkrsSneaker-container { width:40%; }
 	div.snkrs_date { font-size: 22px; }
-	
 	
 
 	/* 나의 응모내역 리스트 페이지 */
@@ -388,87 +381,17 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 		.shoeDetailInfo-name { padding-bottom:5px; }
 		.shoeDetailInfo-directlinks span { font-size:15px; padding:4px 10px; }
 		.dividePipe { padding:0 5px; }
-		
+}
+
+
+/* 0 ~ 480px */
+@media screen and (max-width: 480px){
+	
+	
 }
 
 
 
-
-
-
-
-
-
-
-/* 0 ~ 468px */
-@media screen and (max-width: 468px){
-/* 	.shoelist_content_month { */
-/* 		width: 48%; */
-/*    		margin: 3% 1%; */
-/*    		font-size: 1.7em; */
-/*    		padding: 0 3%; */
-/* 	} */
-/* 	.shoelist_content { */
-/* 		width: 48%; */
-/*    		margin: 3% 1%; */
-/*    		font-size: 1em; */
-/* 	} */
-/* 	.release_date{ */
-/* 		font-size: 0.95em; */
-/* 	} */
-/* 	.content_name .model_name { */
-/* 		font-size: 0.75em; */
-/* 	} */
-/* 	#link-wrapper { */
-/* 		font-size: 0.75em; */
-/* 	} */
-/* 	.no_info { */
-/* 		margin:8% 1%; */
-/* 	} */
-/* 	#recent-dot i { */
-/* 		font-size: 1em; */
-/* 	} */
-/* 	#dd-label { */
-/* 		font-size: 0.8em; */
-/* 		padding: 2% 7%; */
-/* 	} */
-/* 	#dd-label-wrapper { */
-/* 		width: 50%; */
-/* 	} */
-/* 	.rel_finish { */
-/* 		font-size: 1em; */
-/* 	} */
-/* 	.rel_finish_label { */
-/* 		padding-top: 70%; */
-/* 		font-size: 1.2em; */
-/* 	} */
-/* 	#recent-dot { */
-/*     	left: 68%; */
-/* 	} */
-/* 	#showAllChk { */
-/* 		padding: 22px 0 17px 0; */
-/* 	} */
-/* 	#showAllChk { */
-/*     	width: 80% !important; */
-/* 	} */
-/* 	#showAllChk span{ */
-/* 		font-size:0.8em; */
-/* 		letter-spacing: .125rem; */
-/* 	} */
-/* 	.content_img { */
-/* 		padding: 16% 0 14% 0; */
-/* 	} */
-/* 	#ing_status, #recent-dot{  */
-/* 		font-size: 0.7em; */
-/* 		padding: 2px 3px; */
-/* 	} */
-
-/* 	#link-wrapper { */
-/* 		height: 30px; */
-/* 	} */
-/* 	.content_links { */
-/*     	padding: 9% 4% 10% 4%; */
-/* 	} */
 }
 
 

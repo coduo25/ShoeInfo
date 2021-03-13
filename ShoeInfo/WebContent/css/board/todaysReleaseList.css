@@ -35,17 +35,19 @@ body {font-size:1em; line-weight:1.4}
 	.countryflag { border:0.5px solid #d4d4d4; width:30px; height:20px; }
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
-	.brand-info-container { vertical-align: top; margin-bottom: 17px !important; }
+	.brand-info-container { vertical-align: top; margin-bottom:12px !important; }
 	.todays-brandName { font-weight:bold; font-size:23px; color:#1f1f1f; }
 	.release-status { margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	.mob-release-status { display:none !important; margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	
 	/* 발매처 정보 박스 */
 	.release-info { text-align:left !important; padding-left:5px; }
-	.todaysRelease-content2 div { margin-bottom:12px; display: block; white-space:nowrap; }
-	.todaysRelease-content2 span { display:inline-block; vertical-align: top; }
-	.info-subTitle { color: #1f1f1f; font-size:16px; white-space:nowrap; }
-	.info-content { color: #949494; padding-left:15px; font-size:16px; white-space:nowrap; }
+/* 	.todaysRelease-content2 div { margin-bottom:12px; display: block; } */
+	
+/* 	.todaysRelease-content2 span { display:inline-block; vertical-align:top; } */
+	.brand-info-container { display:block; }
+	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; }
+	.info-content { display:inline-block; color:#949494; padding-left:15px; font-size:16px; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
@@ -93,13 +95,6 @@ body {font-size:1em; line-weight:1.4}
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	/* 970 광고 전부 업애고 728 광고 on */
-	/* 최정상 	광고 없애기 */
-	.betweenAds-container-maintop { display:none !important; }
-	.betweenAds-container { display:none !important; }
-	.betweenAds2-container { display:none !important;}
-	.betweenAdsPad-container { display:table !important; }
-	
 	/* 제목 */
 	.sub-title { margin:0 0 10px 0; }
 	
@@ -108,9 +103,13 @@ body {font-size:1em; line-weight:1.4}
 	#onlineList_todays_table th:nth-child(2), #onlineList_todays_table td:nth-child(2) { display:None; }
 	#onlineList_todays_table th:nth-child(3) { width:63% !important; }
 	#onlineList_todays_table td:last-child { padding-left:20px !important; padding-right:20px !important; }
-	.brandImg { width:80px !important; height:80px !important; }
+	.brandImg { width:60px !important; height:60px !important; }
 	
-	.todaysRelease-content1, .todaysRelease-content2 { padding-left:15px; }
+/* 	.todaysRelease-content1 { display:block; text-align:left; } */
+	.todaysRelease-content1, .todaysRelease-content2 { padding-left:10px; }
+	.todaysRelease-content2 { width:100%; }
+	.brand-info-container { width:100%; 
+	.info-content { padding-left:10px; }	
 	.todays-brandName { font-size:18px; }
 	.mob-release-status { padding:3px 5px; }
 	.todaysRelease-content2 div { margin-bottom:9px; }

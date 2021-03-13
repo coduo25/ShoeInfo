@@ -57,13 +57,6 @@ div.snkrs_time a { font-size:16px; color:#777 !important; }
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	/* 970 광고 전부 업애고 728 광고 on */
-	/* 최정상 	광고 없애기 */
-	.betweenAds-container-maintop { display:none !important; }
-	.betweenAds-container { display:none !important; }
-	.betweenAds2-container { display:none !important;}
-	.betweenAdsPad-container { display:table !important; }
-	
 	/* 제목 */
 	.sub-title { margin:0 0 10px 0; }
 	
