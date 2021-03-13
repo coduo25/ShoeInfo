@@ -363,6 +363,7 @@
 								<!-- 발매처 -->
 								<td class="brandLogoName" id="brandLogoName<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
 									<div style="display:flex; align-items:center;">
+										<!-- 발매처 로고 -->
 										<div class="sneakerDetail-logo">
 											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 												<img class="brandlogo_img" id="brandlogo_img" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
@@ -372,11 +373,13 @@
 											</a>
 										</div>
 										<div class="sneakerDetail-brandName">
+											<!-- 발매처 이름 -->
 											<div class="sneakerDetail-brandNameTxt" id="count_todays_status<%=countryName_eng%><%=i%>brandName">
 												<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 													<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>
 												</a>
 											</div>
+											<!-- 발매 방식 -->
 											<div class="sneakerDetail-releaseMethod">
 												<span>
 												<%if(odto.getOnline_method().contains("선착")) {%>
@@ -392,6 +395,27 @@
 												<%} %>
 												</span>
 											</div>
+											<!-- 모바일 버전 결제 + 배송 -->
+											<div class="mob-sneakerDetail">
+												<!-- 결제 -->
+												<span>
+													<%if(odto.getOnline_method().contains("선착")) {%>
+														선착순 결제
+													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+														<%=odto.getBuy_method()%>
+													<%}%>
+												</span>
+												·
+												<!-- 배송 -->
+												<span>
+													<%if(odto.getOnline_method().contains("선착")) {%>
+														<%=odto.getDelivery_method()%>
+													<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+														<%=odto.getDelivery_method()%>
+													<%}%>
+												</span>
+											</div>
+											
 										</div>
 									</div>
 								</td>
@@ -427,6 +451,7 @@
 											<%}%>
 										</span>
 									</div>
+									
 									<!-- 남은시간 -->
 									<div class="sneakerDetail-remainTime">
 										<!-- 남은시간 -->
@@ -441,12 +466,21 @@
 														<span class="remainTime-container">
 															<!-- 남은시간 -->
 															<span id="count_todays_status<%=countryName_eng%><%=i%>span" style="color:#313131;">
-<!-- 																<span style="padding-right: 1px;">선착까지</span> -->
-																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>days"></span>일 
-																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>시간
-																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>minutes"></span>분
-																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>seconds"></span>초
-																<span> 남음</span>
+																<span class="mob_clock" style="display:none;"><i class="far fa-clock"></i></span>
+															
+																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>days"></span>
+																	<span class="pc_count_label">일</span>
+																	<span class="mob_count_label">일 </span>
+																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>
+																	<span class="pc_count_label">시간</span>
+																	<span class="mob_count_label">:</span>
+																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>minutes"></span>
+																	<span class="pc_count_label">분</span>
+																	<span class="mob_count_label">:</span>
+																<span class="remain-time" id="final_count_start_time<%=countryName_eng%><%=i%>seconds"></span>
+																	<span class="pc_count_label">초</span>
+																
+																<span class="pc_count_label"> 남음</span>
 															</span>
 														</span>
 													<%} else {%>
@@ -469,12 +503,21 @@
 														<span class="remainTime-container"> 
 															<!-- 남은시간 -->
 															<span id="count_todays_status<%=countryName_eng%><%=i%>span" style="color:#313131;">
-<!-- 																<span style="padding-right: 1px;">마감까지</span> -->
-																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>days"></span>일 
-																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>시간
-																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>minutes"></span>분
-																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>seconds"></span>초
-																<span> 남음</span>
+																<span class="mob_clock" style="display:none;"><i class="far fa-clock"></i></span>
+																
+																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>days"></span>
+																	<span class="pc_count_label">일</span>
+																	<span class="mob_count_label">일 </span>
+																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>
+																	<span class="pc_count_label">시간</span>
+																	<span class="mob_count_label">:</span>
+																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>minutes"></span>
+																	<span class="pc_count_label">분</span>
+																	<span class="mob_count_label">:</span>
+																<span class="remain-time" id="final_count_end_time<%=countryName_eng%><%=i%>seconds"></span>
+																	<span class="pc_count_label">초</span>
+																
+																<span class="pc_count_label"> 남음</span>
 															</span>
 														</span>
 													<%} else {%>
@@ -551,20 +594,19 @@
 									<div class="links-container" id="links-container-<%=countryName_eng%>-<%=i%>">	
 										<!-- 참여체크박스 -->
 										<%if(odto.getOnline_method().contains("선착")) {%>
-											<div class="draw_checkBox" style="border:0 !important;">
-												<span>-</span>
+											<div class="draw_checkBox" style="display:none;">
 											</div>
 										<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
 											<%if(!userDrawBrandList.contains(bdto.getBrand_id())){%>
 												<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여전">
 												<!-- 참여전 체크박스 -->
-												<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:white; color:#1f1f1f;">
+												<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:white; color:#b3b3b3;">
 													<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>"></span></span>
 												</div> 
 											<%}else{%>
 												<input type="hidden" id="drawCheck_status<%=countryName_eng%><%=i%>" value="참여완료">
 												<!-- 참여완료 체크박스 -->
-												<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:#1f1f1f; color:white;">
+												<div class="draw_checkBox" id="draw_checkBox<%=countryName_eng%><%=i%>" style="background-color:#1f1f1f; color:white; border-color:#1f1f1f;">
 													<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=countryName_eng%><%=i%>">응모함</span></span>
 												</div> 
 											<%}%>
@@ -1060,6 +1102,7 @@
 						
 						$('#draw_checkBox'+country+number).css('color','white');
 						$('#draw_checkBox'+country+number).css('background-color','#1f1f1f');
+						$('#draw_checkBox'+country+number).css('border-color','#1f1f1f');
 				   		$('#drawCheck_statusTxt'+country+number).text("응모함");
 					}
 					//참여완료인데 체크박스 눌릴시 -> 참여전
@@ -1084,8 +1127,9 @@
 						$('#releaseTime'+country+number).css('opacity','1');
 						$('#payAnddel'+country+number).css('opacity','1');
 						
-						$('#draw_checkBox'+country+number).css('color','#1f1f1f');
+						$('#draw_checkBox'+country+number).css('color','#b3b3b3');
 						$('#draw_checkBox'+country+number).css('background-color','white');
+						$('#draw_checkBox'+country+number).css('border-color','#b3b3b3');
 						$('#drawCheck_statusTxt'+country+number).text("");
 					}
 				}

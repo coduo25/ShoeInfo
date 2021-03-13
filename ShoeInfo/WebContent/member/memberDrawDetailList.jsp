@@ -71,7 +71,7 @@
 	
 		<!-- 좌측 사이드 바 -->
 		<jsp:include page="/include/leftSideBar.jsp" />
-		
+
 		<!-- 신발 정보 container -->
 		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important; padding-bottom:25px !important;">
 			<!-- 신발 이미지 -->
@@ -98,7 +98,9 @@
 							<span class="shoeinfo-cateAns">
 								<%=sdto.getModel_stylecode()%>
 									<span class="dividePipe">|</span>
-								<%=sdto.getModel_colorway()%>
+								<div class="shoeDetailInfo-modelColorWay">
+									<%=sdto.getModel_colorway()%>
+								</div>
 									<span class="dividePipe">|</span>
 								<%if(sdto.getRelease_date().contains("99")){%>
 									미정
@@ -120,6 +122,13 @@
 		<!-- 중간 광고 970x90 -->
 		<div class="betweenAds-container">
 			<div class="betweenAds-box">
+				
+			</div>
+		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none;">
+			<div class="betweenAdsPad-box">
 				
 			</div>
 		</div>

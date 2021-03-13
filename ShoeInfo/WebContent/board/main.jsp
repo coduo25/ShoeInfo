@@ -115,7 +115,7 @@
 						</div>
 						<!-- 이미지 -->
 						<div class="popular-imgBox">
-								<img src="./sneaker_img_upload/<%=popular_sdto.getImage()%>" width="50" height="38">
+							<img src="./sneaker_img_upload/<%=popular_sdto.getImage()%>" width="50" height="38">
 						</div>
 					</div>
 				<% } } %>
@@ -539,7 +539,7 @@
 							<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
 								<!-- 발매제품 이미지 -->
 								<div class="releaseModel-image" id="releaseModel-image<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
-									<a href="<%=odto_todays.getOnline_link()%>" target="_blank">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>">
 										<img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" class="sneaker_img">
 									</a>
 								</div>
@@ -559,7 +559,7 @@
 										<%}else{%>
 											<input type="hidden" id="drawCheck_status<%=i%>" value="참여완료">
 											<!-- 참여체크박스 -->
-											<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:#252525; color:white;">
+											<div class="draw_checkBox" id="draw_checkBox<%=i%>" style="background-color:#1f1f1f; color:white; border-color:#1f1f1f;">
 												<span><i class="fas fa-check"></i> <span id="drawCheck_statusTxt<%=i%>">응모함</span></span>
 											</div> 
 										<%}%>
@@ -1013,7 +1013,8 @@
 						$('#status-container'+id_num).css("opacity", "0.3");
 						$('#release-info'+id_num).css("opacity", "0.3");
 						$('#releaseModel-image'+id_num).css("opacity", "0.3");
-						$('#draw_checkBox'+id_num).css("background-color","#252525");
+						$('#draw_checkBox'+id_num).css("background-color","#1f1f1f");
+						$('#draw_checkBox'+id_num).css("border-color","#1f1f1f");
 						$('#draw_checkBox'+id_num).css("color","white");
 						$('#drawCheck_statusTxt'+id_num).text("응모함");
 					} 
@@ -1037,6 +1038,7 @@
 						$('#release-info'+id_num).css("opacity", "1");
 						$('#releaseModel-image'+id_num).css("opacity", "1");
 						$('#draw_checkBox'+id_num).css("background-color","white");
+						$('#draw_checkBox'+id_num).css("border-color","#b3b3b3");
 						$('#draw_checkBox'+id_num).css("color","#b3b3b3");
 						$('#drawCheck_statusTxt'+id_num).text("");
 					}

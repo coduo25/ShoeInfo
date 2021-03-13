@@ -58,6 +58,13 @@
 	
 		<!-- 좌측 사이드 바 -->
 		<jsp:include page="/include/leftSideBar.jsp" />
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none; padding:20px 0;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
 	
 		<!-- 나의 응모내역 리스트 -->
 		<div class="myDrawList-container" style="margin-top:30px !important; padding-top:0 !important;">
@@ -95,57 +102,11 @@
 							</div>
 							<!-- 응모 횟수 -->
 							<div class="myDrawShoeInfo-countNum">
-								<span>국내 응모 : <%=countNum_kr%></span>
-								&nbsp;
-								/
-								&nbsp;
-								<span>해외 응모 : <%=countNum_etc%></span>
+								<span>국내 <%=countNum_kr%>개</span>
+								·
+								<span>해외 <%=countNum_etc%>개</span>
 							</div>
 						</div>
-					</div>
-				<%} } %>
-			</div>
-
-			<!-- 모바일 버전 -------------------------------------------------------------------- -->
-			<div class="myDraw-table-container-mobile" style="display:none; margin-top:5px;">
-				<% if(userDrawStylecodeList.isEmpty()) { %>
-					<div>
-						<div style="padding:10%; border-top:1px solid #222; border-bottom:1px solid #222; margin-top:10px;">
-							<span style="text-align:center; display:block;">응모내역이 없습니다.</span>
-						</div>
-					</div>
-				<%} else {
-					//응모한 신발 리스트
-					for(int i=0; i<userDrawStylecodeList.size(); i++) {
-						SneakerDTO mydraw_sdto = sneakerInfoList.get(i);
-						int countNum_kr = countDrawKrList.get(i);
-						int countNum_etc = countDrawEtcList.get(i);
-				%>
-					<div class="myDraw-container-mobile">
-						<div class="myDraw-shoeInfo-mobile">	
-							<!-- 신발이미지 -->
-							<div class="myDraw-image-mobile">
-								<a href="./MemberDrawDetailInfo.me?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>">
-									<img src="./sneaker_img_upload/<%=mydraw_sdto.getImage()%>">
-								</a>
-							</div>
-							<!-- 신발 이름 + 해당 신발 응모 횟수 -->
-							<div class="myDrawShoeInfo-container-mobile">
-								<!-- 이름 -->
-								<div class="myDrawShoeInfo-name-mobile" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=mydraw_sdto.getModel_stylecode()%>&num=<%=mydraw_sdto.getNum()%>';">
-									<span><%=mydraw_sdto.getModel_name_kr()%></span>
-								</div>
-								<!-- 응모 횟수 -->
-								<div class="myDrawShoeInfo-countNum-mobile">
-									<span>국내 응모 : <%=countNum_kr%></span>
-									&nbsp;
-									/
-									&nbsp;
-									<span>해외 응모 : <%=countNum_etc%></span>
-								</div>
-							</div>
-						</div>
-						
 					</div>
 				<%} } %>
 			</div>
