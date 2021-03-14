@@ -26,7 +26,7 @@
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
 		if(user == null){
-			response.sendRedirect("./SneakerList.go");
+			response.sendRedirect("./MemberLogin.me");
 		}
 		
 		//응모한 신발리스트
@@ -58,9 +58,8 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 		
 		<!-- Pad - 중간 광고 728x90 -->
-		<div class="betweenAdsPad-container" style="display:none; padding:20px 0;">
+		<div class="betweenAdsPad-container" style="display:none; margin-top:20px;">
 			<div class="betweenAdsPad-box">
-				
 			</div>
 		</div>
 	
@@ -111,9 +110,15 @@
 		</div>
 		
 		<!-- PC - 중간 광고 970x250 -->
-		<div class="betweenAds2-container" style="padding-bottom:40px;">
+		<div class="betweenAds2-container">
 			<div class="betweenAds2-box">
 				
+			</div>
+		</div>
+		
+		<!-- Pad - 중간 광고 728x300 -->
+		<div class="betweenAdsPad2-container" style="display:none;">
+			<div class="betweenAdsPad2-box">
 			</div>
 		</div>
 		

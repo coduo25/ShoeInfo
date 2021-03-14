@@ -646,16 +646,15 @@
 		</div>
 		
 		<!-- 중간 광고 970x250 -->
-		<div class="betweenAds2-container" style="padding-bottom:40px;">
+		<div class="betweenAds2-container">
 			<div class="betweenAds2-box">
 				
 			</div>
 		</div>
 		
-		<!-- Pad - 중간 광고 728x90 -->
-		<div class="betweenAdsPad-container" style="display:none; padding-bottom:40px;">
-			<div class="betweenAdsPad-box">
-				
+		<!-- Pad - 중간 광고 728x300 -->
+		<div class="betweenAdsPad2-container" style="display:none;">
+			<div class="betweenAdsPad2-box">
 			</div>
 		</div>
 		

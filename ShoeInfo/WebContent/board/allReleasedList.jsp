@@ -102,6 +102,13 @@
 	
 		<!-- 좌측 사이드 바 -->
 		<jsp:include page="/include/leftSideBar.jsp" />
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none; margin-top:20px;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
 
 		<!-- 발매 완료 리스트 -->
 		<div class="released-container" style="margin-top:30px !important; padding-top:0 !important;">
@@ -162,7 +169,12 @@
 			<!-- 중간 광고 970x250 -->
 			<div class="betweenAds2-container" style="padding:50px 0 40px 0;">
 				<div class="betweenAds2-box">
-					
+				</div>
+			</div>
+			
+			<!-- Pad - 중간 광고 728x300 -->
+			<div class="betweenAdsPad2-container" style="display:none;">
+				<div class="betweenAdsPad2-box">
 				</div>
 			</div>
 			

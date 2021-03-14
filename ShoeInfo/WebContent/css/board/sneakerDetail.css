@@ -68,7 +68,7 @@ body { line-weight:1.4;}
 	.releaseTime { line-height:25px; }
 	.sneakerDetail-releaseTime { margin-bottom:5px; white-space:nowrap; }
 	
-	.remain-time { font-weight:bold; font-family: 'Kelly Slab', cursive; }
+	.remain-time { font-weight:bold; font-family: 'Kelly Slab', cursive; font-size:18px; }
 	.remainWarning-container { display:block; position:relative; color:black !important; }
 	.remainWarning-container span { display:none; font-weight:bold; font-size:12px; position:absolute; width:100%; text-align:center; }
 	.mob_count_label { display:none; }
@@ -172,7 +172,7 @@ body { line-weight:1.4;}
 	.shoeDetailInfo-content { margin-bottom:10px; }
 	.sub-title { font-size:22px; }
 	/* 발매처 표 */
-	.release-status { font-size:14px; }
+	.release-status { font-size:14px; padding:3px 4px; }
 	.sneakerDetail-brandNameTxt span { font-size:15px; }
 }
 
@@ -181,6 +181,7 @@ body { line-weight:1.4;}
 	.sub-title { font-size:20px; }
 	
 	/* 신발 정보 디테일 */
+	.brandlogo_img { width:60px; height:60px; }
 	.shoeImg-container { width:40%; }
 	.shoeImg-container img { padding:25% 0; }
 	.shoeDetailInfo-container { width:57%; }

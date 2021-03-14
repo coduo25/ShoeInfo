@@ -59,11 +59,13 @@
 							<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
 							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-alt"></i> 나의정보관리 </a> </span> 
 							<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span>
+							<input type="hidden" class="user" value="<%=user%>">
 						<% 
 							}else{ 
 						%>
 							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-alt"></i> 나의정보관리 </a> </span>
-							<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
+							<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span>
+							<input type="hidden" class="user" value="<%=user%>"> 
 						<% } %>
 				</div>
 			</div>
@@ -213,6 +215,7 @@
 			$('.mob-menuBoard').show(0.0001).animate({
                 right:0
             });
+			$('body').css('position','fixed');
 		});
 		//모바일 버전 메뉴 버튼 눌렸을시 (메뉴 없애기)
 		$('.mob-nav-exitBtn').click(function(){
@@ -221,6 +224,7 @@
 			$('.mob-menuBoard').show(0.0001).animate({
                 right:'-'+100+'%'
             });
+			$('body').css('position','unset');
 		});
 		
 	});

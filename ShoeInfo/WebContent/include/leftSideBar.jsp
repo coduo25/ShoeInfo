@@ -33,20 +33,20 @@
 
 <script type="text/javascript">
 
-	$(window).scroll(function(event){
+// 	$(window).scroll(function(event){
 // 		화면을 200정도만 내렸을때 좌측 메뉴 고정
-		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+// 		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
 // 			$(".left-sideAds-container").css('position','fixed');
 // 			$(".left-sideAds-container").css('bottom','0');
 // 			$(".left-sideAds-container").css('left','0');
 // 			$(".left-sideAds-container").css('margin-left','0');
 // 			$(".left-sideAds-container").css('top','unset');
-		} else {
+// 		} else {
 // 			$(".left-sideAds-container").css('position','absolute');
 // 			$(".left-sideAds-container").css('margin-left','-380px');
 // 			$(".left-sideAds-container").css('top','0');
-		}
-	});
+// 		}
+// 	});
 	
 	/////////////////////////////////////////////////////////
 	//실시간 현재 시간

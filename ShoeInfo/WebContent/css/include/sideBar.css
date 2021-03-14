@@ -1,38 +1,40 @@
 @CHARSET "UTF-8";
 
-/* PC - 중간 가로 970x90 광고 */
+/* PC - 중간 가로 970x90 광고  --------------------------------------------- */
 .betweenAds-container { width:100%; display:table; margin:30px 0; }
 .betweenAds-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:90px; } /* width:970px; height:90px; *
-
 /* PC - 중간 가로 970x250 광고 */
-.betweenAds2-container { width:100%; display:table; }
+.betweenAds2-container { width:100%; display:table; margin:30px 0; }
 .betweenAds2-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:250px; } /* width:970px; height:250px; */
 
-/* Pad - 중간 가로 728x90 광고 */
-.betweenAdsPad-container { width:100%; display:table; }
+/* Pad - 중간 가로 728x90 광고 --------------------------------------------- */
+.betweenAdsPad-container { width:100%; display:table; margin:30px 0; }
 .betweenAdsPad-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:720px; height:90px; } /* width:720px; height:90px; */
+/* Pad - 중간 가로 728x300 광고 */
+.betweenAdsPad2-container { width:100%; display:table; margin:30px 0; }
+.betweenAdsPad2-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:720px; height:300px; } /* width:720px; height:300px; */
 
-/* Phone - 중간 가로 320x50 광고 */
-.betweenAdsPhone-container { width:100%; display:table; }
-.betweenAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:50px; } /* width:720px; height:90px; */
-
+/* Phone - 중간 가로 320x50 광고  --------------------------------------------- */
+.betweenAdsPhone-container { width:100%; display:table; margin:10px 0; }
+.betweenAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:50px; } /* width:320px; height:50px; */
 /* Phone - 하단 가로 320x100 광고 */
-.bottomAdsPhone-container { width:100%; display:table; }
-.bottomAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:100px; } /* width:720px; height:90px; */
+.bottomAdsPhone-container { width:100%; display:table; margin:10px 0; }
+.bottomAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:100px; } /* width:320px; height:100px; */
+
+/* 좌측 사이드 광고 300x600 --------------------------------------------- */
+.left-sideAds-container { position:fixed; z-index:50; bottom:5%; left:3%; } 
+.left-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea; width:160px; height:600px; } /*  */
+/* 우측 사이드 광고 300x600 */
+.right-sideAds-container { position:fixed; z-index:50; bottom:5%; right:3%; } 
+.right-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea; width:160px; height:600px; } /*  */
+
 
 /* 왼쪽 상단 시계 */
 .leftTopClock { position:fixed; left:0; top:8%; background-color:#fdfdfd; z-index:60; border:1px solid #a5a5a5; border-top-right-radius:10px; border-bottom-right-radius:10px; }
 .month_date_mob { font-size:16px; font-family:'Nanum Gothic', sans-serif; padding:2% 0 0 0; }
 .time_zone_mob { font-family:'Oxanium', cursive; font-size:35px; font-weight:bold; padding:5px 0;}
 
-/* 좌측 사이드 광고 300x600 */
-.left-sideAds-container { position:sticky; margin-left:-380px; z-index:50; top:0; left:0; } 
-.left-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea; width:300px; height:600px; } /*  */
-	
-/* 우측 사이드 광고 300x600 */
-.right-sideAds-container { position:sticky; margin-right:-380px; z-index:50; top:0; right:0; } 
-.right-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea; width:300px; height:600px; } /*  */
-	
+
 	
 	/* 나의 응모내역 보러가기 박스 */
 /* 	.myDrawPopUp { display:flex; width:180px; font-family:'Nanum Gothic', sans-serif; border:3px solid #282A35; border-radius:5px; padding:8px 12px; margin-top:10%; background-color:#282A35; cursor:pointer; transition:0.5s; } */
@@ -47,10 +49,8 @@
 /* 1680px 밑으로 적용 */
 @media screen and (max-width: 1680px) {
 	/* 좌측, 우측 사이드바 없애기 */
-	.left-sideBar, .right-sideBar { display:none !important; }
-	
-	/* 좌측 상단 시계 on */
-	.leftTopClock { display:block; }
+	.left-sideAds-container { display:none !important; }
+	.right-sideAds-container { display:none !important; }
 }
 
 /* 0 ~ 1220px */
@@ -62,11 +62,10 @@
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
 	/* 970 광고 전부 업애고 728 광고 on */
-	/* 최정상 	광고 없애기 */
-	.betweenAds-container-maintop { display:none !important; }
 	.betweenAds-container { display:none !important; }
 	.betweenAds2-container { display:none !important;}
 	.betweenAdsPad-container { display:table !important; }	
+	.betweenAdsPad2-container { display:table !important; }
 }
 	
 	
@@ -74,6 +73,7 @@
 @media screen and (max-width: 480px){
 	/* 768 광고 전부 없애고 320 광고 on */
 	.betweenAdsPad-container { display:none !important; }
+	.betweenAdsPad2-container { display:none !important; }
 	.betweenAdsPhone-container { display:table !important; }
 	.bottomAdsPhone-container { display:table !important; }
 }

@@ -72,7 +72,7 @@ body {font-size:1em; line-weight:1.4}
 	
 	/* td 발매처 정보 block */
 	.todays-brandName { font-size:21px; }
-	.release-status { font-size:14px; }
+	.release-status { font-size:14px; padding:3px 4px; }
 	.release-info { padding-left:0 !important; }
 	.brand-info-container { width:100%; }
 	.info-subTitle, .info-content { font-size:15px; }

@@ -94,21 +94,15 @@
 	
 		<!-- 좌측 사이드 바 -->
 		<jsp:include page="/include/leftSideBar.jsp" />
-		
-		<!-- 최상단 메인 광고 970x90 -->
-		<div class="betweenAds-container-maintop" style="display:none; padding:20px 0;">
-			<div class="betweenAds-box">	
-			</div>
-		</div>
-		
+
 		<!-- Pad - 중간 광고 728x90 -->
-		<div class="betweenAdsPad-container" style="display:none; padding:20px 0;">
+		<div class="betweenAdsPad-container" style="display:none; margin-top:20px;">
 			<div class="betweenAdsPad-box">
 			</div>
 		</div>
 		
 		<!-- Phone - 중간 광고 320x50 -->
-		<div class="betweenAdsPhone-container" style="display:none; padding:20px 0;">
+		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
 			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
@@ -173,12 +167,17 @@
 		<!-- Pad - 중간 광고 728x90 -->
 		<div class="betweenAdsPad-container" style="display:none;">
 			<div class="betweenAdsPad-box">
-				
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 		
 		<!-- 인기제품 -->
-		<div class="popular-container" style="margin-top:30px !important; padding:0 !important;">
+		<div class="popular-container">
 			<div class="sub-title">	
 				<h4> 인기 제품 </h4>
 			</div>
@@ -216,6 +215,12 @@
 		<div class="betweenAdsPad-container" style="display:none;">
 			<div class="betweenAdsPad-box">
 				
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 		
@@ -579,14 +584,18 @@
 		<!-- 중간 광고 970x90 -->
 		<div class="betweenAds-container">
 			<div class="betweenAds-box">
-				
 			</div>
 		</div>
 		
 		<!-- Pad - 중간 광고 728x90 -->
 		<div class="betweenAdsPad-container" style="display:none;">
 			<div class="betweenAdsPad-box">
-				
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 
@@ -703,14 +712,18 @@
 		<!-- 중간 광고 970x90 -->
 		<div class="betweenAds-container">
 			<div class="betweenAds-box">
-				
 			</div>
 		</div>
 		
 		<!-- Pad - 중간 광고 728x90 -->
 		<div class="betweenAdsPad-container" style="display:none;">
 			<div class="betweenAdsPad-box">
-				
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 		
@@ -769,26 +782,22 @@
 		</div>
 		
 		<!-- 하단 광고 970x250 -->
-		<div class="betweenAds2-container" style="padding-bottom:40px;">
+		<div class="betweenAds2-container">
 			<div class="betweenAds2-box">
-				
+			</div>
+		</div>
+
+		<!-- Pad - 중간 광고 728x300 -->
+		<div class="betweenAdsPad2-container" style="display:none;">
+			<div class="betweenAdsPad2-box">
 			</div>
 		</div>
 		
-		<!-- Pad - 중간 광고 728x90 -->
-		<div class="betweenAdsPad-container" style="display:none; padding-bottom:40px;">
-			<div class="betweenAdsPad-box">
-				
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
-
-		<!-- Pad - 중간 광고 728x90 -->
-		<div class="bottomAdsPhone-container" style="display:none; padding-bottom:40px;">
-			<div class="bottomAdsPhone-box">
-				
-			</div>
-		</div>
-
 
 		<jsp:include page="/include/rightSideBar.jsp" />
 

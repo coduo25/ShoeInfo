@@ -34,7 +34,7 @@
 		String user = (String) session.getAttribute("email");
 		String usr_position = (String) session.getAttribute("usr_position");
 		if(user == null){
-			response.sendRedirect("./SneakerList.go");
+			response.sendRedirect("./MemberLogin.me");
 		}
 	
 		//신발 기본 정보 리스트
@@ -288,9 +288,15 @@
 		</div>
 		
 		<!-- 중간 광고 970x250 -->
-		<div class="betweenAds2-container" style="padding-bottom:40px;">
+		<div class="betweenAds2-container">
 			<div class="betweenAds2-box">
 				
+			</div>
+		</div>
+		
+		<!-- Pad - 중간 광고 728x300 -->
+		<div class="betweenAdsPad2-container" style="display:none;">
+			<div class="betweenAdsPad2-box">
 			</div>
 		</div>
 		

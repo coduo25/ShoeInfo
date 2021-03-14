@@ -50,7 +50,7 @@ a { text-decoration: none; color: #000000; }
 .mob-nav, .mob-nav-exitBtn { display:none; }
 
 /* 모바일 흰색 메뉴판 */
-.mob-menuBoard { display:none; overflow:hidden; right:-100%; width:100%; background-color:white; position:fixed; height:100%; z-index:100; padding:4%; font-size:16x; font-family:'Nanum Gothic', sans-serif; z-index:400; }
+.mob-menuBoard { display:none; overflow:hidden; right:-100%; width:100%; background-color:white; position:fixed; height:100%; z-index:100; padding:4%; font-size:16x; font-family:'Nanum Gothic', sans-serif; z-index:2000; }
 .mob-menuBoard a { width:100%; margin-bottom:10px; display:block; padding:12px 0; }
 
 
@@ -259,6 +259,8 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 /* 0 ~ 468px */
 @media screen and (max-width: 468px) {
 
+	.container { padding:0; }
+	
 	.menu-row { display:none; }
 	
 	body { padding-top:45px; }
@@ -268,9 +270,6 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	.mob-nav { display:inline-block; }
 	.mob-container { padding:2%; }
 	.mob-container div { padding-left:20px; }
-	
-/* 	.mob-menuBoard { display:block; } */
-	
 	
 }
 

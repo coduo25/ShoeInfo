@@ -53,20 +53,20 @@
 </body>
 <script type="text/javascript">
 
-	$(window).scroll(function(event){
+// 	$(window).scroll(function(event){
 	//		화면을 200정도만 내렸을때 좌측 메뉴 고정
-		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+// 		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
 // 			$(".right-sideAds-container").css('position','fixed');
 // 			$(".right-sideAds-container").css('bottom','0');
 // 			$(".right-sideAds-container").css('right','0');
 // 			$(".right-sideAds-container").css('margin-right','0');
 // 			$(".right-sideAds-container").css('top','unset');
-		} else {
+// 		} else {
 // 			$(".right-sideAds-container").css('position','absolute');
 // 			$(".right-sideAds-container").css('margin-right','-380px');
 // 			$(".right-sideAds-container").css('top','0');
-		}
-	});
+// 		}
+// 	});
 
 $(document).ready(function(){
 
