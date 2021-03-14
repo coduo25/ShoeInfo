@@ -69,45 +69,62 @@
 			</div>
 		</div>
 		
+		<!-- PC버전 상단 바 -->
 		<div class="logo-row container">
 			<div class="navbar_logo">
 				<div>
 					<a href="./Main.bo"> SHOE INFO. </a>
 				</div>
-				<!-- 모바일 버전 로그인/회원정보 버튼 -->
-				<div class="mob-container">
-					<!-- 회원관련 버튼들 -->
-					<div class="mob-acc-container">
-						<% if(user == null || user.length() == 0){ %>
-							<span> <a href="./MemberLogin.me"><i class="far fa-user"></i></a> </span>
-						<%
-							}else if(usr_position.equals("admin")){ 
-						%>
-							<span class="acc_list"> <a href="./Main.ad"> <i class="fas fa-user-secret"></i> </a> </span>
-							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span> 
-							<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span>
-						<% 
-							}else{ 
-						%>
-							<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
-							<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
-						<% } %>
-					</div>
-					<!-- 모바일 버전일때 메뉴 버튼 -->
-					<div class="mob-nav-container">
-						<a href="#" class="navbar_toggleBtn">
-							<i class="fas fa-bars"></i>
-						</a>
-					</div>
-					
-					<div class="mob-nav-container-exitBtn">
-						<a href="#" class="navbar_toggleBtn">
-							<i class="fas fa-times"></i>
-						</a>
-					</div>
-				</div>
-
 			</div>
+		</div>
+		
+		<!-- 모바일 버전 상단 바 -->
+		<div class="mob-logo-row">
+			<!-- 로고 -->
+			<div class="mob-logo">
+				<a href="./Main.bo"> SHOE INFO. </a>
+			</div>
+			<!-- 로그인/회원정보 버튼 -->
+			<div class="mob-container">
+				<!-- 회원관련 버튼들 -->
+				<div class="mob-acc">
+					<% if(user == null || user.length() == 0){ %>
+						<span> <a href="./MemberLogin.me"><i class="far fa-user"></i></a> </span>
+					<%
+						}else if(usr_position.equals("admin")){ 
+					%>
+						<span class="acc_list"> <a href="./Main.ad"> <i class="fas fa-user-secret"></i> </a> </span>
+						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span> 
+						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span>
+					<% 
+						}else{ 
+					%>
+						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
+						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
+					<% } %>
+				</div>
+				<!-- 모바일 버전일때 메뉴 버튼 -->
+				<div class="mob-nav">
+					<a href="#" class="navbar_toggleBtn">
+						<i class="fas fa-bars"></i>
+					</a>
+				</div>
+				
+				<div class="mob-nav-exitBtn">
+					<a href="#" class="navbar_toggleBtn">
+						<i class="fas fa-times"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 모바일 흰색 메뉴판 -->
+		<div class="mob-menuBoard">
+			<a href="./AllReleaseList.go">발매 중&#8226;발매예정</a>
+			<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
+			<a href="./AllReleasedList.go">발매완료</a>
+			<a href="./SnkrsKRList.go">SNKRS</a>
+			<a href="#" id="myDrawBtn" style="color:#AE0F19;"> 나의 응모내역 </a>
 		</div>
 		
 		<div class="menu-row container">
@@ -118,10 +135,8 @@
 							<a href="./AllReleaseList.go">발매 중&#8226;발매예정</a>
 						</li>
 						<li <%if(pageName.equals("todaysReleaseList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
-							<a href="./TodaysReleaseList.go" style="color:#4990e2;">
-								오늘의 발매처 </a>
-							</li>
-<!-- 					<li> <a href=".#"> 브랜드별 </a> </li> -->
+							<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
+						</li>
 						<li <%if(pageName.equals("allReleasedList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
 							<a href="./AllReleasedList.go">발매완료</a>
 						</li>
@@ -129,18 +144,13 @@
 							<a href="./SnkrsKRList.go">SNKRS</a>
 						</li>
 						<li <%if(pageName.equals("memberDrawList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
-							<a href="#" id="myDrawBtn"> 나의 응모내역 </a>
+							<a href="#" id="myDrawBtn" style="color:#AE0F19;"> 나의 응모내역 </a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		
-		<!-- 모바일 흰색 메뉴판 -->
-		<div class="mob-menuBoard">
-			메뉴판 
-		</div>
-
 	</header>
 	
 	<!-- 좌측 하단 광고 300x250 -->
@@ -151,119 +161,6 @@
 	<!-- top link -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-caret-up"></i></button>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- 여기서 부터 구버전 -->
-	<!-- 여기서 부터 구버전 -->
-	<!-- 여기서 부터 구버전 -->
-	<!-- 여기서 부터 구버전 -->
-	<!-- 여기서 부터 구버전 -->
-	
-	<nav class="acc_navbar" style="display:none;">
-		<div class="acc_wrapper">
-			<!-- 인스타  -->
-			<div class="insta-icon">
-				<span> <a href="https://www.instagram.com/shoeinfo_official/" target="_blank"><i class="fab fa-instagram"></i> <i class="fas fa-caret-left"></i> visit ShoeInfo_official Instagram </a> </span>
-			</div>
-			<!-- 로그인/회원가입 -->
-			<div class="login-wrapper">
-					<%
-						request.setCharacterEncoding("UTF-8");
-					
-						//현재 페이지 이름, main.jsp or sneakerDetail.jsp
-						//String pageName = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1);
-					
-						//로그인한 사용자가 체크
-						//String user = (String) session.getAttribute("email");
-						//로그인 된 사용자의 position 가져오기
-						//String usr_position = (String) session.getAttribute("usr_position");
-						if(user == null){
-							user = "";
-						}
-						if(usr_position == null){
-							usr_position = "";
-						}
-						
-						if(user == null || user.length() == 0){
-					%>
-						<span class="acc_pos" style="display:none;">비회원&nbsp;<i class="far fa-question-circle"></i></span><span> <a href="./MemberLogin.me"> 회원가입 / 로그인  </a> </span>
-					<%
-						}else if(usr_position.equals("admin")){ 
-					%>
-						<span class="acc_pos" style="display:none;"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%} else if(usr_position.equals("admin")){%>관리자<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
-						
-						<span class="acc_list"> <a href="./Main.ad"> ADMIN PAGE </a> </span>
-						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span> 
-						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span>
-					<% 
-						}else{ 
-					%>
-						<span class="acc_pos" style="display:none;"><%if(usr_position.equals("general")){%>일반회원<%}else if(usr_position.equals("prime")){%>열심회원<%}%>&nbsp;<i class="far fa-question-circle"></i></span>
-					
-						<span class="acc_list"> <a href="./MemberInfoCheck.me"> 나의정보관리 </a> </span>
-						<span> <a href="./MemberLogout.me"> 로그아웃 </a> </span> 
-					<% } %>
-			</div>
-		</div>
-	</nav>
-
-	<input type="hidden" class="user" id="user" value="<%=user%>">
-		
-	<nav class="navbar" style="display: none;">
-		<!-- 로고 -->
-		<div class="navbar_logo">
-			<div>
-				<a href="./SneakerList.go"> SHOE Info. </a>
-			</div>
-		</div>
-	
-		<!-- 메인메뉴  -->
-		<ul class="navbar_menu">
-			<li <%if(pageName.equals("main.jsp") || pageName.equals("sneakerDetail.jsp")) {%> style="font-weight:bold;"<%}%>> <a href="./SneakerList.go"> <span id="cal_icon"><i class="fas fa-calendar"></i></span> 런칭 캘린더 </a> </li>
-			<li <%if(pageName.equals("allSneaker.jsp")) {%> style="font-weight:bold;"<%}%>> <a href="./AllSneaker.go"> <span id="all_icon"><i class="fas fa-calendar-alt"></i></span> 전체 보기 </a>
-			<li class="mypage_btn_mobile" id="myDrawBtn_mobile"> <div id="user_icon"> <i class="fas fa-calendar-check"></i> <div>MY DRAW</div> </div> </li>
-		</ul>
-		
-		<!-- 나의 드로우 -->
-		<ul class="navbar_userlinks">
-			<li class="pc_icon"> <span id="myDrawBtn" style="cursor: pointer; font-family: 'Source Sans Pro', sans-serif;"> <i class="far fa-calendar-check"></i>  MY DRAW </span> </li>
-			<%
-				if(user == null || user.length() == 0){
-			%>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogin.me"> <div id="user_icon"><i class="fas fa-user"></i> <div> 로그인 </div> </div> </a> </li>
-			<%
-				}else if(usr_position.equals("admin")){ 
-			%>
-				<li class="mypage_btn_mobile"> <a href="./Main.ad"> <div id="user_icon"> <i class="fas fa-tools"></i> <div>ADMIN PAGE</div>   </div> </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <div id="user_icon"> <i class="fas fa-user"></i> <div id="user_label" > <%=user%> </div> </div>  </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div> 로그아웃 </div>  </div> </a> </li>
-			<% 
-				}else{
-			%>
-				<li class="mypage_btn_mobile"> <a href="./MemberInfoCheck.me"> <div id="user_icon"> <i class="fas fa-user"></i>  <div id="user_label" ><%=user%></div> </div> </a> </li>
-				<li class="mypage_btn_mobile"> <a href="./MemberLogout.me"> <div id="logout_icon"> <i class="fas fa-sign-out-alt"></i> <div>로그아웃</div> </div> </a> </li>			
-			<% 
-				} 
-			%> 
-		</ul>
-		
-		<!-- 모바일 버전일때 메뉴 버튼 -->
-		<a href="#" class="navbar_toggleBtn">
-			<i class="fas fa-bars"></i>
-		</a>
-		
-	</nav>
 	
 	<div id="datebar_div" style="display: none;">
 		<nav class="datebar" id="datebar">
@@ -315,18 +212,18 @@
 		});
 		
 		//모바일 버전 메뉴 버튼 눌렸을시 (메뉴 나오게하기)
-		$('.mob-nav-container').click(function(){
+		$('.mob-nav').click(function(){
 			$(this).hide();
-			$('.mob-nav-container-exitBtn').fadeIn(0.01);
-			$('.mob-menuBoard').show(0.01).animate({
+			$('.mob-nav-exitBtn').css('display','inline-block');
+			$('.mob-menuBoard').show(0.0001).animate({
                 right:0
             });
 		});
 		//모바일 버전 메뉴 버튼 눌렸을시 (메뉴 없애기)
-		$('.mob-nav-container-exitBtn').click(function(){
+		$('.mob-nav-exitBtn').click(function(){
 			$(this).hide();
-			$('.mob-nav-container').fadeIn(0.01);
-			$('.mob-menuBoard').show(0.01).animate({
+			$('.mob-nav').css('display','inline-block');
+			$('.mob-menuBoard').show(0.0001).animate({
                 right:'-'+100+'%'
             });
 		});
