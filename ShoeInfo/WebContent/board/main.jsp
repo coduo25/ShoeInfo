@@ -95,33 +95,6 @@
 		<!-- 좌측 사이드 바 -->
 		<jsp:include page="/include/leftSideBar.jsp" />
 		
-		<div class="popular-container" style="margin-top:30px !important; padding:0 !important;">
-			<div class="sub-title">	
-				<h4> 인기 제품 </h4>
-			</div>
-			<div class="popular-table-container">
-				<% if(popularList.isEmpty()) {%>
-					<div>
-						인기상품 업데이트 중
-					</div>
-				<% } else { 
-					for (int i=0; i<popularList.size(); i++) {
-						SneakerDTO popular_sdto = popularList.get(i);
-				%>
-					<div class="popular-product" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=popular_sdto.getModel_stylecode()%>&num=<%=popular_sdto.getNum()%>'" style="cursor:pointer;">
-						<!-- 순위 -->
-						<div class="popular-rank">
-							<span><%=i+1%>위</span>
-						</div>
-						<!-- 이미지 -->
-						<div class="popular-imgBox">
-							<img src="./sneaker_img_upload/<%=popular_sdto.getImage()%>" width="50" height="38">
-						</div>
-					</div>
-				<% } } %>
-			</div>
-		</div>
-		
 		<!-- 최상단 메인 광고 970x90 -->
 		<div class="betweenAds-container-maintop" style="display:none; padding:20px 0;">
 			<div class="betweenAds-box">	
@@ -185,6 +158,48 @@
 								</div>
 							</div>
 						</a>
+					</div>
+				<% } } %>
+			</div>
+		</div>
+		
+		<!-- 중간 광고 970x90 -->
+		<div class="betweenAds-container">
+			<div class="betweenAds-box">
+				
+			</div>
+		</div>
+		
+		<!-- Pad - 중간 광고 728x90 -->
+		<div class="betweenAdsPad-container" style="display:none;">
+			<div class="betweenAdsPad-box">
+				
+			</div>
+		</div>
+		
+		<!-- 인기제품 -->
+		<div class="popular-container" style="margin-top:30px !important; padding:0 !important;">
+			<div class="sub-title">	
+				<h4> 인기 제품 </h4>
+			</div>
+			<div class="popular-table-container">
+				<% if(popularList.isEmpty()) {%>
+					<div>
+						인기상품 업데이트 중
+					</div>
+				<% } else { 
+					for (int i=0; i<popularList.size(); i++) {
+						SneakerDTO popular_sdto = popularList.get(i);
+				%>
+					<div class="popular-product" onclick="location.href='./SneakerDetail.go?model_stylecode=<%=popular_sdto.getModel_stylecode()%>&num=<%=popular_sdto.getNum()%>'" style="cursor:pointer;">
+						<!-- 순위 -->
+						<div class="popular-rank">
+							<span><%=i+1%>위</span>
+						</div>
+						<!-- 이미지 -->
+						<div class="popular-imgBox">
+							<img src="./sneaker_img_upload/<%=popular_sdto.getImage()%>" width="50" height="38">
+						</div>
 					</div>
 				<% } } %>
 			</div>

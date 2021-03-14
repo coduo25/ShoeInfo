@@ -40,10 +40,6 @@ public class MemberDrawDetailInfo implements Action{
 		SneakerDTO sdto = sdao.getSneakerDetail(model_num, model_stylecode);
 		request.setAttribute("sneakerDetail", sdto);
 		
-		//인기상품 리스트
-		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
-		request.setAttribute("popularList", popularList);
-		
 		/******************************************************
 		 * 응모한 신발 브랜드 정보 가져오기
 		 ******************************************************/

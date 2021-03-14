@@ -21,11 +21,7 @@ public class SnkrsKRListAction implements Action {
 		String user = (String) session.getAttribute("email");
 		
 		SneakerDAO sdao = new SneakerDAO();
-		
-		//인기상품 리스트
-		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
-		request.setAttribute("popularList", popularList);
-		
+
 		//이번주 snkrs 리스트 가져오는 함수
  		Vector vec_SnkrsWeek = sdao.getSnkrsWeekList();
  		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) vec_SnkrsWeek.get(0);

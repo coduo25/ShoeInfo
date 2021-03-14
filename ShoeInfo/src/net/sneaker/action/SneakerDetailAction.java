@@ -34,10 +34,6 @@ public class SneakerDetailAction implements Action{
 		SneakerDAO sdao = new SneakerDAO();
 		BrandDAO bdao = new BrandDAO();
 		
-		//인기상품 리스트
-		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
-		request.setAttribute("popularList", popularList);
-		
 		ArrayList<String> userDrawBrandList = mdao.searchDrawBrandInfo(user, model_stylecode);
 
 		request.setAttribute("userDrawBrandList", userDrawBrandList);

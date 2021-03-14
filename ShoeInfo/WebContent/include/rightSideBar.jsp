@@ -15,7 +15,6 @@
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
 	<%
-	
 		//로그인한 사용자가 체크
 		String user = (String) session.getAttribute("email");
 		//로그인 된 사용자의 position 가져오기
@@ -26,84 +25,48 @@
 		if(usr_position == null){
 			usr_position = "";
 		}	
-	
-		//인기상품
-		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
 	%>
 <body>
 
-	<!-- 우측 사이드바 -->
-	<div class="right-sideBar" id="right-sideBar">
-		<!-- 인기제품 -->
-		<div class="popular-chart">
-			<table>
-				<tr class="popular-subtitle">
-					<th colspan="3">인기 제품</th>
-				</tr>
-				<%
-					if(popularList.isEmpty()) {
-				%>
-					<tr>
-						<td>
-							<span>업데이트 예정</span>
-						</td>
-					</tr>
-				<%	} else {
-					for(int i=0; i<popularList.size(); i++){
-						SneakerDTO sdto = popularList.get(i);
-				%>
-					<tr class="popular-row">
-						<!-- 순번 -->
-						<td class="popularNum-td">
-							<span><%=i+1%></span>
-						</td>
-						<!-- 신발이미지 -->
-						<td class="popularImg-td">
-							<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>">
-								<img src="./sneaker_img_upload/<%=sdto.getImage()%>" width="50" height="38">
-							</a>
-						</td>
-						<!-- 신발이름 -->
-						<td class="popularName-td">
-							<div>
-								<a href="./SneakerDetail.go?model_stylecode=<%=sdto.getModel_stylecode()%>&num=<%=sdto.getNum()%>"><%=sdto.getModel_name_kr()%></a>
-							</div>
-						</td>
-					</tr>
-				<%
-					} }
-				%>
-			</table>
+	<!-- 우측 사이드 광고 -->
+	<div class="right-sideAds-container">
+		<div class="right-sideAds-box">
 		</div>
-		
-		<!-- 구글 우측 사이드바 광고 -->
-		<div class="googleAd-rightSideBar">
-			<div class="ad-rightSideBar-box">
-				
-			</div>
-		</div>
-		
-		<!-- 나의 응모내역 보러가기 box -->
-		<div class="myDrawPopUp" id="myDrawPopUp">
-		
-			<div class="myDrawPopUpIcon" style="display:inline-block;">
-				<i class="fas fa-user-check"></i>
-			</div>
-			
-			<div style="display:inline-block;">
-				<div class="myDrawPopUpTxt1">
-					<span>나의 응모내역</span>
-				</div>
-				<div class="myDrawPopUpTxt2">
-					<span>보러가기</span>
-				</div>
-			</div>
-			
-		</div>
-		
 	</div>
+	<!-- 나의 응모내역 보러가기 box -->
+<!-- 	<div class="myDrawPopUp" id="myDrawPopUp"> -->
+	
+<!-- 		<div class="myDrawPopUpIcon" style="display:inline-block;"> -->
+<!-- 			<i class="fas fa-user-check"></i> -->
+<!-- 		</div> -->
+		
+<!-- 		<div style="display:inline-block;"> -->
+<!-- 			<div class="myDrawPopUpTxt1"> -->
+<!-- 				<span>나의 응모내역</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="myDrawPopUpTxt2"> -->
+<!-- 				<span>보러가기</span> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+		
 </body>
 <script type="text/javascript">
+
+	$(window).scroll(function(event){
+	//		화면을 200정도만 내렸을때 좌측 메뉴 고정
+		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+// 			$(".right-sideAds-container").css('position','fixed');
+// 			$(".right-sideAds-container").css('bottom','0');
+// 			$(".right-sideAds-container").css('right','0');
+// 			$(".right-sideAds-container").css('margin-right','0');
+// 			$(".right-sideAds-container").css('top','unset');
+		} else {
+// 			$(".right-sideAds-container").css('position','absolute');
+// 			$(".right-sideAds-container").css('margin-right','-380px');
+// 			$(".right-sideAds-container").css('top','0');
+		}
+	});
 
 $(document).ready(function(){
 

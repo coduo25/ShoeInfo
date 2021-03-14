@@ -35,10 +35,6 @@ public class MemberDrawInfo implements Action{
 		MemberDAO mdao = new MemberDAO();
 		SneakerDAO sdao = new SneakerDAO();
 		
-		//인기상품 리스트
-		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
-		request.setAttribute("popularList", popularList);
-		
 		//현재 년 + 월 구하기
 		Calendar lastlast_month = Calendar.getInstance();
 		Calendar last_month = Calendar.getInstance();

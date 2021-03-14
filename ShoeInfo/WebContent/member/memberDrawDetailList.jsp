@@ -36,9 +36,6 @@
 		if(user == null){
 			response.sendRedirect("./SneakerList.go");
 		}
-		
-		//인기상품
-		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
 	
 		//신발 기본 정보 리스트
 		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");

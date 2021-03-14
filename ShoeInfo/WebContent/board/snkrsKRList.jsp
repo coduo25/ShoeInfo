@@ -41,9 +41,6 @@
 		if(user == null){
 			user="";
 		}
-		
-		//인기상품
-		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
 
 		//이번주 snkrs 리스트
 		ArrayList<OnlineDTO> onlineList_snkrs = (ArrayList<OnlineDTO>) request.getAttribute("onlineList_snkrs");

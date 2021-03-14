@@ -27,10 +27,6 @@ public class TodayReleaseListAction implements Action {
 		OnlineDAO odao = new OnlineDAO();
 		SneakerDAO sdao = new SneakerDAO();
 		
-		//인기상품 리스트
-		ArrayList<SneakerDTO> popularList = sdao.getPopularList();
-		request.setAttribute("popularList", popularList);
-		
 		//오늘의 응모
 		Vector vec_todaysRelease = odao.getTodaysReleaseAll();
 		ArrayList<OnlineDTO> onlineList_todays = (ArrayList<OnlineDTO>) vec_todaysRelease.get(0);

@@ -153,11 +153,6 @@
 		
 	</header>
 	
-	<!-- 좌측 하단 광고 300x250 -->
-	<div class="googleAd-leftbottomBox" style="display:none;">
-		
-	</div>
-	
 	<!-- top link -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-caret-up"></i></button>
 	

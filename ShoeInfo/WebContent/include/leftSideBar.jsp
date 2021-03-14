@@ -15,25 +15,14 @@
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-		<!-- 좌측 사이드바 -->
-		<div class="left-sideBar" id="left-sideBar">
-			<!-- 달력 -->
-			<div class="calendar-box">
-			</div>
-			<!-- 시계 -->
-			<div class="clock" id="clock">
-				<div class="month_date" id="month_date">
-				</div>
-				<div class="time_zone" id="time_zone">
-				</div>
-				<div class="ampm_zone_container" >
-					<span id="ampm_zone"></span>
-				</div>
+		<!-- 좌측 사이드 광고 -->
+		<div class="left-sideAds-container">
+			<div class="left-sideAds-box">
 			</div>
 		</div>
 		
 		<!-- 상단 왼쪽 현시간 표시 박스 (화면 줄였을때) -->
-		<div class="leftTopClock" id="leftTopClock" style="padding:0.5% 1%;">
+		<div class="leftTopClock" id="leftTopClock" style="padding:0.5% 0.8%;">
 			<div class="month_date_mob" id="month_date_mob" style="font-size:15px;">
 			</div>
 			<div class="time_zone_mob" id="time_zone_mob" style="font-size:24px; padding:8px 0 0 0 !important;">
@@ -44,98 +33,20 @@
 
 <script type="text/javascript">
 
-	var sticky = $(".left-sideBar").offsetTop;
-	
 	$(window).scroll(function(event){
-		//화면을 200정도만 내렸을때 좌측 메뉴 고정
+// 		화면을 200정도만 내렸을때 좌측 메뉴 고정
 		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
-			$(".left-sideBar").css('position','fixed');
-			$(".left-sideBar").css('top','40px');
+// 			$(".left-sideAds-container").css('position','fixed');
+// 			$(".left-sideAds-container").css('bottom','0');
+// 			$(".left-sideAds-container").css('left','0');
+// 			$(".left-sideAds-container").css('margin-left','0');
+// 			$(".left-sideAds-container").css('top','unset');
 		} else {
-			$(".left-sideBar").css('position','absolute');
-			$(".left-sideBar").css('top','0');
+// 			$(".left-sideAds-container").css('position','absolute');
+// 			$(".left-sideAds-container").css('margin-left','-380px');
+// 			$(".left-sideAds-container").css('top','0');
 		}
 	});
-	
-	/////////////////////////////////////////////////////////
-	//Calendar date 객체 생성 
-	var Calendar = new Date();
-	var day_of_week = ['일', '월', '화', '수', '목', '금', '토'];
-	var month_of_year = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
-	
-	var year = Calendar.getFullYear();
-	var month = Calendar.getMonth();
-	var today = Calendar.getDate();
-	var weekday = Calendar.getDay();
-	
-	Calendar.setDate(1); //1일
-	
-	var DAYS_OF_WEEK = 7;
-	var DAYS_OF_MONTH = 31;
-	var str;
-	
-	//tr
-	var TR_start = "<tr>";
-	var TR_end = "</tr>";
-	
-	var TD_week_start = "<td class='week'>";
-	var TD_blank_start = "<td class='blank'>";
-	var TD_today_start = "<td class='today'>";
-	var TD_day_start = "<td class='day'>";
-	var TD_saturday_start = "<td class='saturday'>";
-	var TD_sunday_start = "<td class='sunday'>";
-	var TD_end = "</td>";
-	
-	str = "<table width=100% border:1 cellspacing=0 cellpadding=0><tr><td style='text-align:center;'>";
-	str += "<strong class='cal-title'>" + year + "." + month_of_year[month] + "</strong>";
-	str += "<table class='calendar' border=0 cellspacing=0 celpadding=2>";
-	
-	//tr 시간
-	str += TR_start;
-	
-	for(var i=0; i<DAYS_OF_WEEK; ++i){
-		str += TD_week_start + day_of_week[i] + TD_end;
-	}
-	
-	str += TR_end;
-	
-	for(var i=0; i<Calendar.getDay(); ++i){
-		str += TD_blank_start + TD_end;
-	}
-	
-	//1일부터 시작
-	for(i=0; i<DAYS_OF_MONTH; ++i){
-		if(Calendar.getDate() >i){
-			var day = Calendar.getDate();
-			var week_day = Calendar.getDay();
-			if(week_day ==0){
-				str += TR_start;
-			}
-			if(day == today){
-				str += TD_today_start + day + TD_end;
-			}
-			else {
-				switch(week_day){
-					case 0 :
-						str += TD_sunday_start + day + TD_end;
-						break;
-					case 6 :
-						str += TD_saturday_start + day + TD_end;
-						str += TR_end
-						break;
-					default :
-						str += TD_day_start + day + TD_end;
-					break;
-				}
-			}
-		}
-		
-		Calendar.setDate(Calendar.getDate() + 1);
-	} //for end
-	str += "</table></td></tr></table>";
-	
-	//calendar 태그에 넣기
-	$('.calendar-box').html(str);
 	
 	/////////////////////////////////////////////////////////
 	//실시간 현재 시간
@@ -162,24 +73,15 @@
 		if(seconds < 10){ seconds = "0" + seconds; }
 	
 		var currentTime = hours + ":" + minutes + ":" + seconds;
-	
-		//PC 버전 현재시간
-		var monthDate_div = document.getElementById("month_date");
-		var time_div = document.getElementById("time_zone");
-		var ampm_zone = document.getElementById("ampm_zone");
 		
 		//모바일 버전 현재시간
 		var monthDate_div_mob = document.getElementById("month_date_mob");
 		var time_div_mob = document.getElementById("time_zone_mob");
 		
 		//월 + 일 넣기
-		monthDate_div.innerHTML = currentDate;
 		monthDate_div_mob.innerHTML = currentDate;
 		//시간 넣기
-		time_div.innerHTML = currentTime;
 		time_div_mob.innerHTML = currentTime;
-		//am pm 넣기
-		ampm_zone.innerHTML = AMorPM;
 	}
 	
 	//실시간 갱신시켜주는 함수

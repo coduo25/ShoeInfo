@@ -54,9 +54,6 @@ a { text-decoration: none; color: #000000; }
 .mob-menuBoard a { width:100%; margin-bottom:10px; display:block; padding:12px 0; }
 
 
-/* 좌측 하단 광고 */
-.googleAd-leftbottomBox { position:fixed; bottom:0; left:0; background-color:#eaeaea; z-index:50; width:300px; height:250px; } /*  */	
-
 
 
 
@@ -238,8 +235,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 
 /* 1680px 밑으로 적용 */
 @media screen and (max-width: 1680px) {
-	/* 좌측 하단 광고 300x250 없애기 */
-	.googleAd-leftbottomBox { display:none !important; }
+	
 }
 
 /* 0 ~ 1220px */

@@ -7,14 +7,14 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;} /* width: 80%; margin: 5px auto; */
  
 /* 리스트 별 컨테이너 */
-.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:50px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:30px 0; font-family: 'Nanum Gothic', sans-serif; }
 .released-container { display: table; width: 100%; box-sizing: border-box; margin:40px 0 0 0; font-family: 'Nanum Gothic', sans-serif; }
-.popular-container { display:none; }
+/* .popular-container { display:none; } */
 
 .todays-table-container, .releasing-table-container, .snkrsWeek-table-container, .myDraw-table-container, .popular-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title { display: block; padding:0 0 15px 0; font-size:28px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; padding:0 0 15px 0; font-size:26px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
