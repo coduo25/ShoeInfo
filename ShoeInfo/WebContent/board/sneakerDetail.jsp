@@ -105,7 +105,7 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 	
 		<!-- 신발 정보 container -->
-		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important;">
+		<div class="shoeinfo-container" style="margin-top:30px; padding-top:0 !important;">
 			<!-- 신발 이미지 -->
 			<div class="shoeImg-container">
 				<%if(usr_position.equals("admin")){%>

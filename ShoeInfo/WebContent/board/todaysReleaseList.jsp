@@ -254,7 +254,6 @@
 										<%} %>
 										
 											<span class="mob-moreDetail">
-												·
 												<!-- 결제방식 -->
 												<%if(odto_todays.getOnline_method().contains("선착")) {%>
 													선착순 구매
@@ -360,12 +359,20 @@
 															<span class="remainTime-container">
 																<!-- 남은시간 -->
 																<span id="count_todays_status<%=i%>span" style="color:#313131;">
-	<!-- 																<span style="padding-right: 1px;">선착까지</span> -->
-																	<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일 
-																	<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 4px;"></span>시간
-																	<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>분
-																	<span class="remain-time" id="final_count_start_time<%=i%>seconds"></span>초
-																	<span> 남음</span>
+																	<span class="mob_count_label"><i class="far fa-clock"></i></span>
+																	<span class="remain-time" id="final_count_start_time<%=i%>days"></span>
+																		<span class="pc_count_label">일</span>
+																		<span class="mob_count_label">:</span> 
+																	<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 4px;"></span>
+																		<span class="pc_count_label">시간</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>
+																		<span class="pc_count_label">분</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_start_time<%=i%>seconds"></span>
+																		<span class="pc_count_label">초</span>
+																		
+																	<span class="pc_count_label">남음</span>	
 																</span>
 															</span>
 														<%} else {%>
@@ -388,12 +395,20 @@
 															<span class="remainTime-container"> 
 																<!-- 남은시간 -->
 																<span id="count_todays_status<%=i%>span" style="color:#313131;">
-	<!-- 																<span style="padding-right: 1px;">마감까지</span> -->
-																	<span class="remain-time" id="final_count_end_time<%=i%>days"></span>일 
-																	<span class="remain-time" id="final_count_end_time<%=i%>hours" style="padding-left: 4px;"></span>시간
-																	<span class="remain-time" id="final_count_end_time<%=i%>minutes"></span>분
-																	<span class="remain-time" id="final_count_end_time<%=i%>seconds"></span>초
-																	<span> 남음</span>
+																	<span class="mob_count_label"><i class="far fa-clock"></i></span>
+																	<span class="remain-time" id="final_count_end_time<%=i%>days"></span>
+																		<span class="pc_count_label">일</span>
+																		<span class="mob_count_label">:</span> 
+																	<span class="remain-time" id="final_count_end_time<%=i%>hours" style="padding-left: 4px;"></span>
+																		<span class="pc_count_label">시간</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_end_time<%=i%>minutes"></span>
+																		<span class="pc_count_label">분</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_end_time<%=i%>seconds"></span>
+																		<span class="pc_count_label">초</span>
+																		
+																	<span class="pc_count_label">남음</span>
 																</span>
 															</span>
 														<%} else {%>

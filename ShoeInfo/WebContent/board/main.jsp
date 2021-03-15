@@ -382,7 +382,6 @@
 											<%} %>
 										
 											<span class="mob-moreDetail">
-												·
 												<!-- 결제방식 -->
 												<%if(odto_todays.getOnline_method().contains("선착")) {%>
 													선착순 구매
@@ -487,12 +486,20 @@
 															<span class="remainTime-container">
 																<!-- 남은시간 -->
 																<span id="count_todays_status<%=i%>span" style="color:#313131;">
-	<!-- 																<span style="padding-right: 1px;">선착까지</span> -->
-																	<span class="remain-time" id="final_count_start_time<%=i%>days"></span>일 
-																	<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 4px;"></span>시간
-																	<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>분
-																	<span class="remain-time" id="final_count_start_time<%=i%>seconds"></span>초
-																	<span> 남음</span>
+																	<span class="mob_count_label"><i class="far fa-clock"></i></span>
+																	<span class="remain-time" id="final_count_start_time<%=i%>days"></span>
+																		<span class="pc_count_label">일</span>
+																		<span class="mob_count_label">:</span> 
+																	<span class="remain-time" id="final_count_start_time<%=i%>hours" style="padding-left: 4px;"></span>
+																		<span class="pc_count_label">시간</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_start_time<%=i%>minutes"></span>
+																		<span class="pc_count_label">분</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_start_time<%=i%>seconds"></span>
+																		<span class="pc_count_label">초</span>
+																		
+																	<span class="pc_count_label">남음</span>	
 																</span>
 															</span>
 														<%} else {%>
@@ -515,12 +522,20 @@
 															<span class="remainTime-container"> 
 																<!-- 남은시간 -->
 																<span class="count_todays_status" id="count_todays_status<%=i%>span" style="color:#313131;">
-	<!-- 																<span style="padding-right: 1px;">마감까지</span> -->
-																	<span class="remain-time" id="final_count_end_time<%=i%>days"></span>일 
-																	<span class="remain-time" id="final_count_end_time<%=i%>hours" style="padding-left: 4px;"></span>시간
-																	<span class="remain-time" id="final_count_end_time<%=i%>minutes"></span>분
-																	<span class="remain-time" id="final_count_end_time<%=i%>seconds"></span>초
-																	<span> 남음</span>
+																	<span class="mob_count_label"><i class="far fa-clock"></i></span>
+																	<span class="remain-time" id="final_count_end_time<%=i%>days"></span>
+																		<span class="pc_count_label">일</span>
+																		<span class="mob_count_label">:</span> 
+																	<span class="remain-time" id="final_count_end_time<%=i%>hours" style="padding-left: 4px;"></span>
+																		<span class="pc_count_label">시간</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_end_time<%=i%>minutes"></span>
+																		<span class="pc_count_label">분</span>
+																		<span class="mob_count_label">:</span>
+																	<span class="remain-time" id="final_count_end_time<%=i%>seconds"></span>
+																		<span class="pc_count_label">초</span>
+																		
+																	<span class="pc_count_label">남음</span>
 																</span>
 															</span>
 														<%} else {%>
@@ -1098,6 +1113,97 @@
 						$('#draw_checkBox'+id_num).css("border-color","#b3b3b3");
 						$('#draw_checkBox'+id_num).css("color","#b3b3b3");
 						$('#drawCheck_statusTxt'+id_num).text("");
+					}
+				}
+			}
+		});
+		
+		//(모바일) 응모 여부 체크박스 클릭했을시 -----------------------------------------------------------------------
+		$('.mob-draw_checkBox').on('click', function(){
+			//로그인 체크
+			if($(".login_user").val() == "") {
+				var login_confirm = confirm("응모여부를 체크할려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
+				if(login_confirm){
+					location.href="./MemberLogin.me";
+					$(this).prop("checked", false);
+				}else {
+					$(this).prop("checked", false);
+				}
+			}
+			//로그인시
+			else {
+				var checkbox_id = $(this).attr("id");
+				var id_num = checkbox_id.replace(/[^0-9]/g,'');
+				
+				//응모참여 status
+				var mob_draw_status = $('#mob-drawCheck_status'+id_num).val();
+
+				//응모시간이 아니면 alert 띄우기
+				var hidden_ing = $('#hidden_ing'+id_num).val();
+				if(hidden_ing < 0){
+					alert("응모 전입니다. \n응모기간에 응모여부를 체크 할 수 있습니다.");
+					return false;
+				}
+				else {
+					//신발모델 번호
+					var model_num = $('#model_num'+id_num).val();
+					//신발모델 스타일코드
+					var model_stylecode = $('#model_stylecode'+id_num).val();
+					//브랜드 아이디
+					var brand_id = $('#brand_id'+id_num).val();
+					//국가 이름
+					var country_name = $('#country_name'+id_num).val();
+					
+					//참여전인데 체크박스 눌릴시 -> 참여완료
+					if(mob_draw_status == '참여전'){
+						//status 참여완료로 바꾸기
+						$('#mob-drawCheck_status'+id_num).val('참여완료');
+						$.ajax({
+				   			type:'get',
+				   			url:'./addUserDrawInfoAction.me',
+				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
+				   			dataType: 'html',
+				   			success:function(data) {
+
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+						//참여전 표시 -> 참여완료로 바꾸기
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "0.3");
+						$('div#brand-info-container'+id_num).css("opacity", "0.3");
+						$('#mob-brand-info-container'+id_num).css("opacity", "0.3");
+						
+						$('#mob-draw_checkBox'+id_num).css("background-color","#1f1f1f");
+						$('#mob-draw_checkBox'+id_num).css("border-color","#1f1f1f");
+						$('#mob-draw_checkBox'+id_num).css("color","white");
+						$('#mob-drawCheck_statusTxt'+id_num).text("응모함");
+					} 
+					//참여완료인데 체크박스 눌릴시 -> 참여전
+					else if(mob_draw_status == '참여완료'){
+						//status 참여전으로 바꾸기
+						$('#mob-drawCheck_status'+id_num).val('참여전');
+						$.ajax({
+				   			type:'get',
+				   			url:'./deleteUserDrawInfoAction.me',
+				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
+				   			dataType: 'html',
+				   			success:function(data) {
+				   				
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+
+						//참여완료 표시 -> 참여전으로 바꾸기
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "1");
+						$('div#brand-info-container'+id_num).css("opacity", "1");
+						$('#mob-brand-info-container'+id_num).css("opacity", "1");
+						
+						$('#mob-draw_checkBox'+id_num).css("background-color","white");
+						$('#mob-draw_checkBox'+id_num).css("border-color","#b3b3b3");
+						$('#mob-draw_checkBox'+id_num).css("color","#b3b3b3");
+						$('#mob-drawCheck_statusTxt'+id_num).text("");
 					}
 				}
 			}

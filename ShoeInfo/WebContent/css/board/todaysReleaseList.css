@@ -21,7 +21,7 @@ body {font-size:1em; line-weight:1.4}
 
 /* 오늘의 발매 리스트 */
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black; }
-#onlineList_todays_table th { padding:20px 10px; background:#f9f9f9; border-top:1px solid #222; border-bottom:1px solid #c1c1c1; color:#222; font-size:15px; }
+#onlineList_todays_table th { padding:20px 10px; background:#f9f9f9; border-top:1px solid #222; border-bottom:1px solid #c1c1c1; color:#222; font-size:15px; font-weight:normal; }
 #onlineList_todays_table td { height: 100%; border-bottom:1px solid #c1c1c1; padding:35px 0; text-align: center; }
 
 	/* 번호 & 상태 */
@@ -56,6 +56,8 @@ body {font-size:1em; line-weight:1.4}
 	.remain-time { font-size:20px; padding:0 5px 0 4px; font-weight: bold; font-family: 'Kelly Slab', cursive; }
 	.remainWarning-container { display: block; position: relative; color: black !important; margin-top:5px; }
 	.remainWarning-container span { display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%; }
+
+	.mob_count_label { display:none; }
 
 	/* 발매 제품  */
 	.releaseModel-image img { width:90%; background-color:#f3f3f3; padding:80px 10px 20px 10px; }
@@ -132,10 +134,10 @@ body {font-size:1em; line-weight:1.4}
 	#onlineList_todays_table th:first-child, #onlineList_todays_table td:first-child:not(.todays_moretd), #onlineList_todays_table th:last-child, #onlineList_todays_table td:last-child:not(.todays_moretd) { display:none; }
 	.todaysRelease-content1, .todaysRelease-content2 { display:block; padding-left:0; text-align:center; }
 	.todaysRelease-content2 { width:90%; margin:0 auto; }
-	.brandImg { width:60px !important; height:60px !important; }
+	.brandImg { width:100px !important; height:100px !important; }
 	#onlineList_todays_table th { padding:12px 0; font-size:14px; }
 	#onlineList_todays_table td { padding:25px 0; }
-	.todays-brandName { font-size:17px; }
+	.todays-brandName { font-size:15px; }
 	.info-subTitle { display:none; }
 	.info-subTitle, .info-content { font-size:14px; }
 	.todaysRelease-content2 div { margin:8px auto !important; }
@@ -145,10 +147,11 @@ body {font-size:1em; line-weight:1.4}
 	.mob-brand-info-container img { width:25%; }
 	.pc_count_label { display:none; }
 	.mob_count_label { display:inline-block; font-weight:bold; }
-	.remain-time { font-size:15px; padding:0 3px; }
+	.remain-time { font-size:15px; padding:0 1px; }
 	.release-status { font-size:13px; }
-	.mob-moreDetail { display:inline-block; white-space:nowrap; }
+	.mob-moreDetail { display:block; white-space:nowrap; margin-top:8px; }
 	.brand-info-container:nth-child(4) { display:none; }
+	
 	
 }
 

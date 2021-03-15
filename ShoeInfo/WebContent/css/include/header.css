@@ -267,7 +267,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	.menu-row { display:none; }
 	
 	body { padding-top:45px; }
-	.mob-logo-row { position:fixed; top:0; z-index:30; padding:1% 3% 3% 3%; }
+	.mob-logo-row { position:fixed; top:0; z-index:30; padding:1% 3% 2% 3%; }
 	.mob-logo { font-size:35px; }
 	.mob-container { font-size:25px; }
 	.mob-nav { display:inline-block; }
