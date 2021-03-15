@@ -56,9 +56,9 @@ body { line-weight:1.4;}
 	.brandLogoName { text-align:left !important; }
 	.sneakerDetail-logo, .sneakerDetail-brandName { display:inline-block; vertical-align:top; position:relative; }
 	.brandlogo_img { width:80px; height:80px; border:1px solid #c0c0c0; border-radius:5px; }
-	.countryflag { border:0.5px solid #d4d4d4; width:25px; height:15px; }
+	.countryflag { border:0.5px solid #d4d4d4; width:25px; height:17px; }
 	.sneakerDetail-brandName { padding-left:12px; }
-	.sneakerDetail-brandNameTxt span { width:150px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:16px; margin-bottom:12px; white-space:nowrap; }
+	.sneakerDetail-brandNameTxt span { width:190px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:16px; margin-bottom:12px; white-space:nowrap; }
 	.sneakerDetail-releaseMethod { white-space:nowrap; }
 	
 		/* 모바일 버전 발매처 추가 정보 */
