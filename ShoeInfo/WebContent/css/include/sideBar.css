@@ -15,10 +15,10 @@
 .betweenAdsPad2-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:720px; height:300px; } /* width:720px; height:300px; */
 
 /* Phone - 중간 가로 320x50 광고  --------------------------------------------- */
-.betweenAdsPhone-container { width:100%; display:table; margin:10px 0; }
+.betweenAdsPhone-container { width:100%; display:table; margin:20px 0; }
 .betweenAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:50px; } /* width:320px; height:50px; */
 /* Phone - 하단 가로 320x100 광고 */
-.bottomAdsPhone-container { width:100%; display:table; margin:10px 0; }
+.bottomAdsPhone-container { width:100%; display:table; margin:20px 0; }
 .bottomAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:100px; } /* width:320px; height:100px; */
 
 /* 좌측 사이드 광고 300x600 --------------------------------------------- */

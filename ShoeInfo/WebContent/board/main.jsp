@@ -312,13 +312,13 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" class="release-info" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" class="release-info">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
 								<!-- 발매처 기본정보 -->
-								<div id="count_todays_status<%=i%>releaseInfo" class="todaysRelease-content1">
-									<!--  발매처 이미지 --> 
+								<div id="count_todays_status<%=i%>releaseInfo" class="todaysRelease-content1" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+									<!-- 발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
 											<img src="./brand_img_upload/<%=bdto_todays.getBrand_logo()%>" class="brandImg">
@@ -333,11 +333,11 @@
 								<div class="todaysRelease-content2">
 								
 									<!-- 발매처 정보 -->
-									<div class="brand-info-container" style="margin-bottom: 15px !important;">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom: 15px !important; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
-												<span id="count_todays_status<%=i%>brandNameTxt" class="todays-brandName"> <%=bdto_todays.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>
+												<span id="count_todays_status<%=i%>brandNameTxt" class="todays-brandName" style="<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto_todays.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>
 											</a>
 											
 											<!-- 진행 상태 -->
@@ -363,15 +363,14 @@
 												<input type="hidden" id="hidden_ing<%=i%>" value="1">
 											<%}%>
 										</div>
-
 									</div>
 								
 									<!-- 발매 방식  -->
-									<div class="brand-info-container">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<span class="info-subTitle">발매 방식</span>
 										<span class="info-content">
 										<%if(odto_todays.getOnline_method().contains("선착")) {%>
-											선착순구매  <!-- color:#ff5722; -->
+											선착순 구매  <!-- color:#ff5722; -->
 										<%} else if(odto_todays.getOnline_method().contains("드로우")) {%>
 											온라인응모
 										<%} else if(odto_todays.getOnline_method().contains("이메일라플")) {%>
@@ -385,7 +384,7 @@
 									</div>
 
 									<!-- 시간 -->
-									<div class="brand-info-container">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<span class="info-subTitle">
 											<%if(odto_todays.getOnline_method().contains("선착")){%>
 												선착 시간
@@ -422,7 +421,7 @@
 									</div>
 	
 									<!-- 결제·배송 -->
-									<div class="brand-info-container">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<span class="info-subTitle">결제·배송</span>
 										<span class="info-content">
 											<!-- 결제방식 -->
@@ -442,7 +441,7 @@
 									</div>
 									
 									<!-- 남은시간 -->
-									<div class="brand-info-container" style="margin-bottom: 0 !important;">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom: 0 !important; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<!-- 남은시간 -->
 										<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
 										<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
@@ -498,7 +497,7 @@
 														<% if(!odto_todays.getOnline_end_date().isEmpty() && !odto_todays.getOnline_end_time().isEmpty()) {%>
 															<span class="remainTime-container"> 
 																<!-- 남은시간 -->
-																<span id="count_todays_status<%=i%>span" style="color:#313131;">
+																<span class="count_todays_status" id="count_todays_status<%=i%>span" style="color:#313131;">
 	<!-- 																<span style="padding-right: 1px;">마감까지</span> -->
 																	<span class="remain-time" id="final_count_end_time<%=i%>days"></span>일 
 																	<span class="remain-time" id="final_count_end_time<%=i%>hours" style="padding-left: 4px;"></span>시간
@@ -517,9 +516,7 @@
 													</span>
 												</span>
 											<%} else if( (odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0) {%>
-												<span>
-													<span>-</span>
-												</span>
+												<span>-</span>
 											<%} %>
 											
 												<!-- 마감임박 문구-->
@@ -528,7 +525,43 @@
 												</div>
 										</span>
 									</div>
-	
+									
+									<!-- 모바일 버전 발매 신발 및 응모 체크 버튼 -->
+									<!-- 발매신발 -->
+									<div class="mob-brand-info-container" id="mob-brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+										<span class="info-content">
+											<a href="./SneakerDetail.go?model_stylecode=<%=sdto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> 
+												<img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" class="sneaker_img">
+											</a>
+										</span>
+									</div>
+									
+									<!--  응모 체크 버튼 -->
+									<div class="mob-brand-info-container" id="mob-brand-info-container<%=i%>">
+										<input type="hidden" id="model_num<%=i%>" value="<%=odto_todays.getModel_num()%>">
+										<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
+										<span class="info-content">
+											<!-- 참여체크박스 -->
+											<%if(odto_todays.getOnline_method().contains("선착")) {%>
+											
+											<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+												<%if(!userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>
+													<input type="hidden" id="mob-drawCheck_status<%=i%>" value="참여전">
+													<!-- 참여체크박스 -->
+													<div class="mob-draw_checkBox" id="mob-draw_checkBox<%=i%>" style="background-color:white; color:#b3b3b3;">
+														<span><i class="fas fa-check"></i> <span id="mob-drawCheck_statusTxt<%=i%>"></span></span>
+													</div> 
+												<%}else{%>
+													<input type="hidden" id="mob-drawCheck_status<%=i%>" value="참여완료">
+													<!-- 참여체크박스 -->
+													<div class="mob-draw_checkBox" id="mob-draw_checkBox<%=i%>" style="background-color:#1f1f1f; color:white; border-color:#1f1f1f;">
+														<span><i class="fas fa-check"></i> <span id="mob-drawCheck_statusTxt<%=i%>">응모함</span></span>
+													</div> 
+												<%}%>
+											<%}%>
+										</span>
+									</div>
+									
 								</div>
 								
 							</td>
@@ -537,9 +570,10 @@
 							<td id="releaseModel-info<%=i%>" style="padding-left:50px; padding-right:50px;" class="releaseModel-container">
 							<input type="hidden" id="model_num<%=i%>" value="<%=odto_todays.getModel_num()%>">
 							<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
+								
 								<!-- 발매제품 이미지 -->
 								<div class="releaseModel-image" id="releaseModel-image<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
-									<a href="./SneakerDetail.go?model_stylecode=<%=sdto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>">
+									<a href="./SneakerDetail.go?model_stylecode=<%=sdto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> 
 										<img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" class="sneaker_img">
 									</a>
 								</div>
@@ -565,6 +599,7 @@
 										<%}%>
 									<%}%>
 								</div>
+
 							</td>
 							
 						</tr>
@@ -572,7 +607,7 @@
 						if(onlineList_todays.size() >= 4) {
 					%>
 						<tr>
-							<td colspan="4" style="padding:0 !important; background-color:#f9f9f9;">
+							<td colspan="4" class="todays_moretd" style="padding:0 !important; background-color:#f9f9f9;">
 								<a href="./TodaysReleaseList.go"><span style="display:block; padding:15px 0;">더보기 <i class="far fa-plus-square"></i></span></a>
 							</td>
 						</tr>

@@ -82,6 +82,12 @@
 			<div class="betweenAdsPad-box">
 			</div>
 		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
+			<div class="betweenAdsPhone-box">
+			</div>
+		</div>
 
 		<!-- 오늘의 모든 발매 리스트 -->
 		<div class="todaysRelease-container" style="margin-top:30px !important; padding-top:0 !important; margin-bottom:40px !important;">
@@ -178,12 +184,12 @@
 							</td>
 							
 							<!-- 발매처 정보-->
-							<td id="release-info<%=i%>" class="release-info" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+							<td id="release-info<%=i%>" class="release-info">
 							<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
 								<!-- 발매처 기본정보 -->
-								<div id="count_todays_status<%=i%>releaseInfo" class="todaysRelease-content1">
+								<div id="count_todays_status<%=i%>releaseInfo" class="todaysRelease-content1" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 									<!-- 발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
@@ -199,7 +205,7 @@
 								<div class="todaysRelease-content2">
 								
 									<!-- 발매처 정보 -->
-									<div class="brand-info-container" style="margin-bottom: 15px !important;">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom: 15px !important; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
@@ -232,7 +238,7 @@
 									</div>
 								
 									<!-- 발매 방식  -->
-									<div class="brand-info-container">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<span class="info-subTitle">발매 방식</span>
 										<span class="info-content">
 										<%if(odto_todays.getOnline_method().contains("선착")) {%>
@@ -250,7 +256,7 @@
 									</div>
 
 									<!-- 시간 -->
-									<div class="brand-info-container">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<span class="info-subTitle">
 											<%if(odto_todays.getOnline_method().contains("선착")){%>
 												선착 시간
@@ -287,7 +293,7 @@
 									</div>
 	
 									<!-- 결제·배송 -->
-									<div class="brand-info-container">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<span class="info-subTitle">결제·배송</span>
 										<span class="info-content">
 											<!-- 결제방식 -->
@@ -307,7 +313,7 @@
 									</div>
 									
 									<!-- 남은시간 -->
-									<div class="brand-info-container" style="margin-bottom: 0 !important;">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom: 0 !important; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<!-- 남은시간 -->
 										<span id="count_todays_start_time<%=i%>" style="display:none;"> <%=count_todays_start_time%> </span>
 										<span id="count_todays_end_time<%=i%>" style="display:none;"> <%=count_todays_end_time%> </span>
@@ -391,7 +397,43 @@
 												</div>
 										</span>
 									</div>
-	
+									
+									<!-- 모바일 버전 발매 신발 및 응모 체크 버튼 -->
+									<!-- 발매신발 -->
+									<div class="mob-brand-info-container" id="mob-brand-info-container<%=i%>" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+										<span class="info-content">
+											<a href="./SneakerDetail.go?model_stylecode=<%=sdto_todays.getModel_stylecode()%>&num=<%=odto_todays.getModel_num()%>"> 
+												<img src="./sneaker_img_upload/<%=sdto_todays.getImage()%>" class="sneaker_img">
+											</a>
+										</span>
+									</div>
+									
+									<!--  응모 체크 버튼 -->
+									<div class="mob-brand-info-container" id="mob-brand-info-container<%=i%>">
+										<input type="hidden" id="model_num<%=i%>" value="<%=odto_todays.getModel_num()%>">
+										<input type="hidden" id="model_stylecode<%=i%>" value="<%=sdto_todays.getModel_stylecode()%>">
+										<span class="info-content">
+											<!-- 참여체크박스 -->
+											<%if(odto_todays.getOnline_method().contains("선착")) {%>
+											
+											<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+												<%if(!userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>
+													<input type="hidden" id="mob-drawCheck_status<%=i%>" value="참여전">
+													<!-- 참여체크박스 -->
+													<div class="mob-draw_checkBox" id="mob-draw_checkBox<%=i%>" style="background-color:white; color:#b3b3b3;">
+														<span><i class="fas fa-check"></i> <span id="mob-drawCheck_statusTxt<%=i%>"></span></span>
+													</div> 
+												<%}else{%>
+													<input type="hidden" id="mob-drawCheck_status<%=i%>" value="참여완료">
+													<!-- 참여체크박스 -->
+													<div class="mob-draw_checkBox" id="mob-draw_checkBox<%=i%>" style="background-color:#1f1f1f; color:white; border-color:#1f1f1f;">
+														<span><i class="fas fa-check"></i> <span id="mob-drawCheck_statusTxt<%=i%>">응모함</span></span>
+													</div> 
+												<%}%>
+											<%}%>
+										</span>
+									</div>
+									
 								</div>
 								
 							</td>
@@ -449,6 +491,12 @@
 		<!-- Pad - 중간 광고 728x300 -->
 		<div class="betweenAdsPad2-container" style="display:none;">
 			<div class="betweenAdsPad2-box">
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 		
@@ -737,6 +785,97 @@
 						$('#draw_checkBox'+id_num).css("border-color","#b3b3b3");
 						$('#draw_checkBox'+id_num).css("color","#b3b3b3");
 						$('#drawCheck_statusTxt'+id_num).text("");
+					}
+				}
+			}
+		});
+		
+		//(모바일) 응모 여부 체크박스 클릭했을시 -----------------------------------------------------------------------
+		$('.mob-draw_checkBox').on('click', function(){
+			//로그인 체크
+			if($(".login_user").val() == "") {
+				var login_confirm = confirm("응모여부를 체크할려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
+				if(login_confirm){
+					location.href="./MemberLogin.me";
+					$(this).prop("checked", false);
+				}else {
+					$(this).prop("checked", false);
+				}
+			}
+			//로그인시
+			else {
+				var checkbox_id = $(this).attr("id");
+				var id_num = checkbox_id.replace(/[^0-9]/g,'');
+				
+				//응모참여 status
+				var mob_draw_status = $('#mob-drawCheck_status'+id_num).val();
+
+				//응모시간이 아니면 alert 띄우기
+				var hidden_ing = $('#hidden_ing'+id_num).val();
+				if(hidden_ing < 0){
+					alert("응모 전입니다. \n응모기간에 응모여부를 체크 할 수 있습니다.");
+					return false;
+				}
+				else {
+					//신발모델 번호
+					var model_num = $('#model_num'+id_num).val();
+					//신발모델 스타일코드
+					var model_stylecode = $('#model_stylecode'+id_num).val();
+					//브랜드 아이디
+					var brand_id = $('#brand_id'+id_num).val();
+					//국가 이름
+					var country_name = $('#country_name'+id_num).val();
+					
+					//참여전인데 체크박스 눌릴시 -> 참여완료
+					if(mob_draw_status == '참여전'){
+						//status 참여완료로 바꾸기
+						$('#mob-drawCheck_status'+id_num).val('참여완료');
+						$.ajax({
+				   			type:'get',
+				   			url:'./addUserDrawInfoAction.me',
+				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
+				   			dataType: 'html',
+				   			success:function(data) {
+
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+						//참여전 표시 -> 참여완료로 바꾸기
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "0.3");
+						$('div#brand-info-container'+id_num).css("opacity", "0.3");
+						$('#mob-brand-info-container'+id_num).css("opacity", "0.3");
+						
+						$('#mob-draw_checkBox'+id_num).css("background-color","#1f1f1f");
+						$('#mob-draw_checkBox'+id_num).css("border-color","#1f1f1f");
+						$('#mob-draw_checkBox'+id_num).css("color","white");
+						$('#mob-drawCheck_statusTxt'+id_num).text("응모함");
+					} 
+					//참여완료인데 체크박스 눌릴시 -> 참여전
+					else if(mob_draw_status == '참여완료'){
+						//status 참여전으로 바꾸기
+						$('#mob-drawCheck_status'+id_num).val('참여전');
+						$.ajax({
+				   			type:'get',
+				   			url:'./deleteUserDrawInfoAction.me',
+				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
+				   			dataType: 'html',
+				   			success:function(data) {
+				   				
+				   			},error:function(request,status,error){
+							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+							}
+				   		});
+
+						//참여완료 표시 -> 참여전으로 바꾸기
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "1");
+						$('div#brand-info-container'+id_num).css("opacity", "1");
+						$('#mob-brand-info-container'+id_num).css("opacity", "1");
+						
+						$('#mob-draw_checkBox'+id_num).css("background-color","white");
+						$('#mob-draw_checkBox'+id_num).css("border-color","#b3b3b3");
+						$('#mob-draw_checkBox'+id_num).css("color","#b3b3b3");
+						$('#mob-drawCheck_statusTxt'+id_num).text("");
 					}
 				}
 			}

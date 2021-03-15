@@ -66,6 +66,9 @@ body {font-size:1em; line-weight:1.4}
 	.brand-info-image-container { display:inline-block; position:relative;  }
 	
 	.brand-info-container { vertical-align: top; margin-bottom:12px !important; }
+	/* 모바일 버전 발매 신발 및 응모 체크 버튼 */
+	.mob-brand-info-container { display:none; }
+	
 	.todays-brandName { font-weight:bold; font-size:23px; color:#1f1f1f; }
 	.release-status { margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	
@@ -81,6 +84,7 @@ body {font-size:1em; line-weight:1.4}
 	.remain-time { font-size:20px; padding:0 5px 0 4px; font-weight: bold; font-family: 'Kelly Slab', cursive; }
 	.remainWarning-container { display: block; position: relative; color: black !important; margin-top:5px; }
 	.remainWarning-container span { display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%; }
+	.mob_count_label { display:none; }	
 
 	/* 발매 제품  */
 	.releaseModel-image img { width:90%; background-color:#f3f3f3; padding:80px 10px 20px 10px; }
@@ -89,6 +93,8 @@ body {font-size:1em; line-weight:1.4}
 	/* 체크박스 */
 	.drawCheckBtn { display:block; margin-top:10px; }
 	.draw_checkBox { border:1px solid #b3b3b3; padding:4px; width:50%; margin:0 auto; border-radius:5px; }
+	.mob-drawCheckBtn { margin-top:10px; }
+	.mob-draw_checkBox { border:1px solid #b3b3b3; padding:4px; width:30%; margin:0 auto; border-radius:5px; }
 	
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
@@ -320,7 +326,6 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	
 	.todaysRelease-content2 { width:80%; } 
 	
-	
 	/* 브랜드 이미지 */
 	.brandImg { width:100px !important; height:100px !important; }
 	
@@ -382,8 +387,14 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 @media screen and (max-width: 480px){
 	
 	/* 제목 */
-	.sub-title { font-size:18px; padding:0 2% 5px 2%;}
-	.desc-container { font-size:14px; padding:0 2% 18px 2%; }
+	.sub-title { font-size:16px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
+	.desc-container { font-size:14px; padding:0 3% 18px 3%; }
+	
+	.allButton span { display:none; }
+	.allButton:after { content: '+'; }
+	
+	.releasing-container { margin-top:0 !important; }
+	.snkrsWeek-container { display:block; }
 	
 	/* 발매 신발 박스 */
 	.mainSneaker-container { width:100%; margin:0; border:0; border-left:1px solid #cecece; border-top:1px solid #cecece; border-right:1px solid #cecece; }
@@ -399,6 +410,32 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.popular-table-container { overflow-x:auto; white-space:nowrap; padding:2% 0; }
 	.popular-product { display:inline-block; float:none; width:25%; margin:0 0 0 2%; }
 	
+	/* 전체보기 버튼 */
+	.allButton { padding:2px 6px; margin-top:2px; }
+	
+	/* 오늘의 발매처 */
+	/* 표 */
+	#onlineList_todays_table th:first-child, #onlineList_todays_table td:first-child:not(.todays_moretd), #onlineList_todays_table th:last-child, #onlineList_todays_table td:last-child:not(.todays_moretd) { display:none; }
+	.todaysRelease-content1, .todaysRelease-content2 { display:block; padding-left:0; text-align:center; }
+	.todaysRelease-content2 { width:90%; margin:0 auto; }
+	.brandImg { width:60px !important; height:60px !important; }
+	#onlineList_todays_table th { padding:12px 0; }
+	#onlineList_todays_table td { padding:25px 0; }
+	.todays-brandName { font-size:17px; }
+	.info-subTitle { display:none; }
+	.todaysRelease-content2 div { margin:7px auto !important; }
+	.brand-info-container:first-child { padding-bottom:5px; border-bottom:1px dotted #e6e6e6; }
+	.brand-info-container:nth-child(5) { padding:15px 0 10px 0; } /* border-bottom:1px dotted #e6e6e6; */
+	.mob-brand-info-container { display:block; }
+	.mob-brand-info-container img { width:25%; }
+	.pc_count_label { display:none; }
+	.mob_count_label { display:inline-block; font-weight:bold; }
+	.remainTime-container { font-size:16px; }
+	.remain-time { font-size:18px; padding:0 3px; }
+	
+	/* 나이키코리아 snkrs */
+	.sub-title img { width:40px; height:25px; }
+	.snkrsSneaker-container { width:60%; }
 	
 }
 

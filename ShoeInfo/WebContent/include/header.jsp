@@ -122,7 +122,7 @@
 		
 		<!-- 모바일 흰색 메뉴판 -->
 		<div class="mob-menuBoard">
-			<a href="./AllReleaseList.go">발매 중&#8226;발매예정</a>
+			<a href="./AllReleaseList.go">발매 중 &#8226; 발매예정</a>
 			<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
 			<a href="./AllReleasedList.go">발매완료</a>
 			<a href="./SnkrsKRList.go">SNKRS</a>

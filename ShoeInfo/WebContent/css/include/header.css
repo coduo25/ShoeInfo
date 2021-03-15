@@ -258,6 +258,9 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 
 /* 0 ~ 468px */
 @media screen and (max-width: 468px) {
+	
+	/* 제일 위로 올라가게 하는 버튼 */
+	#myBtn { width:40px; height:40px; font-size:2em; }
 
 	.container { padding:0; }
 	
