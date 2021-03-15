@@ -90,6 +90,12 @@
 				
 			</div>
 		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
+			<div class="betweenAdsPhone-box">
+			</div>
+		</div>
 	
 		<!-- 발매 중 리스트 -->
 		<div class="releasing-container" style="margin-top:30px !important; padding-top:0 !important;">
@@ -148,6 +154,12 @@
 		<div class="betweenAdsPad-container" style="display:none;">
 			<div class="betweenAdsPad-box">
 				
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 
@@ -209,6 +221,12 @@
 			<!-- Pad - 중간 광고 728x300 -->
 			<div class="betweenAdsPad2-container" style="display:none;">
 				<div class="betweenAdsPad2-box">
+				</div>
+			</div>
+			
+			<!-- Phone - 중간 광고 320x50 -->
+			<div class="betweenAdsPhone-container" style="display:none;">
+				<div class="betweenAdsPhone-box">
 				</div>
 			</div>
 

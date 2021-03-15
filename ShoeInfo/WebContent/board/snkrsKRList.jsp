@@ -82,6 +82,12 @@
 				
 			</div>
 		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
+			<div class="betweenAdsPhone-box">
+			</div>
+		</div>
 
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container" style="margin-top:40px !important; padding-top:0 !important; margin-bottom:100px !important;">
@@ -201,6 +207,12 @@
 		<!-- Pad - 중간 광고 728x300 -->
 		<div class="betweenAdsPad2-container" style="display:none;">
 			<div class="betweenAdsPad2-box">
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 		

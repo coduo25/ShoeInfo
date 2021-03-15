@@ -203,12 +203,36 @@ body { line-weight:1.4;}
 		.pc_count_label { display:none !important; }
 		.mob_count_label { display:inline-block !important; font-size:14px; font-weight:bold; vertical-align: top; }
 		.mob_clock { display:inline-block !important; padding-right:5px; }
-
-
-
 }
 
+/* 0 ~ 480px */
+@media screen and (max-width: 480px){
 
+	/* 신발 정보 박스 */
+	.shoeImg-container, .shoeDetailInfo-container { display:block; }
+	.shoeImg-container { width:100%; }
+	.shoeImg-container img { width:100%; padding:10% 5%; }
+	.shoeDetailInfo-container { width:100%; padding:2% 3%; }
+	.shoeFullName_eng { font-size:17px; }
+	.shoeFullName_kr { font-size:14px; }
+	.shoeDetailInfo-name { border-bottom:0; padding-bottom:10px; }
+	.shoeDetailInfo-subtitle p { font-size:14px; }
+	.shoeDetailInfo-content { font-size:13px; }
+	
+	.countryCate-container { padding:10px 5px; white-space:unset; overflow-x:unset; }
+	.countryCate-container div { font-size:13px; padding:0; margin:1% 0; display:inline-block; }
+	.countryCate-container div span { margin:6px 20px; display:block; }
+	
+	.sneakerDetail-brandNameTxt span { width:unset; }
+	.country-table th:nth-child(2), .country-table th:nth-child(4), .country-table th:nth-child(5), .country-table th:nth-child(6) { display:none; }
+	.brandNum, .brandStatus, .releaseTime, .payAnddel, .links { display:none; }
+	
+	.shoeDetailInfo-container { margin:0; }
+	
+	.sub-title { font-size:16px; padding:0 3% 15px 3%; }
+	.sub-title span { font-size:14px !important; }
+	
+}
 
 
 

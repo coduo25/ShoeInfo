@@ -35,7 +35,7 @@ body {font-size:1em; line-weight:1.4}
 	.countryflag { border:0.5px solid #d4d4d4; width:30px; height:20px; }
 	.brand-info-image-container { display:inline-block; position:relative; }
 	
-	.brand-info-container { vertical-align: top; margin-bottom:12px !important; }
+	.brand-info-container { vertical-align: top; margin-bottom:12px; }
 	/* 모바일 버전 발매 신발 및 응모 체크 버튼 */
 	.mob-brand-info-container { display:none; }
 	
@@ -48,6 +48,8 @@ body {font-size:1em; line-weight:1.4}
 	.brand-info-container { display:block; }
 	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; width:80px; }
 	.info-content { display:inline-block; color:#949494; font-size:16px; width:400px; }
+	
+	.mob-moreDetail { display:none; }
 	
 	/* 남은시간 */
 	.remainTime-container { font-size: 15px; }
@@ -119,8 +121,8 @@ body {font-size:1em; line-weight:1.4}
 @media screen and (max-width: 480px){
 
 	/* 제목 */
-	.sub-title { font-size:15px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
-	.desc-container { font-size:14px; padding:0 3% 18px 3%; }
+	.sub-title { font-size:16px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
+	.desc-container { font-size:13px; padding:0 3% 18px 3%; }
 	
 	/* 부제목 + 체크버튼 */
 	.desc-container span { display:block; padding-bottom:10px; }
@@ -131,19 +133,22 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-content1, .todaysRelease-content2 { display:block; padding-left:0; text-align:center; }
 	.todaysRelease-content2 { width:90%; margin:0 auto; }
 	.brandImg { width:60px !important; height:60px !important; }
-	#onlineList_todays_table th { padding:12px 0; }
+	#onlineList_todays_table th { padding:12px 0; font-size:14px; }
 	#onlineList_todays_table td { padding:25px 0; }
 	.todays-brandName { font-size:17px; }
 	.info-subTitle { display:none; }
-	.todaysRelease-content2 div { margin:7px auto !important; }
-	.brand-info-container:first-child { padding-bottom:5px; border-bottom:1px dotted #e6e6e6; }
-	.brand-info-container:nth-child(5) { padding:15px 0 10px 0; } /* border-bottom:1px dotted #e6e6e6; */
+	.info-subTitle, .info-content { font-size:14px; }
+	.todaysRelease-content2 div { margin:8px auto !important; }
+	.brand-info-container:first-child { border-bottom:1px dotted #e6e6e6; }
+	.brand-info-container:nth-child(5) { padding:8px 0; } /* border-bottom:1px dotted #e6e6e6; */
 	.mob-brand-info-container { display:block; }
 	.mob-brand-info-container img { width:25%; }
 	.pc_count_label { display:none; }
 	.mob_count_label { display:inline-block; font-weight:bold; }
-	.remainTime-container { font-size:16px; }
-	.remain-time { font-size:18px; padding:0 3px; }
+	.remain-time { font-size:15px; padding:0 3px; }
+	.release-status { font-size:13px; }
+	.mob-moreDetail { display:inline-block; white-space:nowrap; }
+	.brand-info-container:nth-child(4) { display:none; }
 	
 }
 

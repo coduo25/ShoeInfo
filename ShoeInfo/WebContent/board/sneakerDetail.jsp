@@ -216,6 +216,12 @@
 				
 			</div>
 		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
+			</div>
+		</div>
 	
 		<!-- 국가별 발매처 -->
 		<div class="releaseList-container" style='margin-bottom:40px !important;'>
@@ -649,6 +655,12 @@
 		<div class="betweenAds2-container">
 			<div class="betweenAds2-box">
 				
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 		

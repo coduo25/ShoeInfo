@@ -205,7 +205,7 @@
 								<div class="todaysRelease-content2">
 								
 									<!-- 발매처 정보 -->
-									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom: 15px !important; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom: 15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
@@ -252,6 +252,24 @@
 										<%} else if(odto_todays.getOnline_method().contains("미정")) {%>
 											미정
 										<%} %>
+										
+											<span class="mob-moreDetail">
+												·
+												<!-- 결제방식 -->
+												<%if(odto_todays.getOnline_method().contains("선착")) {%>
+													선착순 구매
+												<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+													<%=odto_todays.getBuy_method()%>
+												<%}%>
+												·
+												<!-- 배송방식 -->
+												<%if(odto_todays.getOnline_method().contains("선착")) {%>
+													<%=odto_todays.getDelivery_method()%>
+												<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
+													<%=odto_todays.getDelivery_method()%>
+												<%}%>
+											</span>
+										
 										</span>
 									</div>
 

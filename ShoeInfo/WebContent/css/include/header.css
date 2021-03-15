@@ -51,7 +51,7 @@ a { text-decoration: none; color: #000000; }
 
 /* 모바일 흰색 메뉴판 */
 .mob-menuBoard { display:none; overflow:hidden; right:-100%; width:100%; background-color:white; position:fixed; height:100%; z-index:100; padding:4%; font-size:16x; font-family:'Nanum Gothic', sans-serif; z-index:2000; }
-.mob-menuBoard a { width:100%; margin-bottom:10px; display:block; padding:12px 0; }
+.mob-menuBoard a { width:100%; margin-bottom:10px; display:block; padding:10px 0; }
 
 
 

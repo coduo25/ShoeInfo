@@ -65,6 +65,32 @@ div.snkrs_time a { font-size:16px; color:#777 !important; }
 	div.snkrs_date { font-size:24px; }
 }
 
+/* 0 ~ 480px */
+@media screen and (max-width: 480px){
+	
+	/* 제목 */
+	.sub-title { font-size:16px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
+	.desc-container { font-size:13px; padding:0 3% 18px 3%; }
+	
+	.sub-title img { width:40px; height:25px; }
+	.snkrsSneaker-container { margin:2% 3%; width:94%; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
