@@ -274,6 +274,8 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	.mob-container { padding:2%; }
 	.mob-container div { padding-left:20px; }
 	
+	.acc_list { padding-right:0; padding-left:12px; }
+	
 }
 
 

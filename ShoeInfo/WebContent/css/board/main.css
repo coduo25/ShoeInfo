@@ -35,7 +35,7 @@ body {font-size:1em; line-weight:1.4}
 	.popular-rank, .popular-imgBox { display:block; }
 	.popular-rank { padding:10px 0 0 10px; }
 	.popular-rank span { font-size:14px; }
-	.popular-imgBox img { width:90%; height:90%; display:block; margin:0 auto; }
+	.popular-imgBox img { width:90%; height:90%; display:block; margin:0 auto; padding:10% 0 5% 0; }
 
 /* 발매 중 리스트 (메인페이지) */
 .mainSneaker-container { float:left; width:23%; margin:0 1% 2% 1%; font-family:'Nanum Gothic', sans-serif; cursor:pointer; border:1px solid #cecece; } /* box-shadow:0px 2px 5px #44444433; */
@@ -405,16 +405,15 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.mainSneaker-container:last-child { border-bottom:1px solid #cecece; }
 	.mainSneaker-image, .mainSneakerShoeInfo-container { display:inline-block; float:left; }
 	.mainSneaker-image { width:25%; }
-	.mainSneaker-image img { display:table-cell; border-bottom:0; }
+	.mainSneaker-image img { display:table-cell; border-bottom:0; padding:20% 5% 8% 5%; }
 	.mainSneakerShoeInfo-container { width:75%; padding:3%; }
-	.mainSneaker-brandCount { margin-top:0; }
 	.mainSneaker-brandCountTxt { padding:1px 4px; font-size:13px; }
-	.mainSneakerShoeInfo-name { font-size:14px; }
+	.mainSneakerShoeInfo-name { font-size:14px; min-height:30px; }
 	
 	
 	/* 인기 제품 */
 	.popular-table-container { overflow-x:auto; white-space:nowrap; padding:2% 0; }
-	.popular-product { display:inline-block; float:none; width:25%; margin:0 0 0 2%; }
+	.popular-product { display:inline-block; float:none; width:25%; margin:0 0 0 3%; }
 	
 	/* 전체보기 버튼 */
 	.allButton { padding:2px 6px; margin-top:2px; }
@@ -450,7 +449,8 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.dDay-status { padding:15px 12px; }
 	.dDay-status span { font-size:15px; padding:0 6px; }
 	.snkrsSneaker-container img { padding:65px 10px 10px 10px;  }
-	div.snkrs_date { font-size:18px; }	
+	div.snkrs_date { font-size:18px; }
+	.snkrs_noRelease { font-size:14px; }
 }
 
 

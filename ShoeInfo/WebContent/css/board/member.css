@@ -49,11 +49,6 @@ input:focus{ outline: none; }
 	.pre-page { display:block; width: 100%; padding:0 0 15px 0; }
 
 
-
-
-
-
-
 /* 모바일 -------------------------------------------------------------- */
 /*  ----------------------------------------------------------------- */
 
@@ -63,128 +58,28 @@ input:focus{ outline: none; }
 	
 }
 
-
-
-
-
-
-
-
-
-
-
-/* media Query */
-/* 0 ~ 1220px */
-@media screen and (max-width: 1220px){
-/* 	.container { */
-/* 		width: 100%; */
-/* 		height: 600px; */
-/* 	} */
-/* 	.component-page { */
-/* 		width: 100%; */
-/* 	} */
-	
-/* 	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form, .up-form { */
-/* 		width: 90%; */
-/* 	} */
-/* 	.checkEmail { */
-/* 		width: 100%; */
-/* 	} */
-/* 	#pwfind_wrap { */
-/* 		height: none; */
-/* 	} */
-/* 	#idfind_wrap { */
-/* 		float: none; */
-/* 		width: 100%; */
-/* 		height: 70%; */
-/* 		border-right: none; */
-/* 	} */
-/* 	#pwfind_wrap { */
-/* 		float: left; */
-/* 		width: 100%; */
-/* 		height: 100%; */
-/* 	} */
-/* 	.confirmMsg1:not(.join-form), .confirmMsg2:not(.join-form) { */
-/* 		font-size: 0.8em; */
-/* 	} */
-}
-
-/* 0 ~ 768px */
-@media screen and (max-width: 768px){
-/* 	#content_login, #content_register, #content_modify, #content_idpwfind, #content_upPos{ */
-/* 		margin: 50px auto; */
-/* 		width: 80%; */
-/* 	} */
-/* 	.container { */
-/* 		width: 100%; */
-/* 		height: 600px; */
-/* 	} */
-/* 	.component-page { */
-/* 		width: 100%; */
-/* 	} */
-
-/* 	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form, .up-form { */
-/* 		width: 90%; */
-/* 	} */
-/* 	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div, .up-form div { */
-/* 		margin: 8px 0; */
-/* 	} */
-/* 	.checkEmail { */
-/* 		position: relative; */
-/* 		margin-top: 0; */
-/* 		margin-bottom: 5px; */
-/* 		width: 100%; */
-/* 	} */
-	
-/* 	#pre-page-icon{ */
-/* 		font-size: 1.8em;  */
-/* 	} */
-	
-/* 	#content_idpwfind p { */
-/* 		font-size: 0.7em; */
-/* 	} */
-}
-
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
-/* 	#content_login, #content_register, #content_modify, #content_idpwfind, #content_upPos, #content_modifyPW{ */
-/* 		margin: 40px auto; */
-/* 		width: 90%; */
-/* 	} */
-/* 	.container { */
-/* 		width: 100%; */
-/* 		height: 600px; */
-/* 	} */
-	
-/* 	.login-form, .join-form, .modi-form, .idfind-form, .pwfind-form, .up-form { */
-/* 		width: 90%; */
-/* 	} */
-/* 	.join-form div, .modi-form div, .idfind-form div, .pwfind-form div, .up-form div { */
-/* 		margin: 8px 0; */
-/* 	} */
-/* 	.checkEmail { */
-/* 		position: relative; */
-/* 		margin-top: 0; */
-/* 		margin-bottom: 5px; */
-/* 		width: 100%; */
-/* 	} */
-	
-/* 	#pre-page-icon{ */
-/* 		font-size: 1.8em;  */
-/* 	} */
-	
-/* 	#content_idpwfind p { */
-/* 		font-size: 0.7em; */
-/* 	} */
-/* 	.fm_warn { */
-/* 		font-size: 0.8em; */
-/* 	} */
-/* 	.fm_label { */
-/* 		margin: 15px 0 8px 0 !important; */
-/* 	} */
-/* 	.confirmMsg1:not(.join-form), .confirmMsg2:not(.join-form) { */
-/* 		font-size: 0.7em; */
-/* 		padding-left: 5px; */
-/* 	} */
+
+	.component-page { width:90%; }
+	.fm_txt { font-size:14px; }
+	.login_subtitle span, .join_subtitle span, .accCheck_subtitle span, .update_subtitle span, .findPass_subtitle span, .resetPass_subtitle span { font-size:19px; }
+	.joinPopUp-text, .joinPopUp-textUp { font-size:13px; }
+	#privacy_label, #popup_privacy { font-size:13px; }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

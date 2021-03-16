@@ -681,7 +681,7 @@
 			
 			<div class="snkrsWeek-table-container">
 				<% if(onlineList_snkrs.isEmpty()){%>
-					<div>
+					<div class="snkrs_noRelease">
 						이번 달 발매 라인업이 없습니다.
 					</div>
 				<% } else { 

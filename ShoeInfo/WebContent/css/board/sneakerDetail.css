@@ -221,7 +221,7 @@ body { line-weight:1.4;}
 	.shoeDetailInfo-container { width:100%; padding:2% 3%; }
 	.shoeFullName_eng { font-size:17px; }
 	.shoeFullName_kr { font-size:14px; }
-	.shoeDetailInfo-name { border-bottom:0; padding-bottom:10px; }
+	.shoeDetailInfo-name { padding-bottom:20px; }
 	.shoeDetailInfo-subtitle p { font-size:14px; }
 	.shoeDetailInfo-content { font-size:13px; }
 	
@@ -251,9 +251,12 @@ body { line-weight:1.4;}
 		/* 추가 정보 on */
 		.mob-sneakerDetail { display:none; }
 		.phone-sneakerDetail { display:block; text-align:center; }
-		.release-status { font-size:13px; padding:3px 4px; margin-left:7px; }
+		.release-status { font-size:13px; padding:2px 3px; margin-left:7px; }
 		.remain-time, .phone-remain-time { font-size:14px; }
 		.phone-remain-time { padding:8px 0; }
+		
+		.remainWarning-container { margin:4px 0 9px 0 !important; }
+		.remainWarning-container span { position:unset; }
 	
 }
 

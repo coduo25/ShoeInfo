@@ -95,14 +95,14 @@
 					<%
 						}else if(usr_position.equals("admin")){ 
 					%>
+						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span>
 						<span class="acc_list"> <a href="./Main.ad"> <i class="fas fa-user-secret"></i> </a> </span>
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span> 
-						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span>
 					<% 
 						}else{ 
 					%>
-						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
 						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
+						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
 					<% } %>
 				</div>
 				<!-- 모바일 버전일때 메뉴 버튼 -->

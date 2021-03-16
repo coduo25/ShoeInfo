@@ -18,6 +18,8 @@ body {font-size:1em; line-weight:1.4}
 .desc-container { display: block; padding:5px 0 25px 0;; color:#666; }
 .desc-container span { display:inline-block; position:relative; }
 
+.snkrs_noRelease { padding:100px; text-align:center; }
+
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
 .snkrsWeek-table-container { white-space:nowrap; margin-bottom:30px; display:block; }
 .snkrsSneaker-container { display:inline-block; width:32.333%; margin:0.5% 0.5% 4% 0.5%; display:inline-block; float:left; box-shadow:0px 2px 5px #44444433; padding-bottom:20px; }
@@ -67,6 +69,8 @@ div.snkrs_time a { font-size:16px; color:#777 !important; }
 
 /* 0 ~ 480px */
 @media screen and (max-width: 480px){
+	
+	.snkrs_noRelease { padding:30% 0; }
 	
 	/* 제목 */
 	.sub-title { font-size:16px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
