@@ -70,7 +70,7 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 
 		<!-- 신발 정보 container -->
-		<div class="shoeinfo-container" style="margin-top:30px !important; padding-top:0 !important; padding-bottom:25px !important;">
+		<div class="shoeinfo-container" style="margin-top:30px; padding-top:0 !important; padding-bottom:25px !important;">
 			<!-- 신발 이미지 -->
 			<div class="shoeImg-container">
 				<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
@@ -130,6 +130,12 @@
 			</div>
 		</div>
 		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
+			</div>
+		</div>
+		
 		<div class="myDrawListDetail-container" style="margin-top:30px !important; padding-top:0 !important;">
 		
 			<!-- 응모 브랜드 리스트 -->
@@ -181,11 +187,34 @@
 											</div>
 										</div>
 									</div>
+									
+									
+									<!-- phone 추가 정보 -->
+									<div class="phone-drawDetail">
+										<!-- 발표일 -->
+										<div>
+											<span>발표 : </span>
+											<span>
+												<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%>
+											</span>	
+										</div>
+										<!-- 수신방식 -->
+										<div>
+											<span>수신 : </span>
+											<span><i class="fas fa-sms"></i></span>
+										</div>
+										<!-- 구매기간 -->
+										<div>
+											<span>구매 : </span>
+											<span>2021.00.00 ~ 2021.00.00</span>
+										</div>
+									</div>
+									
 								</td>
 								<!-- 발표일 -->
 								<td>
 									<div style="padding-bottom:5px;">
-<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
+<%-- 									<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
 										0.00 00:00
 									</div>
 									<div>
@@ -297,6 +326,12 @@
 		<!-- Pad - 중간 광고 728x300 -->
 		<div class="betweenAdsPad2-container" style="display:none;">
 			<div class="betweenAdsPad2-box">
+			</div>
+		</div>
+		
+		<!-- Phone - 중간 광고 320x50 -->
+		<div class="betweenAdsPhone-container" style="display:none;">
+			<div class="betweenAdsPhone-box">
 			</div>
 		</div>
 		

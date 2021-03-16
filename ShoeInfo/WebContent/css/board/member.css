@@ -66,8 +66,12 @@ input:focus{ outline: none; }
 	.login_subtitle span, .join_subtitle span, .accCheck_subtitle span, .update_subtitle span, .findPass_subtitle span, .resetPass_subtitle span { font-size:19px; }
 	.joinPopUp-text, .joinPopUp-textUp { font-size:13px; }
 	#privacy_label, #popup_privacy { font-size:13px; }
-
+	
+	
+	
+	
 }
+
 
 
 

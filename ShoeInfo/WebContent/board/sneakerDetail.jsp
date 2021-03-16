@@ -538,7 +538,7 @@
 																	<span class="remain-time" id="phone-final_count_start_time<%=countryName_eng%><%=i%>days"></span>
 																		<span class="pc_count_label">일</span>
 																		<span class="mob_count_label">:</span>
-																	<span class="remain-time" id="phone-final_count_start_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>
+																	<span class="remain-time" id="phone-final_count_start_time<%=countryName_eng%><%=i%>hours"></span>
 																		<span class="pc_count_label">시간</span>
 																		<span class="mob_count_label">:</span>
 																	<span class="remain-time" id="phone-final_count_start_time<%=countryName_eng%><%=i%>minutes"></span>
@@ -575,7 +575,7 @@
 																	<span class="remain-time" id="phone-final_count_end_time<%=countryName_eng%><%=i%>days"></span>
 																		<span class="pc_count_label">일</span>
 																		<span class="mob_count_label">:</span>
-																	<span class="remain-time" id="phone-final_count_end_time<%=countryName_eng%><%=i%>hours" style="padding-left: 4px;"></span>
+																	<span class="remain-time" id="phone-final_count_end_time<%=countryName_eng%><%=i%>hours"></span>
 																		<span class="pc_count_label">시간</span>
 																		<span class="mob_count_label">:</span>
 																	<span class="remain-time" id="phone-final_count_end_time<%=countryName_eng%><%=i%>minutes"></span>
