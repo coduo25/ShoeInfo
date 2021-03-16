@@ -147,6 +147,13 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 .shoeImg-container { text-align:center; }
 .shoeImg-container img { background-color:#f3f3f3; padding:4% 8% 0 8%; width:90%; }
 
+	/* phone 일때 국내 , 해외 카테고리 선택 박스 */
+	.phone-regionCate-container { padding:10px 3%; text-align:center; font-family:'Nanum Gothic', sans-serif; display:none; }
+	.regionCate-div { text-align:center; font-size:14px; margin:3% 0; display:inline-block; color:#777777; border:1px solid #e8e8e8; border-radius:20px; }
+	.regionCate-div span { margin:8px 20px; display:block; }
+	
+	
+
 /* 신발 내용 파트 */
 
 	/* 제품 모델명 */
@@ -163,7 +170,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 /* 	.shoeinfo-cate { display:inline-block; width:30%; color:#777777; } color:#999; */
 	.shoeinfo-cateAns { display:inline-block; width:100%; text-align:left;}
 	.dividePipe { font-size:14px; padding:0 10px;  }
-	.shoeDetailInfo-modelColorWay { display:inline-block; width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:bottom; }
+	.shoeDetailInfo-modelColorWay { display:inline-block; width:140px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:bottom; }
 	
 		/* phone 추가 제품 정보 */
 		.phone-drawDetail { display:none; }
@@ -471,7 +478,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.myDrawShoeInfo-countNum { font-size:13px; }
 	
 	/* 회원 응모내역 디테일 */
-	.shoeinfo-container { margin-top:0 !important;  }
+	.shoeinfo-container { margin-top:0 !important; padding-bottom:10px !important; }
 	.shoeImg-container, .shoeImg-container img { width:100%; }
 	.shoeinfo-container, .shoeDetailInfo-container { display:block; }
 	.shoeDetailInfo-container { width:100%; padding:2% 3%; margin-left:0; }
@@ -479,19 +486,25 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.shoeFullName_kr { font-size:14px; }
 	.shoeinfo-cateAns { font-size:13px; }
 	.shoeDetailInfo-content { overflow-x:auto; white-space:nowrap; }
-	.shoeDetailInfo-modelColorWay { width:150px; }
-	.shoeDetailInfo-directlinks span { font-size:14px; }
-	.shoeDetailInfo-directlinks { margin-top:8px; text-align:center; }
+	.shoeDetailInfo-modelColorWay { width:110px; }
+	.shoeDetailInfo-directlinks span { font-size:14px; display:block; padding:10px 5px; text-align:center; width:100%; }
+	.shoeDetailInfo-directlinks { margin-top:0; }
 	.sub-title h4 span { font-size:14px !important; }
 	/* 표 */
+	.brandList-container { padding:10px 0 20px 0; }
 	.brandList-table table th:nth-child(1) { width:3% !important; } 
 	.brandList-table table th:nth-child(3), .brandList-table table th:nth-child(4), .brandList-table table th:nth-child(5),
 	.brandList-table table td:nth-child(3), .brandList-table table td:nth-child(4), .brandList-table table td:nth-child(5) { display:none; }
 	.brandList-table table th { padding:12px 0; font-size:14px; }
 	.brandList-table table td { padding:20px 5px; }
-	
 	.phone-drawDetail { display:block; font-size:13px; margin-top:10px; }
 	.phone-drawDetail div { margin-top:5px; }
+	
+	.phone-regionCate-container { display:block; }
+	#sub-title해외, #table해외 { display:none; }
+	#sub-title해외 { padding-top:0 !important; }
+	.myDrawListDetail-container { margin-top:10px !important; }
+	
 	
 }
 

@@ -43,6 +43,10 @@
 	.footer-nav span { display:block; padding-bottom:10px; }
 	.info { display:block; float:unset; padding-top:10px; }
 	.info span { display:inline-block !important; padding-left:0; }
+	
+	.footer-nav span:not(.info span) { font-size:12px; }
+	
+	
 
 }
 	

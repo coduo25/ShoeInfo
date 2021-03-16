@@ -225,9 +225,9 @@ body { line-weight:1.4;}
 	.shoeDetailInfo-subtitle p { font-size:14px; }
 	.shoeDetailInfo-content { font-size:13px; }
 	
-	.countryCate-container { padding:10px 5px; white-space:unset; overflow-x:unset; }
+	.countryCate-container { padding:10px 3%; }
 	.countryCate-container div { font-size:13px; padding:0; margin:1% 0; display:inline-block; }
-	.countryCate-container div span { margin:6px 20px; display:block; }
+	.countryCate-container div span { margin:8px 12px; display:block; }
 	
 	.sneakerDetail-brandNameTxt span { width:unset; }
 /* 	.country-table th:nth-child(1), .brandNum { display:table-cell; width:50px !important; } */

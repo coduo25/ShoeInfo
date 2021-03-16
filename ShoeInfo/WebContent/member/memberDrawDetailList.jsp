@@ -70,7 +70,7 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 
 		<!-- 신발 정보 container -->
-		<div class="shoeinfo-container" style="margin-top:30px; padding-top:0 !important; padding-bottom:25px !important;">
+		<div class="shoeinfo-container" style="margin-top:30px; padding-top:0 !important; padding-bottom:25px;">
 			<!-- 신발 이미지 -->
 			<div class="shoeImg-container">
 				<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">
@@ -136,18 +136,30 @@
 			</div>
 		</div>
 		
-		<div class="myDrawListDetail-container" style="margin-top:30px !important; padding-top:0 !important;">
+		<!-- phone일때 국내/해외 카테고리 박스 -->
+		<div class="phone-regionCate-container">
+			<!-- 국내 -->
+			<div class="regionCate-div" id="regionCate-국내" style="color:white; border:1px solid black; background-color:black; font-weight:bold; margin-right:3px;">
+				<span>국내(<%=countDraw_kr%>)</span>
+			</div>
+			<!-- 해외 -->
+			<div class="regionCate-div" id="regionCate-해외" style="margin-left:3px;">
+				<span>해외(<%=countDraw_etc%>)</span>
+			</div>
+		</div>
+		
+		<div class="myDrawListDetail-container" style="margin-top:30px; padding-top:0 !important;">
 		
 			<!-- 응모 브랜드 리스트 -->
 			<div class="brandList-container">
 				<div class="brandList-table">
 				
-					<div class="sub-title">
+					<div class="sub-title" id="sub-title국내">
 						<h4> 국내 참여 내역 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=countDraw_kr%>건</span> </h4>
 					</div>
 					
 					<!-- 국내 테이블 -->
-					<div class="kr-table">
+					<div class="kr-table" id="table국내">
 						<table>
 							<tr>
 								<th style="width:8%"> 번호 </th>
@@ -187,7 +199,6 @@
 											</div>
 										</div>
 									</div>
-									
 									
 									<!-- phone 추가 정보 -->
 									<div class="phone-drawDetail">
@@ -238,12 +249,12 @@
 						</table>
 					</div>
 					
-					<div class="sub-title" style="padding-top: 50px;">
+					<div class="sub-title" style="padding-top:50px;" id="sub-title해외">
 						<h4> 해외 참여 내역 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=countDraw_etc%>건</span> </h4>
 					</div>
 					
 					<!-- 해외 테이블 -->
-					<div class="etc-table">
+					<div class="etc-table" id="table해외">
 						<table>
 							<tr>
 								<th style="width:8%"> 번호 </th>
@@ -283,6 +294,28 @@
 											</div>
 										</div>
 									</div>
+									
+									<!-- phone 추가 정보 -->
+									<div class="phone-drawDetail">
+										<!-- 발표일 -->
+										<div>
+											<span>발표 : </span>
+											<span>
+												<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%>
+											</span>	
+										</div>
+										<!-- 수신방식 -->
+										<div>
+											<span>수신 : </span>
+											<span><i class="fas fa-sms"></i></span>
+										</div>
+										<!-- 구매기간 -->
+										<div>
+											<span>구매 : </span>
+											<span>2021.00.00 ~ 2021.00.00</span>
+										</div>
+									</div>
+									
 								</td>
 								<!-- 발표일 -->
 								<td>
@@ -355,6 +388,36 @@
 				e.returnVale = false;
 			}
 		});
+		
+		//phone일때 국내/해외 카테고리 박스 클릭했을시
+		$('.regionCate-div').click(function(){
+			//국내/해외 카테고리 css 없애고
+			$('.regionCate-div').css('border','1px solid #f1f1f1');
+			$('.regionCate-div').css('background-color', 'white');
+			$('.regionCate-div').css('color', '#777777');
+			$('.regionCate-div').css('font-weight', 'normal');
+			//모든 발매리스트 없애고
+			$('.sub-title').css('display','none');
+			$('.kr-table, .etc-table').css('display','none');
+			
+			//아이디 값 가져오기
+			var divID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = divID.split('-');
+			// 제일 마지막 '국내' '해외' 만 가지고 오기
+			var cateRegion = splitArray[splitArray.length - 1];
+			
+			$('#regionCate-'+cateRegion).css('border','1px solid black');
+			$('#regionCate-'+cateRegion).css('background-color', 'black');
+			$('#regionCate-'+cateRegion).css('color', 'white');
+			$('#regionCate-'+cateRegion).css('font-weight', 'bold');
+			
+			$('#sub-title'+cateRegion).fadeIn();
+			$('#table'+cateRegion).fadeIn();
+			
+			
+		});
+		
 	});
 	
 	document.onmousedown=disableclick;
