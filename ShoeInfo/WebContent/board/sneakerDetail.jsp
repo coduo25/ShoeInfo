@@ -365,6 +365,18 @@
 								
 								<!-- 발매처 -->
 								<td class="brandLogoName" id="brandLogoName<%=countryName_eng%><%=i%>">
+								
+									<%if(usr_position.equals("admin")){%>
+										<!-- 해당 브랜드 정보 삭제하기 (관리자) -->
+										<div class="phone-adminBtn" style="position:absolute; top:0; right:0;">
+											<span>
+												<a href="./DeleteDrawInfo.ad?model_stylecode=<%=sdto.getModel_stylecode()%>&brand_id=<%=bdto.getBrand_id() %>&model_num=<%=sdto.getNum()%>">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+											</span>
+										</div>
+									<%}%>
+								
 									<div style="display:flex; align-items:center;">
 										<!-- 발매처 로고 -->
 										<div class="sneakerDetail-logo" id="sneakerDetail-logo<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
@@ -646,6 +658,15 @@
 												<%}%>
 											</div>
 										</div>
+										
+										<%if(usr_position.equals("admin")){%>
+											<!-- 발매처 정보 수정하기 (관리자) -->
+											<div class="edit-container" id="edit-container-<%=countryName_eng%><%=i%>" style="margin-top:10px;">
+												<div>
+													<span><i class="fas fa-edit"></i></span>
+												</div>
+											</div>
+										<%}%>
 										
 										
 									</div>

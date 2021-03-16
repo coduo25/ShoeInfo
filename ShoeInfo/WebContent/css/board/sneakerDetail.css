@@ -40,6 +40,8 @@ body { line-weight:1.4;}
 .countryCate-container { padding:35px 0; text-align:center; }
 .countryCate-container div { display:inline; padding:8px 32px; cursor:pointer; color:#777777; font-size:16px; border:1px solid #e8e8e8; }
 
+.phone-adminBtn { display:none; }
+
 /* 지역별 발매처 리스트 */
 .releaseList-container { margin:0 0 300px 0; }
 
@@ -207,10 +209,18 @@ body { line-weight:1.4;}
 		.pc_count_label { display:none !important; }
 		.mob_count_label { display:inline-block !important; font-size:14px; font-weight:bold; vertical-align: top; }
 		.mob_clock { display:inline-block !important; padding-right:5px; }
+		
+	/* 신발 추가하는 페이지 */
+	.addContent { width:100%; }
+	#cate-Row { margin:0 0 20px 0; }
+	#addOnlineForm, #updateOnlineForm { font-size:13px; }
+	
 }
 
 /* 0 ~ 480px */
 @media screen and (max-width: 480px){
+	
+	.phone-adminBtn { display:block; }
 	
 	.shoeinfo-container { margin-top:0 !important; }
 
@@ -257,6 +267,14 @@ body { line-weight:1.4;}
 		
 		.remainWarning-container { margin:4px 0 9px 0 !important; }
 		.remainWarning-container span { position:unset; }
+		
+	
+	/* 신발 추가하는 페이지 */
+	#addOnlineForm, #updateOnlineForm { padding:3%; }
+	.category { padding-bottom:10px; }
+	#onlineM-radio-wrapper, #radio-wrapper { display:block; padding-bottom:10px; }
+	
+	
 	
 }
 

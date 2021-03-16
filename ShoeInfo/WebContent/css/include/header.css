@@ -254,6 +254,8 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	/* 메뉴바 */
 	.block-list { text-align:left; white-space:nowrap; overflow-x:auto; }
 	.nav > li { padding:0 5px 15px 5px; margin-right:25px; }
+	
+	.acc_list { padding-right:0; padding-left:12px; }
 }
 
 /* 0 ~ 468px */
@@ -272,10 +274,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	.mob-container { font-size:25px; }
 	.mob-nav { display:inline-block; }
 	.mob-container { padding:2%; }
-	.mob-container div { padding-left:20px; }
-	
-	.acc_list { padding-right:0; padding-left:12px; }
-	
+
 }
 
 

@@ -96,37 +96,33 @@ h3, h4 { margin:2% 0; font-family: 'Nanum Gothic', sans-serif; }
 .btn_wrapper button { border: 1px solid #c0c0c0; padding: 4px; background-color: white; }
 
 
-/* media Query */
-/* 0 ~ 1220px */
-@media screen and (max-width: 1220px){
-	.container {
-		width: 90%;
-	}
-	#total_infoTable li {
-		padding: 2px 20px;
-	}
-}
 
-/* 0 ~ 768px */
-@media screen and (max-width: 768px){
-	.container {
-		font-size: 0.9em;
-	}
-	#total_infoTable {
-    	padding: 0 0 20px 0;
-    }
-    #Sneaker_wrapper div {
-    	display: block;
-    	border-right: 0;
-    	width: 100%;
-    }
-}
+/* 모바일 -------------------------------------------------------------- */
+/*  ----------------------------------------------------------------- */
 	
-	/* 0 ~ 468px */
-@media screen and (max-width: 468px){
-	#total_infoTable li {
-		display: block;
-	}
+/* 0 ~ 468px */
+@media screen and (max-width: 480px){
+
+	.container { padding:0 3% !important; }
+	h3, h4 { font-size:16px; padding:10px 0; }
+	#content_adminMain { margin-top:0; }
+	#total_infoTable, #Sneaker_wrapper, #Member_wrapper { padding:2% 5%; text-align:left; }
+	#total_infoTable li { display:block; border-right:0; height:unset; padding:0; margin-left:0; margin-top:10px; }
+	.total_subTit { display:inline-block; margin-right:8xp; font-size:13px; }
+	.total_subTit:after { content: " : "; }
+	.total_main { font-size:13px; }
+	
+	#Sneaker_wrapper div, #Member_wrapper div { display:inline-block; width:100%; border-right:0; padding-left:0; }
+	#Sneaker_wrapper h5 { font-size:13px; }
+	#add_Sneaker_menu li span, #add_brand_menu li span, #add_country_menu li span, #Member_menu li span { font-size:13px; }
+	
+	/* 추가하는 모든 표 */
+	#content_adminAddSneaker table, #content_admin_sneakerList table, #content_admin_brandList table, #content_admin_countryList table, #content_admin_memberList table { font-size:13px; }
+	
+	#content_adminAddSneaker input#submit_btn { width:50%; }
+	.sneakerList-wrapper { width:33.3% !important; }
+	#sneakerList-name, #brandList-name { width:100px; }
+	#textSneaker, #textBrand { width:80%; }
 }
 
 

@@ -100,7 +100,7 @@ public class SneakerDAO {
 		ArrayList<SneakerDTO> sneakerList = new ArrayList<SneakerDTO>();
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_sneakerlibrary order by release_date;";
+			sql = "select * from shoeinfo_sneakerlibrary where release_date not like '%2020%' order by release_date;";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
