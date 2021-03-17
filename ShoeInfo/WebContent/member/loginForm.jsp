@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
-<title>SHOE INFO.</title>
+<title>로그인 &#8226; 회원가입 | SHOE INFO.</title>
 <link href="./css/board/member.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">

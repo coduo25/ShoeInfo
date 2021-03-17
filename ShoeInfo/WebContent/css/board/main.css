@@ -58,7 +58,7 @@ body {font-size:1em; line-weight:1.4}
 	.status-container div { display:block; font-size:17px;}
 
 	/* 발매처정보 */
-	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; padding-left:20px; }
+	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; padding-left:40px; }
 	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left:20px; }
 
 	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius:6px; }
@@ -340,6 +340,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.remain-time { font-size:18px; }
 	.remainTime-container { font-size:14px; } 
 	
+	.todaysRelease-content1 { padding-left:20px; }
 	.todaysRelease-content2 { width:80%; } 
 	
 	/* 브랜드 이미지 */

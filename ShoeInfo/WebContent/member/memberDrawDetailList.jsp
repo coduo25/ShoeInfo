@@ -15,7 +15,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
-<title>SHOE INFO.</title>
+<%
+	//신발 기본 정보 리스트
+	SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
+%>
+<title><%=sdto.getModel_name_kr()%> | SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -37,9 +41,6 @@
 			response.sendRedirect("./MemberLogin.me");
 		}
 	
-		//신발 기본 정보 리스트
-		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
-		
 		//국내 응모 정보
 		List<MemberDrawDTO> drawInfoList_kr = (List<MemberDrawDTO>) request.getAttribute("drawInfoList_kr");
 		List<BrandDTO> brandList_kr = (List<BrandDTO>) request.getAttribute("brandList_kr");

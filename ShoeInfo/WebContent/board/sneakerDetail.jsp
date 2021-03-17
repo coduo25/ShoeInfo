@@ -16,7 +16,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
-<title>SHOE INFO.</title>
+<% 
+	//신발 기본 정보 리스트
+	SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
+%>
+<title><%=sdto.getModel_name_kr()%> | SHOE INFO.</title>
 <link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -44,9 +48,6 @@
 
 		//사용자 응모한 브랜드 리스트
 		List<String> userDrawBrandList = (List<String>) request.getAttribute("userDrawBrandList");
-	
-		//신발 기본 정보 리스트
-		SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
 		
 		//발매중인 산발들의 진행중인 브랜드 갯수
 		int countReleasingBrand = (Integer) request.getAttribute("countReleasingBrand");
