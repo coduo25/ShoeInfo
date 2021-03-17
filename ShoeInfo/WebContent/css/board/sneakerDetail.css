@@ -252,7 +252,7 @@ body { line-weight:1.4;}
 	/* 표 */
 	.country-table table th { padding:12px 0; font-size:14px; }
 	.country-table table td { padding:25px 3%; }
-	.brandlogo_img { width:60px; height:60px; }
+	.brandlogo_img { width:100px; height:100px; }
 	.sneakerDetail-brandNameTxt span { font-size:15px; }
 	.sneakerDetail-releaseMethod span, .mob-sneakerDetail span { font-size:13px; }
 	.sneakerDetail-brandName { display:none; }
@@ -267,6 +267,7 @@ body { line-weight:1.4;}
 		
 		.remainWarning-container { margin:4px 0 9px 0 !important; }
 		.remainWarning-container span { position:unset; }
+		.direct-box, .editButton { font-size:13px; padding:3px 0; }
 		
 	
 	/* 신발 추가하는 페이지 */

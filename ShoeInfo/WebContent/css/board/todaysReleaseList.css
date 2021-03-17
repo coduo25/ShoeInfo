@@ -115,7 +115,7 @@ body {font-size:1em; line-weight:1.4}
 	.todays-brandName { font-size:18px; }
 	.mob-release-status { padding:3px 5px; }
 	.todaysRelease-content2 div { margin-bottom:9px; }
-	.countryflag { width:24px !important; height:15px !important; }
+	.countryflag { width:25px !important; height:16px !important; }
 }
 
 
@@ -155,6 +155,7 @@ body {font-size:1em; line-weight:1.4}
 	.brand-info-container:nth-child(4) { display:none; }
 	
 	.remainTime-container span:nth-child(5) { padding-left:0 !important; }
+	.release-status { padding:2px 3px; }
 	
 	
 }

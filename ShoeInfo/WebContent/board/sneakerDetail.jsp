@@ -626,7 +626,7 @@
 														<span class="direct-link-text" id="phone-count_todays_status<%=countryName_eng%><%=i%>linkBtnText">종료</span>
 													</div>
 												<%}else {%>
-													<div id="phone-count_todays_status<%=countryName_eng%><%=i%>linkBtn" class="direct-box" style="cursor:pointer; display:inline-block !important; margin-top:0; margin-right:5px;" onclick="window.open('<%=odto.getOnline_link()%>', 'mywindow');">
+													<div id="phone-count_todays_status<%=countryName_eng%><%=i%>linkBtn" class="direct-box" style="cursor:pointer; display:inline-block !important; margin-top:0;" onclick="window.open('<%=odto.getOnline_link()%>', 'mywindow');">
 														<%if(odto.getOnline_method().contains("선착")) {%>
 															<span class="direct-link-text" id="phone-count_todays_status<%=countryName_eng%><%=i%>linkBtnText">선착링크</span>
 														<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>

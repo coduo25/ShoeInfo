@@ -107,27 +107,17 @@
 				</div>
 				<!-- 모바일 버전일때 메뉴 버튼 -->
 				<div class="mob-nav">
-					<a href="#" class="navbar_toggleBtn">
+					<a href="javascript:void(0);" class="navbar_toggleBtn">
 						<i class="fas fa-bars"></i>
 					</a>
 				</div>
 				
 				<div class="mob-nav-exitBtn">
-					<a href="#" class="navbar_toggleBtn">
+					<a href="javascript:void(0);" class="navbar_toggleBtn">
 						<i class="fas fa-times"></i>
 					</a>
 				</div>
 			</div>
-		</div>
-		
-		<!-- 모바일 흰색 메뉴판 -->
-		<div class="mob-menuBoard">
-			<a href="./Main.bo">Main</a>
-			<a href="./AllReleaseList.go">발매 중 &#8226; 발매예정</a>
-			<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
-			<a href="./AllReleasedList.go">발매완료</a>
-			<a href="./SnkrsKRList.go">SNKRS</a>
-			<a href="#" id="myDrawBtn" style="color:#AE0F19;"> 나의 응모내역 </a>
 		</div>
 		
 		<div class="menu-row container">
@@ -155,6 +145,16 @@
 		</div>
 		
 	</header>
+	
+	<!-- 모바일 흰색 메뉴판 -->
+	<div class="mob-menuBoard">
+		<a href="./Main.bo">Main</a>
+		<a href="./AllReleaseList.go">발매 중 &#8226; 발매예정</a>
+		<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
+		<a href="./AllReleasedList.go">발매완료</a>
+		<a href="./SnkrsKRList.go">SNKRS</a>
+		<a href="#" id="myDrawBtn" style="color:#AE0F19;"> 나의 응모내역 </a>
+	</div>
 	
 	<!-- top link -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-caret-up"></i></button>
@@ -216,7 +216,12 @@
 			$('.mob-menuBoard').show(0.0001).animate({
                 right:0
             });
-			$('body').css('position','fixed');
+
+			$('.mob-menuBoard').on('scroll touchmove mousewheel', function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				return false;
+			});
 		});
 		//모바일 버전 메뉴 버튼 눌렸을시 (메뉴 없애기)
 		$('.mob-nav-exitBtn').click(function(){
@@ -225,7 +230,8 @@
 			$('.mob-menuBoard').show(0.0001).animate({
                 right:'-'+100+'%'
             });
-			$('body').css('position','unset');
+
+// 			$('.mob-menuBoard').off('scroll touchmove mousewheel');
 		});
 		
 	});

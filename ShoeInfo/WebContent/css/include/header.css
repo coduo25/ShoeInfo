@@ -50,82 +50,8 @@ a { text-decoration: none; color: #000000; }
 .mob-nav, .mob-nav-exitBtn { display:none; }
 
 /* 모바일 흰색 메뉴판 */
-.mob-menuBoard { display:none; overflow:hidden; right:-100%; width:100%; background-color:white; position:fixed; height:100%; z-index:100; padding:4%; font-size:16x; font-family:'Nanum Gothic', sans-serif; z-index:2000; }
+.mob-menuBoard { overflow:auto; right:-100%; width:100%; background-color:white; position:fixed; height:100%; max-height:100%; padding:4%; font-size:16x; font-family:'Nanum Gothic', sans-serif; z-index:2000; }
 .mob-menuBoard a { width:100%; margin-bottom:10px; display:block; padding:10px 0; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 여기부터 구버전 */
-/* 여기부터 구버전 */
-/* 여기부터 구버전 */
-/* 여기부터 구버전 */
-/* 여기부터 구버전 */
-/* 여기부터 구버전 */
-
-/* 오늘 날짜 헤더 */
-/* #datebar_div { width: 100%; background-color: black; } */
-
-/* .sticky { position: fixed; top: 0; width: 100%; z-index: 10; } */
-
-/* .datebar { display: flex; max-width: 100%; padding: 0 5px; } */
-
-/* .today_date { width: 100%; text-align: center; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; color: white; margin: 5px 0; } */
-
-/* 헤더 전체 적용 */
-/* .acc_navbar { display: block; align-items:center; border-bottom: 1px solid #d6d6d6; font-family: 'Nanum Gothic', sans-serif; } */
-
-/* .login-wrapper { display:inline-block; font-size: 12px; float: right; padding-right: 4px; } */
-
-
-/* ----------------------------------- */
-/* #memberChart { display:none; position: absolute; z-index: 10; width: 500px; background-color: white; padding: 10px 12px 15px 12px; right: 15%; font-family: 'Nanum Gothic', sans-serif; top: 3.5%; border-radius: 0.3rem; border: 1px solid rgb(222 222 222); box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); } */
-/* #mc_title { font-size: 18px; color: #171717; margin: 1.5% 1% 3% 1%; text-align: center; font-weight: bold; } */
-/* #mc_exit { font-size: 1.1em; position: absolute; display: inline-block; right: 0; padding: 0.7% 5% 0 0; } */
-/* #current_rank { font-weight: bold; font-size: 21.5px !important; } */
-
-/* #memberRank-wrapper { width: 100%; display: inline-block; } */
-/* #memberRank-wrapper div { float:left; padding: 1.5%; margin: 1%; width: 31.3%; text-align: center; } */
-/* #memberRank-wrapper div div { display: block; width: 100%; } */
-
-/* #rank_label { font-size: 18px; font-weight: bold; color: #005752; margin-bottom: 4% !important; } */
-/* #stars { font-size: 12px; color: #005752; padding: 2% 1.5% 10% 1.5% !important; border-bottom: 1px solid #cacaca; } */
-/* #rank-wrapper { border-radius: 0.3rem; border: 1px solid rgb(222 222 222); box-shadow: 0 0.03rem 0.06rem rgba(0,0,0,0.1), 0 0.1rem 0.3rem rgba(0,0,0,0.1); } */
-/* #rank_content { height: 100px; color: #4a4a4a; margin: 5% 0 !important; } */
-/* #rank_content p { cursor: pointer; } */
-/* #rank_content p:hover { color: #7f7f7f; } */
-/* #rank_content p { margin: 2% 0 10% 0; font-size: 0.95em; padding: 1.5%; font-weight: bold; } */
-
-/* ----------------------------------- */
-/* .navbar { */
-/* 	display: flex; */
-/* 	justify-content: space-between; */
-/* 	align-items: center; */
-/* 	max-width: 80%; */
-/* 	margin: 5px auto; */
-/* 	padding: 0 5px; */
-/* } */
-
-/* 로고 */
 
 
 /* 메뉴 */
@@ -262,13 +188,14 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 @media screen and (max-width: 468px) {
 	
 	/* 제일 위로 올라가게 하는 버튼 */
-	#myBtn { width:40px; height:40px; font-size:2em; }
+	#myBtn { width:40px; height:40px; font-size:2em; right:4%; bottom:8%; }
 
 	.container { padding:0; }
 	
 	.menu-row { display:none; }
 	
 	body { padding-top:42px; }
+	
 	.mob-logo-row { position:fixed; top:0; z-index:30; padding:1% 3% 2% 3%; }
 	.mob-logo { font-size:32px; }
 	.mob-container { font-size:22px; }
