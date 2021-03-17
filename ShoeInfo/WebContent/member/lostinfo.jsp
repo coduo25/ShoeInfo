@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
-<body oncontextmenu='return false' onselectstart='return fasle' ondragstart='return false'>
+<body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
 
 	<!-- Header -->
 	<header> <jsp:include page="/include/header.jsp" /> </header>

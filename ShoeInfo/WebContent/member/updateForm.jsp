@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
-<body> <!-- oncontextmenu='return false' onselectstart='return false' ondragstart='return false' -->
+<body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
 
 	<%
 		String user = (String) session.getAttribute("email");

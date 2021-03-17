@@ -54,7 +54,6 @@
 							<th style="width:5%;"> 번호 </th>
 							<th style="width:20%;"> 이메일 </th>
 							<th style="width:5%;"> 이름 </th>
-							<th style="width:10%;"> 휴대폰번호 </th>
 							<th style="width:5%;"> 드로우횟수 </th>
 							<th style="width:13%;"> 가입날짜 </th>
 							<th style="width:7%;"> 포지션 </th>
@@ -71,7 +70,6 @@
 							<td> <%=mdto.getCount()%> </td>
 							<td> <%=mdto.getEmail()%> </td>
 							<td> <%=mdto.getName()%> </td>
-							<td> <%=mdto.getPhone()%> </td>
 							<td> <%=mdto.getDraw_count()%> </td>
 							<td> <%=reg_date%> </td>
 							<td> <%=mdto.getPosition()%> </td>

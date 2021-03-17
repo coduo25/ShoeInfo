@@ -103,7 +103,6 @@ public class MemberDAO {
 				mdto.setEmail(rs.getString("email"));
 				mdto.setPass(rs.getString("pass"));
 				mdto.setName(rs.getString("name"));
-				mdto.setPhone(rs.getString("phone"));
 				mdto.setReg_date(rs.getTimestamp("reg_date"));
 				mdto.setPosition(rs.getString("position"));
 				sql = "select max(draw_count) from shoeinfo_memberdrawinfo where member_email = ?";

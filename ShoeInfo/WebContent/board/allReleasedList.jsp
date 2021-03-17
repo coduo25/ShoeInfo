@@ -35,7 +35,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 </head>
-<body>	 <!-- oncontextmenu='return false' onselectstart='return false' ondragstart='return false' -->
+<body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>	
 	<%
 		String user = (String) session.getAttribute("email");
 		if(user == null){
