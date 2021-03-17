@@ -108,7 +108,7 @@
 		</div>
 
 		<!-- 발매 중 리스트 -->
-		<div class="releasing-container" style="margin-top:30px !important; padding-top:0 !important;">
+		<div class="releasing-container" style="margin-top:30px; padding-top:0 !important;">
 		
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->

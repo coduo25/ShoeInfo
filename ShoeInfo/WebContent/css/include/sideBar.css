@@ -1,32 +1,32 @@
 @CHARSET "UTF-8";
 
 /* PC - 중간 가로 970x90 광고  --------------------------------------------- */
-.betweenAds-container { width:100%; display:table; margin:30px 0; }
-.betweenAds-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:90px; } /* width:970px; height:90px; *
+.betweenAds-container { width:100%; display:table; } /*  margin:30px 0; */
+.betweenAds-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; } /* width:970px; height:90px; *
 /* PC - 중간 가로 970x250 광고 */
-.betweenAds2-container { width:100%; display:table; margin:30px 0; }
-.betweenAds2-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:970px; height:250px; } /* width:970px; height:250px; */
+.betweenAds2-container { width:100%; display:table; } /* margin:30px 0; */
+.betweenAds2-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; } /* width:970px; height:250px;  */
 
 /* Pad - 중간 가로 728x90 광고 --------------------------------------------- */
-.betweenAdsPad-container { width:100%; display:table; margin:30px 0; }
-.betweenAdsPad-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:720px; height:90px; } /* width:720px; height:90px; */
+.betweenAdsPad-container { width:100%; display:table; } /* margin:30px 0; */
+.betweenAdsPad-box { border-radius:5px; background-color:#eaeaea; margin:0 auto;  } /* width:720px; height:90px; */
 /* Pad - 중간 가로 728x300 광고 */
-.betweenAdsPad2-container { width:100%; display:table; margin:30px 0; }
-.betweenAdsPad2-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:720px; height:300px; } /* width:720px; height:300px; */
+.betweenAdsPad2-container { width:100%; display:table; } /* margin:30px 0; */
+.betweenAdsPad2-box { border-radius:5px; background-color:#eaeaea; margin:0 auto;  } /* width:720px; height:300px; */
 
 /* Phone - 중간 가로 320x50 광고  --------------------------------------------- */
-.betweenAdsPhone-container { width:100%; display:table; margin:20px 0; }
-.betweenAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:50px; } /* width:320px; height:50px; */
+.betweenAdsPhone-container { width:100%; display:table; } /* margin:20px 0; */
+.betweenAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; } /* width:320px; height:50px;*/
 /* Phone - 하단 가로 320x100 광고 */
-.bottomAdsPhone-container { width:100%; display:table; margin:20px 0; }
-.bottomAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto; width:320px; height:100px; } /* width:320px; height:100px; */
+.bottomAdsPhone-container { width:100%; display:table; } /* margin:20px 0; */
+.bottomAdsPhone-box { border-radius:5px; background-color:#eaeaea; margin:0 auto;  } /* width:320px; height:100px; */
 
 /* 좌측 사이드 광고 300x600 --------------------------------------------- */
 .left-sideAds-container { position:fixed; z-index:50; bottom:5%; left:3%; } 
-.left-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea; width:160px; height:600px; } /*  */
+.left-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea;  } /* width:160px; height:600px; */
 /* 우측 사이드 광고 300x600 */
 .right-sideAds-container { position:fixed; z-index:50; bottom:5%; right:3%; } 
-.right-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea; width:160px; height:600px; } /*  */
+.right-sideAds-box { border-radius:5px; z-index:50; background-color:#eaeaea; } /*  width:160px; height:600px; */
 
 
 /* 왼쪽 상단 시계 */

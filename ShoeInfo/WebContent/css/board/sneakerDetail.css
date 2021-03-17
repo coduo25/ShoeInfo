@@ -252,7 +252,7 @@ body { line-weight:1.4;}
 	/* 표 */
 	.country-table table th { padding:12px 0; font-size:14px; }
 	.country-table table td { padding:25px 3%; }
-	.brandlogo_img { width:80px; height:80px; }
+	.brandlogo_img { width:60px; height:60px; }
 	.sneakerDetail-brandNameTxt span { font-size:15px; }
 	.sneakerDetail-releaseMethod span, .mob-sneakerDetail span { font-size:13px; }
 	.sneakerDetail-brandName { display:none; }

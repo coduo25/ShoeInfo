@@ -7,7 +7,7 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;} /* width: 80%; margin: 5px auto; */
  
 /* 리스트 별 컨테이너 */
-.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:30px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:50px 0; font-family: 'Nanum Gothic', sans-serif; }
 .released-container { display: table; width: 100%; box-sizing: border-box; margin:40px 0 0 0; font-family: 'Nanum Gothic', sans-serif; }
 /* .popular-container { display:none; } */
 
@@ -409,7 +409,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.allButton span { display:none; }
 	.allButton:after { content: '+'; }
 	
-	.releasing-container { margin-top:0 !important; }
+	.releasing-container { margin-top:10px !important; }
 	.snkrsWeek-container { display:block; }
 	
 	/* 발매 신발 박스 */
@@ -468,6 +468,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	
 	
 	/* 회원 응모내역 리스트 */
+	.myDrawList-container { margin-top:10px !important; }
 	.myDraw-container { width:100%; margin:0; border:0; box-shadow:unset; border-left:1px solid #cecece;border-top:1px solid #cecece; border-right:1px solid #cecece; }
 	.myDraw-container:last-child { border-bottom:1px solid #cecece; }
 	.myDraw-image { width:25%; }
@@ -492,7 +493,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.sub-title h4 span { font-size:14px !important; }
 	/* 표 */
 	.brandList-container { padding:10px 0 20px 0; }
-	.brandList-table table th:nth-child(1) { width:3% !important; } 
+	.brandList-table table th:nth-child(1) { width:5% !important; } 
 	.brandList-table table th:nth-child(3), .brandList-table table th:nth-child(4), .brandList-table table th:nth-child(5),
 	.brandList-table table td:nth-child(3), .brandList-table table td:nth-child(4), .brandList-table table td:nth-child(5) { display:none; }
 	.brandList-table table th { padding:12px 0; font-size:14px; }

@@ -32,7 +32,7 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left:20px; }
 
 	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius:6px; }
-	.countryflag { border:0.5px solid #d4d4d4; width:30px; height:20px; }
+	.countryflag { border:1px solid #d4d4d4; width:30px; height:20px; }
 	.brand-info-image-container { display:inline-block; position:relative; }
 	
 	.brand-info-container { vertical-align: top; margin-bottom:12px; }
@@ -121,6 +121,8 @@ body {font-size:1em; line-weight:1.4}
 
 /* 0 ~ 480px */
 @media screen and (max-width: 480px){
+	
+	.todaysRelease-container { margin-top:10px !important; }
 
 	/* 제목 */
 	.sub-title { font-size:16px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
