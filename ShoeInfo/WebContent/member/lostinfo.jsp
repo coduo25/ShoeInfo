@@ -93,47 +93,47 @@
 		$(".pwfind_btn").click(function(){
 
 			//이름란이 비어있으면
-			if($('#pwfind_name').val() == ''){
-				alert("이름을 입력해주세요.");
-				$('#pwfind_name').focus();
-				return false;
-			}
+// 			if($('#pwfind_name').val() == ''){
+// 				alert("이름을 입력해주세요.");
+// 				$('#pwfind_name').focus();
+// 				return false;
+// 			}
 			//이메일란이 비어있으면
-			else if($('#pwfind_email').val() == ''){
-				alert("이메일을 입력해주세요.");
-				$('#pwfind_email').focus();
-				return false;
-			}
+// 			else if($('#pwfind_email').val() == ''){
+// 				alert("이메일을 입력해주세요.");
+// 				$('#pwfind_email').focus();
+// 				return false;
+// 			}
 			
-// 			alert("비밀번호 찾기 기능은 현재 준비중입니다.\ninfo@shoeinfo.co.kr로 문의주시면 감사하겠습니다.")
+			alert("비밀번호 찾기 기능은 현재 준비중입니다.\ninfo@shoeinfo.co.kr로 문의주시면 감사하겠습니다.")
 			
-			$('#pass_text').hide();
-			$('#loading').show();
+// 			$('#pass_text').hide();
+// 			$('#loading').show();
 			
-			$.ajax({
-				type:"post",
-				url:"./MemberPWFindAction.me",
-				data:{"name":$("#pwfind_name").val(), "email":$("#pwfind_email").val()},
-				success:function(data) {
-					//가입 되어 있지 않은 이메일이면
-					if($.trim(data) == "NOEMAIL") {
-						alert("회원 정보가 일치 하지 않습니다.");
-						$('#loading').hide();
-						$('#pass_text').show();
-						$("#pwfind_name").focus();
-					}
-					//가입된 메일이면
-					else if($.trim(data) == "CHECKEMAIL"){
-						$('#loading').hide();
-						$('#pass_text').show();
-						alert("인증메일이 발송되었습니다. 메일을 확인해주세요.");
-						location.href="./MemberLogin.me";
-					}
-				},
-				error:function(request,status,error){
-				 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-				}
-			});
+// 			$.ajax({
+// 				type:"post",
+// 				url:"./MemberPWFindAction.me",
+// 				data:{"name":$("#pwfind_name").val(), "email":$("#pwfind_email").val()},
+// 				success:function(data) {
+// 					//가입 되어 있지 않은 이메일이면
+// 					if($.trim(data) == "NOEMAIL") {
+// 						alert("회원 정보가 일치 하지 않습니다.");
+// 						$('#loading').hide();
+// 						$('#pass_text').show();
+// 						$("#pwfind_name").focus();
+// 					}
+// 					//가입된 메일이면
+// 					else if($.trim(data) == "CHECKEMAIL"){
+// 						$('#loading').hide();
+// 						$('#pass_text').show();
+// 						alert("인증메일이 발송되었습니다. 메일을 확인해주세요.");
+// 						location.href="./MemberLogin.me";
+// 					}
+// 				},
+// 				error:function(request,status,error){
+// 				 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+// 				}
+// 			});
 			
 		});
 	});

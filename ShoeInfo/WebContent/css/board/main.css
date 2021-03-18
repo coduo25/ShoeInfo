@@ -102,7 +102,7 @@ body {font-size:1em; line-weight:1.4}
 	
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
-.snkrsWeek-table-container { overflow-x:scroll; padding:35px 20px; white-space:nowrap; box-shadow:0px 0px 5px rgb(0 0 0 / 20%); }
+.snkrsWeek-table-container { overflow-x:scroll; padding:20px 0; white-space:nowrap; }
 .snkrsSneaker-container { display:inline-block; width:30%; margin-right:20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
 .snkrsSneaker-container img { padding:70px 10px 20px 10px; background-color:#f3f3f3; border:1px solid #e1e1e1; }
@@ -467,6 +467,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.snkrsSneaker-container img { padding:65px 10px 10px 10px;  }
 	div.snkrs_date { font-size:18px; }
 	.snkrs_noRelease { font-size:14px; }
+	.snkrsWeek-table-container { padding:10px 3%;}
 	
 	
 	/* 회원 응모내역 리스트 */
