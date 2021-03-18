@@ -7,6 +7,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <title>SHOE INFO.</title>
 <link href="./css/include/header.css" rel="stylesheet">
+<script data-ad-client="ca-pub-8228533393025739" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://kit.fontawesome.com/febeeb992c.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -26,9 +27,6 @@
 
   gtag('config', 'G-3P410H2EWS');
 </script>
-
-<script data-ad-client="ca-pub-8228533393025739" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
 </head>
 <body>
 
