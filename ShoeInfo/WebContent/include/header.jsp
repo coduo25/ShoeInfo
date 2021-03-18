@@ -27,6 +27,8 @@
   gtag('config', 'G-3P410H2EWS');
 </script>
 
+<script data-ad-client="ca-pub-8228533393025739" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 </head>
 <body>
 
