@@ -189,7 +189,7 @@
 							<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 							
 								<!-- 발매처 기본정보 -->
-								<div class="todaysRelease-content1"  id="count_todays_status<%=i%>releaseInfo" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+								<div class="todaysRelease-content1" id="count_todays_status<%=i%>releaseInfo" style="<%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 									<!-- 발매처 이미지 --> 
 									<div class="brand-info-image-container">
 										<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 
@@ -863,7 +863,8 @@
 							}
 				   		});
 						//참여전 표시 -> 참여완료로 바꾸기
-						$('#release-info'+id_num).css("opacity", "0.3");
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "0.3");
+						$('div#brand-info-container'+id_num).css("opacity", "0.3");
 						$('#releaseModel-image'+id_num).css("opacity", "0.3");
 						$('#draw_checkBox'+id_num).css("background-color","#1f1f1f");
 						$('#draw_checkBox'+id_num).css("border-color","#1f1f1f");
@@ -887,7 +888,8 @@
 				   		});
 
 						//참여완료 표시 -> 참여전으로 바꾸기
-						$('#release-info'+id_num).css("opacity", "1");
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "1");
+						$('div#brand-info-container'+id_num).css("opacity", "1");
 						$('#releaseModel-image'+id_num).css("opacity", "1");
 						$('#draw_checkBox'+id_num).css("background-color","white");
 						$('#draw_checkBox'+id_num).css("border-color","#b3b3b3");
