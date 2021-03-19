@@ -173,6 +173,7 @@ body {font-size:1em; line-weight:1.4}
 		.phone-brand-info-container-releaseStatus { display:block; }
 		.phone-timeLabel { display:inline-block; }
 		.brand-info-container:nth-child(7) { text-align:center; padding:0 0 5px 0; }
+		.remainWarning-container span { position:inherit; }
 }
 
 

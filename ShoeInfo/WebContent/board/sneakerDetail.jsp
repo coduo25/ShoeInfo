@@ -442,22 +442,22 @@
 											- 상태 : 
 <!-- 											선착인데 지금시간이 시작시간보다 전일때 -->
 											<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
-												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">선착예정</span>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">선착예정</span>
 <!-- 											응모인데 지금시간이 시작시간보다 전일때 -->
 											<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
-												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
 												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="-1">
 <!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
 											<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
-												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
 												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
 <!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
 											<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
-												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
 												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
 <!-- 											선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
 											<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#666;">종료</span>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#666;">종료</span>
 												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
 											<%}%>
 										</div>
@@ -955,10 +955,23 @@
 			}
 			//종료되었을때
 			else if(finalTime == 0000000){
-				document.getElementById(statusId+'release-status').textContent = '종료';
 				
-				$('#'+statusId+'release-status').css({"color":"#666", "background-color":"white", "border":"0", "font-weight":"normal"});
-				$('#'+statusId+'span').css('display', 'none');
+				var filter = "win16|win32|win64|mac|macintel";
+				
+				if(navigator.platform) {
+					//모바일로 접속했을시
+					if (filter.indexOf( navigator.platform.toLowerCase() ) < 0) {
+						document.getElementById('phone-'+statusId+'release-status').textContent = '종료';
+						$('#phone-'+statusId+'release-status').css({"color":"#666"});
+					}
+					//데스크탑으로 접속했을시
+					else { 
+						document.getElementById(statusId+'release-status').textContent = '종료';
+						$('#'+statusId+'release-status').css({"color":"#666", "background-color":"white", "border":"0", "font-weight":"normal"});
+						$('#'+statusId+'span').css('display', 'none');
+					}
+				}
+
 				
 				//브랜드이름 줄 긋기
 				$('#'+statusId+'brandName').css({"text-decoration":"line-through", "text-decoration-thickness":"2px"})
@@ -1005,6 +1018,16 @@
 				e.returnVale = false;
 			}
 		});
+		
+		var filter = "win16|win32|win64|mac|macintel";
+		if(navigator.platform) {
+			//모바일로 접속했을시
+			if (filter.indexOf( navigator.platform.toLowerCase() ) < 0) {	
+			}
+			//데스크탑으로 접속했을시
+			else { 
+			}
+		}
 		
 		//마감된 발매처 on/off
 		//국가별 리스트중 첫번째 응모처가 종료가 되었으면 마감된 발매처 박스 나타내기

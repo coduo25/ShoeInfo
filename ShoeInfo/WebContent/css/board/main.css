@@ -63,18 +63,23 @@ body {font-size:1em; line-weight:1.4}
 
 	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius:6px; }
 	.countryflag { border:1px solid #d4d4d4; width:30px; height:20px; }
-	.brand-info-image-container { display:inline-block; position:relative;  }
+	.brand-info-image-container { display:inline-block; position:relative; }
 	
 	.brand-info-container { vertical-align: top; margin-bottom:12px; }
 	/* 모바일 버전 발매 신발 및 응모 체크 버튼 */
+	.phone-brand-info-container { display:none; padding-left:10px; text-align:left !important; }
+	.phone-brand-info-container-releaseStatus { display:none; }
+	.phone-brand-info-container div { display:block; }
+	.phone-brandName { margin-bottom:10px; }
 	.mob-brand-info-container { display:none; }
+	.phone-timeLabel { display:none; }
 	
 	.todays-brandName { font-weight:bold; font-size:23px; color:#1f1f1f; }
 	.release-status { margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
 	
 	/* 발매처 정보 박스 */
 	.release-info { text-align:left !important; padding-left:5px; }
-	
+
 	.brand-info-container { display:block; }
 	.info-subTitle { display:inline-block; color:#1f1f1f; font-size:16px; width:80px; }
 	.info-content { display:inline-block; color:#949494; font-size:16px; width:400px; }
@@ -86,9 +91,8 @@ body {font-size:1em; line-weight:1.4}
 	.remain-time { font-size:20px; padding:0 0 0 4px; font-weight: bold; font-family: 'Kelly Slab', cursive; }
 	.remainWarning-container { display: block; position: relative; color: black !important; margin-top:5px; }
 	.remainWarning-container span { display:none; font-weight: bold; font-size: 12px; position: absolute; width:100%; }
-	
-	.mob_count_label { display:none; }	
-	
+
+	.mob_count_label { display:none; }
 
 	/* 발매 제품  */
 	.releaseModel-image img { width:90%; background-color:#f3f3f3; padding:80px 10px 20px 10px; }
@@ -433,29 +437,41 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	
 	/* 오늘의 발매처 */
 	/* 표 */
+	/* 	#onlineList_todays_table th:last-child, #onlineList_todays_table td:last-child:not(.todays_moretd) { display:none; } */
 	#onlineList_todays_table th:first-child, #onlineList_todays_table td:first-child:not(.todays_moretd), #onlineList_todays_table th:last-child, #onlineList_todays_table td:last-child:not(.todays_moretd) { display:none; }
-	.todaysRelease-content1, .todaysRelease-content2 { display:block; padding-left:0; text-align:center; }
-	.todaysRelease-content2 { width:90%; margin:0 auto; }
-	.brandImg { width:100px !important; height:100px !important; }
+	.todaysRelease-content1, .todaysRelease-content2 { display:block !important; padding-left:0; text-align:left !important; }
+	.todaysRelease-content1 { border-bottom:1px dotted #e6e6e6; padding-bottom:10px; }
+	.todaysRelease-content2 { width:100%;}
+	.brandImg { width:70px !important; height:70px !important; }
 	#onlineList_todays_table th { padding:12px 0; font-size:14px; }
-	#onlineList_todays_table td { padding:25px 0; }
-	.todays-brandName { font-size:15px; }
+	#onlineList_todays_table td { padding:35px 4% !important; }
+	.todays-brandName { font-size:16px; }
 	.info-subTitle { display:none; }
-	.info-subTitle, .info-content { font-size:14px; }
-	.todaysRelease-content2 div { margin:8px auto !important; }
-	.brand-info-container:first-child { border-bottom:1px dotted #e6e6e6; }
-	.brand-info-container:nth-child(5) { padding:8px 0; } /* border-bottom:1px dotted #e6e6e6; */
+	.info-subTitle, .info-content { font-size:13px; }
+	.todaysRelease-content2 div { margin:8px auto 0 auto !important; }
+	.brand-info-container:first-child { display:none; }
+	.brand-info-container:nth-child(6) { padding:8px 0; } /* border-bottom:1px dotted #e6e6e6; */
 	.mob-brand-info-container { display:block; }
 	.mob-brand-info-container img { width:25%; }
 	.pc_count_label { display:none; }
-	.mob_count_label { display:inline-block; font-weight:bold; }
-	.remain-time { font-size:15px; padding:0 1px; }
-	.release-status { font-size:13px; }
+	.mob_count_label { display:inline-block; font-weight:bold; font-size:18px; }
+	.remain-time { font-size:18px; padding:0 1px; }
 	.mob-moreDetail { display:block; white-space:nowrap; margin-top:8px; }
-	.brand-info-container:nth-child(4) { display:none; }
+	.brand-info-container:nth-child(5) { display:none; }
 	
 	.remainTime-container span:nth-child(5) { padding-left:0 !important; }
-	.release-status { padding:2px 3px; }
+	.release-status { padding:0; font-size:13px; margin-left:0; font-weight:normal; border-radius:0;  }
+	
+		/* 모바일 버전  */
+		.phone-brand-info-container { display:inline-block; width:75%; }
+		.brand-info-image-container, .phone-brand-info-container { vertical-align:middle; }
+		.phone-releaseMethod, .phone-payDel { font-size:13px; color:#949494; }
+		.phone-payDel { margin-top:5px; }
+		.brand-info-container:nth-child(2) { display:none; }
+		.phone-brand-info-container-releaseStatus { display:block; }
+		.phone-timeLabel { display:inline-block; }
+		.brand-info-container:nth-child(7) { text-align:center; padding:0 0 5px 0; }
+		.remainWarning-container span { position:inherit; }
 
 
 	/* 나이키코리아 snkrs */

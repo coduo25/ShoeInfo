@@ -318,22 +318,22 @@
 										<span class="info-content">
 											- 상태 : 
 											<%if(odto_todays.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
-												<span id="count_todays_status<%=i%>release-status" class="release-status" style="color:black;">선착</span>
+												<span id="phone-count_todays_status<%=i%>release-status" class="release-status" style="color:black;">선착</span>
 											<!-- 응모인데 지금시간이 시작시간보다 전일때 -->
 											<%}else if(((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && !odto_todays.getOnline_start_date().isEmpty()) && (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
-												<span id="count_todays_status<%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
+												<span id="phone-count_todays_status<%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
 												<input type="hidden" id="hidden_ing<%=i%>" value="-1">
 											<!-- 응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
 											<%}else if(((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && !odto_todays.getOnline_start_date().isEmpty()) && (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
-												<span id="count_todays_status<%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<span id="phone-count_todays_status<%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
 												<input type="hidden" id="hidden_ing<%=i%>" value="1">
 											<!-- 응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
 											<%}else if((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
-												<span id="count_todays_status<%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<span id="phone-count_todays_status<%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
 												<input type="hidden" id="hidden_ing<%=i%>" value="1">
 											<!-- 선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
 											<%} else if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-												<span id="count_todays_status<%=i%>release-status" class="release-status" style="color:black;">종료</span>
+												<span id="phone-count_todays_status<%=i%>release-status" class="release-status" style="color:black;">종료</span>
 												<input type="hidden" id="hidden_ing<%=i%>" value="1">
 											<%}%>
 										</span>
@@ -686,6 +686,8 @@
 				//응모 status 종료 표시
 				document.getElementById(statusId+'release-status').textContent = '종료';
 				$('#'+statusId+'release-status').css({"background-color":"white", "border":"none", "font-weight":"normal", "color":"black"});
+				document.getElementById('phone-'+statusId+'release-status').textContent = '종료';
+				$('#phone-'+statusId+'release-status').css({"color":"black"});
 				
 				//브랜드이름 줄 긋기
 				$('#'+statusId+'brandNameTxt').css({"text-decoration":"line-through", "text-decoration-thickness":"2px"})
