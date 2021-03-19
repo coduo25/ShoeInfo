@@ -65,6 +65,7 @@ body { line-weight:1.4;}
 	.sneakerDetail-releaseMethod { white-space:nowrap; }
 	
 		/* 모바일 버전 발매처 추가 정보 */
+		.phone-releaseStatus { display:none !important; }
 		.mob-sneakerDetail { display:none; white-space:nowrap; }
 		
 		.phone-sneakerDetail { display:none; margin-top:10px; font-size:13px; }
@@ -223,7 +224,7 @@ body { line-weight:1.4;}
 	.phone-adminBtn { display:block; }
 	
 	.shoeinfo-container { margin-top:0 !important; }
-
+		
 	/* 신발 정보 박스 */
 	.shoeImg-container, .shoeDetailInfo-container { display:block; }
 	.shoeImg-container { width:100%; }
@@ -246,8 +247,8 @@ body { line-weight:1.4;}
 	
 	.shoeDetailInfo-container { margin:0; }
 	
-	.sub-title { font-size:16px; padding:0 3% 15px 3%; }
-	.sub-title span { font-size:14px !important; }
+	.sub-title { font-size:18px; padding:0 3% 15px 3%; }
+	.sub-title span { font-size:15px !important; }
 	
 	/* 표 */
 	.country-table table th { padding:12px 0; font-size:14px; }
@@ -258,7 +259,7 @@ body { line-weight:1.4;}
 	.sneakerDetail-brandName { display:none; }
 	.sneakerDetail-logo { margin:0 auto; }
 	
-		/* 추가 정보 on */
+/* 		추가 정보 on */
 		.mob-sneakerDetail { display:none; }
 		.phone-sneakerDetail { display:block; text-align:center; }
 		.release-status { font-size:13px; padding:2px 3px; margin-left:7px; }

@@ -72,7 +72,7 @@
 		<!-- 나의 응모내역 리스트 -->
 		<div class="myDrawList-container" style="margin-top:30px; padding-top:0 !important;">
 			<div class="sub-title">
-				<h4> 응모 참여 내역 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=totalcount%>건</span> </h4> 
+				<h4> 응모 참여 내역 <span style="font-weight:normal; font-size:20px; color:#666;">총 <%=totalcount%>건</span> </h4> 
 			</div>
 			
 			<!-- pc 버전 -------------------------------------------------------------------- -->

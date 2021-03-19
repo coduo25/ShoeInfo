@@ -126,7 +126,7 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-container { margin-top:10px !important; }
 
 	/* 제목 */
-	.sub-title { font-size:16px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
+	.sub-title { font-size:18px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
 	.desc-container { font-size:13px; padding:0 3% 18px 3%; }
 	
 	/* 부제목 + 체크버튼 */
@@ -134,6 +134,7 @@ body {font-size:1em; line-weight:1.4}
 	.desc-container span:first-child { float:unset !important; padding-bottom:20px; }
 	
 	/* 표 */
+/* 	#onlineList_todays_table th:last-child, #onlineList_todays_table td:last-child:not(.todays_moretd) { display:none; } */
 	#onlineList_todays_table th:first-child, #onlineList_todays_table td:first-child:not(.todays_moretd), #onlineList_todays_table th:last-child, #onlineList_todays_table td:last-child:not(.todays_moretd) { display:none; }
 	.todaysRelease-content1, .todaysRelease-content2 { display:block; padding-left:0; text-align:center; }
 	.todaysRelease-content2 { width:90%; margin:0 auto; }
