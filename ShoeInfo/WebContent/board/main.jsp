@@ -1160,7 +1160,8 @@
 							}
 				   		});
 						//참여전 표시 -> 참여완료로 바꾸기
-						$('#release-info'+id_num).css("opacity", "0.3");
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "0.3");
+						$('div#brand-info-container'+id_num).css("opacity", "0.3");
 						$('#releaseModel-image'+id_num).css("opacity", "0.3");
 						$('#draw_checkBox'+id_num).css("background-color","#1f1f1f");
 						$('#draw_checkBox'+id_num).css("border-color","#1f1f1f");
@@ -1183,7 +1184,8 @@
 							}
 				   		});
 						//참여완료 표시 -> 참여전으로 바꾸기
-						$('#release-info'+id_num).css("opacity", "1");
+						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "1");
+						$('div#brand-info-container'+id_num).css("opacity", "1");
 						$('#releaseModel-image'+id_num).css("opacity", "1");
 						$('#draw_checkBox'+id_num).css("background-color","white");
 						$('#draw_checkBox'+id_num).css("border-color","#b3b3b3");
