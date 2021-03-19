@@ -333,7 +333,7 @@
 								<div class="todaysRelease-content2">
 								
 									<!-- 발매처 정보 -->
-									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom:15px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
+									<div class="brand-info-container" id="brand-info-container<%=i%>" style="margin-bottom:17px; <%if(userDrawBrandList.contains(bdto_todays.getBrand_id()+sdto_todays.getModel_stylecode())){%>opacity: 0.3;<%}%>">
 										<!-- 응모처 이름 -->
 										<div id="count_todays_status<%=i%>brandName">
 											<a href="<%=odto_todays.getOnline_link()%>" target="_blank"> 

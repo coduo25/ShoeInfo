@@ -11,7 +11,7 @@ body {font-size:1em; line-weight:1.4}
 .todays-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title { display: block; margin:0 0 15px 0; font-size:26px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; margin:0 0 15px 0; font-size:30px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
