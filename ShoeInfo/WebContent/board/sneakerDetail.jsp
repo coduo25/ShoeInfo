@@ -378,7 +378,7 @@
 										</div>
 									<%}%>
 								
-									<div style="display:flex; align-items:center;">
+									<div class="sneakerDetail-logoName-container">
 										<!-- 발매처 로고 -->
 										<div class="sneakerDetail-logo" id="sneakerDetail-logo<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
 											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
@@ -388,13 +388,14 @@
 												</span> 
 											</a>
 										</div>
-										<div class="sneakerDetail-brandName" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
+										<div class="sneakerDetail-brandName" id="sneakerDetail-brandName<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
 											<!-- 발매처 이름 -->
 											<div class="sneakerDetail-brandNameTxt" id="count_todays_status<%=countryName_eng%><%=i%>brandName">
 												<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-													<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>
+													<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>	
 												</a>
 											</div>
+											
 											<!-- 발매 방식 -->
 											<div class="sneakerDetail-releaseMethod">
 												<span>
@@ -435,80 +436,39 @@
 										</div>
 									</div>
 									
-									<div class="phone-sneakerDetail">
-										<!-- 발매처 이름 + 진행 상태 -->
-										<div class="phone-sneakerDetail-brandNameTxt">
-											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>brandName" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%> <%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>
-											</a>
-											<span id="phone-releaseStatus<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
-												<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
-												<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
-													<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:black;">선착</span>
-												<!-- 응모인데 지금시간이 시작시간보다 전일때 -->
-												<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
-													<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:black;">응모 전</span>
-													<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="-1">
-												<!-- 응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
-												<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
-													<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:#58af58;">응모 중</span>
-													<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
-												<!-- 응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
-												<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
-													<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="background-color:#58af58;">응모 중</span>
-													<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
-												<!-- 선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
-												<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-													<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#666; background-color:white; border:0; font-weight:normal;">종료</span>
-													<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
-												<%}%>
-											</span>
+									<div class="phone-sneakerDetail">	
+										<!-- 진행 상태 -->
+										<div class="phone-release-status" id="phone-Detail<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
+											- 상태 : 
+<!-- 											선착인데 지금시간이 시작시간보다 전일때 -->
+											<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
+												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">선착예정</span>
+<!-- 											응모인데 지금시간이 시작시간보다 전일때 -->
+											<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
+												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="-1">
+<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
+											<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
+												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
+<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
+											<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
+												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
+<!-- 											선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
+											<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
+												<span id="count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#666;">종료</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
+											<%}%>
 										</div>
-										
-										<!-- 발매방식 -->
-										<div id="phone-Detail<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
-											<span>
-												<%if(odto.getOnline_method().contains("선착")) {%>
-													선착순 구매  <!-- color:#ff5722; -->
-												<%} else if(odto.getOnline_method().contains("드로우")) {%>
-													온라인응모
-													<%} else if(odto.getOnline_method().contains("이메일라플")) {%>
-													이메일응모
-												<%} else if(odto.getOnline_method().contains("인스타라플")) {%>
-													인스타그램 응모
-												<%} else if(odto.getOnline_method().contains("미정")) {%>
-													미정
-												<%} %>
-											</span>
-										</div>
-										
-										<!-- 결제 + 배송 -->
-										<div id="phone-Detail<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
-											<!-- 결제 -->
-											<span>
-												<%if(odto.getOnline_method().contains("선착")) {%>
-													선착순 결제
-												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-													<%=odto.getBuy_method()%>
-												<%}%>
-											</span>
-											·
-											<!-- 배송 -->
-											<span>
-												<%if(odto.getOnline_method().contains("선착")) {%>
-													<%=odto.getDelivery_method()%>
-												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-													<%=odto.getDelivery_method()%>
-												<%}%>
-											</span>
-										</div>
-										
+
 										<!-- 시간 -->
-										<div id="phone-Detail<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
+										<div class="phone-release-time" id="phone-Detail<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
 											<!-- 시간 -->
 											<%if(odto.getOnline_method().contains("선착")){%>
+											- 선착시간 : 
 											<!-- 선착순 구매 -->
-											<span> 
+											<span>
 												<!-- 최종 시작 시간이 정확하지 않으면 -->
 												<%if(odto.getOnline_start_date().isEmpty() || odto.getOnline_start_time().isEmpty()) {%>
 													공지예정
@@ -518,6 +478,7 @@
 											</span>
 											<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
 											<!-- 응모 -->
+											- 응모시간 : 
 											<span>
 												<!-- 최종 끝나는 시간이 정확하지 않으면 -->
 												<%if(odto.getOnline_end_date().isEmpty() || odto.getOnline_end_time().isEmpty()) {%>
@@ -531,7 +492,7 @@
 											</span>
 											<%}%>
 										</div>
-										
+											
 										<!-- 남은 시간 -->
 										<div class="phone-remain-time" id="phone-Detail<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
 											<!-- 남은시간 -->
@@ -1405,7 +1366,8 @@
 						//참여전 표시 -> 참여완료로 바꾸기
 						$('#brandNum'+country+number).css('opacity','0.3');
 						$('#brandStatus'+country+number).css('opacity','0.3');
-						$('#brandLogoName'+country+number).css('opacity','0.3');
+						$('#sneakerDetail-logo'+country+number).css('opacity','0.3');
+						$('#sneakerDetail-brandName'+country+number).css('opacity','0.3');
 						$('#releaseTime'+country+number).css('opacity','0.3');
 						$('#payAnddel'+country+number).css('opacity','0.3');
 						
@@ -1432,7 +1394,8 @@
 						//참여완료 표시 -> 참여전으로 바꾸기
 						$('#brandNum'+country+number).css('opacity','1');
 						$('#brandStatus'+country+number).css('opacity','1');
-						$('#brandLogoName'+country+number).css('opacity','1');
+						$('#sneakerDetail-logo'+country+number).css('opacity','1');
+						$('#sneakerDetail-brandName'+country+number).css('opacity','1');
 						$('#releaseTime'+country+number).css('opacity','1');
 						$('#payAnddel'+country+number).css('opacity','1');
 						
@@ -1504,7 +1467,7 @@
 						//참여전 표시 -> 참여완료로 바꾸기
 						$('#sneakerDetail-logo'+country+number).css('opacity','0.3');
 						$('#phone-count_todays_status'+country+number+'brandName').css('opacity','0.3');
-						$('#phone-releaseStatus'+country+number).css('opacity','0.3');
+						$('#sneakerDetail-brandName'+country+number).css('opacity','0.3');
 						$('div#phone-Detail'+country+number).css('opacity','0.3');
 						$('span#phone-Detail'+country+number).css('opacity','0.3');
 						
@@ -1531,7 +1494,7 @@
 						//참여완료 표시 -> 참여전으로 바꾸기
 						$('#sneakerDetail-logo'+country+number).css('opacity','1');
 						$('#phone-count_todays_status'+country+number+'brandName').css('opacity','1');
-						$('#phone-releaseStatus'+country+number).css('opacity','1');
+						$('#sneakerDetail-brandName'+country+number).css('opacity','1');
 						$('div#phone-Detail'+country+number).css('opacity','1');
 						$('span#phone-Detail'+country+number).css('opacity','1');
 						
