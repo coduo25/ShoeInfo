@@ -407,6 +407,8 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 /* 0 ~ 480px */
 @media screen and (max-width: 480px){
 	
+	.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { padding:50px 0; }
+	
 	/* 제목 */
 	.sub-title { font-size:18px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
 	.desc-container { font-size:13px; padding:0 3% 15px 3%; }
@@ -444,7 +446,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.todaysRelease-content2 { width:100%;}
 	.brandImg { width:70px !important; height:70px !important; }
 	#onlineList_todays_table th { padding:12px 0; font-size:14px; }
-	#onlineList_todays_table td { padding:35px 4% !important; }
+	#onlineList_todays_table td { padding:25px 4% !important; }
 	.todays-brandName { font-size:16px; }
 	.info-subTitle { display:none; }
 	.info-subTitle, .info-content { font-size:13px; }

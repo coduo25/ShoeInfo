@@ -253,7 +253,7 @@ body { line-weight:1.4;}
 	
 	/* 표 */
 	.country-table table th { padding:12px 0; font-size:14px; }
-	.country-table table td { padding:35px 4%; }
+	.country-table table td { padding:25px 4%; }
 	.brandlogo_img { width:70px; height:70px; }
 	.sneakerDetail-logoName-container { display:block; border-bottom:1px dotted #e6e6e6; padding-bottom:10px; }
 	.sneakerDetail-logo, .sneakerDetail-brandName { vertical-align:middle; }
