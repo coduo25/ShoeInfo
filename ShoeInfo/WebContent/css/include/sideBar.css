@@ -4,14 +4,14 @@
 .betweenAds-container { width:100%; display:table; text-align:center; } /*  margin:30px 0; */
 .betweenAds-box { margin:0 auto; } /* width:970px; height:90px; *
 /* PC - 중간 가로 970x250 광고 */
-.betweenAds2-container { width:100%; display:table; text-align:center; } /* margin:30px 0; */
+.betweenAds2-container { width:100%; display:table; text-align:center; margin-bottom: 50px; } /* margin:30px 0; */
 .betweenAds2-box { margin:0 auto; } /* width:970px; height:250px;  */
 
 /* Pad - 중간 가로 728x90 광고 --------------------------------------------- */
 .betweenAdsPad-container { width:100%; display:table; text-align:center; } /* margin:30px 0; */
 .betweenAdsPad-box { margin:0 auto;  } /* width:720px; height:90px; */
 /* Pad - 중간 가로 728x300 광고 */
-.betweenAdsPad2-container { width:100%; display:table; text-align:center; } /* margin:30px 0; */
+.betweenAdsPad2-container { width:100%; display:table; text-align:center; margin-bottom: 50px; } /* margin:30px 0; */
 .betweenAdsPad2-box { margin:0 auto;  } /* width:720px; height:300px; */
 
 /* Phone - 중간 가로 320x50 광고  --------------------------------------------- */
