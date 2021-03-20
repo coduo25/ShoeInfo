@@ -111,7 +111,7 @@
 					<% 
 						}else{ 
 					%>
-						<span> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
+						<span class="acc_list_logout"> <a href="./MemberLogout.me"><i class="fas fa-sign-out-alt"></i></a> </span> 
 						<span class="acc_list"> <a href="./MemberInfoCheck.me"> <i class="fas fa-user-edit"></i> </a> </span>
 					<% } %>
 				</div>
@@ -163,7 +163,16 @@
 		<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
 		<a href="./AllReleasedList.go">발매완료</a>
 		<a href="./SnkrsKRList.go">SNKRS</a>
-		<a href="#" id="myDrawBtn" style="color:#AE0F19;"> 나의 응모내역 </a>
+		<a href="#" id="myDrawBtn" style="color:#AE0F19; margin-bottom:15px !important"> 나의 응모내역 </a>
+		<% if(user == null || user.length() == 0){ %>
+			
+		<% 
+			}else{ 
+		%>
+			<span style="display:block; border-top:1px dotted #e6e6e6;">
+				<a href="./MemberLogout.me" style="margin-top:15px !important;">로그아웃</a>
+			</span>
+		<% } %>
 	</div>
 	
 	<!-- top link -->

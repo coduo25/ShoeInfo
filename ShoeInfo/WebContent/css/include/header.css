@@ -198,9 +198,10 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 	
 	.mob-logo-row { position:fixed; top:0; z-index:30; padding:1% 3% 2% 3%; }
 	.mob-logo { font-size:32px; }
-	.mob-container { font-size:22px; }
+	.mob-container { font-size:24px; padding:2%; }
 	.mob-nav { display:inline-block; }
-	.mob-container { padding:2%; }
+	.mob-container div { padding-left:20px }
+	.acc_list_logout { display:none; }
 
 }
 
