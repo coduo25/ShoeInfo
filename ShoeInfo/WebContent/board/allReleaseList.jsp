@@ -157,37 +157,45 @@
 			</div>
 		</div>
 		
-		<!-- 중간 광고 970x90 -->
-		<div class="betweenAds-container">
-			<div class="betweenAds-box">
+		<!-- 광고 970x250 -->
+		<div class="betweenAds2-container">
+			<div class="betweenAds2-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- PC - 중간 가로 970x90 -->
+				<!-- PC - 가로하단 970x250 -->
 				<ins class="adsbygoogle"
-				     style="display:inline-block;width:970px;height:90px"
+				     style="display:inline-block;width:970px;height:250px"
 				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="9021958174"></ins>
+				     data-ad-slot="4591758574"></ins>
+				<script>
+				     (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+
+		<!-- Pad - 중간 광고 728x300 -->
+		<div class="betweenAdsPad2-container" style="display:none;">
+			<div class="betweenAdsPad2-box">
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Pad - 중간 가로 728x300 광고 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:300px"
+				     data-ad-client="ca-pub-8228533393025739"
+				     data-ad-slot="5581692023"></ins>
 				<script>
 				     (adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
 			</div>
 		</div>
 		
-		<!-- Pad - 중간 광고 728x90 -->
-		<div class="betweenAdsPad-container" style="display:none;">
-			<div class="betweenAdsPad-box">
-				
-			</div>
-		</div>
-		
-		<!-- Phone - 중간 광고 320x50 -->
+		<!-- Phone - 중간 광고 320x100 -->
 		<div class="betweenAdsPhone-container" style="display:none;">
 			<div class="betweenAdsPhone-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Phone - 중간 가로 320x50 -->
+				<!-- Phone - 중간 광고 320x100 -->
 				<ins class="adsbygoogle"
-				     style="display:inline-block;width:320px;height:50px"
+				     style="display:inline-block;width:320px;height:100px"
 				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="7050400956"></ins>
+				     data-ad-slot="6612536818"></ins>
 				<script>
 				     (adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
@@ -265,7 +273,7 @@
 			</div>
 			
 			<!-- Pad - 중간 광고 728x300 -->
-			<div class="betweenAdsPad2-container" style="display:none;">
+			<div class="betweenAdsPad2-container" style="display:none; margin-bottom:50px;">
 				<div class="betweenAdsPad2-box">
 					<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 					<!-- Pad - 중간 가로 728x300 광고 -->
@@ -279,15 +287,15 @@
 				</div>
 			</div>
 			
-			<!-- Phone - 중간 광고 320x50 -->
+			<!-- Phone - 중간 광고 320x100 -->
 			<div class="betweenAdsPhone-container" style="display:none; margin-bottom:50px;">
 				<div class="betweenAdsPhone-box">
 					<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- Phone - 중간 가로 320x50 -->
+					<!-- Phone - 중간 광고 320x100 -->
 					<ins class="adsbygoogle"
-					     style="display:inline-block;width:320px;height:50px"
+					     style="display:inline-block;width:320px;height:100px"
 					     data-ad-client="ca-pub-8228533393025739"
-					     data-ad-slot="7050400956"></ins>
+					     data-ad-slot="6612536818"></ins>
 					<script>
 					     (adsbygoogle = window.adsbygoogle || []).push({});
 					</script>

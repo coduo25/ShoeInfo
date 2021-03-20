@@ -7,7 +7,7 @@ body {font-size:1em; line-weight:1.4}
 .container {position: relative;} /* width: 80%; margin: 5px auto; */
  
 /* 리스트 별 컨테이너 */
-.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:90px 0; font-family: 'Nanum Gothic', sans-serif; }
+.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { display: table; width: 100%; box-sizing: border-box; padding:70px 0; font-family: 'Nanum Gothic', sans-serif; }
 .released-container { display: table; width: 100%; box-sizing: border-box; margin:40px 0 0 0; font-family: 'Nanum Gothic', sans-serif; }
 /* .popular-container { display:none; } */
 
