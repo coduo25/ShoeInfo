@@ -74,6 +74,14 @@ body {font-size:1em; line-weight:1.4}
 	.mob-drawCheckBtn { margin-top:10px; }
 	.mob-draw_checkBox { border:1px solid #b3b3b3; padding:4px; width:30%; margin:0 auto; border-radius:5px; }
 
+/* 스크롤바 style */
+/* width */
+::-webkit-scrollbar { width:10px; height:0; }
+/* Track */
+::-webkit-scrollbar-track { background: #d6d6d6; }
+/* Handle */
+::-webkit-scrollbar-thumb { background: #797979; }
+
 
 
 /* 모바일 -------------------------------------------------------------- */
