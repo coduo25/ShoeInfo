@@ -136,7 +136,7 @@ body {font-size:1em; line-weight:1.4}
 /* 0 ~ 480px */
 @media screen and (max-width: 480px){
 	
-	.todaysRelease-container { margin-top:10px !important; }
+	.todaysRelease-container { margin-top:20px !important; }
 
 	/* 제목 */
 	.sub-title { font-size:18px; padding:0 3% 5px 3%; margin:0 0 5px 0; }

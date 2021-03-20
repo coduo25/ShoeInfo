@@ -108,7 +108,7 @@
 		</div>
 
 		<!-- 오늘의 모든 발매 리스트 -->
-		<div class="todaysRelease-container" style="margin-top:30px; padding-top:0 !important; margin-bottom:40px !important;">
+		<div class="todaysRelease-container" style="margin-top:40px; padding-top:0 !important; margin-bottom:40px !important;">
 			<div class="sub-title">
 				<h4> 오늘의 발매처 </h4>
 			</div>
