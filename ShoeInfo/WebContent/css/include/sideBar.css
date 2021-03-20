@@ -22,10 +22,10 @@
 .bottomAdsPhone-box { margin:0 auto;  } /* width:320px; height:100px; */
 
 /* 좌측 사이드 광고 300x600 --------------------------------------------- */
-.left-sideAds-container { position:fixed; z-index:50; bottom:5%; left:3%; } 
+.left-sideAds-container { position:fixed; z-index:50; bottom:0; left:0; } 
 .left-sideAds-box { z-index:50; } /* width:160px; height:600px; */
 /* 우측 사이드 광고 300x600 */
-.right-sideAds-container { position:fixed; z-index:50; bottom:5%; right:3%; } 
+.right-sideAds-container { position:fixed; z-index:50; bottom:0; right:0; } 
 .right-sideAds-box { z-index:50; } /*  width:160px; height:600px; */
 
 

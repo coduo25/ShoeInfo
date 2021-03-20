@@ -132,7 +132,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
   display: none;
   position: fixed;
   bottom: 5%;
-  right: 2%;
+  right: 15%;
   z-index: 1001;
   font-size: 2.4em;
   border: none;
@@ -161,7 +161,7 @@ span#cal_icon, span#all_icon, span#user_icon, span#logout_icon {
 
 /* 1680px 밑으로 적용 */
 @media screen and (max-width: 1680px) {
-	
+	#myBtn { right:2%; }
 }
 
 /* 0 ~ 1220px */
