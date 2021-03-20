@@ -488,7 +488,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	
 	
 	/* 회원 응모내역 리스트 */
-	.myDrawList-container { margin-top:10px !important; }
+	.myDrawList-container { margin-top:20px !important; }
 	.myDraw-container { width:100%; margin:0; border:0; box-shadow:unset; border-left:1px solid #cecece;border-top:1px solid #cecece; border-right:1px solid #cecece; }
 	.myDraw-container:last-child { border-bottom:1px solid #cecece; }
 	.myDraw-image { width:25%; }

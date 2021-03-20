@@ -148,7 +148,7 @@
 		</div>
 		
 		<!-- Phone - 중간 광고 320x50 -->
-		<div class="betweenAdsPhone-container" style="display:none; margin-top: 20px;">
+		<div class="betweenAdsPhone-container" style="display:none; margin:20px 0 10px 0;">
 			<div class="betweenAdsPhone-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<!-- Phone - 중간 가로 320x50 -->
