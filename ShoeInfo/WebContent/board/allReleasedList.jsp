@@ -41,9 +41,6 @@
 		if(user == null){
 			user="";
 		}
-
-		//인기상품
-		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
 		
 		List<List<SneakerDTO>> splitedList = (List<List<SneakerDTO>>) request.getAttribute("splitedList");
 		
@@ -64,32 +61,6 @@
 		Date currentTime = new Date();
 		String current = format.format(currentTime);
 		Date today = format.parse(current);
-		
-		
-		
-		
-		
-		// 구 리스트들
-		// 구 리스트들
-		// 구 리스트들
-		// 구 리스트들
-		ArrayList<SneakerDTO> sneakerList1 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList1");
-		ArrayList<SneakerDTO> sneakerList2 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2");
-		ArrayList<SneakerDTO> sneakerList3 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList3");
-		ArrayList<SneakerDTO> sneakerList4 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList4");
-		ArrayList<SneakerDTO> sneakerList5 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList5");
-		ArrayList<SneakerDTO> sneakerList6 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList6");
-		ArrayList<SneakerDTO> sneakerList7 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList7");
-		ArrayList<SneakerDTO> sneakerList8 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList8");
-		ArrayList<SneakerDTO> sneakerList9 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList9");
-		ArrayList<SneakerDTO> sneakerList10 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList10");
-		ArrayList<SneakerDTO> sneakerList11 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList11");
-		ArrayList<SneakerDTO> sneakerList12 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList12");
-		
-		ArrayList<SneakerDTO> sneakerList2021 = (ArrayList<SneakerDTO>) request.getAttribute("sneakerList2021");
-
-		String compare_Today = format.format(currentTime);
-		Date compareToday = format.parse(compare_Today);
 	%>
 
 	<!-- Header -->
@@ -137,7 +108,7 @@
 					// 0의 리스트 중에 마지막부터
 					// 1의 리스트 중에 마지막부터
 					// 2의 리스트 중에 마지막부터
-					for(int j=0; j<2; j++){
+					for(int j=0; j<=2; j++){
 				%>
 					<div class="released-table-container" id="released-table-container<%=j%>" <%if(j>=1){%>style="display:none;"<%}%>>
 						<%

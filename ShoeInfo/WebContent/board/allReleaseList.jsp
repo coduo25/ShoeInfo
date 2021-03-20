@@ -42,9 +42,6 @@
 			user="";
 		}
 		
-		//인기상품
-		ArrayList<SneakerDTO> popularList = (ArrayList<SneakerDTO>) request.getAttribute("popularList");
-		
 		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
 // 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
