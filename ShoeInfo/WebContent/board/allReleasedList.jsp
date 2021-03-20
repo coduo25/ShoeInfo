@@ -112,7 +112,7 @@
 				%>
 					<div class="released-table-container" id="released-table-container<%=j%>" <%if(j>=1){%>style="display:none;"<%}%>>
 						<%
-							for(int i=0; i<=splitedList.get(j).size()-1; i++){
+							for(int i=0; i<splitedList.get(j).size(); i++){
 								SneakerDTO released_sdto = splitedList.get(j).get(i);
 						%>
 							<div class="mainSneaker-container">
