@@ -47,7 +47,7 @@
 		SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		SimpleDateFormat date_format = new SimpleDateFormat("M월 d일(E)");
-		SimpleDateFormat time_format = new SimpleDateFormat("a hh:mm");
+		SimpleDateFormat time_format = new SimpleDateFormat("a hh:mm"); 
 		
 		SimpleDateFormat month_format = new SimpleDateFormat("M월");
 		
