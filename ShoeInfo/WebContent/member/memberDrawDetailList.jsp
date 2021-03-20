@@ -71,7 +71,7 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 
 		<!-- 신발 정보 container -->
-		<div class="shoeinfo-container" style="margin-top:30px; padding-top:0 !important; padding-bottom:25px;">
+		<div class="shoeinfo-container" style="margin-top:40px; padding-top:0 !important; padding-bottom:25px;">
 			<!-- 신발 이미지 -->
 			<div class="shoeImg-container">
 				<img src="./sneaker_img_upload/<%=sdto.getImage().split(",")[0]%>">

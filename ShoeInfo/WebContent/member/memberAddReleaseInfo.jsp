@@ -47,7 +47,7 @@
 		<jsp:include page="/include/leftSideBar.jsp" />
 
 		<!-- content -->
-		<div id="content_sneakerDetail" style="margin-top:30px !important; padding-top:0 !important;">
+		<div id="content_sneakerDetail" style="margin-top:40px; padding-top:0 !important;">
 			
 			<div id="sneaker_Detail">
 				<!-- 추가하는 form -->
