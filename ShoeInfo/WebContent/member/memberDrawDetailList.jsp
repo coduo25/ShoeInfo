@@ -376,7 +376,7 @@
 		</div>
 		
 		<!-- 중간 광고 970x250 -->
-		<div class="betweenAds2-container">
+		<div class="betweenAds2-container" style="padding-bottom:40px;">
 			<div class="betweenAds2-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<!-- PC - 가로하단 970x250 -->
