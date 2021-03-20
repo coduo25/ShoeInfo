@@ -308,12 +308,12 @@
 										<!-- 수신방식 -->
 										<div>
 											<span>수신 : </span>
-											<span><i class="fas fa-sms"></i></span>
+											<span><i class="far fa-comment-alt"></i></span>
 										</div>
 										<!-- 구매기간 -->
 										<div>
 											<span>구매 : </span>
-											<span>2021.00.00 ~ 2021.00.00</span>
+											<span>(4월 중으로 업데이트 예정)</span>
 										</div>
 									</div>
 									
@@ -321,12 +321,12 @@
 								<!-- 발표일 -->
 								<td>
 									<div style="padding-bottom:5px;">
-<%-- 														<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%> --%>
-										0.00 00:00
+										<%if(odto.getWinner_time().equals("-")){%>-<%} else {%> <%=odto.getWinner_time()%> <%}%>
+<!-- 										0.00 00:00 -->
 									</div>
-									<div>
-										--:--:--
-									</div>
+<!-- 									<div> -->
+<!-- 										--:--:-- -->
+<!-- 									</div> -->
 								</td>
 								<!-- 수신방식 -->
 								<td>
@@ -337,7 +337,7 @@
 								<!-- 구매기간 -->
 								<td>
 									<div>
-										<span>2021.00.00 ~ 2021.00.00</span>
+										<span>(4월 중으로 업데이트 예정)</span>
 									</div>
 								</td>
 							</tr>
