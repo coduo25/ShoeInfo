@@ -18,6 +18,15 @@
 		<!-- 좌측 사이드 광고 -->
 		<div class="left-sideAds-container">
 			<div class="left-sideAds-box">
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- 사이드바 광고 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:160px;height:600px"
+				     data-ad-client="ca-pub-8228533393025739"
+				     data-ad-slot="7010323764"></ins>
+				<script>
+				     (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
 		</div>
 		
@@ -32,21 +41,6 @@
 </body>
 
 <script type="text/javascript">
-
-// 	$(window).scroll(function(event){
-// 		화면을 200정도만 내렸을때 좌측 메뉴 고정
-// 		if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
-// 			$(".left-sideAds-container").css('position','fixed');
-// 			$(".left-sideAds-container").css('bottom','0');
-// 			$(".left-sideAds-container").css('left','0');
-// 			$(".left-sideAds-container").css('margin-left','0');
-// 			$(".left-sideAds-container").css('top','unset');
-// 		} else {
-// 			$(".left-sideAds-container").css('position','absolute');
-// 			$(".left-sideAds-container").css('margin-left','-380px');
-// 			$(".left-sideAds-container").css('top','0');
-// 		}
-// 	});
 	
 	/////////////////////////////////////////////////////////
 	//실시간 현재 시간
