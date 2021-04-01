@@ -141,11 +141,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div class="block-list">
 				<div class="block-content">
 					<ul class="nav">
-						<li <%if(pageName.equals("allReleaseList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>> 
-							<a href="./AllReleaseList.go">발매 중&#8226;발매예정</a>
+						<li <%if(pageName.equals("allReleasingList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>> 
+							<a href="./AllReleasingList.go">발매 중</a>
 						</li>
 						<li <%if(pageName.equals("todaysReleaseList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
 							<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
+						</li>
+						<li <%if(pageName.equals("allReleaseList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>> 
+							<a href="./AllReleaseList.go">발매예정</a>
 						</li>
 						<li <%if(pageName.equals("allReleasedList.jsp")) {%> style="border-bottom:2px solid black;"<%}%>>
 							<a href="./AllReleasedList.go">발매완료</a>
@@ -166,8 +169,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<!-- 모바일 흰색 메뉴판 -->
 	<div class="mob-menuBoard">
 		<a href="./Main.bo">Main</a>
-		<a href="./AllReleaseList.go">발매 중 &#8226; 발매예정</a>
+		<a href="./AllReleasingList.go">발매 중</a>
 		<a href="./TodaysReleaseList.go" style="color:#4990e2;">오늘의 발매처 </a>
+		<a href="./AllReleaseList.go">발매예정</a>
 		<a href="./AllReleasedList.go">발매완료</a>
 		<a href="./SnkrsKRList.go">SNKRS</a>
 		<a href="#" id="myDrawBtn" style="color:#AE0F19; margin-bottom:15px !important"> 나의 응모내역 </a>

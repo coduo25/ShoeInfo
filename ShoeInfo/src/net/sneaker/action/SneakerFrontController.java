@@ -62,7 +62,16 @@ public class SneakerFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		//발매중 발매예정 리스트 보여주는 페이지 처리
+		//발매중 리스트 보여주는 페이지 처리
+		else if(command.equals("/AllReleasingList.go")){
+			action = new AllReleasingListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//발매예정 리스트 보여주는 페이지 처리
 		else if(command.equals("/AllReleaseList.go")){
 			action = new AllReleaseListAction();
 			try {

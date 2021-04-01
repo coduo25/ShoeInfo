@@ -24,7 +24,7 @@
 
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
-<title>발매중 &#8226; 예정 | SHOE INFO.</title>
+<title>발매예정 | SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
@@ -41,13 +41,6 @@
 		if(user == null){
 			user="";
 		}
-		
-		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
-// 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releaseSneakerList");
-		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) request.getAttribute("releasingSneakerList");
-
-		//발매중인 산발들의 진행중인 브랜드 갯수
-		ArrayList<Integer> countReleasingBrandList = (ArrayList<Integer>) request.getAttribute("countReleasingBrandList");
 		
 		List<List<SneakerDTO>> splitedList = (List<List<SneakerDTO>>) request.getAttribute("splitedList");
 		
@@ -111,106 +104,15 @@
 			</div>
 		</div>
 	
-		<!-- 발매 중 리스트 -->
-		<div class="releasing-container" style="margin-top:40px; padding-top:0 !important;">
-			<div class="sub-title">	
-<!-- 			<div class="sub-title-wline"> -->
-				<h4> 현재 발매 중인 라인업 </h4>
-			</div>
-			
-			<div class="desc-container">
-				<span> 진행 중인 발매처가 있는 제품들 </span>
-			</div>
-			
-			<div class="releasing-table-container">
-				<% if(releasingSneakerList.isEmpty()){ %>
-					<div>
-						발매 중인 신발이 없습니다.
-					</div>
-				<% } else {
-					for(int i=releasingSneakerList.size()-1; i>=0; i--){
-						SneakerDTO releasing_sdto = releasingSneakerList.get(i);	
-						int countBrand = countReleasingBrandList.get(i);
-				%>
-					<div class="mainSneaker-container">
-						<a href="./SneakerDetail.go?model_stylecode=<%=releasing_sdto.getModel_stylecode()%>&num=<%=releasing_sdto.getNum()%>">
-							<!-- 신발이미지 -->
-							<div class="mainSneaker-image">
-								<img src="./sneaker_img_upload/<%=releasing_sdto.getImage()%>">
-							</div>
-							<!-- 신발 이름 + 해당 신발 발매처 횟수 -->
-							<div class="mainSneakerShoeInfo-container">
-								<!-- 이름 칸 -->
-								<div class="mainSneakerShoeInfo-name">
-									<span> <%=releasing_sdto.getModel_name_kr()%> </span>
-								</div>
-								<!-- 발매처 횟수 -->
-								<div class="mainSneaker-brandCount">
-									<span class="mainSneaker-brandCountTxt">	
-										발매처 <%=countBrand%>+
-									</span>
-								</div>
-							</div>
-						</a>
-					</div>
-				<% } } %>
-			</div>
-		</div>
-		
-		<!-- 광고 970x250 -->
-		<div class="betweenAds2-container">
-			<div class="betweenAds2-box">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- PC - 가로하단 970x250 -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:970px;height:250px"
-				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="4591758574"></ins>
-				<script>
-				     (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		</div>
-
-		<!-- Pad - 중간 광고 728x300 -->
-		<div class="betweenAdsPad2-container" style="display:none;">
-			<div class="betweenAdsPad2-box">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Pad - 중간 가로 728x300 광고 -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:300px"
-				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="5581692023"></ins>
-				<script>
-				     (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		</div>
-		
-		<!-- Phone - 중간 광고 320x100 -->
-		<div class="betweenAdsPhone-container" style="display:none;">
-			<div class="betweenAdsPhone-box">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Phone - 중간 광고 320x100 -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:320px;height:100px"
-				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="6612536818"></ins>
-				<script>
-				     (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		</div>
-
 		<!-- 발매 예정 리스트 -->
-		<div class="release-container" style="margin-bottom:0px !important; padding-bottom:0 !important;">
+		<div class="release-container" style="margin-top:40px; padding:0 !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
-				<h4> 2021년 발매 예정 라인업 </h4>
+				<h4> 발매 예정 라인업 </h4>
 			</div>
 			
 			<div class="desc-container">
-				<span> 발매처가 아직 없는 제품들 </span>
+				<span> 진행 중인 발매처가 없는 제품들 </span>
 			</div>
 			
 				<% if(splitedList.isEmpty()){ %>

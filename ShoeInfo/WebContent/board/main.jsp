@@ -130,7 +130,7 @@
 		
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
-				<h4> 현재 발매 중인 라인업 </h4>
+				<h4> 발매 중 라인업 </h4>
 <!-- 				<div class="allButton" onclick="location.href='#'"> -->
 <!-- 					<span> 전체보기 </span> -->
 <!-- 				</div> -->
@@ -794,7 +794,7 @@
 		<!-- 이번주 나코 snkrs 리스트 -->
 		<div class="snkrsWeek-container">
 			<div class="sub-title">
-				<h4><img src="./brand_img_upload/nikelogo.png" width="50" height="30" style="vertical-align:bottom;">나이키 코리아 프리미엄 라인업</h4>
+				<h4><img src="./brand_img_upload/nikelogo.png" width="50" height="30" style="vertical-align:bottom;">나이키 코리아 라인업</h4>
 				<div class="allButton" onclick="location.href='./SnkrsKRList.go'">
 					<span> 전체보기 </span>
 				</div>
@@ -907,14 +907,14 @@
 		<div class="release-container" style="margin-bottom:0px !important; padding-bottom:0 !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
-				<h4> 2021년 발매 예정 라인업 </h4>
+				<h4> 발매 예정 라인업 </h4>
 <!-- 				<div class="allButton" onclick="location.href='./AllReleaseList.go'"> -->
 <!-- 					<span> 전체보기 </span> -->
 <!-- 				</div> -->
 			</div>
 			
 			<div class="desc-container">
-				<span> 발매처가 아직 없는 제품들 </span>
+				<span> 진행 중인 발매처가 없는 제품들 </span>
 			</div>
 			
 			<div class="releasing-table-container">
