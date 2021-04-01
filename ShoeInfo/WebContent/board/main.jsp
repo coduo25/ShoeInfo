@@ -858,7 +858,9 @@
 							<div class="dDay-status">
 								<span <%if(calDateDays <=2){%>style="border:1px solid #e0575c; background-color:#e0575c;"<%}else{%>style="border:1px solid black; background-color:black;"<%}%>>
 									<%if(calDateDays==0){ %>
-										발매일
+										오늘발매
+									<%}else if(calDateDays==1){ %>
+										내일발매
 									<%}else { %>
 										<%=calDateDays%>일 남음
 									<%} %>
