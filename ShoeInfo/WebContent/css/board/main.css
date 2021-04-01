@@ -477,7 +477,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 	/* 나이키코리아 snkrs */
 	.sub-title img { width:40px; height:25px; }
-	.snkrsSneaker-container { width:60%; }
+	.snkrsSneaker-container { width:60%; margin-right:15px; }
 	.dDay-status { padding:15px 12px; }
 	.dDay-status span { font-size:15px; padding:0 6px; }
 	.snkrsSneaker-container img { padding:65px 10px 10px 10px;  }

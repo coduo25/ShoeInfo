@@ -22,7 +22,7 @@ body {font-size:1em; line-weight:1.4}
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
 .snkrsWeek-table-container { white-space:nowrap; margin-bottom:30px; display:block; }
-.snkrsSneaker-container { display:inline-block; width:32.333%; margin:0.5% 0.5% 4% 0.5%; display:inline-block; float:left; box-shadow:0px 2px 5px #44444433; padding-bottom:20px; }
+.snkrsSneaker-container { display:inline-block; width:31.333%; margin:1% 1% 4% 1%; display:inline-block; float:left; box-shadow:0px 2px 5px #44444433; padding-bottom:20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
 .snkrsSneaker-container img { background-color:#f3f3f3; padding:80px 10px 40px 10px; border:1px solid #e1e1e1; }
 .snkrsSneaker-container div { text-align:center; display:block; position:relative; }
@@ -76,7 +76,7 @@ div.snkrs_time a { font-size:16px; color:#777 !important; }
 	.desc-container { font-size:13px; padding:0 3% 18px 3%; }
 	
 	.sub-title img { width:40px; height:25px; }
-	.snkrsSneaker-container { margin:2% 3%; width:94%; }
+	.snkrsSneaker-container { margin:2% 5% 4% 5%; width:90%; }
 	
 	.snkrsWeek-container { margin-top:20px !important; }
 }
