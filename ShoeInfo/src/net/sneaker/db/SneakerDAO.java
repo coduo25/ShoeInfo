@@ -168,7 +168,7 @@ public class SneakerDAO {
 		ResultSet rs2 = null;
 		try {
 			con = getConnection();
-			sql = "select B.model_stylecode from shoeinfo_memberdrawinfo as B join shoeinfo_sneakerlibrary as A on B.model_stylecode = A.model_stylecode where A.release_date between last_day(now() - interval 1 month) and last_day(now())group by B.model_stylecode order by count(B.model_stylecode) desc limit 6";
+			sql = "select B.model_stylecode from shoeinfo_memberdrawinfo as B join shoeinfo_sneakerlibrary as A on B.model_stylecode = A.model_stylecode where A.release_date between date_add(now(), interval -1 month) and last_day(now()) group by B.model_stylecode order by count(B.model_stylecode) desc limit 6";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
