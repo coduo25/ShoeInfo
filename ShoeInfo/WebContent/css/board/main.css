@@ -136,8 +136,8 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	 
 /* 모델 이름 + 응모횟수 파트 */
 .myDrawShoeInfo-container { width:100%; padding:5% 4%; }
-	.myDrawShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:17px; min-height:40px; line-height:1.2em; font-weight:bold; cursor:pointer; margin-bottom:10px; }
-	.myDrawShoeInfo-countNum { font-size:16px; color:#777; }
+	.myDrawShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:17px; min-height:40px; line-height:1.2em; cursor:pointer; margin-bottom:10px; }
+	.myDrawShoeInfo-countNum { font-size:18px; color:#777; }
 
 /* 나의 응모내역 디테일 신발상세 + 응모내역 리스트 */
 /* 신발 상세정보 페이지  ------------------------------------------------------------------------------------------------------------ */
@@ -409,7 +409,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 @media screen and (max-width: 480px){
 	
 	.todaysRelease-container, .releasing-container, .release-container, .thisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { padding:40px 0; }
-	.todaysRelease-container, .releasing-container, .thisWeek-container, .snkrsWeek-container, .myDrawList-container { border-bottom: 10px solid #f6f6f6; }
+	.todaysRelease-container, .releasing-container, .thisWeek-container, .snkrsWeek-container { border-bottom: 10px solid #f6f6f6; }
 	
 	/* 제목 */
 	.sub-title { font-size:22px; padding:0 4% 5px 4%; margin:0 0 5px 0; }
