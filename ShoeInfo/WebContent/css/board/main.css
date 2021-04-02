@@ -13,7 +13,7 @@ body {font-size:1em; line-weight:1.4}
 .todays-table-container, .releasing-table-container, .snkrsWeek-table-container, .myDraw-table-container, .popular-table-container { width: 100%;}
 
 /*서브 타이틀*/
-.sub-title { display: block; padding:0 0 15px 0; font-size:30px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; padding:0 0 15px 0; font-size:32px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -21,6 +21,7 @@ body {font-size:1em; line-weight:1.4}
 .desc-container span { display:inline-block; position:relative; }
 
 /* 전체보기 버튼 */
+.allReleasingButton { display:none; float:right; border:1px solid #191919; padding: 4px 8px; background-color:#191919; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
 .allButton { display:inline-block; float:right; border:1px solid #191919; padding: 4px 8px; background-color:#191919; color: white; font-size: 12px !important; margin-top: 5px; cursor: pointer; }
 
 /* 더보기 버튼 */
@@ -409,13 +410,13 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.todaysRelease-container, .releasing-container, .release-container, .hisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { padding:50px 0; }
 	
 	/* 제목 */
-	.sub-title { font-size:18px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
-	.desc-container { font-size:13px; padding:0 3% 15px 3%; }
+	.sub-title { font-size:22px; padding:0 4% 5px 4%; margin:0 0 5px 0; }
+	.desc-container { font-size:13px; padding:0 4% 15px 4%; }
 	
 	/* 전체보기 버튼 */
-	.allButton { padding:2px 6px; }
-	.allButton span { display:none; }
-	.allButton:after { content: '+'; }
+	.allReleasingButton { display:inline-block; }
+	.allReleasingButton, .allButton { padding:2px 6px; background-color:white; border:none; color:black; font-size:13px !important; margin-top:3px; }
+	.allReleasingButton:after, .allButton:after { content: ">"; padding-left:3px; }
 	
 	.releasing-container, .release-container, .released-container { margin-top:20px !important; }
 	.snkrsWeek-container { display:block; }

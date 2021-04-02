@@ -29,7 +29,7 @@
 <title>Main | SHOE INFO.</title>
 <link href="./css/board/main.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap" rel="stylesheet">
@@ -131,9 +131,9 @@
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 발매 중 라인업 </h4>
-<!-- 				<div class="allButton" onclick="location.href='#'"> -->
-<!-- 					<span> 전체보기 </span> -->
-<!-- 				</div> -->
+				<div class="allReleasingButton" onclick="location.href='./AllReleasingList.go'">
+					<span> 전체보기 </span>
+				</div>
 			</div>
 			
 			<div class="desc-container">
