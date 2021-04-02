@@ -152,7 +152,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 .shoeImg-container img { background-color:#f3f3f3; padding:4% 8% 0 8%; width:90%; }
 
 	/* phone 일때 국내 , 해외 카테고리 선택 박스 */
-	.phone-regionCate-container { padding:10px 3%; text-align:center; font-family:'Nanum Gothic', sans-serif; display:none; }
+	.phone-regionCate-container { padding:10px 4%; text-align:center; font-family:'Nanum Gothic', sans-serif; display:none; }
 	.regionCate-div { text-align:center; font-size:14px; margin:3% 0; display:inline-block; color:#777777; border:1px solid #e8e8e8; border-radius:20px; }
 	.regionCate-div span { margin:8px 20px; display:block; }
 	
@@ -418,24 +418,20 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.allReleasingButton, .allButton { padding:2px 6px; background-color:white; border:none; color:black; font-size:13px !important; margin-top:3px; }
 	.allReleasingButton:after, .allButton:after { content: ">"; padding-left:3px; }
 	
-	.releasing-container, .release-container, .released-container { margin-top:20px !important; }
+	.releasing-container, .release-container, .released-container { margin-top:20px !important; display:block; }
 	.snkrsWeek-container { display:block; }
 	
-	/* 발매 신발 박스 */
-	.mainSneaker-container { width:100%; margin:0; border:0; border-left:1px solid #cecece; border-top:1px solid #cecece; border-right:1px solid #cecece; }
-	.mainSneaker-container:last-child { border-bottom:1px solid #cecece; }
-	.mainSneaker-image, .mainSneakerShoeInfo-container { display:inline-block; float:left; }
-	.mainSneaker-image { width:25%; }
-	.mainSneaker-image img { display:table-cell; border-bottom:0; padding:20% 5% 8% 5%; }
-	.mainSneakerShoeInfo-container { width:75%; padding:3%; }
-	.mainSneaker-brandCountTxt { padding:1px 4px; font-size:13px; }
-	.mainSneakerShoeInfo-name { font-size:14px; min-height:30px; }
-	
-	
+	/* 메인페이지 - 발매 중 라인 업 */
+	.releasing-table-container { overflow-x:scroll; padding:0 4%; white-space:nowrap; }
+	.mainSneaker-container { width:50%; border:0; display:inline-block; margin-right:10px; float:unset; }
+	.mainSneaker-image img { border-bottom:0; }
+	.mainSneakerShoeInfo-container { padding:5% 2% 7% 2%; }
+	.mainSneakerShoeInfo-name { white-space:initial; }
+	.mainSneaker-brandCount { font-size:14px; margin-top:18px; }
+
 	/* 인기 제품 */
 	.popular-table-container { overflow-x:auto; white-space:nowrap; padding:2% 0; }
 	.popular-product { display:inline-block; float:none; width:25%; margin:0 0 0 3%; }
-	
 	
 	/* 오늘의 발매처 */
 	/* 표 */
@@ -478,13 +474,13 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 
 	/* 나이키코리아 snkrs */
 	.sub-title img { width:40px; height:25px; }
-	.snkrsSneaker-container { width:60%; margin-right:15px; }
+	.snkrsSneaker-container { width:50%; margin-right:15px; }
 	.dDay-status { padding:15px 12px; }
 	.dDay-status span { font-size:15px; padding:0 6px; }
 	.snkrsSneaker-container img { padding:65px 10px 10px 10px;  }
 	div.snkrs_date { font-size:18px; }
 	.snkrs_noRelease { font-size:14px; }
-	.snkrsWeek-table-container { padding:10px 3% 30px 3%; }
+	.snkrsWeek-table-container { padding:10px 4% 30px 4%; }
 	
 	
 	/* 회원 응모내역 리스트 */
@@ -502,7 +498,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.shoeinfo-container { margin-top:0 !important; padding-bottom:15px !important; }
 	.shoeImg-container, .shoeImg-container img { width:100%; }
 	.shoeinfo-container, .shoeDetailInfo-container { display:block; }
-	.shoeDetailInfo-container { width:100%; padding:2% 3%; margin-left:0; }
+	.shoeDetailInfo-container { width:100%; padding:2% 4%; margin-left:0; }
 	.shoeFullName_eng { font-size:17px; }
 	.shoeFullName_kr { font-size:14px; }
 	.shoeinfo-cateAns { font-size:13px; }

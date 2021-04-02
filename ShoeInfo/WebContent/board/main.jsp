@@ -221,7 +221,7 @@
 		</div>
 		
 		<!-- 인기제품 -->
-		<div class="popular-container">
+		<div class="popular-container" style="display:none;">
 			<div class="sub-title">	
 				<h4> 인기 제품 </h4>
 			</div>

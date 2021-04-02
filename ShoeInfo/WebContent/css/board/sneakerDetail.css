@@ -230,14 +230,14 @@ body { line-weight:1.4;}
 	.shoeImg-container, .shoeDetailInfo-container { display:block; }
 	.shoeImg-container { width:100%; }
 	.shoeImg-container img { width:100%; padding:10% 5%; }
-	.shoeDetailInfo-container { width:100%; padding:2% 3%; }
+	.shoeDetailInfo-container { width:100%; padding:2% 4%; }
 	.shoeFullName_eng { font-size:17px; }
 	.shoeFullName_kr { font-size:14px; }
 	.shoeDetailInfo-name { padding-bottom:20px; }
 	.shoeDetailInfo-subtitle p { font-size:14px; }
 	.shoeDetailInfo-content { font-size:13px; }
 	
-	.countryCate-container { padding:10px 3%; }
+	.countryCate-container { padding:10px 4%; }
 	.countryCate-container div { font-size:13px; padding:0; margin:1% 0; display:inline-block; }
 	.countryCate-container div span { margin:8px 12px; display:block; }
 	
@@ -248,7 +248,7 @@ body { line-weight:1.4;}
 	
 	.shoeDetailInfo-container { margin:0; }
 	
-	.sub-title { font-size:20px; padding:0 3% 15px 3%; }
+	.sub-title { font-size:20px; padding:0 4% 15px 4%; }
 	.sub-title span { font-size:15px !important; }
 	
 	/* 표 */
@@ -277,7 +277,7 @@ body { line-weight:1.4;}
 		
 	
 	/* 신발 추가하는 페이지 */
-	#addOnlineForm, #updateOnlineForm { padding:3%; }
+	#addOnlineForm, #updateOnlineForm { padding:4%; }
 	.category { padding-bottom:10px; }
 	#onlineM-radio-wrapper, #radio-wrapper { display:block; padding-bottom:10px; }
 	

@@ -139,8 +139,8 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-container { margin-top:20px !important; }
 
 	/* 제목 */
-	.sub-title { font-size:22px; padding:0 3% 5px 3%; margin:0 0 5px 0; }
-	.desc-container { font-size:13px; padding:0 3% 18px 3%; }
+	.sub-title { font-size:22px; padding:0 4% 5px 4%; margin:0 0 5px 0; }
+	.desc-container { font-size:13px; padding:0 4% 18px 4%; }
 	
 	/* 부제목 + 체크버튼 */
 	.desc-container span { display:block; padding-bottom:10px; }

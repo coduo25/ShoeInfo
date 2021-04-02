@@ -39,7 +39,7 @@
 /* 0 ~ 468px */
 @media screen and (max-width: 468px){
 	
-	#footer-wrapper { padding:0 3%; }
+	#footer-wrapper { padding:0 4%; }
 	.footer-nav span { display:block; padding-bottom:10px; }
 	.info { display:block; float:unset; padding-top:10px; }
 	.info span { display:inline-block !important; padding-left:0; }
