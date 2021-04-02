@@ -63,7 +63,7 @@ div.snkrs_time a { font-size:16px; color:#777 !important; }
 	
 	/* snkrs 발매 박스 */
 	.snkrsSneaker-container { width:48%; margin:0% 1% 3% 1%; }
-	div.snkrs_date { font-size:24px; }
+	div.snkrs_date { font-size:26px; }
 }
 
 /* 0 ~ 480px */
@@ -76,7 +76,7 @@ div.snkrs_time a { font-size:16px; color:#777 !important; }
 	.desc-container { font-size:13px; padding:0 4% 18px 4%; }
 	
 	.sub-title img { width:40px; height:25px; }
-	.snkrsSneaker-container { margin:2% 5% 4% 5%; width:90%; }
+	.snkrsSneaker-container { margin:2% 6% 10% 6%; width:88%; }
 	
 	.snkrsWeek-container { margin-top:20px !important; }
 }

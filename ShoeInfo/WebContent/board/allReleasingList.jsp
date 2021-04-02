@@ -25,7 +25,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <title>발매 중 | SHOE INFO.</title>
-<link href="./css/board/main.css" rel="stylesheet">
+<link href="./css/board/releaseSep.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">

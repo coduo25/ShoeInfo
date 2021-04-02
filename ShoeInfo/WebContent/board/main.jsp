@@ -904,13 +904,13 @@
 		</div>
 		
 		<!-- 발매 예정 리스트 -->
-		<div class="release-container" style="margin-bottom:0px !important; padding-bottom:0 !important;">
+		<div class="release-container" style="margin-bottom:50px !important; padding-bottom:0 !important;">
 			<div class="sub-title">	
 <!-- 			<div class="sub-title-wline"> -->
 				<h4> 발매 예정 라인업 </h4>
-<!-- 				<div class="allButton" onclick="location.href='./AllReleaseList.go'"> -->
-<!-- 					<span> 전체보기 </span> -->
-<!-- 				</div> -->
+				<div class="allButton" onclick="location.href='./AllReleaseList.go'">
+					<span> 전체보기 </span>
+				</div>
 			</div>
 			
 			<div class="desc-container">
@@ -941,20 +941,17 @@
 								<div class="mainSneakerShoeInfo-name">
 									<span> <%=release_sdto.getModel_name_kr()%> </span>
 								</div>
+								<!-- 발매처 횟수 -->
+								<div class="mainSneaker-brandCount2">
+									<span class="mainSneaker-brandCountTxt" style="border:1px solid #3e3e3e; background-color:#3e3e3e;">	
+										발매처 0
+									</span>
+								</div>
 							</div>
 						</a>
 					</div>
 				<% } } %>
-			</div>
-			<%
-				if(releaseSneakerList.size()>=11){
-			%>
-				<div class="moreBtn-container">
-					<span class="moreBtn" onclick="location.href='./AllReleaseList.go'">더보기</span>
-				</div>
-			<%
-				}
-			%>	
+			</div>	
 		</div>
 		
 		<jsp:include page="/include/rightSideBar.jsp" />
