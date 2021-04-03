@@ -119,6 +119,7 @@ body {font-size:1em; line-weight:1.4}
 	.mainSneaker-container { width:48%; border:0; display:inline-block; margin:0 1% 10% 1%; }
 	.mainSneaker-image img { border-bottom:0; }
 	.mainSneakerShoeInfo-container { padding:5% 2% 7% 2%; white-space:normal; }
+	.mainSneakerShoeInfo-name { font-size:14px; }
 	.mainSneaker-brandCount, .mainSneaker-brandCount2 { font-size:14px; }
 	.mainSneaker-brandCount2 { display:block; }
 

@@ -428,6 +428,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.mainSneaker-container { width:50%; border:0; display:inline-block; margin:0 10px 0 0; float:unset; }
 	.mainSneaker-image img { border-bottom:0; }
 	.mainSneakerShoeInfo-container { padding:5% 2% 7% 2%; white-space:normal; }
+	.mainSneakerShoeInfo-name { font-size:14px; }
 	.mainSneaker-brandCount, .mainSneaker-brandCount2 { font-size:14px; }
 	.mainSneaker-brandCount2 { display:block; }
 
@@ -485,15 +486,22 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	
 	
 	/* 회원 응모내역 리스트 */
+	.myDraw-table-container { padding:0 2%; }
 	.myDrawList-container { margin-top:20px !important; }
-	.myDraw-container { width:100%; margin:0; border:0; box-shadow:unset; border-left:1px solid #cecece;border-top:1px solid #cecece; border-right:1px solid #cecece; }
-	.myDraw-container:last-child { border-bottom:1px solid #cecece; }
-	.myDraw-image { width:25%; }
-	.myDraw-image img { display:table-cell; border-bottom:0; padding:20% 5% 8% 5%; }
-	.myDrawShoeInfo-container { width:75%; padding:3%; }
-	.myDraw-image, .myDrawShoeInfo-container { float:left; }
-	.myDrawShoeInfo-name { min-height:30px; font-weight:normal; }
-	.myDrawShoeInfo-countNum { font-size:13px; }
+	.myDraw-container { width:48%; border:0; display:inline-block; margin:0 1% 10% 1%; box-shadow:none; }
+	.myDraw-image img { border-bottom:0; }
+	.myDrawShoeInfo-container { padding:5% 2% 7% 2%; }
+	.myDrawShoeInfo-name { min-height:33px; }
+	
+	
+/* 	.myDraw-container { width:100%; margin:0; border:0; box-shadow:unset; border-left:1px solid #cecece;border-top:1px solid #cecece; border-right:1px solid #cecece; } */
+/* 	.myDraw-container:last-child { border-bottom:1px solid #cecece; } */
+/* 	.myDraw-image { width:25%; } */
+/* 	.myDraw-image img { display:table-cell; border-bottom:0; padding:20% 5% 8% 5%; } */
+/* 	.myDrawShoeInfo-container { width:75%; padding:3%; } */
+/* 	.myDraw-image, .myDrawShoeInfo-container { float:left; } */
+/* 	.myDrawShoeInfo-name { min-height:30px; font-weight:normal; } */
+/* 	.myDrawShoeInfo-countNum { font-size:13px; } */
 	
 	/* 회원 응모내역 디테일 */
 	.shoeinfo-container { margin-top:0 !important; padding-bottom:15px !important; }
