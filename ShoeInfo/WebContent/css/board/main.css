@@ -482,7 +482,7 @@ div.snkrs_time a { font-size:14px; color:#777 !important; }
 	.dDay-status span { font-size:15px; padding:0 6px; }
 	.snkrsSneaker-container img { padding:65px 10px 10px 10px;  }
 	.snkrs_noRelease { font-size:15px; }
-	.snkrsWeek-table-container { padding:50px 4%; }
+	.snkrsWeek-table-container { padding:10px 4% 30px 4%; } 
 	
 	
 	/* 회원 응모내역 리스트 */
