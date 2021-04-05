@@ -105,7 +105,6 @@ body {font-size:1em; line-weight:1.4}
 @media screen and (max-width: 480px){
 	
 	.todaysRelease-container, .releasing-container, .release-container, .thisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { padding:40px 0; }
-/* 	.todaysRelease-container, .releasing-container, .thisWeek-container, .snkrsWeek-container, .myDrawList-container { border-bottom: 10px solid #f6f6f6; } */
 	
 	/* 제목 */
 	.sub-title { font-size:22px; padding:0 4% 5px 4%; margin:0 0 5px 0; }
