@@ -5,7 +5,7 @@ body { line-weight:1.4;}
 .container { position: relative; font-family:'Nanum Gothic', sans-serif; }
 
 /*서브 타이틀*/
-.sub-title { display: block; padding:0 0 15px 0; font-size:24px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; padding:0 0 15px 0; font-size:27px; font-family: 'Nanum Gothic', sans-serif; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 
@@ -44,8 +44,18 @@ body { line-weight:1.4;}
 
 /* 지역별 발매처 리스트 */
 .releaseList-container { margin:0 0 300px 0; }
-
 .releaseList-countryDiv {  width:100%; padding:40px 0 70px 0; }
+
+.releaseCard { float:left; width:48%; margin:1% 1% 2% 1%; border:1px solid black; border-radius:10px; }
+
+.CardLogoBox, .CardDetailBox { display:block; }
+.CardLogoBox { width:100%; height:50%; overflow:hidden; }
+.Card_brandImg { width:100%; margin:0 auto; display:block; border-top-right-radius:10px; border-top-left-radius:10px; }
+
+
+
+
+/* 구 지역별 발매처 리스트 */
 .country-table table { width:100%; border-collapse:collapse; text-align:center; }
 .country-table table th { border-top:1px solid #222; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:15px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
 .country-table table td { padding:30px 10px; border-bottom:1px solid #c1c1c1; font-size:15px; color:#666; position:relative; }
@@ -178,7 +188,7 @@ body { line-weight:1.4;}
 	.shoeDetailInfo-subtitle p { font-size:15px; }
 	.shoeDetailInfo-subtitle { margin-bottom:20px; }
 	.shoeDetailInfo-content { margin-bottom:10px; }
-	.sub-title { font-size:22px; }
+	.sub-title { font-size:26px; }
 	/* 발매처 표 */
 	.release-status { font-size:14px; padding:3px 4px; }
 	.sneakerDetail-brandNameTxt span { font-size:15px; }
@@ -186,7 +196,7 @@ body { line-weight:1.4;}
 
 /* 0 ~ 768px */
 @media screen and (max-width: 768px){
-	.sub-title { font-size:20px; }
+	.sub-title { font-size:24px; }
 	
 	/* 신발 정보 디테일 */
 	.brandlogo_img { width:60px; height:60px; }

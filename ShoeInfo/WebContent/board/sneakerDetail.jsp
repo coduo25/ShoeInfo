@@ -271,7 +271,7 @@
 			%>
 				<div class="releaseList-countryDiv" id="releaseList-countryDiv-<%=countryName_kr%>">
 					<div class="sub-title">
-						<h4> <%=countryName_kr%> 발매처 <span style="font-weight:normal; font-size:16px; color:#666;">총 <%=countBrand%>건</span> </h4>
+						<h4> <%=countryName_kr%> 발매처 <span style="font-weight:normal; font-size:19px; color:#666;">총 <%=countBrand%>건</span> </h4>
 					</div>
 					
 					<!-- 국가별 테이블 -->
