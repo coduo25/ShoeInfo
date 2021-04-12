@@ -45,7 +45,7 @@ body {font-size:1em; line-weight:1.4}
 	
 	/* 모델 이름 + 발매처 횟수 */
 	.mainSneakerShoeInfo-container { width:100%; padding:4% 2% 7% 2%; }
-		.mainSneakerShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:38px; line-height:1.2em; cursor:pointer; }
+		.mainSneakerShoeInfo-name { display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; font-size:16px; min-height:38px; cursor:pointer; }
 		.mainSneaker-brandCount2 { display:none; }
 		.mainSneaker-brandCount, .mainSneaker-brandCount2 { font-size:15px; color:black; margin-top:15px; }
 		.mainSneaker-brandCountTxt { color:white; border:1px solid #58af58; background-color:#58af58; padding:3px 6px; border-radius:3px; }
