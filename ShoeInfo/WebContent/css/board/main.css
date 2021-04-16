@@ -409,7 +409,7 @@ div.snkrs_time a { font-size:15px; color:#777 !important; }
 @media screen and (max-width: 480px){
 	
 	.todaysRelease-container, .releasing-container, .release-container, .thisWeek-container, .snkrsWeek-container, .myDrawList-container , .popular-container { padding:40px 0; }
-	.todaysRelease-container, .releasing-container, .thisWeek-container, .snkrsWeek-container { border-bottom:5px solid #f6f6f6; }
+/* 	.todaysRelease-container, .releasing-container, .thisWeek-container, .snkrsWeek-container { border-bottom:5px solid #f6f6f6; } */
 	
 	/* 제목 */
 	.sub-title { font-size:22px; padding:0 4% 5px 4%; margin:0 0 5px 0; }
