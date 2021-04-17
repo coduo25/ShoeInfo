@@ -6,9 +6,9 @@
    auth="Container"
    type="javax.sql.DataSource"
    driverClassName="com.mysql.jdbc.Driver"
-   url="jdbc:mysql://203.245.44.74:3306/coduo25"
-   username="coduo25"
-   password="Park@7650!"
+   url="jdbc:mysql://210.114.6.195:3306/shoeinfo"
+   username="shoeinfo"
+   password="dhfpswl@7695!"
    maxActive="500"
    maxIdle="100"  
   />
