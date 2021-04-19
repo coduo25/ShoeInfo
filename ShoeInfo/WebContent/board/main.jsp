@@ -22,7 +22,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트, 국내 발매 정보 응모하기, 해외 발매 정보 응모하기, 나의 응모 현황 정리">
-<meta property="og:url" content="http://www.shoeinfo.co.kr">
+<meta property="og:url" content="https://www.shoeinfo.co.kr">
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=0, maximum-scale=1.0, width=device-width" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />

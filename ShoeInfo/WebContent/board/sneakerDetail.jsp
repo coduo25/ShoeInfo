@@ -15,11 +15,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
 <% 
 	//신발 기본 정보 리스트
 	SneakerDTO sdto = (SneakerDTO) request.getAttribute("sneakerDetail");
 %>
+
+<meta name="naver-site-verification" content="1f84b34b248bbb6ede2e4bc541314b75b85ad622" />
+<meta name="google-site-verification" content="uyV__fKW-YmjcHKhP2X068ZRP_lGPkqQrOP_hHaopq0" />
+<meta name="description" content="<%=sdto.getModel_name_kr()%>" />
+
+<meta property="og:type" content="website">
+<meta property="og:description" content="<%=sdto.getModel_name_kr()%>">
+<meta property="og:url" content="https://www.shoeinfo.co.kr">
+
 <title><%=sdto.getModel_name_kr()%> | SHOE INFO.</title>
 <link href="./css/board/sneakerDetail.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:600&display=swap" rel="stylesheet">

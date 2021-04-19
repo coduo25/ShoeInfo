@@ -1,4 +1,4 @@
-	<%@page import="net.member.db.MemberDrawDTO"%>
+<%@page import="net.member.db.MemberDrawDTO"%>
 <%@page import="net.brand.db.BrandDTO"%>
 <%@page import="net.online.db.OnlineDTO"%>
 <%@page import="java.io.IOException"%>
@@ -17,11 +17,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="naver-site-verification" content="1f84b34b248bbb6ede2e4bc541314b75b85ad622" />
 <meta name="google-site-verification" content="uyV__fKW-YmjcHKhP2X068ZRP_lGPkqQrOP_hHaopq0" />
-<meta name="description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트, 국내 발매 정보 응모하기, 해외 발매 정보 응모하기, 나의 응모 현황 정리" />
+<meta name="description" content="오늘 마감 예정이거나 진행 중인 발매처 라인업" />
 
 <meta property="og:type" content="website">
-<meta property="og:description" content="국내/해외 프리미엄 스니커즈 발매처 정리 사이트, 국내 발매 정보 응모하기, 해외 발매 정보 응모하기, 나의 응모 현황 정리">
-<meta property="og:url" content="http://www.shoeinfo.co.kr">
+<meta property="og:description" content="오늘 마감 예정이거나 진행 중인 발매처 라인업">
+<meta property="og:url" content="https://www.shoeinfo.co.kr">
 
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel="icon" type="image/png" href="./icon/favicon-48x48.png" />
