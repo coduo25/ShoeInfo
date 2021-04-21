@@ -286,6 +286,122 @@
 					
 					<!-- 국가별 테이블 -->
 					<div class="country-table">
+					
+						<%if(new_onlineList.isEmpty()) {%>
+							<div>
+								<span>온라인 발매 정보가 없습니다.</span>
+							</div>
+						<%} else { 
+							for(int i=0; i<new_onlineList.size(); i++){
+								OnlineDTO odto = (OnlineDTO) new_onlineList.get(i);
+								BrandDTO bdto = (BrandDTO) new_brandList.get(i);
+								
+								String online_start_date = "";
+								String online_start_time = "";
+								String online_end_date = "";
+								String online_end_time = "";
+								
+								if((odto.getOnline_start_date().isEmpty())){
+									online_start_date = "0000-00-00";
+								} else{
+									online_start_date = odto.getOnline_start_date();
+								}
+								
+								if((odto.getOnline_start_time().isEmpty())){
+									online_start_time = "24:00";
+								} else{
+									online_start_time = odto.getOnline_start_time();
+								}
+								
+								if((odto.getOnline_end_date().isEmpty())){
+									online_end_date = "0000-00-00";
+								} else{
+									online_end_date = odto.getOnline_end_date();
+								}
+								
+								if((odto.getOnline_end_time().isEmpty())){
+									online_end_time = "24:00";
+								} else{
+									online_end_time = odto.getOnline_end_time();
+								}
+								
+								//시작시간, 끝나는 시간 새로운 포맷으로 바꾸기
+								// 2020-04-18 10:00
+								Date original_Online_start_time = original_format.parse(online_start_date + " " + online_start_time);
+								Date original_Online_end_time = original_format.parse(online_end_date + " " + online_end_time);
+								// 04/18(E) 10:00
+								String new_Online_start_time = new_format.format(original_Online_start_time);
+								String new_Online_end_time = new_format.format(original_Online_end_time);
+								
+								//4월 18일 오전 10시
+								String newlist_Online_start_time = new_format2.format(original_Online_start_time);
+								String newlist_Online_end_time = new_format2.format(original_Online_end_time);
+								
+								// 04/18/2020 10:00
+								String count_Online_start_time = count_format.format(original_Online_start_time);
+								String count_Online_end_time = count_format.format(original_Online_end_time);
+								
+								// 04/18
+								String[] start_time_Arr = online_start_date.split("-");
+								String[] end_time_Arr = online_end_date.split("-");
+								int month_start = Integer.parseInt(start_time_Arr[1]);
+								int date_start = Integer.parseInt(start_time_Arr[2]);
+								int month_end = Integer.parseInt(end_time_Arr[1]);
+								int date_end = Integer.parseInt(end_time_Arr[2]);
+								
+								String new_date_start_time = month_start + "/" + date_start;
+								String new_date_end_time = month_end + "/" + date_end;
+								
+								int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
+								int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
+								
+								//남은시간 계산하기 위한 날짜데이터 (02/16/2021 10:00)
+								String count_todays_start_time = count_format.format(original_Online_start_time);
+								String count_todays_end_time = count_format.format(original_Online_end_time);
+						%>
+							<div class="releaseCard">
+								<!-- 발매처 이미지 박스 -->
+								<div class="CardLogoBox">
+									<!-- 상태 -->
+									<div>
+									
+									</div>
+									<!-- 발매처 이미지 -->
+									<div>
+										<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+											<img class="Card_brandImg" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
+											<span style="position:absolute; right:0; bottom:0;">
+												<img src="./countryflag_img_upload/<%=bdto.getCountry_flag()%>" class="countryflag">
+											</span> 
+										</a>
+									</div>
+									<!-- 국가 이미지 -->
+									<div>
+									
+									</div>
+								</div>
+								<!-- 발매처 내용 박스 -->
+								<div class="CardDetailBox">
+									<!-- 발매처 이름 -->
+									<div class="" id="">
+										<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+											<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>	
+										</a>
+									</div>
+									
+								</div>
+							</div>
+						<%} } %>
+						
+					
+					
+					
+					
+					
+					
+					
+					
+					
 						<table>
 							<tr>
 								<th style="width:70px"> 번호 </th>
