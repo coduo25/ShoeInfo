@@ -367,7 +367,7 @@
 									
 									</div>
 									<!-- 발매처 이미지 -->
-									<div>
+									<div class="Card_brandImgContainer">
 										<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 											<img class="Card_brandImg" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
 											<span style="position:absolute; right:0; bottom:0;">

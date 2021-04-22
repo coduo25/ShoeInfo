@@ -49,8 +49,9 @@ body { line-weight:1.4;}
 .releaseCard { float:left; width:48%; margin:1% 1% 2% 1%; border:1px solid black; border-radius:10px; }
 
 .CardLogoBox, .CardDetailBox { display:block; }
-.CardLogoBox { width:100%; height:50%; overflow:hidden; }
-.Card_brandImg { width:100%; margin:0 auto; display:block; border-top-right-radius:10px; border-top-left-radius:10px; }
+.CardLogoBox { width:100%; position:relative; }
+.Card_brandImgContainer { height:200px; display:block; position:relative; }
+.Card_brandImg { width:100%; margin:0 auto; display:block; position:absolute; }
 
 
 
