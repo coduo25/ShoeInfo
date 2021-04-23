@@ -360,14 +360,10 @@
 								String count_todays_end_time = count_format.format(original_Online_end_time);
 						%>
 							<div class="releaseCard">
-								<!-- 발매처 이미지 박스 -->
-								<div class="CardLogoBox">
-									<!-- 상태 -->
-									<div>
-									
-									</div>
-									<!-- 발매처 이미지 -->
-									<div class="Card_brandImgContainer">
+								<!-- 발매처 내용 -->
+								<div class="CardContent1">
+									<!-- 발매처 로고 -->
+									<div class="CardLogo">
 										<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 											<img class="Card_brandImg" src="./brand_img_upload/<%=bdto.getBrand_logo()%>">
 											<span style="position:absolute; right:0; bottom:0;">
@@ -375,21 +371,119 @@
 											</span> 
 										</a>
 									</div>
-									<!-- 국가 이미지 -->
-									<div>
-									
+									<!-- 발매처 내용 -->
+									<div class="CardContentList">
+										<div class="CardContentList-brandNameTxt">
+											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
+												<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>	
+											</a>
+										</div>
+										<div class="CardContentList-drawMethod">
+											<span>
+												<%if(odto.getOnline_method().contains("선착")) {%>
+													선착순 구매  <!-- color:#ff5722; -->
+												<%} else if(odto.getOnline_method().contains("드로우")) {%>
+													온라인응모
+													<%} else if(odto.getOnline_method().contains("이메일라플")) {%>
+													이메일응모
+												<%} else if(odto.getOnline_method().contains("인스타라플")) {%>
+													인스타그램 응모
+												<%} else if(odto.getOnline_method().contains("미정")) {%>
+													미정
+												<%} %>
+											</span>
+										</div>
+										<div class="CardContentList-payDeli" style="display:none;">
+											<!-- 결제 -->
+											<span>
+												<%if(odto.getOnline_method().contains("선착")) {%>
+													선착순 결제
+												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+													<%=odto.getBuy_method()%>
+												<%}%>
+											</span>
+											·
+											<!-- 배송 -->
+											<span>
+												<%if(odto.getOnline_method().contains("선착")) {%>
+													<%=odto.getDelivery_method()%>
+												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+													<%=odto.getDelivery_method()%>
+												<%}%>
+											</span>
+										</div>
 									</div>
 								</div>
-								<!-- 발매처 내용 박스 -->
-								<div class="CardDetailBox">
-									<!-- 발매처 이름 -->
-									<div class="" id="">
-										<a href="<%=odto.getOnline_link()%>" target="_blank"> 
-											<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>	
-										</a>
+								<!-- 발매처 시간정보 -->
+								<div class="CardContent2">
+									<!-- 결제 배송 -->
+									<div class="CardContent2-payDeli">
+										<div class="TimeCate">결제·배송</div>
+										<div class="TimeContent">
+											<!-- 결제 -->
+											<span>
+												<%if(odto.getOnline_method().contains("선착")) {%>
+													선착순 결제
+												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+													<%=odto.getBuy_method()%>
+												<%}%>
+											</span>
+											·
+											<!-- 배송 -->
+											<span>
+												<%if(odto.getOnline_method().contains("선착")) {%>
+													<%=odto.getDelivery_method()%>
+												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
+													<%=odto.getDelivery_method()%>
+												<%}%>
+											</span>
+										</div>
+									</div>
+									<!-- 응모/선착 시간 -->
+									<div class="CardContent2-drawTime">
+										<!-- 시간 -->
+										<%if(odto.getOnline_method().contains("선착")){%> 
+										<div class="TimeCate">선착 시간</div>
+										<!-- 선착순 구매 -->
+										<div class="TimeContent">
+											<!-- 최종 시작 시간이 정확하지 않으면 -->
+											<%if(odto.getOnline_start_date().isEmpty() || odto.getOnline_start_time().isEmpty()) {%>
+												공지예정
+											<%} else {%>
+												<%=newlist_Online_start_time%>
+											<%} %>
+										</div>
+										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
+										<div class="TimeCate">응모 시간</div>
+										<!-- 응모 --> 
+										<div class="TimeContent">
+											<!-- 최종 끝나는 시간이 정확하지 않으면 -->
+											<%if(odto.getOnline_end_date().isEmpty() || odto.getOnline_end_time().isEmpty()) {%>
+												공지예정
+											<%} else {%>
+												<%if(!odto.getOnline_start_date().isEmpty()) {%>
+													<%=newlist_Online_start_time%>
+												 <%}%>
+												<%=" ~ " + newlist_Online_end_time%>
+											<%} %>
+										</div>
+										<%}%>
+									</div>
+									
+									<!-- 발표시간 -->
+									<div class="CardContent2-releaseTime">
+										<%if(odto.getOnline_method().contains("선착")){%>
+											<div class="TimeCate">발표시간</div>
+											<div class="TimeContent">-</div>
+										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
+											<div class="TimeCate">발표시간</div>
+											<div class="TimeContent">0/00(-) 00:00, 테스트 </div>
+										<%}%>
 									</div>
 									
 								</div>
+								
+
 							</div>
 						<%} } %>
 						
@@ -403,7 +497,7 @@
 					
 					
 						<table>
-							<tr>
+							<tr style="display:none">
 								<th style="width:70px"> 번호 </th>
 								<th style="width:92px"> 상태 </th>
 								<th style="width:281px"> 발매처 </th>
@@ -483,7 +577,7 @@
 									String count_todays_start_time = count_format.format(original_Online_start_time);
 									String count_todays_end_time = count_format.format(original_Online_end_time);
 							%>
-							<tr class="sneakerDetail-tr" id="count_todays_status<%=countryName_eng%><%=i%>DetailTr">
+							<tr style="display:none" class="sneakerDetail-tr" id="count_todays_status<%=countryName_eng%><%=i%>DetailTr">
 								
 								<input type="hidden" id="brand_id<%=countryName_eng%><%=i%>" value="<%=bdto.getBrand_id()%>">
 								<input type="hidden" id="country_name<%=countryName_eng%><%=i%>" value="<%=bdto.getCountry_name()%>">

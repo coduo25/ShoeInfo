@@ -46,12 +46,22 @@ body { line-weight:1.4;}
 .releaseList-container { margin:0 0 300px 0; }
 .releaseList-countryDiv {  width:100%; padding:40px 0 70px 0; }
 
-.releaseCard { float:left; width:48%; margin:1% 1% 2% 1%; border:1px solid black; border-radius:10px; }
+.releaseCard { float:left; width:48%; margin:1% 1% 2% 1%; box-shadow:0px 1px 5px #44444433; border-radius:8px; padding:2.1%; }
 
-.CardLogoBox, .CardDetailBox { display:block; }
-.CardLogoBox { width:100%; position:relative; }
-.Card_brandImgContainer { height:200px; display:block; position:relative; }
-.Card_brandImg { width:100%; margin:0 auto; display:block; position:absolute; }
+.CardContent1 { display:flex; align-items:center; }
+.CardLogo, .CardContentList { display:inline-block; vertical-align:top; position:relative; }
+.CardContentList { padding-left:14px; }
+.CardContentList-brandNameTxt span { width:320px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:24px; margin-bottom:20px; white-space:nowrap;}
+.CardContentList-drawMethod { margin-bottom:12px; }
+.Card_brandImg { width:110px; height:110px; border: 1px solid #c0c0c0; border-radius: 5px; }
+.countryflag { border:1px solid #d4d4d4; width:35px; height:22px; }
+
+.CardContent2 { display:block; margin-top:15px; border-top:1px dotted #c9c9c9; padding-top:15px; }
+.TimeCate, .TimeContent { display:inline-block; }
+.TimeContent { float:right; }
+.CardContent2-payDeli, .CardContent2-drawTime, .CardContent2-releaseTime { display:block; margin-bottom:10px; }
+
+
 
 
 
@@ -70,7 +80,7 @@ body { line-weight:1.4;}
 	.brandLogoName { text-align:left !important; }
 	.sneakerDetail-logo, .sneakerDetail-brandName { display:inline-block; vertical-align:top; position:relative; }
 	.brandlogo_img { width:80px; height:80px; border:1px solid #c0c0c0; border-radius:5px; }
-	.countryflag { border:1px solid #d4d4d4; width:25px; height:16px; }
+	
 	.sneakerDetail-brandName { padding-left:12px; }
 	.sneakerDetail-brandNameTxt span { width:190px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:17px; margin-bottom:12px; white-space:nowrap; }
 	.phone-sneakerDetail-brandNameTxt { color:#1f1f1f; font-weight:bold; font-size:15px; padding:0 0 10px 0 !important; border-bottom:1px dotted #e6e6e6; }
