@@ -379,6 +379,7 @@
 											</a>
 										</div>
 										<div class="CardContentList-drawMethod">
+											<!-- 발매 방식 -->
 											<span>
 												<%if(odto.getOnline_method().contains("선착")) {%>
 													선착순 구매  <!-- color:#ff5722; -->
@@ -392,8 +393,7 @@
 													미정
 												<%} %>
 											</span>
-										</div>
-										<div class="CardContentList-payDeli" style="display:none;">
+											
 											<!-- 결제 -->
 											<span>
 												<%if(odto.getOnline_method().contains("선착")) {%>
@@ -402,7 +402,7 @@
 													<%=odto.getBuy_method()%>
 												<%}%>
 											</span>
-											·
+											
 											<!-- 배송 -->
 											<span>
 												<%if(odto.getOnline_method().contains("선착")) {%>
@@ -416,34 +416,11 @@
 								</div>
 								<!-- 발매처 시간정보 -->
 								<div class="CardContent2">
-									<!-- 결제 배송 -->
-									<div class="CardContent2-payDeli">
-										<div class="TimeCate">결제·배송</div>
-										<div class="TimeContent">
-											<!-- 결제 -->
-											<span>
-												<%if(odto.getOnline_method().contains("선착")) {%>
-													선착순 결제
-												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-													<%=odto.getBuy_method()%>
-												<%}%>
-											</span>
-											·
-											<!-- 배송 -->
-											<span>
-												<%if(odto.getOnline_method().contains("선착")) {%>
-													<%=odto.getDelivery_method()%>
-												<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
-													<%=odto.getDelivery_method()%>
-												<%}%>
-											</span>
-										</div>
-									</div>
 									<!-- 응모/선착 시간 -->
 									<div class="CardContent2-drawTime">
 										<!-- 시간 -->
 										<%if(odto.getOnline_method().contains("선착")){%> 
-										<div class="TimeCate">선착 시간</div>
+										<div class="TimeCate">- 선착시간</div>
 										<!-- 선착순 구매 -->
 										<div class="TimeContent">
 											<!-- 최종 시작 시간이 정확하지 않으면 -->
@@ -454,7 +431,7 @@
 											<%} %>
 										</div>
 										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
-										<div class="TimeCate">응모 시간</div>
+										<div class="TimeCate">- 응모시간</div>
 										<!-- 응모 --> 
 										<div class="TimeContent">
 											<!-- 최종 끝나는 시간이 정확하지 않으면 -->
@@ -473,10 +450,10 @@
 									<!-- 발표시간 -->
 									<div class="CardContent2-releaseTime">
 										<%if(odto.getOnline_method().contains("선착")){%>
-											<div class="TimeCate">발표시간</div>
+											<div class="TimeCate">- 발표시간</div>
 											<div class="TimeContent">-</div>
 										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
-											<div class="TimeCate">발표시간</div>
+											<div class="TimeCate">- 발표시간</div>
 											<div class="TimeContent">0/00(-) 00:00, 테스트 </div>
 										<%}%>
 									</div>
