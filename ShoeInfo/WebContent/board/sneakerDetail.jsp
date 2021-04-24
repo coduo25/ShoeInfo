@@ -362,30 +362,6 @@
 						%>
 							<div class="releaseCard">
 							
-								<!-- 진행상태 리본 -->
-								<div class="statusRibbon" style="display:none">
-									<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
-									<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">선착예정</span>
-									<!--  지금시간이 시작시간보다 전일때 -->
-									<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="-1">
-<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
-									<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
-<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
-									<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
-<!-- 											선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
-									<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#666;">종료</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
-									<%}%>
-								</div>
-							
 								<!-- 발매처 내용 -->
 								<div class="CardContent1">
 									<!-- 발매처 로고 -->
@@ -442,11 +418,37 @@
 								</div>
 								<!-- 발매처 시간정보 -->
 								<div class="CardContent2">
+									<!-- 진행 상태 -->
+									<div class="CardContent2-status">
+										<div class="Cate">진행상태</div>
+										<div class="Content">
+											<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
+											<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">선착예정</span>
+											<!--  지금시간이 시작시간보다 전일때 -->
+											<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="-1">
+		<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
+											<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
+		<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
+											<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
+		<!-- 											선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
+											<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
+												<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#666;">종료</span>
+												<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
+											<%}%>
+										</div>
+									</div>
 									<!-- 응모/선착 시간 -->
 									<div class="CardContent2-drawTime">
 										<!-- 시간 -->
 										<%if(odto.getOnline_method().contains("선착")){%> 
-										<div class="Cate">- 선착시간</div>
+										<div class="Cate">선착시간</div>
 										<!-- 선착순 구매 -->
 										<div class="Content">
 											<!-- 최종 시작 시간이 정확하지 않으면 -->
@@ -457,7 +459,7 @@
 											<%} %>
 										</div>
 										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
-										<div class="Cate">- 응모시간</div>
+										<div class="Cate">응모시간</div>
 										<!-- 응모 --> 
 										<div class="Content">
 											<!-- 최종 끝나는 시간이 정확하지 않으면 -->
@@ -476,37 +478,13 @@
 									<!-- 발표시간 -->
 									<div class="CardContent2-releaseTime">
 										<%if(odto.getOnline_method().contains("선착")){%>
-											<div class="Cate">- 발표시간</div>
+											<div class="Cate">발표시간</div>
 											<div class="Content">-</div>
 										<%}else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")){%>
-											<div class="Cate">- 발표시간</div>
-											<div class="Content">0/00(-) 00:00, 테스트 </div>
+											<div class="Cate">발표시간</div>
+											<div class="Content"><%=odto.getWinner_time()%></div>
 										<%}%>
 									</div>
-								</div>
-								
-								<!-- 진행 상태 정보 -->
-								<div>
-									<!-- 선착인데 지금시간이 시작시간보다 전일때 -->
-									<%if(odto.getOnline_method().contains("선착") && compare_w_start_result == -1) {%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">선착예정</span>
-									<!--  지금시간이 시작시간보다 전일때 -->
-									<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result == -1))){%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:black;">응모 전</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="-1">
-<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재할때)  -->
-									<%}else if(((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && !odto.getOnline_start_date().isEmpty()) && (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_start_result >= 0)) && ((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1)){%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
-<!-- 											응모인데 지금시간이 시작시간과 끝나는 시간 사이일때(시작시간이 존재하지 않을때)  -->
-									<%}else if((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result == -1) {%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#58af58;">응모 중</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="0">
-<!-- 											선착이든 응모이든 지금시간이 끝나는 시간보다 뒤일때 -->
-									<%} else if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-										<span id="phone-count_todays_status<%=countryName_eng%><%=i%>release-status" class="release-status" style="color:#666;">종료</span>
-										<input type="hidden" id="hidden_ing<%=countryName_eng%><%=i%>" value="1">
-									<%}%>
 								</div>
 								
 								<!-- 남은 시간 정보 -->
