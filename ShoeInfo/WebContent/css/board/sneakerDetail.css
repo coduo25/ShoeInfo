@@ -46,27 +46,75 @@ body { line-weight:1.4;}
 .releaseList-container { margin:0 0 300px 0; }
 .releaseList-countryDiv {  width:100%; padding:40px 0 70px 0; }
 
-.releaseCard { float:left; width:48%; margin:1% 1% 2% 1%; box-shadow:0px 1px 7px #44444433; border-radius:8px; padding:1rem 1.5rem; }
+.releaseCard { float:left; width:48%; margin:1% 1% 2% 1%; box-shadow:0px 1px 7px #4444444a; border-radius:8px; padding:1rem 1.5rem; position:relative; }
 
 .CardContent1 { display:flex; align-items:center; }
 .CardLogo { margin-right:1.2rem; 	}
 .CardLogo, .CardContentList { display:inline-block; vertical-align:top; position:relative; }
-.CardContentList-brandNameTxt span { width:320px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:24px; margin-bottom:20px; white-space:nowrap; }
-.CardContentList-drawMethod span { padding:.5em .75em; border-radius:.25rem; font-size:80%; background-color:#f6f6f6!important; font-weight:bold; margin-right:10px; }
-.Card_brandImg { width:110px; height:110px; border:1px solid #c0c0c0; border-radius:50%; }
+.CardContentList-brandNameTxt span { width:320px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:26px; margin-bottom:20px; white-space:nowrap; }
+.CardContentList-drawMethod span { padding:.5em .65em; border-radius:.25rem; font-size:82%; background-color:#f6f6f6!important; font-weight:bold; margin-right:10px; }
+.Card_brandImg { width:100px; height:100px; border:1px solid #c0c0c0; border-radius:50%; }
 .countryflag { border:1px solid #d4d4d4; width:35px; height:22px; }
 
 
 .CardContent2 { display:block; margin-top:15px; border-top:1px dotted #c9c9c9; padding-top:15px; }
-.TimeCate, .TimeContent { display:inline-block; }
-.TimeCate { margin-right:1.2rem; }
-.CardContent2-payDeli, .CardContent2-drawTime, .CardContent2-releaseTime { display:block; margin-bottom:10px; }
+.Cate, .Content { display:inline-block; }
+.Cate { margin-right:1.2rem; }
+.CardContent2-payDeli, .CardContent2-drawTime { display:block; margin-bottom:10px; }
+
+
+.CardContent2-1 { display:block; padding:30px 0; text-align:center; }
+.remain-time,.remain-time2 { font-weight:bold; font-family: 'Quicksand', sans-serif; font-size:16px; color: white; }
+.remain-time2:not(:last-child) { padding-right:3px; }
+.remain-time2 { margin-left:-1.5px; }
+.remainTimeBox { padding: 0.25rem 1rem; border: 1px solid #23272b; border-radius: 20px; background-color: #23272b; width:40%; display:block; margin:0 auto; white-space:nowrap; }
+.material-icons { font-size:16px !important; color:white !important; }
+
+
+.CardContent3 { display:block; }
+.card_link { width:74% }
+.card_checkBox { width:24%; }
+.card_link, .card_checkBox { display:inline-block; border:1px solid #d0d0d0; border-radius:0.3rem; background-color:transparent; vertical-align:middle; text-align:center; padding:0.5rem 1rem; cursor:pointer; }
+
+.statusRibbon {
+    background: #23272b;
+    height: 45px;
+    margin: 0 auto;
+    position: absolute;
+    width: 74px;
+    right:20px;
+    text-align:center;
+    vertical-align:middle;
+    line-height:45px;
+    top:0;	
+    font-weight:bold;
+}
+.statusRibbon:after,
+.statusRibbon:before {
+    content: '';
+    position: absolute;
+    border-top: 20px solid #23272b;
+    height: 0;
+    width: 0;
+    top: 100%;
+}
+.statusRibbon:after {
+    border-left: 50px solid transparent;
+    right: 0px;
+}
+.statusRibbon:before {
+    border-right: 50px solid transparent;
+    left: 0px;
+}
 
 
 
 
 
-
+/* 구 지역별 발매처 리스트 */
+/* 구 지역별 발매처 리스트 */
+/* 구 지역별 발매처 리스트 */
+/* 구 지역별 발매처 리스트 */
 /* 구 지역별 발매처 리스트 */
 .country-table table { width:100%; border-collapse:collapse; text-align:center; }
 .country-table table th { border-top:1px solid #222; padding:20px 10px; color:#222; background-color:#f9f9f9; font-size:15px; font-weight:normal; border-bottom:1px solid #c1c1c1; }
@@ -74,7 +122,7 @@ body { line-weight:1.4;}
 
 	/* 진행상태 */
 	.brandStatus { white-space:nowrap; }
-	.release-status { font-size:14px; padding:4px 5px; vertical-align:middle; color:white; font-weight:bold; border-radius:4px; }
+/* 	.release-status { font-size:14px; padding:4px 5px; vertical-align:middle; color:white; font-weight:bold; border-radius:4px; } */
 	
 	/* 발매처 */
 	.sneakerDetail-logoName-container { display:flex; align-items:center; }
@@ -98,7 +146,7 @@ body { line-weight:1.4;}
 	.releaseTime { line-height:25px; }
 	.sneakerDetail-releaseTime { margin-bottom:5px; white-space:nowrap; }
 	
-	.remain-time { font-weight:bold; font-family: 'Kelly Slab', cursive; font-size:18px; }
+	
 	.remainWarning-container { display:block; position:relative; color:black !important; }
 	.remainWarning-container span { display:none; font-weight:bold; font-size:12px; position:absolute; width:100%; text-align:center; }
 	.mob_count_label { display:none; }
