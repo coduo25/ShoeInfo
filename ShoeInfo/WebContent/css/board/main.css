@@ -107,7 +107,7 @@ body {font-size:1em; line-weight:1.4}
 	
 
 /* 이번주 snkrs 리스트 (메인페이지) ----------------------------------------------------------------------------- */
-.snkrsWeek-table-container { overflow-x:scroll; padding:20px 0 40px 0; white-space:nowrap; }
+.snkrsWeek-table-container { overflow-x:scroll; padding:20px 0 40px 0; white-space:nowrap; width:1080px; }
 .snkrsSneaker-container { display:inline-block; width:30%; margin-right:20px; }
 .snkrsSneaker-container img, .snkrsSneaker-container div { width:100%; }
 .snkrsSneaker-container img { padding:70px 10px 20px 10px; background-color:#f3f3f3; border:1px solid #e1e1e1; }
