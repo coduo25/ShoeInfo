@@ -1150,7 +1150,7 @@
 				   		});
 						//참여완료 표시 -> 참여전으로 바꾸기
 						$('#CardContent1'+country+number).css('opacity','1');
-						$('#CardContent2'+country+number).css('border-top','1px dotted #23272b7a');
+						$('#CardContent2'+country+number).css('border-top','1px dotted #23272b38');
 						$('#CardContent2-status'+country+number).css('opacity','1');
 						$('#CardContent2-drawTime'+country+number).css('opacity','1');
 						$('#CardContent2-1'+country+number).css('opacity','1');

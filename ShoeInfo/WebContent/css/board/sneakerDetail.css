@@ -58,7 +58,7 @@ body { line-weight:1.4;}
 .countryflag { border:1px solid #d4d4d4; width:35px; height:22px; }
 
 
-.CardContent2 { display:block; margin-top:10px; border-top:1px dotted #23272b7a; padding-top:10px; }
+.CardContent2 { display:block; margin-top:10px; border-top:1px dotted #23272b38; padding-top:10px; } 
 .Cate, .Content { display:inline-block; }
 .Cate { margin-right:1.2rem; }
 .Content { float:right; }
@@ -69,7 +69,7 @@ body { line-weight:1.4;}
 .remain-time,.remain-time2 { font-weight:bold; font-family:'Quicksand', sans-serif; font-size:18px; }
 .remain-time2:not(:last-child) { padding-right:3px; }
 .remain-time2 { margin-left:-1.5px; }
-.remainTimeBox { padding:0.2rem 1rem; border-radius:5px; background-color:white; width:40%; display:block; margin:0 auto; white-space:nowrap; }
+.remainTimeBox { padding:0.2rem 1rem; border-radius:5px; background-color:white; display:block; margin:0 auto; white-space:nowrap; }
 .material-icons { font-size:16px !important; color:white !important; }
 
 
@@ -175,8 +175,9 @@ body { line-weight:1.4;}
 	.shoeDetailInfo-content { margin-bottom:10px; }
 	.sub-title { font-size:26px; }
 	/* 발매처 표 */
-	.release-status { font-size:14px; padding:3px 4px; }
-	.sneakerDetail-brandNameTxt span { font-size:15px; }
+	.releaseCard { width:98%; margin:1.5% 1% 2% 1%; }
+	.Cate, .Content, .sub-title h4 { white-space:nowrap; }
+	
 }
 
 /* 0 ~ 768px */
@@ -192,20 +193,6 @@ body { line-weight:1.4;}
 	.countryCate-container { white-space:nowrap; overflow-x:auto; }
 	.countryCate-container div { font-size:15px; padding:6px 26px; }
 	
-	/* 발매처 리스트 */
-/* 	.country-table th { display:none; } */
-	.country-table th:nth-child(1) { display:none; }
-	.country-table th:nth-child(5) { display:none; }
-	.brandNum, .payAnddel { display:none; }
-	
-		/* 추가 정보 나타내기 */
-		.mob-sneakerDetail { display:block; margin-top:7px; }
-
-		/* 응모시간 없애고 발매시간 : : : 으로 바꾸기 */
-/* 		.sneakerDetail-releaseTime { display:none; } */
-		.pc_count_label { display:none !important; }
-		.mob_count_label { display:inline-block !important; font-size:14px; font-weight:bold; vertical-align: top; }
-		.mob_clock { display:inline-block !important; padding-right:5px; }
 		
 	/* 신발 추가하는 페이지 */
 	.addContent { width:100%; }
@@ -237,40 +224,29 @@ body { line-weight:1.4;}
 	.countryCate-container div span { margin:8px 12px; display:block; }
 	
 	.sneakerDetail-brandNameTxt span { width:unset; }
-/* 	.country-table th:nth-child(1), .brandNum { display:table-cell; width:50px !important; } */
-	.country-table th:nth-child(2), .country-table th:nth-child(4), .country-table th:nth-child(5), .country-table th:nth-child(6) { display:none; }
-	.brandStatus, .releaseTime, .payAnddel, .links { display:none; }
 	
 	.shoeDetailInfo-container { margin:0; }
 	
-	.sub-title { font-size:20px; padding:0 4% 15px 4%; }
-	.sub-title span { font-size:15px !important; }
+	.sub-title { font-size:22px; padding:0 4% 15px 4%; }
+	.sub-title span { font-size:16px !important; }
+
+	/* 발매처 카드 */
+	.releaseCard { width:94%; margin:1.5% 3% 5%; padding:1rem; }
 	
-	/* 표 */
-	.country-table table th { padding:12px 0; font-size:14px; }
-	.country-table table td { padding:25px 6%; }
-	.brandlogo_img { width:70px; height:70px; }
-	.sneakerDetail-logoName-container { display:block; border-bottom:1px dotted #e6e6e6; padding-bottom:10px; }
-	.sneakerDetail-logo, .sneakerDetail-brandName { vertical-align:middle; }
-	.sneakerDetail-brandName { padding-left:10px; }
-	.sneakerDetail-brandNameTxt { margin-bottom:8px; }  
-	.sneakerDetail-releaseMethod span, .mob-sneakerDetail span { font-size:13px; }
-	.sneakerDetail-logo { margin:0 auto; }
-	.phone-release-time, .phone-release-status { text-align:left; }
-	.sneakerDetail-brandNameTxt span { font-size:16px; margin-bottom:10px; }
+	.CardContent1 { display:table-caption; text-align:center; }
+	.Card_brandImg { width:70px; height:70px; }
+	.countryflag { width:32px; height:20px; }
+	.CardLogo { margin-right:1rem; }
+	.CardContentList-brandNameTxt span { font-size:18px; margin-bottom:10px; }
+	.CardContentList-drawMethod span { font-size:13px; padding:.5em .45em; }
 	
-		/* 	추가 정보 on */
-		.mob-sneakerDetail { margin-top:5px; }
-		.phone-sneakerDetail { display:block; text-align:center; }
-		.release-status { font-size:13px !important; padding:0; font-weight:normal !important; vertical-align:unset; }
-		.remain-time, .phone-remain-time, .mob_count_label { font-size:18px; }
-		.phone-remain-time { padding:15px 0 10px 0; }
-		
-		.remainWarning-container { margin:4px 0 9px 0 !important; }
-		.remainWarning-container span { position:unset; }
-		.direct-box, .editButton { font-size:13px; padding:3px 0; }
-		
+	.CardContent2 { font-size:13px; }
+	.remain-time, .remain-time2 { font-size:15px; letter-spacing:-0.5px; }
+	.remain-time2:not(:last-child) { padding-right:1px; }
 	
+	.CardContent3 { font-size:15px; }
+	.card_link, .card_checkBox { padding:0.4rem 1rem; }
+
 	/* 신발 추가하는 페이지 */
 	#addOnlineForm, #updateOnlineForm { padding:4%; }
 	.category { padding-bottom:10px; }
