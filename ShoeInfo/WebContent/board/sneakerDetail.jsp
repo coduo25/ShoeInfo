@@ -193,28 +193,6 @@
 			</div>
 		</div>
 		
-		<!-- 발매처 카테고리 -->
-		<div class="countryCate-container">
-			<div class="countryCate-div" id="countryCate-전체" style="color:black; border:1px solid black;">
-				<span class="countryCate-span" id="countryCateSpan-전체" style="color:black; font-weight:bold;">전체(<%=onlineList_kr.size()+onlineList_asia.size()+onlineList_america.size()+onlineList_europe.size()+onlineList_etc.size()%>)</span>
-			</div>
-			<div class="countryCate-div" id="countryCate-한국">
-				<span class="countryCate-span" id="countryCateSpan-한국">한국(<%=onlineList_kr.size()%>)</span>
-			</div>
-			<div class="countryCate-div" id="countryCate-아시아">
-				<span class="countryCate-span" id="countryCateSpan-아시아">아시아(<%=onlineList_asia.size()%>)</span>
-			</div>
-			<div class="countryCate-div" id="countryCate-북미">
-				<span class="countryCate-span" id="countryCateSpan-북미">북미(<%=onlineList_america.size()%>)</span>
-			</div>
-			<div class="countryCate-div" id="countryCate-유럽">
-				<span class="countryCate-span" id="countryCateSpan-유럽">유럽(<%=onlineList_europe.size()%>)</span>
-			</div>
-			<div class="countryCate-div" id="countryCate-기타">
-				<span class="countryCate-span" id="countryCateSpan-기타">기타(<%=onlineList_etc.size()%>)</span>
-			</div>
-		</div>
-		
 		<!-- 중간 광고 970x90 -->
 		<div class="betweenAds-container">
 			<div class="betweenAds-box">
@@ -245,7 +223,7 @@
 			</div>
 		</div>
 		
-		<!-- Phone - 중간 광고 320x50 -->
+		<!-- Phone - 중간 광고 320x100 -->
 		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
 			<div class="betweenAdsPhone-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -257,6 +235,28 @@
 				<script>
 				     (adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
+			</div>
+		</div>
+		
+		<!-- 발매처 카테고리 -->
+		<div class="countryCate-container">
+			<div class="countryCate-div" id="countryCate-전체" style="color:black; border:1px solid black;">
+				<span class="countryCate-span" id="countryCateSpan-전체" style="color:black; font-weight:bold;">전체(<%=onlineList_kr.size()+onlineList_asia.size()+onlineList_america.size()+onlineList_europe.size()+onlineList_etc.size()%>)</span>
+			</div>
+			<div class="countryCate-div" id="countryCate-한국">
+				<span class="countryCate-span" id="countryCateSpan-한국">한국(<%=onlineList_kr.size()%>)</span>
+			</div>
+			<div class="countryCate-div" id="countryCate-아시아">
+				<span class="countryCate-span" id="countryCateSpan-아시아">아시아(<%=onlineList_asia.size()%>)</span>
+			</div>
+			<div class="countryCate-div" id="countryCate-북미">
+				<span class="countryCate-span" id="countryCateSpan-북미">북미(<%=onlineList_america.size()%>)</span>
+			</div>
+			<div class="countryCate-div" id="countryCate-유럽">
+				<span class="countryCate-span" id="countryCateSpan-유럽">유럽(<%=onlineList_europe.size()%>)</span>
+			</div>
+			<div class="countryCate-div" id="countryCate-기타">
+				<span class="countryCate-span" id="countryCateSpan-기타">기타(<%=onlineList_etc.size()%>)</span>
 			</div>
 		</div>
 	
