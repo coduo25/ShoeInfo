@@ -421,7 +421,8 @@ div.snkrs_time a { font-size:15px; color:#777 !important; }
 	.allReleasingButton, .allButton { padding:2px 6px; background-color:white; border:none; color:black; font-size:13px !important; margin-top:3px; }
 	.allReleasingButton:after, .allButton:after { content: ">"; padding-left:3px; }
 	
-	.releasing-container, .release-container, .released-container { margin-top:20px !important; display:block; }
+	.releasing-container { margin-top:40px !important; display:block; }
+	.release-container, .released-container { margin-top:20px !important; display:block; }
 	.snkrsWeek-container { display:block; }
 	
 	/* 메인페이지 - 발매 중 라인 업 */

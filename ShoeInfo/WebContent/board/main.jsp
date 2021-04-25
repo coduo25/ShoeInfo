@@ -109,21 +109,6 @@
 				</script>
 			</div>
 		</div>
-		
-		<!-- Phone - 중간 광고 320x50 -->
-		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
-			<div class="betweenAdsPhone-box">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Phone - 중간 가로 320x50 -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:320px;height:50px"
-				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="7050400956"></ins>
-				<script>
-				     (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		</div>
 
 		<!-- 발매 중 리스트 -->
 		<div class="releasing-container" style="margin-top:40px; padding-top:0 !important;">

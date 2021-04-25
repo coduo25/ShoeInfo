@@ -249,11 +249,11 @@
 		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
 			<div class="betweenAdsPhone-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Phone - 중간 가로 320x50 -->
+				<!-- Phone - 중간 광고 320x100 -->
 				<ins class="adsbygoogle"
-				     style="display:inline-block;width:320px;height:50px"
+				     style="display:inline-block;width:320px;height:100px"
 				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="7050400956"></ins>
+				     data-ad-slot="6612536818"></ins>
 				<script>
 				     (adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
@@ -363,6 +363,8 @@
 								String count_todays_end_time = count_format.format(original_Online_end_time);
 						%>
 							<div class="releaseCard" id="count_todays_status<%=countryName_eng%><%=i%>DetailCard">
+								<input type="hidden" id="brand_id<%=countryName_eng%><%=i%>" value="<%=bdto.getBrand_id()%>">
+								<input type="hidden" id="country_name<%=countryName_eng%><%=i%>" value="<%=bdto.getCountry_name()%>">
 							
 								<%if(usr_position.equals("admin")){%>
 									<!-- 해당 브랜드 정보 삭제하기 (관리자) -->
@@ -388,7 +390,8 @@
 									</div>
 									<!-- 발매처 내용 -->
 									<div class="CardContentList">
-										<div class="CardContentList-brandNameTxt">
+										<!-- 발매처 이름 -->
+										<div class="CardContentList-brandNameTxt" id="count_todays_status<%=countryName_eng%><%=i%>brandName">
 											<a href="<%=odto.getOnline_link()%>" target="_blank"> 
 												<span style="<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))) {%>text-decoration:line-through; text-decoration-thickness:2px;<%}%>"><%=bdto.getBrand_name()%> <i class="fas fa-external-link-alt"></i></span>	
 											</a>

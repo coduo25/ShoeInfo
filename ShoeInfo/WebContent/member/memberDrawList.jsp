@@ -74,14 +74,14 @@
 		</div>
 		
 		<!-- Phone - 중간 광고 320x50 -->
-		<div class="betweenAdsPhone-container" style="display:none; margin-top:20px;">
+		<div class="betweenAdsPhone-container" style="display:none; margin-top:30px;">
 			<div class="betweenAdsPhone-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Phone - 중간 가로 320x50 -->
+				<!-- Phone - 중간 광고 320x100 -->
 				<ins class="adsbygoogle"
-				     style="display:inline-block;width:320px;height:50px"
+				     style="display:inline-block;width:320px;height:100px"
 				     data-ad-client="ca-pub-8228533393025739"
-				     data-ad-slot="7050400956"></ins>
+				     data-ad-slot="6612536818"></ins>
 				<script>
 				     (adsbygoogle = window.adsbygoogle || []).push({});
 				</script>

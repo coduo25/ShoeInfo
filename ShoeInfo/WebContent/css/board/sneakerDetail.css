@@ -47,13 +47,14 @@ body { line-weight:1.4;}
 .releaseList-container { margin:0 0 300px 0; }
 .releaseList-countryDiv {  width:100%; padding:40px 0 70px 0; float:left; }
 
-.releaseCard { float:left; width:47%; margin:1.5% 3% 2% 0; box-shadow:0px 1px 7px #4444444a; border-radius:8px; padding:1.2rem 1.5rem; position:relative; }
+.releaseCard { float:left; width:47%; margin:1.5% 3% 2% 0; box-shadow:0px 1px 7px #44444487; border-radius:8px; padding:1.2rem 1.5rem; position:relative; }
 
 .CardContent1 { display:flex; align-items:center; }
 .CardLogo { margin-right:1.4rem; 	}
 .CardLogo, .CardContentList { display:inline-block; vertical-align:top; position:relative; }
 .CardContentList-brandNameTxt span { width:320px; font-weight:bold; color:#121212; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; overflow:hidden; -webkit-line-clamp:1; -webkit-box-orient:vertical; font-size:24px; margin-bottom:20px; white-space:nowrap; }
-.CardContentList-drawMethod span { padding:.5em .65em; border-radius:.25rem; font-size:82%; background-color:#f6f6f6!important; font-weight:bold; margin-right:10px; }
+.CardContentList-drawMethod span { padding:.5em .65em; border-radius:.25rem; font-size:82%; background-color:#f6f6f6!important; font-weight:bold; }
+.CardContentList-drawMethod span:not(:last-child) { margin-right:10px; }
 .Card_brandImg { width:90px; height:90px; border:1px solid #c0c0c0; border-radius:50%; }
 .countryflag { border:1px solid #d4d4d4; width:35px; height:22px; }
 
@@ -62,7 +63,7 @@ body { line-weight:1.4;}
 .Cate, .Content { display:inline-block; }
 .Cate { margin-right:1.2rem; }
 .Content { float:right; }
-.CardContent2-status, .CardContent2-payDeli, .CardContent2-drawTime { display:block; margin-bottom:10px; }
+.CardContent2-status, .CardContent2-drawTime { display:block; margin-bottom:10px; }
 
 
 .CardContent2-1 { display:block; padding:15px 0; text-align:center; }
@@ -227,25 +228,29 @@ body { line-weight:1.4;}
 	
 	.shoeDetailInfo-container { margin:0; }
 	
-	.sub-title { font-size:22px; padding:0 4% 15px 4%; }
+	.sub-title { font-size:26px; padding:0 4% 15px 4%; }
 	.sub-title span { font-size:16px !important; }
 
 	/* 발매처 카드 */
-	.releaseCard { width:94%; margin:1.5% 3% 5%; padding:1rem; }
+	.releaseCard { width:92%; margin:3% 4% 5%; padding:1rem; }
 	
 	.CardContent1 { display:table-caption; text-align:center; }
-	.Card_brandImg { width:70px; height:70px; }
-	.countryflag { width:32px; height:20px; }
+	.Card_brandImg { width:60px; height:60px; border-radius:10px; border:1px solid #dedede; }
+	.countryflag { width:30px; height:18px; }
 	.CardLogo { margin-right:1rem; }
-	.CardContentList-brandNameTxt span { font-size:18px; margin-bottom:10px; }
-	.CardContentList-drawMethod span { font-size:13px; padding:.5em .45em; }
+	.CardContentList-brandNameTxt span { font-size:16px; margin:7px 0 15px 0; }
+	.CardContentList-drawMethod span { font-size:13px; padding:.5em .6em; }
 	
-	.CardContent2 { font-size:13px; }
+	.CardContent2 { font-size:13px; margin-top:15px; }
+	.CardContent2-status, .CardContent2-drawTime { margin-bottom:8px; }
 	.remain-time, .remain-time2 { font-size:15px; letter-spacing:-0.5px; }
 	.remain-time2:not(:last-child) { padding-right:1px; }
+	.remainTimeBox { padding:0; }
 	
 	.CardContent3 { font-size:15px; }
 	.card_link, .card_checkBox { padding:0.4rem 1rem; }
+	
+	.releasedDropDown, .releasedDropUp { border-bottom:0 !important; }
 
 	/* 신발 추가하는 페이지 */
 	#addOnlineForm, #updateOnlineForm { padding:4%; }
