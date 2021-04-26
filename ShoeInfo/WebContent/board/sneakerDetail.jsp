@@ -194,7 +194,7 @@
 		</div>
 		
 		<!-- 중간 광고 970x90 -->
-		<div class="betweenAds-container">
+		<div class="betweenAds-container" style="padding:15px 0;">
 			<div class="betweenAds-box">
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<!-- PC - 중간 가로 970x90 -->

@@ -10,8 +10,14 @@ body {font-size:1em; line-weight:1.4}
 .todaysRelease-container { display: table; width: 100%; box-sizing: border-box; margin:100px 0; font-family: 'Nanum Gothic', sans-serif; }
 .todays-table-container { width: 100%;}
 
+/* 카테고리 박스 */
+.Cate-container { padding:20px 0; display:block; text-align:center; font-family:'Nanum Gothic', sans-serif; }
+.Cate-div { text-align:center; font-size:15px; display:inline-block; color:#777777; border:1px solid #e8e8e8; border-radius:20px; }
+.Cate-div:not(:last-child) { margin-right:10px; }
+.Cate-div span { margin:8px 20px; display:block; }
+
 /*서브 타이틀*/
-.sub-title { display: block; margin:0 0 15px 0; font-size:32px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; margin:0 0 15px 0; font-size:40px; font-family:'Nanum Gothic', sans-serif; text-align:center; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -20,7 +26,7 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* 오늘의 발매 리스트 */
-.todaysRow { display:flex; width:100%; position:relative; padding:30px 15px; text-align:center; align-items:center; }
+.todaysRow { display:flex; width:100%; position:relative; padding:20px 15px; text-align:center; align-items:center; }
 .todaysRow:not(:last-child) { border-bottom:1px solid #cccccc; }
 .todaysBrandPart { display:inline-block; width:33.3%; }
 .todaysBrandPart2 { display:inline-block; width:33.3%}
@@ -49,7 +55,7 @@ body {font-size:1em; line-weight:1.4}
 .card_checkBox { width:38%; margin-left:1%; }
 .card_link { border:1px solid #23272b; background-color:#23272b; color:white; }
 .card_checkBox { border:1px solid #d0d0d0; background-color:white; }
-.card_link, .card_checkBox { display:inline-block; border-radius:20px; vertical-align:middle; text-align:center; padding:0.3rem 1rem; cursor:pointer; }
+.card_link, .card_checkBox { display:inline-block; border-radius:20px; vertical-align:middle; text-align:center; padding:0.4rem 1rem; cursor:pointer; }
 
 
 

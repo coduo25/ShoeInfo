@@ -113,7 +113,7 @@
 				<h4> 오늘의 발매처 </h4>
 			</div>
 			
-			<div class="desc-container">
+			<div class="desc-container" style="display:none;">
 				<span style="float:left;"> 오늘 마감 예정이거나 진행 중인 발매처 </span> 
 				
 				<span style="padding-left:30px; float:right;"> 
@@ -125,6 +125,26 @@
 					<input class="cate_checkbox" type="checkbox" id="todays_kr" name="todays_kr"> 
 					<label for="todays_kr"> 국내 발매처만 보기 </label> 
 				</span>
+			</div>
+			
+			<!-- 국내/해외/마감 카테고리 박스 -->
+			<div class="Cate-container">
+				<!-- 모두보기 -->
+				<div class="Cate-div" id="Cate-모두" style="color:white; border:1px solid black; background-color:black; font-weight:bold; margin-right:3px;">
+					<span>전체보기</span>
+				</div>
+				<!-- 국내 -->
+				<div class="Cate-div" id="Cate-국내">
+					<span>국내</span>
+				</div>
+				<!-- 해외 -->
+				<div class="Cate-div" id="Cate-국내">
+					<span>해외</span>
+				</div>
+				<!-- 마감포함 -->
+				<div class="Cate-div" id="Cate-국내">
+					<span>마감포함</span>
+				</div>
 			</div>
 			
 			<div class="todays-table-container">
