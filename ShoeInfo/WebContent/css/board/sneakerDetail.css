@@ -61,7 +61,7 @@ body { line-weight:1.4;}
 
 .CardContent2 { display:block; margin-top:10px; border-top:1px dotted #23272b38; padding-top:10px; } 
 .Cate, .Content { display:inline-block; }
-.Cate { margin-right:1.2rem; }
+.Cate { margin-right:1.2rem; font-weight:bold; }
 .Content { float:right; }
 .CardContent2-status, .CardContent2-drawTime { display:block; margin-bottom:10px; }
 
@@ -80,8 +80,6 @@ body { line-weight:1.4;}
 .card_link { border:1px solid #23272b; background-color:#23272b; color:white; }
 .card_checkBox, .card_checkBox2 { border:1px solid #d0d0d0; background-color:white; }
 .card_link, .card_checkBox { display:inline-block; border-radius:20px; vertical-align:middle; text-align:center; padding:0.5rem 1rem; cursor:pointer; }
-
-
 
 
 

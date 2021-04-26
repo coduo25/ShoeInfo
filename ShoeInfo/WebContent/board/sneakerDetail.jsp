@@ -585,7 +585,7 @@
 									<!-- 링크박스 -->
 									<span id="card-link<%=countryName_eng%><%=i%>" style="<%if(userDrawBrandList.contains(bdto.getBrand_id())){%>opacity:0.3;<%}%>">
 										<%if((odto.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-											<div id="count_todays_status<%=countryName_eng%><%=i%>linkBtn" class="card_link" style="border:none; background-color:#f1f1f1; color:rgb(196 196 196);">
+											<div id="count_todays_status<%=countryName_eng%><%=i%>linkBtn" class="card_link" style="border:1px solid #f1f1f1; background-color:#f1f1f1; color:rgb(196 196 196);">
 												<span class="direct-link-text" id="count_todays_status<%=countryName_eng%><%=i%>linkBtnText">종료</span>
 											</div>
 										<%}else {%>
@@ -768,7 +768,7 @@
 
 				//응모링크 또는 선착링크 클릭 못하게 + disable 디자인
 				document.getElementById(statusId+'linkBtnText').textContent = '종료';
-				$('#'+statusId+'linkBtn').css({"border":"none", "background-color":"#f1f1f1", "color":"rgb(196 196 196)"});
+				$('#'+statusId+'linkBtn').css({"border":"1px solid #f1f1f1", "background-color":"#f1f1f1", "color":"rgb(196 196 196)"});
 				$('#'+statusId+'linkBtn').removeAttr('onclick');
 				
 				//statusId에서 숫자만 뺀 문자열

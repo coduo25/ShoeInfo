@@ -185,7 +185,12 @@
 						int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
 						int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
 				%>
-					<div class="todaysRow">
+					<div class="todaysRow"
+					<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
+						style="display:none;"
+					<%} else {%> 
+						
+					<%}%>>
 						<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 						<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 						
@@ -224,7 +229,7 @@
 										미정
 									<%} %>
 								</span>
-								·
+								<span>·</span>
 								<span>
 									<%if(odto_todays.getOnline_method().contains("선착")) {%>
 										선착순 구매
@@ -232,7 +237,7 @@
 										<%=odto_todays.getBuy_method()%>
 									<%}%>
 								</span>
-								·
+								<span>·</span>
 								<span>
 									<%if(odto_todays.getOnline_method().contains("선착")) {%>
 										<%=odto_todays.getDelivery_method()%>
@@ -378,7 +383,7 @@
 							<div class="todayslinks">
 								
 								<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-									<div id="count_todays_status<%=i%>linkBtn" class="card_link" style="border:none; background-color:#f1f1f1; color:rgb(196 196 196);">
+									<div id="count_todays_status<%=i%>linkBtn" class="card_link" style="border:1px solid #f1f1f1; background-color:#f1f1f1; color:rgb(196 196 196);">
 										<span class="direct-link-text" id="count_todays_status<%=i%>linkBtnText">종료</span>
 									</div>
 								<%}else {%>
@@ -1055,7 +1060,7 @@
 				//임박표시 OFF
 				$('#'+statusId+'label').css("display", "none");
 				//응모링크 클릭 못하게+disable 디자인
-				$('#'+statusId+'linkBtn').css({"border":"none", "background-color":"#f1f1f1", "color":"rgb(196 196 196)"});
+				$('#'+statusId+'linkBtn').css({"border":"1px solid #f1f1f1", "background-color":"#f1f1f1", "color":"rgb(196 196 196)"});
 				$('#'+statusId+'linkBtn').removeAttr('onclick');
 				
 				//임박표시 OFF
