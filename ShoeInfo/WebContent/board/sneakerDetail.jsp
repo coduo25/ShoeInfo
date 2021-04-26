@@ -504,12 +504,13 @@
 									</div>
 								</div>
 								
+								<input type="hidden" id="modi_modelStylecode-<%=countryName_eng%><%=i%>" value="<%=sdto.getModel_stylecode()%>">
+								<input type="hidden" id="modi_brandId-<%=countryName_eng%><%=i%>" value="<%=bdto.getBrand_id()%>">
+								
 								<%if(usr_position.equals("admin")){%>
 									<!-- 발매처 정보 수정하기 (관리자) -->
 									<div class="edit-container" id="edit-container-<%=countryName_eng%><%=i%>" style="margin-top:10px; text-align:center;">
-										<div>
-											<span><i class="fas fa-edit"></i></span>
-										</div>
+										<span><i class="fas fa-edit"></i></span>
 									</div>
 								<%}%>
 								
@@ -1201,8 +1202,6 @@
 			var splitArray = grid_editID.split('-');
  			// 제일 마지막 kr1 만 가지고 오기
 			var lastElement = splitArray[splitArray.length - 1];
- 			
-//  			var writer = $('#writer-' + lastElement).val();
  			
 			//로그인 체크
 			if($(".login_user").val() == "" || $(".login_user").val() == "undefined") {

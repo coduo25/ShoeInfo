@@ -130,7 +130,7 @@
 			<!-- 국내/해외/마감 카테고리 박스 -->
 			<div class="Cate-container">
 				<!-- 모두보기 -->
-				<div class="Cate-div" id="Cate-모두" style="color:white; border:1px solid black; background-color:black; font-weight:bold; margin-right:3px;">
+				<div class="Cate-div" id="Cate-모두" style="color:white; border:1px solid black; background-color:black; font-weight:bold;">
 					<span>전체보기</span>
 				</div>
 				<!-- 국내 -->
@@ -138,12 +138,8 @@
 					<span>국내</span>
 				</div>
 				<!-- 해외 -->
-				<div class="Cate-div" id="Cate-국내">
+				<div class="Cate-div" id="Cate-해외">
 					<span>해외</span>
-				</div>
-				<!-- 마감포함 -->
-				<div class="Cate-div" id="Cate-국내">
-					<span>마감포함</span>
 				</div>
 			</div>
 			
@@ -205,12 +201,10 @@
 						int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
 						int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
 				%>
-					<div class="todaysRow"
+					<div class="todaysRow" <%if(bdto_todays.getCountry_name().contains("대한민국")) { %> id="todaysRow-국내" <%} else {%> id="todaysRow-해외" <%}%>
 					<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
 						style="display:none;"
-					<%} else {%> 
-						
-					<%}%>>
+					<%} %> >
 						<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 						<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 						
@@ -1128,7 +1122,7 @@
 			else { 
 			}
 		}
-		
+			
 		//오늘 발매 리스트
 		var todaysReleaseAll_list = [];
 		<c:forEach items="${onlineList_todays}" var="onlineList_todays">
@@ -1154,6 +1148,41 @@
 				countDownTimer('final_count_end_time'+i, count_span_end, 'count_todays_status'+i);	
 			}
 		}
+		
+		//카테고리 박스 클릭했을시
+		$('.Cate-div').click(function(){
+			//카테고리 css 없애고
+			$('.Cate-div').css('border','1px solid #f1f1f1');
+			$('.Cate-div').css('background-color', 'white');
+			$('.Cate-div').css('color', '#777777');
+			$('.Cate-div').css('font-weight', 'normal');
+			//모든 발매리스트 없애고
+			$('.todaysRow').css('display', 'none');
+			
+			//아이디 값 가져오기
+			var divID = $(this).attr('id');
+			// - 기준으로 자르기
+			var splitArray = divID.split('-');
+			// 제일 마지막 '국내' '해외' 만 가지고 오기
+			var cateRegion = splitArray[splitArray.length - 1];
+			
+			$('#Cate-'+cateRegion).css('border','1px solid black');
+			$('#Cate-'+cateRegion).css('background-color', 'black');
+			$('#Cate-'+cateRegion).css('color', 'white');
+			$('#Cate-'+cateRegion).css('font-weight', 'bold');
+			
+			if(cateRegion == "모두"){
+				$('.todaysRow').fadeIn();
+			}
+			else if(cateRegion == "국내") {
+				$('#todaysRow-국내').fadeIn();
+			}
+			else if(cateRegion == "해외") {
+				$('#todaysRow-해외').fadeIn();
+			}
+			
+			$('#table'+cateRegion).fadeIn();
+		});
 		
 		//카테고리 체크박스 클릭했을시
 		$('.cate_checkbox').change(function(){

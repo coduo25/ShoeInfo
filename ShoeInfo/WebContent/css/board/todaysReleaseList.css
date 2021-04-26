@@ -12,12 +12,12 @@ body {font-size:1em; line-weight:1.4}
 
 /* 카테고리 박스 */
 .Cate-container { padding:20px 0; display:block; text-align:center; font-family:'Nanum Gothic', sans-serif; }
-.Cate-div { text-align:center; font-size:15px; display:inline-block; color:#777777; border:1px solid #e8e8e8; border-radius:20px; }
+.Cate-div { text-align:center; font-size:15px; display:inline-block; color:#777777; border:1px solid #e8e8e8; border-radius:20px; cursor:pointer; }
 .Cate-div:not(:last-child) { margin-right:10px; }
 .Cate-div span { margin:8px 20px; display:block; }
 
 /*서브 타이틀*/
-.sub-title { display: block; margin:0 0 15px 0; font-size:40px; font-family:'Nanum Gothic', sans-serif; text-align:center; }
+.sub-title { display: block; margin:0 0 15px 0; font-size:38px; font-family:'Nanum Gothic', sans-serif; text-align:center; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
