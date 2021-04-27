@@ -117,10 +117,10 @@ body {font-size:1em; line-weight:1.4}
 	.Cate-div { font-size:14px; }
 	.Cate-container { padding:30px 0 10px 0; }
 	
-	.todays-table-container { padding:0 5%; }
+	.todays-table-container { padding:0 4%; }
 	.todaysRow { padding:12% 0; }
 	
-	.brandPart { width:70%; text-align:left; }
+	.brandPart { width:65%; margin-right:5%; }
 	.todaysShoePart { width:30%; }
 	.todaysBrandPart, .todaysBrandPart2 { width:100%; }
 	
@@ -130,8 +130,8 @@ body {font-size:1em; line-weight:1.4}
 	.todaysBrandName { padding:3px 0 0 0; }
 	.todaysInfo, .todaysReleaseTime { margin-top:7px; font-size:12px; }
 	
-	.todaysStatus { margin-top:15px; }
-	.release-status { font-size:13px; padding:2px 6px; }
+	.todaysStatus { margin-top:10px; }
+	.release-status { font-size:13px; padding:3px 8px; }
 	.todaysRemainTime { margin-top:8px; }
 	.remain-time { font-size:16px; padding:0 !important; }
 	.count_label { display:none; }
