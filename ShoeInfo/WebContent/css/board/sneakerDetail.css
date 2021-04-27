@@ -233,14 +233,14 @@ body { line-weight:1.4;}
 	.releaseCard { width:92%; margin:3% 4% 5%; padding:1rem; }
 	
 	.CardContent1 { display:table-caption; text-align:center; }
-	.Card_brandImg { width:80px; height:80px; border-radius:10px; border:1px solid #dedede; }
+	.Card_brandImg { width:70px; height:70px; border-radius:10px; border:1px solid #dedede; }
 	.countryflag { width:30px; height:20px; }
 	.CardLogo { margin-right:1rem; }
-	.CardContentList-brandNameTxt span { font-size:16px; margin:7px 0 15px 0; }
+	.CardContentList-brandNameTxt span { font-size:16px; margin:5px 0 14px 0; }
 	.CardContentList-drawMethod span { font-size:13px; padding:.5em .6em; }
 	
-	.CardContent2 { font-size:13px; margin-top:15px; }
-	.CardContent2-status, .CardContent2-drawTime { margin-bottom:8px; }
+	.CardContent2 { font-size:12px; margin-top:15px; }
+	.CardContent2-status, .CardContent2-drawTime { margin-bottom:6px; }
 	.remain-time, .remain-time2 { font-size:15px; letter-spacing:-0.5px; }
 	.remain-time2:not(:last-child) { padding-right:1px; }
 	.remainTimeBox { padding:0; }
@@ -248,7 +248,7 @@ body { line-weight:1.4;}
 	.CardContent2-1 { padding:17px 0; }
 	
 	.CardContent3 { font-size:15px; }
-	.card_link, .card_checkBox { padding:0.4rem 1rem; }
+	.card_link, .card_checkBox { padding:0.4rem 1rem; font-size:13px; }
 	
 	.releasedDropDown, .releasedDropUp { border-bottom:0 !important; }
 
