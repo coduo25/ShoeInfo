@@ -234,7 +234,7 @@ body { line-weight:1.4;}
 	
 	.CardContent1 { display:table-caption; text-align:center; }
 	.Card_brandImg { width:80px; height:80px; border-radius:10px; border:1px solid #dedede; }
-	.countryflag { width:30px; height:18px; }
+	.countryflag { width:30px; height:20px; }
 	.CardLogo { margin-right:1rem; }
 	.CardContentList-brandNameTxt span { font-size:16px; margin:7px 0 15px 0; }
 	.CardContentList-drawMethod span { font-size:13px; padding:.5em .6em; }

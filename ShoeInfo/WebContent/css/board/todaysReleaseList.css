@@ -10,8 +10,14 @@ body {font-size:1em; line-weight:1.4}
 .todaysRelease-container { display: table; width: 100%; box-sizing: border-box; margin:100px 0; font-family: 'Nanum Gothic', sans-serif; }
 .todays-table-container { width: 100%;}
 
+/* 카테고리 박스 */
+.Cate-container { padding:20px 0; display:block; text-align:center; font-family:'Nanum Gothic', sans-serif; }
+.Cate-div { text-align:center; font-size:15px; display:inline-block; color:#777777; border:1px solid #e8e8e8; border-radius:20px; cursor:pointer; }
+.Cate-div:not(:last-child) { margin-right:10px; }
+.Cate-div span { margin:8px 20px; display:block; }
+
 /*서브 타이틀*/
-.sub-title { display: block; margin:0 0 15px 0; font-size:32px; font-family: 'Nanum Gothic', sans-serif; }
+.sub-title { display: block; margin:0 0 15px 0; font-size:38px; font-family:'Nanum Gothic', sans-serif; text-align:center; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -20,6 +26,52 @@ body {font-size:1em; line-weight:1.4}
 
 
 /* 오늘의 발매 리스트 */
+.todaysRow { display:flex; width:100%; position:relative; padding:20px 15px; text-align:center; align-items:center; }
+.todaysRow:not(:last-child) { border-bottom:1px solid #cccccc; }
+.todaysBrandPart { display:inline-block; width:33.3%; }
+.todaysBrandPart2 { display:inline-block; width:33.3%}
+.todaysShoePart { display:inline-block; width:33.3%; }
+
+.todaysBrandImg { display:-webkit-inline-box; position:relative; }
+.brandImg { width:140px; height:140px; border:1px solid #b3b3b3; position:relative; border-radius:6px; }
+.countryflag { border:1px solid #d4d4d4; width:38px; height:24px; }
+
+.todaysBrandName { padding:10px 0; }
+.todays-brandName { font-weight:bold; font-size:25px; color:#1f1f1f; }
+
+.todaysInfo { margin-top:10px; }
+.todaysInfo span { color:#949494; }
+
+.todaysReleaseTime { margin-top:10px; }
+.todaysReleaseTime span { color:#949494; }
+
+.todaysStatus { margin-top:10px; }
+.release-status { padding:3.5px 10px; color:white; font-weight:bold; border-radius:4px; }
+
+.todaysRemainTime { margin-top:15px; }
+
+.todayslinks { margin-top:15px; }
+.card_link { width:38%; margin-rigth:1%; transition:0.3s; }
+.card_checkBox { width:38%; margin-left:1%; }
+.card_link { border:1px solid #23272b; background-color:#23272b; color:white; }
+.card_checkBox { border:1px solid #d0d0d0; background-color:white; }
+.card_link, .card_checkBox { display:inline-block; border-radius:20px; vertical-align:middle; text-align:center; padding:0.4rem 1rem; cursor:pointer; }
+
+
+
+.releaseModel-image img { width:75%; background-color:#f3f3f3; padding:100px 10px 70px 10px; }
+
+
+
+
+
+
+
+
+
+
+
+
 #onlineList_todays_table { width: 100%; border-collapse: collapse; border-top:1.8px solid black; }
 #onlineList_todays_table th { padding:20px 10px; background:#f9f9f9; border-top:1px solid #222; border-bottom:1px solid #c1c1c1; color:#222; font-size:15px; font-weight:normal; }
 #onlineList_todays_table td { height: 100%; border-bottom:1px solid #c1c1c1; padding:35px 0; text-align: center; }
@@ -31,8 +83,7 @@ body {font-size:1em; line-weight:1.4}
 	.todaysRelease-content1 { display:inline-block; vertical-align: top; text-align: center; padding-left:40px; }
 	.todaysRelease-content2 { display:inline-block; vertical-align: top; text-align: left; padding-left:20px; }
 
-	.brandImg { width:130px; height:130px; border:1px solid #b3b3b3; position:relative; border-radius:6px; }
-	.countryflag { border:1px solid #d4d4d4; width:30px; height:20px; }
+	
 	.brand-info-image-container { display:inline-block; position:relative; }
 	
 	.brand-info-container { vertical-align: top; margin-bottom:12px; }
@@ -44,8 +95,8 @@ body {font-size:1em; line-weight:1.4}
 	.mob-brand-info-container { display:none; }
 	.phone-timeLabel { display:none; }
 	
-	.todays-brandName { font-weight:bold; font-size:23px; color:#1f1f1f; }
-	.release-status { margin-left: 7px; padding:4px 6px; color: white; font-weight: bold; font-size:15px; border-radius:4px; }
+	
+	
 	
 	/* 발매처 정보 박스 */
 	.release-info { text-align:left !important; padding-left:5px; }
@@ -65,7 +116,7 @@ body {font-size:1em; line-weight:1.4}
 	.mob_count_label { display:none; }
 
 	/* 발매 제품  */
-	.releaseModel-image img { width:90%; background-color:#f3f3f3; padding:80px 10px 20px 10px; }
+
 	.releaseModel-name { margin-bottom: 10px; padding:0 5%; font-size:15px; }
 	
 	/* 체크박스 */
