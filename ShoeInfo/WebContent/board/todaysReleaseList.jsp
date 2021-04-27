@@ -201,10 +201,15 @@
 						int compare_w_start_result = today.compareTo(original_Online_start_time);	//응모 시작하는 시간
 						int compare_w_end_result = today.compareTo(original_Online_end_time); 		//응모 끝나는 시간
 				%>
-					<div class="todaysRow" <%if(bdto_todays.getCountry_name().contains("대한민국")) { %> id="todaysRow-국내" <%} else {%> id="todaysRow-해외" <%}%>
+					<div class="todaysRow" 
 					<%if((odto_todays.getOnline_method().contains("선착") && compare_w_start_result >= 0) || (((odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) && compare_w_end_result >= 0))){%>
-						style="display:none;"
-					<%} %> >
+						id="todaysRow-종료" style="display:none;"
+					<%} else if(bdto_todays.getCountry_name().contains("대한민국")) { %> 
+						id="todaysRow-국내"
+					<%} else {%> 
+						id="todaysRow-해외"
+					<%}%>	
+					>
 						<input type="hidden" id="brand_id<%=i%>" value="<%=bdto_todays.getBrand_id()%>">
 						<input type="hidden" id="country_name<%=i%>" value="<%=bdto_todays.getCountry_name()%>">
 						
@@ -1173,53 +1178,13 @@
 			
 			if(cateRegion == "모두"){
 				$('.todaysRow').fadeIn();
+				$('#todaysRow-종료').css('display', 'none');
 			}
 			else if(cateRegion == "국내") {
 				$('#todaysRow-국내').fadeIn();
 			}
 			else if(cateRegion == "해외") {
 				$('#todaysRow-해외').fadeIn();
-			}
-			
-			$('#table'+cateRegion).fadeIn();
-		});
-		
-		//카테고리 체크박스 클릭했을시
-		$('.cate_checkbox').change(function(){
-			//'국내발매처'체크여부
-			var kr_checked = $('#todays_kr').is(":checked");
-			//'마감포함'체크여부
-			var end_checked = $('#todaysEnd_kr').is(":checked");
-			
-			//체크박스를 클릭할시 바뀐 값의 결과물로 나온다. ex)국내발매처를 눌렸을시 눌려진 결과물인 True로 나온다
-			
-			//국내발매처 체크 X 마감포함 체크 X
-			if(!kr_checked && !end_checked){
-				$("tr[class^='release']").not($("tr[id^='releaseEnd']")).css("display", "table-row");
-				for(var i=0; i<todaysReleaseAll_list.length; i++) {
-					$('#releaseEnd'+i+'tr').css("display", "none");	
-				}
-			}
-			//국내발매처 체크 O 마감포함 체크 X
-			if(kr_checked && !end_checked){
-				$("tr[class^='release']").not($("tr[class='release대한민국']")).css("display", "none");
-				for(var i=0; i<todaysReleaseAll_list.length; i++) {
-					$('#releaseEnd'+i+'tr').css("display", "none");	
-				}
-			}
-			//국내발매처 체크 X 마감포함 체크 O
-			if(!kr_checked && end_checked){
-				$("tr[class^='release']").not($("tr[id^='releaseEnd']")).css("display", "table-row");
-				for(var i=0; i<todaysReleaseAll_list.length; i++) {
-					$('#releaseEnd'+i+'tr').css("display", "table-row");
-				}
-			}
-			//국내발매처 체크 O 마감포함 체크 O
-			if(kr_checked && end_checked){
-				for(var i=0; i<todaysReleaseAll_list.length; i++) {
-					$('#releaseEnd'+i+'tr').css("display", "table-row");
-					$("tr[class^='release']").not($("tr[class='release대한민국']")).css("display", "none");
-				}
 			}
 		});
 	

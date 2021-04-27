@@ -17,7 +17,7 @@ body {font-size:1em; line-weight:1.4}
 .Cate-div span { margin:8px 20px; display:block; }
 
 /*서브 타이틀*/
-.sub-title { display: block; margin:0 0 15px 0; font-size:38px; font-family:'Nanum Gothic', sans-serif; text-align:center; }
+.sub-title { display: block; margin:0 0 15px 0; font-size:40px; font-family:'Nanum Gothic', sans-serif; text-align:center; }
 .sub-title h4 { display: inline-block; flex-direction: row; }
 .sub-title h4 span { padding-right: 10px; }
 /* .sub-title-wline h4:after { content: ""; flex: 1 1; border-bottom: 1.7px solid #000000; margin: auto; } */
@@ -34,7 +34,7 @@ body {font-size:1em; line-weight:1.4}
 
 .todaysBrandImg { display:-webkit-inline-box; position:relative; }
 .brandImg { width:140px; height:140px; border:1px solid #b3b3b3; position:relative; border-radius:6px; }
-.countryflag { border:1px solid #d4d4d4; width:38px; height:24px; }
+.countryflag { border:1px solid #d4d4d4; width:42px; height:27px; }
 
 .todaysBrandName { padding:10px 0; }
 .todays-brandName { font-weight:bold; font-size:25px; color:#1f1f1f; }
