@@ -540,7 +540,7 @@
 								
 									<!-- 참여체크박스 -->
 									<%if(odto_todays.getOnline_method().contains("선착")) {%>
-										<div class="card_checkBox">
+										<div class="card_checkBox" style="pointer-events: none;">
 											<span> - </span>
 										</div>
 									<%} else if(odto_todays.getOnline_method().contains("드로우") || odto_todays.getOnline_method().contains("라플")) {%>
@@ -851,45 +851,27 @@
 			if(finalTime >= 0000001 && finalTime <= 0001459){
 				//시간 붉은색으로
 				$('#'+statusId+'span').css("color", "#da010a");
-				//임박글자 넣기 (선착이면 선착임박, 드로우면 마감임박)
-				if(id.match('start')){
-					document.getElementById(statusId+'label').textContent = '선착시간임박!';	
-				}
-				if(id.match('end')){
-					document.getElementById(statusId+'label').textContent = '응모마감임박!';	
-				}
-				//임박표시 ON
-				$('#'+statusId+'label').css("display", "block");
 			}
 			//종료되었을때
 			else if(finalTime == 0000000){
-				document.getElementById(statusId).textContent = '종료';		
-			
+				document.getElementById(statusId).textContent = '종료';
+				
 				//응모 status 종료 표시
 				document.getElementById(statusId+'release-status').textContent = '종료';
 				$('#'+statusId+'release-status').css({"background-color":"white", "border":"none", "font-weight":"normal", "color":"black"});
-				document.getElementById('phone-'+statusId+'release-status').textContent = '종료';
-				$('#phone-'+statusId+'release-status').css({"color":"black"});
 				
 				//브랜드이름 줄 긋기
 				$('#'+statusId+'brandNameTxt').css({"text-decoration":"line-through", "text-decoration-thickness":"2px"})
 				//남은시간 '-' 으로 바꾸기
 				document.getElementById(statusId+'span').textContent = '-';
 				$('#'+statusId+'span').css("color", "#949494");
-				//임박표시 OFF
-				$('#'+statusId+'label').css("display", "none");
 				//응모링크 클릭 못하게+disable 디자인
-				$('#'+statusId+'linkBtn').css({"border":"none", "background-color":"#f1f1f1", "color":"rgb(196 196 196)"});
+				$('#'+statusId+'linkBtn').css({"border":"1px solid #f1f1f1", "background-color":"#f1f1f1", "color":"rgb(196 196 196)"});
 				$('#'+statusId+'linkBtn').removeAttr('onclick');
-				
-				//임박표시 OFF
-				$('#'+statusId+'label').css("display", "none");
 			}
 			//임박하지 않고 계속 진행중일때
 			else {
 				document.getElementById(statusId).textContent = '진행중';	
-				//임박표시 OFF
-				$('#'+statusId+'label').css("display", "none");
 			}
 		} 
 		timer = setInterval(showRemaining, 1000); 
@@ -958,7 +940,7 @@
 		}
 		
 		//응모 여부 체크박스 클릭했을시 -----------------------------------------------------------------------
-		$('.draw_checkBox').on('click', function(){
+		$('.card_checkBox').on('click', function(){
 			//로그인 체크
 			if($(".login_user").val() == "") {
 				var login_confirm = confirm("응모여부를 체크할려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
@@ -1009,13 +991,16 @@
 							}
 				   		});
 						//참여전 표시 -> 참여완료로 바꾸기
-						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "0.3");
-						$('div#brand-info-container'+id_num).css("opacity", "0.3");
+						$('#todaysBrandPart'+id_num).css("opacity", "0.3");
+						$('#todaysStatus'+id_num).css("opacity", "0.3");
+						$('#todaysRemainTime'+id_num).css("opacity", "0.3");
+						$('#count_todays_status'+id_num+'linkBtn').css("opacity", "0.3");
 						$('#releaseModel-image'+id_num).css("opacity", "0.3");
-						$('#draw_checkBox'+id_num).css("background-color","#1f1f1f");
-						$('#draw_checkBox'+id_num).css("border-color","#1f1f1f");
+						
+						$('#draw_checkBox'+id_num).css("background-color","rgb(88, 175, 88)");
+						$('#draw_checkBox'+id_num).css("border-color","rgb(88, 175, 88)");
 						$('#draw_checkBox'+id_num).css("color","white");
-						$('#drawCheck_statusTxt'+id_num).text("응모함");
+						$('#drawCheck_statusTxt'+id_num).text("응모완료");
 					} 
 					//참여완료인데 체크박스 눌릴시 -> 참여전
 					else if(draw_status == '참여완료'){
@@ -1033,111 +1018,21 @@
 							}
 				   		});
 						//참여완료 표시 -> 참여전으로 바꾸기
-						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "1");
-						$('div#brand-info-container'+id_num).css("opacity", "1");
+						$('#todaysBrandPart'+id_num).css("opacity", "1");
+						$('#todaysStatus'+id_num).css("opacity", "1");
+						$('#todaysRemainTime'+id_num).css("opacity", "1");
+						$('#count_todays_status'+id_num+'linkBtn').css("opacity", "1");
 						$('#releaseModel-image'+id_num).css("opacity", "1");
+						
 						$('#draw_checkBox'+id_num).css("background-color","white");
-						$('#draw_checkBox'+id_num).css("border-color","#b3b3b3");
+						$('#draw_checkBox'+id_num).css("border-color","#d0d0d0");
 						$('#draw_checkBox'+id_num).css("color","#b3b3b3");
 						$('#drawCheck_statusTxt'+id_num).text("");
 					}
 				}
 			}
 		});
-		
-		//(모바일) 응모 여부 체크박스 클릭했을시 -----------------------------------------------------------------------
-		$('.mob-draw_checkBox').on('click', function(){
-			//로그인 체크
-			if($(".login_user").val() == "") {
-				var login_confirm = confirm("응모여부를 체크할려면 로그인을 해야합니다. \n로그인 페이지로 가시겠습니까?");
-				if(login_confirm){
-					location.href="./MemberLogin.me";
-					$(this).prop("checked", false);
-				}else {
-					$(this).prop("checked", false);
-				}
-			}
-			//로그인시
-			else {
-				var checkbox_id = $(this).attr("id");
-				var id_num = checkbox_id.replace(/[^0-9]/g,'');
-				
-				//응모참여 status
-				var mob_draw_status = $('#mob-drawCheck_status'+id_num).val();
-
-				//응모시간이 아니면 alert 띄우기
-				var hidden_ing = $('#hidden_ing'+id_num).val();
-				if(hidden_ing < 0){
-					alert("응모 전입니다. \n응모기간에 응모여부를 체크 할 수 있습니다.");
-					return false;
-				}
-				else {
-					//신발모델 번호
-					var model_num = $('#model_num'+id_num).val();
-					//신발모델 스타일코드
-					var model_stylecode = $('#model_stylecode'+id_num).val();
-					//브랜드 아이디
-					var brand_id = $('#brand_id'+id_num).val();
-					//국가 이름
-					var country_name = $('#country_name'+id_num).val();
-					
-					//참여전인데 체크박스 눌릴시 -> 참여완료
-					if(mob_draw_status == '참여전'){
-						//status 참여완료로 바꾸기
-						$('#mob-drawCheck_status'+id_num).val('참여완료');
-						$.ajax({
-				   			type:'get',
-				   			url:'./addUserDrawInfoAction.me',
-				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
-				   			dataType: 'html',
-				   			success:function(data) {
-
-				   			},error:function(request,status,error){
-							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-							}
-				   		});
-						//참여전 표시 -> 참여완료로 바꾸기
-						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "0.3");
-						$('div#brand-info-container'+id_num).css("opacity", "0.3");
-						$('#mob-brand-info-container'+id_num).css("opacity", "0.3");
-						$('#phone-brand-info-container'+id_num).css("opacity", "0.3");
-						
-						$('#mob-draw_checkBox'+id_num).css("background-color","#1f1f1f");
-						$('#mob-draw_checkBox'+id_num).css("border-color","#1f1f1f");
-						$('#mob-draw_checkBox'+id_num).css("color","white");
-						$('#mob-drawCheck_statusTxt'+id_num).text("응모함");
-					} 
-					//참여완료인데 체크박스 눌릴시 -> 참여전
-					else if(mob_draw_status == '참여완료'){
-						//status 참여전으로 바꾸기
-						$('#mob-drawCheck_status'+id_num).val('참여전');
-						$.ajax({
-				   			type:'get',
-				   			url:'./deleteUserDrawInfoAction.me',
-				   			data: 'model_num='+model_num+'&model_stylecode='+model_stylecode+'&brand_id='+brand_id+'&country_name='+country_name,
-				   			dataType: 'html',
-				   			success:function(data) {
-				   				
-				   			},error:function(request,status,error){
-							 	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-							}
-				   		});
-
-						//참여완료 표시 -> 참여전으로 바꾸기
-						$('#count_todays_status'+id_num+'releaseInfo').css("opacity", "1");
-						$('div#brand-info-container'+id_num).css("opacity", "1");
-						$('#mob-brand-info-container'+id_num).css("opacity", "1");
-						$('#phone-brand-info-container'+id_num).css("opacity", "1");
-						
-						$('#mob-draw_checkBox'+id_num).css("background-color","white");
-						$('#mob-draw_checkBox'+id_num).css("border-color","#b3b3b3");
-						$('#mob-draw_checkBox'+id_num).css("color","#b3b3b3");
-						$('#mob-drawCheck_statusTxt'+id_num).text("");
-					}
-				}
-			}
-		});
-
+	
 	});
 	
 	document.onmousedown=disableclick;
