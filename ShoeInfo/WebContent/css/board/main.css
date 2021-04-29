@@ -415,7 +415,7 @@ div.snkrs_time a { font-size:15px; color:#777 !important; }
 	
 	/* 메인페이지 - 발매 중 라인 업 */
 	.releasing-table-container { overflow-x:scroll; padding:0 4%; white-space:nowrap; }
-	.mainSneaker-container { width:60%; display:inline-block; margin:0 10px 0 0; float:unset; }
+	.mainSneaker-container { width:50%; display:inline-block; margin:0 10px 0 0; float:unset; }
 	.mainSneaker-image img { border-bottom:0; }
 	.mainSneakerShoeInfo-container { padding:5% 2% 7% 2%; white-space:normal; }
 	.mainSneakerShoeInfo-name { font-size:14px; }
