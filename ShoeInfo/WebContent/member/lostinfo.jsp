@@ -105,7 +105,8 @@
 // 				return false;
 // 			}
 			
-			alert("비밀번호 찾기 기능은 현재 준비중입니다.\ninfo@shoeinfo.co.kr로 문의주시면 감사하겠습니다.")
+			//alert("비밀번호 찾기 기능은 현재 준비중입니다.\ninfo@shoeinfo.co.kr로 문의주시면 감사하겠습니다.")
+			alert("비밀번호 찾기 기능은 현재 준비중입니다.\n인스타그램 shoeinfo_official으로 DM주시면 감사하겠습니다.");
 			
 // 			$('#pass_text').hide();
 // 			$('#loading').show();
