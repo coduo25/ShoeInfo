@@ -602,7 +602,7 @@
 									
 									<!-- 체크박스 -->
 									<%if(odto.getOnline_method().contains("선착")) {%>
-										<div class="card_checkBox2">
+										<div class="card_checkBox">
 											<span>-</span>
 										</div>
 									<%} else if(odto.getOnline_method().contains("드로우") || odto.getOnline_method().contains("라플")) {%>
