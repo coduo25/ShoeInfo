@@ -59,7 +59,7 @@ body {font-size:1em; line-weight:1.4}
 .card_checkBox { width:38%; margin-left:1%; }
 .card_link { border:1px solid #23272b; background-color:#23272b; color:white; }
 .card_checkBox { border:1px solid #d0d0d0; background-color:white; }
-.card_link, .card_checkBox { display:inline-block; border-radius:20px; vertical-align:middle; text-align:center; padding:0.4rem 1rem; cursor:pointer; }
+.card_link, .card_checkBox { display:inline-block; vertical-align:middle; text-align:center; padding:0.4rem 1rem; cursor:pointer; }
 
 .releaseModel-image img { width:75%; background-color:#f3f3f3; padding:100px 10px 70px 10px; }
 
