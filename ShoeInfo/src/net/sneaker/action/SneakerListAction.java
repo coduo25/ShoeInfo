@@ -66,8 +66,6 @@ public class SneakerListAction implements Action {
 		request.setAttribute("releasedSneakerList", releasedSneakerList);
 		request.setAttribute("countReleasingBrandList", countReleasingBrandList);
 
- 		
- 		
 		
 		
 		
