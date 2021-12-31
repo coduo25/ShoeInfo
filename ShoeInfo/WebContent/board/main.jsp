@@ -753,7 +753,7 @@
 			</div>
 			
 			<div class="releasing-table-container">
-				<% if(releasingSneakerList.isEmpty()){ %>
+				<% if(releaseSneakerList.isEmpty()){ %>
 					<div>
 						발매 예정인 신발이 없습니다.
 					</div>

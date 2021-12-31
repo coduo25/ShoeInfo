@@ -203,7 +203,7 @@ public class SneakerDAO {
 	}
 	
 	//발매 중, 발매예정, 발매완료 리스트 나누는 함수
-	public Vector getTotalReleaseList(String date){
+	public Vector getTotalReleaseList(String date, String date2){
 		
 		Vector vec = new Vector();
 		
@@ -222,9 +222,10 @@ public class SneakerDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from shoeinfo_sneakerlibrary where release_date like ? order by release_date"; 
+			sql = "select * from shoeinfo_sneakerlibrary where (release_date like ? or release_date like ?) order by release_date"; 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, date);
+			pstmt.setString(2, date2);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				SneakerDTO sdto = new SneakerDTO();

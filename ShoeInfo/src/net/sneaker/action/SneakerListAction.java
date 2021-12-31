@@ -55,7 +55,7 @@ public class SneakerListAction implements Action {
 		request.setAttribute("sneakerList_snkrs", sneakerList_snkrs);
 		
 		//발매중 신발들, 발매예정 신발들, 발매완료 신발들
-		Vector vec_totalReleaseList = sdao.getTotalReleaseList("%" + "2021" + "%");
+		Vector vec_totalReleaseList = sdao.getTotalReleaseList("%" + "2021" + "%", "%" + "2022" + "%");
 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(0);
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(1);
 		ArrayList<SneakerDTO> releasedSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(2);

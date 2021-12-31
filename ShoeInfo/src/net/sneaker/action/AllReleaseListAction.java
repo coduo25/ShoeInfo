@@ -23,7 +23,7 @@ public class AllReleaseListAction implements Action {
 		SneakerDAO sdao = new SneakerDAO();
 		
 		//발매중 신발들, 발매예정 신발들
-		Vector vec_totalReleaseList = sdao.getTotalReleaseList("%" + "2021" + "%");
+		Vector vec_totalReleaseList = sdao.getTotalReleaseList("%" + "2021" + "%", "%" + "2022" + "%");
 		ArrayList<SneakerDTO> releaseSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(0);
 		ArrayList<SneakerDTO> releasingSneakerList = (ArrayList<SneakerDTO>) vec_totalReleaseList.get(1);
 		//현재 발매 중인 신발들 중에 진행중인 브랜드 갯수 가져오는 리스트
