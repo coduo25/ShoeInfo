@@ -11,7 +11,7 @@
 
 	<%	
 		//ShoeInfo 메인페이지
-		response.sendRedirect("./Main.bo");
+		response.sendRedirect("./Main.bo"); 
 	%>
 
 </body>
