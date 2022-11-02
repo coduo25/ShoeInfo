@@ -2,13 +2,13 @@
 
 <Context>
   <Resource 
-   name="jdbc/coduo25"
+   name=""
    auth="Container"
    type="javax.sql.DataSource"
    driverClassName="com.mysql.jdbc.Driver"
-   url="jdbc:mysql://210.114.6.195:3306/shoeinfo"
-   username="shoeinfo"
-   password="dhfpswl@7695!"
+   url=""
+   username=""
+   password=""
    maxActive="500"
    maxIdle="100"  
   />
